@@ -1,0 +1,14 @@
+{% import 'components/avatar.html' as avatar %}
+
+<div class="nav-item dropdown">
+  <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown" data-caret="false">
+    {{ avatar.component(title='<i class="material-icons">account_box</i>', size='sm', class='mr-8pt2', title_class='bg-primary', circle=true, element='span') }}
+  </a>
+  <div class="dropdown-menu dropdown-menu-right">
+    <div class="dropdown-header"><strong>Account</strong></div>
+    <a class="dropdown-item{% if slug === 'edit-account' %} active{% endif %}" href="{{ prefix.replace('learnly', '') }}edit-account.html">Edit Account</a>
+    <a class="dropdown-item{% if slug === 'billing' %} active{% endif %}" href="{{ prefix.replace('learnly', '') }}billing.html">Billing</a>
+    <a class="dropdown-item{% if slug === 'billing-history' %} active{% endif %}" href="{{ prefix.replace('learnly', '') }}billing-history.html">Payments</a>
+    <a class="dropdown-item" href="{{ prefix }}login.html">Logout</a>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{% macro component(title, description) %}
+{% set content -%}
+  {{ caller() }}
+{%- endset %}
+<div class="row mb-32pt">
+  <div class="col-lg-4">
+    <div class="page-separator">
+      <div class="page-separator__text">{{ title }}</div>
+    </div>
+    <p class="card-subtitle text-70 mb-16pt mb-lg-0">{{ description | safe }}</p>
+  </div>
+  <div class="col-lg-8 d-flex align-items-center">
+    <div class="flex" style="max-width: 100%">
+      {{ content | safe }}
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,65 @@
+{% import '_course-card.html' as course %}
+{% macro component(
+  id="1",
+  pager=false,
+  control=true,
+  col_class='col-sm-6 col-md-4 col-xl-3',
+  account,
+  prefix=prefix,
+  limit=4,
+  items=[{
+    title: 'Learn Angular fundamentals',
+    image: 'angular',
+    free: true
+  }, {
+    title: 'Build an iOS Application in Swift',
+    image: 'swift',
+    favorite: true
+  }, {
+    title: 'Build a WordPress Website',
+    image: 'wordpress'
+  }, {
+    title: 'Become a React Native Developer',
+    image: 'react',
+    position: 'left'
+  }]
+) %}
+<div class="position-relative carousel-card">
+  <div 
+    class="js-mdk-carousel row d-block" 
+    id="carousel-courses{{ id }}">
+    {% if control %}
+    <a 
+      class="carousel-control-next js-mdk-carousel-control mt-n24pt" 
+      href="#carousel-courses{{ id }}" 
+      role="button" 
+      data-slide="next">
+      <span 
+        class="carousel-control-icon material-icons" 
+        aria-hidden="true">keyboard_arrow_right</span>
+      <span class="sr-only">Next</span>
+    </a>
+    {% endif %}
+    <div class="mdk-carousel__content">
+      {% for item in items.slice(0, limit) %}
+      <div class="col-12 {{ col_class }}">
+        {{ course.component(
+          account=account, 
+          title=item.title, 
+          image=item.image, 
+          avatar=(item.avatar or item.image), 
+          free=item.free,
+          favorite=item.favorite,
+          position=item.position,
+          prefix=prefix,
+          class=item.class) }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% if pager %}
+{% include 'layouts/_pager.html' %}
+{% endif %}
+{% endmacro %}
+{{ component(prefix=prefix) }}

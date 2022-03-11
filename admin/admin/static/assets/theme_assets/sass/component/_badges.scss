@@ -1,0 +1,253 @@
+.badge-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 6.64px;
+  border-radius: 50%;
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 500;
+  &.badge-warning {
+    @extend .color-white;
+  }
+}
+.badge-sm {
+  height: 14px;
+  padding: 0 5.12px;
+  font-size: 8px;
+}
+
+// Badge Css
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 6.64px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+// Badge Size
+.badge {
+  &.badge-lg {
+    height: 20px;
+    padding: 0 8.23px;
+    font-size: 12px;
+  }
+  &.badge-md {
+    height: 15px;
+    padding: 0 6.64px;
+    font-size: 11px;
+  }
+  &.badge-sm {
+    height: 14px;
+    padding: 0 5.12px;
+    font-size: 8px;
+  }
+}
+
+// Badge Shape
+
+.badge {
+  &.badge-circle {
+    border-radius: 50%;
+  }
+  &.badge-round {
+    border-radius: 15px;
+  }
+}
+
+// Badge Outline
+
+.badge {
+  &.badge-outlined {
+    background: #fff;
+    &.badge-primary {
+      @extend .color-primary;
+      @extend .border-primary;
+    }
+    &.badge-secondary {
+      @extend .color-secondary;
+      @extend .border-secondary;
+    }
+    &.badge-info {
+      @extend .color-info;
+      @extend .border-info;
+    }
+    &.badge-warning {
+      @extend .color-warning;
+      @extend .border-warning;
+    }
+    &.badge-danger {
+      @extend .color-danger;
+      @extend .border-danger;
+    }
+    &.badge-light {
+      @extend .color-light;
+      @extend .border-light;
+    }
+  }
+}
+
+// Badge Dot
+.badge-dot-wrap {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  padding: 0;
+  height: 8px;
+  width: 8px;
+  top: -2.5px;
+  right: -2.5px;
+}
+.badge-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  &.dot-danger {
+    @extend .bg-danger;
+  }
+  &.dot-default {
+    @extend .bg-extra-light;
+  }
+  &.dot-info {
+    @extend .bg-info;
+  }
+  &.dot-primary {
+    @extend .bg-primary;
+  }
+  &.dot-success {
+    @extend .bg-success;
+  }
+  &.dot-warning {
+    @extend .bg-warning;
+  }
+  &.dot-light {
+    @extend .bg-lighter;
+  }
+}
+
+// Red Badge
+
+.badge-red {
+  position: relative;
+  &.atbd-badge-text {
+    font-size: 12px;
+    .badge-dot-wrap {
+      right: -8px;
+    }
+  }
+  svg,
+  img {
+    width: 15px;
+  }
+  .badge-dot-wrap {
+    width: 10px;
+    height: 10px;
+    top: -2px;
+    right: 0px;
+  }
+  .badge-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 1px;
+    right: 1px;
+  }
+}
+
+// Dynamic Badge Block
+
+.dynamic-badge-block {
+  display: flex;
+  align-items: flex-start;
+  .atbd-button-group {
+    border-radius: 3px;
+    @extend .border-light;
+    .btn-icon {
+      padding: 0 0.922rem;
+      height: 32px;
+      border-width: 0;
+      border-right-width: 1px;
+      svg {
+        width: 20px;
+        height: 20px;
+        @extend .color-dark;
+      }
+    }
+    .btn-dec {
+      border-right: 0;
+    }
+    .btn-dec {
+      border-left: 1px solid #e3e6ef;
+    }
+  }
+  .custom-switch {
+    margin: 8px 0 0 16px;
+  }
+  .custom-switch.switch-md {
+    .custom-control-label:after {
+      top: calc(0.0425rem + 4px);
+    }
+  }
+}
+
+// Badge Status
+.status-list-inline {
+  .badge-dot {
+    margin-right: 10px;
+  }
+}
+.atbd-badge-text {
+  font-size: 10px;
+  @extend .color-light;
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+  .badge-dot {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+// Badge Transparent
+.badge {
+  &.badge-transparent {
+    &.badge-danger {
+      background-color: rgba($danger, 0.1);
+      @extend .color-dark;
+    }
+    &.badge-default {
+      background-color: rgba($extra-light, 0.1);
+      @extend .color-extra-light;
+    }
+    &.badge-info {
+      background-color: rgba($info, 0.1);
+      @extend .color-info;
+    }
+    &.badge-primary {
+      background-color: rgba($primary, 0.1);
+      @extend .color-primary;
+    }
+    &.badge-success {
+      background-color: rgba($success, 0.1);
+      @extend .color-success;
+    }
+    &.badge-warning {
+      background-color: rgba($warning, 0.1);
+      @extend .color-warning;
+    }
+    &.badge-light {
+      background-color: rgba($light, 0.1);
+      @extend .color-light;
+    }
+  }
+}

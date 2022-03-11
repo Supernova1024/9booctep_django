@@ -1,0 +1,74 @@
+<div class="page-separator">
+  <div class="page-separator__text">Sections</div>
+</div>
+
+<div class="accordion js-accordion accordion--boxed mb-24pt" id="parent">
+  <div class="accordion__item">
+    <a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-1" data-parent="#parent">
+      <span class="flex">Course Overview</span>
+      <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+    </a>
+    <div class="accordion__menu collapse" id="course-toc-1">
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Watch Trailer</a>
+        <span class="text-muted">1m 10s</span>
+      </div>
+    </div>
+  </div>
+  <div class="accordion__item open">
+    <a href="#" class="accordion__toggle" data-toggle="collapse" data-target="#course-toc-2" data-parent="#parent">
+      <span class="flex">Getting Started with Angular</span>
+      <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+    </a>
+    <div class="accordion__menu collapse show" id="course-toc-2">
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Introduction</a>
+        <span class="text-muted">8m 42s</span>
+      </div>
+      <div class="accordion__menu-link active">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Introduction to TypeScript</a>
+        <span class="text-muted">50m 13s</span>
+      </div>
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Comparing Angular to AngularJS</a>
+        <span class="text-muted">12m 10s</span>
+      </div>
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-take-quiz.html">Quiz: Getting Started With Angular</a>
+      </div>
+    </div>
+  </div>
+  <div class="accordion__item">
+    <a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-3" data-parent="#parent">
+      <span class="flex">Creating and Communicating Between Angular Components</span>
+      <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+    </a>
+    <div class="accordion__menu collapse" id="course-toc-3">
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Angular Components</a>
+        <span class="text-muted">04:23</span>
+      </div>
+    </div>
+  </div>
+  <div class="accordion__item">
+    <a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#course-toc-4" data-parent="#parent">
+      <span class="flex">Exploring the Angular Template Syntax</span>
+      <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+    </a>
+    <div class="accordion__menu collapse" id="course-toc-4">
+      <div class="accordion__menu-link">
+        <i class="material-icons text-70 icon-16pt icon--left">drag_handle</i>
+        <a class="flex" href="{{ prefix or '' }}student-lesson.html">Template Syntax</a>
+        <span class="text-muted">04:23</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="#" class="btn btn-outline-secondary mb-24pt mb-sm-0">Add Section</a>

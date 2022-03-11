@@ -1,0 +1,265 @@
+{% import 'components/pager.html' as pager %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="page-separator">
+      <div class="page-separator__text">Overview</div>
+    </div>
+
+    <div class="row card-group-row mb-lg-8pt">
+      <div class="col-lg-4 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-body py-12pt d-flex align-items-center">
+            <div class="position-relative mr-12pt">
+              <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                <small>14%</small>
+              </div>
+              <canvas 
+                width="48" 
+                height="48" 
+                class="chart-canvas position-relative z-1" 
+                id="openProgressChart"
+                data-chart-line-background-color="yellow;gray"
+                data-chart-disable-tooltips="true"></canvas>
+            </div>
+            <strong class="flex">Open</strong>
+            <div class="text-50">4</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-body py-12pt d-flex align-items-center">
+            <div class="position-relative mr-12pt">
+              <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                <small>35%</small>
+              </div>
+              <canvas 
+                width="48" 
+                height="48" 
+                class="chart-canvas position-relative z-1 js-update-chart-progress-accent" 
+                id="inProgressChart"
+                data-chart-line-background-color="accent;gray"
+                data-chart-disable-tooltips="true"></canvas>
+            </div>
+            <strong class="flex">In Progress</strong>
+            <div class="text-50">10</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-body py-12pt d-flex align-items-center">
+            <div class="position-relative mr-12pt">
+              <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                <small>50%</small>
+              </div>
+              <canvas 
+                width="48" 
+                height="48" 
+                class="chart-canvas position-relative z-1 js-update-chart-progress-primary" 
+                id="closedProgressChart"
+                data-chart-line-background-color="primary;gray"
+                data-chart-disable-tooltips="true"></canvas>
+            </div>
+            <strong class="flex">Closed</strong>
+            <div class="text-50">14</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {% set tasks = [
+      {
+        title: "Add Fluid Layout Featuring A Vertical Menu With Icons Only",
+        date: "Today",
+        attachments: 2,
+        avatars: [
+          "assets/images/256_luke-porter-261779-unsplash.jpg",
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary",
+          "bg-accent"
+        ]
+      },
+      {
+        title: "Add Initial Documentation Covering Basic Features",
+        date: "Tomorrow",
+        avatars: [
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_luke-porter-261779-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary"
+        ]
+      },
+      {
+        title: "Refactor HTML Markup To Be More SEO Friendly",
+        date: "11 Feb",
+        comments: 1,
+        avatars_titles: [
+          "LB",
+          "AD"
+        ],
+        indicators: [
+          "bg-primary"
+        ]
+      },
+      {
+        title: "Add Documentation For JavaScript And CSS Components With Advanced Features Usage",
+        date: "Tomorrow",
+        avatars: [
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_luke-porter-261779-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary"
+        ]
+      },
+      {
+        title: "Add Layout Options",
+        date: "Tomorrow",
+        avatars: [
+          "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_luke-porter-261779-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary"
+        ],
+        image: "assets/images/stories/256_rsz_jared-rice-388260-unsplash.jpg"
+      },
+      {
+        title: "Add Fluid Layout Featuring A Vertical Menu With Icons Only And A Compact Sidebar Menu",
+        date: "Today",
+        attachments: 2,
+        avatars: [
+          "assets/images/256_luke-porter-261779-unsplash.jpg",
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary",
+          "bg-accent"
+        ]
+      },
+      {
+        title: "Refactor HTML Markup To Be Valid W3C And More Semantic And SEO Friendly",
+        date: "11 Feb",
+        comments: 1,
+        avatars_titles: [
+          "LB",
+          "AD"
+        ],
+        indicators: [
+          "bg-primary"
+        ]
+      },
+      {
+        title: "Add Fluid Layout Featuring A Vertical Menu With Icons Only And A Compact Sidebar Menu",
+        date: "Today",
+        attachments: 2,
+        avatars: [
+          "assets/images/256_luke-porter-261779-unsplash.jpg",
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary",
+          "bg-accent"
+        ]
+      },
+      {
+        title: "Add Layout Options",
+        date: "Tomorrow",
+        avatars: [
+          "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+          "assets/images/256_michael-dam-258165-unsplash.jpg",
+          "assets/images/256_luke-porter-261779-unsplash.jpg"
+        ],
+        indicators: [
+          "bg-primary"
+        ],
+        image: "assets/images/stories/256_rsz_dex-ezekiel-761373-unsplash.jpg"
+      }
+    ] %}
+
+    <div class="page-separator">
+      <div class="page-separator__text">Tasks</div>
+    </div>
+
+    <div class="row card-group-row">
+      {% for item in tasks %}
+      <div class="col-lg-4 card-group-row__col">
+
+        <div class="card card-group-row__card p-16pt">
+
+          {% if item.image %}
+          <a href="" class="d-block mb-16pt"><img src="{{ item.image }}" alt="" style="height: 64px;" class="card-img card-img-cover"></a>
+          {% endif %}
+
+          <div class="d-flex">
+            <div class="d-flex flex-column flex">
+              <a href="#" class="mb-8pt"><strong>{{ item.title }}</strong></a>
+              <div class="d-flex align-items-center mb-8pt">
+                {% for indicator in item.indicators %}
+                <a href="" class="mr-4pt"><span class="indicator-line rounded {{ indicator }}"></span></a>
+                {% endfor %}
+              </div>
+            </div>
+            <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="flex d-flex align-items-center">
+              <small class="text-50 mr-16pt">{{ item.date }}</small>
+
+              {% if item.attachments %}
+              <i class="material-icons icon-16pt text-20 mr-4pt">link</i>
+              <small class="text-50">{{ item.attachments }}</small>
+              {% endif %}
+
+              {% if item.comments %}
+              <i class="material-icons icon-16pt text-20 mr-4pt">comment</i>
+              <small class="text-50">{{ item.comments }}</small>
+              {% endif %}
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="avatar-group flex mr-8pt">
+                {% for avatar in item.avatars %}
+                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                  <a href=""><img src="{{ avatar }}" alt="Avatar" class="avatar-img rounded-circle"></a>
+                </div>
+                {% endfor %}
+
+                {% for avatar in item.avatars_titles %}
+                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="{{ avatar }}">
+                  <a href=""><span class="avatar-title bg-white border text-black-100 rounded-circle">{{ avatar }}</span></a>
+                </div>
+                {% endfor %}
+              </div>
+              <a style="text-decoration: none;" class="rounded-circle d-flex align-items-center border align-items-center text-50" href=""><i class="material-icons icon-16pt m-1">add</i></a>
+            </div>
+          </div>              
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="card p-8pt mb-0 d-inline-block">
+      {{ pager.pager() }}
+    </div>
+
+  </div>
+</div>

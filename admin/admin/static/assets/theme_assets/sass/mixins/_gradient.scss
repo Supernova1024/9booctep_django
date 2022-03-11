@@ -1,0 +1,25 @@
+@mixin linear-gradient($from, $to) {
+  background: $from;
+  background: -moz-linear-gradient(to right, $from, $to);
+  background: -webkit-linear-gradient(to right, $from, $to);
+  background: -o-linear-gradient(to right, $from, $to);
+  background: linear-gradient(to right, $from, $to);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to});
+}
+
+.gradient1 {
+  @include linear-gradient(#5f63f2, #ff69a5);
+}
+.gradient2 {
+  @include linear-gradient(#ff69a5, #fa8b0c);
+}
+.gradient3 {
+  @include linear-gradient(#2cb7ff, #5f63f2);
+}
+.gradient4 {
+  @include linear-gradient(#009646, #62de04);
+}
+
+.gradientInstra {
+  @include linear-gradient(#ffc107, #9c27b0);
+}

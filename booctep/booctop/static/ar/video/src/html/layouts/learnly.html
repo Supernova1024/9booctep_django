@@ -1,0 +1,20 @@
+{% set layout = 'learnly' %}
+{% set prefix = 'learnly-' %}
+{% set sidebar_class = 'sidebar-light sidebar-light-dodger-blue' %}
+{% set navbar_class = navbar_class or 'navbar-light bg-white border-bottom' %}
+{% set header_effects = 'waterfall' %}
+{% set containerClass = containerClass or 'container page__container' %}
+{% set navbarContainerClass = navbarContainerClass or 'container page__container' %}
+{% set footer_bg = 'bg-dark' %}
+{% set footer_dark = true %}
+{% set footer_logo = 'assets/images/logo/white-100@2x.png' %}
+{% set drawer_search_class = 'search-form--light' %}
+
+{% set courses_menu = ('course' in slug or 'lesson' in slug or 'take-quiz' in slug or 'quiz-result' in slug or 'student-dashboard' in slug) and 'instructor' not in slug %}
+{% set paths_menu = 'path' in slug %}
+
+{% extends "layouts/default.html" %}
+
+{% block navbar %}
+  {% include 'layouts/_navbar.learnly.html' %}
+{% endblock %}

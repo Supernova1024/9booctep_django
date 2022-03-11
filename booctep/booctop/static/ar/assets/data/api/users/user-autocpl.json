@@ -1,0 +1,114 @@
+[
+    {
+        "id": "0",
+        "name": "Jenna Davis",
+        "position": "Influencer",
+        "location": "Melbourne",
+        "pic": "assets/img/avatars/jenna.png",
+        "badge": "assets/img/icons/flags/australia.svg"
+    },
+    {
+        "id": "1",
+        "name": "Dan Walker",
+        "position": "Developer",
+        "location": "New York",
+        "pic": "assets/img/avatars/dan.jpg",
+        "badge": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "2",
+        "name": "Stella Bergmann",
+        "position": "Student",
+        "location": "Berlin",
+        "pic": "assets/img/avatars/stella.jpg",
+        "badge": "assets/img/icons/flags/germany.svg"
+    },
+    {
+        "id": "3",
+        "name": "Daniel Wellington",
+        "position": "Teacher",
+        "location": "London",
+        "pic": "assets/img/avatars/daniel.jpg",
+        "badge": "assets/img/icons/flags/united-kingdom.svg"
+    },
+    {
+        "id": "4",
+        "name": "David Kim",
+        "position": "Developer",
+        "location": "Los Angeles",
+        "pic": "assets/img/avatars/david.jpg",
+        "badge": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "5",
+        "name": "Edward Mayers",
+        "position": "Doctor",
+        "location": "Dublin",
+        "pic": "assets/img/avatars/edward.jpeg",
+        "badge": "assets/img/icons/flags/ireland.svg"
+    },
+    {
+        "id": "6",
+        "name": "Elise Walker",
+        "position": "Influencer",
+        "location": "London",
+        "pic": "assets/img/avatars/elise.jpg",
+        "badge": "assets/img/icons/flags/united-kingdom.svg"
+    },
+    {
+        "id": "10",
+        "name": "Milly Augustine",
+        "position": "Lawyer",
+        "location": "Rome",
+        "pic": "assets/img/avatars/milly.jpg",
+        "badge": "assets/img/icons/flags/italy.svg"
+    },
+    {
+        "id": "12",
+        "name": "Bobby Brown",
+        "position": "Designer",
+        "location": "Paris",
+        "pic": "assets/img/avatars/bobby.jpg",
+        "badge": "assets/img/icons/flags/france.svg"
+    },
+    {
+        "id": "13",
+        "name": "Nelly Schwartz",
+        "position": "CFO",
+        "location": "Melbourne",
+        "pic": "assets/img/avatars/nelly.png",
+        "badge": "assets/img/icons/flags/australia.svg"
+    },
+    {
+        "id": "14",
+        "name": "Lana Henrikssen",
+        "position": "Student",
+        "location": "Helsinki",
+        "pic": "assets/img/avatars/lana.jpeg",
+        "badge": "assets/img/icons/flags/finland.svg"
+    },
+    {
+        "id": "15",
+        "name": "Gaelle Morris",
+        "position": "Merchant",
+        "location": "Lyon",
+        "pic": "assets/img/avatars/gaelle.jpeg",
+        "badge": "assets/img/icons/flags/france.svg"
+    },
+    {
+        "id": "16",
+        "name": "Mike Lasalle",
+        "position": "Businessman",
+        "location": "Toronto",
+        "pic": "assets/img/avatars/mike.jpg",
+        "badge": "assets/img/icons/flags/canada.svg"
+    },
+    {
+        "id": "17",
+        "name": "Rolf Krupp",
+        "position": "Accountant",
+        "location": "Berlin",
+        "pic": "assets/img/avatars/rolf.jpg",
+        "badge": "assets/img/icons/flags/germany.svg"
+    }
+]

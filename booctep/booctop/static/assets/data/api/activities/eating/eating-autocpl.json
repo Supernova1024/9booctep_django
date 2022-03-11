@@ -1,0 +1,42 @@
+[
+    {
+        "name": "a good meal",
+        "pic": "assets/img/icons/activities/eating/meal.svg"
+    },
+    {
+        "name": "at the restaurant",
+        "pic": "assets/img/icons/activities/eating/restaurant.svg"
+    },
+    {
+        "name": "candy",
+        "pic": "assets/img/icons/activities/eating/candy.svg"
+    },
+    {
+        "name": "a piece of cheese",
+        "pic": "assets/img/icons/activities/eating/cheese.svg"
+    },
+    {
+        "name": "a pack of fries",
+        "pic": "assets/img/icons/activities/eating/fries.svg"
+    },
+    {
+        "name": "a fruit basket",
+        "pic": "assets/img/icons/activities/eating/fruits.svg"
+    },
+    {
+        "name": "an ice cream",
+        "pic": "assets/img/icons/activities/eating/ice-cream.svg"
+    },
+    {
+        "name": "a piece of meat",
+        "pic": "assets/img/icons/activities/eating/meat.svg"
+    },
+    {
+        "name": "a pizza slice",
+        "pic": "assets/img/icons/activities/eating/pizza.svg"
+    },
+    {
+        "name": "a pack of sushis",
+        "pic": "assets/img/icons/activities/eating/sushi.svg"
+    }
+]

@@ -1,0 +1,167 @@
+{% import 'components/pager.html' as pager %}
+
+{% macro component(id="contacts", filters=false, checkboxes=true, avatar=true, company=true, chips=true, phone=true, pagination=true, search=false, items=[]) %}
+<div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-date" data-lists-sort-desc="true" data-lists-values='["js-lists-values-name", "js-lists-values-company", "js-lists-values-phone", "js-lists-values-date"]'>
+  {% if search %}
+  <div class="card-header">
+    <div class="search-form">
+      <input type="text" class="form-control search" placeholder="Search ...">
+      <button class="btn" type="button"><i class="material-icons">search</i></button>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if filters %}
+  <div class="card-header">
+    <form class="form-inline">
+      <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
+      <input type="text" class="form-control search mb-2 mr-sm-2 mb-sm-0" id="inlineFormFilterBy" placeholder="Search ...">
+
+      <label class="sr-only" for="inlineFormRole">Role</label>
+      <select id="inlineFormRole" class="custom-select mb-2 mr-sm-2 mb-sm-0">
+        <option value="All Roles">All Roles</option>
+      </select>
+
+      <div class="ml-auto mb-2 mb-sm-0 custom-control-inline mr-0">
+        <label class="form-label mb-0" for="active">Active</label>
+        <div class="custom-control custom-checkbox-toggle ml-8pt">
+          <input checked="" type="checkbox" id="active" class="custom-control-input">
+          <label class="custom-control-label" for="active">Active</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+
+  <table class="table mb-0 thead-border-top-0 table-nowrap">
+    <thead>
+      <tr>
+        {% if checkboxes %}
+        <th style="width: 18px;" class="pr-0">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#{{ id }}" id="customCheckAll_{{ id }}">
+            <label class="custom-control-label" for="customCheckAll_{{ id }}"><span class="text-hide">Toggle all</span></label>
+          </div>
+        </th>
+        {% endif %}
+        <th>
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-name">Name</a>
+        </th>
+        {% if company %}
+        <th style="width: 150px;">
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-company">Company</a>
+        </th>
+        {% endif %}
+        {% if chips %}
+        <th style="width: 37px;">Tags</th>
+        {% endif %}
+        {% if phone %}
+        <th style="width: 48px;">
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-phone">Phone</a>
+        </th>
+        {% endif %}
+        <th style="width: 120px;">
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-date">Added</a>
+        </th>
+        <th style="width: 24px;"></th>
+      </tr>
+    </thead>
+    <tbody class="list" id="{{ id }}">
+      {% for item in items %}
+      <tr{% if checkboxes and item.selected %} class="selected"{% endif %}>
+        {% if checkboxes %}
+        <td class="pr-0">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input js-check-selected-row"{% if item.selected %} checked=""{% endif %} id="customCheck1_{{ id }}_{{ loop.index }}">
+            <label class="custom-control-label" for="customCheck1_{{ id }}_{{ loop.index }}"><span class="text-hide">Check</span></label>
+          </div>
+        </td>
+        {% endif %}
+        <td>
+          {% if avatar %}
+          <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+            <div class="avatar avatar-sm mr-8pt">
+              {% if item.avatar.image %}
+                <img src="{{ item.avatar.image }}" alt="Avatar" class="avatar-img rounded-circle">
+              {% endif %}
+              {% if item.avatar.title %}
+                <span class="avatar-title rounded-circle">{{ item.avatar.title }}</span>
+              {% endif %}
+            </div>
+            <div class="media-body">
+          {% endif %}
+              
+          <div class="d-flex flex-column">
+            <p class="mb-0"><strong class="js-lists-values-name">{{ item.name }}</strong></p>
+            <small class="js-lists-values-email text-50">{{ item.email }}</small>
+          </div>
+
+          {% if avatar %}
+            </div>
+          </div>
+          {% endif %}
+        </td>
+        {% if company %}
+        <td>
+          {% if item.company %}
+          <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+            <div class="avatar avatar-sm mr-8pt">
+              <span class="avatar-title rounded {{ item.company_bg }}">{{ item.company_initials }}</span>
+            </div>
+            <div class="media-body">
+              <div class="d-flex flex-column">
+                <small class="js-lists-values-company"><strong>{{ item.company }}</strong></small>
+                <small class="js-lists-values-location text-50">{{ item.location }}</small>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </td>
+        {% endif %}
+        {% if chips %}
+        <td>
+          {% if item.chips %}
+            {% for chip in item.chips %}
+            <a href="{{ prefix or '' }}" class="chip chip-outline-secondary">{{ chip }}</a>
+            {% endfor %}
+          {% endif %}
+        </td>
+        {% endif %}
+        {% if phone %}
+        <td>
+          <small class="js-lists-values-phone text-50">{{ item.phone }}</small>
+        </td>
+        {% endif %}
+        <td>
+          <small class="js-lists-values-date text-50">{{ item.date }}</small>
+        </td>
+        <td class="text-right">
+          <a href="" class="text-50"><i class="material-icons">more_vert</i></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if pagination %}
+<div class="card-footer p-8pt">
+  {{ pager.pager() }}
+</div>
+<!-- <div class="card-body bordet-top text-right">
+  15 <span class="text-50">of 1,430</span> <a href="#" class="text-50"><i class="material-icons ml-1">arrow_forward</i></a>
+</div> -->
+{% endif %}
+{% endmacro %}
+{{ component() }}

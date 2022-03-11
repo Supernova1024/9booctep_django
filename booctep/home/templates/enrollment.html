@@ -1,0 +1,875 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+    <style>
+        .schedule video {
+            width: 100% !important;
+        }
+
+        .plyr--video {
+            width: 100%;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: @modal-content-bg;
+            background-clip: padding-box;
+            border: 1px solid @modal-content-fallback-border-color;
+        / / old browsers fallback (ie8 etc) border: 1 px solid @modal-content-border-color;
+            border-radius: @border-radius-large;
+        . box-shadow(0 3 px 9 px rgba(0, 0, 0, .5));
+            outline: 0;
+        }
+
+        .btn + .btn {
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+
+        .btn-group .btn + .btn {
+            margin-left: -1px;
+        }
+
+        .btn-block + .btn-block {
+            margin-left: 0;
+        }
+
+        @media (min-width: @screen-sm-min) {
+
+            .modal-dialog {
+                width: @modal-md;
+                margin: 30px auto;
+            }
+
+            .modal-content {
+            . box-shadow(0 5 px 15 px rgba(0, 0, 0, .5));
+            }
+
+
+            .modal-sm {
+                width: @modal-sm;
+            }
+        }
+
+        @media (min-width: @screen-md-min) {
+            .modal-lg {
+                width: @modal-lg;
+            }
+        }
+
+        textarea {
+            text-align: left;
+        }
+
+        .checked {
+            color: #f7ff00 !important;
+        }
+
+        .loading::after {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-100%);
+            background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            /* Adding animation */
+            animation: loading 1s infinite;
+        }
+
+        @keyframes loading {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .dancin-bc {
+            background: white !important;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        .dancing-lao {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .dancing-lao:after {
+            display: block;
+            width: 150px;
+            height: 2px;
+            margin-top: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            background: rgb(43, 148, 209);
+            content: "";
+            -webkit-animation: 1s border infinite;
+            animation: 1s border infinite;
+            -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+            animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        }
+
+        .dancing-lao .left-dots {
+            position: absolute;
+            bottom: 20%;
+            left: 20%;
+        }
+
+        .dancing-lao .right-dots {
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            -webkit-transform: scale(-1, 1);
+            transform: scale(-1, 1);
+        }
+
+        .dancing-lao .dot {
+            display: inline-block;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgb(43, 148, 209);
+            opacity: 0;
+        }
+
+        .dancing-lao .dot-1 {
+            -webkit-animation: 1s dot infinite;
+            animation: 1s dot infinite;
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s;
+        }
+
+        .dancing-lao .dot-2 {
+            -webkit-animation: 1s dot-2 infinite;
+            animation: 1s dot-2 infinite;
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s;
+        }
+
+        .dancing-lao .circle-dot {
+            display: inline-block;
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid rgb(43, 148, 209);
+            -webkit-animation: 1s cirle-dot infinite;
+            animation: 1s cirle-dot infinite;
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s;
+            opacity: 0;
+        }
+
+        .dancing-lao img {
+            display: block;
+            margin: auto;
+            width: 90px;
+            height: 80px;
+            margin-bottom: 20px;
+            -webkit-animation: 1s dance infinite;
+            animation: 1s dance infinite;
+            -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+            animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+            -webkit-animation-direction: alternate;
+            animation-direction: alternate;
+        }
+
+        @-webkit-keyframes dance {
+            0% {
+                -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+                transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            }
+            50% {
+                -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+                transform: translate3d(0, 8px, 0) scaleY(0.85);
+            }
+            100% {
+                -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+                transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            }
+        }
+
+        @keyframes dance {
+            0% {
+                -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+                transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            }
+            50% {
+                -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+                transform: translate3d(0, 8px, 0) scaleY(0.85);
+            }
+            100% {
+                -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+                transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            }
+        }
+
+        @-webkit-keyframes border {
+            0% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 0.5;
+            }
+            50% {
+                -webkit-transform: scaleX(0.6);
+                transform: scaleX(0.6);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes border {
+            0% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 0.5;
+            }
+            50% {
+                -webkit-transform: scaleX(0.6);
+                transform: scaleX(0.6);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+                opacity: 0.5;
+            }
+        }
+
+        @-webkit-keyframes dot {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            50% {
+                -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+                transform: scale(1) translate3d(-50px, -70px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+                transform: scale(1) translate3d(-50px, -70px, 0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes dot {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            50% {
+                -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+                transform: scale(1) translate3d(-50px, -70px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+                transform: scale(1) translate3d(-50px, -70px, 0);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes dot-2 {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            70% {
+                -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+                transform: scale(0.7) translate3d(-50px, -50px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+                transform: scale(0.7) translate3d(-50px, -50px, 0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes dot-2 {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            70% {
+                -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+                transform: scale(0.7) translate3d(-50px, -50px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+                transform: scale(0.7) translate3d(-50px, -50px, 0);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes cirle-dot {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            80% {
+                -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+                transform: scale(1) translate3d(-80px, -40px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+                transform: scale(1) translate3d(-80px, -40px, 0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes cirle-dot {
+            0% {
+                opacity: 0;
+            }
+            1% {
+                -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+            }
+            80% {
+                -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+                transform: scale(1) translate3d(-80px, -40px, 0);
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+                transform: scale(1) translate3d(-80px, -40px, 0);
+                opacity: 0;
+            }
+        }
+
+    </style>
+
+
+{% endblock %}
+{% block content %}
+
+    <!-- Mobile Navbar -->
+    <nav class="navbar mobile-navbar is-hidden-desktop" aria-label="main navigation">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item2" href="/">
+                <img class="mobile-logo" src="/static/assets/img/favicon.png" alt="">
+            </a>
+
+            <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+                <a class="icon-link is-primary">
+                    <i class="mdi mdi-apps"></i>
+                </a>
+            </div>
+
+            <!-- Mobile menu toggler icon -->
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Navbar mobile menu -->
+        <div class="navbar-menu">
+            <!-- Account -->
+            <div class="navbar-item has-dropdown ">
+                <div class="navbar-link">
+                    <img src="/static/assets/img/man.jpg" data-demo-src="/static/assets/img/avatars/jenna.png" alt="">
+                    <span class="is-heading"> </span>
+                </div>
+
+                <div class="navbar-item">
+                    <div id="global-search" class="control">
+                        <input id="tipue_drop_input" class="input " type="text" placeholder="Search" required>
+                        <span id="clear-search" class="reset-search">
+                            <i data-feather="x"></i>
+                        </span>
+                        <span class="search-icon">
+                            <i data-feather="search"></i>
+                        </span>
+                    </div>
+                </div>
+                <!-- Mobile Dropdown -->
+                <div class="navbar-dropdown">
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="user"></i>Profile</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="shopping-cart"></i>Cart</span>
+                        <span class="menu-badge">3</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="activity"></i>Feed</span>
+                        <span class="menu-badge">87</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="settings"></i>Settings</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="hexagon"></i>Logout</span>
+                    </a>
+
+                    <div class="buttons">
+                        <a class="button second-button">
+                            <p>Sign up</p>
+                        </a>
+                        <a class="button primary-button raised quickview-trigger process-button">
+                            <p>Log in</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Start Carousel -->
+    <div class="single_category-5">
+        <div class="container">
+            <h3 style="">Thanks for your enrollment!</h3>
+            <p>{{ course.description|safe }}</p>
+
+        </div>
+    </div>
+    <!-- End Carousel -->
+
+    <!-- Filters and courses -->
+    <div id="shop-page" class="shop-wrapper">
+
+    {% if similar_courses|length > 0 %}
+        <section>
+            <div class="store-sections">
+                <div class="container">
+                    <div class="categories-header">
+                        <h2>Similar courses</h2>
+                    </div>
+                    <div id="products-tab" class="store-tab-pane is-active sortingdivparent" id="demo">
+                        <div class="columns  is-multiline sortingdiv allcoursearea">
+                            {% for course in similar_courses %}
+                                <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile coursecard"
+                                     data-cat-id="{{ course.scat_id }}" data-rating="{{ course.rating }}"
+                                     data-ts="{{ course.stuCnt }}"
+                                     data-cd="{{ course.created_at.timestamp }}">
+                                    <div class="product-card" data-name="Spring Red Dress" data-price="44.00"
+                                         data-colors="true" data-variants="true"
+                                         data-path="/static/assets/img/products/1">
+                                        <a href="/course/{{ course.link }}" class="product-image">
+                                            <div class="image-grid-wrap">
+                                                <div class="image-grid">
+                                                    <div class="image-row">
+                                                        <div class="flex-1 has-background-image"
+                                                             data-background="{% static course.cover_img %}"
+                                                             data-demo-background="/static/assets/img/courses/pc.jpg">
+                                                            <div class="overlay"></div>
+                                                            <div class="image-owner">
+                                                                <div class="name">
+                                                                <span class="fa fa-star {% if course.rating >= 1 %}checked{% endif %}"
+                                                                      style="color: rgb(255, 238, 255);"></span>
+                                                                    <span class="fa fa-star {% if course.rating >= 2 %}checked{% endif %}"
+                                                                          style="color: rgb(255, 238, 255);"></span>
+                                                                    <span class="fa fa-star {% if course.rating >= 3 %}checked{% endif %}"
+                                                                          style="color: rgb(255, 238, 255);"></span>
+                                                                    <span class="fa fa-star {% if course.rating >= 4 %}checked{% endif %}"
+                                                                          style="color: rgb(255, 238, 255);"></span>
+                                                                    <span class="fa fa-star {% if course.rating >= 5 %}checked{% endif %}"
+                                                                          style="color: rgb(255, 255, 255);"></span>
+                                                                    <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div id="invite-pop"
+                                                                 class="photo-like pop-button has-tooltip"
+                                                                 data-id="{{ course.id }}"
+                                                                 data-title="Relationship">
+                                                                <a class="inner">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                         aria-hidden="true" focusable="false"
+                                                                         width="1em"
+                                                                         height="1em"
+                                                                         style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                         preserveAspectRatio="xMidYMid meet"
+                                                                         viewBox="0 0 24 24">
+                                                                        <g fill="red" stroke="red"
+                                                                           stroke-width="2"
+                                                                           stroke-linecap="round"
+                                                                           stroke-linejoin="round">
+                                                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                            {% if course.is_cart %}
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip"
+                                                                   data-title="Relationship"
+                                                                   data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style="font-size: 22px;color: skyblue;"></i>
+                                                                </a>
+                                                            {% else %}
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip"
+                                                                   data-title="Relationship"
+                                                                   data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style="font-size: 22px;color: #fff;"></i>
+                                                                </a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <div class="product-info">
+                                            <h3>
+                                                <a href="#"
+                                                   style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">{{ course.name }}</a>
+                                            </h3>
+                                            <div style="line-height: 1.5em; height: 3em; overflow: hidden; text-overflow: ellipsis;">{{ course.description | safe | truncatechars:30 }}
+                                            </div>
+                                            <i class="fa fa-users"></i>
+                                            <span style="font-size: small;">{{ course.stuCnt }} &nbsp;</span>
+                                            <i class="fa fa-video"></i>
+                                            <span style="font-size: small;">{{ course.videoCnt }} Videos</span>
+                                            <div class="product-actions">
+                                                <div class="left">
+                                                    <span>${{ course.price }}</span>
+                                                </div>
+                                                <div class="right">
+                                                    <a class="button primary-button is-solid raised story modal-trigger"
+                                                       data-modal="videos-modal"
+                                                       onclick="showVideoModal({{ course.id }})">
+                                                        <i class="fa fa-play"></i>
+                                                        Promo
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <center>
+                            {% if similar_courses.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if similar_courses.has_previous %}
+                                        <li><a onclick="page_prev()">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a></li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i></li>
+                                    {% endif %}
+                                    {% for i in similar_courses.paginator.page_range %}
+                                        {% if favList.number == i %}
+                                            <li class="active"
+                                                style="background: #0d79df; color: white; cursor: pointer;"
+                                                onclick="page_set({{ i }})"><span>{{ i }}</span>
+                                            </li>
+                                        {% else %}
+                                            <li><a onclick="page_set({{ i }})">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if similar_courses.has_next %}
+                                        <li><a onclick="page_next()">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a></li>
+                                    {% else %}
+                                        <li class="disabled">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <div class="shop-header">
+            <div class="container ">
+                <div class="store-tabs">
+                    <a data-tab="products-tab" class="tab-control " style="color:grey;cursor:not-allowed">All</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="store-sections-6"
+             style="display:flex;flex-direction: column !important;align-items:center !important;justify-content: center !important; ">
+            <img src="{% static 'assets/img/no-cart.svg' %}" style="width: 350px;" alt="">
+            <h2 style="margin-top: -40px;color: gray;">unfortunately, there are no courses yet in your cart</h2>
+            <input style="margin-bottom: 15px;" id="tipue_drop_input" class="input c-input" type="text"
+                   placeholder="Search" required>
+            <a href="index.html" class="button" style="max-width:230px !important;margin-bottom: 20px;">Search
+                &nbsp;<span class="fa fa-search"></span></a>
+        </div>
+    {% endif %}
+
+    <div id="videos-modal" class="modal videos-modal is-large has-light-bg">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="height: auto !important;">
+            <div class="card">
+                <div class="card-heading">
+                    <div class="user-meta">
+                        <img id="modal-img" src="/static/assets/img/man.jpg">
+                    </div>
+                    <span class="user-meta-span"
+                          id="modal-user-name">{{ course.user.first_name }}{{ course.user.last_name }} </span>
+                    <span class="user-meta-span"
+                          id="modal-course-name">&nbsp; &nbsp; |   {{ course.name }}&nbsp; &nbsp;</span>
+                    <a type="button" class="button" style="background-color: rgb(202, 0, 51);color: #fff;">Add to Fav
+                        &nbsp;<i class="fa fa-heart"></i></a>
+                    <!-- Close X button -->
+                    <div class="close-wrap">
+                        <span class="close-modal">
+                            <i data-feather="x"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="inner">
+                        <div class="app-video left-section">
+                            <video poster="/static/assets/img/setting.jpg" style="" id="player" playsinline controls>
+                                <source id="modal-video-src" src="/static/assets/img/vid/html.mp4" type="video/webm"/>
+
+                                <!-- Captions are optional -->
+                                <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en"
+                                       default/>
+                            </video>
+                        </div>
+                        <div class="right-section">
+                            <div class="inner-content">
+                                <div class="live-stats">
+                                    <div class="social-count-2">
+                                        <div class="likes-count">
+                                            <i class="fa fa-users"></i>
+                                            <span id="modal-users">140,440</span>
+                                        </div>
+                                        <div class="shares-count">
+                                            <i class="fa fa-star" style="color: rgb(212, 173, 0);"></i>
+                                            <span id="modal-rating">4.8</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tabs-wrapper">
+                                <div class="tabs is-fullwidth">
+                                    <ul>
+                                        <li class="is-active">
+                                            <a>Demo Videos</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content ">
+                                    <div class="accordion js-accordion accordion--boxed list-group-flush" id="parent">
+                                        <div class="accordion__item">
+                                            <a href="#" class="accordion__toggle collapsed" data-toggle="collapse"
+                                               data-target="#course-toc-{{ ele.id }}" data-parent="#parent">
+                                                <span class="flex">Section 1</span>
+                                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                            </a>
+                                            <div class="accordion__menu collapse" id="course-toc-{{ ele.id }}">
+                                                <div class="accordion__menu-link" style="cursor: pointer;">
+                                                    <i class="material-icons icon-16pt tick{{ i.id }}"
+                                                       onclick="checkThis(this)"
+                                                       data-sr_no="{{ i.sr_no }}">check_circle</i> &nbsp
+                                                    <div data-id="{{ i.id }}" data-srno="{{ i.sr_no }}"
+                                                         data-url="{{ i.url }}"
+                                                         onclick="playmyvideo(this)">{{ i.video_name }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cur_page = '{{ page }}'
+
+        function page_set(page) {
+            $("#page").val(page)
+            $("#fav_form").submit()
+        }
+
+        function page_prev() {
+            page = cur_page * 1 - 1
+            $("#page").val(page)
+            $("#fav_form").submit()
+        }
+
+        function page_next() {
+            page = cur_page * 1 + 1
+            $("#page").val(page)
+            $("#fav_form").submit()
+        }
+
+        function setType(type) {
+            $("#type").val(type)
+            $("#fav_form").submit()
+        }
+
+        function category() {
+
+            var category_id = $("#category_id").val();
+            var category_id_2 = $("#category_id_2").val();
+            $('#loadings').show();
+            if (!category_id) {
+                category_id = 0
+            }
+            if (!category_id_2) {
+                category_id_2 = 0
+            }
+            if (category_id_2 == 1) { // Most rated
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.paidcoursearea');
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.freecoursearea');
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.allcoursearea');
+            }
+
+
+            if (category_id_2 == 2) {  // Most students
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.paidcoursearea');
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.freecoursearea');
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.allcoursearea');
+            }
+
+            if (category_id_2 == 3) {  // Newest
+
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.paidcoursearea');
+
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.freecoursearea');
+
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.allcoursearea');
+            }
+
+            if (category_id == 0) {
+                $(".coursecard").show();
+            } else {
+                $(".coursecard").hide();
+                $(".coursecard[data-cat-id=" + category_id + "]").show();
+                $('#loadings').hide();
+                if ($(".coursecard[data-cat-id=" + category_id + "]").length == 0) {
+                    swal({
+                        title: "Sorry, there are no course in this category ",
+                        icon: "warning",
+                        button: "Ok",
+                        closeOnClickOutside: false,
+                    })
+                }
+            }
+        }
+
+        function showVideoModal(id) {
+            let url = `/get_course_detail_by_id/`
+            let form_data = new FormData()
+            form_data.append('id', id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                $("#modal-user-name").html(response.user_name)
+                course = JSON.parse(response.course)
+                sections = JSON.parse(response.sections)
+                console.log("test::", course)
+                console.log("sections::", sections)
+                $("#modal-course-name").html(course[0].fields.name)
+                $("#modal-users").html(response.user_count)
+                $("#modal-rating").html(response.rating)
+                html = ``;
+                key = 0
+                sections.forEach(item => {
+                    html += `<div class="accordion__item">
+                                <a href="#" class="accordion__toggle collapsed" style="display:flex; justify-content: space-between;" data-toggle="collapse"
+                                   data-target="#course-toc-${key}" data-parent="#parent">
+                                    <span class="flex">${item.name}</span>
+                                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                </a>`
+                    item.video_list.forEach(ele => {
+                        html += `<div class="accordion__menu collapse" id="course-toc-${key}">
+                                        <div class="accordion__menu-link" style="cursor: pointer;">
+                                            <i class="material-icons icon-16pt tick${key}"
+                                               onclick="checkThis(this)">check_circle</i> &nbsp
+                                            <div data-url="${ele.url}"
+                                                 onclick="playmyvideo(this)">${ele.name}</div>
+                                        </div>
+                                    </div>`
+                    })
+                    html += `</div>`
+                    key++
+                })
+                $("#parent").html(html)
+            })
+        }
+
+        function playmyvideo(obj) {
+            url = $(obj).data('url')
+            $("#modal-video-src").attr('src', "../../../../static" + url)
+            $(".app-video video")[0].load();
+        }
+
+    </script>
+
+{% endblock %}
+{% block script %}
+    <!-- App JS -->
+    <script src="{% static 'assets/js/sideb.js' %}"></script>
+    <!-- Page and UI related js -->
+    <script src="{% static 'assets/js/videos.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+{% endblock %}
+
+</div>

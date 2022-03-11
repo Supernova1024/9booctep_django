@@ -1,0 +1,581 @@
+{% extends "video/base.html" %}
+{% block content %}
+
+
+<style>
+
+    .teacher {
+        float: right !important;
+    }
+
+    .bluesky {
+        background: #61e076bf !important;
+    }
+
+    .message {
+        max-width: 300px;
+        clear: both;
+        text-decoration: none;
+        list-style-type: none;
+        margin: 5px 5px 0px 5px;
+        float: left;
+        margin-right: 20px;
+        padding: 0px 0px;
+        min-width: 160px;
+        min-height: 10px;
+        max-width: 350px;
+        border-radius: 5px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        color: #444444;
+        text-align: left;
+    }
+</style>
+
+<style>
+
+
+.mdk-drawer-layout__content .app-messages__container-dark{
+    background-color: #4c525e !important;
+}
+
+.blllu{
+    color: rgb(11, 111, 241) !important;
+} 
+
+.blllu-dark{
+    color: rgb(177, 197, 223) !important;
+    margin-right: 8px !important;
+}
+
+
+.card-footer{
+    background-color: rgb(255, 255, 255) !important;
+    border-bottom: 0.5px solid rgb(211, 228, 236)!important;
+}
+
+
+.bllu{
+    color: rgb(57, 137, 241) !important;
+} 
+.bllu-dark{
+
+    color: rgb(177, 200, 230) !important;
+}
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+
+.btn-light{
+    background-color: #3a76d1 !important;
+    color: rgb(199, 199, 199) !important;
+    
+    border: 1px solid  #2d62b3 !important;
+    box-shadow: none !important;
+}
+
+
+.btn-light-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.brd{
+    border: 1px solid rgb(201, 201, 201);
+    color: #fff;
+}
+
+.brd-dark{
+    border: 1px solid rgb(98, 112, 121);
+    color: rgb(202, 202, 202);
+}
+
+
+.avatar-offline:after,
+.avatar-offline:before,
+.avatar-online:after,
+.avatar-online:before {
+    display: none !important;
+}
+
+
+.sidebar-dark{
+    background-color: #22252c !important;
+    border-left: 1px solid #323741 !important;
+}
+
+
+.sidebar-dark .divee{
+    background-color: #22252c !important;
+    border-left: 1px solid #1d1f22 !important;
+}
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.ptt{
+    padding-top: 80px !important;
+}
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    float: right !important;
+    margin-left: 15px !important;
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    margin-left: 15px !important;
+    box-shadow: none !important;
+}
+
+
+.message__body{
+    text-align: right !important;
+    width: 250px !important;
+}
+
+.card-dark{
+        background-color: rgb(195, 211, 226) !important;
+        border: 1px solid rgb(196, 201, 211) !important;
+}
+
+
+.progress .bg-primary{
+background-color: rgb(45, 95, 189) !important;
+border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+background-color: rgb(142, 165, 209) !important;
+border-radius: 0 !important;
+}
+.message__body .card{
+        background-color: rgb(235, 237, 240) !important;
+        border: 1px solid rgb(215, 220, 228) !important;
+    }
+
+.message{
+    background-color: transparent !important;
+}
+
+.message-dark{
+    background-color: transparent !important;
+}
+
+.teachername{
+    color: rgb(1, 36, 59) !important;
+    font-weight:700 !important;
+    text-decoration: none !important;
+    border: 0 !important;
+}
+
+.teachermsg{
+    color: rgb(0, 77, 128);
+}
+
+strong{
+    border-bottom: none !important;
+}
+
+ 
+.navbar-dark{
+    background-color: #22252c !important;
+    border-bottom: 1px solid #1b1d22!important;
+}
+
+.bgg-primary{
+    background-color: rgb(63, 0, 82) !important;
+}
+.bgg-primary-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+.accordion{
+    background-color: lightgreen !important;
+    border: 1px solid rgb(255, 255, 255) !important;
+}
+.accordion-dark{
+    background-color: rgb(87, 98, 126) !important;
+    border: 1px solid rgb(26, 29, 36) !important;
+    border-radius: 3px !important;
+}
+.accordion__item{
+    border-radius: 3px !important;
+    border: 0 !important;
+}
+.accordion__item-dark{
+    background-color: rgb(75, 100, 131) !important;
+}
+.accordion__item:last-child{
+    height: 100% !important;
+}
+.accordion__item-dark:last-child{
+    overflow: hidden !important;
+}
+
+</style>
+
+<div data-push data-responsive-width="768px" data-has-scrollable-region data-fullbleed
+class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+            <div class="app-messages__container app-messages__container-dark  d-flex flex-column h-100 pb-4">
+                <div class="navbar navbar-dark navbar-expand-sm navbar-shadow z-1" id="messages-navbar">
+                    <div class="container-fluid flex-wrap px-sm-0">
+                        <div class="nav py-2">
+                            <div class="nav-item d-flex align-items-center mr-3">
+                                <div class="d-flex flex-column" style=" font-size: 21px">
+                                    <nav class="nav navbar-nav">
+                                        <div class="nav-item navbar-list__item">
+                                            <a href="/video/playground/{{ course.id }}" class="nav-link h-auto mediabout mediabout-dark"><i class="material-icons icon--left mediabout mediabout-dark">keyboard_backspace</i> Back to Dashboard</a>
+                                        </div>
+                                        <div class="nav-item navbar-list__item">
+                                            <div class="d-flex align-items-center flex-nowrap">
+                                                <div class="mr-16pt">
+                                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">dvr</span>
+                                                </div>
+                                                <div class="flex">
+                                                    <a href="mini-student-take-course.html" class="card-title text-body mb-0"><b class="blllu blllu-dark">{{ course.name }}</b></a>
+                                                    <p class="lh-1 d-flex align-items-center mb-0">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    {% if end_flag == 1 %}
+                                    <a class="troph" id="cert" style="cursor: pointer!important; color:#de8413" onclick="getCertificate()" >Get your certificate <i class="fa fa-trophy troph-i"></i></a>
+                                    {% else %}
+                                    <p class="troph">Get your certificate <i class="fa fa-trophy troph-i"></i></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2 flex d-flex align-items-center">
+                            <button data-target="#messages-drawer" class="navbar-toggler d-block d-md-none ml-3 p-0"
+                                    data-toggle="sidebar" type="button">
+                                <i class="material-icons">people_outline</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% if end_flag != 1 %}
+                <div class="Quiz">
+                    <div class="quiz-1">
+                        <input type="hidden" value="{{ questionNo }}" id="curQuizNo">
+                        <h2 class="quiz-h2" style="text-align: center;" id="QuizTitle">{{ title }}</h2>
+                        {% for ele in eleList %}
+                            <div class="d-flex" style="align-items: center;">
+                            <a href="#" class="quiz-a choice_one" style="width:95%;">{{ ele }}</a>
+                            <input class="quizAns" style="margin-left:1%; display:none;" type="checkbox">
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class=" page__container page__container page__container-2 card-footer card-footer-dark" style="width: 100%;height: 70px !important;border-radius: 0 !important;">
+                    <div id="message-reply" class="form-down-2">
+                        <button class="btn flex" {% if end_flag == 0 %}onclick="skipFunc()"{% endif %}
+                                style="width: 40%;margin:0 auto;margin-top: 30px;{% if end_flag == 1 %}cursor:not-allowed;{% endif %}">Skip
+                        </button>
+                        <button class="btn flex showhint" style="color: rgb(87, 185, 185);" data-toggle="toastr" data-toastr-type="info"
+                                data-toastr-title="null" style="cursor: not-allowed;"
+                                data-toastr-show-method="slideDown" data-toastr-hide-method="slideUp"
+                                data-toastr-close-method="slideUp">Hint
+                            <i class="fa fa-lightbulb" style="margin-left: 5px;"></i>
+                        </button>
+                        <button class="btn flex" id="checkbtn"
+                                style="background: rgb(135, 226, 135);color: #fff; width: 40%;margin:0 auto;margin-top: 30px;"
+                                onclick="checkAnswer()">
+                            {% if end_flag == 0 %}check answer{% elif end_flag == 2 %}finish{% endif %}
+                        </button>
+                    </div>
+
+                </div>
+                {% else %}
+                <div class="Quiz">
+                    <div class="quiz-1">
+                        <h6 class="quiz-h2" style="text-align: center; font-size: 40px !important;" >Congratlations!</h6>
+                        <h5 class="quiz-h2" style="text-align: center; font-size: 20px !important;" >You have done the quiz and you ready to get your certificate</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mdk-drawer js-mdk-drawer" data-align="end" id="messages-drawer">
+            <div class="mdk-drawer__content top-0">
+                <div class="sidebar sidebar-right sidebar-dark o-hidden">
+                    <div class="d-flex flex-column h-100">
+
+                        <div style="margin-top: 10px;" class="flex" data-perfect-scrollbar>
+                            <div class="sidebar-heading">Quiz Timeline</div>
+
+                            <ul class="list-group list-group-flush mb-3">
+                                <div class="chart chart-2" style="height: 262px;">
+                                    <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                                        <h2 class="m-0">{{ question_no }} / {{ question_count }}</h2>
+                                        <strong>{{ left }} To go</strong>
+                                    </div>
+                                    <canvas class="chart-canvas position-relative z-1" id="attendanceDoughnutChart"
+                                            data-chart-legend="#attendanceDoughnutChartLegend"
+                                            data-chart-line-background-color="primary;accent;gray.700;gray">
+                                        <span style="font-size: 1rem;" class="text-muted"><strong>Attendance</strong> doughnut chart goes here.</span>
+                                    </canvas>
+                                </div>
+                                <div class="col-6">
+                                    <div class="nav border-0">
+                                    </div>
+                                    <div id="attendanceDoughnutChartLegend"
+                                         class="chart-legend chart-legend--vertical mt-24pt"></div>
+                                </div>
+                                <button type="submit" class="btn btn-accent flex" onclick="continueLater()"
+                                        style="width: 90%;margin:0 auto;margin-top: 30px;">continue later
+                                </button>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="alert_modal_back"></div>
+
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="alert_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+          <span class="sa-body pulseWarningIns"></span>
+          <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <div class="sa-icon sa-success animate" style="display: block;">
+            <span class="sa-line sa-tip animateSuccessTip"></span>
+            <span class="sa-line sa-long animateSuccessLong"></span>
+            <div class="sa-placeholder"></div>
+            <div class="sa-fix"></div>
+        </div>
+        <div class="sa-icon sa-custom" style="display: none;"></div>
+        <h2 id="alert_title">Warning!</h2>
+        <p style="display: block;" id="alert_content">You must choose an answer!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="hideAlertModal()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    OK
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block script %}
+    <script>
+
+
+        let end_flag = '{{ end_flag }}'
+        let cache_str = '{{ cache_str }}'
+        $(document).ready(function () {
+            localStorage.setItem('totalQuizCount', '{{ count }}')
+            right = localStorage.getItem('right');
+            wrong = localStorage.getItem('wrong');
+            skip = localStorage.getItem('skip');
+            console.log("test:::", right)
+            console.log("test:::", wrong)
+            console.log("test:::", skip)
+
+            rightdiv = $('#attendanceDoughnutChartLegend').children().eq(0);
+            skipdiv = $('#attendanceDoughnutChartLegend').children().eq(1);
+            wrongdiv = $('#attendanceDoughnutChartLegend').children().eq(2);
+
+            rightdiv.html('');
+            skipdiv.html('');
+            wrongdiv.html('');
+
+            rightdiv.html('<i class="chart-legend-indicator" style="background-color: rgba(85, 103, 255, 1)"></i>right  :  ' + right)
+            skipdiv.html('<i class="chart-legend-indicator" style="background-color: rgba(237, 11, 75, 1)"></i>skip  :  ' + skip)
+            wrongdiv.html('<i class="chart-legend-indicator" style="background-color: #B1BBC9"></i>wrong  :  ' + wrong);
+
+            $(".quiz-a").click(function(){
+
+                $(".quiz-a").css({ 'background-color' : '', 'color' : '' });
+                $(".quizAns").prop( "checked", false );
+                $(".quiz-a").removeAttr("id");
+
+                $(this).css("background-color","rgb(14,109,187)");
+                $(this).css("color","#fff");
+                $(this).next().prop( "checked", true );
+                $(this).attr("id","thisisselected");
+            });
+        });
+
+        function skipFunc() {
+            question_no = '{{ question_no }}'
+            question_no = question_no * 1 + 1
+            location = '/quiz/{{ course.name }}/{{ quiz_id }}/?question='+question_no
+        }
+
+        function hideAlertModal() {
+            $("#alert_modal").css({
+                'display': 'none'
+            })
+            $("#alert_modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function getCertificate() {
+            let url = '/getCertificate/'
+            let form_data = new FormData()
+            let course_id = '{{ course.id }}';
+            form_data.append('course_id', course_id)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response =>{
+                window.open('/static' + response.src, '_blank')
+            })
+        }
+
+        function checkAnswer() {
+            let cnt = 0
+            $(".quizAns").each(function() {
+                if($(this).is(":checked") == false)
+                    cnt++
+            })
+            //this means student doesnt select anything...
+            if(cnt == 4) {
+                $(".sa-success").css({
+                    'display': 'none'
+                })
+                $(".sa-warning").css({
+                    'display': 'block'
+                })
+                $("#alert_modal").css({
+                    'display': 'block'
+                })
+                $("#alert_modal_back").css({
+                    'display': 'block'
+                })
+                $("#alert_title").html('Warning!')
+                $("#alert_content").html('You must choose an answer!')
+                return;
+            }
+            let answer = '{{ answerList }}'
+            let answerList = answer.split(',')
+            answerList.pop()
+            let idx = 0
+            let flag = true;
+            $(".quizAns").each(function() {
+                if($(this).is(":checked").toString() != answerList[idx])
+                    flag = false;
+                idx ++
+            })
+
+            idx = 0
+            $(".quiz-a").each(function() {
+                if (answerList[idx] == "true")
+                    $(this).css({
+                        'background-color': 'green'
+                    })
+                if($(this).attr('id') == "thisisselected") {
+                    if(answerList[idx] != "true")
+                        $(this).css({
+                            'background-color': 'red'
+                        })
+                }
+                idx++
+            })
+
+            right = localStorage.getItem('right');
+            wrong = localStorage.getItem('wrong');
+            skip = localStorage.getItem('skip');
+
+            if(flag == true) {
+                right = right*1 + 1
+            } else {
+                wrong = wrong*1 + 1
+            }
+            localStorage.setItem('right', right)
+            localStorage.setItem('wrong', wrong)
+            localStorage.setItem('skip', skip)
+
+            /*if(end_flag*1 == 1){
+                $("#checkbtn").attr({
+                    'disabled': 'disabled'
+                })
+                $("#checkbtn").css({
+                    'cursor': 'not-allowed'
+                })
+            } else {*/
+                question_no = '{{ question_no }}'
+                question_no = question_no * 1 + 1
+                setTimeout(() =>{
+                    location = '/quiz/{{ course.course_url }}/{{ quiz_id }}/?question='+question_no
+                }, 3000)
+            /*}*/
+        }
+
+        function continueLater(){
+            cache = JSON.parse(cache_str.replace(/&quot;/g, '\"'))
+            cache.question_no = parseInt('{{ question_no }}')
+            key = '{{ request.user.id }}' + "-" + '{{ course.id }}'
+
+            let url = '/save_cache_str/'
+            let str = JSON.stringify(cache)
+            let form_data = new FormData()
+            form_data.append('cache_str', str)
+            form_data.append('key', key)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response =>{
+                location.href = '/courses/'
+            })
+        }
+    </script>
+    {% endblock %}
+{% endblock %}

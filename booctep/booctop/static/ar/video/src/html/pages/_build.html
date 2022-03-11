@@ -1,0 +1,45 @@
+{% import 'components/hljs.html' as hljs %}
+{% import 'components/next.html' as next %}
+
+<div class="{{ containerClass }} page__container">
+  <div class="row">
+    <div class="col-lg-8">
+
+      <h4>Build</h4>
+      <p class="measure-paragraph-max">Development build:</p>
+      <div class="card card-body bg-dark">
+        {% call hljs.component(type="shell") -%}
+          npm run development
+        {%- endcall %}
+      </div>
+
+      <p class="measure-paragraph-max">Production build (includes extra minification, optimizations and cleanup):</p>
+      <div class="card card-body bg-dark">
+        {% call hljs.component(type="shell") -%}
+          npm run production
+        {%- endcall %}
+      </div>
+      
+      <h4>Watch</h4>
+      <p class="measure-paragraph-max">Start a web server and automatically rebuild your changes as you make them:</p>
+      <div class="card card-body bg-dark">
+        {% call hljs.component(type="shell") -%}
+          npm run watch
+        {%- endcall %}
+      </div>
+
+      <h4>Tasks</h4>
+      <p class="measure-paragraph-max">Run specific tasks</p>
+      <div class="card card-body bg-dark">
+        {% call hljs.component(type="shell") -%}
+          npm run development -- --env.run [html|js|sass|copy|clean]
+        {%- endcall %}
+      </div>
+
+    </div>
+    <div class="col-lg-4 position-sticky" style="top: 64px;">
+      <!-- <div class="mb-3">{{ next.component(title='Configuration', to='configuration.html') }}</div> -->
+      {{ next.component(title='Configuration', to='configuration.html', prev=true) }}
+    </div>
+  </div>
+</div>

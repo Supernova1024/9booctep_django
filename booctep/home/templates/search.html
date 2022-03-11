@@ -1,0 +1,1279 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+
+    <!-- HOEM SECTION -->
+    <!-- USER LOGE OUT -->
+
+
+
+    <style>
+
+
+
+        @media only screen and (max-width: 600px) {
+
+
+            .single_category {
+                padding-left: 15px !important;
+            }
+
+        }
+
+
+        .pagination li {
+            width: 45px;
+            height: 45px;
+            border: 1px solid black;
+            font-size: 30px;
+            border-radius: 50%;
+            margin-left: 5px;
+
+
+        }
+
+        .nocourseavailable {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+    </style>
+
+
+    <div class="single_category"
+         style="background-image: url('{% static 'assets/img/categories/single_categories/no-found.svg' %}') !important">
+        <div class="container">
+            {% if searchstatus == 0 %}
+                <h3>OPPS! there are no courses in “{{ searchkeyword }}”</h3>
+                <p>If you don't find what you want, please be more specific..</p>
+            {% else %}
+                <h3>{{ totalsearchresult }} search results found for "{{ searchkeyword }}"</h3>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    {% if searchstatus == 1 %}
+        <div id="shop-page" class="shop-wrapper">
+            <div class="shop-header">
+                <div class="container" style="display: flex; justify-content: space-between;">
+                    <div class="store-tabs">
+                        <a data-tab="products-tab" class="tab-control is-active">{% trans 'All' %}</a>
+                        <a data-tab="brands-tab" class="tab-control">{% trans 'Paid' %}</a>
+                        <a data-tab="followers-tab" class="tab-control">{% trans 'Free' %}</a>
+                        <div class="store-naver"></div>
+                    </div>
+
+                    <div class="combo-item">
+                        <div class="select is-rounded">
+                            <select class="combo-box selected-item is-focused" id="category_id_2" onchange="category()"
+                                    style="">
+                                <option selected disabled hidden>Sort By</option>
+                                <option value="0">All</option>
+                                <option value="1">Most Rating</option>
+                                <option value="2">Most Students</option>
+                                <option value="3">Newest</option>
+                            </select>
+                        </div>
+
+                        <div class="select is-rounded">
+                            <select class="combo-box selected-item is-focused" id="category_id" onchange="category()"
+                                    style="">
+                                <option selected disabled hidden class="combo-item">Sort By</option>
+                                <option value="0">All</option>
+                                {% for i in category_obj %}
+                                    <option value="{{ i.id }}">{{ i.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="store-sections">
+                <div class="container">
+                    <!--Products-->
+                    <div id="products-tab" class="store-tab-pane is-active sortingdivparent" id="demo">
+                        <div class="columns  is-multiline sortingdiv allcoursearea">
+                            {% for course in course_list %}
+                                <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile coursecard"
+                                     data-cat-id="{{ course.scat_id }}" data-rating="{{ course.rating }}"
+                                     data-ts="{{ course.stuCnt }}" data-cd="{{ course.created_at.timestamp }}">
+                                    <div class="product-card  product-card-dark" data-name="{{ course.name }}"
+                                         data-price="44.00" data-colors="true" data-variants="true"
+                                         data-path="{% static 'assets/img/products/1' %}">
+                                        <a href="/single_course/{{ course.link }}" class="product-image">
+                                            <div class="image-grid-wrap">
+                                                <div class="image-grid">
+                                                    <!--Grid Row-->
+                                                    <!--Grid Row-->
+                                                    <div class="image-row">
+                                                        <!--Photo-->
+                                                        <div class="flex-1 has-background-image show-image"
+                                                             data-background="{% static course.cover_img %}"
+                                                             data-demo-background="{% static 'assets/img/courses/pc.jpg' %}"
+                                                             style="display: none;">
+                                                            <a href="/single_course/{{ course.link }}">
+                                                                <div class="overlay"></div>
+                                                            </a>
+                                                            <div class="image-owner">
+                                                                <div class="name">
+                                                                    {% if course.rating == 0.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 1.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% elif course.rating == 0.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 255, 255);font-weight: 700;margin-left: 5px;">0</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color:rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 2.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 3.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 4.0 %}
+                                                                        <div class="in-blk">
+
+                                                                            <div class="goldstardiv">
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                            </div>
+
+                                                                            <div class="goldstardiv">
+                                                                <span class="fa fa-star"
+                                                                      style="margin-left:3px !important"></span>
+                                                                                <div class="halfstar">
+                                                                                    <span class="fa fa-star"></span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="goldstardiv goldstardiv2">
+                                                                                <span class="fa fa-star"
+                                                                                      style="color:white"></span>
+                                                                            </div>
+
+                                                                            {% if course.rating == 5.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                            {% elif course.rating == 4.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                            {% elif course.rating == 3.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                            {% elif course.rating == 2.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                            {% elif course.rating == 1.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                            {% else %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                        style="color:white"> ( 390,900 )</small></span>
+                                                                            {% endif %}
+                                                                        </div>
+
+
+                                                                    {% else %}
+
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+
+                                                            {% if course.price > 0 %}
+
+
+                                                                {% if course.id in alreadyinFav %}
+
+                                                                    <div class="photo-like pop-button has-tooltip is-shifted is-active favbutton"
+                                                                         id="invite-pop" data-id="{{ course.id }}">
+
+                                                                        <a href="# " class="inner "
+                                                                           data-title="Relationship"
+                                                                           data-type="addFav" data-id="">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                 aria-hidden="true" focusable="false"
+                                                                                 width="1em"
+                                                                                 height="1em"
+                                                                                 style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                                 preserveAspectRatio="xMidYMid meet"
+                                                                                 viewBox="0 0 24 24">
+                                                                                <g fill="red" stroke="red"
+                                                                                   stroke-width="2"
+                                                                                   stroke-linecap="round"
+                                                                                   stroke-linejoin="round">
+                                                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
+                                                                    </div>
+
+                                                                {% else %}
+
+                                                                    <div class="photo-like pop-button has-tooltip favbutton"
+                                                                         id="invite-pop" data-id="{{ course.id }}">
+
+                                                                        <a href="# " class="inner "
+                                                                           data-title="Relationship"
+                                                                           data-type="addFav" data-id="">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                 aria-hidden="true" focusable="false"
+                                                                                 width="1em"
+                                                                                 height="1em"
+                                                                                 style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                                 preserveAspectRatio="xMidYMid meet"
+                                                                                 viewBox="0 0 24 24">
+                                                                                <g fill="none" stroke="#626262"
+                                                                                   stroke-width="2"
+                                                                                   stroke-linecap="round"
+                                                                                   stroke-linejoin="round">
+                                                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
+                                                                    </div>
+                                                                {% endif %}
+                                                                {% if course.id in alreadyinCart %}
+                                                                    <a id="follow-pop"
+                                                                       class="photo-time pop-button has-tooltip is-shifted is-active"
+                                                                       data-title="Relationship"
+                                                                       data-id="{{ course.id }}">
+                                                                        <i class="fa fa-shopping-cart"
+                                                                           style="font-size: 22px;color: blue;"></i>
+                                                                    </a>
+                                                                {% else %}
+                                                                    <a id="follow-pop"
+                                                                       class="photo-time pop-button has-tooltip"
+                                                                       data-title="Relationship"
+                                                                       data-id="{{ course.id }}">
+                                                                        <i class="fa fa-shopping-cart"
+                                                                           style="font-size: 22px;color: #fff;"></i>
+                                                                    </a>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <div class="photo-like pop-button has-tooltip favbutton"
+                                                                     style="left:10px !important"
+                                                                     data-title="Relationship"
+                                                                     id="invite-pop" data-type="addFav"
+                                                                     onclick="addFav({{ course.id }})">
+                                                                    <a href="# " class="inner ">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                             aria-hidden="true" focusable="false"
+                                                                             width="1em"
+                                                                             height="1em"
+                                                                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                             preserveAspectRatio="xMidYMid meet"
+                                                                             viewBox="0 0 24 24">
+                                                                            <g fill="none" stroke="#626262"
+                                                                               stroke-width="2"
+                                                                               stroke-linecap="round"
+                                                                               stroke-linejoin="round">
+                                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="product-skeleton">
+                                            <div class="pd_title loading"></div>
+                                            <div class="pd_description">
+                                                <div class="pd_description1 loading"></div>
+                                                <div class="pd_description2 loading"></div>
+                                            </div>
+                                            <div class="pd_review" style="display: flex;">
+                                                <div class="pd_users loading"></div>
+                                                <div class="pd_videos loading"></div>
+                                            </div>
+                                            <div class="pd_footer" style="display: flex;">
+                                                <div class="pd_price loading"></div>
+                                                <div class="pd_button loading"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="product-info" style="display: none;"> -->
+                                        <div class="product-info">
+                                            <h3>
+                                                <a href="# "
+                                                   style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">{{ course.name }}</a>
+                                            </h3>
+                                            <p style="line-height: 1.5em; height: 3em; overflow: hidden; text-overflow: ellipsis;">{{ course.description }}</p>
+
+                                            <i class="fa fa-users "></i>
+                                            <span style="font-size: small; ">{{ course.stuCnt }}</span>
+                                            <i class="fa fa-video "></i>
+                                            <span style="font-size: small; ">{{ course.video }} Videos</span>
+                                            <div class="product-actions ">
+                                                <div class="left ">
+                                                    {% if course.price > 0 %}
+                                                        <b style="color:red ">${{ course.price }}</b>
+                                                    {% else %}
+                                                        <b style="color:green "> Free </b>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="right ">
+                                                    <a class="button primary-button is-solid raised story modal-trigger promo"
+                                                       data-id="{{ course.id }}" onclick="getPromo(this)">
+                                                        <i class="fa fa-play" data-id="{{ course.id }}"></i> Promo
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <center>
+                            {% if course_list.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if course_list.has_previous %}
+                                        <li>
+                                            <a href="?course_list_page={{ course_list.previous_page_number }}">&laquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&laquo;</span></li>
+                                    {% endif %}
+                                    {% for i in course_list.paginator.page_range %}
+                                        {% if course_list.number == i %}
+                                            <li class="active"><span>{{ i }} <span
+                                                    class="sr-only">(current)</span></span></li>
+                                        {% else %}
+                                            <li><a href="?course_list_page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if course_list.has_next %}
+                                        <li><a href="?course_list_page={{ course_list.next_page_number }}">&raquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+
+                        </center>
+                    </div>
+                    <!-- Followers -->
+                    <div id="followers-tab" class="store-tab-pane sortingdivparent">
+
+                        <div class="columns is-multiline sortingdiv freecoursearea">
+
+                            {% for course in course_free_list %}
+
+
+                                <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile coursecard"
+                                     data-cat-id="{{ course.scat_id }}" data-rating="{{ course.rating }}"
+                                     data-ts="{{ course.stuCnt }}" data-cd="{{ course.created_at }}">
+                                    <div class="product-card  product-card-dark" data-name="Spring Red Dress"
+                                         data-price="44.00"
+                                         data-colors="true" data-variants="true"
+                                         data-path="{% static 'assets/img/products/1' %}">
+
+                                        <a href="/single_course/{{ course.link }}" class="product-image">
+
+                                            <div class="image-grid-wrap">
+                                                <div class="image-grid">
+
+                                                    <!--Grid Row-->
+                                                    <div class="image-row">
+                                                        <!--Photo-->
+
+                                                        <div class="flex-1 has-background-image loading skeleton"
+                                                             style="background-color:rgb(233, 232, 232);">
+                                                            <div class="image-owner">
+                                                                <div class="name">
+                                                          <span class="e-item-card-recently-viewed_stars">
+                                                              <span class="m-item-card-recently-viewed_stars__orange">
+                                                                  ★★★★
+                                                              </span>
+                                                              <span class='half'><div>★</div><div>★</div></span>
+                                                          </span>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div id="invite-pop" class="photo-like pop-button has-tooltip" data-title="Relationship"> -->
+                                                            <div>
+                                                                <a id="invite-pop"
+                                                                   class="photo-like pop-button has-tooltip"
+                                                                   data-title="Relationship">
+                                                                    <i class="inactive-icon" data-feather="heart"></i>
+                                                                </a>
+                                                            </div>
+                                                            <a id="follow-pop "
+                                                               class="photo-time pop-button has-tooltip "
+                                                               data-title="Relationship ">
+                                                                <i class="fa fa-shopping-cart "
+                                                                   style="font-size: 22px;color: #fff; "></i>
+                                                            </a>
+
+                                                        </div>
+
+                                                        <div class="flex-1 has-background-image show-image"
+                                                             data-background="{% static 'assets/img/courses/pc.jpg' %}"
+                                                             data-demo-background="{% static 'assets/img/courses/pc.jpg' %}"
+                                                             style="display: none;">
+                                                            <a href="/single_course/{{ course.link }}">
+                                                                <div class="overlay"></div>
+                                                            </a>
+                                                            <div class="image-owner">
+                                                                <div class="name">
+                                                          <span class="fa fa-star"
+                                                                style="color: rgb(255, 238, 80);"></span>
+                                                                    <span class="fa fa-star"
+                                                                          style="color: rgb(255, 238, 80);"></span>
+                                                                    <span class="fa fa-star"
+                                                                          style="color: rgb(255, 238, 80);"></span>
+                                                                    <span class="fa fa-star"
+                                                                          style="color: rgb(255, 238, 80);"></span>
+                                                                    <span class="fa fa-star"
+                                                                          style="color: rgb(255, 255, 255);"></span>
+                                                                    {% if course.rating == 5.0 %}
+                                                                        <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                    {% else %}
+                                                                        <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }}</span>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div id="invite-pop"
+                                                                 class="photo-like pop-button has-tooltip"
+                                                                 data-title="Relationship">
+                                                                <a href="# " class="inner ">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                         aria-hidden="true" focusable="false"
+                                                                         width="1em"
+                                                                         height="1em"
+                                                                         style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                         preserveAspectRatio="xMidYMid meet"
+                                                                         viewBox="0 0 24 24">
+                                                                        <g fill="none" stroke="#626262" stroke-width="2"
+                                                                           stroke-linecap="round"
+                                                                           stroke-linejoin="round">
+                                                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                            <a id="follow-pop" class="photo-time pop-button has-tooltip"
+                                                               data-title="Relationship">
+                                                                <i class="fa fa-shopping-cart"
+                                                                   style="font-size: 22px;color: #fff;"></i>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </a>
+
+                                        <div class="product-skeleton">
+                                            <div class="pd_title loading"></div>
+                                            <div class="pd_description">
+                                                <div class="pd_description1 loading"></div>
+                                                <div class="pd_description2 loading"></div>
+                                            </div>
+                                            <div class="pd_review" style="display: flex;">
+                                                <div class="pd_users loading"></div>
+                                                <div class="pd_videos loading"></div>
+                                            </div>
+                                            <div class="pd_footer" style="display: flex;">
+                                                <div class="pd_price loading"></div>
+                                                <div class="pd_button loading"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="product-info" style="display: none;"> -->
+                                        <div class="product-info">
+
+                                            <h3>
+                                                <a href="# "
+                                                   style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">
+                                                    {{ course.name }}</a>
+                                            </h3>
+                                            <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">{{ course.description }}</p>
+
+                                            <i class="fa fa-users "></i>
+                                            <span style="font-size: small; ">{{ course.rating }} &nbsp;</span>
+                                            <i class="fa fa-video "></i>
+                                            <span style="font-size: small; ">{{ course.video }} Videos</span>
+                                            <div class="product-actions ">
+                                                <div class="left ">
+                                                    {% if course.price > 0 %}
+                                                        <b style="color:red ">${{ course.price }}</b>
+                                                    {% else %}
+                                                        <b style="color:green "> Free! </b>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="right ">
+                                                    <a class="button primary-button is-solid raised story modal-trigger promo"
+                                                       data-id="{{ course.id }}" onclick="getPromo(this)">
+                                                        <i class="fa fa-play" data-id="{{ course.id }}"></i> Promo
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+
+                        <center>
+
+                            {% if course_free_list.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if course_free_list.has_previous %}
+                                        <li>
+                                            <a href="?course_free_list_page={{ course_free_list.previous_page_number }}">&laquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&laquo;</span></li>
+                                    {% endif %}
+                                    {% for i in course_free_list.paginator.page_range %}
+                                        {% if course_free_list.number == i %}
+                                            <li class="active"><span>{{ i }} <span
+                                                    class="sr-only">(current)</span></span></li>
+                                        {% else %}
+                                            <li><a href="?course_free_list_page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if course_free_list.has_next %}
+                                        <li><a href="?course_free_list_page={{ course_free_list.next_page_number }}">&raquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+
+                        </center>
+
+
+                    </div>
+
+                    <div id="brands-tab" class="store-tab-pane sortingdivparent">
+
+                        <div class="columns is-multiline sortingdiv paidcoursearea">
+
+                            {% for course in course_paid_list %}
+
+                                <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile coursecard"
+                                     data-id="{{ course.scat_id }}" data-cat-id="{{ course.scat_id }}"
+                                     data-rating="{{ course.rating }}" data-ts="{{ course.stuCnt }}"
+                                     data-cd="{{ course.created_at }}">
+
+                                    <div class="product-card  product-card-dark" data-name="Spring Red Dress"
+                                         data-price="44.00"
+                                         data-colors="true" data-variants="true"
+                                         data-path="{% static 'assets/img/products/1' %}">
+                                        <a href="/single_course/{{ course.link }}" class="product-image">
+                                            <div class="image-grid-wrap">
+                                                <div class="image-grid">
+                                                    <!--Grid Row-->
+
+                                                    <!--Grid Row-->
+                                                    <div class="image-row">
+                                                        <!--Photo-->
+                                                        <div class="flex-1 has-background-image show-image"
+                                                             data-background="{% static course.cover_img %}"
+                                                             data-demo-background="{% static 'assets/img/courses/pc.jpg' %}"
+                                                             style="display: none;">
+                                                            <a href="/single_course/{{ course.link }}">
+                                                                <div class="overlay"></div>
+                                                            </a>
+                                                            <div class="image-owner">
+                                                                <div class="name">
+                                                                    {% if course.rating == 0.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 1.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% elif course.rating == 0.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 255, 255);font-weight: 700;margin-left: 5px;">0</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color:rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 2.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 3.0 %}
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 255, 255);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% elif course.rating <= 4.0 %}
+                                                                        <div class="in-blk">
+
+                                                                            <div class="goldstardiv">
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                            </div>
+
+                                                                            <div class="goldstardiv">
+                                                                <span class="fa fa-star"
+                                                                      style="margin-left:3px !important"></span>
+                                                                                <div class="halfstar">
+                                                                                    <span class="fa fa-star"></span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="goldstardiv goldstardiv2">
+                                                                                <span class="fa fa-star"
+                                                                                      style="color:white"></span>
+                                                                            </div>
+
+                                                                            {% if course.rating == 5.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                            {% elif course.rating == 4.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                            {% elif course.rating == 3.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                            {% elif course.rating == 2.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                            {% elif course.rating == 1.0 %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                            {% else %}
+                                                                                <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                        style="color:white"> ( 390,900 )</small></span>
+                                                                            {% endif %}
+                                                                        </div>
+
+
+                                                                    {% else %}
+
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        <span class="fa fa-star"
+                                                                              style="color: rgb(255, 238, 80);"></span>
+                                                                        {% if course.rating == 5.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">5</span>
+                                                                        {% elif course.rating == 4.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4</span>
+                                                                        {% elif course.rating == 3.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">3</span>
+                                                                        {% elif course.rating == 2.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">2</span>
+                                                                        {% elif course.rating == 1.0 %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">1</span>
+                                                                        {% else %}
+                                                                            <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">{{ course.rating }} <small
+                                                                                    style="color:white"> ( 390,900 )</small></span>
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+
+                                                            {% if course.id in alreadyinFav %}
+
+                                                                <div class="photo-like pop-button has-tooltip is-shifted is-active favbutton"
+                                                                     id="invite-pop" data-id="{{ course.id }}">
+
+                                                                    <a href="# " class="inner "
+                                                                       data-title="Relationship"
+                                                                       data-type="addFav" data-id="">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                             aria-hidden="true" focusable="false"
+                                                                             width="1em"
+                                                                             height="1em"
+                                                                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                             preserveAspectRatio="xMidYMid meet"
+                                                                             viewBox="0 0 24 24">
+                                                                            <g fill="red" stroke="red" stroke-width="2"
+                                                                               stroke-linecap="round"
+                                                                               stroke-linejoin="round">
+                                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+
+                                                            {% else %}
+
+                                                                <div class="photo-like pop-button has-tooltip favbutton"
+                                                                     id="invite-pop" data-id="{{ course.id }}">
+
+                                                                    <a href="# " class="inner "
+                                                                       data-title="Relationship"
+                                                                       data-type="addFav" data-id="">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                             aria-hidden="true" focusable="false"
+                                                                             width="1em"
+                                                                             height="1em"
+                                                                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                             preserveAspectRatio="xMidYMid meet"
+                                                                             viewBox="0 0 24 24">
+                                                                            <g fill="none" stroke="#626262"
+                                                                               stroke-width="2"
+                                                                               stroke-linecap="round"
+                                                                               stroke-linejoin="round">
+                                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+
+                                                            {% endif %}
+
+
+                                                            {% if course.id in alreadyinCart %}
+
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip is-shifted is-active"
+                                                                   data-title="Relationship" data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style="font-size: 22px;color: blue;"></i>
+                                                                </a>
+
+                                                            {% else %}
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip"
+                                                                   data-title="Relationship" data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style="font-size: 22px;color: #fff;"></i>
+                                                                </a>
+                                                            {% endif %}
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="product-skeleton">
+                                            <div class="pd_title loading"></div>
+                                            <div class="pd_description">
+                                                <div class="pd_description1 loading"></div>
+                                                <div class="pd_description2 loading"></div>
+                                            </div>
+                                            <div class="pd_review" style="display: flex;">
+                                                <div class="pd_users loading"></div>
+                                                <div class="pd_videos loading"></div>
+                                            </div>
+                                            <div class="pd_footer" style="display: flex;">
+                                                <div class="pd_price loading"></div>
+                                                <div class="pd_button loading"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="product-info" style="display: none;"> -->
+                                        <div class="product-info">
+                                            <h3>
+                                                <a href="# "
+                                                   style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">{{ course.name }}</a>
+                                            </h3>
+                                            <p style="line-height: 1.5em; height: 3em; overflow: hidden; text-overflow: ellipsis;">{{ course.description }}</p>
+
+
+                                            <i class="fa fa-users "></i>
+                                            <span style="font-size: small; ">{{ course.stuCnt }}</span>
+                                            <i class="fa fa-video "></i>
+                                            <span style="font-size: small; ">{{ course.video }} Videos</span>
+                                            <div class="product-actions ">
+                                                <div class="left ">
+                                                    {% if course.price > 0 %}
+                                                        <b style="color:red ">${{ course.price }}</b>
+                                                    {% else %}
+                                                        <b style="color:green "> Free </b>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="right ">
+                                                    <a class="button primary-button is-solid raised story modal-trigger promo"
+                                                       data-id="{{ course.id }}" onclick="getPromo(this)">
+                                                        <i class="fa fa-play" data-id="{{ course.id }}"></i> Promo
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <center>
+
+                            {% if course_paid_list.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if course_paid_list.has_previous %}
+                                        <li>
+                                            <a href="?course_paid_list_page={{ course_paid_list.previous_page_number }}">&laquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&laquo;</span></li>
+                                    {% endif %}
+                                    {% for i in course_paid_list.paginator.page_range %}
+                                        {% if course_paid_list.number == i %}
+                                            <li class="active"><span>{{ i }} <span
+                                                    class="sr-only">(current)</span></span></li>
+                                        {% else %}
+                                            <li><a href="?course_paid_list_page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if course_paid_list.has_next %}
+                                        <li><a href="?course_paid_list_page={{ course_paid_list.next_page_number }}">&raquo;</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+
+                        </center>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- Filters and courses -->
+
+    <!-- Course Detail -->
+    <div id="videos-modal" class="modal videos-modal is-large has-light-bg">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+
+            <div class="card">
+                <div class="card-heading">
+                    <div class="user-meta">
+                        <img src="/static/assets/img/man.jpg" data-demo-src="/static/assets2/images/avatars/jenna.png"
+                             alt="">
+
+                    </div>
+
+                    <span class="user-meta-span">Elzubair Mohammed Saleh </span>
+
+                    <i class="fa fa-star" style="color: rgb(255, 217, 0);" class="user-meta-star"></i><b
+                        class="user-meta-b">4.5</b>
+
+                    <span class="user-meta-span">&nbsp; &nbsp; | Learn html5 and sass with css.. &nbsp; &nbsp;</span>
+                    <a type="button" class="button" style="background-color: rgb(202, 0, 51);color: #fff;">Add to Fav
+                        &nbsp;<i class="fa fa-heart"></i></a>
+
+                    <div class="close-wrap">
+                    <span class="close-modal">
+                            <i data-feather="x"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="inner">
+                        <div class="left-section">
+                            <video poster="/static/assets/img/setting.jpg" style="" id="player" playsinline controls>
+                                <source src="/static/assets/img/vid/html.mp4" type="video/webm"/>
+
+                                <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en"
+                                       default/>
+                            </video>
+                        </div>
+                        <div class="right-section">
+
+                            <div class="inner-content">
+                                <div class="live-stats">
+                                    <div class="social-count-2">
+                                        <div class="likes-count">
+                                            <i class="fa fa-users"></i>
+                                            <span>140,440</span>
+                                        </div>
+                                        <div class="shares-count">
+                                            <i class="fa fa-star" style="color: rgb(212, 173, 0);"></i>
+                                            <span>4.8</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tabs-wrapper">
+                                <div class="tabs is-fullwidth">
+                                    <ul>
+                                        <li class="is-active">
+                                            <a>Demo Videos</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content ">
+
+
+                                    <div class="accordion js-accordion accordion--boxed list-group-flush" id="parent">
+                                        <div class="accordion__item"
+                                             style="border: 1px solid #ccc;height: 100% !important;">
+                                            <a href="#"
+                                               style="background-color: rgb(240, 240, 240);border: 1px solid rgb(223, 223, 223);"
+                                               class="accordion__toggle collapsed" data-toggle="collapse"
+                                               data-target="#course-toc-1" data-parent="#parent">
+                                                <span class="flex" style="font-size: small;">Course Overview</span>
+                                                <i style="position: absolute;right: 15px;top: 15px;font-size: small;"
+                                                   class="fa fa-arrow-down"></i>
+                                            </a>
+                                            <div class="accordion__menu collapse" id="course-toc-1">
+                                                <div class="accordion__menu-link">
+
+                                                    <i class="fa fa-video"
+                                                       style="margin-right: 5px;color: rgb(194, 194, 194);"></i>
+                                                    <a class="flex" href="mini-student-lesson.html"
+                                                       style="color: rgb(1, 100, 192);">Watch Trailer</a>
+                                                    <span class="text-muted"
+                                                          style="color: rgb(3, 73, 139) !important;margin-left: 90px;">1m 10s</span>
+                                                </div>
+                                                <div class="accordion__menu-link">
+
+                                                    <i class="fa fa-video"
+                                                       style="margin-right: 5px;color: rgb(194, 194, 194);"></i>
+                                                    <a class="flex" href="mini-student-lesson.html"
+                                                       style="color: rgb(1, 100, 192);">Watch Trailer</a>
+                                                    <span class="text-muted"
+                                                          style="color: rgb(3, 73, 139) !important;margin-left: 90px;">1m 10s</span>
+                                                </div>
+                                                <div class="accordion__menu-link">
+
+                                                    <i class="fa fa-video"
+                                                       style="margin-right: 5px;color: rgb(194, 194, 194);"></i>
+                                                    <a class="flex" href="mini-student-lesson.html"
+                                                       style="color: rgb(1, 100, 192);">Watch Trailer</a>
+                                                    <span class="text-muted"
+                                                          style="color: rgb(3, 73, 139) !important;margin-left: 90px;">1m 10s</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        var myTimer = setInterval(Dataloading, 2000);
+
+        function Dataloading() {
+
+            $(".skeleton").hide();
+            $(".show-image ").delay(200).fadeIn(650);
+
+            $(".product-skeleton").hide();
+            $(".product-info ").delay(200).fadeIn(650);
+        }
+
+        $(document).ready(function () {
+        });
+
+
+        function category() {
+
+            var category_id = $("#category_id").val();
+            var category_id_2 = $("#category_id_2").val();
+
+            $('#loadings').show();
+
+            if (!category_id) {
+                category_id = 0
+            }
+
+            if (!category_id_2) {
+                category_id_2 = 0
+            }
+
+
+            if (category_id_2 == 1) { // Most rated
+
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.paidcoursearea');
+
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.freecoursearea');
+
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.allcoursearea');
+
+
+            }
+
+
+            if (category_id_2 == 2) {  // Most students
+
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.paidcoursearea');
+
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.freecoursearea');
+
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.allcoursearea');
+
+
+            }
+
+
+            if (category_id_2 == 3) {  // Newest
+
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.paidcoursearea');
+
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.freecoursearea');
+
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.allcoursearea');
+
+
+            }
+
+
+            if (category_id == 0) {
+
+                $(".coursecard").show();
+
+            } else {
+                $(".coursecard").hide();
+                $(".coursecard[data-cat-id=" + category_id + "]").show();
+                $('#loadings').hide();
+
+                if ($(".coursecard[data-cat-id=" + category_id + "]").length == 0) {
+
+                    swal({
+                        title: "Sorry, there are no course in this category ",
+                        icon: "warning",
+                        button: "Ok",
+                        closeOnClickOutside: false,
+                    })
+
+                }
+
+            }
+
+
+        }
+    </script>
+
+{% endblock %}

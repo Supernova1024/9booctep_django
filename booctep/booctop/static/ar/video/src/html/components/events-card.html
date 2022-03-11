@@ -1,0 +1,79 @@
+{% import 'components/pager.html' as pager %}
+
+{% macro component(title, count, items, alert, footer=true) %}
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex align-items-center{% if alert %} mb-16pt{% endif %}">
+      <div class="flex">
+        <strong class="card-title">{{ title }}</strong>
+        <span class="text-20">({{ count }})</span>
+      </div>
+      <i class="material-icons text-50">more_horiz</i>
+    </div>
+    {% if alert %}
+    <div class="alert alert-soft-warning mb-0 p-8pt">
+      <div class="d-flex align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">error_outline</i>
+        </div>
+        <div class="flex">
+          <small class="text-100">Heads up! Q2 Report for 2018 has been released.</small>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="list-group list-group-flush">
+    {% for item in items %}
+    <div class="list-group-item d-flex align-items-start p-16pt">
+      <div class="d-flex flex-column mr-16pt">
+        <small class="text-uppercase text-50">{{ item.month }}</small>
+        <strong class="border-bottom-2 border-bottom-accent">{{ item.day }}</strong>
+      </div>
+      <div class="flex">
+        <div{% if not item.date and (item.description or item.avatars or item.attachment) %} class="mb-8pt"{% endif %}><strong>{{ item.title }}</strong></div>
+        {% if item.date %}
+        <div class="lh-1{% if item.description or item.avatars or item.attachment %} mb-16pt{% endif %}"><small class="text-50">{{ item.date }}</small></div>
+        {% endif %}
+
+        {% if item.avatars %}
+        <div class="avatar-group mb-16pt">
+          {% for avatar in item.avatars %}
+          <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+            <img src="{{ avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if item.description %}
+        <p class="mb-0 text-50">{{ item.description }}</p>
+        {% if item.read_more !== false %}<a href="" class="text-70 text-underline">read more</a>{% endif %}
+        {% endif %}
+
+        {% if item.attachment %}
+        <a href="" class="d-flex align-items-center border-1 rounded mb-0 p-8pt">
+          <span class="mr-8pt p-8pt bg-dark rounded" style="width: 40px; height: 40px;">
+            <i class="material-icons icon-24pt text-white">file_download</i>
+          </span>
+          <span class="flex d-flex flex-column">
+            <span class="text-100">Final Report.pdf</span>
+            <span class="text-50 lh-1">1.3 Mb</span>
+          </span>
+          <span class="text-70 text-underline mr-8pt">download</span>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if footer %}
+  <div class="card-footer">
+    {{ pager.pager() }}
+  </div>
+  {% endif %}
+
+</div>
+{% endmacro %}

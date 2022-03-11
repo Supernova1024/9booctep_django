@@ -1,0 +1,543 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="الحوالات" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Transaction" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+
+<style>
+    .backgg{
+        background-color: #e8f4ff !important;
+    }
+    .backgg-dark{
+        background-color: #4c525e !important;
+    }
+
+
+
+ .card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.blllu{
+        color: rgb(57, 137, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+    }
+
+
+    .bllu{
+        color: rgb(57, 137, 241) !important;
+    } 
+    .bllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.carousel-item{
+    background-color: rgb(18, 76, 163) !important;
+}
+
+.carousel-item-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+
+
+h3.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+h3.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+strong.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+strong.mediabout-dark{
+   color: rgb(186, 193, 204) !important;
+}
+
+p.mediabout{
+    color: rgb(188, 216, 240) !important;
+}
+
+p.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+a.mediabout{
+    background-color: rgb(207, 228, 245) !important;
+    border: 1px solid #0d2150 !important;
+    color: rgb(11, 41, 68) !important;
+}
+
+a.mediabout-dark{
+   background-color: rgb(42, 51, 65) !important;
+   color: rgb(204, 213, 221) !important;
+}
+
+
+.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+.mediabout-dark{
+   color: rgb(100, 152, 248) !important;
+}
+
+  
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+   color: none !important;
+}
+
+
+        
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+th,td {
+    text-align: center !important;
+    border-top: 1px solid rgb(25, 25, 29)
+}
+
+.table thead{
+    height: 65px !important;
+}
+
+.tehead{
+    background-color: rgb(197, 223, 235) !important;
+    border-top: 0!important;
+    border-bottom: 0 !important;
+}
+
+.table .tehead {
+        
+}
+    
+.tehead-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+}
+
+
+.flllot{
+    float: left !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(185, 197, 206) !important;
+}
+
+[dir="ltr"] .table td, [dir="ltr"] .table th{
+    border: 0 !important;
+
+}
+
+a.disabled{
+    cursor: not-allowed !important;
+}
+
+.card-header:first-child{
+    border-radius: 0 !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+.progress .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+    background-color: rgb(189, 209, 245) !important;
+    border-radius: 0 !important;
+}
+
+.card .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+.card .bg-primary-dark{
+    background-color: rgb(13, 16, 22) !important;
+    border-radius: 0 !important;
+}
+
+.progress{
+    border-radius: 0 !important;
+}
+
+.selecttt-dark{
+    background-color: rgb(165, 172, 189) !important;
+    border: 1px solid rgb(123, 129, 145) !important;
+}
+
+.couponbg{
+    background-color: rgb(88, 129, 175) !important;
+}
+
+.couponbg-dark{
+    background-color: rgb(47, 66, 87) !important;
+}
+
+
+
+.disabled{
+    color: #5c5c5c !important;
+}
+
+.nextt-dark{
+    color: #afafaf !important;
+    background-color: #1d2227 !important;
+    border: 1px solid #11151a !important;
+}
+
+
+.disabled-dark{
+    color: #272a2c !important;
+    background-color: #3f4e5a !important;
+    border: 1px solid #272a2c !important;
+}
+
+
+.activve-dark{
+    background-color: #a2b6d6 !important;
+    color: #121e38 !important;
+    border: 1px solid #1d2022 !important;
+}
+
+</style>
+
+    <div class=" page__container page-section" style="height: 100vh !important;">
+
+
+
+
+
+
+
+
+        <div class="columns">
+            <div class="column is-12">
+                <div class="page-separator">
+                    <div class="page-separator__text backgg backgg-dark mediabout mediabout-dark">Transactions</div>
+                </div>
+
+                <div class="card  mb-0">
+
+                    <div class="table-responsive" style="border-radius: 5px 5px 0 0;" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name" data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+
+
+
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <div class="card-header card-header-dark">
+                            <form class="form-inline">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select">
+                                            <select class="selecttt selecttt-dark">
+                                                <option >كل الأوقات</option>
+                                                <option >اليوم</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        {% else %}
+                        <div class="card-header card-header-dark">
+                            <form class="form-inline">
+                                <label class="mr-sm-2 form-label mediabout mediabout-dark">Filter by:</label>
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select">
+                                            <select class="selecttt selecttt-dark">
+                                                <option >All time</option>
+                                                <option >Today</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        {% endif %}
+
+
+                        <table class="table mb-0 thead-border-top-0 table-nowrap">
+                            {% get_current_language as lang %}
+                            {% if lang == "ar" %}
+                            <thead class="thead tehead-dark">
+                                <tr >
+
+                                    <th>
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-employee-name" class="bllu bllu-dark flllot">العملية</a>
+                                    </th>
+
+                                    <th style="width: 150px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-employer-name" class="bllu bllu-dark">التاريخ</a>
+                                    </th>
+
+
+                                    <th class="text-center" style="width: 48px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-projects" class="bllu bllu-dark">العملة</a>
+                                    </th>
+
+
+
+                                    <th style="width: 120px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-activity" class="bllu bllu-dark">المبلغ</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            {% else %}
+                            <thead class="thead tehead-dark">
+                                <tr >
+
+                                    <th>
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-employee-name" class="bllu bllu-dark flllot">Transaction</a>
+                                    </th>
+
+                                    <th style="width: 150px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-employer-name" class="bllu bllu-dark">Date</a>
+                                    </th>
+
+
+                                    <th class="text-center" style="width: 48px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-projects" class="bllu bllu-dark">Currency</a>
+                                    </th>
+
+
+
+                                    <th style="width: 120px;">
+                                        <a href="javascript:void(0)" data-sort="js-lists-values-activity" class="bllu bllu-dark">Amount</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            {% endif %}
+                            <tbody class="list" id="staff">
+
+                                <tr class="selected">
+
+                                    <td class=" couponbg couponbg-dark">
+
+                                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                            <div class="media-body">
+
+
+                                                <div class="d-flex flex-column">
+                                                    <p class="mb-0"><strong class="js-lists-values-employee-name mediabout mediabout-dark">PayPal payment from booctep.com (7NE35026M8353160S at 22:03:24 Feb 24, 2021 EST)<br /> (SR) To alzober1414@gmail.com</strong></p>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                    <td class=" couponbg couponbg-dark">
+                                        <div class="d-flex align-items-center">
+                                            <a href="" class="text-70"><span class="js-lists-values-employer-name mediabout mediabout-dark">Mon 12-01-2021</span></a>
+                                        </div>
+                                    </td>
+
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark mediabout mediabout-dark">SR</td>
+
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark mediabout mediabout-dark">120.00</td>
+
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer p-8pt">
+
+
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+
+                            <center>
+                                
+                                <ul class="pagination-list " style="font-size:small;margin-top: 15px !important;">
+                               
+                                    
+                                    <li><a class="btn disabled disabled-dark mr-1" >السابق</a></li>
+                                    
+                                
+                                    <li class="btn nextt nextt-dark mr-1"><a >1</a></li>
+                                
+                                    <li class="btn btn-primary btn-primary-dark"><a >
+                                        2
+                                    </a></li>
+                                    
+                                    <li class="btn disabled disabled-dark mr-1"><a href="#">
+                                        التالي
+                                    </a></li>
+                                    
+                                </ul>
+                                
+                            </center>
+                            {% else %}
+                            <center>
+                                
+                                <ul class="pagination-list " style="font-size:small;margin-top: 15px !important;">
+                               
+                                    
+                                    <li><a class="btn disabled disabled-dark mr-1" >Previous</a></li>
+                                    
+                                
+                                    <li class="btn nextt nextt-dark mr-1"><a >1</a></li>
+                                
+                                    <li class="btn btn-primary btn-primary-dark"><a >
+                                        2
+                                    </a></li>
+                                    
+                                    <li class="btn disabled disabled-dark mr-1"><a href="#">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a></li>
+                                    
+                                </ul>
+                                
+                            </center>
+                            {% endif %}
+
+                    </div>
+                    <!-- <div class="card-body bordet-top text-right">
+  15 <span class="text-50">of 1,430</span> <a href="#" class="text-50"><i class="material-icons ml-1">arrow_forward</i></a>
+</div> -->
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        // $(document).ready(function(){
+
+            // $(".addtofeedback").click(function(){
+
+            //     // e.prevantDefault();
+
+            //     // var addthis = $(this).attr("id");
+            //     // console.log("hello "+addthis);
+
+            //     // $.post('addtofeedback/', {commentid: addthis}, function (res) {
+                    
+            //     //     console.log(res);
+            //     // });
+
+                
+
+
+
+            // });
+
+            
+
+
+            
+
+
+
+        // });
+
+
+        
+
+    // $(function(){
+    //     alert(123)
+    // })
+    </script>
+
+{%  endblock %}
+

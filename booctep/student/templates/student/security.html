@@ -1,0 +1,272 @@
+{% extends "student/base.html" %}
+
+{% block title %}
+    Security
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Security" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+<style>
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+
+.form-control{
+    background-color: #f8f8f8 !important;
+    border: 1px solid  #dddddd !important;
+    color: rgb(29, 61, 90);
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control-dark label::selection{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: left !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+</style>
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+
+.form-group label{
+    float: right !important;
+}
+
+.btn-primary{
+    float: right !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+</style>
+
+{% endif %}
+
+    {% load static %}
+    <div class=" page__container " style="margin-top: 0px;height: 100vh;">
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="col-md-5 pt-3">
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> كلمة المرور الحالية</b></label>
+                <input type="password" id="currentpassword" class="form-control form-control-dark" placeholder="أكتب كلمة المرور هنا">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> كلمة المرور الجديدة</b></label>
+                <input type="password" id="newpassword" class="form-control form-control-dark" placeholder="أكتب كلمة المرور هنا">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> أعد كتابة كلمة المرور الجديدة</b></label>
+                <input type="password" id="retypenewpassword" class="form-control form-control-dark" placeholder="أكتب كلمة المرور هنا">
+            </div>
+            <button type="submit" class="btn btn-primary btn-primary-dark" onclick="return changepassword()">حفظ البيانات</button>
+        </div>
+        {% else %}
+        <div class="col-md-5 pt-3">
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">Current Password</label>
+                <input type="password" id="currentpassword" class="form-control form-control-dark" placeholder="Enter password">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">New Password</label>
+                <input type="password" id="newpassword" class="form-control form-control-dark" placeholder="Enter password">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">Retype new Password</label>
+                <input type="password" id="retypenewpassword" class="form-control form-control-dark" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-primary-dark" onclick="return changepassword()">Save changes</button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="rating_modal_back"></div>
+    <div class="sweet-alert sweet-alert-dark showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="result_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="margin-top: -169px; display: none;">
+        <div class="sa-icon sa-warning pulseWarning mediabout mediabout-dark" style="display: none;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <div class="sa-icon sa-success animate" style="display: block;">
+            <span class="sa-line sa-tip animateSuccessTip"></span>
+            <span class="sa-line sa-long animateSuccessLong"></span>
+            <div class="sa-placeholder"></div>
+            <div class="sa-fix"></div>
+        </div>
+        <div class="sa-icon sa-custom" style="display: none;"></div>
+        <h2 id="result_title">Success!</h2>
+        <p style="display: block;" id="result_content">Thanks!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm  btn-primary btn-primary-dark" tabindex="1" onclick="hideResultModal()"
+                        style="display: inline-block;">
+                    OK
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function showAlert(type, msg) {
+            if (type * 1 == 0) { //error
+                $(".sa-success").css({
+                    'display': 'none'
+                })
+                $(".sa-warning mediabout mediabout-dark").css({
+                    'display': 'block'
+                })
+                $("#result_title").html('عذرا لم تقم بتغيير شيء')
+            } else {
+                $(".sa-success").css({
+                    'display': 'block'
+                })
+                $(".sa-warning").css({
+                    'display': 'none'
+                })
+                $("#result_title").html('تم التعديل بنجاح')
+            }
+
+            $("#result_content").html(msg)
+            $("#result_modal").css({
+                'display': 'block'
+            })
+            $("#rating_modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function hideResultModal() {
+            $("#result_modal").css({
+                'display': 'none'
+            })
+            $("#rating_modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function checkPass() {
+            passVal = $('#currentpassword').val();
+            pass = '{{ password }}';
+            if (pass != passVal) {
+                showAlert(0, 'Current Password Incorrect!')
+                return false;
+            }
+        }
+
+        function changepassword() {
+            checkPass();
+            if ($("#currentpassword").val() == "") {
+                showAlert(0, "يرجى المحاولة مرة أخرى وشكرا")
+                return
+            }
+            if ($("#newpassword").val().trim().length < 6) {
+                showAlert(0, 'New password must be greater than 5 digit')
+                return
+            } else if ($("#retypenewpassword").val() == $("#newpassword").val() == "") {
+                showAlert(0, "password is not match. Please re-enter the correct password.")
+                return
+            }
+
+            // Ajax start
+            var action = "/changepassword/";
+            $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                // headers: {'X-CSRFToken': $("#hd_csrf").val(),},
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    currentpassword: $("#currentpassword").val(),
+                    newpassword: $("#newpassword").val(),
+                },
+
+                beforeSend: function () {
+                },
+
+                success: function (data) {
+                    if (data.msg == "success") {
+                        showAlert(1, 'Changed Successfully!!!')
+                    } else {
+                        showAlert(0, 'Change error!!!')
+                    }
+                    return;
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            // Ajax end
+            return false
+
+        }
+    </script>
+{% endblock %}
+{% block script %}
+
+{% endblock %}

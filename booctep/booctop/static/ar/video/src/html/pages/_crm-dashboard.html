@@ -1,0 +1,273 @@
+{% import 'components/category-overview-card.html' as category_overview_card %}
+{% import 'components/events-card.html' as events_card %}
+{% import 'components/contacts-table.html' as contacts_table %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="row mb-lg-8pt">
+      <div class="col-lg-8">
+        
+        <div class="page-separator">
+          <div class="page-separator__text">Overview</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Contacts',
+              count=130,
+              list=[{
+                title: 'Customers',
+                count: 70,
+                percent: 53,
+                class: 'bg-primary'
+              }, {
+                title: 'Leads',
+                count: 21,
+                percent: 16,
+                class: 'bg-primary'
+              }, {
+                title: 'Opportunities',
+                count: 12,
+                percent: 9,
+                class: 'bg-primary'
+              }, {
+                title: 'Subscribers',
+                count: 27,
+                percent: 20,
+                class: 'bg-primary'
+              }],
+              cta_label='View contacts'
+            ) }}
+
+          </div>
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Companies',
+              count=53,
+              list=[{
+                title: 'Customers',
+                count: 20,
+                percent: 37,
+                class: 'bg-primary'
+              }, {
+                title: 'Leads',
+                count: 12,
+                percent: 22,
+                class: 'bg-primary'
+              }, {
+                title: 'Opportunities',
+                count: 7,
+                percent: 13,
+                class: 'bg-primary'
+              }, {
+                title: 'Subscribers',
+                count: 14,
+                percent: 26,
+                class: 'bg-primary'
+              }],
+              cta_label='View companies'
+            ) }}
+
+          </div>
+        </div>
+
+        <div class="row card-group-row">
+          <div class="col-md-6 card-group-row__col">
+            
+            <div class="card card-group-row__card">
+              <div class="card-header d-flex">
+                <div class="flex d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">20%</div>
+                  <div class="flex d-flex flex-column">
+                    <p class="card-title">Renewals</p>
+                    <p class="card-subtitle text-50">This month</p>
+                  </div>
+                </div>
+                <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-center">
+                {% set list = [{
+                  title: 'Rend A Car, Frankfurt',
+                  meta: 'expires in 12 days',
+                  class: 'bg-warning',
+                  percent: 20
+                }, {
+                  title: 'Rend A Car, Frankfurt',
+                  meta: 'expires in 30 days',
+                  class: 'bg-accent',
+                  percent: 100
+                }] %}
+
+                {% for item in list %}
+                <div class="mb-4pt">
+                  <p class="d-flex align-items-center mb-0">
+                    <small class="flex lh-24pt"><strong>{{ item.title }}</strong></small>
+                    <small class="text-50 lh-24pt">{{ item.meta }}</small>
+                  </p>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar {{ item.class }}" role="progressbar" style="width: {{ item.percent }}%;" aria-valuenow="{{ item.percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 card-group-row__col">
+            
+            <div class="card card-group-row__card">
+              <div class="card-header p-0 nav border-0">
+                <div class="row no-gutters flex" role="tablist">
+                  <div class="col-auto">
+                    <div class="p-card-header d-flex align-items-center">
+                      <div class="h2 mb-0 mr-3">20%</div>
+                      <div class="flex">
+                        <p class="card-title">Conversion rate</p>
+                        <div class="d-flex align-items-center">
+                          <p class="text-50 mb-0 d-flex align-items-center mr-16pt">
+                            <i class="indicator-line rounded bg-gray mr-8pt"></i>
+                            <small>Lead</small>
+                          </p>
+                          <p class="text-50 mb-0 d-flex align-items-center">
+                            <i class="indicator-line rounded bg-primary mr-8pt"></i>
+                            <small>Cust.</small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto ml-sm-auto">
+                    <div class="p-card-header pl-0"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body position-relative o-hidden p-0">
+                <div class="chart z-0" style="height: 125px;">
+                  <canvas 
+                    id="viewsChart"
+                    class="chart-canvas js-update-chart-line js-update-chart-line-2nd-accent"
+                    data-chart-line-border-color="primary,gray"
+                    data-chart-suffix=" views"
+                    data-chart-hide-axes="true"></canvas>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Schedule</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <div class="flex">
+                <strong class="card-title">Today</strong>
+              </div>
+              <i class="material-icons text-50">more_horiz</i>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-soft-warning mb-0 p-8pt">
+              <div class="d-flex align-items-start">
+                <div class="mr-8pt">
+                  <i class="material-icons">error_outline</i>
+                </div>
+                <div class="flex">
+                  <small class="text-100">Nothing scheduled for today.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% set items = [
+          {
+            month: 'FEB',
+            day: 18,
+            title: 'Developers Meeting',
+            date: 'Tuesday 17:30 - 18:30',
+            avatars: [
+              "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+              "assets/images/256_michael-dam-258165-unsplash.jpg",
+              "assets/images/256_luke-porter-261779-unsplash.jpg"
+            ],
+            description: 'Moreover the striking, brilliant and vivid colors are the reason why we are attracted to the posters that we see.',
+            read_more: false
+          },
+          {
+            month: 'FEB',
+            day: 17,
+            title: 'Meeting with Jane B.',
+            date: 'Tuesday 17:30 - 18:30'
+          }
+        ] %}
+
+        {{ events_card.component(
+          title='Upcoming',
+          count=2,
+          items=items,
+          footer=false
+        ) }}
+
+      </div>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Recently added</div>
+    </div>
+
+    <div class="card mb-0">
+      {{ contacts_table.component(items=[{
+        avatar: { title: 'BN' },
+        name: 'Billy Nunez',
+        email: 'annabell.kris@yahoo.com',
+        phone: '239-721-3649',
+        company: 'Frontend Matter Inc.',
+        company_initials: 'FM',
+        company_bg: 'bg-warning',
+        location: 'Leuschkefurt',
+        projects: 42,
+        chips: ['User'],
+        date: '19 February 2019'
+      }, {
+        avatar: { title: 'TP' },
+        name: 'Tony Parks',
+        email: 'vida_glover@gmail.com',
+        phone: '169-769-4821',
+        company: 'Huma Huma Inc.',
+        company_initials: 'HH',
+        company_bg: 'bg-accent',
+        location: 'Mayerberg',
+        chips: ['Admin'],
+        date: '18 February 2019'
+      }, {
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+        name: 'Gilbert Barrett',
+        phone: '462-060-7408',
+        email: 'paolo.zieme@gmail.com',
+        chips: ['Admin'],
+        date: '17 February 2019'
+      }, {
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+        name: 'Ollie Wallace',
+        phone: '285-626-6050',
+        email: 'lorna_kirlin@nora.biz',
+        chips: ['Manager'],
+        date: '16 February 2019'
+      }]) }}
+    </div>
+
+  </div>
+</div>

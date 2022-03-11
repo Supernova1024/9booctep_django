@@ -1,0 +1,142 @@
+//Application Faqs
+.application-faqs {
+    .panel-title {
+        position: relative;
+
+        a {
+            @include ofs(15px, lh(15px, 22px), 500);
+            @extend .color-dark;
+            width: 90%;
+            display: flex;
+        }
+    }
+
+    .panel-title>a:before {
+        float: right !important;
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        content: "\f068";
+        padding-right: 5px;
+        @extend .color-light;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+    }
+
+    .panel-title>a.collapsed:before {
+        float: right !important;
+        content: "\f067";
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+    }
+
+    .panel-title>a:hover,
+    .panel-title>a:active,
+    .panel-title>a:focus {
+        text-decoration: none;
+    }
+
+    .panel-heading {
+        padding: 19px 25px;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .panel-body {
+        padding: 21px 25px 29px 25px;
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid #F1F2F6;
+
+        p {
+            @include ofs(15px, lh(15px, 25px), 400);
+            @extend .color-gray;
+        }
+    }
+
+    .collapse.show .panel-body {
+        box-shadow: 0px 15px 40px #9299B826;
+    }
+
+    .panel {
+        border-radius: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #F1F2F6;
+    }
+
+    .button-group button {
+        height: 36px;
+        @extend .content-center;
+        @include ofs(13px, lh(13px, 22px), 500);
+
+        svg {
+            width: 18px;
+            height: auto;
+        }
+    }
+}
+
+//breadcrumb
+.breadcrumb-main {
+    line-height: lh(14px, 26px);
+    &.application-ui {
+        button{
+            height: 35px;
+        }
+        @include lg{
+            flex-flow: unset;
+            justify-content: space-between;
+            .breadcrumb-action{
+                margin:0;
+            }
+        }
+        @include sm{
+            flex-flow: column;
+            justify-content: center;
+            .breadcrumb-action{
+                margin-bottom: 11px;
+            }
+        }
+        @include ssm{
+            .breadcrumb-action{
+                flex-flow: column;
+                margin-bottom: 15px;
+                .action-btn{
+                    margin-bottom:15px;
+                }
+            }
+        }
+        .breadcrumb-action {
+            align-items: center;
+
+            .action-btn .btn {
+                padding: 0 15px;
+                height: 35px;
+                text-transform: capitalize;
+
+                svg {
+                    color: white;
+                    width: 16px;
+                    margin-right: 7px;
+                }
+            }
+
+            .btn-group-toggle .btn {
+                &.active {
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    @extend .color-primary;
+                }
+            }
+        }
+    }
+}
+
+//Task Activities
+.task-activities .ffp{
+    padding:9px 0;
+    span svg{
+        width:12px;
+    }
+}

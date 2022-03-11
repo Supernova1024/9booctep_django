@@ -1,0 +1,23 @@
+{% macro component(description, name, avatar_title) %}
+<div class="card card-feedback card-body">
+  <p class="text-70 small mb-0">{{ description or 'A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.' }}</p>
+</div>
+<div class="media ml-12pt">
+  <div class="media-left mr-12pt">
+    <a href="" class="avatar avatar-sm">
+      <!-- <img src="assets/images/people/110/guy-{{ item }}.jpg" width="40" alt="avatar" class="rounded-circle"> -->
+      <span class="avatar-title rounded-circle">{{ avatar_title or 'UK' }}</span>
+    </a>
+  </div>
+  <div class="media-body media-middle"> 
+    <a href="" class="card-title">{{ name or 'Umberto Kass' }}</a>
+    <div class="rating mt-4pt">
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star_border</span></span>
+    </div>
+  </div>
+</div>
+{% endmacro %}

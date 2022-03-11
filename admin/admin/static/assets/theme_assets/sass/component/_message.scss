@@ -1,0 +1,76 @@
+.message-wrapper{
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+// Pop Message
+.atbd-pop-message{
+    min-width: 200px;
+    margin-bottom: 15px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 4px;
+    box-shadow: 0 10px 15px rgba($light,.20);
+    @extend .bg-white;
+    &.message-primary{
+        .atbd-pop-message__icon{
+            i,
+            svg,
+            span{
+                @extend .color-primary;
+            }
+        }
+    }
+    &.message-success{
+        .atbd-pop-message__icon{
+            i,
+            svg,
+            span{
+                @extend .color-success;
+            }
+        }
+    }
+    &.message-warning{
+        .atbd-pop-message__icon{
+            i,
+            svg,
+            span{
+                @extend .color-warning;
+            }
+        }
+    }
+    &.message-danger{
+        .atbd-pop-message__icon{
+            i,
+            svg,
+            span{
+                @extend .color-danger;
+            }
+        }
+    }
+    @include e("icon"){
+        margin-right: 8px;
+        i,
+        svg,
+        span{
+            @extend .color-gray;
+        }
+    }
+    @include e("text"){
+        p{
+            font-size: 14px;
+            margin-bottom: 0;
+            @extend .color-dark;
+        }
+    }
+}
+
+.btn-message{
+    height:48px;
+}

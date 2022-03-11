@@ -1,0 +1,130 @@
+// Page Header
+.page-title-wrap{
+    padding: 20px 25px 17px;
+    border-radius: 5px;
+    .atbd-breadcrumb{
+        margin-bottom: 18px;
+    }
+    .atbd-breadcrumb__item{
+        &:first-child{
+            a{
+                @extend .color-light;
+                &:hover{
+                    @extend .color-primary;
+                }
+            }
+        }
+        &:last-child{
+            span{
+                @extend .color-gray;
+            }
+        }
+        a{
+            @extend .color-light;
+            &:hover{
+                @extend .color-primary;
+            }
+        }
+    }
+}
+
+// Page Title Action
+.page-title{
+    @include sm{
+        flex-flow: column;
+    }
+    @include e("right"){
+        @include sm{
+            margin-top: 12px;
+        }
+        .page-top-action{
+            flex-wrap: wrap;
+            margin: -5px;
+            a{
+                margin: 5px;
+                min-height:34px;
+            }
+            .btn-xs{
+                padding: 0 1.134rem;
+                @include ofs(14px, lh(14px, 22px), 400);
+            }
+        }
+    }
+}
+// Page Title Bordered
+.page-title-wrap{
+    &.wrapper-bordered{
+        @extend .border-light; 
+    }
+}
+.page-title-block{
+    &.bg-container{
+        padding: 25px;
+    }
+    .page-title-bg{
+        border-radius: 5px;
+    }
+}
+// Page Title
+.page-title{
+    @include e("left"){
+        display: flex;
+        align-items: center;
+        a{
+            i,
+            svg,
+            img,
+            span{
+                width: 16px;
+                color: #000000;
+            }
+            i{
+                font-size: 20px;
+                margin-top: 3px;
+                margin-right: 9px;
+            }
+        }
+        .title-text{
+            font-size: 22px;
+            font-weight: 600;
+            @extend .color-dark;
+        }
+        .title-text{
+            margin-left: 8px;
+        }
+        .sub-title{
+            font-size: 14px;
+            margin-left: 10px;
+            @extend .color-extra-light;
+        }
+    }
+}
+
+// Page Info
+.page-info{
+    padding: 0px 30px 12px 30px;
+    @include sm{
+        flex-flow: column;
+    }
+    @include e("item"){
+        flex: 0 0 32%;
+    }
+    @include e("single"){
+        margin-bottom: 8px;
+        span{
+            font-size: 14px;
+            @extend .color-dark;
+            &.info-text{
+                @extend .color-gray;
+                &.color-primary{
+                    @extend .color-primary;
+                }
+            }
+        }
+        .info-list{
+            span{
+                @extend .color-light;
+            }
+        }
+    }
+}

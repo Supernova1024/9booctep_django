@@ -1,0 +1,244 @@
+{% import '_course-card-simple.html' as course %}
+{% import '_course-card-popular.html' as post %}
+{% import '_account-path-card.html' as path %}
+
+<div class="bg-white border-bottom-2 py-16pt {{ submenuClass or '' }}">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="row align-items-center">
+      <div class="d-flex col-md align-items-center border-bottom border-md-0 mb-16pt mb-md-0 pb-16pt pb-md-0">
+        <div class="rounded-circle bg-primary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+          <i class="material-icons text-white">subscriptions</i>
+        </div>
+        <div class="flex">
+          <div class="card-title mb-4pt">8,000+ Courses</div>
+          <p class="card-subtitle text-black-70">Explore a wide range of skills.</p>
+        </div>
+      </div>
+      <div class="d-flex col-md align-items-center border-bottom border-md-0 mb-16pt mb-md-0 pb-16pt pb-md-0">
+        <div class="rounded-circle bg-primary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+          <i class="material-icons text-white">verified_user</i>
+        </div>
+        <div class="flex">
+          <div class="card-title mb-4pt">By Industry Experts</div>
+          <p class="card-subtitle text-black-70">Professional development from the best people.</p>
+        </div>
+      </div>
+      <div class="d-flex col-md align-items-center">
+        <div class="rounded-circle bg-primary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+          <i class="material-icons text-white">update</i>
+        </div>
+        <div class="flex">
+          <div class="card-title mb-4pt">Unlimited Access</div>
+          <p class="card-subtitle text-black-70">Unlock Library and learn any topic with one subscription.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+
+    <div class="page-separator">
+      <div class="page-separator__text">From the blog</div>
+    </div>
+
+    {% set items = [{
+      image: "sketch",
+      category: "Sketch",
+      title: "Merge Duplicates Inconsistent Symbols",
+      author_avatar: "assets/images/256_luke-porter-261779-unsplash.jpg"
+    }, {
+      image: "invision",
+      category: "inVision",
+      title: "Design Systems Essentials",
+      author_avatar: "assets/images/256_michael-dam-258165-unsplash.jpg"
+    }, {
+      image: "photoshop",
+      category: "Photoshop",
+      title: "Semantic Logo Design",
+      author_avatar: "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+    }] %}
+
+    <div class="row card-group-row">
+      {% for item in items %}
+        <div class="col-md-6 col-lg-4 card-group-row__col">
+          {{ post.component(
+            title=item.title, 
+            image=item.image, 
+            avatar=(item.avatar or item.image), 
+            free=item.free,
+            favorite=item.favorite,
+            position=item.position,
+            open=item.open,
+            author_avatar=item.author_avatar,
+            class='card-group-row__card') }}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% set posts = [{
+      avatar: "assets/images/paths/invision_200x168.png",
+      title: "Design Systems Essentials",
+      views: 35,
+      tag: "inVision",
+      date: "11 Nov, 2018 07:46 AM",
+      avatarGroup: true,
+      avatarCount: 3,
+      avatars: [
+        "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+        "assets/images/256_michael-dam-258165-unsplash.jpg",
+        "assets/images/256_luke-porter-261779-unsplash.jpg"
+      ]
+    }] %}
+
+    <div class="posts-cards">
+      {% for item in posts %}
+      <div class="card posts-card mb-0">
+        <div class="posts-card__content d-flex align-items-center flex-wrap">
+          <div class="avatar avatar-lg mr-3">
+            <a href=""><img src="{{ item.avatar }}" alt="avatar" class="avatar-img rounded"></a>
+          </div>
+          <div class="posts-card__title flex d-flex flex-column">
+            <a href="" class="card-title mr-3">{{ item.title }}</a>
+            <small class="text-50">{{ item.views }} views last week</small>
+          </div>
+          <div class="d-flex align-items-center flex-column flex-sm-row posts-card__meta">
+            <div class="mr-3 text-50 text-uppercase posts-card__tag d-flex align-items-center">
+              <i class="material-icons text-muted-light mr-1">folder_open</i> {{ item.tag }}
+            </div>
+            <div class="mr-3 text-50 posts-card__date">
+              <small>{{ item.date }}</small>
+            </div>
+            <div class="media ml-sm-auto align-items-center">
+              <div class="media-left mr-2{% if item.avatarGroup %} avatar-group{% endif %}">
+                {% for avatar in item.avatars %}
+                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                  <img src="{{ avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+                </div>
+                {% endfor %}
+              </div>
+              <div class="media-body">
+                {% if item.avatarCount > 1 %}
+                <a href="">+{{ item.avatarCount-1 }} more</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-separator">
+      <div class="page-separator__text">Learning Paths</div>
+    </div>
+
+    {% set items = [{
+      title: 'React Native',
+      image: 'react'
+    }, {
+      title: 'Dev Ops',
+      image: 'devops'
+    }, {
+      title: 'Redis',
+      image: 'redis'
+    }] %}
+
+    <div class="row card-group-row">
+      {% for item in items %}
+      <div class="col-sm-4 card-group-row__col">
+        {{ path.component(
+          class='card-group-row__card', 
+          title=item.title, 
+          image=item.image,
+          open=item.open,
+          favorite=item.favorite,
+          cta=false) }}
+      </div>
+      {% endfor %}
+    </div>
+
+    {% set items = [{
+      title: 'MailChimp',
+      image: 'mailchimp'
+    }, {
+      title: 'Swift',
+      image: 'swift'
+    }, {
+      title: 'WordPress',
+      image: 'wordpress'
+    }] %}
+
+    <div class="row card-group-row mb-lg-8pt">
+      {% for item in items %}
+      <div class="col-sm-4 card-group-row__col">
+        {{ path.component(
+          class='card-group-row__card mb-lg-0', 
+          title=item.title, 
+          image=item.image,
+          open=item.open,
+          favorite=item.favorite,
+          cta=false) }}
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>  
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass }}">
+    <div class="page-separator">
+      <div class="page-separator__text">Design Courses</div>
+    </div>
+
+    {% set items = [{
+      title: 'Learn Sketch',
+      image: 'sketch'
+    }, {
+      title: 'Learn Flinto',
+      image: 'flinto'
+    }, {
+      title: 'Learn Photoshop',
+      image: 'photoshop'
+    }, {
+      title: 'Learn Figma', 
+      image: 'figma'
+    }] %}
+
+    <div class="row card-group-row">
+      {% for item in items %}
+        <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+          {{ course.component(
+            prefix=prefix,
+            title=item.title, 
+            image=item.image, 
+            avatar=(item.avatar or item.image), 
+            free=item.free,
+            favorite=item.favorite,
+            position=item.position,
+            open=item.open,
+            author_avatar=item.author_avatar,
+            class='card-group-row__card') }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-headline text-center">
+      <h2>Feedback</h2>
+      <p class="lead measure-lead mx-auto text-black-70">What other students turned professionals have to say about us after learning with us and reaching their goals.</p>
+    </div>
+
+    {% include 'pages/_feedback.carousel.html' %}
+  </div>
+</div>

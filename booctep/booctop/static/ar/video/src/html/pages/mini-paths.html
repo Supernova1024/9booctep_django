@@ -1,0 +1,34 @@
+---
+title: Learning Paths 
+slug: paths
+guest: true
+bodyClass: sub-layout
+navbar_search: false
+footer: false
+---
+{% extends 'layouts/mini.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+{% import 'pages/_results-heading.html' as results %}
+
+{% block page %}
+<div
+  data-push 
+  data-responsive-width="992px"
+  data-has-scrolling-region
+  data-fullbleed
+  class="mdk-drawer-layout js-mdk-drawer-layout">
+  <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+    
+    <div class="page-section">
+      <div class="{{ containerClass or 'container' }}">
+
+        {{ results.component(label='paths') }}
+        {{ super() }}
+
+      </div>
+    </div>
+  </div>
+  
+  {{ drawer.component(class='sub-layout-drawer') }}
+</div>
+{% endblock %}

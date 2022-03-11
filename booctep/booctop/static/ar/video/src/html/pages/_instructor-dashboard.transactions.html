@@ -1,0 +1,93 @@
+<div class="page-separator">
+  <div class="page-separator__text">Transactions</div>
+</div>
+<div class="card">
+  <div
+    data-toggle="lists" 
+    data-lists-values='[
+      "js-lists-values-course", 
+      "js-lists-values-document",
+      "js-lists-values-amount",
+      "js-lists-values-date"
+    ]'
+    data-lists-sort-by="js-lists-values-date"
+    data-lists-sort-desc="true"
+    class="table-responsive">
+    <table class="table table-flush table-nowrap">
+      <thead>
+        <tr>
+          <th colspan="2">
+            <a 
+              href="javascript:void(0)" 
+              class="sort"
+              data-sort="js-lists-values-course">Course</a>
+            <a 
+              href="javascript:void(0)" 
+              class="sort"
+              data-sort="js-lists-values-document">Document</a>
+            <a 
+              href="javascript:void(0)" 
+              class="sort"
+              data-sort="js-lists-values-amount">Amount</a>
+            <a 
+              href="javascript:void(0)" 
+              class="sort"
+              data-sort="js-lists-values-date">Date</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        
+        {% set statement = [{
+          purchased_at: "12 Nov 2018",
+          course: "Angular Routing In-Depth",
+          image: "assets/images/paths/angular_routing_200x168.png",
+          document: "#8734",
+          amount: "89"
+        }, {
+          purchased_at: "13 Nov 2018",
+          course: "Angular Unit Testing",
+          image: "assets/images/paths/angular_testing_200x168.png",
+          document: "#8735",
+          amount: "89"
+        }, {
+          purchased_at: "14 Nov 2018",
+          course: "Introduction to TypeScript",
+          image: "assets/images/paths/typescript_200x168.png",
+          document: "#8736",
+          amount: "89"
+        }, {
+          purchased_at: "15 Nov 2018",
+          course: "Learn Angular Fundamentals",
+          image: "assets/images/paths/angular_200x168.png",
+          document: "#8737",
+          amount: "89"
+        }] %}
+
+        {% for item in statement %}
+        <tr>
+          <td>
+            <div class="d-flex flex-nowrap align-items-center">
+              <a href="{{ prefix or '' }}instructor-edit-course.html" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                <img src="{{ item.image }}" alt="course" class="avatar-img rounded">
+                <span class="overlay__content"></span>
+              </a>
+              <div class="flex">
+                <a class="card-title js-lists-values-course" href="{{ prefix or '' }}instructor-edit-course.html">{{ item.course }}</a>
+                <small class="text-muted mr-1">
+                  Invoice 
+                  <a href="{{ prefix or '' }}invoice.html" style="color: inherit;" class="js-lists-values-document">{{ item.document }}</a> - 
+                  &dollar;<span class="js-lists-values-amount">{{ item.amount }}</span> USD
+                </small>
+              </div>
+            </div>
+          </td>
+          <td class="text-right">
+            <small class="text-muted text-uppercase js-lists-values-date">{{ item.purchased_at }}</small>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

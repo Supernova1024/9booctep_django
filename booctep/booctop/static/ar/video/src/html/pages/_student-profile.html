@@ -1,0 +1,93 @@
+<div class="page-section bg-primary border-bottom-white">
+  <div class="{{ containerClass }} d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+    <img src="assets/images/illustration/student/128/white.svg" width="104" class="mr-md-32pt mb-32pt mb-md-0" alt="student">
+    <div class="flex mb-32pt mb-md-0">
+      <h2 class="text-white mb-0">Laza Bogdan</h2>
+      <p class="lead text-white-50 d-flex align-items-center">Student <span class="ml-16pt d-flex align-items-center"><i class="material-icons icon-16pt mr-4pt">opacity</i> 2,300 IQ</span></p>
+    </div>
+    <a href="" class="btn btn-outline-white">Follow</a>
+  </div>
+</div>
+
+<div class="page-section bg-primary">
+  <div class="{{ containerClass }}">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card border-0 mb-lg-0">
+          <div class="card-header d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">116</div>
+            <div class="flex">
+              <p class="card-title">Angular</p>
+              <p class="card-subtitle text-50">Best score</p>
+            </div>
+            <div class="dropdown">
+              <a href="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular Topics</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="" class="dropdown-item">Popular Topics</a>
+                <a href="" class="dropdown-item">Web Design</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-24pt">
+            <div class="chart" style="height: 344px;">
+              <canvas 
+                id="topicIqChart" 
+                class="chart-canvas js-update-chart-line"
+                data-chart-hide-axes="true"
+                data-chart-points="true"
+                data-chart-suffix=" points"
+                data-chart-line-border-color="primary"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        {% include 'components/achievements.carousel.html' %}
+        <div class="card border-0 mb-lg-0">
+          <div class="card-header d-flex align-items-center border-0">
+            <div class="h2 mb-0 mr-3">432</div>
+            <div class="flex">
+              <p class="card-title">Experience IQ</p>
+              <p class="card-subtitle text-50">4 days streak this week</p>
+            </div>
+            <i class="material-icons text-muted ml-2">trending_up</i>
+          </div>
+          <div class="card-body pt-0">
+            <div class="chart" style="height: 128px;">
+              <canvas 
+                id="iqChart" 
+                class="chart-canvas js-update-chart-line"
+                data-chart-hide-axes="false"
+                data-chart-points="true"
+                data-chart-suffix="pt"
+                data-chart-line-border-color="primary"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>About me</h4>
+        <p class="text-70">Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
+      </div>
+      <div class="col-md-6">
+        <h4>Connect</h4>
+        <p class="text-70">I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+        <div class="d-flex align-items-center">
+          <a href="" class="text-accent fab fa-facebook-square font-size-24pt mr-8pt"></a>
+          <a href="" class="text-accent fab fa-twitter-square font-size-24pt"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-section">
+  <div class="{{ containerClass or 'container' }}">
+    {% include 'pages/_profile.activity.html' %}
+  </div>
+</div>

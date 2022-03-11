@@ -1,0 +1,148 @@
+{% macro component(prefix=prefix, container, containerClass=containerClass) %}
+{% if container !== false %}<div class="{{ containerClass or 'container' }}">{% endif %}
+<div class="page-separator">
+  <div class="page-separator__text">Student Feedback</div>
+</div>
+<div class="row mb-32pt">
+  <div class="col-md-3 mb-32pt mb-md-0">
+    <div class="display-1">4.7</div>
+    <div class="rating rating-24">
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star_border</span></span>
+    </div>
+    <p class="text-muted mb-0">20 ratings</p>
+  </div>
+  <div class="col-md-9">
+    
+    <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="75% rated 5/5" data-placement="top">
+      <div class="col-md col-sm-6">
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="75" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+        <div class="rating">
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="16% rated 4/5" data-placement="top">
+      <div class="col-md col-sm-6">
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="16" style="width: 16%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+        <div class="rating">
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="12% rated 3/5" data-placement="top">
+      <div class="col-md col-sm-6">
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="12" style="width: 12%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+        <div class="rating">
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="9% rated 2/5" data-placement="top">
+      <div class="col-md col-sm-6">
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="9" style="width: 9%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+        <div class="rating">
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="0% rated 0/5" data-placement="top">
+      <div class="col-md col-sm-6">
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
+        <div class="rating">
+          <span class="rating__item"><span class="material-icons">star</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+          <span class="rating__item"><span class="material-icons">star_border</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% set items = [{
+  avatar: 'LB',
+  date: '2 days ago',
+  name: 'Laza Bogdan',
+  description: 'A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.'
+}, {
+  avatar: 'UK',
+  date: '2 days ago',
+  name: 'Umberto Klass'
+}, {
+  avatar: 'AD',
+  date: '2 days ago',
+  name: 'Adrian Demian'
+}] %}
+
+{% for item in items %}
+<div class="pb-16pt{% if not loop.last %} mb-16pt border-bottom{% else %} mb-24pt{% endif %} row">
+  <div class="col-md-3 mb-16pt mb-md-0">
+    <div class="d-flex">
+      <a href="{{ prefix }}student-profile.html" class="avatar avatar-sm mr-12pt">
+        <!-- <img src="{{ item.avatar }}" alt="avatar" class="avatar-img rounded-circle"> -->
+        <span class="avatar-title rounded-circle">{{ item.avatar }}</span>
+      </a>
+      <div class="flex"> 
+        <p class="small text-muted m-0">{{ item.date }}</p>
+        <a href="{{ prefix }}student-profile.html" class="card-title">{{ item.name }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="rating mb-8pt">
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star_border</span></span>
+    </div>
+    <p class="text-70 mb-0">{{ item.description or "This course is absolutely amazing, Bryan goes* out of his way to really expl*ain things clearly I couldn't be happier, so glad I made this purchase!" }}</p>
+  </div>
+</div>
+{% endfor %}
+{% if container !== false %}</div>{% endif %}
+{% endmacro %}
+
+{{ component(prefix=prefix, containerClass=containerClass) }}

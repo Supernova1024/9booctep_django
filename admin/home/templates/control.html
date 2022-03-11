@@ -1,0 +1,327 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Control Dashboard</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default card-md mb-4">
+            <div class="card-header  py-20">
+                <h6>Priority</h6>
+            </div>
+            <div class="card-body">
+                <div class="page-title-block bg-lighter bg-container">
+                    <div class="page-title-bg bg-white">
+                        <div class="page-title-wrap ">
+                            <div class="page-title d-flex justify-content-between">
+                                <div class="page-title__left">
+                                    <span class="title-text">Priority</span>
+                                    <a href="#"><i class="las la-arrow-right"></i></a>
+                                    <span class="sub-title">Business</span>
+                                </div>
+                                <div class="page-title__right">
+                                    <div class="countryOption"
+                                         style="width:300px;border:1px solid #E9EAEA;border-radius: 3px;margin-left:20px">
+                                        <select class="js-example-basic-single js-states form-control"
+                                                id="priority_category" onchange="priorityChange(this)">
+                                            <option value="0" {% if cat_id == 0 %} selected {% endif %}>All</option>
+                                            {% for category in categories %}
+                                            <option value="{{ category.id }}" {% if cat_id == category.id %} selected {% endif %}>{{ category.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default card-md mb-4">
+            <div class="card-header  py-20">
+                <h6>Offers</h6>
+                <div class="action-btn">
+                    <a href="#" class="btn px-15 btn-primary" data-toggle="modal" data-target="#c-job">
+                        <i class="las la-plus fs-16"></i>Add New Offer
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="page-title-block bg-lighter bg-container">
+                    <div class="page-title-bg bg-white">
+                        <div class="page-title-wrap ">
+                            <div class="page-title d-flex justify-content-between">
+                                <div class="page-title__left">
+                                    <span class="title-text">Offers</span>
+                                    <a href="#"><i class="las la-arrow-right"></i></a>
+                                    <span class="sub-title">Performance offer</span> -
+                                    <span class="sub-title">80%</span>
+                                    <a href="#" class="remove" data-toggle="modal" data-target="#modal-info-delete">
+                                        <span data-feather="trash-2"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default card-md mb-4">
+            <div class="card-header  py-20">
+                <h6>Students Tax</h6>
+                <div class="action-btn">
+                    <a href="#" class="btn px-15 btn-primary" data-toggle="modal" onclick="showStudentTaxModal()">
+                        <i class="las la-plus fs-16"></i>Add Students Tax
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="page-title-block bg-lighter bg-container">
+                    <div class="page-title-bg bg-white">
+                        <div class="page-title-wrap ">
+                            <div class="page-title d-flex justify-content-between">
+                                <div class="page-title__left">
+                                    <span class="title-text">Students Tax</span>
+                                    <a href="#"><i class="las la-arrow-right"></i></a>
+                                    <span class="sub-title" id="student_tax_show">{{ student_tax }}% </span>
+                                    <a class="remove ml-10" style="cursor:pointer;" onclick="deleteStudentTax()">
+                                        <span data-feather="trash-2"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default card-md mb-4">
+            <div class="card-header  py-20">
+                <h6>Teachers Tax</h6>
+                <div class="action-btn">
+                    <a href="#" class="btn px-15 btn-primary" data-toggle="modal" data-target="#t-tax">
+                        <i class="las la-plus fs-16"></i>Add Teacher Tax
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="page-title-block bg-lighter bg-container">
+                    <div class="page-title-bg bg-white">
+                        <div class="page-title-wrap ">
+                            <div class="page-title d-flex justify-content-between">
+                                <div class="page-title__left">
+                                    <span class="title-text">Teachers Tax</span>
+                                    <a href="#"><i class="las la-arrow-right"></i></a>
+                                    <span class="sub-title" id="teacher_tax_show">{{ teacher_tax }}% </span>
+                                    <a class="remove ml-10" style="cursor:pointer;" onclick="deleteTeacherTax()">
+                                        <span data-feather="trash-2"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade add-contact" id="c-job" role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500" id="staticBackdropLabel">Offer Information</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <form action="/">
+                        <div class="form-group mb-20">
+                            <label>Offer Title:</label>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Your Name">
+                        </div>
+                        <div class="form-group mb-20">
+                            <label>Offer Percentage:</label>
+                            <input type="number" class="form-control form-control-lg"
+                                   placeholder="Offer percentage">
+                        </div>
+
+                        <div class="button-group d-flex pt-20">
+
+
+                            <button class="btn btn-primary btn-default btn-squared ">add Offer
+                            </button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade add-contact" id="t-tax" role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Tax Information</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <label>Tax Percentage:</label>
+                        <input type="number" class="form-control form-control-lg" id="teacher_tax"
+                               placeholder="Tax percentage">
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <button class="btn btn-primary btn-default btn-squared" onclick="saveTeacherTax()">add Tax
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade add-contact" id="s-tax" role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500" >Tax Information</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <label>Tax Percentage:</label>
+                        <input type="number" class="form-control form-control-lg" id="student_tax"
+                               placeholder="Tax percentage">
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <button class="btn btn-primary btn-default btn-squared" onclick="saveStudentTax()">add Tax
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+
+    function showStudentTaxModal() {
+        $("#s-tax").modal("show")
+    }
+
+    function saveStudentTax() {
+        $("#s-tax").modal("hide")
+        let tax = $("#student_tax").val()
+        let url = '/save_student_tax/'
+        let form_data = new FormData()
+        form_data.append('tax', tax)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then( response => {
+            if (response.status == 1) {
+                $("#student_tax_show").html(response.tax + "%")
+            }
+        })
+    }
+
+    function showTeacherTaxModal() {
+        $("#t-tax").modal("show")
+    }
+
+    function saveTeacherTax() {
+        $("#t-tax").modal("hide")
+        let tax = $("#teacher_tax").val()
+        let url = '/save_teacher_tax/'
+        let form_data = new FormData()
+        form_data.append('tax', tax)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then( response => {
+            if (response.status == 1) {
+                $("#teacher_tax_show").html(response.tax + "%")
+            }
+        })
+    }
+
+    function priorityChange(obj) {
+        let cat_id = $(obj).val()
+        let url = '/priority_change/'
+        let form_data = new FormData()
+        form_data.append('id', cat_id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+
+        })
+    }
+
+    function deleteStudentTax() {
+        let url = '/delete_student_tax/'
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: new FormData(),
+        }).then(response => {
+            if(response.status == 1){
+                $("#student_tax_show").html("0%")
+            }
+        })
+    }
+
+    function deleteTeacherTax() {
+        let url = '/delete_teacher_tax/'
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: new FormData(),
+        }).then(response => {
+            if(response.status == 1){
+                $("#teacher_tax_show").html("0%")
+            }
+        })
+    }
+</script>
+{% endblock %}

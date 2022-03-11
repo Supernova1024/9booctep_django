@@ -1,0 +1,398 @@
+
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Expenses Dashboard</h4>
+                </div>
+
+            </div>
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="action-btn">
+                                <a href="#" class="btn px-15 btn-primary" onclick="showAddModal()">
+                                    <i class="las la-plus fs-16"></i>Add New Expenses
+                                </a>
+
+                            </div>
+                        </div>
+                    </div><!-- End: .project-top-wrapper -->
+                    <form action="" method="post" class="d-none" id="search_form">
+                        {% csrf_token %}
+                        <input type="hidden" name="page" id="page" value="{{ page }}">
+                    </form>
+                    <div class="tab-content" id="ap-tabContent">
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                             aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                    <tr class="userDatatable-header">
+                                        <th>
+                                            <span class="userDatatable-title">Item name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Buyer</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Item Price</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Item description</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title float-right">Actions</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for expense in expenses %}
+                                    <tr>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ expense.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ expense.buyer }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ expense.price }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ expense.description }}
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                <li>
+                                                    <div class="action-btn">
+                                                        <a href="#" style="width: 50px !important;margin-right:-5px" data-name="{{ expense.name }}" data-buyer="{{ expense.buyer }}"
+                                                           data-price="{{ expense.price }}" data-description="{{ expense.description }}"
+                                                           class=" px-15" onclick="showEditModal('{{ expense.id }}', this)">
+                                                            <span data-feather="settings"></span></a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="remove" onclick="showDeleteModal('{{ expense.id }}')">
+                                                        <span data-feather="trash-2" data-toggle="modal"
+                                                        data-target="#modal-info-delete"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {% if expenses.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if expenses.has_previous %}
+                                    <a href="#" onclick="page_prev()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in expenses.paginator.page_range %}
+                                    {% if expenses.number == i %}
+                                    <a href="#" onclick="page_set('{{ i }}')"
+                                       class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set('{{ i }}')"
+                                       class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if expenses.has_next %}
+                                    <a href="#" onclick="page_next()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+</div>
+<div class="modal fade new-member" id="new-member"
+         role="dialog" tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content  radius-xl">
+                <div class="modal-header">
+                    <h6 class="modal-title fw-500"
+                        id="staticBackdropLabel">Edit Item</h6>
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span data-feather="x"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="new-member-modal">
+                        <div class="form-group mb-20">
+                            <input type="text" id="edit_name"
+                                   class="form-control"
+                                   value="">
+                        </div>
+                        <div class="form-group mb-20">
+                            <input type="text" id="edit_buyer"
+                                   class="form-control"
+                                   value="">
+                        </div>
+                        <div class="form-group mb-20">
+                            <input type="text" id="edit_price"
+                                   class="form-control"
+                                   value="">
+                        </div>
+                        <div class="form-group mb-20">
+                            <textarea class="form-control"
+                                      id="edit_description"
+                                      rows="3"
+                                      placeholder=""></textarea>
+                        </div>
+                        <div class="button-group d-flex pt-25">
+                            <button class="btn btn-primary btn-default btn-squared text-capitalize" onclick="saveExpense()">
+                                Edit item
+                            </button>
+                            <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">
+                                cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="modal fade add-contact" id="add-contact" role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Add
+                    expenses</h6>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <input type="text" class="form-control" id="add_name"
+                               placeholder="Item name" value="">
+                    </div>
+                    <div class="form-group mb-20">
+                        <input type="text" class="form-control" id="add_buyer"
+                               placeholder="buyer">
+                    </div>
+                    <div class="form-group mb-20">
+                        <input type="number" class="form-control" id="add_price"
+                               placeholder="Item Price">
+                    </div>
+                    <div class="form-group mb-20">
+                        <textarea class="form-control"
+                                  id="add_descriptoin" rows="3"
+                                  placeholder="Item description"></textarea>
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <button class="btn btn-primary btn-default btn-squared" onclick="addExpense()">
+                            Send notification
+                        </button>
+                        <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">
+                            cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-info-delete modal fade show" id="modal-info-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to delete this Expenses?</h6>
+                        <p>This is serious act please make sure what you doing!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success btn-outlined btn-sm" data-dismiss="modal" onclick="deleteExpense()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+
+    let expense_id = '';
+    let cur_page = '{{ expenses.number }}';
+
+    function showAddModal() {
+        $("#add-contact").modal("show")
+    }
+
+    function showEditModal(id, obj) {
+        let name = $(obj).data('name')
+        let buyer = $(obj).data('buyer')
+        let price = $(obj).data('price')
+        let description = $(obj).data('description')
+        $("#new-member").modal("show")
+        $("#edit_name").val(name)
+        $("#edit_buyer").val(buyer)
+        $("#edit_price").val(price)
+        $("#edit_description").val(description)
+        expense_id = id
+    }
+
+    function addExpense() {
+        $("#add-contact").modal("hide")
+        name = $("#add_name").val()
+        buyer = $("#add_buyer").val()
+        price = $("#add_price").val()
+        description = $("#add_descriptoin").val()
+        let url = '/save_expense/'
+        let form_data = new FormData()
+        form_data.append('name', name)
+        form_data.append('buyer', buyer)
+        form_data.append('price', price)
+        form_data.append('description', description)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+    function saveExpense() {
+        name = $("#edit_name").val()
+        buyer = $("#edit_buyer").val()
+        price = $("#edit_price").val()
+        description = $("#edit_description").val()
+        let url = '/save_expense/'
+        let form_data = new FormData()
+        form_data.append('id', expense_id)
+        form_data.append('name', name)
+        form_data.append('buyer', buyer)
+        form_data.append('price', price)
+        form_data.append('description', description)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+    function showDeleteModal(id) {
+        expense_id = id
+    }
+
+    function deleteExpense() {
+        let url = '/delete_expense/'
+        let form_data = new FormData()
+        form_data.append('id', expense_id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+</script>
+{% endblock %}

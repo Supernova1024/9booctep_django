@@ -1,0 +1,38 @@
+<script id="template-message" type="text/x-jsrender">
+  <li class="message d-inline-flex">
+    <div class="message__aside">
+      <a href="{{ prefix }}profile.html" class="avatar avatar-sm">
+        <img src="{% raw %}{{:avatar}}{% endraw %}" alt="people" class="avatar-img rounded-circle">
+      </a>
+    </div>
+    <div class="message__body card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="flex mr-3">
+            <a href="{{ prefix }}profile.html" class="text-body"><strong>{% raw %}{{:name}}</strong></a>
+          </div>
+          <div>
+            <small class="text-muted">{{:date}}</small>
+          </div>
+        </div>
+        <span class="text-black-70">{{:message}}</span>
+        {{if file}}
+        <a href="#" class="media align-items-center mt-2 text-decoration-0 bg-white px-3">
+          <span class="avatar mr-2">
+            <span class="avatar-title rounded-circle">
+              <i class="material-icons font-size-24pt">attach_file</i>
+            </span>
+          </span>
+          <span class="media-body" style="line-height: 1.5">
+            <span class="text-primary">{{:file.name}}</span><br>
+            <span class="text-muted">{{:file.size}}</span>
+          </span>
+        </a>
+        {{/if}}{% endraw %}
+      </div>
+    </div>
+  </li>
+</script>
+
+<!-- Messages App -->
+<script src="assets/js/messages.js"></script>

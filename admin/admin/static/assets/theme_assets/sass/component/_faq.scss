@@ -1,0 +1,55 @@
+//Faqs
+.faq-support {
+    svg {
+        max-width: 100%;
+    }
+    button{
+        white-space: nowrap;
+    }
+}
+
+.faqs-wrapper-tab {
+    padding-top: 28px;
+
+    .nav-link {
+        @include ofs(14px, lh(14px, 22px), 500);
+        text-transform: capitalize;
+        padding: 0 13px;
+        @extend .color-gray;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        border-left: 2px solid transparent;
+        transition: $transition-base;
+
+        &:not(:last-child) {
+            margin-bottom: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.5;
+            margin-right: 12px;
+        }
+
+        svg {
+            width: 16px;
+            margin-right: 14px;
+        }
+
+        &:hover,
+        &.active {
+            border-left: 2px solid $primary;
+            @extend .color-primary;
+            padding: 0 27px;
+
+            .dot {
+                opacity: 1;
+            }
+        }
+    }
+}
+

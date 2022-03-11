@@ -1,0 +1,74 @@
+
+// Statistics Item
+.statistics-item{
+    flex: 1;
+    @include e("title"){
+        font-size: 14px;
+        @extend .color-light;
+    }
+    @include e("number"){
+        display: flex;
+        align-items: center;
+        margin: 5px 0 0;
+        font-size: 20px;
+        @extend .color-dark;
+        i,
+        svg,
+        span{
+            font-size: 21px;
+            margin-right: 4px;
+        }
+        i,
+        svg,
+        img{
+            margin-left: -3px;
+        }
+        .number-fraction{
+            margin: 0;
+            font-size: 14px;
+        }
+    }
+    @include e("action"){
+        margin-top: 16px;
+        a{
+            display: inline-block;
+        }
+    }
+}
+
+// Statistics Type
+.statistics-item{
+    &.statistics-success{
+        .statistics-item__number{
+            @extend .color-success;
+        }
+    }
+    &.statistics-danger{
+        .statistics-item__number{
+            @extend .color-danger;
+        }
+    }
+    .text-gray{
+        letter-spacing: 1.5px;
+        margin-left: 3px;
+        font-size: 14px;
+    }
+}
+
+// Statistics Countdown 
+.statistics-countdown{
+    @include e("title"){
+        font-size: 14px;
+        @extend .color-light;
+    }
+    ul{
+        margin-top: 10px;
+        li{
+            display: inline-block;
+        }
+    }
+    @include e("time"){
+        font-size: 20px;
+        @extend .color-dark;
+    }
+}

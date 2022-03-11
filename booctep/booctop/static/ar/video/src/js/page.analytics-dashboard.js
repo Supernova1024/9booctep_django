@@ -1,0 +1,1 @@
+import 'ui-huma/js/page.analytics-dashboard'

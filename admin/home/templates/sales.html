@@ -1,0 +1,299 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="contents">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Sales Performance Dashboard</h4>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-12 mb-25">
+                    <div class="card revenueChartTwo broder-0">
+                        <div class="card-header">
+                            <h6>Sales Target</h6>
+                        </div>
+                        <div class="card-body px-sm-50 pb-sm-50 pt-sm-45 px-30 pb-30 pt-25 mb-sm-30">
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <div class="sales-target__progress-bar">
+                                        <div class="left"></div>
+                                        <div class="right">
+                                            <div class="back"></div>
+                                        </div>
+                                        <div class="barOverflow">
+                                            <div class="bar">
+                                                <div class="top-circle"></div>
+                                            </div>
+                                        </div>
+                                        <div class="total-count">
+                                            <span>{{ sale_percent }}</span>%
+                                            <div class="total-count__text">
+                                                progress
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sales-target d-flex justify-content-between">
+                                <div class="sales-target__single">
+                                    <h3 class="text-success">{{ sales }}</h3>
+                                    <span class="fs-14 color-gray">Paid courses</span>
+                                </div>
+                                <div class="sales-target__single">
+                                    <h3>{{ sale_target }}</h3>
+                                    <span class="fs-14 color-gray">Target</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-default btn-squared mt-20" style="margin-left: 70px"
+                       data-toggle="modal" data-target="#sales-target">
+                        Add new sales target
+                    </a>
+                </div>
+                <div class="col-xl-4 col-lg-12 mb-25">
+                    <div class="card revenueChartTwo broder-0">
+                        <div class="card-header">
+                            <h6>Courses Target</h6>
+                        </div>
+                        <div class="card-body px-sm-50 pb-sm-50 pt-sm-45 px-30 pb-30 pt-25 mb-sm-30">
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <div class="sales-target__progress-bar">
+                                        <div class="left"></div>
+                                        <div class="right">
+                                            <div class="back"></div>
+                                        </div>
+                                        <div class="barOverflow">
+                                            <div class="bar">
+                                                <div class="top-circle"></div>
+                                            </div>
+                                        </div>
+                                        <div class="total-count">
+                                            <span>{{ course_percent }}</span>%
+                                            <div class="total-count__text">
+                                                progress
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sales-target d-flex justify-content-between">
+                                <div class="sales-target__single">
+                                    <h3 class="text-success">{{ courses }}</h3>
+                                    <span class="fs-14 color-gray">Courses</span>
+                                </div>
+                                <div class="sales-target__single">
+                                    <h3>{{ course_target }}</h3>
+                                    <span class="fs-14 color-gray">Target</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary btn-default btn-squared mt-20" style="margin-left: 70px"
+                       data-toggle="modal" data-target="#course-target">
+                        Add new courses target
+                    </a>
+                </div>
+                <div class="col-xl-4 col-lg-12 mb-25">
+                    <div class="card revenueChartTwo broder-0">
+                        <div class="card-header">
+                            <h6>Users Target</h6>
+                        </div>
+                        <div class="card-body px-sm-50 pb-sm-50 pt-sm-45 px-30 pb-30 pt-25 mb-sm-30">
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <div class="sales-target__progress-bar">
+                                        <div class="left"></div>
+                                        <div class="right">
+                                            <div class="back"></div>
+                                        </div>
+                                        <div class="barOverflow">
+                                            <div class="bar">
+                                                <div class="top-circle"></div>
+                                            </div>
+                                        </div>
+                                        <div class="total-count">
+                                            <span>{{ user_percent }}</span>%
+                                            <div class="total-count__text">
+                                                progress
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sales-target d-flex justify-content-between">
+                                <div class="sales-target__single">
+                                    <h3 class="text-success">{{ users }}</h3>
+                                    <span class="fs-14 color-gray">Users</span>
+                                </div>
+                                <div class="sales-target__single">
+                                    <h3>{{ user_target }}</h3>
+                                    <span class="fs-14 color-gray">Target</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-default btn-squared mt-20" style="margin-left: 70px"
+                            data-toggle="modal" data-target="#users-target">
+                        Add new users target
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade add-contact" id="sales-target" role="dialog" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Add sales target</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <label>Target:</label>
+                        <input type="number" class="form-control form-control-lg" id="sale_target"
+                               placeholder="Your sales target" value="{{ sale_target }}">
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <a href="#" class="btn btn-primary btn-default btn-squared " onclick="saveSaleTarget()">add
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade add-contact" id="course-target" role="dialog" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Add courses target</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <label>Target:</label>
+                        <input type="number" class="form-control form-control-lg" id="course_target"
+                               placeholder="Your courses target" value="{{ course_target }}">
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <a href="#" class="btn btn-primary btn-default btn-squared " onclick="saveCourseTarget()">Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade add-contact" id="users-target" role="dialog" tabindex="-1"
+                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Add users target</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <label>Target:</label>
+                        <input type="number" class="form-control form-control-lg" id="user_target"
+                               placeholder="Your users target"  value="{{ user_target }}">
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <a href="#" class="btn btn-primary btn-default btn-squared " onclick="saveUserTarget()">Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+
+    function saveSaleTarget() {
+        $("#sales-target").modal("hide")
+        sale = $("#sale_target").val()
+        let url = '/save_target/'
+        let form_data = new FormData()
+        form_data.append('data', sale)
+        form_data.append('key', 1)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                location.reload()
+            },
+        })
+    }
+
+    function saveCourseTarget() {
+        $("#course-target").modal("hide")
+        course = $("#course_target").val()
+        let url = '/save_target/'
+        let form_data = new FormData()
+        form_data.append('data', course)
+        form_data.append('key', 2)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                location.reload()
+            },
+        })
+    }
+
+    function saveUserTarget() {
+        $("#users-target").modal("hide")
+        user = $("#user_target").val()
+        let url = '/save_target/'
+        let form_data = new FormData()
+        form_data.append('data', user)
+        form_data.append('key', 3)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                location.reload()
+            },
+        })
+    }
+
+</script>
+{% endblock %}

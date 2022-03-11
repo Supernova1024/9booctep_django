@@ -1,0 +1,83 @@
+// generates theming classes based on theme color from $theme-colors map in bootstrap 
+@each  $key, $color in ($theme-colors) {
+  .color-#{$key}{
+    color: #{$color};
+  }
+  .bg-#{$key} {
+    background: #{$color};
+  }
+  .iborder-#{$key}{
+    color: #{$color};
+  }
+  .outline-#{$key}{
+    border: 1px solid #{$color};
+    color: #{$color}
+  }
+  .active-color-#{$key}{
+    label input:checked + span {
+      background: #{$color};
+      border-color: #{$color};
+    }
+  }
+  //generate bg with opacity and and text color
+  .circle-#{$key}{
+    color: #{$color};
+    background: rgba($color, 0.1);
+  }
+
+  //generate border color
+  .border-#{$key}{
+    border: 1px solid #{$color};
+  }
+  .bg-opacity-#{$key}{
+    background: rgba($color, 0.15);
+  }
+  .order-bg-opacity-#{$key}{
+    background: rgba($color, 0.10);
+  }
+  .hover-#{$key}:hover{
+    background: #{$color};
+    color:$white
+  }
+}
+
+// generating classes based on other colors used in the theme
+@each  $key, $color in ($other-colors) {
+  .color-#{$key}{
+    color: #{$color};
+  }
+  .bg-#{$key} {
+    background: #{$color};
+  }
+  .border-#{$key} {
+    border-color: #{$color};
+  }
+
+}
+
+// generating classes based on border colors used in the theme
+@each  $key, $color in ($border-colors) {
+  .border-#{$key} {
+    border:1px solid #{$color};
+  }
+}
+
+// generating classes based on bg colors used in the theme
+@each  $key, $color in ($bg-colors) {
+  .bg-#{$key} {
+    background: #{$color};
+  }
+}
+
+//generate social colors
+@each $key, $color in ($social-colors){
+  .color-#{$key}{
+    color: #{$color};
+  }
+  .bg-#{$key}{
+    background: #{$color};
+  }
+  .border-#{$key}{
+    border:1px solid #{$color};
+  }
+}

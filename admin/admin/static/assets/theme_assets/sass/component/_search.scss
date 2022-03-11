@@ -1,0 +1,111 @@
+//Search Result
+.search-result form {
+    height: 48px;
+
+    .form-control {
+        padding: 24px 13px;
+
+        &::placeholder {
+            @include ofs(14px, lh(14px, 25px), 400);
+            color: $extra-light;
+        }
+    }
+
+    svg {
+        width: 18px;
+        @extend .color-light;
+    }
+
+    button {
+        @include ofs(14px, lh(14px, 16px), 500);
+        @extend .color-primary;
+        text-transform: capitalize;
+    }
+}
+
+.search-keyword {
+    @include sm {
+        display: flex;
+        justify-content: center;
+    }
+
+    ul {
+        @include sm {
+            justify-content: center;
+        }
+
+        li {
+            margin: 5px;
+
+            a {
+                padding: 6px 15px;
+                @extend .color-light;
+                box-shadow: 0px 3px 6px #9299B80D;
+                border-radius: 4px;
+                background-color: white;
+                @include ofs(13px, lh(13px, 22px), 500);
+                text-transform: capitalize;
+
+                &.active {
+                    @extend .bg-primary;
+                    color: white;
+                }
+            }
+
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.search-content {
+
+    .search-content__keyResult {
+        a h6 {
+            text-transform: capitalize;
+
+            span {
+                font-weight: 600;
+            }
+        }
+
+        p {
+            @include ofs(14px, lh(14px, 22px), 400);
+            @extend .color-gray;
+            margin-top: 10px;
+        }
+    }
+
+    .keyword-searching {
+        @include ofs(16px, lh(16px, 20px), 600);
+        @extend .color-dark;
+        text-transform: capitalize;
+        margin-bottom: 0;
+
+        span {
+            @extend .color-light;
+            text-transform: lowercase;
+        }
+    }
+
+    .card .card-header {
+        @include lg {
+            flex-flow: unset;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+
+        .card-header,
+        .card-body {
+            width: 1001px;
+        }
+    }
+    @media (max-width: 1300px){
+        .card-header,
+        .card-body {
+            width: 100%;
+        }
+    }
+}

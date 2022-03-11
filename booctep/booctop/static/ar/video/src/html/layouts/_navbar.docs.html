@@ -1,0 +1,16 @@
+{% import 'components/avatar.html' as avatar %}
+
+<nav class="navbar navbar-expand-md navbar-dark-dodger-blue m-0 p-0">
+  <div class="{{ navbarContainerClass or containerClass }}">
+
+    <!-- Navbar Brand -->
+    <a href="{{ prefix }}index.html" class="navbar-brand mr-16pt">
+      {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="logo" class="img-fluid" />', size='sm', class='navbar-brand-icon mr-0 mr-lg-8pt', title_class='bg-primary', circle=false, element='span') }}
+      <span class="d-none d-lg-block">{{ brand }}</span>
+    </a>
+
+    <button class="navbar-toggler navbar-toggler-right d-block d-md-none" type="button" data-toggle="sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

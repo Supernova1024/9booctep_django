@@ -1,0 +1,987 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    {% load i18n %}
+
+
+    <style>
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+.lineeee{
+    border-bottom: 1px solid rgb(226, 226, 226) !important;
+}
+
+.lineeee-dark{
+    border-bottom: 1px solid rgb(43, 52, 68) !important;
+}
+
+        .schedule video {
+            width: 100% !important;
+        }
+
+        .plyr--video {
+            width: 100%;
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: @zindex-modal;
+            display: none;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+
+            outline: 0;
+
+        &
+        .fade .modal-dialog {
+        . translate(0, - 25 %);
+        . transition-transform(~ "0.3s ease-out");
+        }
+
+        &
+        .in .modal-dialog {
+        . translate(0, 0);
+        }
+
+        }
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 10px;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: @modal-content-bg;
+            background-clip: padding-box;
+            border: 1px solid @modal-content-fallback-border-color;
+        / / old browsers fallback (ie8 etc) border: 1 px solid @modal-content-border-color;
+            border-radius: @border-radius-large;
+        . box-shadow(0 3 px 9 px rgba(0, 0, 0, .5));
+            outline: 0;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: @zindex-modal-background;
+            background-color: @modal-backdrop-bg;
+
+        &
+        .fade {
+        . opacity(0);
+        }
+
+        &
+        .in {
+        . opacity(@modal-backdrop-opacity);
+        }
+
+        }
+
+        .modal-header {
+            padding: @modal-title-padding;
+            border-bottom: 1px solid @modal-header-border-color;
+            &: extend(.clearfix all);
+        }
+
+        .modal-header .close {
+            margin-top: -2px;
+        }
+
+        .modal-title {
+            margin: 0;
+            line-height: @modal-title-line-height;
+        }
+
+        .modal-body {
+            position: relative;
+            padding: @modal-inner-padding;
+        }
+
+        .modal-footer {
+            padding: @modal-inner-padding;
+            text-align: right;
+            border-top: 1px solid @modal-footer-border-color;
+            &: extend(.clearfix all);
+
+
+        .btn + .btn {
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+
+        .btn-group .btn + .btn {
+            margin-left: -1px;
+        }
+
+        .btn-block + .btn-block {
+            margin-left: 0;
+        }
+
+        }
+
+        .modal-scrollbar-measure {
+            position: absolute;
+            top: -9999px;
+            width: 50px;
+            height: 50px;
+            overflow: scroll;
+        }
+
+        @media (min-width: @screen-sm-min) {
+
+            .modal-dialog {
+                width: @modal-md;
+                margin: 30px auto;
+            }
+
+            .modal-content {
+            . box-shadow(0 5 px 15 px rgba(0, 0, 0, .5));
+            }
+
+
+            .modal-sm {
+                width: @modal-sm;
+            }
+        }
+
+        @media (min-width: @screen-md-min) {
+            .modal-lg {
+                width: @modal-lg;
+            }
+        }
+
+        textarea {
+            text-align: left;
+        }
+
+
+       
+
+    </style>
+
+<style>
+     .cover-bg {
+            max-width: 100% !important;
+            height: 100%;
+            padding-top: 40px !important;
+        }
+.cover-bg:hover .cover-edit {
+    background: rgba(252, 252, 252, 0.1);
+    border: 0 !important;
+}
+
+
+.cover-bg .avatar .avatar-button svg {
+    height: 18px;
+    width: 18px;
+    stroke: #e21f1f !important
+}
+
+.cover-bg .timeline-mobile-dropdown div>.button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border-radius: 50%;
+    border: 1.4px solid rgb(141, 14, 14) !important;
+    padding: 0
+}
+
+.cover-bg .cover-overlay{
+    border: 1.4px solid rgb(141, 14, 14) !important;
+}
+
+
+.cover-bg .avatar .avatar-button svg {
+    height: 18px;
+    width: 18px;
+    stroke: #8f0808
+}
+
+/* line 166, src/assets/scss/pages/_app-profile.scss */
+
+.cover-bg .avatar .pop-button.is-center:hover svg,
+.cover-bg .avatar .pop-button.is-far-right:hover svg,
+.cover-bg .avatar .pop-button.is-left:hover svg,
+.cover-bg .avatar .pop-button.is-far-left:hover svg {
+    stroke: #ec5454
+}
+
+
+.prcg{
+    color: rgb(204, 29, 29) !important;
+}
+
+.prcg-dark{
+    color: rgb(214, 169, 169) !important;
+}
+
+
+.prcgr{
+    color: rgb(25, 139, 82) !important;
+}
+
+.prcgr-dark{
+    color: rgb(177, 241, 209) !important;
+}
+
+.about-card{
+    background-color: #eeeeee !important;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px !important;
+}
+
+.about-card-dark{
+    background-color: #222831 !important;
+    border: 1px solid #191c20;
+    border-radius: 2px !important;
+}
+
+
+.disabled{
+    color: #5c5c5c !important;
+}
+
+.disabled-dark{
+    color: #272a2c !important;
+    background-color: #3f4e5a !important;
+    border: 1px solid #272a2c !important;
+}
+
+.nextt-dark{
+    color: #afafaf !important;
+    background-color: #1d2227 !important;
+    border: 1px solid #11151a !important;
+}
+
+.profile-about .left-menu .menu-item.is-active .menu-icon i,
+.profile-about .left-menu .menu-item.is-active .menu-icon span{
+    color: #f5f8ff !important;
+}
+
+
+.profile-about .left-menu .menu-item.is-active .menu-icon-dark i,
+.profile-about .left-menu .menu-item.is-active .menu-icon-dark span
+{
+    color: #103374 !important;
+}
+.profile-about .left-menu .menu-item.is-active .menu-icon{
+    background-color: #1e85c0 !important;
+    color: #103374 !important;
+}
+
+
+.profile-about .left-menu .menu-item.is-active .menu-icon-dark{
+    background-color: #c8e2f1 !important;
+    color: #103374 !important;
+}
+
+.left-menu-dark{
+    background-color: #393e46 !important;
+}
+
+.ordd{
+    background-color: #ffffff !important;
+    color: #393e46 !important;
+}
+
+.ordd-dark{
+    background-color: rgb(204, 204, 204) !important;
+    color: #121418 !important;
+    width: 120px !important;
+}
+
+
+.brd{
+    border: 1px solid rgb(201, 201, 201);
+    color: #fff;
+}
+
+.brd-dark{
+    border: 1px solid rgb(98, 112, 121);
+    color: rgb(202, 202, 202);
+}
+
+.lineeeet{
+    border-top: 1px solid #cacaca;
+}
+
+.lineeeet-dark{
+    border-top: none !important;
+}
+
+.card-footter{
+    background-color: #e6e6e6;
+    border-radius: 2px !important;
+    border:1px solid #d6d6d6
+}
+
+.card-footter-dark{
+    background-color: #171e27;
+    border-radius: 2px !important;
+    
+    border:1px solid #171e27
+}
+
+.place-wrapper{
+    
+}
+
+.active-dark{
+    background-color: #4060a3 !important;
+    color: #121e38 !important;
+    border: 1px solid #121e38 !important;
+}
+
+.active-dark{
+    background-color: #b6c5e6 !important;
+    color: #586b92 !important;
+    border: 1px solid #586b92 !important;
+}
+
+.probtn{
+    background-color: #2e87aa !important;
+    color: #e9e9e9 !important;
+    border: 1px solid #8cc7e0 !important;
+}
+.probtn-dark{
+    background-color: #60747c !important;
+    color: #01202c !important;
+    border: 1px solid #0d242e !important;
+}
+
+.place-wrapper-dark{
+    background-color: #171e27 !important;
+    border-radius: 2px !important;
+    
+    border:1px solid #171e27 !important
+    
+}
+
+.card-body{
+    
+}
+.card-body-dark{
+    background-color: #111924;
+    border-radius: 2px !important;
+    
+    border:1px solid #171e27
+}
+
+.activve-dark{
+    background-color: #4e5255 !important;
+    color: #121e38 !important;
+    border: 1px solid #1d2022 !important;
+}
+
+.blllu{
+        color: rgb(11, 111, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(115, 147, 189) !important;
+        margin-right: 8px !important;
+    }
+
+
+        .hero-single-course{
+            height: 320px !important;
+            margin-top: -5px;
+            border: 1px solid #b8ccda !important;
+            background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 120, 198, 0.93)), url('/static{{ teacher.profile.header_img }}') !important;
+        }
+        .hero-single-course-dark{
+            border: 1px solid #23303a !important;
+            background-image: linear-gradient(to bottom, rgba(42, 43, 49, 0.52), rgba(26, 31, 34, 0.93)), url('/static{{ teacher.profile.header_img }}') !important;
+
+        }
+        
+</style>
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+<style>
+
+.side-menu{
+    direction: rtl !important;
+}
+
+
+.left-menu{
+    float: right !important;
+    margin-left: 30px !important;
+}
+
+</style>
+{% else %}
+<style>
+
+    .side-menu{
+        direction: ltr !important;
+    }
+    
+    
+    .left-menu{
+        float: left !important;
+        margin-right: 30px !important;
+    }
+    
+    </style>
+{% endif %}
+
+    <!-- <form id="profile_form" action="" method="post" style="display: block;height: 1000px !important;background-color: blueviolet; ">
+        {% csrf_token %}
+        <input type="hidden" name="page" id="page" value="{{ page }}">
+        <input type="hidden" name="page1" id="page1" value="{{ page1 }}">
+        <input type="hidden" name="order" id="order" value="{{ order }}">
+        <input type="hidden" name="tab" id="tab" value="{{ tab }}">
+    </form> -->
+    <div class=" is-paddingless" style="">
+        {% if user.group_id == 3 %}
+            <div class="cover-bg" style="">
+                <img class="cover-image" src="{% if teacher.profile.header_img == '' %}{% static 'assets/img/free.jpg' %}{% else %}{% static teacher.profile.header_img %}{% endif %}"
+                     data-demo-src="assets/img/demo/bg/4.png"
+                     alt="" style="">
+                <div class="avatar">
+                    <img id="user-avatar" style="height: 100% !important;" class="avatar-image hero-single-course hero-single-course-dark" src="{% static teacher.image %}"
+                         data-demo-src="assets/img/avatars/jenna.png" alt="" style="">
+                </div>
+            </div>
+        {% else %}
+            <div class="cover-bg" style="">
+                <img class="cover-image hero-single-course hero-single-course-dark" src=""
+                     data-demo-src="assets/img/demo/bg/4.png" alt="" style="">
+                <div class="avatar">
+                    <img id="user-avatar" class="avatar-image hero-single-course hero-single-course-dark" src="{% static teacher.image %}"
+                         data-demo-src="assets/img/avatars/jenna.png" alt=""  style="height: 100% !important;">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="products-navigation" style="display: none;"></div>
+    <!-- Profile page main wrapper --><!-- Left side column -->
+        
+    <div id="profile-about" class="view-wrapper categories-header-dark" style="">
+        
+
+        <div class="column">
+            <div class="container">
+                <!-- About sections -->
+                <div class="profile-about side-menu" style="border-radius: 5px;">
+                    <div class="left-menu left-menu-dark"
+                         style="height: 140px;">
+                         {% get_current_language as lang %}
+                         {% if lang == "ar" %}
+                        <div class="left-menu-inner about-card about-card-dark" style="margin-bottom: 20px;">
+                            <div class="menu-item" id="overview" data-content="overview-content" onclick="setTab(1)">
+                                <div class="menu-icon menu-icon-dark" style="">
+                                    <i class="mdi mdi-account-card-details"></i>
+                                    <span>نظرة عامة</span>
+                                </div>
+                            </div>
+                            <div class="menu-item" id="reviews" data-content="personal-content" onclick="setTab(2)">
+                                <div class="menu-icon">
+                                    <i class="mdi mdi-star-circle"></i>
+                                    <span>التقييمات</span>
+                                </div>
+                            </div>
+                            <div class="menu-item " id="courses" data-content="education-content" onclick="setTab(3)">
+                                <div class="menu-icon">
+                                    <i class="mdi mdi-camcorder-box"></i>
+                                    <span>الدورات</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="left-menu-inner about-card about-card-dark" style="margin-bottom: 20px;">
+                            <div class="menu-item" id="overview" data-content="overview-content" onclick="setTab(1)">
+                                <div class="menu-icon menu-icon-dark" style="">
+                                    <i class="mdi mdi-account-card-details"></i>
+                                    <span>Overview</span>
+                                </div>
+                            </div>
+                            <div class="menu-item" id="reviews" data-content="personal-content" onclick="setTab(2)">
+                                <div class="menu-icon">
+                                    <i class="mdi mdi-star-circle"></i>
+                                    <span>Reviews</span>
+                                </div>
+                            </div>
+                            <div class="menu-item " id="courses" data-content="education-content" onclick="setTab(3)">
+                                <div class="menu-icon">
+                                    <i class="mdi mdi-camcorder-box"></i>
+                                    <span>Courses</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="right-content">
+
+                        <div id="overview-content" class="content-section is-active">
+                            <!-- Friends about card -->
+                            <div class="about-card about-card-dark">
+                                <!-- Header -->
+                                <div class="header">
+                                    <div class="icon-title" style="width: 100%">
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        <h3 class="mediabout mediabout-dark">عـن المعلم</h3>
+                                        {% else %}
+                                        <h3 class="mediabout mediabout-dark">About teacher</h3>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <div class="columns friends-columns ">
+                                        <!-- Friend -->
+                                        <div class="column is-5" style="margin-left:15px">
+                                            <div class="about-block">
+                                                {% get_current_language as lang %}
+                                                {% if lang == "ar" %}
+                                                <div class="block-content">
+                                                    <div class="meta" style="margin-bottom: 20px;">
+                                                        <h4 class="blllu blllu-dark">{{ teacher.first_name }} {{ teacher.last_name }}
+                                                            <b style="color: rgb(223, 168, 117); margin-left: 10px;"> {{ teacher.total_rating }} <span class="fa fa-star"></span></b></h4>
+                                                    </div>
+                                                    <div class="meta">
+                                                        <h3 style="font-weight: 500;" class="mediabout mediabout-dark">نبذة عامة</h3>
+                                                        <span class="blllu blllu-dark" style="text-align: justify;">{{ teacher.profile.bio }}</span>
+                                                    </div>
+                                                    <div class="meta" style="margin-top: 20px;">
+                                                        <h3 style="font-weight: 500;" class="mediabout mediabout-dark">القسم</h3>
+                                                        <span style="text-align: justify;" class="blllu blllu-dark">{{ teacher.profile.subCatStr }}</span>
+                                                    </div>
+                                                </div>
+                                                {% else %}
+                                                <div class="block-content">
+                                                    <div class="meta" style="margin-bottom: 20px;">
+                                                        <h4 class="blllu blllu-dark">{{ teacher.first_name }} {{ teacher.last_name }}
+                                                            <b style="color: rgb(223, 168, 117); margin-left: 10px;"> {{ teacher.total_rating }} <span class="fa fa-star"></span></b></h4>
+                                                        <h3 style="font-weight: 500;" class="mediabout mediabout-dark">Programmer</h3>
+                                                    </div>
+                                                    <div class="meta">
+                                                        <h3 style="font-weight: 500;" class="mediabout mediabout-dark">About Me:</h3>
+                                                        <span class="blllu blllu-dark" style="text-align: justify;">{{ teacher.profile.bio }}</span>
+                                                    </div>
+                                                    <div class="meta" style="margin-top: 20px;">
+                                                        <h3 style="font-weight: 500;" class="mediabout mediabout-dark">Special list at:</h3>
+                                                        <span style="text-align: justify;" class="blllu blllu-dark">{{ teacher.profile.subCatStr }}</span>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="education-content" class="content-section">
+                            <!-- Friends about card -->
+                            <div class="about-card">
+                                <!-- Header -->
+                                <div class="header">
+                                    <div class="icon-title" style="width: 180px">
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        <h3 class="mediabout mediabout-dark">دورات المعلم</h3>
+                                        {% else %}
+                                        <h3 class="mediabout mediabout-dark">Teacher's courses</h3>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="body has-flex-list">
+                                    <!-- Places -->
+                                    <div class="place-list" style="margin-bottom: 10px;">
+                                        <!-- Place item -->
+                                        {% for course in teacher.courses %}
+                                            <div class="place-wrapper place-wrapper-dark">
+                                                <img style="height: 160px;"
+                                                     src="{% static course.cover_img %}"
+                                                     data-demo-src="assets/img/courses/pg.jpg" alt="">
+                                                <div class="foot">
+                                                    <a href="#" class="place-name blllu blllu-dark">{{ course.name }}</a>
+                                                    {% if course.price == 0 %}
+                                                        {% get_current_language as lang %}
+                                                        {% if lang == "ar" %}
+                                                        <b style="color: rgb(118, 204, 118);">مجانا</b>
+                                                        {% else %}
+                                                        <b style="color: rgb(118, 204, 118);">Free</b>
+                                                        {% endif %}
+                                                        
+                                                    {% else %}
+                                                        <b style=""class="prcg prcg-dark">${{ course.price }}</b>
+                                                    {% endif %}
+                                                    <br>
+                                                    <div class="rating" style="margin-top: 10px;">
+                                                        <b style="color: rgb(223, 168, 117);"><span
+                                                            class="fa fa-star"></span> {{ course.rating }}</b>
+                                                            {% get_current_language as lang %}
+                                                            {% if lang == "ar" %}
+                                                        <a href="/course/{{ teacher.id }}/{{ course.name }}" class="button probtn probtn-dark"
+                                                           style="position: absolute;right: 10px;bottom: 5px;">تفاصيل</a>
+                                                           {% else %}
+                                                           <a href="/course/{{ teacher.id }}/{{ course.name }}" class="button probtn probtn-dark"
+                                                              style="position: absolute;right: 10px;bottom: 5px;">details</a>
+                                                           {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <center>
+                                            {% if teacher.courses.has_other_pages %}
+                                                <ul class="pagination">
+                                                    {% if teacher.courses.has_previous %}
+                                                        <li ><a onclick="page_prev()" >
+                                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                                        </a></li>
+                                                    {% else %}
+                                                        <li class="disabled disabled-dark">
+                                                            <i class="fa fa-angle-left" aria-hidden="true"></i></li>
+                                                    {% endif %}
+                                                    {% for i in teacher.courses.paginator.page_range %}
+                                                        {% if teacher.courses.number == i %}
+                                                            <li class="active active-dark"
+                                                                style="background: #0d79df; color: white; cursor: pointer;"
+                                                                onclick="page_set({{ i }})"><span>{{ i }}</span>
+                                                            </li>
+                                                        {% else %}
+                                                            <li class="activve activv-dark"><a onclick="page_set({{ i }})">{{ i }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if teacher.courses.has_next %}
+                                                      {% get_current_language as lang %}
+                                                      {% if lang == "ar" %}
+                                                        <li class="nextt nextt-dark"><a onclick="page_next()">
+                                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                                        </a></li>
+                                                      {% else %}
+                                                      <li class="nextt nextt-dark"><a onclick="page_next()">
+                                                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                      </a></li>
+                                                      {% endif %}
+                                                    {% else %}
+                                                        <li class="disabled disabled-dark">
+                                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                        </li>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endif %}
+                                        </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="personal-content" class="content-section">
+                            <div class="about-card">
+                                <div class="header">
+                                    <div class="icon-title" style="width: 180px">
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        <h3 class="mediabout mediabout-dark">تقييمات الطلاب</h3>
+                                        {% else %}
+                                        <h3 class="mediabout mediabout-dark">Students Reviews</h3>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <div class="columns friends-columns is-multiline">
+                                        <div class="column is-9">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h1 style="font-size: medium;font-weight: 500;margin-left: 15px;" class="blllu blllu-dark">التقييم العام:
+                                                &nbsp;&nbsp;{{ teacher.total_rating }}&nbsp;&nbsp;&nbsp;<span class="fa fa-star"
+                                                       style="color: rgb(223, 168, 117);"></span>&nbsp;&nbsp;({{ teacher.reviewCnt }} تعليق)
+                                            </h1>
+                                            {% else %}
+                                            <h1 style="font-size: medium;font-weight: 500;margin-left: 15px;" class="blllu blllu-dark">Total
+                                                :&nbsp;&nbsp;{{ teacher.total_rating }}&nbsp;&nbsp;&nbsp;<span class="fa fa-star"
+                                                       style="color: rgb(223, 168, 117);"></span>&nbsp;&nbsp;({{ teacher.reviewCnt }} Reviews)
+                                            </h1>
+                                            {% endif %}
+                                        </div>
+                                        <div class="column is-1"  style="margin-top: -25px !important;margin-left: auto !important;right: 0 !important;width: 100px !important;">
+                                            <div class="field" >
+                                                <div class="control" >
+                                                    <div class="select">
+                                                        {% get_current_language as lang %}
+                                                        {% if lang == "ar" %}
+                                                        <select onchange="setOrder(this)" class="ordd ordd-dark">
+                                                            <option value="1" {% if order == 1 %}selected{% endif %}>الأحدث</option>
+                                                            <option value="0" {% if order == 0 %}selected{% endif %}>الأقدم</option>
+                                                        </select>
+                                                        {% else %}
+                                                        <select onchange="setOrder(this)" class="ordd ordd-dark">
+                                                            <option value="1" {% if order == 1 %}selected{% endif %}>Latest</option>
+                                                            <option value="0" {% if order == 0 %}selected{% endif %}>Oldest</option>
+                                                        </select>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% for i in teacher.review %}
+                                            <div class="column is-6">
+                                                <div class="card" style="margin-bottom: 15px !important;width: 95%;margin:0 auto;">
+                                                    <div class="card-body card-body-dark" style="display:flex;flex-direction:row;align-items:center">
+                                                        <img style="border-radius: 50%;margin-right: 10px;height: 40px !important;width: 40px !important; "
+                                                             src="{% static i.user.image %}" class="brd brd-dark">
+                                                        <h3 class="mediabout mediabout-dark">{{ i.user.first_name }} {{ i.user.last_name }}</h3>
+                                                        <b style="color: rgb(223, 168, 117);margin-left: 10px;">{{ i.rating }}<span
+                                                                class="fa fa-star"></span></b>
+                                                    </div>
+                                                    <div class="card-footter card-footter-dark">
+                                                        <div style="font-size: small;width: 100%;padding-left:15px;padding-top: 15px;padding-bottom: 15px;" class="lineeeet lineeeet-dark blllu">{{ i.comment }}</div>
+                                                     
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <center>
+                                        {% if teacher.review.has_other_pages %}
+                                            <ul class="pagination">
+                                                {% if teacher.review.has_previous %}
+                                                    <li><a onclick="page_prev1()">
+                                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                                    </a></li>
+                                                {% else %}
+                                                    <li class="disabled">
+                                                        <i class="fa fa-angle-left" aria-hidden="true"></i></li>
+                                                {% endif %}
+                                                {% for i in teacher.review.paginator.page_range %}
+                                                    {% if teacher.review.number == i %}
+                                                        <li class="active"
+                                                            style="background: #0d79df; color: white; cursor: pointer;"
+                                                            onclick="page_set1({{ i }})"><span>{{ i }}</span>
+                                                        </li>
+                                                    {% else %}
+                                                        <li><a onclick="page_set1({{ i }})">{{ i }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if teacher.review.has_next %}
+                                                    <li><a onclick="page_next1()">
+                                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                    </a></li>
+                                                {% else %}
+                                                    <li class="disabled">
+                                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let cur_page = '{{ page }}'
+        let tab = '{{ tab }}'
+        console.log("Tab::", tab)
+
+        $(document).ready(function () {
+            setTimeout(()=>{
+                if(parseInt(tab) == 1) {
+                    console.log("1")
+                    $("#overview").click()
+                } else if(parseInt(tab) == 2) {
+                    console.log("2")
+                    $("#reviews").click()
+                } else {
+                    console.log("3")
+                    $("#courses").click()
+                }
+            },10)
+        });
+
+        function setTab(tab) {
+            $("#tab").val(tab)
+        }
+
+        function model_open(obj) {
+            var type = $(obj).attr('data-type');
+            $('#commentId').val($(obj).attr('data-id'));
+            $('#commentDeleteId').val($(obj).attr('data-id'));
+            if (type == 'add') {
+                $('#exampleModal').modal('show');
+                $("#user_comment").val("");
+                $("#user_comment").focus();
+            } else if (type == 'edit') {
+                $('#exampleModal').modal('show');
+                $("#user_comment").val($(obj).attr('data-comment'));
+                $("#user_comment").focus();
+            } else if (type == 'delete') {
+                $('#deleteModal').modal('show');
+            }
+
+        }
+
+        function save_comment() {
+            var course_id = '{{course.id}}'
+            var comment = $("#user_comment").val();
+            var user_id = '{{user_id}}'
+            var comment_id = $('#commentId').val();
+            if (comment == 0) {
+                swal("Please Add Comment!", {
+                    icon: "info",
+                    button: "Ok",
+                    closeOnClickOutside: false,
+                }).then(function () {
+                });
+            } else {
+                $.ajax({
+                    method: "POST",
+                    url: "/add_comment/",
+                    data: {
+                        'comment': comment,
+                        'user_id': user_id,
+                        'course_id': course_id,
+                        'comment_id': comment_id,
+                    },
+                    success: function (response) {
+                        if (response == "success") {
+                            swal("Comment Added successfully!", {
+                                icon: "success",
+                                button: "Ok",
+                                closeOnClickOutside: false,
+                            }).then(function () {
+                                location.reload()
+                            });
+                        }
+                    }
+                });
+            }
+        }
+
+        function delete_comment() {
+            var id = $('#commentDeleteId').val();
+            $.ajax({
+                method: "POST",
+                url: "/delete_comment/",
+                data: {
+                    'id': id,
+                },
+                success: function (response) {
+                    if (response == "success") {
+                        swal("Comment Deleted succfully!", {
+                            icon: "success",
+                            button: "Ok",
+                            closeOnClickOutside: false,
+                        }).then(function () {
+                            location.reload()
+                        });
+                    }
+                }
+            });
+        }
+
+        function addToCartList() {
+            var course_id = '{{ course.id }}';
+            var user_id = '{{ request.user.id }}';
+            var url = '/student_Cart_courses/';
+            $.post(url, {student: user_id, course: course_id}, function (res) {
+            });
+        }
+
+        function page_prev() {
+            page = cur_page * 1-1
+            $("#page").val(page)
+            $("#tab").val(3)
+            $("#profile_form").submit()
+        }
+
+        function page_next() {
+            page = cur_page * 1+1
+            $("#page").val(page)
+            $("#tab").val(3)
+            $("#profile_form").submit()
+        }
+
+        function page_set(page) {
+            $("#page").val(page)
+            $("#tab").val(3)
+            $("#profile_form").submit()
+        }
+
+        function page_prev1() {
+            page1= cur_page1 * 1-1
+            $("#page1").val(page1)
+            $("#tab").val(2)
+            $("#profile_form").submit()
+        }
+
+        function page_next1() {
+            page1 = cur_page1 * 1+1
+            $("#page1").val(page1)
+            $("#tab").val(2)
+            $("#profile_form").submit()
+        }
+
+        function page_set1(page) {
+            $("#page1").val(page)
+            $("#tab").val(2)
+            $("#profile_form").submit()
+        }
+
+        function setOrder(obj) {
+            val = $(obj).val()
+            $("#tab").val(2)
+            $("#order").val(val)
+            $("#profile_form").submit()
+        }
+
+
+
+    </script>
+
+{% endblock %} {% block script %}
+    <!-- App JS -->
+    <script src="{% static 'assets/js/sideb.js' %}"></script>
+    <!-- Page and UI related js -->
+    <script src="{% static 'assets/js/videos.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+{% endblock %}

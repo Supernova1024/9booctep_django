@@ -1,0 +1,46 @@
+{% set messages = [{
+  avatar: 'assets/images/people/110/woman-5.jpg',
+  name: 'Michelle',
+  date: '5 minutes ago',
+  message: 'Clients loved the new design.',
+  unread: true
+}, {
+  avatar: 'assets/images/people/110/woman-5.jpg',
+  name: 'Michelle',
+  date: '5 minutes ago',
+  message: '🔥 Superb job..'
+}] %}
+
+<!-- Notifications dropdown -->
+<div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full" data-toggle="tooltip" data-title="Messages" data-placement="bottom" data-boundary="window">
+  <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false">
+    <i class="material-icons icon-24pt">mail_outline</i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <div data-perfect-scrollbar class="position-relative">
+      <div class="dropdown-header"><strong>Messages</strong></div>
+      <div class="list-group list-group-flush mb-0">
+        {% for item in messages %}
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action{% if item.unread %} unread{% endif %}">
+          <span class="d-flex align-items-center mb-1">
+            <small class="text-black-50">{{ item.date }}</small>
+            {% if item.unread %}
+            <span class="ml-auto unread-indicator bg-accent"></span>
+            {% endif %}
+          </span>
+          <span class="d-flex">
+            <span class="avatar avatar-xs mr-2">
+              <img src="{{ item.avatar }}" alt="people" class="avatar-img rounded-circle">
+            </span>
+            <span class="flex d-flex flex-column">
+              <strong class="text-black-100">{{ item.name }}</strong>
+              <span class="text-black-70">{{ item.message }}</span>
+            </span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // END Notifications dropdown -->

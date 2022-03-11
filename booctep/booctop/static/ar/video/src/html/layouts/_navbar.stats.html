@@ -1,0 +1,26 @@
+{% import 'components/avatar.html' as avatar %}
+
+{% if 'student' in slug %}
+  <span class="d-none d-md-flex align-items-center mr-16pt">
+    {{ avatar.component(title='<i class="material-icons">opacity</i>', size='sm', class='mr-12pt', title_class='navbar-avatar', circle=false, element='span') }}
+    <small class="flex d-flex flex-column">
+      <strong class="navbar-text-100">Experience IQ</strong>
+      <span class="navbar-text-50">2,300 points</span>
+    </small>
+  </span>
+{% else %}
+  <span class="d-none d-md-flex align-items-center mr-16pt">
+    {{ avatar.component(title='<i class="material-icons">trending_up</i>', size='sm', class='mr-12pt', title_class='navbar-avatar', circle=false, element='span') }}
+    <small class="flex d-flex flex-column">
+      <strong class="navbar-text-100">Earnings</strong>
+      <span class="navbar-text-50">&dollar;12.3k</span>
+    </small>
+  </span>
+  <span class="d-none d-md-flex align-items-center mr-16pt">
+    {{ avatar.component(title='<i class="material-icons">receipt</i>', size='sm', class='mr-12pt', title_class='navbar-avatar', circle=false, element='span') }}
+    <small class="flex d-flex flex-column">
+      <strong class="navbar-text-100">Sales</strong>
+      <span class="navbar-text-50">264</span>
+    </small>
+  </span>
+{% endif %}

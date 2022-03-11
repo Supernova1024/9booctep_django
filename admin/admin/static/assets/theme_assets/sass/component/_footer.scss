@@ -1,0 +1,74 @@
+.footer-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 24px 0 24px 280px;
+  width: 100%;
+  background: #fff;
+  transition: $transition-base;
+  z-index: 1;
+  box-shadow: rgba(146, 153, 184, 0.05) 0px -5px 10px;
+  @include md {
+    padding: 14px 0 14px 8px;
+  }
+  @include md {
+    padding: 20px 0 20px 0 !important;
+  }
+  @include sm {
+    padding: 15px 0 15px 0 !important;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+// footer Copyright
+.footer-copyright {
+  padding-left: 12px;
+  @include sm {
+    text-align: center;
+    padding-left: 0;
+  }
+  p {
+    font-size: 14px;
+    @extend .color-light;
+    a {
+      margin-left: 4px;
+      @extend .color-light;
+      &:hover {
+        @extend .color-primary;
+      }
+    }
+  }
+}
+
+// footer Menu
+.footer-menu {
+  padding-right: 12px;
+  &.text-right {
+    @include sm {
+      margin-top: 10px;
+      text-align: center !important;
+      padding-right: 0;
+    }
+  }
+  ul {
+    li {
+      display: inline-block;
+      &:not(:last-child) {
+        margin-right: 18px;
+      }
+      a {
+        font-size: 14px;
+        @extend .color-light;
+        &:hover {
+          @extend .color-primary;
+        }
+      }
+    }
+  }
+}
+
+.top-menu .footer-wrapper{
+  padding-left: 7px;
+}

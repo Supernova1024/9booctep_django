@@ -1,0 +1,90 @@
+[
+    {
+        "id": "0",
+        "name": "The Designers",
+        "topic": "Web/graphic design",
+        "members": "4K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/finland.svg"
+    },
+    {
+        "id": "1",
+        "name": "Family",
+        "topic": "Davis family",
+        "members": "39",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "2",
+        "name": "The Dudes",
+        "topic": "The band",
+        "members": "14",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "3",
+        "name": "Crazy Bakers",
+        "topic": "It's all about making cakes",
+        "members": "8K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/argentina.svg"
+    },
+    {
+        "id": "4",
+        "name": "Drone pilots",
+        "topic": "Flying drones",
+        "members": "28K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/france.svg"
+    },
+    {
+        "id": "5",
+        "name": "Street Fighter V",
+        "topic": "eGaming",
+        "members": "150K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/france.svg"
+    },
+    {
+        "id": "6",
+        "name": "Monster trucks",
+        "topic": "Vehicles",
+        "members": "328",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/canada.svg"
+    },
+    {
+        "id": "7",
+        "name": "Otaku Zone",
+        "topic": "Japanese culture",
+        "members": "98K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/japan.svg"
+    },
+    {
+        "id": "8",
+        "name": "Streetwear",
+        "topic": "Urban clothing",
+        "members": "519",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-kingdom.svg"
+    },
+    {
+        "id": "9",
+        "name": "Jungle music",
+        "topic": "Music",
+        "members": "12K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-kingdom.svg"
+    },
+    {
+        "id": "10",
+        "name": "Motivate",
+        "topic": "Sports videos",
+        "members": "50K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/spain.svg"
+    }
+]

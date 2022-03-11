@@ -1,0 +1,1061 @@
+{% set navbar_class = 'navbar-dark-dodger-blue bg-transparent will-fade-background' %}
+{% set demo_url = '' %}
+{% set buy_url = 'https://themeforest.net/item/luma-education-platform-lms-admin-template/26541343' %}
+{% extends 'layouts/default.html' %}
+{% import 'components/avatar.html' as avatar %}
+
+{% block head %}
+  {{ super() }}
+
+  <style>
+    [dir=ltr] .page-separator-demo .page-separator__text {
+      font-size: 0.8125rem;
+    }
+    [dir=ltr] .page-separator-demo::before {
+      background-color: rgba(255,255,255, 0.2);
+    }
+  </style>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-548938-38"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      if (document.location.hostname != 'localhost') {
+        gtag('config', 'UA-548938-38');
+      }
+  </script>
+{% endblock %}
+
+{% block header %}
+  <div id="header" class="mdk-header mdk-header--bg-{{ header_variant or 'dark' }} bg-dark js-mdk-header {{ headerClass or 'mb-0' }}" 
+    data-effects="parallax-background waterfall"
+    data-fixed
+    data-condenses>
+    <div class="mdk-header__bg">
+      <div class="mdk-header__bg-front" style="background-image: url({{ header_image or 'assets/images/photodune-4161018-group-of-students-m.jpg' }});"></div>
+    </div>
+    <div class="mdk-header__content justify-content-center">
+      {% include 'layouts/_navbar.choose.html' %}
+      <div class="{{ containerClass }} text-center py-112pt flex-column align-items-center justify-content-center">
+        <div class="d-flex flex-column align-items-center justify-content-center mb-24pt">
+          {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="Luma Education Platform" class="img-fluid" />', size='xl', class='mb-16pt', title_class='bg-primary', circle=false) }}
+          <h1 class="text-white text-shadow mb-4pt">Luma Education Platform</h1>
+
+          <span class="rating">
+            <span class="rating__item"><span class="material-icons icon-24pt">star</span></span>
+            <span class="rating__item"><span class="material-icons icon-24pt">star</span></span>
+            <span class="rating__item"><span class="material-icons icon-24pt">star</span></span>
+            <span class="rating__item"><span class="material-icons icon-24pt">star</span></span>
+            <span class="rating__item"><span class="material-icons icon-24pt">star</span></span>
+          </span>
+        </div>
+
+        <p class="text-white text-shadow text-headings font-weight-normal measure-paragraph mx-auto mb-4pt">&ldquo; Incredible value for a fraction of what would cost to commission an advanced UI/UX for any modern Education Platform with tools for Enterprise Resource Planning and for Teachers to bring their knowledge online &bdquo;</p>
+        <p class="text-white text-headings mb-0"><small>&mdash; Laza Bogdan @ FrontendMatter</small></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block page %}
+<div class="container-fluid page-section page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text">Learning Management System</div>
+        </div>
+        <p><small>Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</small></p>
+        <img src="assets/images/preview/intro/course-card.png" class="img-fluid-max" alt="Learning App - Course">
+      </div>
+      <div class="col-sm">
+        <a target="_blank" href="{{ demo_url }}index.html" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/home.png" class="img-fluid" alt="Luma Education Platform - Home Page">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 850px;">
+
+    <div class="card bg-dark" id="guest">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Guest - Demo 1
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+        
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}index.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/home.png" class="img-fluid" alt="Luma Learning Management System - Home Page">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Home</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-courses.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/courses.png" class="img-fluid" alt="Luma Education Platform - Browse Courses">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Browse Courses</div>
+              </div>
+
+              <a target="_blank" href="{{ demo_url }}fixed-paths.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/paths.png" class="img-fluid" alt="Luma LMS Template - Browse Learning Paths">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Browse Paths</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COURSE / VIDEO / PATH -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-student-course.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/course.png" class="img-fluid" alt="Luma Education Platform - Course Preview">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Course Preview</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-student-lesson.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/lesson.png" class="img-fluid" alt="Luma Learning Management System - Video Lesson">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Video Lesson</div>
+              </div>
+
+              <a target="_blank" href="{{ demo_url }}student-path.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/path.png" class="img-fluid" alt="Luma LMS Template - Learning Path Details">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Path Details</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOG / PRICING -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm mb-24pt mb-sm-0">
+              <a target="_blank" href="{{ demo_url }}fixed-blog.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/blog.png" class="img-fluid" alt="Luma Education Platform - Blog">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Blog</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-pricing.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/pricing.png" class="img-fluid" alt="Luma Learning Management System - Pricing">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Pricing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card bg-dark" id="guest-2">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Guest - Demo 2
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+        
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-index.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-home.png" class="img-fluid" alt="Luma Learning Management System - Home Page - Demo 2">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Home 2</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-courses.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-courses.png" class="img-fluid" alt="Luma Education Platform - Browse Courses">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Courses 2</div>
+              </div>
+
+              <a target="_blank" href="{{ demo_url }}learnly-paths.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-paths.png" class="img-fluid" alt="Luma LMS Template - Browse Learning Paths">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Browse Paths 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COURSE / VIDEO -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-student-course.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-course.png" class="img-fluid" alt="Luma Education Platform - Course Preview">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Course 2</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-student-lesson.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-lesson.png" class="img-fluid" alt="Luma Learning Management System - Video Lesson">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Video Lesson 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOG / PRICING -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm mb-24pt mb-sm-0">
+              <a target="_blank" href="{{ demo_url }}learnly-student-path.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-path.png" class="img-fluid" alt="Luma LMS Template - Learning Path Details">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Path Details 2</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-pricing.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-pricing.png" class="img-fluid" alt="Luma Learning Management System - Pricing">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Pricing 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {% include 'pages/_choose.instructor.html' %}
+
+    {% include 'pages/_choose.instructor-2.html' %}
+
+    {% include 'pages/_choose.student.html' %}
+
+    {% include 'pages/_choose.student-2.html' %}
+
+    <div class="card bg-dark" id="enterprise">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Enterprise
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+
+        <!-- ERP DASHBOARD / CRM DASHBOARD -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-erp-dashboard.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-erp-dashboard.png" class="img-fluid" alt="Luma Education - ERP Dashboard">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">ERP Dashboard</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}boxed-crm-dashboard.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/boxed-crm-dashboard.png" class="img-fluid" alt="Luma LMS - CRM Dashboard">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">CRM Dashboard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HR DASHBOARD / EMPLOYEES -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}hr-dashboard.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-hr-dashboard.png" class="img-fluid" alt="Luma Education - HR Dashboard">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">HR Dashboard</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}employees.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-employees.png" class="img-fluid" alt="Luma Education - Employees">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Employees</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAFF / LEAVES -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}staff.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-staff.png" class="img-fluid" alt="Luma Education Platform - Staff">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Staff</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-leaves.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-leaves.png" class="img-fluid" alt="Luma Learning Management System - Leaves">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Leaves</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CMS DASHBOARD / POSTS -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}cms-dashboard.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-cms-dashboard.png" class="img-fluid" alt="Luma Admin Template - CMS Dashboard">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">CMS Dashboard</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}posts.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-posts.png" class="img-fluid" alt="Luma Admin Template - Manage Posts">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Posts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECTS / TASKS BOARD -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}projects.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-projects.png" class="img-fluid" alt="Luma Education Admin Template - Projects">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Projects</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}tasks-board.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-tasks-board.png" class="img-fluid" alt="Luma Learning Admin Template - Tasks Board">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Tasks Board</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TASKS LIST / SHOP DASHBOARD -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm mb-24pt mb-sm-0">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-tasks-list.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-tasks-list.png" class="img-fluid" alt="Luma Education Admin Template - Tasks List">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Tasks List</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-ecommerce.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-shop-dashboard.png" class="img-fluid" alt="Luma - Education Shop Dashboard">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Shop Dashboard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card bg-dark" id="auth">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Authentication
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+
+        <!-- LOGIN / SIGNUP -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-login.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/login.png" class="img-fluid" alt="Luma Education - Login">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Login</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-signup.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/signup.png" class="img-fluid" alt="Luma Learning Platform - Signup">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Signup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGIN / SIGNUP -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-login.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-login.png" class="img-fluid" alt="Luma Education - Login 2">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Login 2</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}learnly-signup.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/learnly-signup.png" class="img-fluid" alt="Luma Learning Platform - Signup 2">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Signup 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGIN / SIGNUP -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-login-image.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/login-image.png" class="img-fluid" alt="Luma Education - Login Image">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Login Image</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-signup-image.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/signup-image.png" class="img-fluid" alt="Luma Learning Platform - Signup Image">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Signup Image</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIGNUP PAYMENT / FORGOT PASSWORD -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-signup-payment.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/signup-payment.png" class="img-fluid" alt="Luma LMS - Signup Payment">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Signup Payment</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}fixed-reset-password.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/reset-password.png" class="img-fluid" alt="Luma Education - Forgot Password">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Forgot Password</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESET PASSWORD -->
+        <div class="col-md-6">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-sm-6">
+              <a target="_blank" href="{{ demo_url }}fixed-change-password.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/change-password.png" class="img-fluid" alt="Luma Education Admin - Reset Password">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Reset Password</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card bg-dark" id="account">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Account Management
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+
+        <!-- EDIT ACCOUNT / EDIT PROFILE -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-edit-account.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-edit-account.png" class="img-fluid" alt="Luma Education App - Edit Account">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Edit Account</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-edit-account-profile.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-edit-profile.png" class="img-fluid" alt="Luma Admin Template - Edit Profile">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Edit Profile</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACCOUNT NOTIFICATIONS / CHANGE PASSWORD -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-edit-account-notifications.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-edit-account-notifications.png" class="img-fluid" alt="Luma Admin Template - Edit Account Notifications">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Account Notifications</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-edit-account-password.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-account-password.png" class="img-fluid" alt="Luma Admin Template - Change Account Password">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Change Password</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card bg-dark" id="billing">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Billing
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+
+        <!-- BILLING / UPGRADE ACCOUNT -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-billing.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-billing.png" class="img-fluid" alt="Luma Learning Admin Template - Billing">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Billing</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-billing-upgrade.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-upgrade-account.png" class="img-fluid" alt="Luma Admin Template - Upgrade Account">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Upgrade Account</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYMENT INFORMATION / PAYMENT HISTORY -->
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-billing-payment.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-billing-payment.png" class="img-fluid" alt="Luma Education Admin - Payment Information">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Payment Information</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-billing-history.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-payment-history.png" class="img-fluid" alt="Luma Admin Template - Payment History">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-24pt">
+                <div class="page-separator__text bg-dark text-white">Payment History</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVOICE -->
+        <div class="col-md-6">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-sm-6">
+              <a target="_blank" href="{{ demo_url }}mini-secondary-billing-invoice.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/mini-secondary-invoice.png" class="img-fluid" alt="Luma Admin Template - Invoice">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Invoice</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card bg-dark mb-0" id="messaging">
+      <div class="card-header py-12pt">
+        <h4 class="d-flex align-items-center justify-content-center m-0">
+          <img src="assets/images/preview/icon/pages.png" alt="Luma Education Template" class="mr-8pt" width="40">
+          Messaging
+        </h4>
+      </div>
+      <div class="card-body p-24pt row align-items-center justify-content-center">
+
+        <div class="col-md-6">
+          <div class="row align-items-center">
+            <div class="col-sm mb-24pt mb-sm-0">
+              <a target="_blank" href="{{ demo_url }}compact-email.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/compact-email.png" class="img-fluid" alt="Luma Admin Template - Email">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Email</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <a target="_blank" href="{{ demo_url }}messages.html" class="d-block overlay js-overlay mb-8pt">
+                <img src="assets/images/preview/app-messages.png" class="img-fluid" alt="Luma Admin Template - Messages">
+                <span class="overlay__content">
+                  <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+                </span>
+              </a>
+              <div class="page-separator page-separator-demo mb-0">
+                <div class="page-separator__text bg-dark text-white">Messages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section bg-alt page__container border-bottom-2" id="layouts">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text bg-white">App layout</div>
+        </div>
+        <p><small>Display a full-width sidebar navigation suitable for authenticated members.</small></p>
+        <img src="assets/images/preview/intro/app-2.png" class="img-fluid-max" alt="Luma Education Platform - App Layout">
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}student-my-courses.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/app.png" class="img-fluid" alt="Luma Learning Management System - My Courses">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text">Guest layout</div>
+        </div>
+        <p><small>Display a top main navigation navbar and centered top-to-bottom content flow, suitable for presenting content and landing pages.</small></p>
+        <img src="assets/images/preview/intro/courses.png" class="img-fluid-max" alt="Luma LMS - Guest Layout">
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}fixed-blog.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/blog.png" class="img-fluid" alt="Luma Education Platform - Blog">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section bg-alt page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-16pt">
+          <div class="page-separator__text bg-white">Boxed layout</div>
+        </div>
+        <img src="assets/images/preview/intro/boxed-home.png" class="img-fluid-max" alt="Luma Admin Template - Boxed Layout">
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}boxed-courses.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/boxed-courses.png" class="img-fluid" alt="Luma Education App - Browse Courses - Boxed Layout">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text">Compact layout</div>
+        </div>
+        <p><small>Display a smaller-width main sidebar navigation with stacked icons and text and an optional secondary full-width sidebar on demand.</small></p>
+        <img src="assets/images/preview/intro/compact-layout.png" class="img-fluid-max" alt="Luma Admin Template - Compact Layout">
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}compact-instructor-profile.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/compact-instructor-profile.png" class="img-fluid" alt="Luma Education Platform - Instructor Profile">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section bg-alt page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text bg-white">Sticky layout</div>
+        </div>
+        <p class="mb-0"><small>Display a full-width sidebar navigation and a sticky top navbar menu.</small></p>
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}sticky-student-dashboard.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/sticky-student-dashboard.png" class="img-fluid" alt="Luma LMS - Student Dashboard">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section page__container border-bottom-2">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text">Mini secondary layout</div>
+        </div>
+        <p class="mb-0"><small>Display a secondary full width sidebar menu along-side the main smaller width icon-only sidebar, visible on desktop by default.</small></p>
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}mini-secondary-paths.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/mini-secondary-paths.png" class="img-fluid" alt="Luma Admin Template - Mini Secondary Layout">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid page-section bg-alt page__container">
+  <div class="mx-auto" style="max-width: 616px;">
+    
+    <div class="row align-items-center">
+      <div class="col-sm mb-24pt mb-sm-0">
+        <div class="page-separator mb-8pt">
+          <div class="page-separator__text bg-white">Mini layout</div>
+        </div>
+        <p class="mb-0"><small>Display a smaller width icon-only sidebar menu as the primary navigation and an optional secondary full-width sidebar menu on demand.</small></p>
+      </div>
+      <div class="col-sm">
+        <a href="{{ demo_url }}mini-student-take-quiz.html" target="_blank" class="d-block overlay js-overlay">
+          <img src="assets/images/preview/intro/mini-take-quiz.png" class="img-fluid" alt="Luma Education Platform - Take Quiz - Mini Layout">
+          <span class="overlay__content">
+            <span class="btn btn-accent btn-rounded btn--raised overlay__action">Demo</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+
+  <script>
+  (function(){
+    'use strict';
+    
+    $('body').scrollspy({ 
+      target: '#default-navbar', 
+      offset: 64 
+    })
+
+    var headerNode = document.querySelector('.mdk-header')
+    var layoutNode = document.querySelector('.mdk-header-layout')
+    var componentNode = layoutNode ? layoutNode : headerNode
+    
+    componentNode.addEventListener('domfactory-component-upgraded', function() {
+      headerNode.mdkHeader.eventTarget.addEventListener('scroll', function () {
+        var progress = headerNode.mdkHeader.getScrollState().progress
+        var navbarNode = headerNode.querySelector('#default-navbar')
+        navbarNode.classList.toggle('bg-transparent', progress <= 0.2)
+      })
+    })
+
+    $('#default-nav a').click(function(e) {
+      e.preventDefault()
+
+      var target = $(e.target).attr('href');
+      
+      if (!document.querySelector(target)) {
+        return
+      }
+
+      var offset = $(target).offset().top - 64
+
+      if (target === '#header') {
+        offset = 0
+      }
+
+      $([document.documentElement, document.body]).animate({
+        scrollTop: offset
+      }, 200);
+    })
+  })()
+  </script>
+
+  <script>
+    (function(window) {
+      'use strict';
+
+      try {
+        if (window.location !== window.top.location) {
+          window.top.location = window.location;
+        }
+      } catch (e) {}
+
+    })(this)
+  </script>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% import 'components/discussions.html' as discussions %}
+{% include 'pages/_back-to-course.navbar.html' %}
+
+<div class="{{ containerClass or 'container' }}">
+  <form action="{{ prefix or '' }}discussions.html">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="page-section">
+          <h4>Ask a question</h4>
+
+          <div class="card--connect pb-32pt pb-lg-64pt">
+            <div class="card o-hidden mb-0">
+              <div class="card-body table--elevated">
+                <div class="form-group m-0" role="group" aria-labelledby="label-title">
+                  <div class="form-row align-items-center">
+                    <label id="label-title" for="title" class="col-md-3 col-form-label form-label">Question title</label>
+                    <div class="col-md-9">
+                      <input id="title" type="text" placeholder="Your question ..." value="Angular HttpClientModule" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-header bg-transparent">
+                <h5 class="text-uppercase mb-0">Similar questions</h5>
+              </div>
+              {{ discussions.component(items=[{
+                avatar: 'LB',
+                date: '2 days ago',
+                name: 'Laza Bogdan',
+                title: 'Using Angular HttpClientModule instead of HttpModule',
+                chips: ['Angular fundamentals']
+              }, {
+                avatar: 'AC',
+                date: '3 days ago',
+                name: 'Adam Curtis',
+                title: 'Why am I getting an error when trying to install angular/http@2.4.2'
+              }], prefix=prefix) }}
+            </div>
+          </div>
+
+          <div class="list-group">
+            <div class="list-group-item">
+              <div role="group" aria-labelledby="label-question" class="m-0 form-group">
+                <div class="form-row">
+                  <label id="label-question" for="question" class="col-md-3 col-form-label form-label">Question details</label>
+                  <div class="col-md-9">
+                    <textarea id="question" placeholder="Describe your question in detail ..." rows="4" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="form-group m-0" role="group" aria-labelledby="label-topic">
+                <div class="form-row align-items-center">
+                  <label id="label-topic" for="topic" class="col-md-3 col-form-label form-label">Topic</label>
+                  <div class="col-md-9">
+                    <select id="topic" class="form-control custom-select w-auto">
+                      <option value="JavaScript">JavaScript</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="notify" type="checkbox" class="custom-control-input" checked="">
+                <label for="notify" class="custom-control-label">Notify me on email when someone replies to my question</label>
+              </div>
+              <small id="description-notify" class="form-text text-muted">If unchecked, you'll still recieve notifications on our website.</small>
+            </div>
+            <div class="list-group-item">
+              <button type="button" class="btn btn-accent">Post Question</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-3 page-nav">
+        <div 
+          data-perfect-scrollbar
+          data-perfect-scrollbar-wheel-propagation="true">
+          <div class="page-section pt-lg-112pt">
+            <div class="nav page-nav__menu">
+              <a href="javascript:void(0)" class="nav-link active">Before you post</a>
+            </div>
+            <div class="page-nav__content">
+              <p class="text-70">There may be other students who have asked the same question before.</p>
+              <p class="text-70">You should do a quick search first to make sure your question is unique.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

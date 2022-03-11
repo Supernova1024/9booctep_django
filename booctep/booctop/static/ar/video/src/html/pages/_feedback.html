@@ -1,0 +1,13 @@
+{% import 'components/card-feedback.html' as card %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Feedback</div>
+</div>
+
+<div class="row">
+  {% for item in [1,2,3] %}
+  <div class="col-sm-6 col-md-4">
+    {{ card.component() }}
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,417 @@
+.btn {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+  }
+  span,
+  i {
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+// Button White
+.btn {
+  &.btn-white {
+    background: #fff;
+    box-shadow: 0 3px 5px rgba($gray-solid, 0.05);
+    @extend .color-gray;
+    &:hover {
+      border-color: transparent;
+    }
+    &.btn-shadow-white {
+      box-shadow: 0 10px 15px rgba($gray-solid, 0.15);
+    }
+    &:focus {
+      border-color: transparent;
+      box-shadow: 0 3px 5px rgba($gray-solid, 0);
+      &:active {
+        background-color: transparent;
+        box-shadow: 0 0 !important;
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+// Button Light
+.btn {
+  &.btn-light {
+    background: $bg-lighter;
+    @extend .color-gray;
+    border-color: transparent;
+    &:hover {
+      border-color: transparent;
+      background-color: #e2e6ea;
+    }
+    &:active {
+      @extend .color-gray;
+      background-color: #e2e6ea;
+      border-color: transparent;
+      &:focus {
+        @extend .color-gray;
+        background-color: #e2e6ea;
+        border-color: transparent;
+      }
+    }
+    &:focus {
+      @extend .color-gray;
+      background-color: #e2e6ea;
+      border-color: transparent;
+    }
+    &.btn-transparent-light {
+      background: rgba($bg-lighter, 0.15);
+    }
+  }
+}
+
+.btn-light:not(:disabled):not(.disabled):active,
+.btn-light:not(:disabled):not(.disabled).active,
+.show > .btn-light.dropdown-toggle {
+  border-color: transparent;
+  background-color: #e2e6ea;
+  @extend .color-gray;
+}
+
+// Btn Secondary
+.btn {
+  &.btn-secondary {
+    @extend .color-white;
+  }
+  &.btn-outline-secondary {
+    &:hover {
+      @extend .color-white;
+    }
+  }
+  &.btn-outline-warning {
+    &:hover {
+      @extend .color-white;
+    }
+  }
+}
+
+// Btn Warning
+.btn {
+  &.btn-warning {
+    @extend .color-white;
+  }
+}
+// Button Transparent
+.btn {
+  &.btn-transparent-primary,
+  &.btn-transparent-secondary,
+  &.btn-transparent-success,
+  &.btn-transparent-info,
+  &.btn-transparent-warning,
+  &.btn-transparent-danger,
+  &.btn-transparent-dark,
+  &.btn-transparent-light {
+    border-color: transparent;
+    &:hover {
+      border-color: transparent;
+    }
+  }
+  &.btn-transparent-primary {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-primary;
+    }
+  }
+  &.btn-transparent-secondary {
+    color: $secondary !important;
+    &:hover {
+      color: $white !important;
+      @extend .bg-secondary;
+    }
+  }
+  &.btn-transparent-success {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-success;
+    }
+  }
+  &.btn-transparent-info {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-info;
+    }
+  }
+  &.btn-transparent-warning {
+    color: $warning !important;
+    &:hover {
+      color: $white !important;
+      @extend .bg-warning;
+    }
+  }
+  &.btn-transparent-danger {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-danger;
+    }
+  }
+  &.btn-transparent-dark {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-dark;
+    }
+  }
+  &.btn-transparent-light {
+    &:hover {
+      @extend .color-white;
+      @extend .bg-light;
+    }
+  }
+}
+// Button Link
+.btn {
+  &.btn-link {
+    @extend .color-info;
+  }
+}
+
+// Button Shape
+.btn {
+  &.btn-rounded {
+    border-radius: 20px;
+  }
+  &.btn-circle {
+    border-radius: 50%;
+  }
+}
+
+// Button Icon
+.btn {
+  &.btn-icon {
+    height: 42px;
+    padding: 0 0.845rem;
+    svg {
+      margin: 0;
+    }
+  }
+}
+
+// Button Outline
+.btn {
+  &.btn-outline-light {
+    border-color: $border-light;
+    &:hover {
+      background-color: #e2e6ea;
+    }
+  }
+  &.btn-outline-dashed {
+    border-style: dashed;
+    @extend .border-light;
+    @extend .color-gray;
+  }
+}
+
+// Button Size
+
+.btn-xs {
+  font-size: 12px;
+  border-radius: 4px;
+  padding: 0 0.86rem;
+  line-height: 2.4;
+}
+
+// Button Dropdown
+
+.btn-dropdown {
+  i {
+    margin-left: 10px;
+  }
+}
+
+// Button Group
+
+.atbd-button-group {
+  border-radius: 0 3px 3px 0;
+  .btn {
+    padding: 0 0.7rem;
+    z-index: 0 !important;
+    &:focus,
+    &:active {
+      color: $gray !important;
+      outline: none;
+      box-shadow: 0 0px 0px rgba(146, 153, 184, 0) !important;
+      border-color: $border-light !important;
+    }
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+    &.btn-outline-light {
+      &.active {
+        background-color: $primary !important;
+        border-color: $primary !important;
+        &:hover {
+          background-color: $primary !important;
+          border-color: $primary !important;
+        }
+      }
+      &:hover {
+        background-color: $bg-lighter !important;
+      }
+    }
+    &.btn-solid {
+      @extend .color-extra-light;
+    }
+  }
+  &.btn-group-solid {
+    @extend .bg-lighter;
+    .btn-light {
+      color: $extra-light !important;
+    }
+  }
+  &.btn-group-withIcon {
+    border: 0 none;
+    .btn {
+      padding: 0 0.69rem;
+      &.active {
+        background-color: #4347d9;
+      }
+      &:hover {
+        @extend .bg-primary;
+      }
+      svg {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.btn-group > .btn {
+  z-index: 1;
+}
+
+.button-inline-list {
+  .btn.btn-outline-light {
+    @extend .color-gray;
+    &:hover {
+      @extend .color-gray;
+    }
+  }
+  .btn.btn-outline-light.active {
+    @extend .color-white;
+  }
+}
+
+// Button Ghost
+
+.btn {
+  &.btn-ghost {
+    background: transparent;
+    border: 1px solid #bfb2f0;
+    @extend .color-white;
+    &:hover {
+      background: #ffffff10;
+      color: #fff;
+      border-color: transparent;
+    }
+  }
+}
+
+// Button Block
+
+.btn {
+  &.btn-block {
+    width: 100%;
+    display: block;
+  }
+}
+
+// Button Group
+.button-group {
+  display: flex;
+  margin: -5px;
+  button {
+    margin: 5px;
+  }
+}
+
+// Button Disabled
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+// Nav Controller
+.atbd-nav-controller {
+  .nav {
+    .nav-link {
+      position: relative;
+      flex: initial;
+      line-height: 2.65;
+      padding: 0 16.44px;
+      border-width: 1px 1px 1px 0;
+      border-radius: 0px;
+      min-height: 42px;
+      @extend .color-light;
+      @extend .bg-white;
+      &.active,
+      &:focus {
+        background-color: #fff !important;
+        box-shadow: 0 0;
+        @extend .color-primary;
+        &:hover {
+          background-color: #fff !important;
+          box-shadow: 0 0;
+          @extend .color-primary;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0;
+        }
+      }
+      &.active {
+        &:not(:first-child) {
+          &:before {
+            @extend .bg-primary;
+          }
+        }
+      }
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+      }
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+        border-left-width: 1px;
+      }
+      &:not(:first-child) {
+        &:before {
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          display: block;
+          box-sizing: content-box;
+          width: 1px;
+          height: 100%;
+          padding: 1px 0;
+          background-color: #e3e6ef;
+          // transition: background-color .3s;
+          content: "";
+        }
+      }
+    }
+  }
+  .btn-group > .btn.active,
+  .btn-group > .btn.focus {
+    z-index: 1 !important;
+  }
+  .nav-controller-content {
+    margin-top: 35px;
+  }
+}
+
+.nav-controller-content {
+  .nav-link {
+    border: 0 none;
+  }
+}

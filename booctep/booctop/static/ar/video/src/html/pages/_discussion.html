@@ -1,0 +1,139 @@
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="row">
+      <div class="col-md-8">
+        
+        <h1 class="h3 mb-2">Can someone help me with the basic setup of a Vue.js and Vuex project using Nuxt?</h1>
+        <p class="text-muted d-flex align-items-center mb-lg-32pt">
+          <a href="{{ prefix }}discussions.html" class="mr-3">Back to Community</a>
+          <a href="#" class="mr-2 text-50">Mute</a>
+          <a href="#" class="mr-2 text-50">Report</a>
+          <a href="#" class="text-50" style="text-decoration: underline;">Edit</a>
+        </p>
+
+        <div class="card card-body">
+          <div class="d-flex">
+            <a href="" class="avatar avatar-sm avatar-online mr-12pt">
+              <!-- <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
+              <span class="avatar-title rounded-circle">JD</span>
+            </a>
+            <div class="flex">
+              <p class="d-flex align-items-center mb-2">
+                <a href="" class="text-body mr-2"><strong>Jenell D. Matney</strong></a>
+                <small class="text-muted">2 min ago</small>
+              </p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae quisquam iste maiores libero, corrupti totam saepe itaque quidem perspiciatis?</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos culpa commodi consequuntur! Optio labore corporis quo a quia, incidunt unde soluta velit ad, eius exercitationem sequi ab laborum! Nostrum voluptate earum sit aperiam quaerat unde, vel excepturi quisquam nihil reprehenderit in minus laudantium eligendi odio iusto nemo, aspernatur, optio soluta!</p>
+              <div class="d-flex align-items-center">
+                <a href="" class="text-50 d-flex align-items-center text-decoration-0"><i class="material-icons mr-1" style="font-size: inherit;">favorite_border</i> 30</a>
+                <a href="" class="text-50 d-flex align-items-center text-decoration-0 ml-3"><i class="material-icons mr-1" style="font-size: inherit;">thumb_up</i> 130</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex mb-4">
+          <a href="" class="avatar avatar-sm mr-12pt">
+            <!-- <img src="assets/images/people/50/guy-6.jpg" alt="people" class="avatar-img rounded-circle"> -->
+            <span class="avatar-title rounded-circle">LB</span>
+          </a>
+          <div class="flex">
+            <div class="form-group">
+              <label for="comment" class="form-label">Your reply</label>
+              <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="Type here to reply to Matney ..."></textarea>
+            </div>
+            <button class="btn btn-primary">Post comment</button>
+          </div>
+        </div>
+        <div class="pt-3">
+          <h4>2 Comments</h4>
+          <div class="d-flex mb-3">
+            <a href="" class="avatar avatar-sm mr-12pt">
+              <!-- <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="people" class="avatar-img rounded-circle"> -->
+              <span class="avatar-title rounded-circle">JF</span>
+            </a>
+            <div class="flex">
+              <a href="" class="text-body"><strong>Joseph S. Ferland</strong></a>
+              <span class="text-70">How can I load Charts on a page?</span><br>
+              <span class="text-50">on <a href="" class="text-50" style="text-decoration: underline;">Data Visualization With Chart.js</a></span><br>
+              <div class="d-flex align-items-center">
+                <small class="text-50 mr-2">27 min ago</small>
+                <a href="" class="text-50"><small>Liked</small></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ml-sm-32pt mt-3 card p-3">
+            <div class="d-flex">
+              <a href="#" class="avatar avatar-sm mr-12pt">
+                <!-- <img src="assets/images/people/110/guy-6.jpg" alt="Guy" class="avatar-img rounded-circle"> -->
+                <span class="avatar-title rounded-circle">FM</span>
+              </a>
+              <div class="flex">
+                <div class="d-flex align-items-center">
+                  <a href="" class="text-body"><strong>FrontendMatter</strong></a>
+                  <small class="ml-auto text-muted">just now</small>
+                </div>
+                <p class="mt-1 text-70">Hi Joseph,<br> Thank you for purchasing our course! <br><br>Please have a look at the charts library documentation <a href="#">here</a> and follow the instructions.</p>
+
+                <div class="d-flex align-items-center">
+                  <a href="" class="text-50 d-flex align-items-center text-decoration-0"><i class="material-icons mr-1" style="font-size: inherit;">favorite_border</i> 3</a>
+                  <a href="" class="text-50 d-flex align-items-center text-decoration-0 ml-3"><i class="material-icons mr-1" style="font-size: inherit;">thumb_up</i> 13</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Top Contributors</div>
+        </div>
+        <p class="text-70 mb-24pt">People who started the most discussions on {{ brand }}.</p>
+
+        {% set streak = [{
+          avatar: 'assets/images/people/50/guy-1.jpg',
+          name: 'Luci Bryant',
+          articles: '105'
+        }, {
+          avatar: 'assets/images/people/50/guy-2.jpg',
+          name: 'Magnus Goldsmith',
+          articles: '93'
+        }, {
+          avatar: 'assets/images/people/50/woman-1.jpg',
+          name: 'Katelyn Rankin',
+          articles: '55'
+        }, {
+          avatar: "assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg",
+          name: "Jenell D. Matney",
+          articles: '32'
+        }, {
+          avatar: "assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg",
+          name: "Sherri J. Cardenas", 
+          articles: '21'
+        }, {
+          avatar: "assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg",
+          name: "Joseph S. Ferland", 
+          articles: '16'
+        }] %}
+
+        <div class="mb-4">
+          {% for item in streak %}
+          <div class="d-flex align-items-center mb-2">
+            <a href="" class="avatar avatar-xs mr-8pt">
+              <img src="{{ item.avatar }}" alt="course" class="avatar-img rounded-circle">
+            </a>
+            <a href="" class="flex mr-2 text-body"><strong>{{ item.name }}</strong></a>
+            <span class="text-70 mr-2">{{ item.articles }}</span>
+            <i class="text-muted material-icons font-size-16pt">forum</i>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

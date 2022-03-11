@@ -1,0 +1,802 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="الأسئلة الشائعة" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="FAQs" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block content %}
+
+<style>
+ 
+ 
+
+ .card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.blllu{
+        color: rgb(57, 137, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.carousel-item{
+    background-color: rgb(18, 76, 163) !important;
+}
+
+.carousel-item-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+
+
+h3.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+h3.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+
+strong.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+strong.mediabout-dark{
+   color: rgb(186, 193, 204) !important;
+}
+
+
+a.mediabout{
+    background-color: rgb(207, 228, 245) !important;
+    border: 1px solid #0d2150 !important;
+    color: rgb(11, 41, 68) !important;
+}
+
+a.mediabout-dark{
+   background-color: rgb(42, 51, 65) !important;
+   color: rgb(204, 213, 221) !important;
+}
+
+
+.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+.mediabout-dark{
+   color: rgb(100, 152, 248) !important;
+}
+
+  
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+   color: none !important;
+}
+
+
+        
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+th,td {
+    text-align: center !important;
+    border-top: 1px solid rgb(25, 25, 29)
+}
+
+.table thead{
+    height: 65px !important;
+}
+
+.tehead{
+    background-color: rgb(197, 223, 235) !important;
+    border-top: 0!important;
+    border-bottom: 0 !important;
+}
+
+.table .tehead {
+        
+}
+    
+.tehead-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+}
+
+
+.flllot{
+    float: left !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(185, 197, 206) !important;
+}
+
+[dir="ltr"] .table td, [dir="ltr"] .table th{
+    border: 0 !important;
+
+}
+
+a.disabled{
+    cursor: not-allowed !important;
+}
+
+.card-header:first-child{
+    border-radius: 0 !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+.progress .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+    background-color: rgb(189, 209, 245) !important;
+    border-radius: 0 !important;
+}
+
+.card .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+.card .bg-primary-dark{
+    background-color: rgb(13, 16, 22) !important;
+    border-radius: 0 !important;
+}
+
+.progress{
+    border-radius: 0 !important;
+}
+
+
+    .bgg-primary{
+        background-color: rgb(12, 63, 141) !important;
+    }
+    .bgg-primary-dark{
+        background-color: rgb(136, 145, 168) !important;
+    }
+    .accordion{
+        background-color: rgb(199, 218, 241) !important;
+        border: 1px solid rgb(149, 172, 202) !important;
+        border-radius: 5px !important;
+    }
+    .accordion-dark{
+        background-color: rgb(69, 74, 87) !important;
+        border: 1px solid rgb(49, 53, 63) !important;
+        border-radius: 5px !important;
+    }
+    .accordion__item{
+        border-radius: 3px !important;
+        border: 0 !important;
+    }
+
+p.mediabout{
+    color: rgb(202, 209, 214) !important;
+}
+
+p.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+.accordion__toggle{
+    background-color: rgb(186, 202, 221) !important;
+    border: 1px solid rgb(149, 172, 202) !important;
+    border-radius: 5px !important;
+}
+
+.accordion__toggle-dark{
+    background-color: rgb(45, 48, 56) !important;
+    border: 1px solid rgb(34, 37, 44) !important;
+    border-radius: 5px 5px 0 0 !important;
+}
+
+</style>    
+
+
+    <div class=" bgg-primary bgg-primary-dark " style="">
+        <div class="py-64pt ">
+           <div class="container d-flex flex-column justify-content-center align-items-center">
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+               <h1 class="text-white text-shadow">الأسئلة الشائعة للمعلم</h1>
+               <p class="mediabout mediabout-dark">قم بزيادة مهاراتك لمعرفة أين تبدأ؟ دليل الأسئلة الشائعة يعطي نبذة عن أكثر الأسئلة تكرار في بوستيب.</p>
+               {% else%}
+               <h1 class="text-white text-shadow">Teacher's FAQs</h1>
+               <p class="mediabout mediabout-dark">Measure your skill to find out where to start.</p>
+               {% endif %}
+           </div>
+        </div>
+    </div>
+
+
+    <div class=" page__container page-section">
+
+        
+
+        <div class="page-section">
+
+
+            <div class="columns">
+                <div class="column is-6">
+                    {% get_current_language as lang %}
+                    {% if lang == "ar" %}
+                    <h5 class="mediabout mediabout-dark">أسئلة عامة</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-1" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">مساعد المعلم</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-1">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">يعمل فريق عمل بوستيب بجد لتوفير الدعم والتعليمات للمدرسين لتحقيق أفضل نتيجة في الدورة التدريبية الخاصة بك ، يمكنك أن تطلب منا مباشرة على الدردشة المباشرة أو عبر البريد الإلكتروني الخاص بالدعم: support@booctep.com.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-3" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">ماهو مفهوم نسبة إيرادات المعلمين؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-3">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">
+                                        هناك أنواع من المعلمين في منصة بوستيب يحصلون على نسب مشاركة إيرادات مختلفة في العمل وفقًا لمستواهم <br>
+                                        
+- أي معلم جديد سيحصل على 50٪ من إيرادات الدورة. <br>
+- أي معلم يملك حساب خبير سيحصل على 60٪ من إيرادات الدورة. <br>
+- أي معلم يملك حساب بوستيبر سيحصل على 70٪ من رسوم الدورة.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-4" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أحصل على حساب خبير؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-4">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">
+                                        هناك 3 شروط لترقية حساب المعلم الخاص بك إلى حساب خبير. <br>
+                                    
+1. إنشاء أكثر من عدد 2 دورات مجانية في حسابك.<br>
+                                    
+2. احصل على أكثر من 1000 طالب في إجمالي طلابك. <br>
+                                    
+3. احصل على تصنيف أكثر من 4.5 من 5.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-5" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أحصل على حساب بوستيبر؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-5">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">
+                                        هناك 3 شروط لترقية حساب المعلم الخاص بك إلى حساب خبير. <br>
+                                    
+1. إنشاء أكثر من عدد 5 دورات مجانية في حسابك.<br>
+                                    
+2. احصل على أكثر من 5000 طالب في إجمالي طلابك. <br>
+                                    
+3. احصل على تصنيف أكثر من 4.8 من 5.
+                                    </span>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-11" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف تقوم بحذف دورة؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-11">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">لا يمكن حذف الدورة التي قام بتسجيل الطلاب فيها ، قبل أن يقوم أي طالب بتسجيل دورتك التدريبية ، يمكنك حذفها من صفحة الدورات ، والنقر فوق الزر "حذف" بدلاً من تأكيدها.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-12" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أقوم بتعديل دورة؟
+                                    </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-12">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">انتقل إلى صفحة الدورات ، وانقر فوق الزر تعديل الدورة ، وقم بالتعديل ثم إرسال مراجعة مرة أخرى ، وسيقوم فريق المراجعة لدينا بتأكيد عملية التعديل الخاصة بك، في حال كانت التعديلات مقبولة.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-2" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أقوم بإنشاء دورة؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-2">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">هناك طريقتان لإضافة دورة إلى ، <br>
+                                        1. انتقل إلى صفحة لوحة التحكم ثم اضغط على زر "إضافة دورة". <br>
+                                                                            
+                                        2. اذهب إلى صفحة الدورات ثم اضغط على إضافة دورة.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <h5 class="mediabout mediabout-dark">General</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-1" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">Teaching Assistants?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-1">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Booctep team work hard to provide teachers best instruction to make a best result with your course, you can ask us directly on the Live chat or via our support email: support@booctep.com.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-3" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">What is concept of teachers levels?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-3">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">There are a types of teachers in Booctep platform whom get different share work according to their Level <br> 
+                                        - Any new teacher will get 50% of course fees. <br>
+                                        - Any expert will get 60% of course fees. <br>
+                                        - Any boocteper will get 70% of course fees.
+                                        .</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-4" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to become an expert?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-4">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">There are 3 condition to upgrade your teacher account into an expert account. <br>
+                                    1. Create more than 1 free course in your account.
+                                    <br>
+                                    2. Get more than 1,000 Students in your total Students. <br>
+                                    3. Get rating more than 4.5 out of 5.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-5" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to become a Boocteper?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-5">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">There are 3 condition to upgrade your teacher account into a Boocteper account. <br>
+                                        1. Create more than 3 free course in your account.
+                                        <br>
+                                        2. Get more than 5,000 Students in your total Students. <br>
+                                        3. Get rating more than 4.8 out of 5.
+                                    </span>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-11" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to delete a course?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-11">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Deleting course that have enrolled students is not a possible, before any student enroll your course you can delete it from courses page, and click on delete button than confirm it.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-12" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to edit a course?
+                                    </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-12">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Go to courses page, click on Edit course button, do your editing than send a review again, our review team will confirm your editing.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="" style="border-radius: 3px !important;">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-2" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to add course?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-2">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Two ways to get into add course page, <br> 1. Go to dashboard page than click on Add course button. <br>
+                                    2. Go to Courses page than click on Add new course.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+       
+                </div>
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <div class="column is-6">
+                    <h5 class="mediabout mediabout-dark">الأمور المالية</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-6" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أحصل على إيراداتي؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-6">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">بعد 30 يومًا من عملية دفع الطالب ، سيكون لدى المعلم القدرة على طلب إيراداته بشرط أن يكون لديه طريقة دفع لتلقي إيراداته.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-7" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">ماهو السعر المثالي لدورتي؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-7">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">نوصي بأن تكون الدورات مدفوعة الأجر بين 30 ريال سعودي و 200 ريال سعودي.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-8" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أقوم بحل مشكلة عدم قبول بطاقتي البنكية؟
+                                </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-8">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">لا تتردد في الاتصال بنا ، في الدردشة المباشرة أو عبر بريدنا الإلكتروني: support@booctep.com في أي وقت لإرشادك وحل مشاكلك.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+             
+                    <h5 class="mediabout mediabout-dark">الجودة</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-30" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أحصل على أعلى المراكز لعرض الدورات في سوق بوستيب؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-30">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">يختار فريق الجودة لدينا أفضل الدورات التدريبية في السوق وفقًا لعدة أسباب ، مثل اتباع المعلم توصياتنا لأسعار الدورة ، وتلبية متطلبات الجودة لدينا.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-31" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أفي بمتطلبات بوستيب للجودة؟</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-31">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">يجب أن تتأكد من أنك تستخدم جودة فيديو HD أو HQ ، ويجب أن يكون الصوت واضحًا جدًا ، وبالطبع يجب أن تكون متخصصًا في ما تفعله.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-32" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف أحصل على وسم ( أختيار معتمد )</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-32">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">إنه نظام لا يمكننا تعديله ، ويجب أن يكون تقييم دورتك الدراسية أكثر من 4.7 ، وأن يكون لديك أكثر من 2000 طالب مسجلين في الدورة التدريبية الخاصة بك ، ولديك أقل من 2 من البلاغات في الدورة التدريبية الخاصة بك.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-33" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">كيف تقوم بوستيب بتسويق دوراتي؟
+                                </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-33">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">يختار فريق الجودة لدينا الدورات لتسويقها بناءً على جودتها ، لذلك يجب على المعلم تلبية متطلبات الجودة لدينا.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                {% else %}
+                <div class="column is-6">
+                    <h5 class="mediabout mediabout-dark">Payments</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-6" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">When will i get paid?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-6">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">After 30 days from student payment process, teacher will have ability to request their revenue in condition if they have a payout method to receive their revenue.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-7" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">What is the Recommended price for my course?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-7">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">We recommend for paid courses to be between 30 Saudi rials To 200 Saudi rials.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-8" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to solve credit cards problems?
+                                </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-8">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Please feel free to contact us, in the Live chat or via our email: support@booctep.com at anytime to guid you and solve your issues.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+             
+                    <h5 class="mediabout mediabout-dark">Quality</h5>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-30" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to get Booctep’s top rated list?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-30">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Our quality team choose top courses in the marketplace according to many reasons, such as following course price instructor, and met our quality requirments.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-31" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to met Booctep's quality requiremnts?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-31">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">You have to make sure you are using HD or HQ video quality, the sound must be very clear, and of course you need to be Specialist in what you do.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-32" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How to be in Booctep's choice?</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-32">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">It's a system that we cannot edit it, your course must have rating more than 4.7, you have more than 2,000 students enrolled in your course, and you have less than 2 report spam in your course.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 15px;" class="accordion accordion-dark js-accordion accordion--boxed list-group-flush" id="parent">
+                        <div class="accordion__item">
+                            <a href="#" class="accordion__toggle accordion__toggle-dark collapsed" data-toggle="collapse" data-target="#course-toc-33" data-parent="#parent">
+                                <span class="flex mediabout mediabout-dark">How do Booctep market my course?
+                                </span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu collapse" id="course-toc-33">
+                                <div class="accordion__menu-link">
+                                    <span class="mediabout mediabout-dark">Our quality team choose a courses to market them based on it's quality, So teacher must met our quality's requiremnts.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                {% endif %}
+            </div>
+
+
+            
+
+
+        </div>
+
+        
+
+    </div>
+
+
+{%  endblock %}

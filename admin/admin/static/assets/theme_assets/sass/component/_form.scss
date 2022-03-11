@@ -1,0 +1,61 @@
+// Basic Form 
+.basic-form-wrapper{
+    max-width: 420px;
+}
+
+.form-basic{
+    label{
+        font-size: 14px;
+        font-weight: 500;
+        @extend .color-dark;
+    }
+    select{
+        width: 100%;
+        @extend .border-light;
+    }
+    textarea{
+        min-height: 100px;
+    }
+    .form-inline-action{
+        margin-top: 18px;
+        .custom-checkbox{
+            .checkbox-text{
+                font-size: 13px;
+                @extend .color-light;
+            }
+        }
+        .forgot-pass{
+            font-size: 13px;
+        }
+    }
+    .btn-submit{
+        min-width: 180px;
+    }
+    .form-control::placeholder{
+        color:$extra-light;
+    }
+}
+
+.form-control-md{
+    height: 2.875rem;
+}
+
+.was-validated input:invalid ~ label, input.is-invalid ~ label,
+.was-validated input:invalid ~ label .invalid-feedback{
+color: $danger;
+}
+
+.was-validated input:invalid ~ label, input.is-invalid ~ label{
+    &::after{
+        background-color: rgba(255, 77, 79, .30);
+        border: 1px solid transparent;
+    }
+}
+
+.was-validated input:invalid ~ label .invalid-feedback{
+    display: block;
+}
+
+.valid-feedback,.invalid-feedback{
+    margin-top:8px;
+}

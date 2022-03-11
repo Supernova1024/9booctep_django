@@ -1,0 +1,20 @@
+$layout-compact-drawer-width:       100px !default;
+
+$dodger-blue:                       #5567FF !default;
+$electric-violet:                   #9C42FF !default;
+$pickled-bluewood:                  #303956 !default;
+$accent-red:                        #ED0B4C !default;
+$accent-yellow:                     #E4A93C !default;
+
+$primary: $dodger-blue;
+$dark: $pickled-bluewood;
+$accent: $accent-red;
+
+$headings-color: $dark;
+$sidebar-brand-icon-width:          5.125rem !default;
+$enable-shadows: true;
+
+@import 'ui-huma/scss/variables';
+
+// course nav
+$course-nav-active-bg:              rgba(white, .2) !default;

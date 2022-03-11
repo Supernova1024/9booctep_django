@@ -1,0 +1,37 @@
+{
+  "name": "luma",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "serve": "lite-server -c node_modules/theme-mix/bs-config.json ./dist",
+    "deploy": "surge --project ./dist --domain luma.dev.frontendmatter.com",
+    "html-validator-server": "java -cp node_modules/vnu-jar/build/dist/vnu.jar nu.validator.servlet.Main 8888"
+  },
+  "author": "FrontendMatter <contact@frontendmatter.com> (http://themeforest.net/user/frontendmatter/portfolio)",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "ui-huma": "gitlab:FrontendMatter/ui-huma#v1.5.0"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "core-js": "2.6.9",
+    "cross-env": "^5.2.0",
+    "lite-server": "^2.4.0",
+    "node-sass": "^4.12.0",
+    "regenerator-runtime": "^0.13.1",
+    "surge": "^0.20.1",
+    "theme-mix": "^1.2.0",
+    "vue-template-compiler": "^2.6.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/FrontendMatter/luma.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/FrontendMatter/luma/issues"
+  },
+  "homepage": "https://gitlab.com/FrontendMatter/luma#readme"
+}

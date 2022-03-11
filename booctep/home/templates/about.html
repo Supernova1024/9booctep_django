@@ -1,0 +1,1165 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+
+.card-features{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  justify-content: center !important;
+}
+
+
+
+.is-light-dark{
+  background-color: #222831 !important;
+  border: 1px solid #0c0d0f !important;
+  color: rgb(175, 175, 175) !important;
+}
+
+.card-features .card-features-row{
+  width:100%;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 35px;
+  align-items: center !important;
+}
+
+.card-features .card-features-row .card-features-rro{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-items: center;
+}
+.card-features .card-features-row .card-features-rro .card-features-i{
+  font-size: 60px;
+  color: #fff;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.card-features-rro-p{
+  text-align: center !important;
+  align-items: center;
+}
+
+
+
+.card-featuress{
+  width: 100%;
+  background-size: cover;
+  height: 300px;
+  border-radius: 3px;
+}
+
+.card-features-1{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/life-time.jpg" %}');
+}
+
+
+.card-features-2{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/certificate.jpg" %}');
+}
+
+
+.card-features-3{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/moneyback.jpg" %}');
+}
+
+
+.card-features-4{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/dashboard.jpg" %}');
+}
+
+
+.card-features-5{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/quiz.jpg" %}');
+}
+
+
+.card-features-6{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/courses.jpg" %}');
+}
+
+
+.card-features-7{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/translate.jpg" %}');
+}
+
+
+.card-features-8{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "assets/img/free.jpg" %}');
+}
+
+
+
+
+.card-features h3{
+  color: #fff;
+  text-align: center;
+}
+
+.card-features p{
+  color: rgb(230, 230, 230);
+  font-size: medium;
+  text-align: center;
+}
+
+
+
+
+.card-terms{
+  background-color: #fff;
+  border-radius: 3px;
+  display: block;
+  padding: 10px;
+  border: 1px solid rgb(228, 228, 228);
+  -webkit-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  -moz-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  transition: all 2s ease-in-out;
+}
+
+
+
+
+.card-support{
+  background-color: #fff;
+  border: 1px solid rgb(226, 226, 226);
+  padding: 40px 0;
+  -webkit-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  -moz-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+</style>
+
+{% endif %}
+
+
+
+<style>
+
+.view-wrapper{
+  background-color: inherit
+}
+
+body{
+  background-color: #fff !important;
+
+}
+.aboutus-dark{
+  background-color: #131518 !important;
+
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.blocksabout{
+   width: 50%;
+   align-items: center;
+}
+
+.signup-wrapper-2{
+    margin-top: 0px;
+}
+
+
+.section-about-feat .columns{
+    width: 95%;
+    margin: 0 auto;
+
+}
+.section-about-feat .columns .column-f .card-features{
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.section-about-feat .columns .column-f .card-features .card-features-i{
+
+    margin-left: 43%;
+}
+
+.section .made-with .made-block{
+    width: 100%;
+}
+.section .made-with .made-block .block-title{
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.section-about-feat-h3{
+    margin: 0 auto;
+}
+
+.section-about .columns{
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+
+  .about-card .body .place-list .place-wrapper {
+    position: relative;
+    width: calc(100% - 1rem) !important;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.card-terms{
+    display: visible !important;
+}
+
+
+.categories-bg {
+    margin: 0 auto;
+    padding: 25px;
+}
+
+
+
+.terms-page{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+.explorer-menu .explorer-inner {
+    margin: 0 auto;
+    width: 90%
+}
+
+.searching{
+    visibility: hidden;
+}
+
+/* Logo small screen */
+.logo{
+    margin-left: 100px;
+}
+
+/* Background hompepage */
+.hero {
+    margin: 0;
+    width: 100%;
+}
+
+.control{
+    width: 100%;
+}
+
+.hero-body {
+    margin: 0;
+}
+
+
+
+.products-navigation{
+    visibility: hidden;
+}
+
+
+.store-tabs{
+    left: 20px;
+    width: 40%;
+}
+
+
+.control-filter{
+    right: 20px;
+    width: 950px;
+    top: -2px;
+}
+
+.image-grid-wrap .image-row>div .image-owner .name{
+    opacity:1;
+}
+
+.overlay{
+    visibility: hidden;
+}
+
+.image-grid-wrap .image-row>div .photo-time {
+    opacity:1;
+}
+
+
+.image-grid-wrap .image-row>div .photo-like{
+    opacity:1;
+    transform: scale(1);
+}
+
+
+.pagination-previous {
+    width: 50%;
+    position: relative;
+}
+
+.pagination-next {
+    width: 50%;
+    position: relative;
+}
+
+
+.pagination-previous p{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pagination-next p{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.question-content {
+    margin: 0 auto;
+    width: 86%;
+}
+
+.footer-columns{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.footer-columns-2{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.control-language-parent{
+    float: left;
+}
+
+
+.combo-item-i{
+    visibility: hidden;
+}
+
+.combo-item-span{
+    text-align: left;
+    float: left;
+}
+
+.box-chevron-i{
+    visibility: hidden;
+}
+
+.is-2{
+    float: left;
+}
+.modal.is-medium .modal-content {
+}
+
+.modal.is-medium .modal-content .card{
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+.modal.is-xsmall .modal-content .card{
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+.close-modal-2{
+    visibility: visible;
+}
+
+
+/* wishlist page */
+.store-sections-quick {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.categories-header h2{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* cart page */
+.cart-content{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header-actions{
+    margin-right: 20px;
+}
+
+
+
+/* Profile page */
+
+.left-menu{
+padding: 30px 0;
+margin-top: 200px;
+background-color: transparent !important;
+}
+
+.left-menu-inner{
+    width: 90%;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 0px;
+}
+
+
+.basic-infos-wrapper{
+    visibility: hidden;
+}
+
+
+
+/* Homepage */
+
+.is-combo .combo-box,
+.is-combo .image-combo-box,
+.is-combo .stacked-combo-box,
+.is-combo .user-combo-box {
+position: absolute;
+right:30px !important;
+width: 30%;
+}
+
+
+.ProductBlock {
+width: 400px;
+margin: 0 auto;
+}
+
+.top{
+  padding: 20px;
+  padding-top: 90px;
+}
+
+.sectionstore{
+  display: none;
+}
+
+.notifications__item__title{
+  font-size: small;
+}
+
+.notifications__item__message{
+  font-size: xx-small;
+}
+
+.cart-content{
+  padding: 20px
+}
+
+.footer-columns{
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+
+
+.signup-wrapper .container .card{
+    margin-bottom: 0;
+}
+
+.booctep-2{
+  margin: auto !important;
+  width: 90% !important;
+}
+
+
+.card-features{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  justify-content: center !important;
+}
+
+
+
+.card-features .card-features-row{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-items: center !important;
+  margin: 10px;
+  width:100%;
+}
+
+.side-right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.side-right .content-section{
+    margin-bottom: 20px;
+}
+
+.right-content{
+    display: none
+
+}
+
+
+
+
+.left-menu{
+    display: none
+}
+
+
+
+
+    .block-title{
+      align-items: center !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      border-bottom: none !important;
+    }
+
+    .cennnter {
+      width: 90% !important;
+      height: 350px !important;
+    }
+    
+
+    }
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100% !important;
+  background-color: rgb(47, 63, 88);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  width: 100%;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 10px;
+  margin-left: -50px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+ .cennnter {
+      width: 60% !important;
+      height: 450px !important;
+    }
+
+</style>
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+
+@media only screen and (max-width: 600px) {
+
+/* 
+.made-with{
+   width: 27% !important;
+  margin-left: 1450px !important;
+}
+.block-title{
+  border-bottom: none !important;
+  margin-left: 450px !important;
+  margin-right: auto;
+} */
+.cennnter  {
+  width: 90% !important;
+}
+
+}
+</style>
+{% endif %}
+
+<style>
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+.abuth3{
+  color: #fff;
+}
+
+.abuth3-dark{
+   color: rgb(189, 188, 188) !important;
+
+}
+
+.hero-become-dark{
+  border-top: 1px solid #222831 !important;
+}
+
+
+
+.hero-about-dark{
+  position: relative;
+  height: 500px;
+  padding-top: 80px !important;
+  margin: 0 !important;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(169, 199, 241, 0.73), rgba(42, 84, 133, 0.52)),
+  url('../img/1560.jpg') !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 87%, 0% 100%);
+}
+</style>
+
+<div class="aboutus aboutus-dark">
+
+
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <!-- Section -->
+    <div id="shop-page" class="shop-wrapper">
+
+
+    <div class="store-sections  store-sections-2"><!-- <div class="store-sections store-sections-2"> -->
+
+
+            <!--Products-->
+            <div id="products-tab" class="store-tab-pane store-tab-pane-2 is-active" id="demo">
+
+                <section class="hero is-small is-bold hero-about hero-about-dark">
+                    <div class="hero-body">
+                      <div class="container">
+
+                        <h1 class="booctep" style="margin-bottom: 20px;" data-shadow='Booctep'>{% trans 'Booctep' %}</h1>
+
+                        <h2 class="booctep-h2">
+                          {% get_current_language as lang %}
+                          {% if lang == "ar" %}
+                          <b>
+                            منصة تعليم عربية تهدف لنشر الثقافة العلمية و رفع الكفاءة و التطوير في شتى المجالات وتوسيع دائرة المعرفة للمهتمين بالتعلم الذاتي لبناء جيل واعي بكل علوم الحياة، من خلال تمكينهم من تطوير مهاراتهم و الوصول الى اهدافهم و زيادة المعرفة المهنية و توفير تجربة فريدة و بيئة مناسبة لرفع كفاءة التعليم الإلكتروني.
+                          </b>
+                          {% else %}
+                          <p>
+                            It's an Arabic E-Learning platform that aims to spread scientific culture, raise efficiency and development in various fields, and expand the circle of knowledge for those interested in self-learning to build a generation aware of all life sciences, by enabling them to develop their skills, reach their goals, increase professional knowledge, and provide a unique experience and appropriate environment to raise E-learning efficiency.                          
+                          </p>
+                          {% endif %}
+                        </h2>
+
+
+                      </div>
+                    </div>
+                  </section>
+
+
+                <div class="view-wrapper ">
+
+
+
+
+
+                    <div id="landing-start" class="section landing-wrapper">
+                        <div class="container">
+                          {% get_current_language as lang %}
+                          {% if lang == "ar" %}
+                            <div class="made-with " class="blocksabout" style="margin-right: auto;margin-left: auto;margin-top: -130px;">
+                                <div id="made-with-bulma" class="made-block">
+                                    <div class="block-icon is-box-reveal ">
+                                        <img src="{%static 'assets/img/about/step1.png' %}" alt="" style="" >
+                                    </div>
+                                    <div class="block-title " style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 طالب</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{%static 'assets/img/about/step3.png' %}" alt="" style="width: 90%;" >
+                                    </div>
+                                    <div class="block-title" style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 دورة</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{%static 'assets/img/about/step2.png' %}" alt="" style="width: 90%;" >
+                                    </div>
+                                    <div class="block-title" style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 أختبار </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="made-with " class="blocksabout" style="margin-right: auto;margin-left: auto;margin-top: -130px;">
+                                <div id="made-with-bulma" class="made-block">
+                                    <div class="block-icon is-box-reveal ">
+                                        <img src="{%static 'assets/img/about/step1.png' %}" alt="" style="" >
+                                    </div>
+                                    <div class="block-title " style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 Students</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{%static 'assets/img/about/step3.png' %}" alt="" style="width: 90%;" >
+                                    </div>
+                                    <div class="block-title" style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 Courses</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{%static 'assets/img/about/step2.png' %}" alt="" style="width: 90%;" >
+                                    </div>
+                                    <div class="block-title" style="">
+                                        <h3 style="margin-right: -40px;" class="mediabout mediabout-dark">+0 Quizzes </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+
+
+
+
+                <style>
+                  .section-about{
+                    width: 100%;
+                  }
+                  .side-feature{
+                    margin: auto;
+                    margin-right: auto !important;
+                    text-align: center;
+                    margin-left: auto !important;
+                                      
+
+                  }
+                  .cennnter-dark{
+                    border: 10px solid #222831 !important;
+
+                  }
+                  .cennnter{
+                    margin: auto;
+                    margin-right: auto !important;
+                    text-align: center;
+                    margin-left: auto !important;
+                    margin-bottom: 80px;
+                    margin-top: 15px;
+                    border-radius: 3px;
+                    border: 10px solid rgb(233, 233, 233);
+                  }
+                </style>
+                  <div class="section-about side-feature">
+                      <div class="container ">
+                        
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <h3 class=" mediabout-dark mediabout" style="margin-bottom: 30px !important;">عن منصة بوستيب</h3>
+                        <div class="cennnter cennnter-dark" style="">
+
+                          <video class="viddeo" poster="{%static 'assets/img/setting.jpg' %}" id="player" playsinline controls>
+                            <source src="{%static 'assets/img/vid/fortnite.webm" type="video/webm" />
+
+                            <!-- Captions are optional -->
+                            <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                        </video>
+                        </div>
+                        {% else %}
+                        <h3 class=" mediabout-dark mediabout" style="margin-bottom: 30px !important;">About booctep</h3>
+                        <div class="cennnter cennnter-dark" style="">
+
+                          <video class="viddeo" poster="{%static 'assets/img/setting.jpg' %}" id="player" playsinline controls>
+                            <source src="{%static 'assets/img/vid/fortnite.webm" type="video/webm" />
+
+                            <!-- Captions are optional -->
+                            <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                        </video>
+                        </div>
+                        {% endif %}
+                      </div>
+                  </div>
+
+
+                    <div class="section-about side-feature">
+                        <div class="container">
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans "مهارات جديدة" %}</h3>
+                                  <p>{% trans 'تعلم مهارات جديدة, تابع اهتماماتك وشغفك و تقدم في حياتك المهنية مع دورات منصة بوستيب, نقدم دورات جديدة كل أسبوع, تابع المنصة بشكل أسبوعي ليصلك كل جديد من دورات رعاية صحية, حاسب الي, تاريخ, علوم والكثير من العلوم.' %}</p>
+
+                                  {% else %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans "New skills" %}</h3>
+                                  <p>{% trans 'Learn new skills, pursue your interests or advance your career with our online courses, Each week we add new online courses, check the platform weekly for new courses starting soon in subjects such as healthcare, infotmation technology, history, science and more.' %}</p>
+                                  
+                                  {% endif %}
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{%static 'assets/img/about/about-1.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-6  ">
+                                    <img src="{%static 'assets/img/download.png' %}" class="booctep-2" alt="">
+                                </div>
+                                <div class="column is-6">
+
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans "أحصل على شهادة إتمام" %}</h3>
+                                  <p>{% trans 'للتأكد من أنك تتحسن ، نقدم شهادة إتمام بعد إكمال الاختبار بنجاح ، مما يمنح الطلاب دليلًا على إنجازاتهم وعملهم الجاد.' %}</p>
+
+                                  {% else %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans 'Get certificate' %}</h3>
+                                  <p>{% trans 'To ensure you are getting better, we offer a certificate after a test is successfully completed, giving students evidence of their accomplishments and hard work.' %}</p>
+                                  
+                                  {% endif %}
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans "تعلم ما تحب" %}</h3>
+                                  <p>{% trans ' التعرف على نفسك هو الخطوة الأولى في تعلم أن تحب ما تفعله, في منصة بوستيب نقدم العديد من المواضيع والدورات للتواصل مع ما يلهمك ويثير أهتمامك للتوصل إلى ما تحب.' %}</p>
+
+                                  {% else %}
+                                  
+                                  <h3 class=" mediabout-dark mediabout" style="margin-bottom: 10px;">{% trans 'Learn what you love' %}</h3>
+                                  <p>{% trans 'Getting to know yourself is the first step in learning to love what you do. we offer many topics and courses to get in touch with what inspires you.' %}</p>
+                                  
+                                  {% endif %}
+                                  
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{%static 'assets/img/about/about-3.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                  <div class="section-about-feat side-feature" style="margin-bottom: 30px">
+                    <div class="container">
+
+                      {% get_current_language as lang %}
+                      {% if lang == "ar" %}
+                      
+                      
+                      <h3 class="section-about-feat-h3  mediabout-dark mediabout" style="">
+                        {% trans "مميزات منصة بوستيب" %}
+                      </h3>
+
+                      {% else %}
+                      
+                      
+                      <h3 class="section-about-feat-h3" style="">
+                        {% trans "Booctep's Features" %}
+                      </h3>
+
+                      {% endif %}
+
+                      <div class="columns ">
+
+
+
+                        <div class="card-features" style="margin-top: 40px !important;">
+
+
+
+
+
+                            <div class="card-features-row">
+                                <div class="card-featuress card-features-1">
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                <div class="card-features-rro">
+                                <i class="fa fa-universal-access card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">{% trans 'إشتراك مدى الحياة' %}</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark">{% trans 'قم بالدخول في كل الأوقات وأكمل دوراتك.' %}</p>
+                                {% else %}
+                                <div class="card-features-rro">
+                                <i class="fa fa-universal-access card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">{% trans 'Lifetime Access' %}</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark">Access anytime you want one you enrol to any course.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                              <div class="card-features-row ">
+                                <div class="card-featuress card-features-2">
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                <div class="card-features-rro">
+                                <i class="fa fa-award card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark"> شهادة إتمام</h3>
+                                 </div>
+                                <p class="rro-p abuth3 abuth3-dark">أحصل على شهادة إتمام بعد اجتيازك لإختبار الدورة كمكافأة على جهدك.</p>
+                                 </div>
+                                 {% else %}
+                                 <div class="card-features-rro">
+                                 <i class="fa fa-award card-features-i"></i>
+                                 <h3 class="abuth3 abuth3-dark">Get Certificate</h3>
+                                  </div>
+                                 <p class="rro-p abuth3 abuth3-dark">Get certificate when you finish your courses.</p>
+                                  </div>
+                                 {% endif %}
+                              </div>
+
+                              <div class="card-features-row">
+                                <div class="card-featuress card-features-3">
+                                  {% get_current_language as lang %}
+                                  {% if lang == "ar" %}
+                                <div class="card-features-rro">
+                                <i class="fa fa-wallet card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">إستعادة أموالك</h3>
+                              </div>
+                                <p class="rro-p abuth3 abuth3-dark">قم بإستعادة أموالك في حالة لم تعجبك الدورة أو لم تشعر أن الدورة كانت مفيدة.</p>
+                                </div>
+                                {% else %}
+                                <div class="card-features-rro">
+                                <i class="fa fa-wallet card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">Refund</h3>
+                              </div>
+                                <p class="rro-p abuth3 abuth3-dark">Get your money back if you have a problem with the course.</p>
+                                </div>
+                                {% endif %} 
+                            </div>
+
+
+                              <div class="card-features-row">
+                                <div class="card-featuress card-features-4">
+                                <div class="card-features-rro">
+                                <i class="fa fa-project-diagram card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">{% trans 'Easy Dashboard' %}</h3>
+                              </div>
+                              {% get_current_language as lang %}
+                              {% if lang == "ar" %}
+                                <p class="rro-p abuth3 abuth3-dark">تمتاز لوحة التحكم لدينا بسهولة الإستخدام وإعطائك تجربة فريدة في التعلم. </p>
+                                {% else %}
+                                <p class="rro-p abuth3 abuth3-dark">Easy dashboard to do your quizzes and watch your courses anytime you want.</p>
+                                {% endif %}
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                        <div class="columns ">
+
+
+                        <div class="card-features">
+                              <div class="card-features-row">
+                                <div class="card-featuress card-features-5">
+                                <div class="card-features-rro">
+                                <i class="fa fa-pencil-alt card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">{% trans 'Quick Quizzes' %}</h3>
+                              </div>
+                                <p class="rro-p abuth3 abuth3-dark">{% trans 'Take a very quick Quize before you get your certificate.' %}</p>
+                                </div>
+                            </div>
+
+
+                              <div class="card-features-row">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="card-featuress card-features-6">
+                                <div class="card-features-rro">
+                                <i class="fa fa-video card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">الكثير من العلوم</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark">نقوم بتوفير العديد من علوم الحياة لتلبية احتياجات جميع محبي التعلم.</p>
+                                </div>
+                                {% else %}
+                                <div class="card-featuress card-features-6">
+                                <div class="card-features-rro">
+                                <i class="fa fa-video card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">Many Subjects</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark">we offers many subjects of sciences to make sure every learner got what they looking for.</p>
+                                </div>
+                                {% endif %}
+                            </div>
+
+
+
+                              <div class="card-features-row">
+                                <div class="card-featuress card-features-7">
+                                <div class="card-features-rro">
+                                <i class="fa fa-heartbeat card-features-i" style="width: 55px !important;"></i>
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <h3 class="abuth3 abuth3-dark">{% trans 'المظهر الداكن' %}</h3>
+                                  </div>
+                                    <p class="rro-p abuth3 abuth3-dark">{% trans 'تمتع بتجربة فريدة بإستخدام المظهر الداكن لمنصة بوستيب.' %}</p>
+                                  </div>
+                                {% else %}  
+
+                                <h3 class="abuth3 abuth3-dark">{% trans 'Dark Mode' %}</h3>
+                              </div>
+                                <p class="rro-p abuth3 abuth3-dark">Dive into a beautiful experience using the dark mode of booctep.</p>
+                                </div>
+                                {% endif %}
+                            </div>
+
+
+                              <div class="card-features-row">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="card-featuress card-features-8">
+                                <div class="card-features-rro">
+                                <i class="fa fa-smile card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">دورات مجانية</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark" style="padding: 5px !important;">نسعى في منصة بوستيب لإرضاء الجميع بتقديم دورات مجانية لخلق بيئة تعليمية تناسب الجميع.</p>
+                                </div>
+                                {% else %}
+                                <div class="card-featuress card-features-8">
+                                <div class="card-features-rro">
+                                <i class="fa fa-smile card-features-i"></i>
+                                <h3 class="abuth3 abuth3-dark">Free courses</h3>
+                                </div>
+                                <p class="rro-p abuth3 abuth3-dark">We aim to offer more free courses to satisfaction every learner and create an educational environment that fit anyone.</p>
+                                </div>
+                                {% endif %}
+                        </div>
+
+
+                        </div>
+
+
+                      </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <section class="hero is-small is-bold hero-become hero-become-dark">
+            <div class="hero-body">
+                <div class=" section-bec side-feature ">
+                  {% get_current_language as lang %}
+                  {% if lang == "ar" %}
+
+                    <h3 style="font-weight: 600;">{% trans "كيف أصبح معلما؟" %}</h3>
+                    <a href="{% url 'become' %}" class="button is-light is-light-dark"><b>{% trans 'ألقي نظرة سريعة' %}</b></a>
+
+                    {% else%}
+                  
+                    <h3 style="font-weight: 600;">{% trans "How to become a teacher?" %}</h3>
+                    <a href="{% url 'become' %}" class="button is-light is-light-dark">{% trans 'Take a quick Look' %}</a>
+
+                  {% endif %}
+
+                </div>
+            </div>
+          </section>
+          <!-- tooltip
+          <span class="tooltiptext">This will show you how to become a teacher</span> -->
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

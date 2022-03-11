@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load i18n %}
+
+
+
+    <style>
+
+
+
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(212, 212, 212) !important;
+}
+
+
+    .combo-box {
+        right: 0px !important;
+        top: 4px;
+        padding: 0;
+        width : 200px;
+        background: #fff !important;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 35px;
+        cursor: pointer;
+        width: 20%;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+
+
+   
+.is-light-dark{
+  background-color: #222831 !important;
+  border: 1px solid #0c0d0f !important;
+  color: rgb(175, 175, 175) !important;
+}
+
+.is-box-reveal-dark{
+  background-color: #222831 !important;
+  border: 1px solid #0c0d0f !important;
+  color: rgb(175, 175, 175) !important;
+}
+
+.timeline-dark ul li div .time{
+    background-color: #f0f0f0 !important;
+    color: #3f3f3f;
+    border: 1px solid #e0e0e0;
+}
+
+
+
+
+.clicck{
+    color: #38456b;
+}
+
+.clicck-dark{
+    color: #e2e2e2;
+}
+
+
+.timeline-dark ul li div .time-dark{
+    background-color: #31363d !important;
+    color: #dcdddf;
+    border: 1px solid #000;
+}
+
+
+
+.timeline ul .liness{
+    border: 1px solid #e0e0e0;
+}
+
+
+.timeline-dark ul .liness-dark{
+    border: 1px solid #222327;
+}
+
+
+
+.hero-become-4{
+  position: relative;
+  background-size: cover;
+  height: 360px !important;
+  background-image: linear-gradient(to bottom, rgba(13,52,96, 0.52), rgba(1, 46, 63, 0.911)),
+  url('../img/become.jpg') !important;
+  margin-bottom: 40px;
+}
+
+
+.hero-become-4-h1{
+  text-align: center;
+  font-size: 42px;
+  padding-top: 40px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hero-become-4-h3{
+  text-align: center;
+  font-size: 42px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hero-become-4-a{
+  align-items: center;
+  height: 40px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 30px;
+}
+
+.cennnter {
+      width: 60% !important;
+      height: 450px !important;
+}
+
+
+
+.hero-become-4-dark{
+  position: relative;
+  background-size: cover;
+  height: 360px !important;
+  background-image: linear-gradient(to bottom, rgba(27, 34, 43, 0.73), rgba(5, 6, 8, 0.52)),
+  url('../img/become.jpg') !important;
+  margin-bottom: 40px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+.cennnter {
+    width: 90% !important;
+    height: 350px !important;
+  }
+  
+
+  
+}
+
+</style>
+
+
+    </style>
+
+
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    <style>
+      .is-combo .combo-box, .is-combo .image-combo-box, .is-combo .stacked-combo-box, .is-combo .user-combo-box{
+        float: left ;
+        margin-right: auto !important;
+      }
+    </style>
+
+    {% endif %}
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <!-- Section -->
+    <div id="shop-page" class="shop-wrapper">
+
+    <div class="store-sections store-sections-2">
+
+            <!-- Brands -->
+        <div id="brands-tab" class="store-tab-pane is-active">
+                   <!-- Timeline -->
+                   <section class="hero is-small is-bold hero-become-4">
+                    <div class="hero-body">
+                      <div class="container">
+                        <div class="hero-becom-flex">
+                        <h1 class="booctep-1 hero-become-4-h1" data-shadow='Booctep'>{% trans 'Become a teacher' %}</h1>
+                        <h2 class="booctep-h2 hero-become-4-h2">{% trans 'Teach what you learn and earn money now, see this step for how to be a teacher than sign as a teacher.' %}</h2>
+                        <a href="/{{lang}}become_a_teacher" style="" class="button is-light is-light-dark hero-become-4-a">
+                        <b>{% trans 'Become a teacher' %}</b>
+                        </a>
+                    </div>
+                </div>
+                    </div>
+                    <div id="landing-start" class="landing-wrapper"  style="margin-top: -32px;">
+                          <div class="made-with" style="margin-left: auto !important;margin-right: auto !important;">
+                              <div class="made-block-2" >
+                                  <div class="block-icon is-box-reveal is-box-reveal-dark" >
+                                    <i class="fa fa-arrow-down"></i>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                  </section>
+
+
+    <section class="timeline timeline-dark" style="margin-top: 25px !important;">
+      {% get_current_language as lang %}
+      {% if lang == "ar" %}
+        <ul>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 1' %}</time>
+                <h2 style="font-weight: 500;">{% trans 'Sign up as a teacher.' %}</h2>
+            </div>
+          </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">الخطوة الثانية</time>
+                  <h2 style="font-weight: 500;">قم بإكمال أعدادات حسابك</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">{% trans 'Step 3' %}</time>
+                  <h2 style="font-weight: 500;">قم باختيار ما تريد تعليمه, التخصص الرئيسي والفرعي</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">{% trans 'Step 4' %}</time>
+                  <h2 style="font-weight: 500;">انشأ دورة وقم بتعليم ما تعلمت</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">{% trans 'Step 5' %}</time>
+                  <h2 style="font-weight: 500;">غير متأكد؟ قم بإنشاء فيديو تجريبي, لتقييمه</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">{% trans 'Step 6' %}</time>
+                  <h2 style="font-weight: 500;">تواصل مع طلابك</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">{% trans 'Step 7' %}</time>
+                  <h2 style="font-weight: 500;">قم بإضافة طريقة استلام</h2>
+              </div>
+            </li>
+            <li class="liness liness-dark">
+              <div>
+                <time class="time time-dark">الخطوة الثامنة</time>
+                  <h2 style="font-weight: 500;">استقبل إيراداتك</h2>
+              </div>
+            </li>
+        </ul>
+      {% else %}
+      <ul>
+        <li class="liness liness-dark">
+          <div>
+            <time class="time time-dark">{% trans 'Step 1' %}</time>
+              <h2 style="font-weight: 500;">{% trans 'Sign up as a teacher.' %}</h2>
+          </div>
+        </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 2' %}</time>
+                <h2 style="font-weight: 500;">{% trans 'Set up your profile information.' %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 3' %}</time>
+                <h2 style="font-weight: 500;">{% trans 'Select what you are going to teach.' %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 4' %}</time>
+                <h2 style="font-weight: 500;">{% trans 'Teach what you have learned.' %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 5' %}</time>
+                <h2 style="font-weight: 500;"> {% trans 'Not ready? submit a test course.' %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 6' %}</time>
+                <h2 style="font-weight: 500;">{% trans "Meet your students and communicate with them." %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 7' %}</time>
+                <h2 style="font-weight: 500;">{% trans "Set up payout method" %}</h2>
+            </div>
+          </li>
+          <li class="liness liness-dark">
+            <div>
+              <time class="time time-dark">{% trans 'Step 8' %}</time>
+                <h2 style="font-weight: 500;">{% trans "Receive what you have earned." %}</h2>
+            </div>
+          </li>
+      </ul>
+      {% endif %}
+      </section>
+      <!-- Timeline -->
+            </div>
+
+        </div>
+
+        <section class="hero is-small is-bold hero-become-3" >
+            <div class="hero-body">
+              <style>
+                .section-about{
+                  width: 100%;
+                }
+                .side-feature{
+                  margin: auto;
+                  margin-right: auto !important;
+                  text-align: center;
+                  height: 600px !important;
+                  margin-left: auto !important;
+                                    
+
+                }
+                .cennnter-dark{
+                  border: 10px solid #222831 !important;
+
+                }
+                .cennnter{
+                  margin: auto;
+                  margin-right: auto !important;
+                  text-align: center;
+                  margin-left: auto !important;
+                  margin-bottom: 80px;
+                  margin-top: 15px;
+                  border-radius: 3px;
+                  border: 10px solid rgb(233, 233, 233);
+                }
+              </style>
+                <div class="section side-feature">
+                    
+                  <div class="container ">
+                        
+                    {% get_current_language as lang %}
+                    {% if lang == "ar" %}
+                    <h3 class=" mediabout-dark mediabout" style="margin-bottom: 30px !important;">كيف تصبح معلم؟</h3>
+                    <div class="cennnter cennnter-dark" style="">
+
+                      <video class="viddeo" poster="{%static 'assets/img/setting.jpg' %}" id="player" playsinline controls>
+                        <source src="{%static 'assets/img/vid/fortnite.webm" type="video/webm" />
+
+                        <!-- Captions are optional -->
+                        <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                    </video>
+                    </div>
+                    {% else %}
+                    <h3 class=" mediabout-dark mediabout" style="margin-bottom: 30px !important;">How to become a teacher?</h3>
+                    <div class="cennnter cennnter-dark" style="">
+
+                      <video class="viddeo" poster="{%static 'assets/img/setting.jpg' %}" id="player" playsinline controls>
+                        <source src="{%static 'assets/img/vid/fortnite.webm" type="video/webm" />
+
+                        <!-- Captions are optional -->
+                        <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                    </video>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+            </div>
+          </section>
+
+    </div>
+
+
+<!--- Categories Modal end-->
+</div>
+
+<!-- FAQs Modal -->
+
+<script>
+    const player = new Plyr('#player'); 
+    console.log("here it is: "+player);
+
+    $(function(){
+        getsubcategory()
+    })
+
+    function openBecomeModal(){
+        // $('#becomeModal').modal('show');
+        $('#user-photos-modal').modal('show');
+    }
+    function getsubcategory(){
+        url = '/getsubcategory';
+        cat_id = $('#category_id').val()
+        $.post(url, { category_id: cat_id }, function(res){
+            data = res.subcat_list
+            html = '';
+            for(idx in data){
+                console.log("123123", idx)
+                html += '<option value='+data[idx].id+'>'+data[idx].name+'</option>';
+            }
+            $('#category_id_2').children().remove()
+            $('#category_id_2').append(html)
+        });
+    }
+
+    function submitBecome(){
+        url = '/becomeTeacher/';
+        id = {{ request.user.id }};
+        cat_id = $('#category_id').val();
+        sub_catid = '';
+        $('#category_id_2 option').each(function(){
+            sub_catid += $(this).val();
+            sub_catid += ',';
+        })
+
+        $.post(url, { id:id, cat_id:cat_id, sub_catid : sub_catid }, function (res) {
+            swal("Request Submitted successfully!", {
+                    icon: "success",
+                    button: "Ok",
+                    closeOnClickOutside: false,
+                    }).then(
+                        function(){
+                            $('#becomeModal').modal('hide')
+                        }
+                    );
+        });
+    }
+</script>
+<!-- Concatenated js plugins and jQuery -->
+<script src="{% static 'assets/js/timeline.js' %}"></script>
+<script src="{% static 'assets/js/videos.js' %}"></script>
+<script src="{% static 'assets/js/settings.js' %}"></script>
+
+
+<script>
+  var _smartsupp = _smartsupp || {};
+  _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+  window.smartsupp||(function(d) {
+    var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+    c.type='text/javascript';c.charset='utf-8';c.async=true;
+    c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+  })(document);
+  </script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% import 'components/hljs.html' as hljs %}
+{% import 'components/next.html' as next %}
+
+<div class="{{ containerClass }} page__container">
+  <div class="row">
+    <div class="col-lg-8">
+      <p class="measure-lead-max">{{ brand }} is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
+
+      <a target="_blank" class="btn btn-outline-secondary" href="{{ demo_url }}">Open Live Demo</a>
+      <hr class="my-32pt">
+
+      <p>You can also find the static files from our online demos in the <code>dist/</code> directory of the download package. You can open the precompiled demo from the download package by running the following command from a terminal:</p>
+
+      <div class="card card-body bg-dark measure-lead-max">
+        {% call hljs.component(type="shell") -%}
+          open dist/index.html
+        {%- endcall %}
+      </div>
+
+      <p>Or, start a web server:</p>
+      <div class="card card-body bg-dark measure-lead-max">
+        {% call hljs.component(type="shell") -%}
+          npm run serve
+        {%- endcall %}
+      </div>
+    </div>
+    <div class="col-lg-4 position-sticky" style="top: 64px;">
+      {{ next.component(title='Installation', to='installation.html') }}
+    </div>
+  </div>
+</div>

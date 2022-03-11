@@ -1,0 +1,35 @@
+<li class="sidebar-menu-item{% if layout === 'compact' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="compact-{{ slug }}.html">
+    <span class="sidebar-menu-text">Compact</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'mini' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="mini-{{ slug }}.html">
+    <span class="sidebar-menu-text">Mini</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'mini-secondary' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="mini-secondary-{{ slug }}.html">
+    <span class="sidebar-menu-text">Mini + Secondary</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'app' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ slug }}.html">
+    <span class="sidebar-menu-text">App</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'boxed' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="boxed-{{ slug }}.html">
+    <span class="sidebar-menu-text">Boxed</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'sticky' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="sticky-{{ slug }}.html">
+    <span class="sidebar-menu-text">Sticky</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if layout === 'default' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="fixed-{{ slug }}.html">
+    <span class="sidebar-menu-text">Fixed</span>
+  </a>
+</li>

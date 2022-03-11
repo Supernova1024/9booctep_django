@@ -1,0 +1,214 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Marketing Dashboard</h4>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-search order-search  global-shadow mt-10">
+                                <form action="" method="post" class="order-search__form" id="search_form">
+                                    {% csrf_token %}
+                                    <span data-feather="search"></span>
+                                    <input class="form-control mr-sm-2 border-0 box-shadow-none" type="search" name="search" id="search"
+                                           placeholder="Filter by keyword" aria-label="Search" value="{{ search }}">
+                                    <input type="hidden" name="type" id="type" value="{{ type }}">
+                                </form>
+                            </div><!-- End: .project-search -->
+                            <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" id="ap-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link {%if type == 1 %}active{% endif %}" id="timeline-tab" data-toggle="pill"
+                                               href="#timeline" role="tab" aria-controls="timeline" onclick="setType(1)"
+                                               aria-selected="false">Top rating</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {%if type == 2 %}active{% endif %}" id="activity-tab" data-toggle="pill" href="#" onclick="setType(2)"
+                                               role="tab" aria-controls="activity" aria-selected="false">Most
+                                                students</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+                        </div>
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="timeline" role="tab"
+                             aria-labelledby="ap-overview-tab">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                    <tr class="userDatatable-header">
+                                        <th>
+                                            <span class="userDatatable-title">Course name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Teacher name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Rating</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Total students</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title float-right">Actions</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for course in courses %}
+                                    <tr>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.user_name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.rating | floatformat:2 }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title float-right">
+                                                {{ course.student_count }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                <li>
+                                                    <div class="action-btn">
+                                                        <a href="#" style="width: 50px !important;margin-right:-5px"
+                                                           class=" px-15" onclick="openDownloadModal('{{ course.id }}')">
+                                                            <span data-feather="download"></span></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+</div>
+<div class="modal fade new-member" id="new-member" role="dialog"
+     tabindex="-1" aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content  radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500"
+                    id="staticBackdropLabel">Download
+                    videos</h6>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-member-modal">
+                    <div class="changelog__according">
+                        <div class="changelog__accordingWrapper">
+                            <div id="accordion">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group d-flex pt-25">
+                        <button class="btn btn-primary btn-default btn-squared text-capitalize">
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+
+    function openDownloadModal(id) {
+        $("#new-member").modal("show")
+        let url = '/get_course_video/'
+        let form_data = new FormData()
+        form_data.append('id', id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+            videoList = JSON.parse(response.videos)
+            console.log("==>", videoList)
+            let html = ''
+            videoList.forEach(item => {
+                html += `<div class="card">
+                    <div class="card-header w-100 px-sm-10 px-5"
+                         id="heading8">
+                        <div role="button"
+                             class="w-100 changelog__accordingCollapsed collapsed"
+                             data-toggle="collapse"
+                             data-target="#collapse8"
+                             aria-expanded="true"
+                             aria-controls="collapse8">
+                            <div class="changelog__accordingTitle d-flex justify-content-between w-100">
+                                <div class="v-num">
+                                    Section
+                                    1<span
+                                        class="v-arrow">-</span>
+                                    <span class="rl-date mr-50">How to eat healthy..</span><a
+                                        href="http://localhost:8001/static` + item.fields.url + `" download
+                                        target="_blank">Download</a>
+                                </div>
+                                <div class="changelog__accordingArrow">
+                                    <span data-feather="chevron-right"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collapse8"
+                         class="collapse"
+                         aria-labelledby="heading8"
+                         data-parent="#accordion">
+                        <video width="100%"
+                               controls>
+                            <source src="http://localhost:8001/static` + item.fields.url + `"
+                                    type="video/mp4">
+                        </video>
+                    </div>
+                </div>`
+            })
+            $("#accordion").html(html)
+        })
+    }
+
+    function setType(type) {
+        $("#type").val(type)
+        $("#search_form").submit()()
+    }
+
+</script>
+{% endblock %}

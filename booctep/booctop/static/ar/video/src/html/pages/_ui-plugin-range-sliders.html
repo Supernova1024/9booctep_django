@@ -1,0 +1,123 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Basic', description='Easy to use, flexible and responsive range slider with skin support. Please read the <a target="_blank" href="http://ionden.com/a/plugins/ion.rangeSlider/index.html">official plugin documentation</a> for a full list of options.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="100"
+      data-max="1000"
+      data-from="550">
+  {% endcall %}
+
+  {% call panel.component(title='Advanced', description='Set type to double, specify range, show grid and add a prefix <code>$</code>') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="0"
+      data-max="1000"
+      data-from="200"
+      data-to="800"
+      data-prefix="$"
+      data-type="double"
+      data-grid="true">
+  {% endcall %}
+
+  {% call panel.component(title='Range', description='Set up range with negative values.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="-1000"
+      data-max="1000"
+      data-from="-500"
+      data-to="500"
+      data-type="double"
+      data-grid="true">
+  {% endcall %}
+
+  {% call panel.component(title='Step', description='Set up range with negative values and steps.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="-1000"
+      data-max="1000"
+      data-from="-500"
+      data-to="250"
+      data-type="double"
+      data-grid="true"
+      data-step="250">
+  {% endcall %}
+
+  {% call panel.component(title='Fractional', description='Force fractional values, using fractional step 0.1.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="-12.8"
+      data-max="12.8"
+      data-from="-3.2"
+      data-to="3.2"
+      data-type="double"
+      data-grid="true"
+      data-step="0.1">
+  {% endcall %}
+
+  {% call panel.component(title='Custom', description='Set up you own numbers.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-values="0,10,100,1000,10000,100000,1000000"
+      data-from="1"
+      data-to="4"
+      data-type="double"
+      data-grid="true">
+  {% endcall %}
+
+  {% call panel.component(title='Date', description='Values array could be anything, even strings.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-values="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+      data-from="5"
+      data-grid="true">
+  {% endcall %}
+
+  {% call panel.component(title='Prettify', description='Improve readability of big numbers.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="1000"
+      data-max="1000000"
+      data-from="100000"
+      data-to="867000"
+      data-type="double"
+      data-grid="true"
+      data-step="1000"
+      data-prettify-enabled="true"
+      data-prettify-separator=".">
+  {% endcall %}
+
+  {% call panel.component(title='Decorating', description='Adding currency symbol and + symbol to the maximum number.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="0"
+      data-max="100"
+      data-from="50"
+      data-grid="true"
+      data-step="5"
+      data-max-postfix="+"
+      data-prefix="$">
+  {% endcall %}
+
+  {% call panel.component(title='Decorating', description='Using prefix and postfix at the same time.') %}
+    <input type="text" 
+      data-toggle="ion-rangeslider"
+      data-min="0"
+      data-max="100"
+      data-from="21"
+      data-grid="true"
+      data-max-postfix="+"
+      data-prefix="Age: "
+      data-postfix=" years">
+  {% endcall %}
+</div>

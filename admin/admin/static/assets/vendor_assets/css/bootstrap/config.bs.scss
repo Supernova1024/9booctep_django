@@ -1,0 +1,378 @@
+// this file contains the configuration
+// for customizing bootstrap,
+// and other theme components
+
+@import "scss/functions";
+@import "scss/mixins";
+@import "scss/variables";
+
+//Border
+$b-light: #e3e6ef;
+
+//Radius
+
+$border-radius-xl: 10px;
+$border-radius-xs: 4px;
+$border-radius-md: 6px;
+
+// theme color
+$light-gray: #9299b8;
+$primary: #5f63f2;
+$secondary: #ff69a5;
+$success: #20c997;
+$info: #2c99ff;
+$warning: #fa8b0c;
+$danger: #ff4d4f;
+$dark: #272b41;
+$light: #9299b8;
+$extra-light: #adb4d2;
+$gray: #5a5f7d;
+$gray-solid: #9299b8;
+$body-color: #666d92;
+$text-color: #666d92;
+$third:$primary;
+
+$theme-colors: ();
+
+$theme-colors: map-merge(
+  (
+    "light": $light,
+    "text": $text-color,
+    "extra-light": $extra-light,
+    "gray": $gray,
+    "third": $third,
+    "white": #ffffff,
+  ),
+  $theme-colors
+);
+
+// stylelint-disable
+$gray-100: #c9cfe4;
+$white: #ffffff;
+
+$text-light: #9299b8;
+$text-grey1: #868eae;
+$text-grey2: #adb4d2;
+$text-grey3: #5a5f7d;
+$footer-dark: #353b58;
+
+// other colors, these are the colors
+// that has been used in different part of ui exceptionally
+
+$other-colors: (
+  "footer-dark": $footer-dark,
+);
+
+$hover-colors: (
+  "primary": #4347d9,
+  "secondary": #e34a87,
+  "success": #0cab7c,
+  "info": #0d79df,
+  "warning": #d47407,
+  "danger": #e30d0f,
+  "dark": #131623,
+  "gray": #363a51,
+  "ruby": #c2185b,
+);
+
+// border color
+$border-normal: #f1f2f6;
+$border-deep: #c6d0dc;
+$border-color: #e3e6ef;
+$border-light:#f1f2f6;
+
+$border-colors: (
+  "normal": $border-normal,
+  "deep": $border-deep,
+  "color": $border-color,
+);
+
+// background Color
+$bg-normal: #f8f9fb;
+$bg-lighter: #f4f5f7;
+$bg-deep: #eff0f3;
+
+$bg-colors: (
+  "normal": $bg-normal,
+  "lighter": $bg-lighter,
+  "deep": $bg-deep,
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    10:($spacer * .625),
+    15:($spacer * .9375),
+    20:($spacer * 1.25),
+    25:($spacer * 1.5625),
+    30:($spacer * 1.875),
+    35:($spacer * 2.18753),
+    40:($spacer * 2.5),
+    45:($spacer * 2.8125),
+    50:($spacer * 3.125)
+  ),
+  $spacers
+);
+
+//social colors
+$facebook: #2366b8;
+$twitter: #00abe4;
+$pinterest: #ef1b25;
+$gplus: #dc4e41;
+$linkedin: #007cbc;
+$tumblr: #35465c;
+$vk: #4a76a8;
+$youtube: #e32212;
+$instagram: #9c27b0;
+$ruby: #c2185b;
+
+$social-colors: ();
+
+// stylelint disabled
+$social-colors: map-merge(
+  (
+    "facebook": $facebook,
+    "twitter": $twitter,
+    "pinterest": $pinterest,
+    "gplus": $gplus,
+    "linkedin": $linkedin,
+    "tumblr": $tumblr,
+    "vk": $vk,
+    "youtube": $youtube,
+    "ruby": $ruby,
+    "instagram": $instagram,
+  ),
+  $social-colors
+);
+
+// global setting override
+$enable-caret: false;
+$enable-shadows: true;
+
+// shadows
+$box-shadow-color: #9299b8;
+$box-shadow: 0 0.67rem 0.67rem rgba($box-shadow-color, 0.08);
+$box-shadow-lg: 0 0.67rem 0.67rem rgba($box-shadow-color, 0.1);
+
+// font
+$font-size-base: 1rem;
+$font-family-base: "Inter", sans-serif; //'Work Sans', sans-serif;
+
+// display text
+$display1-size: 3rem; // 48px
+$display2-size: 2.5rem; // 40px
+$display3-size: 2.25rem; // 36px
+$display4-size: 1.875rem; // 30px
+$display1-weight: 500;
+$display2-weight: 500;
+$display3-weight: 500;
+$display4-weight: 500;
+
+// btn
+$btn-font-weight: 500;
+$btn-font-size: 14px;
+$btn-font-size-lg: 14px;
+$btn-font-size-sm: 13px;
+
+$btn-padding-x: 1.197rem;
+$btn-padding-x-sm: 1.074rem;
+$btn-padding-x-lg: 1.535rem;
+$btn-padding-y: 0;
+$btn-padding-y-sm: 0;
+$btn-padding-y-lg: 0;
+
+$btn-line-height: 2.65rem;
+$btn-line-height-lg: 3rem;
+$btn-line-height-md: 3.125rem;
+$btn-line-height-sm: 2.3rem;
+$btn-line-height-xs: 2.125rem;
+
+$btn-box-shadow: none;
+
+// leading text
+$lead-font-size: ($font-size-base * 1.33);
+$lead-font-weight: 400;
+$lead-medium-font-size: ($font-size-base * 1.6);
+$lead-medium-font-weight: 500;
+
+// link
+$link-color: $primary;
+$link-hover-decoration: none;
+
+// Input
+$input-disabled-bg: $bg-lighter;
+
+// navbar
+$navbar-padding-y: 1.0313rem;
+$navbar-padding-x: 2rem;
+
+//light
+$navbar-light-color: #202428;
+$navbar-light-hover-color: $primary;
+$navbar-light-active-color: $primary;
+
+// dark
+$navbar-dark-color: rgba($white, 0.7);
+$navbar-dark-hover-color: $white;
+
+// section bg
+$section-bg: #f4f5f7;
+$section-bg2: #f8f9fb;
+
+//breadcrumb
+$breadcrumb-area-bg: $section-bg;
+$breadcrumb-padding-y: 0;
+$breadcrumb-padding-x: 0;
+$breadcrumb-item-padding: 0.5rem;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-bg: none;
+$breadcrumb-divider-color: $light;
+$breadcrumb-active-color: $gray-100;
+$breadcrumb-divider: quote("\f112");
+
+// Cards
+$card-border-color: $border-normal;
+$card-border-radius: 10px;
+$card-cap-bg: #fff;
+$card-spacer-x: 1.56rem;
+
+//Pagination
+$pagination-padding-y: 0.8rem;
+$pagination-padding-x: 1rem;
+
+// Dropdown
+
+$dropdown-border-width: 0px;
+
+//Headings Font Sizes
+$h1-font-size: 1.875rem; //30px
+$h2-font-size: 1.5rem; //24px
+$h3-font-size: 1.375rem; //22px
+$h4-font-size: 1.25rem; //20px
+$h5-font-size: 1.125rem; //18px
+$h6-font-size: 1rem; //16px
+$headings-margin-bottom: 0;
+$headings-color: $dark;
+$headings-font-weight: 600;
+
+$headings-font-family: "Inter", sans-serif;
+
+// alerts
+$alert-bg-level: -10.66;
+$alert-border-level: -10.66;
+$alert-color-level: 0;
+$alert-padding-y: 0.659rem;
+$alert-padding-x: 1.2rem;
+$alert-margin-bottom: 15px;
+$alert-border-radius: 5px;
+
+//progress bars
+$progress-height: 0.54rem;
+$border-radius: 5px;
+$btn-border-radius: $border-radius;
+$border-radius-lg: 6px;
+
+// Switches
+$custom-switch-width: 2.5rem;
+$custom-control-indicator-size: 1.375rem;
+$custom-switch-indicator-size: calc(1.375rem - 8px);
+$custom-switch-indicator-border-radius: 10px;
+
+// Checkbox
+$custom-checkbox-indicator-indeterminate-bg: $primary;
+
+// Popover
+$popover-max-width: 235px;
+$zindex-popover: 9998;
+$popover-border-width: 0px;
+
+//Rfs
+$enable-responsive-font-sizes: true;
+$rfs-base-font-size: 16;
+$rfs-font-size-unit: px;
+
+//form elements
+$input-font-size: 14px;
+$input-font-size-lg: 15px;
+$input-font-size-sm: 12px;
+$input-height: 2.625rem;
+$input-height-lg: 3.125rem;
+$input-height-sm: 1.875rem;
+$input-padding-x: 1.2rem;
+$form-text-margin-top: 0.66rem;
+$input-border-radius: 5px;
+$input-border-color: $border-normal;
+$input-box-shadow: 0 0;
+
+// tabs
+$nav-link-padding-y: 10px;
+$nav-link-padding-x: 12px;
+$nav-tabs-border-radius: 0;
+$nav-tabs-border-width: 0px;
+$nav-tabs-link-active-color: $primary;
+$nav-tabs-link-active-bg: $white;
+
+$nav-pills-border-radius: 13.33rem;
+$nav-pills-link-active-color: $component-active-color;
+$nav-pills-link-active-bg: $primary;
+
+//table
+$table-border-color: $border-normal;
+
+//transition
+$transition-base: all 0.3s ease;
+
+//hr
+$hr-margin-y: 4.67rem;
+$hr-border-color: $border-normal;
+
+//badges
+$badge-padding-y: 4.5px;
+$badge-padding-x: 6.58px;
+$badge-font-size: 10px;
+$badge-font-weight: 600;
+$badge-border-radius: 10px;
+$badge-pill-padding-x: 6.6px;
+$input-focus-border-color:$primary; 
+$input-focus-box-shadow:0px 5px 20px #5F63F21A;
+
+// Progressbar
+$progress-height: 8px;
+$progress-box-shadow: 0 0;
+$progress-bg: $bg-deep;
+$progress-border-radius: 10px;
+
+//modal
+$modal-md: 620px;
+$modal-sm: 450px;
+
+$modal-inner-padding: 1.75rem;
+$modal-header-padding: 1.125rem 1.75rem;
+$modal-header-border-color: $border-color;
+$modal-footer-border-color: $border-color;
+$zindex-modal-backdrop: 9998;
+$zindex-modal: 9999;
+$modal-content-box-shadow-sm-up: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+  0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+$modal-content-border-radius: 4px;
+$modal-content-border-width: 0px;
+
+// Tooltip
+$tooltip-font-size: 14px;
+$tooltip-color: $gray;
+$tooltip-bg: $white;
+$tooltip-arrow-color: $white;
+$tooltip-padding-y: 0.41rem;
+$tooltip-padding-x: 1.165rem;
+
+
+//form
+$label-margin-bottom: 10px;
+$form-group-margin-bottom:25px;
+@import "scss/variables";

@@ -1,0 +1,31 @@
+{% import 'components/card-faq.html' as faq %}
+{% import 'components/pager.html' as pager %}
+
+<div class="row card-group-row">
+  <div class="col-md-6 card-group-row__col">
+    {{ faq.component(
+      title='Do you offer a free trial?',
+      description='We offer everyone a 7 day free trial! You can take advantage of it by visiting our sign-up page! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, ab!',
+      class='card-group-row__card') }}
+  </div>
+  <div class="col-md-6 card-group-row__col">
+    {{ faq.component(
+      title='Can I gift a subscription to someone?',
+      description='Yes! We do offer certificates. Please email us for more information. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ad!',
+      class='card-group-row__card') }}  
+  </div>
+  <div class="col-md-6 card-group-row__col">
+    {{ faq.component(
+      title='I have a great idea for an application or website, but need help on where to begin. Can you guys help me?',
+      description='We advise posting personal requests in our Community Forum Lorem ipsum dolor sit amet.',
+      class='card-group-row__card') }}
+  </div>
+  <div class="col-md-6 card-group-row__col">
+    {{ faq.component(
+      title='I found a bug. Where can I report that?',
+      description='In the unlikely situation you stumble across a bug, go ahead and shoot us an email. Lorem ipsum dolor sit amet.',
+      class='card-group-row__card') }}
+  </div>
+</div>
+
+{{ pager.pager() }}

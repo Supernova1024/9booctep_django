@@ -1,0 +1,227 @@
+// Date-picker 
+
+.ui-datepicker {
+  display: none;
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.3rem rgba(0, 0, 0, 0.2);
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  @include sm {
+    width: auto !important;
+  }
+  &-month {
+    border: none;
+    color: #666d92;
+  }
+  &-year {
+    border: none;
+    color: #666d92;
+  }
+
+  &-calendar {
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    thead {
+      th {
+        padding: 0.25rem 0;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $dark;
+      }
+    }
+
+    tbody {
+      td {
+        width: 2.5rem;
+        text-align: center;
+        padding: 0;
+
+        a {
+          display: block;
+          border-radius: 50%;
+          line-height: 2rem;
+          transition: 0.3s all;
+          color: $dark;
+          font-size: 0.875rem;
+          text-decoration: none;
+          width: 2rem;
+          height: 2rem;
+          line-height: 2rem;
+          border: 1px solid transparent;
+          margin: 4px;
+
+          &:hover {
+            border: 1px solid $primary;
+          }
+
+          &.ui-state-active {
+            color: $primary;
+            border: 1px solid $primary;
+          }
+
+          &.ui-state-highlight {
+            background: $primary;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &-header {
+    a {
+      span {
+        display: none;
+      }
+
+      &.ui-corner-all {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        width: 2rem;
+        height: 2rem;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+          @extend .content-center;
+      }
+
+      &.ui-datepicker-prev {
+        left: 0;
+
+        &::after {
+          font-family: "Line Awesome Free";
+          font-weight: 900;
+          content: "\f104";
+          font-size: 18px;
+          color: $dark;
+        }
+      }
+
+      &.ui-datepicker-next {
+        right: 0;
+
+        &::after {
+          font-family: "Line Awesome Free";
+          font-weight: 900;
+          content: "\f105";
+          font-size: 18px;
+          color: $dark;
+        }
+      }
+    }
+  }
+
+  &-title {
+    text-align: center;
+    line-height: 2rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+  }
+
+  &-week-col {
+    color: $dark;
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+}
+
+.ui-datepicker-multi {
+  .ui-datepicker-group {
+    @include sm {
+      width: 100%;
+      float: none;
+    }
+    &.ui-datepicker-group-first {
+      @include sm {
+        margin-right: 0;
+      }
+    }
+    .ui-datepicker-calendar {
+      width: 100%;
+    }
+  }
+}
+.date-picker__prev,
+.date-picker__next{
+	width: 45px;
+    height: 45px;
+    @extend .content-center;
+}
+
+
+// Date Picker
+.atbd-date-picker {
+  input {
+    @extend .color-extra-light;
+  }
+  .date-picker-disabled {
+    cursor: not-allowed;
+  }
+}
+
+.atbd-date-ranger {
+  margin: 20px;
+  border: 1px solid $border-light;
+  border-radius: 5px;
+  &.date-picker-disabled {
+    @extend .bg-lighter;
+    .divider {
+      display: flex;
+      align-content: center;
+      height: 42px;
+      line-height: 2.5;
+      @extend .bg-lighter;
+    }
+    .form-control {
+      border-radius: 0;
+    }
+  }
+  .form-group {
+    width: 100%;
+  }
+  .form-control {
+    border: 0 none;
+    text-align: center;
+  }
+  .date-picker-icon {
+    position: absolute;
+    right: 12px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    svg,
+    img {
+      width: 16px;
+      @extend .color-light;
+    }
+  }
+}
+.atbd-nav-controller {
+  &.date-picker-size {
+    .date-picker-list {
+      margin-top: 35px;
+    }
+  }
+}
+.date-picker-list {
+  margin: -20px;
+  .atbd-date-picker {
+    margin: 20px;
+  }
+}
+
+.ui-datepicker-multi {
+  .ui-datepicker-group {
+    float: left;
+    width: 48%;
+    &.ui-datepicker-group-first {
+      margin-right: 2%;
+    }
+  }
+}

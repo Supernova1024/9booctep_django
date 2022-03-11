@@ -1,0 +1,47 @@
+{% import '_card-pricing.html' as pricing %}
+
+<div class="page-section {{ containerClass }}">
+  <div class="page-separator">
+    <div class="page-separator__text">Change your plan</div>
+  </div>
+
+  <div class="row card-group-row">
+    <div class="col-lg-4 col-sm-6 card-group-row__col">
+      {{ pricing.component(
+        title="Student", 
+        description="Access to over 1.000 high quality courses. For individuals.",
+        price="9",
+        color="accent",
+        raised=true,
+        ribbon="Start",
+        icon="person",
+        class="mb-lg-0",
+        prefix=prefix
+        ) }}
+    </div>
+    <div class="col-lg-4 col-sm-6 card-group-row__col">
+      {{ pricing.component(
+        title="Team", 
+        description="Starts with 3 accounts with more seats available.",
+        price="19",
+        color="secondary",
+        actionColor="outline-secondary",
+        icon="group",
+        class="mb-lg-0",
+        prefix=prefix
+        ) }}
+    </div>
+    <div class="col-lg-4 col-sm-6 card-group-row__col">
+      {{ pricing.component(
+        title="Enterprise", 
+        description="Build customized learning paths with content that aligns to your internal learning goals.",
+        price="49",
+        color="secondary",
+        actionColor="outline-secondary",
+        icon="business_center",
+        class="mb-0",
+        prefix=prefix
+        ) }}
+    </div>
+  </div>
+</div>

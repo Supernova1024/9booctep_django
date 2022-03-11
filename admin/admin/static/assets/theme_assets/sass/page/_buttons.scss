@@ -1,0 +1,46 @@
+// button list style 
+.atbd-button-list{
+    margin: -5px -6px;
+    button{
+        margin: 5px 6px;
+    }
+    .dropdown{
+        .btn{
+            height: auto;
+            line-height: 2.65rem;
+            i,
+            span,
+            svg,
+            img{
+                margin: 0 0 0 6px;
+            }
+        }
+    }
+    .btn{
+        &:focus{
+            box-shadow: 0 0;
+        }
+    }
+}
+
+// Button Block 
+.atbd-button-block{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
+    .button-inline-list{
+        .btn-group{
+            &:not(:last-child){
+                margin-right: 18px;
+            }
+        }
+    }
+}

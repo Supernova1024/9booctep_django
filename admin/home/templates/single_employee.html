@@ -1,0 +1,656 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop-breadcrumb">
+
+                    <div class="breadcrumb-main">
+                        <b><a href="/employees/">Go Back</a></b>
+                    </div>
+
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Employee details</h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="cos-lg-12 col-md-12 ">
+                <aside class="profile-sider">
+                    <!-- Profile Acoount -->
+                    <div class="card mb-25">
+                        <div class="card-body text-center pt-sm-30 pb-sm-0  px-25 pb-0">
+
+                            <div class="account-profile">
+                                <div class="ap-img w-100 d-flex justify-content-center">
+                                    <!-- Profile picture image-->
+                                    <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary"
+                                         {% if employee.img == '' %}
+                                        src="{% static 'img/author/profile.png' %}"
+                                        {% else %}
+                                        src="{% static employee.img %}"
+                                        {% endif %}
+                                    alt="profile">
+                                </div>
+                                <div class="ap-nameAddress pb-3 pt-1">
+                                    <h5 class="ap-nameAddress__title">{{ employee.name }}</h5>
+                                    <p class="ap-nameAddress__subTitle fs-14 m-0">{{ employee.position.name }}</p>
+                                    <p class="ap-nameAddress__subTitle fs-14 m-0">
+                                        <span data-feather="map-pin"></span>{{ employee.address }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer mt-20 pt-20 pb-20 px-0">
+                                <div class="profile-overview d-flex justify-content-between flex-wrap">
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ employee.date_joined | date:'D d-m-Y' }}</h6>
+                                        <span class="po-details__sTitle">Joined date</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ employee.email }}</h6>
+                                        <span class="po-details__sTitle">Email</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ session_time }}</h6>
+                                        <span class="po-details__sTitle">Session duration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <form id="search_form" action="" method="post" class="order-search__form d-none">
+        {% csrf_token %}
+        <input type="hidden" name="good_bad" id="good_bad" value="{{ good_bad }}">
+        <input type="hidden" name="type" id="type" value="{{ type }}">
+        <input type="hidden" name="page" id="page" value="{{ notifications.number }}">
+        <input type="hidden" name="page1" id="page1" value="{{ tasks.number }}">
+    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" id="ap-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 0 %} active {% endif %} " id="ap-overview-tab" onclick="setAllList1()" data-toggle="pill" href="#ap-overview" role="tab" aria-controls="ap-overview" aria-selected="true">All</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 1 %} active {% endif %}" id="timeline-tab" onclick="setCompleted1()" data-toggle="pill" href="#timeline" role="tab" aria-controls="timeline" aria-selected="false">Completed tasks</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 2 %} active {% endif %}" id="activity-tab" onclick="setLated1()" data-toggle="pill" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Late tasks</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 3 %} active {% endif %}" id="draft-tab" onclick="setIncompleted1()" data-toggle="pill" href="#draft" role="tab" aria-controls="draft" aria-selected="false">Incompleted tasks</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+                        </div><!-- End: .d-flex -->
+                        <div class="content-center mt-10">
+                            <div class="button-group m-0 mt-xl-0 mt-sm-10 order-button-group">
+                                <button type="button" class="btn btn-sm btn-primary mr-0 radius-md" data-toggle="modal" data-target="#add-task">
+                                    <i data-feather="send"></i> Send Task</button>
+                            </div>
+                        </div><!-- End: .content-center -->
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                        <tr class="userDatatable-header">
+                                            <th>
+                                                <span class="userDatatable-title">Task</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Priority</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Status</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title float-right">Actions</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for task in tasks %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="orderDatatable-title">
+                                                        <p class="d-block mb-0">
+                                                            {{ task.title }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-inline-block">
+                                                    {% if task.priority == 0 %}
+                                                    <span class="media-badge color-white bg-primary">Low</span>
+                                                    {% endif %}
+                                                    {% if task.priority == 1 %}
+                                                    <span class="media-badge color-white bg-primary">High</span>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="orderDatatable-status d-inline-block">
+                                                    {% if task.status == 0 %}
+                                                    <span class="order-bg-opacity-success  text-success rounded-pill active">New</span>
+                                                    {% endif %}
+                                                    {% if task.status == 1 %}
+                                                    <span class="order-bg-opacity-success  text-success rounded-pill active">Completed</span>
+                                                    {% endif %}
+                                                    {% if task.status == 2 %}
+                                                    <span class="order-bg-opacity-success  text-success rounded-pill active">Late</span>
+                                                    {% endif %}
+                                                    {% if task.status == 3 %}
+                                                    <span class="order-bg-opacity-success  text-success rounded-pill active">Incompleted</span>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                    <li>
+                                                        <a href="#" class="view" data-toggle="modal" data-target="#new-member">
+                                                            <span data-feather="eye"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Table Responsive End -->
+                        </div>
+                    </div>
+                    {% if tasks.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if tasks.has_previous %}
+                                    <a href="#" onclick="page_prev1()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in tasks.paginator.page_range %}
+                                    {% if tasks.number == i %}
+                                    <a href="#" onclick="page_set1('{{ i }}')" class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set1('{{ i }}')" class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if tasks.has_next %}
+                                    <a href="#" onclick="page_next1()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if good_bad == 0 %} active {% endif %}" data-toggle="pill" href="#" onclick="setAllList()" role="tab" aria-controls="ap-overview" aria-selected="true">All</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if good_bad == 1 %} active {% endif %}" data-toggle="pill" href="#" role="tab" onclick="setGoodList()" aria-controls="timeline" aria-selected="false">Good Notes</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if good_bad == 2 %} active {% endif %}" data-toggle="pill" href="#" role="tab" onclick="setBadList()" aria-controls="activity" aria-selected="false">Bad Notes</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+                        </div><!-- End: .d-flex -->
+                        <div class="content-center mt-10">
+                            <div class="button-group m-0 mt-xl-0 mt-sm-10 order-button-group">
+                                <button type="button" class="btn btn-sm btn-primary mr-0 radius-md" onclick="showNotiModal('{{ id }}')">
+                                    <i data-feather="send"></i> Send notification</button>
+                            </div>
+                        </div><!-- End: .content-center -->
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                        <tr class="userDatatable-header">
+                                            <th>
+                                                <span class="userDatatable-title">Note</span>
+                                            </th>
+                                                <th>
+                                                    <span class="userDatatable-title">Description</span>
+                                                </th>
+                                            <th>
+                                                <span class="userDatatable-title">Status</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title float-right">Actions</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for notification in notifications %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="orderDatatable-title">
+                                                        <p class="d-block mb-0">
+                                                            {{ notification.title }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="orderDatatable-title">
+                                                            <p class="d-block mb-0">
+                                                                {{ notification.content }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            <td>
+                                                <div class="orderDatatable-status d-inline-block">
+                                                    {% if notification.good_bad|add:"0" == 1 %}
+                                                        <span class="order-bg-opacity-success  text-success rounded-pill active">Good Note</span>
+                                                    {% else %}
+                                                        <span class="order-bg-opacity-success  text-warning rounded-pill active">Bad Note</span>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                    <li>
+                                                        <a href="#" class="remove" onclick="showDeleteModal('{{ notification.id }}')">
+                                                            <span data-feather="trash-2" data-toggle="modal" data-target="#modal-info-delete"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Table Responsive End -->
+                        </div>
+                    </div>
+                    {% if notifications.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if notifications.has_previous %}
+                                    <a href="#" onclick="page_prev()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in notifications.paginator.page_range %}
+                                    {% if notifications.number == i %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if notifications.has_next %}
+                                    <a href="#" onclick="page_next()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade add-contact" id="add-contact" role="dialog" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Send notification</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <input type="text" class="form-control" placeholder="Notification title" id="noti_title">
+                    </div>
+                    <div class="countryOption" style="width:100%;margin-bottom:20px">
+                        <select class="js-example-basic-single js-states form-control" id="noti_good_bad">
+                            <option value="1">Good note</option>
+                            <option value="2">Bad note</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-20">
+                      <textarea class="form-control" id="noti_content" rows="3" placeholder="Notification description"></textarea>
+                    </div>
+                    <div class="button-group d-flex pt-20">
+                        <button class="btn btn-primary btn-default btn-squared " onclick="sendNoti()">Send notification
+                        </button>
+                        <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade add-contact" id="add-task" role="dialog" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Send Task</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                      <div class="form-group mb-20">
+                          <input type="text" class="form-control" placeholder="Task title" id="task_title">
+                      </div>
+                      <div class="form-group mb-20">
+                          <input type="number" class="form-control" placeholder="End days" id="task_day">
+                      </div>
+                      <div class="countryOption" style="width:100%;margin-bottom:20px">
+                            <select class="js-example-basic-single js-states form-control" id="priority">
+                                <option value="1">High</option>
+                                <option value="0">Low</option>
+                            </select>
+                        </div>
+                      <div class="form-group mb-20">
+                          <textarea class="form-control" id="task_description" rows="3" placeholder="Task description"></textarea>
+                      </div>
+                    <div class="button-group d-flex pt-20">
+                        <button class="btn btn-primary btn-default btn-squared " onclick="sendTask()">Send task
+                        </button>
+                        <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-info-delete modal fade show" id="modal-info-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to delete this Notification?</h6>
+                        <p>This is serious act please make sure what you doing!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success btn-outlined btn-sm" data-dismiss="modal" onclick="deleteNoti()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+
+    let cur_page = '{{ notifications.number }}'
+    let cur_page1 = '{{ tasks.number }}'
+    let cur_user
+    let cur_noti = ''
+
+    function setAllList() {
+        $("#good_bad").val(0)
+        $("#search_form").submit()
+    }
+
+    function setGoodList() {
+        $("#good_bad").val(1)
+        $("#search_form").submit()
+    }
+
+    function setBadList() {
+        $("#good_bad").val(2)
+        $("#search_form").submit()
+    }
+
+    function setAllList1() {
+        $("#type").val(0)
+        $("#search_form").submit()
+    }
+
+    function setCompleted1() {
+        $("#type").val(1)
+        $("#search_form").submit()
+    }
+
+    function setLated1() {
+        $("#type").val(2)
+        $("#search_form").submit()
+    }
+
+    function setIncompleted1() {
+        $("#type").val(3)
+        $("#search_form").submit()
+    }
+
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_prev1() {
+        let page = cur_page1 * 1 - 1
+        $('#page1').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set1(num) {
+        $('#page1').val(num)
+        cur_page1 = num;
+        $('#search_form').submit()
+    }
+
+    function page_next1() {
+        let page = cur_page1 * 1 + 1
+        $('#page1').val(page)
+        $('#search_form').submit()
+    }
+
+    function showNotiModal(id) {
+        $("#add-contact").modal("show")
+        cur_user = id
+    }
+
+    function sendNoti() {
+        $("#add-contact").modal("hide")
+        let title = $("#noti_title").val()
+        let content = $("#noti_content").val()
+        let good_bad = $("#noti_good_bad").val()
+        socket.emit('send_noti_to_employee', {
+            sender_id: '{{ request.user.id }}',
+            receiver_id: cur_user,
+            title: title,
+            good_bad: good_bad,
+            content: content
+        })
+        let url = '/save_notification/'
+        let form_data = new FormData()
+        form_data.append('sender_id', '{{ request.user.id }}')
+        form_data.append('receiver_id', cur_user)
+        form_data.append('title', title)
+        form_data.append('good_bad', good_bad)
+        form_data.append('content', content)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+    function showDeleteModal(id) {
+        cur_noti = id
+    }
+
+    function deleteNoti() {
+        let url = '/delete_notification/'
+        let form_data = new FormData()
+        form_data.append('id', cur_noti)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+    function sendTask() {
+        $("#add-task").modal("hide")
+        let title = $("#task_title").val()
+        let day = $("#task_day").val()
+        let priority = $("#priority").val()
+        let description = $("#task_description").val()
+        let cur_time = new Date()
+        let start_date = cur_time.toISOString().replace(/T/, ' ').replace(/\..+/, '')
+        let end_time = cur_time.getTime() + 3600 * 1000 * 24 * day
+        let end_date = new Date(end_time).toISOString().replace(/T/, ' ').replace(/\..+/, '')
+        let sender_id = '{{ request.user.id }}'
+        let receiver_id = '{{ id }}'
+
+        let form_data = new FormData()
+        form_data.append('title', title)
+        form_data.append('day', day)
+        form_data.append('priority', priority)
+        form_data.append('description', description)
+        form_data.append('start_date', start_date.slice(0,10))
+        form_data.append('end_date', end_date.slice(0,10))
+        form_data.append('sender_id', sender_id)
+        form_data.append('receiver_id', receiver_id)
+        let url = '/save_task/';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+
+</script>
+{% endblock %}

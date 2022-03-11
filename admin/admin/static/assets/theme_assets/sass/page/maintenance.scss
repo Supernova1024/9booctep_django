@@ -1,0 +1,15 @@
+// maintenance page css
+.maintenance-page{
+    @include e("title"){
+        font-weight: 500;
+        margin: 70px 0 14px;
+    }
+    p{
+        font-size: 14px;
+        @extend .color-gray;
+    }
+    svg{
+        max-width: 100%;
+        height: auto;
+    }
+}

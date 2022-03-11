@@ -1,0 +1,41 @@
+// Progressbar Css
+.progress-wrap{
+    // &:not(:last-child){
+    //     margin-bottom: 15px;
+    // }
+    .progress{
+        flex: 28;
+        .progress-bar{
+            border-radius: 10px;
+        }
+    }
+    .progress-percentage,
+    .progress-icon{
+        flex: 1;
+    }
+    .progress-height{
+        height: 5px;
+    }
+
+    .progress-percentage{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+    }
+    .progress-icon{
+        margin-left: 10px;
+        svg,
+        i,
+        span,
+        img{
+            width: 14px;
+        }
+    }
+}
+
+//Progress 2
+.progress-box{
+    .progress{
+        background-color: rgba($white, .20);
+    }
+}

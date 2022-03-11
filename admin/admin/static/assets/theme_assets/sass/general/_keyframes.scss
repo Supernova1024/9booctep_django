@@ -1,0 +1,36 @@
+// Keyframs
+@keyframes spinMove {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(410deg);
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes antRadioEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

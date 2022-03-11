@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Configuration</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="assets/vendor/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="assets/vendor/fix-footer.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="assets/css/material-icons.css" rel="stylesheet">
+
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="assets/css/fontawesome.css" rel="stylesheet">
+
+
+    <!-- Preloader -->
+    <link type="text/css" href="assets/css/preloader.css" rel="stylesheet">
+
+
+    <!-- App CSS -->
+    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
+
+
+
+
+
+
+</head>
+
+<body class="layout-default layout-sticky-subnav">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="preloader">
+        <div class="sk-double-bounce">
+            <div class="sk-child sk-double-bounce1"></div>
+            <div class="sk-child sk-double-bounce2"></div>
+        </div>
+    </div>
+
+    <!-- Header Layout -->
+    <div class="mdk-header-layout js-mdk-header-layout">
+
+        <!-- Header -->
+
+        <div id="header" class="mdk-header js-mdk-header m-0" data-fixed>
+            <div class="mdk-header__content">
+
+
+
+                <nav class="navbar navbar-expand-md navbar-dark-dodger-blue m-0 p-0">
+                    <div class="container-fluid">
+
+                        <!-- Navbar Brand -->
+                        <a href="index.html" class="navbar-brand mr-16pt">
+
+                            <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                                <span class="avatar-title rounded bg-primary"><img src="assets/images/illustration/student/128/white.svg" alt="logo" class="img-fluid" /></span>
+
+                            </span>
+
+                            <span class="d-none d-lg-block">Luma</span>
+                        </a>
+
+                        <button class="navbar-toggler navbar-toggler-right d-block d-md-none" type="button" data-toggle="sidebar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+        <!-- // END Header -->
+
+        <!-- Header Layout Content -->
+        <div class="mdk-header-layout__content">
+
+            <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+                <div class="mdk-drawer-layout__content">
+
+                    <div class="bg-white py-32pt border-bottom-2 mb-32pt">
+                        <div class="container-fluid page__container">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="#">Documentation</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Getting Started</li>
+                                </ol>
+                            </nav>
+                            <h1 class="m-0">Configuration</h1>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="container-fluid page__container">
+                        <div class="row">
+                            <div class="col-lg-8">
+
+                                <p class="measure-paragraph-max">Create a <code>webpack.mix.js</code> file at the root of your project:</p>
+                                <div class="card card-footer bg-dark measure-lead-max">
+
+
+                                    <code class="highlight js  bg-transparent">let&nbsp;{&nbsp;mix&nbsp;}&nbsp;=&nbsp;require(&#39;theme-mix&#39;)<br />
+                                        <br />
+                                        mix.setPublicPath(&#39;.&#39;)<br />
+                                        <br />
+                                        mix.webpackConfig({<br />
+                                        &nbsp;&nbsp;module:&nbsp;{<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;rules:&nbsp;[{<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test:&nbsp;/\.jsx?$/,<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exclude:&nbsp;/(node_modules\/(core-js|@babel\b)|bower_components)/,<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use:&nbsp;[<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loader:&nbsp;&#39;babel-loader&#39;,<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;Config.babel()<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}]<br />
+                                        &nbsp;&nbsp;}<br />
+                                        })</code>
+
+                                </div>
+
+                                <p class="measure-paragraph-max">Update <code>package.json</code> with the workflow:</p>
+                                <div class="card card-footer bg-dark measure-lead-max">
+
+
+                                    <code class="highlight json  bg-transparent">&quot;scripts&quot;:&nbsp;{<br />
+                                        &nbsp;&nbsp;&quot;development&quot;:&nbsp;&quot;cross-env&nbsp;NODE_ENV=development&nbsp;node_modules/webpack/bin/webpack.js&nbsp;--progress&nbsp;--hide-modules&nbsp;--config=node_modules/laravel-mix/setup/webpack.config.js&quot;,<br />
+                                        &nbsp;&nbsp;&quot;production&quot;:&nbsp;&quot;cross-env&nbsp;NODE_ENV=production&nbsp;node_modules/webpack/bin/webpack.js&nbsp;--progress&nbsp;--hide-modules&nbsp;--config=node_modules/laravel-mix/setup/webpack.config.js&quot;,<br />
+                                        &nbsp;&nbsp;&quot;watch&quot;:&nbsp;&quot;cross-env&nbsp;NODE_ENV=development&nbsp;node_modules/webpack/bin/webpack.js&nbsp;--watch&nbsp;--progress&nbsp;--hide-modules&nbsp;--config=node_modules/laravel-mix/setup/webpack.config.js&quot;,<br />
+                                        &nbsp;&nbsp;&quot;serve&quot;:&nbsp;&quot;lite-server&nbsp;-c&nbsp;node_modules/theme-mix/bs-config.json&nbsp;./dist&quot;<br />
+                                        },<br />
+                                        &quot;dependencies&quot;:&nbsp;{<br />
+                                        &nbsp;&nbsp;&quot;ui-huma&quot;:&nbsp;&quot;gitlab:FrontendMatter/ui-huma#v1.0.0&quot;<br />
+                                        },<br />
+                                        &quot;devDependencies&quot;:&nbsp;{<br />
+                                        &nbsp;&nbsp;&quot;@babel/polyfill&quot;:&nbsp;&quot;^7.2.5&quot;,<br />
+                                        &nbsp;&nbsp;&quot;cross-env&quot;:&nbsp;&quot;^5.2.0&quot;,<br />
+                                        &nbsp;&nbsp;&quot;lite-server&quot;:&nbsp;&quot;^2.4.0&quot;,<br />
+                                        &nbsp;&nbsp;&quot;node-sass&quot;:&nbsp;&quot;^4.12.0&quot;,<br />
+                                        &nbsp;&nbsp;&quot;regenerator-runtime&quot;:&nbsp;&quot;^0.13.1&quot;,<br />
+                                        &nbsp;&nbsp;&quot;surge&quot;:&nbsp;&quot;^0.20.1&quot;,<br />
+                                        &nbsp;&nbsp;&quot;theme-mix&quot;:&nbsp;&quot;^1.2.0&quot;,<br />
+                                        &nbsp;&nbsp;&quot;vue-template-compiler&quot;:&nbsp;&quot;^2.6.6&quot;<br />
+                                        },</code>
+
+                                </div>
+
+                                <h4>Options</h4>
+
+                                <p class="measure-paragraph-max">Create a <code>theme-mix.yaml</code> file at the root of your project. These are the default configuration options, except <code>copy</code> which by default is an empty list.</p>
+
+                                <div class="card card-body bg-dark measure-lead-max">
+
+
+                                    <code class="highlight yaml  bg-transparent">runTasks:<br />
+                                        &nbsp;&nbsp;clean:&nbsp;true<br />
+                                        &nbsp;&nbsp;js:&nbsp;true<br />
+                                        &nbsp;&nbsp;copy:&nbsp;true<br />
+                                        &nbsp;&nbsp;sass:&nbsp;true<br />
+                                        &nbsp;&nbsp;html:&nbsp;true<br />
+                                        enableCssThemes:&nbsp;false<br />
+                                        enableCssRTL:&nbsp;true<br />
+                                        copyCwd:&nbsp;node_modules<br />
+                                        copyDest:&nbsp;dist/assets/vendor<br />
+                                        copy:<br />
+                                        &nbsp;&nbsp;-&nbsp;ion-rangeslider/js/ion.rangeSlider.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;jquery/dist/jquery.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;bootstrap/dist/js/bootstrap.min.*<br />
+                                        &nbsp;&nbsp;-&nbsp;popper.js/dist/umd/popper.min.*<br />
+                                        &nbsp;&nbsp;-&nbsp;dom-factory/dist/*<br />
+                                        &nbsp;&nbsp;-&nbsp;fix-footer/dist/*<br />
+                                        &nbsp;&nbsp;-&nbsp;material-design-kit/dist/material-design-kit.js<br />
+                                        &nbsp;&nbsp;-&nbsp;bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js<br />
+                                        &nbsp;&nbsp;-&nbsp;chart.js/dist/Chart.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;jquery.fancytree/dist/jquery.fancytree-all.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;moment/min/moment.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;moment-range/dist/moment-range.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;flatpickr/dist/flatpickr.min.{js,css}:&nbsp;dist/assets/vendor/flatpickr<br />
+                                        &nbsp;&nbsp;-&nbsp;flatpickr/dist/themes/airbnb.css:&nbsp;dist/assets/vendor/flatpickr<br />
+                                        &nbsp;&nbsp;-&nbsp;daterangepicker/daterangepicker.{js,css}<br />
+                                        &nbsp;&nbsp;-&nbsp;jquery-mask-plugin/dist/jquery.mask.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;quill/dist/quill.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;dropzone/dist/min/dropzone.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;nestable/jquery.nestable.js<br />
+                                        &nbsp;&nbsp;-&nbsp;perfect-scrollbar/css/*<br />
+                                        &nbsp;&nbsp;-&nbsp;perfect-scrollbar/dist/*.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;sweetalert/dist/sweetalert.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;material-design-icons-iconfont/dist/fonts/*.{eot,ttf,woff,woff2}:&nbsp;dist/assets/fonts/material-icons<br />
+                                        &nbsp;&nbsp;-&nbsp;&#39;@fortawesome/fontawesome-free/webfonts/*&#39;:&nbsp;dist/assets/fonts/fontawesome-free<br />
+                                        &nbsp;&nbsp;-&nbsp;vue-icons-demo-app/dist/assets/data/material-icons:&nbsp;dist/assets/data/material-icons<br />
+                                        &nbsp;&nbsp;-&nbsp;dragula/dist/dragula.min.{js,css}:&nbsp;dist/assets/vendor/dragula<br />
+                                        &nbsp;&nbsp;-&nbsp;select2/dist/js/select2.min.js:&nbsp;dist/assets/vendor/select2<br />
+                                        &nbsp;&nbsp;-&nbsp;select2/dist/css/select2.min.css:&nbsp;dist/assets/vendor/select2<br />
+                                        &nbsp;&nbsp;-&nbsp;highlight.js/styles/vs2015.css:&nbsp;dist/assets/vendor/highlight.js<br />
+                                        &nbsp;&nbsp;-&nbsp;list.js/dist/list.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;vue/dist/vue.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;toastr/build/toastr.min.*<br />
+                                        &nbsp;&nbsp;-&nbsp;jqvmap/dist/jquery.vmap.min.js:&nbsp;dist/assets/vendor/jqvmap<br />
+                                        &nbsp;&nbsp;-&nbsp;jqvmap/dist/jqvmap.min.css:&nbsp;dist/assets/vendor/jqvmap<br />
+                                        &nbsp;&nbsp;-&nbsp;jqvmap/dist/maps/*.js:&nbsp;dist/assets/vendor/jqvmap/maps<br />
+                                        &nbsp;&nbsp;-&nbsp;jqvmap/dist/maps/continents/*.js:&nbsp;dist/assets/vendor/jqvmap/maps/continents<br />
+                                        &nbsp;&nbsp;-&nbsp;jvectormap/jquery.jvectormap.min.js<br />
+                                        &nbsp;&nbsp;-&nbsp;jvectormap/jquery-jvectormap.css<br />
+                                        clean:<br />
+                                        &nbsp;&nbsp;-&nbsp;dist/**/*.html<br />
+                                        &nbsp;&nbsp;-&nbsp;dist/assets/{css,fonts,js,vendor}<br />
+                                        sassSrc:&nbsp;src/sass/**/*.scss<br />
+                                        cssDest:&nbsp;dist/assets/css<br />
+                                        jsSrc:&nbsp;src/js/**/**.{js,vue}<br />
+                                        jsDest:&nbsp;dist/assets/js<br />
+                                        htmlSearchPaths:<br />
+                                        &nbsp;&nbsp;-&nbsp;./src/html<br />
+                                        htmlDest:&nbsp;dist/[path][name].html<br />
+                                        htmllint:&nbsp;false<br />
+                                        laravelMixOptions:<br />
+                                        &nbsp;&nbsp;processCssUrls:&nbsp;false</code>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4 position-sticky" style="top: 64px;">
+                                <div class="mb-3">
+                                    <a href="build.html" class="btn btn-white docs-next measure-lead-max d-flex p-3 btn-block align-items-center">
+                                        <span class="d-flex flex-column flex align-items-start">
+                                            <small class="text-black-50">Next</small>
+                                            <strong>Build Project</strong>
+                                        </span>
+                                        <i class="material-icons text-muted">arrow_forward</i>
+                                    </a>
+                                </div>
+
+                                <a href="installation.html" class="btn btn-white docs-next measure-lead-max d-flex p-3 btn-block align-items-center">
+                                    <span class="d-flex flex-column flex order-1 align-items-end">
+                                        <small class="text-black-50">Previous</small>
+                                        <strong>Installation</strong>
+                                    </span>
+                                    <i class="material-icons text-muted">arrow_backward</i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!-- // END drawer-layout__content -->
+
+                <div class="mdk-drawer  js-mdk-drawer" id="default-drawer" data-align="start">
+                    <div class="mdk-drawer__content top-navbar">
+                        <div class="sidebar d-flex flex-column sidebar-light sidebar-left sidebar-p-t" data-perfect-scrollbar>
+
+                            <div class="sidebar-heading">Documentation</div>
+                            <ul class="sidebar-menu">
+                                <li class="sidebar-menu-item active open">
+                                    <a class="sidebar-menu-button" data-toggle="collapse" href="#docs_menu">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                                        <span class="sidebar-menu-text">Getting Started</span>
+                                        <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                    </a>
+                                    <ul class="sm-indent sidebar-submenu collapse show" id="docs_menu">
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="documentation.html">
+                                                <span class="sidebar-menu-text">View or Run Demos</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="installation.html">
+                                                <span class="sidebar-menu-text">Installation</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item active">
+                                            <a class="sidebar-menu-button" href="configuration.html">
+                                                <span class="sidebar-menu-text">Configuration</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="build.html">
+                                                <span class="sidebar-menu-text">Build Project</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <div class="sidebar-p-a mt-auto">
+                                <a target="_blank" href="https://themeforest.net/item/luma-education-platform-lms-admin-template/26541343" class="btn btn-outline-accent btn-block">
+                                    Buy
+                                    <i class="material-icons ml-2">shopping_cart</i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // END drawer-layout -->
+
+        </div>
+        <!-- // END header-layout__content -->
+
+    </div>
+    <!-- // END header-layout -->
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="assets/vendor/perfect-scrollbar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="assets/vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="assets/vendor/material-design-kit.js"></script>
+
+    <!-- Fix Footer -->
+    <script src="assets/vendor/fix-footer.js"></script>
+
+    <!-- App JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Highlight.js -->
+    <script src="assets/js/hljs.js"></script>
+
+
+
+
+</body>
+
+</html>

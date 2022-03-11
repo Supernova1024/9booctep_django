@@ -1,0 +1,37 @@
+
+
+[dir="ltr"] body{
+    background-color: #18232c;
+    color: #a7a7a7;
+}
+
+.form-label {
+    color: #a7a7a7 !important;
+}
+
+small .form-text {
+    color: #a7a7a7 !important;
+}
+
+/* account */
+
+[dir="ltr"] .navbar-dark{
+    background-color: #222831;
+}
+
+
+[dir="ltr"] .navbar-dark h4{
+    color: #dedede;
+}
+
+[dir="ltr"] .border-bottom-2-dark {
+    border-bottom: 2px solid #111111 !important;
+}
+
+
+[dir="ltr"] .sidebar-light-dodger-dark {
+  box-shadow: none;
+  color: hsla(0, 0%, 100%, 0.54);
+  border-right:1px solid #0a0a0c;
+  background: #80a0b8;
+}

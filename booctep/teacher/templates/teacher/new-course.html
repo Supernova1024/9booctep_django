@@ -1,0 +1,924 @@
+{% extends "teacher/base.html" %}
+
+{% block title %}
+    New course
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <!-- Quill Theme -->
+    <link type="text/css" href="{% static 'teacher/assets/css/quill.css' %}" rel="stylesheet">
+    <!-- Select2 -->
+    <link type="text/css" href="{% static 'teacher/assets/css/select2.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'teacher/assets/vendor/select2/select2.min.css' %}" rel="stylesheet">
+    <style>
+        .swal-button.swal-button--confirm {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Add New Course" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+
+
+    <style>
+ 
+ .accordion-dark{
+     background-color: rgb(13, 16, 22) !important;
+ }
+ .backgg{
+        background-color: #e8f4ff !important;
+    }
+    .backgg-dark{
+        background-color: #4c525e !important;
+    }
+
+        .card-header{
+               background-color: rgb(225, 235, 247) !important;
+               border: 1px solid rgb(196, 206, 218) !important;
+           }
+           .card-header-dark{
+               background-color: rgb(25, 32, 41) !important;
+               border: 0 !important;
+           }
+           .carddy{
+               background-color: rgb(247, 247, 247) !important;
+           }
+           .card-dark{
+               background-color: rgb(33, 41, 51) !important;
+               border: 0 !important;
+           }
+       
+       .btn-primary{
+           background-color: rgb(33, 150, 243)!important;
+           color: rgb(254, 254, 255);
+           border: 1px solid rgb(20, 71, 167) !important;
+       }
+       
+       .btn-primary-dark{
+           background-color: #323741 !important;
+           color: rgb(199, 199, 199) !important;
+           border: 1px solid  #21242b !important;
+           box-shadow: none !important;
+        }
+       
+       
+       .blllu{
+               color: rgb(57, 137, 241) !important;
+               margin-right: 8px !important; 
+           } 
+           .blllu-dark{
+       
+               color: rgb(177, 200, 230) !important;
+               margin-right: 8px !important;
+           }
+       
+        }
+       
+       
+       .bllu{
+               color: rgb(57, 137, 241) !important;
+           } 
+           .bllu-dark{
+       
+               color: rgb(177, 200, 230) !important;
+           }
+       
+       
+       .form-control-dark{
+           background-color: #323741 !important;
+           border: 1px solid  #0f1013 !important;
+           color: rgb(199, 199, 199) !important;
+       }
+       
+       .carousel-item{
+           background-color: rgb(18, 76, 163) !important;
+       }
+       
+       .carousel-item-dark{
+           background-color: rgb(136, 145, 168) !important;
+       }
+       
+       
+       h3.mediabout{
+           color: rgb(214, 223, 231) !important;
+       }
+       
+       h3.mediabout-dark{
+          color: rgb(42, 51, 65) !important;
+       }
+       
+       strong.mediabout{
+           color: rgb(214, 223, 231) !important;
+       }
+       
+       strong.mediabout-dark{
+          color: rgb(186, 193, 204) !important;
+       }
+       
+       p.mediabout{
+           color: rgb(188, 216, 240) !important;
+       }
+       
+       p.mediabout-dark{
+          color: rgb(42, 51, 65) !important;
+       }
+       
+       a.mediabout{
+           background-color: rgb(207, 228, 245) !important;
+           border: 1px solid #0d2150 !important;
+           color: rgb(11, 41, 68) !important;
+       }
+       
+       a.mediabout-dark{
+          background-color: rgb(42, 51, 65) !important;
+          color: rgb(204, 213, 221) !important;
+       }
+       
+       
+       .mediabout{
+           color: rgb(214, 223, 231) !important;
+       }
+       
+       .mediabout-dark{
+          color: rgb(100, 152, 248) !important;
+       }
+       
+         
+       [dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+          color: none !important;
+       }
+       
+       
+               
+       .btn-primary{
+           background-color: rgb(37, 148, 192) !important;
+           color: rgb(254, 254, 255);
+           border: 1px solid rgb(23, 104, 136) !important;
+       }
+               
+       .btn-primary-dark{
+           background-color: #323741 !important;
+           color: rgb(199, 199, 199) !important;
+           border: 1px solid  #21242b !important;
+           box-shadow: none !important;
+       }
+               
+       th,td {
+           text-align: center !important;
+           border-top: 1px solid rgb(25, 25, 29)
+       }
+       
+       .table thead{
+           height: 65px !important;
+       }
+       
+       .tehead{
+           background-color: rgb(197, 223, 235) !important;
+           border-top: 0!important;
+           border-bottom: 0 !important;
+       }
+       
+       .table .tehead {
+               
+       }
+           
+       .tehead-dark{
+           background-color: rgb(33, 41, 51) !important;
+           border-top: 1px solid rgb(24, 31, 36) !important;
+           border-bottom: 1px solid rgb(24, 31, 36) !important;
+       }
+       
+       
+       .flllot{
+           float: left !important;
+       }
+       
+       
+       .card-footer-dark{
+           background-color: rgb(26, 28, 34) !important;
+           border: 1px solid rgb(9, 10, 12) !important;
+       }
+           
+       
+       .bgk{
+           background-color: #fff !important;
+       }
+       .bgk-dark{
+           background-color: rgb(185, 197, 206) !important;
+       }
+       
+       [dir="ltr"] .table td, [dir="ltr"] .table th{
+           border: 0 !important;
+       
+       }
+       
+       a.disabled{
+           cursor: not-allowed !important;
+       }
+       
+       .card-header:first-child{
+           border-radius: 0 !important;
+       }
+       
+       
+       .card-footer-dark{
+           background-color: rgb(33, 41, 51) !important;
+           border: 1px solid rgb(9, 10, 12) !important;
+       }
+           
+       .progress .bg-primary{
+           background-color: rgb(45, 95, 189) !important;
+           border-radius: 0 !important;
+       }
+       
+       .progress .bg-primary-dark{
+           background-color: rgb(189, 209, 245) !important;
+           border-radius: 0 !important;
+       }
+       
+       .card .bg-primary{
+           background-color: rgb(45, 95, 189) !important;
+           border-radius: 0 !important;
+           font-size: 11px !important;
+       }
+       
+       .card .bg-primary-dark{
+           background-color: rgb(13, 16, 22) !important;
+           border-radius: 0 !important;
+       }
+       
+       .progress{
+           border-radius: 0 !important;
+       }
+       
+
+.selecttt-dark{
+    background-color: rgb(165, 172, 189) !important;
+    border: 1px solid rgb(123, 129, 145) !important;
+    color: #22293f !important;
+}
+
+       </style>    
+       
+
+    <script>
+
+    </script>
+    <input type="hidden" id="course_id" value="{{ course.id }}">
+    <div class="progress rounded-0" style="height: 4px;">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 5%;" aria-valuenow="37" aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+    <div class="page-section border-bottom-2">
+        <div class=" page__container">
+
+            <form action="/store-course" id="new-course">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="page-separator">
+                            <div class="page-separator__text backgg backgg-dark mediabout mediabout-dark">Step 1</div>
+                        </div>
+
+                        <label class="form-label mediabout mediabout-dark">Course Name
+                            <b style="color: rgb(240, 100, 100);font-size: large;">*</b>
+                        </label>
+                        <div class="form-group mb-24pt">
+                            <input name="course_name" type="text" class="form-control form-control-lg req"
+                                   style="font-size: medium;" placeholder="Course Name" value="{{ course.name }}">
+                            <small class=" bllu bllu-dark">For Example: <b href="" class=" mediabout mediabout-dark">Learn photoshop with
+                                css..</b></small>
+                        </div>
+
+                        <label class="form-label mediabout-dark">Course description
+                            <b style="color: rgb(240, 100, 100);font-size: large;">*</b>
+                        </label>
+                        <div class="form-group mb-24pt">
+                            <textarea id="course_description" name="course_description" type="text" cols="9" rows="6" class="form-control form-control-lg req"
+                                   style="font-size: medium;" data-value="" placeholder="Course description" value="{{ course.name }}"></textarea>
+                            <small class=" bllu bllu-dark">For Example: <b href="" class=" mediabout mediabout-dark">Learn photoshop with
+                             css..</b></small>
+                        </div>
+
+                        <label class="form-label mediabout-dark">Course Requirments
+                            <b style="color: rgb(240, 100, 100);font-size: large;">*</b>
+                        </label>
+                        <div class="form-group mb-24pt">
+                            <textarea id="course_requirements" name="course_requirements" type="text" cols="9" rows="6" class="form-control form-control-lg req"
+                                   style="font-size: medium;" data-value="" placeholder="Course description" value="{{ course.name }}"></textarea>
+                            <small class=" bllu bllu-dark">For Example: <b href="" class=" mediabout mediabout-dark">Learn photoshop with
+                             css..</b></small>
+                        </div>
+
+                        <label class="form-label mediabout-dark">Course Requirments
+                            <b style="color: rgb(240, 100, 100);font-size: large;">*</b>
+                        </label>
+                        <div class="form-group mb-24pt">
+                            <textarea id="course_requirements" name="course_requirements" type="text" cols="9" rows="6" class="form-control form-control-lg req"
+                                   style="font-size: medium;" data-value="" placeholder="Course description" value="{{ course.name }}"></textarea>
+                            <small class=" bllu bllu-dark">For Example: <b href="" class=" mediabout mediabout-dark">Learn photoshop with
+                             css..</b></small>
+                        </div>
+
+                        <label class="form-label mediabout-dark">Course Gains
+                            <b style="color: rgb(240, 100, 100);font-size: large;">*</b>
+                        </label>
+                        <div class="form-group mb-24pt">
+                            <textarea id="course_grains" name="course_grains" type="text" cols="9" rows="6" class="form-control form-control-lg req"
+                                   style="font-size: medium;" data-value="" placeholder="Course description" value="{{ course.name }}"></textarea>
+                            <small class=" bllu bllu-dark">For Example: <b href="" class=" mediabout mediabout-dark">Learn photoshop with
+                             css..</b></small>
+                        </div>
+
+                        <!-- <label class="form-label mt-1">Course description
+                            <b style="color: red;font-size: large;">*</b>
+                        </label>
+
+                        <div id="course_description" name="course_description" style="height: 150px;" class="mb-0"
+                             data-toggle="quill" placeholder="hhh">
+                        </div>
+                        <small class="form-text text-muted">For Example: <a href="">This course about photoshop and it's
+                            new features..</a></small> -->
+
+                        <!-- <label class="form-label mt-4">Course Requirments
+                            <b style="color: red;font-size: large;">*</b>
+                        </label>
+
+                        <div id="course_requirements" name="course_requirements" style="height: 150px;" class="mb-0"
+                             data-toggle="quill" placeholder="hhh" data-value="">
+
+                        </div>
+                        <small class="form-text text-muted">For Example: <a href="">To take this course you need to know
+                            the basics at least..</a></small> -->
+
+                        <!-- <label class="form-label mt-4">Course Gains
+                            <b style="color: red;font-size: large;">*</b>
+                        </label>
+
+                        <div id="course_grains" name="course_grains" style="height: 150px;" class="mb-0"
+                             data-toggle="quill" placeholder="hhh">
+                        </div> -->
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" style="border-radius: 3px 3px 0 0 !important;">
+                            <div class="card-header card-header-dark " style="border-radius: 3px 3px 0 0 !important;">
+                                <a onclick="addCourse()" id="addCourse" class="btn btn-primary mr-4">Add course</a>
+                                {% if course.approval_status != 2 %}
+                                <a href="#" class="btn btn-accent" onclick="saveLater()">Save for later</a>
+                                {% endif %}
+                            </div>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex" style="border-bottom: 1px solid rgb(47, 72, 87);">
+                                    <a class="flex blllu blllu-dark" href="#"><strong>Save Draft</strong></a>
+                                    <i class="material-icons text-muted">check</i>
+                                </div>
+                                <div class="list-group-item">
+                                    <a class="" style="color: rgb(240, 116, 116);" id="delBtn" onclick="showDelModal()"><strong>Delete
+                                        Course</strong></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page-separator">
+                            <div class="page-separator__text mediabout mediabout-dark backgg backgg-dark">Course Image</div>
+                        </div>
+
+                        <div class="card ">
+                            <img {% if course.cover_img %} src="{% static course.cover_img %}" {% else %}
+                                                           src="" {% endif %} id="coverImg"
+                                                           style=" height:180px;border-radius: 0 !important;"
+                                                           class=""/>
+
+                        <div class="media-body">
+                            <div class="custom-file">
+                                <input type="file"
+                                       class="custom-file-input"
+                                       id="inputGroupFile01"
+                                >
+                                <label class="custom-file-label  selecttt selecttt-dark" style="border-radius: 0 !important;" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="page-separator">
+                            <div class="page-separator__text mediabout mediabout-dark backgg backgg-dark">Header Image</div>
+                        </div>
+
+                        
+                                <div class="card " >
+
+                                    <img {% if course.header_img %} src="{% static course.header_img %}" {% else %}
+                                                                    src="" {% endif %} id="headerImg"
+                                                                    style=" height:200px;border-radius: 0 !important;"
+                                                                    class=" "/>
+                                    <div class="media-body">
+                                        <div class="custom-file">
+                                            <input type="file"
+                                                   class="custom-file-input"
+                                                   id="inputGroupFile02"
+                                            >
+                                            <label class="custom-file-label  selecttt selecttt-dark" style="border-radius: 0 !important;" for="inputGroupFile02">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                        <div class="page-separator">
+                            <div class="page-separator__text mediabout mediabout-dark backgg backgg-dark">Options</div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label mediabout mediabout-dark">Category</label>
+                                    <select id="category" name="category" class="form-control selecttt selecttt-dark">
+                                        {% for cat in categories %}
+                                            {% if cat.id == course.scat_id %}
+                                                <option value="{{ cat.id }}" selected>{{ cat.name }}</option>
+                                            {% else %}
+                                                <option value="{{ cat.id }}">{{ cat.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mediabout mediabout-dark">Sub categories</label>
+                                    <select id="sub_category" name="sub_category" class="form-control selecttt selecttt-dark">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mediabout mediabout-dark">Level</label>
+                                    <select id="level" name="level" class="form-control selecttt selecttt-dark">
+                                        <option value="0" {% if course.course_level == 0 %} selected {% endif %}>All
+                                            Levels
+                                        </option>
+                                        <option value="1" {% if course.course_level == 1 %} selected {% endif %}>
+                                            Beginner
+                                        </option>
+                                        <option value="2" {% if course.course_level == 2 %} selected {% endif %}>
+                                            Intermediate
+                                        </option>
+                                        <option value="3" {% if course.course_level == 3 %} selected {% endif %}>
+                                            Advanced
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mediabout mediabout-dark">Price</label>
+                                    <select id="price" name="price" class="form-control selecttt selecttt-dark">
+                                        <option value="0" {% if course.type == 0 %} selected {% endif %}>Paid</option>
+                                        <option value="1" {% if course.type == 1 %} selected {% endif %}>Free</option>
+                                    </select>
+                                    <div class="row" style="margin-top: 20px">
+                                        <div class="col-md-6">
+                                            <div class="input-group form-inline">
+                                                <span class="input-group-prepend"><span
+                                                        class="input-group-nexttext"></span></span>
+                                                <input id="course_price" name="course_price" type="number"
+                                                       class="form-control form-control-dark price-disable" placeholder="add a price"
+                                                       value="{{ course.price }}"
+                                                       disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small class="blllu blllu-dark flllot" style="margin-bottom: 10px !important;">The recommended price is between &dollar;10 and
+                                        &dollar;15</small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label mediabout mediabout-dark">Course style</label>
+                                    <select id="dripping" name="dripping" class="form-control selecttt selecttt-dark">
+                                        <option value="0" {% if course.dripping == 0 %} selected {% endif %}>Normal
+                                        </option>
+                                        <option value="1" {% if course.dripping == 1 %} selected {% endif %}>Dripping
+                                        </option>
+                                    </select>
+                                    <small class="form-text text-muted">For complicated courses dripping style is
+                                        recommened.</small>
+                                </div>
+                                {#                                <div class="form-group mb-0">#}
+                                {#                                    <label class="form-label" for="select03">Tags</label>#}
+                                {#                                    <select id="course_tags" data-toggle="select" multiple class="form-control">#}
+                                {#                                        <option selected="" value="1">JavaScript</option>#}
+                                {#                                        <option selected="" value="2">Angular</option>#}
+                                {#                                        <option value="3">Bootstrap</option>#}
+                                {#                                        <option value="4" >CSS</option>#}
+                                {#                                        <option value="5">HTML</option>#}
+                                {#                                    </select>#}
+                                {#                                    <small class="form-text text-muted">Select tags will help you to get more students.</small>#}
+                                {#                                </div>#}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true" style="padding-top: 12%;">
+        <input type="hidden" id="commentDeleteId" value="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background: white; padding: 30px;border: 1px solid #ccc;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="formModal" style="text-align:center;">Do you really want to delete?</h4>
+                    <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                            type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            onclick="hideDelModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <button style="background:rgb(247,173,173) !important; color:white; border:0px !important; margin-left:230px; margin-top:25px !important; margin-right:10px; border-radius: 5px;"
+                                type="button" onclick="deleteCourse()" class="button buy-button is-raised">Delete
+                        </button>
+                        <button style="background:rgb(134,204,235) !important; color:white; border:0px !important; margin-top:25px !important; border-radius: 5px;"
+                                type="button" onclick="hideDelModal()" class="button buy-button is-raised">Cancel
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="/teacher/add_course/?step=2" method="post" style="display:none;" id="nextStep">
+        {% csrf_token %}
+        <input type="hidden" name="course" id="course" value="{{ course.id }}">
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script src="{% static 'teacher/assets/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/select2.js' %}"></script>
+
+    <!-- Quill -->
+    <script src="{% static 'teacher/assets/vendor/quill.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/quill.js' %}"></script>
+    <script>
+
+        function convertSpec(html) {
+            if (html !== '')
+                return html.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+            else
+                return html;
+        }
+
+        $(function () {
+
+
+            /***
+             *  initial parts.....
+             *
+             * /
+
+             /***
+             *  @author: Happy
+             *  stop course name over 50 characters...
+             */
+
+            $('input[name="course_name"]').on('change', function() {
+
+            })
+
+            $('input[name="course_name"]').on('input', function (e) {
+                let len = $(this).val().length
+                if (len >= 50) {
+                    let value = $(this).val().substr(0, 50)
+                    $(this).val(value)
+                }
+            })
+
+            /***
+             *  @author: Happy
+             *  if course is paid, course_price should be editable else should be disable
+             */
+
+            if ($('#price').val() * 1 === 1) {
+                $('#course_price').val(0)
+                $('#course_price').prop('disabled', true)
+            } else {
+                $('#course_price').prop('disabled', false)
+            }
+
+            $("#price").change(() => {
+                let price_value = $('#price').val()
+                if ($('#price').val() * 1 === 0) {
+                    $('#course_price').val(0)
+                    $('#course_price').prop('disabled', true)
+                } else {
+                    $('#course_price').prop('disabled', false)
+                }
+            })
+
+            /***
+             * @author: Happy
+             *  to set dripping , if is only enable when web development,
+             */
+
+            if ($('#category').val() * 1 === 1) { //web development case
+                $('#dripping').prop('disabled', false)
+            } else {
+                $('#dripping').prop('disabled', true)
+            }
+
+            $('#category').change(() => {
+                if ($('#category').val() * 1 === 1) {
+                    $('#dripping').prop('disabled', false)
+                } else {
+                    $('#dripping').prop('disabled', true)
+                    $('#dripping option[value=0]').prop('selected', true)
+                }
+            })
+
+            new Quill('#course_requirements').root.innerHTML = convertSpec('{{ course.requirements }}')
+            new Quill('#course_grains').root.innerHTML = convertSpec('{{ course.gains }}')
+            new Quill('#course_description').root.innerHTML = convertSpec('{{ course.description }}')
+
+            /***
+             *  -- end --
+             * @author: Happy
+             */
+
+            var course_id = '{{ course_id }}';
+            localStorage.setItem('course_id', course_id);
+
+            if ($('#category')[0].length > 0) {
+                if ($('#category').val() == '') {
+                    getSubCat($('#category')[0][0].value);
+                } else {
+                    getSubCat($('#category').val());
+                }
+            }
+            $('#category').on('change', function () {
+                let cat_id = $('#category').val();
+                getSubCat(cat_id);
+            });
+
+            $('#inputGroupFile01').on('change', function (e) {
+                $("[for='inputGroupFile01']").html(e.target.files[0].name);
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#coverImg').attr('src', e.target.result)
+                };
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
+                console.log("===>", this.files[0])
+            });
+
+            $('#inputGroupFile02').on('change', function (e) {
+                $("[for='inputGroupFile02']").html(e.target.files[0].name);
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#headerImg').attr('src', e.target.result)
+                };
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
+            });
+        });
+
+        const getSubCat = (cat_id) => {
+            let url = "/getsubcategory";
+            //Ajax Start
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    category_id: cat_id
+                },
+
+                beforeSend: function () {
+                    console.log("Beforesend")
+                },
+                success: function (data) {
+                    let sub_cat = data.subcat_list;
+                    let html_subCat = '';
+                    sub_cat.forEach(cat => {
+                        html_subCat += '<option value="' + cat.id + '">' + cat.name + '</option>';
+                    });
+                    $('#sub_category').empty();
+                    $('#sub_category').append(html_subCat);
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            // Ajax end
+            return false
+        }
+
+        // store course
+        const saveLater = () => {
+            let url = "/save_later/";
+            let config = {
+                headers: {'X-CSRFToken': $("#hd_csrf").val()},
+            };
+            let description = new Quill('#course_description').getText();
+            let requirements = new Quill('#course_requirements').getText();
+            let grains = new Quill('#course_grains').getText();
+            let coverImg = $("#inputGroupFile01")[0].files[0];
+            let headerImg = $("#inputGroupFile02")[0].files[0];
+            let courseUrl = $("#courseUrl").val();
+            let price = $('input[name="course_price"]').val()
+            let course_level = $('#level').val()
+            let dripping = $('#dripping').val()
+
+            id = $('#course_id').val();
+
+            data = new FormData();
+            data.append('id', id);
+            data.append('name', $('input[name="course_name"]').val());
+            data.append('description', description);
+            data.append('requirements', requirements);
+            data.append('gains', grains);
+            data.append('category_id', $('#category').val());
+            data.append('sub_category_id', $('#sub_category').val());
+            data.append('price', price);
+            data.append('coverImg', coverImg);
+            data.append('headerImg', headerImg);
+            data.append('courseUrl', '');
+            data.append('course_level', course_level);
+            data.append('dripping', dripping);
+            data.append('user_id', '{{ request.user.id }}');
+            data.append('pending', 1);
+            price = $('input[name="course_price"]').val();
+            let type = $('#price').val() * 1
+            data.append('type', type)
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    document.location.href = '/teacher/courses/';
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+        };
+
+        function addCourse() {
+            console.log("here")
+            let url = "/store_course/";
+            let config = {
+                headers: {'X-CSRFToken': $("#hd_csrf").val()},
+            };
+
+            let coursename = $('input[name="course_name"]').val();
+            let description = new Quill('#course_description').root.innerHTML;
+            let requirements = new Quill('#course_requirements').root.innerHTML;
+            let grains = new Quill('#course_grains').root.innerHTML;
+            let coverImg = $("#inputGroupFile01")[0].files[0];
+            let headerImg = $("#inputGroupFile02")[0].files[0];
+            let courseUrl = $("#courseUrl").val();
+            let price = $('input[name="course_price"]').val()
+            let course_level = $('#level').val()
+            let dripping = $('#dripping').val()
+
+            id = $('#course_id').val();
+            data = new FormData();
+            data.append('id', id);
+            data.append('name', coursename);
+            data.append('description', description);
+            data.append('requirements', requirements);
+            data.append('gains', grains);
+            data.append('category_id', $('#category').val());
+            data.append('sub_category_id', $('#sub_category').val());
+            data.append('price', price);
+            data.append('coverImg', coverImg);
+            data.append('headerImg', headerImg);
+            data.append('course_level', course_level);
+            data.append('dripping', dripping);
+            data.append('pending', 0);
+            price = $('input[name="course_price"]').val();
+            let type = $('#price').val() * 1
+            data.append('type', type)
+
+            if (coursename == undefined || coursename == '') {
+                swal({
+                    title: "Course Name Missing",
+                    icon: "warning",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+
+            if (description == undefined || description == '') {
+                swal({
+                    title: "Course Description Missing",
+                    icon: "warning",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+
+            if (grains == undefined || grains == '') {
+                swal({
+                    title: "Course Gains Missing",
+                    icon: "warning",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+
+            if (requirements == undefined || requirements == '') {
+                swal({
+                    title: "Cover Image Missing",
+                    icon: "warning",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+
+            if (coverImg == undefined || coverImg == '') {
+                if ($('#coverImg').attr('src') == '') {
+                    swal({
+                        title: "Cover Image Missing",
+                        icon: "warning",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+            }
+
+            if (headerImg == undefined || headerImg == '') {
+                if ($('#headerImg').attr('src') == '') {
+                    swal({
+                        title: "Header Image Missing",
+                        icon: "warning",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+            }
+
+            data.append('courseUrl', '');
+            data.append('user_id', '{{ request.user.id }}');
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    localStorage.setItem('course_id', data.id);
+                    $('#course').val(data.id)
+                    $("#nextStep").submit();
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+        }
+
+        function showDelModal() {
+            swal({
+                    title: "Delete course",
+                    text: "Are you sure delete course",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    inputPlaceholder: "Type here..."
+                }, (inputValue) => {
+                    course_id = localStorage.getItem('course_id');
+                    if (course_id == '') {
+
+                    } else {
+                        url = '/deleteCourse/';
+                        $.post(url, {id: course_id}, function (data) {
+                            swal("Deleted Successfully!", "", "success");
+                            setTimeout(() => {
+                                location.href = "/teacher/courses/";
+                            }, 1000)
+                        })
+                    }
+                }
+            );
+        }
+
+    </script>
+{% endblock %}

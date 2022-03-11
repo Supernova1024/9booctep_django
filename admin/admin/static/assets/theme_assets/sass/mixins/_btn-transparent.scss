@@ -1,0 +1,17 @@
+@import "../../../vendor_assets/css/bootstrap/config.bs";
+
+@each  $key, $color in ($theme-colors) {
+  .btn-transparent-#{$key} {
+    background: transparentize($color,.85);
+    color: $color;
+  }
+}
+
+// @each  $key, $color in ($hover-colors) {
+//   .btn-transparent-#{$key} {
+//     @include dashboard-hover{
+//         background: transparentize($color,.85) !important;
+//         color: $color !important;
+//     }
+//   }
+// }

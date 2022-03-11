@@ -1,0 +1,638 @@
+{% extends "teacher/base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="التنبيهات" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Notifications" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block head %}
+    <style>
+        th, td {
+            text-align: center !important;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<style>
+    th,td {
+        text-align: center !important;
+        border-top: 1px solid rgb(25, 25, 29)
+    }
+    .table thead{
+        height: 65px !important;
+    }
+
+    .tehead{
+        background-color: rgb(197, 223, 235) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+    }
+    .table .tehead {
+        
+    }
+    .tehead-dark{
+        background-color: rgb(32, 32, 37) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+    }
+    
+.brd{
+    border: 1px solid rgb(240, 240, 240) !important;
+    color: #fff !important;
+}
+
+.brd-dark{
+    border: 1px solid rgb(67, 79, 94) !important;
+    color: rgb(202, 202, 202) !important;
+}
+
+.table th, .table td{
+        border-top: 1px solid rgb(25, 25, 29)
+    }
+
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(137, 148, 158) !important;
+}
+
+.table{
+    background-color: transparent !important;
+}
+[dir="ltr"] .table thead th{
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+}
+
+
+
+.btn-primary{
+        background-color: rgb(37, 148, 192) !important;
+        border: 1px solid rgb(23, 104, 136) !important;
+        float: right !important;
+}
+
+    .btn-primary-dark{
+        background-color: #323741 !important;
+        color: rgb(199, 199, 199) !important;
+        float: right !important;
+        border: 1px solid  #21242b !important;
+        box-shadow: none !important;
+    }
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+.lasttchiled:last-child{
+    border-radius: 0 0 50px 50px !important;
+}
+
+div.card{
+     background-color: none !important;
+}
+
+.addbg-dark{
+    background-color: rgb(89, 106, 126) !important;
+    border-bottom: 1px solid rgb(67, 78, 92)!important;
+}
+
+div.navbar{
+    border-bottom: 0 !important;
+}
+
+</style>
+<style>
+    th,td {
+        text-align: center !important;
+        border-top: 1px solid rgb(25, 25, 29) !important
+    }
+    .table thead{
+        height: 65px !important;
+    }
+
+    .tehead{
+        background-color: rgb(197, 223, 235) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+    }
+    .table .tehead {
+        
+    }
+    .tehead-dark{
+        background-color: rgb(32, 32, 37) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+    }
+    
+.brd{
+    border: 1px solid rgb(240, 240, 240) !important;
+    color: #fff !important;
+}
+
+.brd-dark{
+    border: 1px solid rgb(67, 79, 94) !important;
+    color: rgb(202, 202, 202) !important;
+}
+
+.table th, .table td{
+        border-top: 1px solid rgb(25, 25, 29)
+    }
+
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(137, 148, 158) !important;
+}
+
+.table{
+    background-color: transparent !important;
+}
+.table thead th{
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+}
+
+    </style>
+
+    {% load static %}
+    <div data-push data-responsive-width="768px" data-has-scrollable-region data-fullbleed
+         class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+            <div class="navbar navbar-dark addbg addbg-dark border-bottom justify-content-start">
+                <a data-target="#email-drawer" data-toggle="sidebar" class="btn btn-sm "
+                   style="display: none;"><i class="material-icons icon--left">tune</i> Inbox</a>
+                   {% get_current_language as lang %}
+                   {% if lang == "ar" %}
+                <a class="btn btn-sm btn-primary btn-primary-dark ml-8pt" onclick="openNotiModal()">أضف تنبيه جديد</a>
+                {% else %}
+                <a class="btn btn-sm btn-primary btn-primary-dark ml-8pt" onclick="openNotiModal()">Add New Notifications</a>
+                {% endif %}
+            </div>
+            <div class="container page__container page-section" style="max-width: 90% !important; margin-bottom: 90px;">
+              
+                
+                    <div class="table-responsive" style="" data-toggle="lists" data-lists-sort-by="js-lists-values-date"
+                         data-lists-sort-desc="true"
+                         data-lists-values='["js-lists-values-name", "js-lists-values-department", "js-lists-values-status", "js-lists-values-type", "js-lists-values-phone", "js-lists-values-date"]'>
+                         <table class="table mb-0 table-nowrap" style="border-radius: 30px 30px 0 0 !important;">
+                            <thead style="" class="tehead tehead-dark">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                            <tr style="">
+                                <th>
+                                    <a href="javascript:void(0)"  class="mediabout mediabout-dark"data-sort="js-lists-values-name">المرسل</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name">العنوان</a>
+                                </th>
+                                <th style="width: 650px;">
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name"
+                                       style="justify-content: center; display: flex;">الرسالة</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark"
+                                       data-sort="js-lists-values-name">الدورة</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name">نوع التنبيه</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark"
+                                       data-sort="js-lists-values-name">خيارات</a>
+                                </th>
+                            </tr>
+                            {% else %}
+                            <tr style="">
+                                <th>
+                                    <a href="javascript:void(0)"  class="mediabout mediabout-dark"data-sort="js-lists-values-name">Name</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name">title</a>
+                                </th>
+                                <th style="width: 650px;">
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name"
+                                       style="justify-content: center; display: flex;">text</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark"
+                                       data-sort="js-lists-values-name">course</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark" data-sort="js-lists-values-name">type</a>
+                                </th>
+                                <th>
+                                    <a href="javascript:void(0)" class="mediabout mediabout-dark"
+                                       data-sort="js-lists-values-name">option</a>
+                                </th>
+                            </tr>
+                            {% endif %}
+                            </thead>
+                            <tbody class="list  bgk bgk-dark" id="noti_list">
+                            {% for noti in noti_list %}
+                                <tr class="lasttchiled">
+                                    <td>
+                                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                            <div class="avatar avatar-sm mr-8pt">
+                                                <img src="
+                                                        {% if noti.type == 0 %}{% static noti.sender.image %}{% else %}{% static 'assets/img/favicon.png' %}{% endif %}"
+                                                     style=" height:40px;" alt="people"
+                                                     width="56" class="rounded-circle brd brd-dark"/>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex d-flex flex-column" style="width: 80px;">
+                                                        <p class="mb-0">
+                                                            <strong class="js-lists-values-name">
+                                                                {% if noti.type == 0 %}
+                                                                    {{ noti.sender.first_name }}
+                                                                    {{ noti.sender.last_name }}
+                                                                {% else %}
+                                                                    BOOCTEP.COM
+                                                                {% endif %}
+                                                            </strong>
+                                                        </p>
+                                                        <small class="js-lists-values-email text-50">
+                                                            {% if noti.type == 0 %}{{ noti.sender.email }}{% endif %}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ noti.title }}
+                                    </td>
+                                    <td>
+                                        {{ noti.text | truncatechars:70 }}
+                                    </td>
+                                    <td>
+                                        {{ noti.course_name }}
+                                    </td>
+                                    <td>
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        {% if noti.type == 0 %}
+                                            مرسل
+                                        {% else %}
+                                            مستقبل
+                                        {% endif %}
+                                        {% else %}
+                                        {% if noti.type == 0 %}
+                                            Send
+                                        {% else %}
+                                            Receive
+                                        {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="#" onclick="openEditModal(this)" data-id="{{ noti.id }}"
+                                           data-title="{{ noti.title }}" data-text="{{ noti.text }}" data-type="{{ noti.type }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 style="color: rgb(31, 55, 63);"
+                                                 fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="ml-2" onclick="showDelModal(this)" data-id="{{ noti.id }}" data-course-id="{{ noti.course_id }}" data-sender-id="{{ request.user.id }}" data-time="{{ noti.created_at }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 style="color: rgb(207, 99, 99);"
+                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="noti_modal_back"></div>
+
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" id="noti_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+        <h3>Send Notification here!</h3>
+        <div class="d-flex">
+            <select id="course_select" class="form-control mr-2">
+                {% for course in course_list %}
+                    <option class="is-focused" style="height:40px;" value="{{ course.id }}">{{ course.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mt-3">
+            <input type="text" id="title" style="display: block !important;" placeholder="title">
+            <textarea id="notification" style="height: 150px; overflow-y: auto;" class="form-control"
+                      placeholder="content"></textarea>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="send_noti()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Send
+                </button>
+                <button class="confirm" tabindex="1" onclick="hideNotiModal()"
+                        style="display: inline-block; background-color: rgb(245,131,122); box-shadow: rgb(148,60,51) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" id="edit_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+        <h3>Edit Notification</h3>
+        <input type="hidden" id="noti_id">
+        <div class="mt-3">
+            <input type="text" id="edit_title" style="display: block !important;" placeholder="title">
+            <textarea id="edit_notification" style="height: 150px; overflow-y: auto;" class="form-control"
+                      placeholder="content"></textarea>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="edit_noti()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Save
+                </button>
+                <button class="confirm" tabindex="1" onclick="hideEditModal()"
+                        style="display: inline-block; background-color: rgb(245,131,122); box-shadow: rgb(148,60,51) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" id="show_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+        <h3>Detail Notification</h3>
+        <div class="mt-3">
+            <input type="text" id="show_title" style="display: block !important;" placeholder="title">
+            <textarea id="show_notification" style="height: 150px; overflow-y: auto;" class="form-control"
+                      placeholder="content"></textarea>
+        </div>
+        <div class="sa-button-container">
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="hideShowModal()"
+                        style="display: inline-block; background-color: rgb(245,131,122); box-shadow: rgb(148,60,51) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-alert showSweetAlert visible" id="delete_modal" data-custom-class="" data-has-cancel-button="true"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+        <div class="sa-icon sa-error" style="display: none;">
+      <span class="sa-x-mark">
+        <span class="sa-line sa-left"></span>
+        <span class="sa-line sa-right"></span>
+      </span>
+        </div>
+        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <h2>Are you sure?</h2>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                    onclick="closeDelModal()">Cancel!
+            </button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="deleteNoti()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Yes, delete it!
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+
+    <script>
+
+        let del_obj = ''
+        $(function () {
+            course = $('#course_select').val()
+            console.log("testtesttest", course);
+            $('#noti_text').val('');
+            $('.stu_option').each(function () {
+                if ($(this).attr('data-course') * 1 == course * 1) {
+                    $(this).css('display', 'block');
+                } else {
+                    $(this).css('display', 'none');
+                }
+            });
+            $("html").css({
+                'overflow': 'auto'
+            })
+        })
+
+        function hideShowModal() {
+            $("#show_modal").css({
+                display: 'none'
+            })
+            $("#noti_modal_back").css({
+                display: 'none'
+            })
+        }
+
+        function openEditModal(obj) {
+            let id = $(obj).data('id')
+            let title = $(obj).data('title')
+            let text = $(obj).data('text')
+            let type = $(obj).data('type')
+            if (type*1==0){
+                $("#edit_title").val(title)
+                $("#edit_notification").val(text)
+                $("#noti_id").val(id)
+                $("#edit_modal").css({
+                    display: 'block'
+                })
+            } else {
+                $("#show_title").val(title)
+                $("#show_notification").val(text)
+                $("#show_modal").css({
+                    display: 'block'
+                })
+            }
+            $("#noti_modal_back").css({
+                display: 'block'
+            })
+        }
+
+        function showDelModal(obj) {
+            del_obj = obj
+            $("#delete_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function closeDelModal() {
+            $("#delete_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function deleteNoti() {
+            obj = del_obj
+            let url = '/delete_notification/'
+            let form_data = new FormData()
+            let course_id = $(obj).data('course-id')
+            let sender_id = $(obj).data('sender-id')
+            let noti_id = $(obj).data('id')
+            let time = $(obj).data('time')
+            form_data.append('course_id', course_id)
+            form_data.append('sender_id', sender_id)
+            form_data.append('noti_id', noti_id)
+            form_data.append('time', time)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+                location.reload()
+            })
+        }
+
+        function openNotiModal() {
+            $("#noti_modal").css({
+                display: 'block'
+            })
+            $("#noti_modal_back").css({
+                display: 'block'
+            })
+        }
+
+        function hideNotiModal() {
+            $("#noti_modal").css({
+                display: 'none'
+            })
+            $("#noti_modal_back").css({
+                display: 'none'
+            })
+            $("#notification").val('')
+            $("#title").val('')
+        }
+
+        function hideEditModal() {
+            $("#edit_modal").css({
+                display: 'none'
+            })
+            $("#noti_modal_back").css({
+                display: 'none'
+            })
+            $("#edit_notification").val('')
+            $("#edit_title").val('')
+        }
+
+        function send_noti() {
+            textis = $('#notification').val();
+            title = $('#title').val()
+            socket.emit('teacher_to_student_notification', {
+                sender_id: '{{ request.user.id }}',
+                course_id: $('#course_select').val(),
+                content: textis,
+                title: title,
+                sender_name: '{{ request.user.first_name }} {{ request.user.last_name }}'
+            })
+            hideNotiModal()
+            location.reload();
+        }
+
+        function edit_noti() {
+            textis = $('#edit_notification').val();
+            title = $('#edit_title').val()
+            id = $("#noti_id").val()
+            let url = '/edit_notification/';
+            let form_data = new FormData()
+            form_data.append('id', id)
+            form_data.append('title', title)
+            form_data.append('text', textis)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+
+            })
+            hideEditModal()
+            location.reload();
+        }
+    </script>
+{% endblock %}

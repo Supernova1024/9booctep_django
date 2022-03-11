@@ -1,0 +1,47 @@
+<div class="mdk-drawer {{ drawerClass or '' }} js-mdk-drawer" id="default-drawer" data-align="{{ drawerAlign }}">
+  <div class="mdk-drawer__content top-navbar">
+    <div class="sidebar d-flex flex-column sidebar-light sidebar-left sidebar-p-t" data-perfect-scrollbar>
+
+      <div class="sidebar-heading">Documentation</div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item{% if docs_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#docs_menu">
+            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+            <span class="sidebar-menu-text">Getting Started</span>
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sm-indent sidebar-submenu collapse{% if docs_menu %} show{% endif %}" id="docs_menu">
+            <li class="sidebar-menu-item{% if slug === 'documentation' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}documentation.html">
+                <span class="sidebar-menu-text">View or Run Demos</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item{% if slug === 'installation' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}installation.html">
+                <span class="sidebar-menu-text">Installation</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item{% if slug === 'configuration' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}configuration.html">
+                <span class="sidebar-menu-text">Configuration</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item{% if slug === 'build' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}build.html">
+                <span class="sidebar-menu-text">Build Project</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="sidebar-p-a mt-auto">
+        <a target="_blank" href="{{ buy_url }}" class="btn btn-outline-accent btn-block">
+          {{ buy_label }}
+          <i class="material-icons ml-2">shopping_cart</i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

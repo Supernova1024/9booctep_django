@@ -1,0 +1,41 @@
+<div class="page-section bg-primary">
+  <div class="{{ containerClass }} d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+    <img src="assets/images/illustration/teacher/128/white.svg" width="104" class="mr-md-32pt mb-32pt mb-md-0" alt="instructor">
+    <div class="flex mb-32pt mb-md-0">
+      <h2 class="text-white mb-0">Laza Bogdan</h2>
+      <p class="lead text-white-50 d-flex align-items-center">Instructor <span class="ml-16pt d-flex align-items-center"><i class="material-icons icon-16pt mr-4pt">opacity</i> 2,300 IQ</span></p>
+    </div>
+    <a href="" class="btn btn-outline-white">Follow</a>
+  </div>
+</div>
+
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>About me</h4>
+        <p>Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
+      </div>
+      <div class="col-md-6">
+        <h4>Connect</h4>
+        <p>I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+        <div class="d-flex align-items-center">
+          <a href="" class="text-accent fab fa-facebook-square font-size-24pt mr-8pt"></a>
+          <a href="" class="text-accent fab fa-twitter-square font-size-24pt"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="{{ containerClass or 'container' }} page-section">
+
+  <div class="page-headline text-center">
+    <h2>Level-up Your Career</h2>
+    <p class="lead text-70 col-lg-8 mx-auto">Courses by Elijah</p>
+  </div>
+
+  {% include 'pages/_instructor-profile.courses.html' %}
+
+  {% include 'pages/_profile.activity.html' %}
+</div>

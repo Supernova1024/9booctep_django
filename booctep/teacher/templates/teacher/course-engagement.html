@@ -1,0 +1,1208 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+    Courses
+{% endblock %}
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="تفاعل الدورات" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Course engagement" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block content %}
+
+<style>
+ 
+ 
+
+ .card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.blllu{
+        color: rgb(57, 137, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+    }
+
+
+    .bllu{
+        color: rgb(57, 137, 241) !important;
+    } 
+    .bllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.carousel-item{
+    background-color: rgb(18, 76, 163) !important;
+}
+
+.carousel-item-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+
+
+h3.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+h3.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+strong.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+strong.mediabout-dark{
+   color: rgb(186, 193, 204) !important;
+}
+
+p.mediabout{
+    color: rgb(188, 216, 240) !important;
+}
+
+p.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+a.mediabout{
+    background-color: rgb(207, 228, 245) !important;
+    border: 1px solid #0d2150 !important;
+    color: rgb(11, 41, 68) !important;
+}
+
+a.mediabout-dark{
+   background-color: rgb(42, 51, 65) !important;
+   color: rgb(204, 213, 221) !important;
+}
+
+
+.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+.mediabout-dark{
+   color: rgb(100, 152, 248) !important;
+}
+
+  
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+   color: none !important;
+}
+
+
+        
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+th,td {
+    text-align: center !important;
+    border-top: 1px solid rgb(25, 25, 29)
+}
+
+.table thead{
+    height: 65px !important;
+}
+
+.tehead{
+    background-color: rgb(197, 223, 235) !important;
+    border-top: 0!important;
+    border-bottom: 0 !important;
+}
+
+.table .tehead {
+        
+}
+    
+.tehead-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+}
+
+
+.flllot{
+    float: left !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(185, 197, 206) !important;
+}
+
+[dir="ltr"] .table td, [dir="ltr"] .table th{
+    border: 0 !important;
+
+}
+
+a.disabled{
+    cursor: not-allowed !important;
+}
+
+.card-header:first-child{
+    border-radius: 0 !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+.progress .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+    background-color: rgb(189, 209, 245) !important;
+    border-radius: 0 !important;
+}
+
+.card .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+.card .bg-primary-dark{
+    background-color: rgb(13, 16, 22) !important;
+    border-radius: 0 !important;
+}
+
+.progress{
+    border-radius: 0 !important;
+}
+
+.selecttt-dark{
+    background-color: rgb(165, 172, 189) !important;
+    border: 1px solid rgb(123, 129, 145) !important;
+}
+
+.couponbg{
+    background-color: rgb(88, 129, 175) !important;
+}
+
+.couponbg-dark{
+    background-color: rgb(18, 27, 37) !important;
+}
+
+
+
+.disabled{
+    color: #5c5c5c !important;
+}
+
+.nextt-dark{
+    color: #afafaf !important;
+    background-color: #1d2227 !important;
+    border: 1px solid #11151a !important;
+}
+
+
+.disabled-dark{
+    color: #272a2c !important;
+    background-color: #3f4e5a !important;
+    border: 1px solid #272a2c !important;
+}
+
+
+.activve-dark{
+    background-color: #a2b6d6 !important;
+    color: #121e38 !important;
+    border: 1px solid #1d2022 !important;
+}
+
+</style>    
+
+
+    <div class=" page__container page-section">
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="field">
+            <div class="control" style="float: right !important;">
+                <div class="select">
+                    <select onchange="setCourse(this)" class="selecttt selecttt-dark">
+                        {% for course in courses %}
+                            <option value="{{ course.id }}" {% if course.id == cur_course_id %}
+                                    selected="selected" {% endif %}>{{ course.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row card-group-row mb-lg-8pt">
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card p-relative o-hidden">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">مجموع الإيرادات</b>
+                            </p>
+                            <span class="h2 m-0" style="color: rgb(144, 221, 151);">&dollar;{{ course.price }}</span>
+                        </div>
+                        <i class="material-icons icon-32pt text-20 ml-8pt">monetization_on</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card p-relative o-hidden">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">مجموع الطلاب</b>
+                            </p>
+                            <span class="h2 m-0 blllu blllu-dark ">{{ course.stuCnt }}</span>
+                        </div>
+                        <i class="material-icons icon-32pt text-20 ml-8pt">people_outline</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">تقييم الدورة</b>
+                            </p>
+                            <span class="h2 m-0 blllu blllu-dark ">{{ course.rating }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="field">
+            <div class="control">
+                <div class="select">
+                    <select onchange="setCourse(this)" class="selecttt selecttt-dark">
+                        {% for course in courses %}
+                            <option value="{{ course.id }}" {% if course.id == cur_course_id %}
+                                    selected="selected" {% endif %}>{{ course.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row card-group-row mb-lg-8pt">
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card p-relative o-hidden">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">Total revenue</b>
+                            </p>
+                            <span class="h2 m-0" style="color: rgb(144, 221, 151);">&dollar;{{ course.price }}</span>
+                        </div>
+                        <i class="material-icons icon-32pt text-20 ml-8pt">monetization_on</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card p-relative o-hidden">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">total students</b>
+                            </p>
+                            <span class="h2 m-0 blllu blllu-dark flllot">{{ course.stuCnt }}</span>
+                        </div>
+                        <i class="material-icons icon-32pt text-20 ml-8pt">people_outline</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="flex">
+                            <p class="card-title d-flex align-items-center">
+                                <b class="mediabout mediabout-dark">Course rating</b>
+                            </p>
+                            <span class="h2 m-0 blllu blllu-dark flllot">{{ course.rating }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="columns">
+            <div class="column is-8">
+                <div class="page-separator">
+                    <div class="page-separator__text backgg backgg-dark mediabout mediabout-dark">قسائم الخصم</div>
+                </div>
+                <div class="card card-dark mb-0">
+                    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
+                         data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+                        <div class="card-header card-header-dark">
+                            <button class="btn btn-primary mt-3 " onclick="openAddModal()" {% if coupon != '' %} disabled style="cursor:not-allowed" {% endif %}>إنشاء قسيمة خصم</button>
+                        </div>
+                        <table class="table table-nowrap table-flush" style="border-radius: 30px 30px 0 0 !important;">
+                            <thead class="tehead tehead-dark">
+                                <tr>
+                                    <th>
+                                        <b class="mediabout mediabout-dark ">أسم القسيمة</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">عدد أيام الخصم</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">الحالة</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">عدد الإستخدامات</b>
+                                    </th>
+                                    <th class="text-center" style="width: 48px;">
+                                        <b class="mediabout mediabout-dark">خيارات</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="list " id="staff">
+                                {% if coupon != '' %}
+                                <tr class="selected" style="">
+                                    <td class=" couponbg couponbg-dark">
+                                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                            <div class="media-body">
+                                                <div class="d-flex flex-column">
+                                                    <p class="mb-0"><strong
+                                                            class="js-lists-values-employee-name blllu blllu-dark ">{{ coupon.promo_code }}</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">{{ coupon.expire }}</td>
+
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">Valid</td>
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">Usage</td>
+                                    <td class=" couponbg couponbg-dark">
+                                        <a href="#" class="chip chip-outline-secondary" onclick="showDelModal()">حذف </a>
+                                        <a href="#" class="chip chip-outline-secondary" data-name="{{ coupon.promo_code }}" data-percent="{{ coupon.discount_percent }}"
+                                           data-days="{{ coupon.days }}" onclick="openEditModal(this)">تعديل</a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td>There is no coupon</td>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-12">
+                <div class="page-separator">
+                    <div class="page-separator__text  backgg backgg-dark mediabout mediabout-dar">تعليقات الطلاب</div>
+                </div>
+                <div class="card mb-0">
+                    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
+                         data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+                        <div class="card-header card-header-dark">
+                            <form class="form-inline">
+                                <label class="sr-only" for="inlineFormRole">Role</label>
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select">
+                                          <select id="inlineFormRole" class=" mb-2 mr-sm-2 mb-sm-0 selecttt selecttt-dark">
+                                              <option value="All Roles">كل التعليقات</option>
+                                              <option value="All Roles">الجديدة</option>
+                                              <option value="All Roles">القديمة</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <table class="table mb-0 thead-border-top-0 table-nowrap">
+                            <div class=" card-body couponbg couponbg-dark">
+                                <div class="list-group list-group-flush" style="background-color: none !important;">
+                                    {% if reviewList %}
+                                    <div class=" " style="background-color: transparent !important;">
+                                        {% for review in reviewList %}
+                                        <div class="media  rounded p-3 d-inline-flex measure-paragraph-max card-footer-dark"
+                                             style="margin-left:35px">
+                                            <div class="media-left mr-12pt">
+                                                <a href="#" class="avatar avatar-sm">
+                                                    <img src="{% static review.user.image %}" alt="Guy"
+                                                         class="avatar-img rounded-circle brd brd-dark"
+                                                         style="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="d-flex align-items-center">
+                                                    <b class="bllu bllu-dark"> 
+                                                        <i class="fa fa-star"
+                                                           style="color: rgb(235, 200, 134);"></i> {{ review.rating }}
+                                                    </b>
+                                                </div>
+                                                <b class="mt-1 mb-0 mediabout mediabout-dark" >{{ review.comment }}</b>
+                                                <div class="columns">
+                                                    <div class="column is-12 mt-3">
+                                                        <form action="#" id="message-reply">
+                                                            <div class="input-group input-group-merge">
+                                                                <input type="text" class="form-control form-control-appended" autofocus="" required="" placeholder="كتابة رد" {% if review.reply != None %}value="{{ review.reply }}"{% endif %}>
+                                                                {% if review.reply == None or review.reply == '' %}
+                                                                <button type="button" class="btn btn-primary btn-sm" data-id="{{ review.id }}" style="margin-left:15px; width:130px" onclick="reviewReply(this)" id="send_button">إرسال رد
+                                                                </button>
+                                                                {% else %}
+                                                                <button type="button" class="btn btn-sm" data-id="{{ review.id }}" style="margin-left:15px; width:130px;color: #f1a19c !important; " onclick="removeReply(this)" id="send_button">حذف 
+                                                                </button>
+                                                                {% endif %}
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="columns">
+                                                    <div class="column is-12">
+                                                        {% if review.approved_by_teacher == 0 %}
+                                                        <button class="btn btn-primary mt-3" onclick="addToProfileReview(this)" data-id="{{ review.id }}">إضافة للمعرض
+                                                            
+                                                        </button>
+                                                        {% else %}
+                                                        <button class="btn mt-3" style="color: #97342d !important;background-color: #f1a19c !important;border: 1px solid #97342d !important;" onclick="removeFromProfileReview(this)" data-id="{{ review.id }}">حذف من المعرض
+                                                            
+                                                        </button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <center>
+                                    {% if reviewList.has_other_pages %}
+                                    <ul class="pagination-list " style="font-size:small;margin-top: 15px !important;">
+                                        {% if reviewList.has_previous %}
+                                        <li><a class="btn disabled disabled-dark mr-1" onclick="page_prev()">Previous</a></li>
+                                        {% else %}
+                                        <li><a class="btn disabled disabled-dark mr-1" disabled="">Previous</a></li>
+                                        {% endif %}
+                                        {% for i in reviewList.paginator.page_range %}
+                                        {% if reviewList.number == i %}
+                                        <li><a class="btn activve activve-dark is-current mr-1" aria-label="Goto page 1" style="color: white" onclick="page_set({{ i }})">{{ i }}</a></li>
+                                        {% else %}
+                                        <li class="btn nextt nextt-dark mr-1"><a onclick="page_set({{ i }})">{{ i }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if reviewList.has_next %}
+                                        <li class="btn btn-primary btn-primary-dark"><a onclick="page_next()">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a></li>
+                                        {% else %}
+                                        <li class="btn disabled disabled-dark mr-1"><a href="#">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a></li>
+                                        {% endif %}
+                                    </ul>
+                                    {% endif %}
+                                </center>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="columns">
+            <div class="column is-8">
+                <div class="page-separator">
+                    <div class="page-separator__text backgg backgg-dark mediabout mediabout-dark">Coupons</div>
+                </div>
+                <div class="card card-dark mb-0">
+                    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
+                         data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+                        <div class="card-header card-header-dark">
+                            <button class="btn btn-primary mt-3 " onclick="openAddModal()" {% if coupon != '' %} disabled style="cursor:not-allowed" {% endif %}>Create Coupon</button>
+                        </div>
+                        <table class="table table-nowrap table-flush" style="border-radius: 30px 30px 0 0 !important;">
+                            <thead class="tehead tehead-dark">
+                                <tr>
+                                    <th>
+                                        <b class="mediabout mediabout-dark flllot">Coupon
+                                            name</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">Valid
+                                            days</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">Status</b>
+                                    </th>
+                                    <th style="width: 150px;">
+                                        <b class="mediabout mediabout-dark">Usage</b>
+                                    </th>
+                                    <th class="text-center" style="width: 48px;">
+                                        <b class="mediabout mediabout-dark">Actions</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="list " id="staff">
+                                {% if coupon != '' %}
+                                <tr class="selected" style="">
+                                    <td class=" couponbg couponbg-dark">
+                                        <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                            <div class="media-body">
+                                                <div class="d-flex flex-column">
+                                                    <p class="mb-0"><strong
+                                                            class="js-lists-values-employee-name blllu blllu-dark flllot">{{ coupon.promo_code }}</strong></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">{{ coupon.expire }}</td>
+
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">Valid</td>
+                                    <td class="text-center js-lists-values-projects small couponbg couponbg-dark bllu bllu-dark">Usage</td>
+                                    <td class=" couponbg couponbg-dark">
+                                        <a href="#" class="chip chip-outline-secondary" onclick="showDelModal()">Delete</a>
+                                        <a href="#" class="chip chip-outline-secondary" data-name="{{ coupon.promo_code }}" data-percent="{{ coupon.discount_percent }}"
+                                           data-days="{{ coupon.days }}" onclick="openEditModal(this)">Edit</a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td>There is no coupon</td>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-12">
+                <div class="page-separator">
+                    <div class="page-separator__text  backgg backgg-dark mediabout mediabout-dar">Reviews</div>
+                </div>
+                <div class="card mb-0">
+                    <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-employee-name"
+                         data-lists-values='["js-lists-values-employee-name", "js-lists-values-employer-name", "js-lists-values-projects", "js-lists-values-activity", "js-lists-values-earnings"]'>
+                        <div class="card-header card-header-dark">
+                            <form class="form-inline">
+                                <label class="mr-sm-2 form-label" for="inlineFormFilterBy">Filter by:</label>
+                                <label class="sr-only" for="inlineFormRole">Role</label>
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="select">
+                                          <select id="inlineFormRole" class=" mb-2 mr-sm-2 mb-sm-0 selecttt selecttt-dark">
+                                              <option value="All Roles">All Reviews</option>
+                                              <option value="All Roles">Newes</option>
+                                              <option value="All Roles">Oldest</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <table class="table mb-0 thead-border-top-0 table-nowrap">
+                            <div class=" card-body couponbg couponbg-dark">
+                                <div class="list-group list-group-flush" style="background-color: none !important;">
+                                    {% if reviewList %}
+                                    <div class=" " style="background-color: transparent !important;">
+                                        {% for review in reviewList %}
+                                        <div class="media  rounded p-3 d-inline-flex measure-paragraph-max card-footer-dark"
+                                             style="margin-left:35px">
+                                            <div class="media-left mr-12pt">
+                                                <a href="#" class="avatar avatar-sm">
+                                                    <img src="{% static review.user.image %}" alt="Guy"
+                                                         class="avatar-img rounded-circle brd brd-dark"
+                                                         style="">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="d-flex align-items-center">
+                                                    <b class="bllu bllu-dark"> 
+                                                        <i class="fa fa-star"
+                                                           style="color: rgb(235, 200, 134);"></i> {{ review.rating }}
+                                                    </b>
+                                                </div>
+                                                <b class="mt-1 mb-0 mediabout mediabout-dark" >{{ review.comment }}</b>
+                                                <div class="columns">
+                                                    <div class="column is-12 mt-3">
+                                                        <form action="#" id="message-reply">
+                                                            <div class="input-group input-group-merge">
+                                                                <input type="text" class="form-control form-control-appended" autofocus="" required="" placeholder="Reply" {% if review.reply != None %}value="{{ review.reply }}"{% endif %}>
+                                                                {% if review.reply == None or review.reply == '' %}
+                                                                <button type="button" class="btn btn-primary btn-sm" data-id="{{ review.id }}" style="margin-left:15px; width:130px" onclick="reviewReply(this)" id="send_button">Send
+                                                                </button>
+                                                                {% else %}
+                                                                <button type="button" class="btn btn-sm" data-id="{{ review.id }}" style="margin-left:15px; width:130px;color: #f1a19c !important; " onclick="removeReply(this)" id="send_button">Remove
+                                                                </button>
+                                                                {% endif %}
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="columns">
+                                                    <div class="column is-12">
+                                                        {% if review.approved_by_teacher == 0 %}
+                                                        <button class="btn btn-primary mt-3" onclick="addToProfileReview(this)" data-id="{{ review.id }}">Add to profile
+                                                            review
+                                                        </button>
+                                                        {% else %}
+                                                        <button class="btn mt-3" style="color: #97342d !important;background-color: #f1a19c !important;border: 1px solid #97342d !important;" onclick="removeFromProfileReview(this)" data-id="{{ review.id }}">Remove from profile
+                                                            review
+                                                        </button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <center>
+                                    {% if reviewList.has_other_pages %}
+                                    <ul class="pagination-list " style="font-size:small;margin-top: 15px !important;">
+                                        {% if reviewList.has_previous %}
+                                        <li><a class="btn disabled disabled-dark mr-1" onclick="page_prev()">Previous</a></li>
+                                        {% else %}
+                                        <li><a class="btn disabled disabled-dark mr-1" disabled="">Previous</a></li>
+                                        {% endif %}
+                                        {% for i in reviewList.paginator.page_range %}
+                                        {% if reviewList.number == i %}
+                                        <li><a class="btn activve activve-dark is-current mr-1" aria-label="Goto page 1" style="color: white" onclick="page_set({{ i }})">{{ i }}</a></li>
+                                        {% else %}
+                                        <li class="btn nextt nextt-dark mr-1"><a onclick="page_set({{ i }})">{{ i }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if reviewList.has_next %}
+                                        <li class="btn btn-primary btn-primary-dark"><a onclick="page_next()">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a></li>
+                                        {% else %}
+                                        <li class="btn disabled disabled-dark mr-1"><a href="#">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a></li>
+                                        {% endif %}
+                                    </ul>
+                                    {% endif %}
+                                </center>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <form method="post" action="" id="engage_form" style="display:none">
+    {% csrf_token %}
+        <input type="hidden" name="page" id="page" value="{{ page }}">
+        <input type="hidden" name="course_id" id="course_id" value="{{ cur_course_id }}">
+    </form>
+
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="add_coupon_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+        <div class="modal-header">
+            <h5 class="modal-title">Create Coupon for Students!</h5>
+            <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                    type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" id="coupon_name" style="display: block !important;" placeholder="coupon name">
+            <input type="number" id="coupon_percent" style="display: block !important;" placeholder="discount percent">
+            <input type="number" id="coupon_valid_days" style="display: block !important;" placeholder="valid days">
+        </div>
+
+        <button style="color:#fff;background: #2196f3;" type="button" onclick="saveCoupon()"
+                class="btn">Save
+        </button>
+        <button style="color:#fff;background: #f5837a;" type="button" onclick="hideAddModal()"
+                class="btn">Close
+        </button>
+    </div>
+    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="edit_coupon_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+        <div class="modal-header">
+            <h5 class="modal-title">Edit Coupon for Students!</h5>
+            <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                    type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" id="edit_coupon_name" style="display: block !important;" placeholder="coupon name">
+            <input type="text" id="edit_percent" style="display: block !important;" placeholder="coupon percent">
+            <input type="text" id="edit_coupon_valid_days" style="display: block !important;" placeholder="valid days">
+        </div>
+
+        <button style="color:#fff;background: #2196f3;" type="button" onclick="editCoupon()"
+                class="btn">Save
+        </button>
+        <button style="color:#fff;background: #f5837a;" type="button" onclick="hideEditModal()"
+                class="btn">Close
+        </button>
+    </div>
+    <div class="sweet-alert showSweetAlert visible" id="delete_modal" data-custom-class="" data-has-cancel-button="true"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+        <div class="sa-icon sa-error" style="display: none;">
+      <span class="sa-x-mark">
+        <span class="sa-line sa-left"></span>
+        <span class="sa-line sa-right"></span>
+      </span>
+        </div>
+        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <h2>Are you sure?</h2>
+        <p style="display: block;">You will not be able to recover this imaginary file!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                    onclick="closeDelModal()">Cancel!
+            </button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="deleteCoupon()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Yes, delete it!
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+   {% else %}
+   <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+        id="add_coupon_modal"
+        data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+        data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+       <div class="modal-header">
+           <h5 class="modal-title">Create Coupon for Students!</h5>
+           <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                   type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+       <div class="modal-body">
+           <input type="text" id="coupon_name" style="display: block !important;" placeholder="coupon name">
+           <input type="number" id="coupon_percent" style="display: block !important;" placeholder="discount percent">
+           <input type="number" id="coupon_valid_days" style="display: block !important;" placeholder="valid days">
+       </div>
+
+       <button style="color:#fff;background: #2196f3;" type="button" onclick="saveCoupon()"
+               class="btn">Save
+       </button>
+       <button style="color:#fff;background: #f5837a;" type="button" onclick="hideAddModal()"
+               class="btn">Close
+       </button>
+   </div>
+   <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+        id="edit_coupon_modal"
+        data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+        data-animation="pop" data-timer="null" style="display: none; margin-top: -144px;">
+       <div class="modal-header">
+           <h5 class="modal-title">Edit Coupon for Students!</h5>
+           <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                   type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+       <div class="modal-body">
+           <input type="text" id="edit_coupon_name" style="display: block !important;" placeholder="coupon name">
+           <input type="text" id="edit_percent" style="display: block !important;" placeholder="coupon percent">
+           <input type="text" id="edit_coupon_valid_days" style="display: block !important;" placeholder="valid days">
+       </div>
+
+       <button style="color:#fff;background: #2196f3;" type="button" onclick="editCoupon()"
+               class="btn">Save
+       </button>
+       <button style="color:#fff;background: #f5837a;" type="button" onclick="hideEditModal()"
+               class="btn">Close
+       </button>
+   </div>
+   <div class="sweet-alert showSweetAlert visible" id="delete_modal" data-custom-class="" data-has-cancel-button="true"
+        data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+        data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+       <div class="sa-icon sa-error" style="display: none;">
+     <span class="sa-x-mark">
+       <span class="sa-line sa-left"></span>
+       <span class="sa-line sa-right"></span>
+     </span>
+       </div>
+       <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+           <span class="sa-body pulseWarningIns"></span>
+           <span class="sa-dot pulseWarningIns"></span>
+       </div>
+       <h2>Are you sure?</h2>
+       <p style="display: block;">You will not be able to recover this imaginary file!</p>
+       <fieldset>
+           <input type="text" tabindex="3" placeholder="">
+           <div class="sa-input-error"></div>
+       </fieldset>
+       <div class="sa-error-container">
+           <div class="icon">!</div>
+           <p>Not valid!</p>
+       </div>
+       <div class="sa-button-container">
+           <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                   onclick="closeDelModal()">Cancel!
+           </button>
+           <div class="sa-confirm-button-container">
+               <button class="confirm" tabindex="1" onclick="deleteCoupon()"
+                       style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                   Yes, delete it!
+               </button>
+               <div class="la-ball-fall">
+                   <div></div>
+                   <div></div>
+                   <div></div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+   {% endif %}
+   <script>
+
+        let cur_page = '{{ page }}'
+        function saveCoupon() {
+            hideAddModal()
+            let promo_code = $("#coupon_name").val()
+            let valid_day = $("#coupon_valid_days").val()
+            let percent = $("#coupon_percent").val()
+            let url = '/save_coupon/'
+            let form_data = new FormData()
+            form_data.append('course_id', '{{ cur_course_id }}')
+            form_data.append('promo_code', promo_code)
+            form_data.append('valid_day', valid_day)
+            form_data.append('percent', percent)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+
+        }
+
+        function editCoupon() {
+            let promo_code = $("#edit_coupon_name").val()
+            let valid_day = $("#edit_coupon_valid_days").val()
+            let percent = $("#edit_percent").val()
+            let url = '/save_coupon/'
+            let form_data = new FormData()
+            form_data.append('course_id', '{{ cur_course_id }}')
+            form_data.append('promo_code', promo_code)
+            form_data.append('valid_day', valid_day)
+            form_data.append('percent', percent)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+            hideEditModal()
+        }
+
+        function deleteCoupon() {
+            let url = '/delete_coupon/'
+            let form_data = new FormData()
+            form_data.append('course_id', '{{ cur_course_id }}')
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+        }
+
+        function showDelModal() {
+            $("#delete_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function closeDelModal() {
+
+            $("#delete_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function openAddModal() {
+            $("#add_coupon_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function openEditModal(obj) {
+            let coupon_name = $(obj).data('name')
+            let coupon_percent = $(obj).data('percent')
+            let days = $(obj).data('days')
+            $("#edit_coupon_name").val(coupon_name)
+            $("#edit_coupon_valid_days").val(days)
+            $("#edit_percent").val(coupon_percent)
+            $("#edit_coupon_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function hideAddModal() {
+            $("#add_coupon_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function hideEditModal() {
+            $("#edit_coupon_name").val('')
+            $("#edit_coupon_valid_days").val('')
+            $("#edit_percent").val('')
+            $("#edit_coupon_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function reviewReply(obj) {
+            id = $(obj).data('id')
+            text = $(obj).prev().val()
+            let url = '/save_review_reply/'
+            let form_data = new FormData()
+            form_data.append('id', id)
+            form_data.append('reply', text)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+        }
+
+        function removeReply(obj) {
+            id = $(obj).data('id')
+            let url = '/remove_review_reply/'
+            let form_data = new FormData()
+            form_data.append('id', id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+        }
+
+        function addToProfileReview(obj) {
+            id = $(obj).data('id')
+            let url = '/add_to_profile_review/'
+            let form_data = new FormData()
+            form_data.append('id', id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+        }
+
+        function removeFromProfileReview(obj) {
+            id = $(obj).data('id')
+            let url = '/remove_from_profile_review/'
+            let form_data = new FormData()
+            form_data.append('id', id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                if (response.status == 1)
+                    location.reload()
+            })
+        }
+
+        function page_prev() {
+            let page = cur_page * 1 - 1
+            $('#page').val(page)
+            $('#engage_form').submit()
+        }
+
+        function page_set(num) {
+            $('#page').val(num)
+            cur_page = num;
+            $('#engage_form').submit()
+        }
+
+        function page_next() {
+            let page = cur_page * 1 + 1
+            $('#page').val(page)
+            $('#engage_form').submit()
+        }
+
+        function setCourse(obj) {
+            let course_id = $(obj).val()
+            $("#course_id").val(course_id)
+            $("#engage_form").submit()
+        }
+
+    </script>
+
+{% endblock %}
+

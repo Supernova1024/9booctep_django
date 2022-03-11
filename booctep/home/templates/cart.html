@@ -1,0 +1,905 @@
+{% extends "base.html" %}
+{% load static %} {% block head %}
+    <style>
+        .schedule video {
+            width: 100% !important;
+        }
+
+        .plyr--video {
+            width: 100%;
+        }
+
+        .modal-open {
+            overflow: hidden;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: @zindex-modal;
+            display: none;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+
+            outline: 0;
+
+        &
+        .fade .modal-dialog {
+        . translate(0, - 25 %);
+        . transition-transform(~ "0.3s ease-out");
+        }
+
+        &
+        .in .modal-dialog {
+        . translate(0, 0);
+        }
+
+        }
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 10px;
+        }
+
+
+        .modal-content {
+            position: relative;
+            background-color: @modal-content-bg;
+            background-clip: padding-box;
+            border: 1px solid @modal-content-fallback-border-color;
+        / / old browsers fallback (ie8 etc) border: 1 px solid @modal-content-border-color;
+            border-radius: @border-radius-large;
+        . box-shadow(0 3 px 9 px rgba(0, 0, 0, .5));
+            outline: 0;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: @zindex-modal-background;
+            background-color: @modal-backdrop-bg;
+
+        &
+        .fade {
+        . opacity(0);
+        }
+
+        &
+        .in {
+        . opacity(@modal-backdrop-opacity);
+        }
+
+        }
+
+
+        .modal-header {
+            padding: @modal-title-padding;
+            border-bottom: 1px solid @modal-header-border-color;
+            &: extend(.clearfix all);
+        }
+
+        .modal-header .close {
+            margin-top: -2px;
+        }
+
+
+        .modal-title {
+            margin: 0;
+            line-height: @modal-title-line-height;
+        }
+
+        .modal-body {
+            position: relative;
+            padding: @modal-inner-padding;
+        }
+
+        .modal-footer {
+            padding: @modal-inner-padding;
+            text-align: right;
+            border-top: 1px solid @modal-footer-border-color;
+            &: extend(.clearfix all);
+
+
+        .btn + .btn {
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+
+        .btn-group .btn + .btn {
+            margin-left: -1px;
+        }
+
+        .btn-block + .btn-block {
+            margin-left: 0;
+        }
+
+        }
+
+
+        .modal-scrollbar-measure {
+            position: absolute;
+            top: -9999px;
+            width: 50px;
+            height: 50px;
+            overflow: scroll;
+        }
+
+
+        @media (min-width: @screen-sm-min) {
+
+            .modal-dialog {
+                width: @modal-md;
+                margin: 30px auto;
+            }
+
+            .modal-content {
+            . box-shadow(0 5 px 15 px rgba(0, 0, 0, .5));
+            }
+
+
+            .modal-sm {
+                width: @modal-sm;
+            }
+        }
+
+        @media (min-width: @screen-md-min) {
+            .modal-lg {
+                width: @modal-lg;
+            }
+        }
+
+        textarea {
+            text-align: left;
+        }
+
+        .cart-container {
+            max-width: 100% !important
+        }
+        .field input{
+    background-color: inherit;
+}
+.field-dark input{
+    background: #cbd6df !important;
+    border: 1px solid #222831 !important;
+    color: #030303 !important;
+}
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.prcg{
+    color: rgb(204, 29, 29) !important;
+}
+
+.prcg-dark{
+    color: rgb(214, 169, 169) !important;
+}
+
+
+.prcgr{
+    color: rgb(25, 139, 82) !important;
+}
+
+.prcgr-dark{
+    color: rgb(177, 241, 209) !important;
+}
+
+.btncheck{
+    background-color: #5393b8 !important;
+    color: rgb(235, 235, 235) !important;
+    border: 1px solid #0d79df;
+}
+.btncheck p{
+    color: rgb(235, 235, 235) !important;
+}
+
+.btncheck-dark p{
+    color: rgb(78, 135, 161) !important;
+}
+
+.btncheck-dark{
+    background-color: #15181b !important;
+    border: 1px solid #0f1013;
+}
+.btncheck-dark:hover{
+    background-color: #09090a !important;
+    border: 1px solid #0f1013;
+}
+
+    </style>
+
+
+{% endblock %} {% block content %}
+
+    <nav class="navbar mobile-navbar is-hidden-desktop" aria-label="main navigation">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item2" href="/">
+                <img class="mobile-logo" src="/static/assets/img/favicon.png" alt="">
+            </a>
+            <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+                <a class="icon-link is-primary">
+                    <i class="mdi mdi-apps"></i>
+                </a>
+            </div>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Navbar mobile menu -->
+        <div class="navbar-menu">
+            <!-- Account -->
+            <div class="navbar-item has-dropdown ">
+                <div class="navbar-link">
+                    <img src="/static/assets/img/man.jpg" data-demo-src="assets/img/avatars/jenna.png" alt="">
+                    <span class="is-heading">Elzubair Mohammed</span>
+                </div>
+
+                <div class="navbar-item">
+                    <div id="global-search" class="control">
+                        <input id="tipue_drop_input" class="input " type="text" placeholder="Search" required>
+                        <span id="clear-search" class="reset-search">
+                            <i data-feather="x"></i>
+                        </span>
+                        <span class="search-icon">
+                            <i data-feather="search"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Mobile Dropdown -->
+                <div class="navbar-dropdown">
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="user"></i>Profile</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="shopping-cart"></i>Cart</span>
+                        <span class="menu-badge">3</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="activity"></i>Feed</span>
+                        <span class="menu-badge">87</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="settings"></i>Settings</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="hexagon"></i>Logout</span>
+                    </a>
+
+                    <div class="buttons">
+                        <a class="button second-button">
+                            <p>Sign up</p>
+                        </a>
+                        <a class="button primary-button raised quickview-trigger process-button">
+                            <p>Log in</p>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="view-wrapper" style="padding-top: 80px;">
+        <div class="shop-wrapper">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <div class="header-inner">
+                        <div class="categories-header">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-content">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <div class="wrapper">
+                                <div class="categories-header categories-header-dark">
+                                    <h2>My order</h2>
+                                </div>
+                                <div class="notifications">
+                                    {% if cartCnt > 0 %}
+                                        {% if cartList %}
+                                            {% for cart in cartList %}
+                                                <div class="notifications__item cartitem cartitempage"
+                                                     data-id="{{ cart.course_id.id }}" style="  overflow: hidden;">
+                                                    <div class="notifications__item__avatar">
+                                                        <img src="{% static cart.course_id.cover_img %}"/>
+                                                    </div>
+
+                                                    <div class="notifications__item__content">
+                                                        <p>${{ cart.course_id.price }}</p>
+                                                        <span class="notifications__item__title cartitempagename">{{ cart.course_id.name }}</span>
+                                                        <span class="notifications__item__message"
+                                                              style="">{{ cart.course_id.description }}</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="notifications__item__option archive js-option">
+                                                            <p class="notifications__item__option-i deletefromcart">
+                                                                <i class="fas fa-trash" onclick="showDelModal(this)"
+                                                                   data-course-id="{{ cart.course_id.id }}"
+                                                                   data-user-id="{{ cart.student_id_id }}"
+                                                                   style="font-size: large;color: rgb(66, 87, 110) "></i>
+                                                            </p>
+                                                            {% if cart.is_fav %}
+                                                                <p class="notifications__item__option-i"><i
+                                                                        class="fas fa-heart" onclick="addFav(this)"
+                                                                        data-course-id="{{ cart.course_id.id }}"
+                                                                        data-user-id="{{ cart.student_id_id }}"
+                                                                        data-mark="cart-fav-{{ cart.course_id.id }}"
+                                                                        style="font-size: large;color: red;"></i></p>
+                                                            {% else %}
+                                                                <p class="notifications__item__option-i"><i
+                                                                        class="fas fa-heart" onclick="addFav(this)"
+                                                                        data-course-id="{{ cart.course_id.id }}"
+                                                                        data-user-id="{{ cart.student_id_id }}"
+                                                                        data-mark="cart-fav-{{ cart.course_id.id }}"
+                                                                        style="font-size: large;color: #ecacac;"></i>
+                                                                </p>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="store-sections-6" style="display: block;">
+                                            <img src="{% static 'assets/img/no-cart.svg' %}"
+                                                 style="width: 350px;height: auto;" alt="">
+                                            <h2 style="margin-top: -40px;" class="mediabout mediabout-dark">Unfortunately, there are no
+                                                courses yet in your cart</h2>
+                                            <input style="margin-bottom: 15px;" id="tipue_drop_input"
+                                                   class="input c-input" type="text" placeholder="Search" required>
+                                            <h3 style="">
+                                                <a href="index.html" class="button">Search &nbsp;<span
+                                                        class="fa fa-search"></span></a>
+                                            </h3>
+                                        </div>
+                                    {% endif %}
+                                    <div class="store-sections-6 cartzeroopen" style="display: none;">
+                                        <img src="{% static 'assets/img/no-cart.svg' %}"
+                                             style="width: 350px;height: auto;" alt="">
+                                        <h2 style="margin-top: -40px;" class="mediabout mediabout-dark">Unfortunately, there are no courses
+                                            yet in your cart</h2>
+                                        <input style="margin-bottom: 15px;" id="tipue_drop_input" class="input c-input"
+                                               type="text" placeholder="Search" required>
+                                        <h3 style="">
+                                            <a href="index.html" class="button">Search &nbsp;<span
+                                                    class="fa fa-search"></span></a>
+                                        </h3>
+                                    </div>
+
+                                </div>
+                                <center>
+                        {% if cartList.has_other_pages %}
+                            <ul class="pagination">
+                                {% if cartList.has_previous %}
+                                    <li><a onclick="page_prev()">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    </a></li>
+                                {% else %}
+                                    <li class="disabled">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i></li>
+                                {% endif %}
+                                {% for i in cartList.paginator.page_range %}
+                                    {% if cartList.number == i %}
+                                        <li class="active" style="background: #0d79df; color: white; cursor: pointer;" onclick="page_set({{ i }})"><span>{{ i }}</span>
+                                        </li>
+                                    {% else %}
+                                        <li><a onclick="page_set({{ i }})">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if cartList.has_next %}
+                                    <li><a onclick="page_next()">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a></li>
+                                {% else %}
+                                    <li class="disabled">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+
+                    </center>
+                            </div>
+
+                            <section>
+                                <div class="store-sections sectionstore">
+                                    <div class="container ">
+                                        <div class="categories-header categories-header-dark">
+                                            <h2>Quick Access</h2>
+                                        </div>
+                                        <a class="button process-button cnti cnti-card" href="index.html"
+                                           style="border: 1px solid rgb(139, 189, 189);">
+                                            Continue shopping &nbsp;<span
+                                                class="fa fa-shopping-cart"></span>
+                                        </a>
+                                        <a href="wishlist.html" class="button process-button" style="">
+                                            Go to Fav courses &nbsp;<span class="fa fa-heart"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="column is-4">
+                            <div class="cart-summary ">
+                                <div class="summary-header">
+                                    <h3 class="mediabout mediabout-dark">Order Summary</h3>
+                                </div>
+                                <!--card-->
+                                <div class="summary-card summary-card-dark">
+
+                                    <div class="order-line">
+                                        <span>Total courses</span>
+                                        <b class="carttotalcourses"
+                                           style="font-weight:500;font-size: 14px">{{ cartCnt }}</b>
+                                    </div>
+
+                                    <div class="order-line">
+                                        <span>Subtotal</span>
+                                        <span class="cartsubtotal prcg prcg-dark">{{ subtotal }}</span>
+                                    </div>
+
+                                    <div class="order-line discountamountparent">
+                                        <span>Discount</span>
+                                        <span class="discountamount prcg prcg-dark">0</span>
+                                    </div>
+
+                                    <div class="order-line discountamountparent">
+                                        <span>Tax</span>
+                                        <span class="discountamount">{{ tax }}</span>
+                                    </div>
+
+                                    <div class="header-coupon" style="width: 100%;">
+                                        <div class="field is-grouped" style="width: 100%;">
+                                            <div class="control" style="width: 80%; margin-right: 0px !important">
+                                                <input type="text" class="input"
+                                                       id="promoinput"
+                                                       placeholder="Gift card or discount code"
+                                                       style=""/>
+                                            </div>
+                                            <div class="control" style="width: 20%;">
+                                                <button class="button is-solid primary-button raised applypromobutton"
+                                                        style=" margin-left: 0px !important">
+                                                    Apply
+                                                </button>
+                                                <button class="button primary-button is-danger cancelpromobutton"
+                                                        style="display: none;"
+                                                        disabled>Cancel This Promo Code
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <span class="promoerror" style="color: rgb(226, 135, 135);"></span>
+                                    
+                                    <div class="order-line" style="margin-top: 10px;margin-bottom: 10px;">
+                                        <span class="is-total">Total</span>
+                                        <span class="is-total totalsum prcgr prcgr-dark">{{ cartTotalSum }}</span>
+                                    </div>
+                                    {% if cartCnt > 0 %}
+                                        <a href="#" class="button is-fullwidth primary-button is-raised checkoutbutton">
+                                            <p style="">Checkout</p></a>
+                                    {% else %}
+                                        <a class="button btncheck btncheck-dark is-fullwidth is-raised checkoutbutton"
+                                           style=""><p
+                                                style="">Checkout</p></a>
+                                    {% endif %}
+
+                                </div>
+                                <!--card-->
+                                <div class="summary-card summary-card-dark">
+                                    <img src="/static/assets/img/icons/questions/help.svg" alt="">
+                                    <h4>Help center</h4>
+                                    <p>Having trouble? Please search our <a href="support.html" class="standard-link">Help
+                                        Center</a> for a quick
+                                        answer to your problem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="POST" action="checkout/" id="cartform" style="display: none;">
+        {% csrf_token %}
+        <input type="hidden" id="subtotalmoney" name="subtotalmoney">
+        <input type="hidden" id="discomontmoney" name="discomontmoney">
+        <input type="hidden" id="totalmoney" name="totalmoney">
+
+        <input type="submit" name="cartformsubmit" id="cartformsubmit">
+
+    </form>
+    <form method="post" action="" id="cart_form" style="display: none">
+        {% csrf_token %}
+        <input type="hidden" name="page" id="page" value="{{ page }}">
+    </form>
+
+    <div class="sweet-alert showSweetAlert visible" id="delete_modal" data-custom-class="" data-has-cancel-button="true"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+        <div class="sa-icon sa-error" style="display: none;">
+      <span class="sa-x-mark">
+        <span class="sa-line sa-left"></span>
+        <span class="sa-line sa-right"></span>
+      </span>
+        </div>
+        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <h2>Are you sure?</h2>
+        <p style="display: block;">You will not be able to recover this imaginary file!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                    onclick="closeDelModal()">Cancel!
+            </button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="deleteCart()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Yes, delete it!
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+
+    <script>
+
+        var userid = "{{ request.user.id }}";
+        let cur_course_id, cur_user_id;
+        let cur_page = '{{ cartList.number }}'
+
+        /*$(document).ready(function () {
+            $(".deletefromcart").click(function () {
+                var havetodelete = $(this).attr("data-id");
+                $("#deletefromcartmodal").addClass("is-active");
+                $("#deletefromcartmodal").removeAttr("data-id");
+                $("#deletefromcartmodal").attr("data-id", havetodelete);
+            });
+
+            $(".deletecartmodalclose").click(function () {
+                $("#deletefromcartmodal").removeClass("is-active");
+            });
+
+            $(".deletecartconfirm").click(function () {
+                var deleteit = $("#deletefromcartmodal").attr("data-id");
+                var url = '/delete_Cart_course_single/';
+                var carttotalcourses = parseInt($("#cartcounterfirst").text());
+                $.post(url, {student: userid, course: deleteit}, function (res) {
+                        $("#deletefromcartmodal").removeAttr("data-id");
+                        $("#deletefromcartmodal").removeClass("is-active");
+                        $(".cartitem[data-id='" + deleteit + "']").remove();
+                        $(".carttotalcourses").empty();
+                        $(".carttotalcourses").append((carttotalcourses - 1));
+
+                        if ($(".cartitem").length == 0) {
+
+                            $(".checkoutbutton").removeClass("primary-button");
+                            $(".checkoutbutton").css("background", "#ccc");
+                            $(".checkoutbutton").css("border", "0");
+                            $(".checkoutbutton").css("outline", "0");
+                            $(".checkoutbutton").find("p").css("color", "grey");
+                            $(".checkoutbutton").css("cursor", "not-allowed");
+                            $(".checkoutbutton").removeAttr("href");
+
+
+                            $(".applypromobutton").removeClass("primary-button");
+                            $(".applypromobutton").css("background", "#ccc");
+                            $(".applypromobutton").css("border", "0");
+                            $(".applypromobutton").css("outline", "0");
+                            $(".applypromobutton").find("p").css("color", "grey");
+                            $(".applypromobutton").css("cursor", "not-allowed");
+                            $(".applypromobutton").removeAttr("href");
+
+
+                            $(".cartzerovanish").css("display", "none");
+                            $(".cartzeroopen").css("display", "block");
+
+                            $(".cartzerostartup").css("display", "none");
+                            $(".cartzerostartupshow").css("display", "block");
+                        }
+                        var cartsubtotal = res.cartTotalSum;
+                        $(".cartsubtotal").empty();
+                        $(".cartsubtotal").append(cartsubtotal);
+                    }
+                );
+            });
+
+            $(".applypromobutton").click(function () {
+                var promoinput = $("#promoinput").val();
+                if (!promoinput) {
+                    $(".promoerror").empty();
+                    $(".promoerror").append("Please enter a valid promo code");
+                } else {
+                    $(".promoerror").empty();
+                    var url = 'checkdiscountcode/';
+                    $.post(url, {'promoinput': promoinput}, function (res) {
+                        if (res == 'failed') {
+                            $(".promoerror").empty();
+                            $(".promoerror").append("Please enter a valid promo code");
+                        } else {
+                            var totalsum = parseInt($(".totalsum").text());
+
+                            price_off_percentage = res
+                            price_off = (totalsum * price_off_percentage) / 100;
+
+                            $(".discountamount").empty();
+                            $(".discountamount").append(price_off);
+                            $("#promoinput").prop('disabled', true);
+                            $(".applypromobutton").css("display", "none");
+                            $(".applypromobutton").prop("disabled", true);
+                            $(".cancelpromobutton").prop("disabled", false);
+                            $(".cancelpromobutton").css("display", "block");
+                            $(".totalsum").empty();
+                            $(".totalsum").append((totalsum - price_off));
+                        }
+                    });
+                }
+            });
+
+
+            $(".cancelpromobutton").click(function () {
+                var current_discount = parseInt($(".discountamount").text());
+                $(".discountamount").empty();
+                $(".discountamount").append("0");
+                $("#promoinput").prop('disabled', false);
+                $("#promoinput").val('');
+
+                $(".applypromobutton").css("display", "block");
+                $(".applypromobutton").prop("disabled", false);
+
+                var totalsum = parseInt($(".totalsum").text());
+                $(".totalsum").empty();
+                $(".totalsum").append((totalsum + current_discount));
+
+
+                $(".cancelpromobutton").css("display", "none");
+                $(".cancelpromobutton").prop("disabled", true);
+
+            });
+
+            $(".checkoutbutton").click(function (event) {
+
+                event.preventDefault();
+                var stm = parseInt($(".cartsubtotal").text())
+                var dam = parseInt($(".discountamount").text())
+                var tot = parseInt($(".totalsum").text())
+
+                $("#subtotalmoney").val(stm);
+                $("#discomontmoney").val(dam);
+                $("#totalmoney").val(tot);
+
+                $("#cartformsubmit").click();
+            })
+        });*/
+
+        function addFav(obj) {
+            course_id = $(obj).data('course-id')
+            user_id = $(obj).data('user-id')
+            var url = '/student_favourite_courses/';
+            $.post(url, {student: user_id, course: course_id}, function (res) {
+                if (res == "success") {
+                    $(obj).css({
+                        'color': '#ecacac',
+                    })
+                    fav_count = $("#favtotalcoursesid").html() * 1
+                    $("#favtotalcoursesid").html(fav_count - 1)
+                    iziToast.show({
+                        maxWidth: '280px',
+                        class: 'success-toast',
+                        icon: 'mdi mdi-heart-broken',
+                        title: '',
+                        message: 'You have successfully removed this course from your favorite page',
+                        titleColor: '#fff',
+                        messageColor: '#fff',
+                        iconColor: "#fff",
+                        backgroundColor: 'red',
+                        progressBarColor: '#940019',
+                        position: 'bottomRight',
+                        transitionIn: 'fadeInUp',
+                        close: false,
+                        timeout: 4000,
+                        zindex: 99999
+                    });
+                    $(".favitem[data-id='" + course_id + "']").remove();
+                    if ($(".favitem").length == 0) {
+                        $("#fav-parent").empty()
+                        var html = `<div class="shopping-cart-header">
+                                <u style="color: #c0c0c0;;cursor:not-allowed;">Delete all courses</u>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text"
+                                          style="color: #c0c0c0;cursor:not-allowed;">Total:</span>
+                                    <span class="main-color-text"
+                                          style="color: #c0c0c0;cursor:not-allowed;">0 Courses</span>
+                                </div>
+                            </div>
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="/static/assets/img/illstrators/no-fave.png" alt=""/>
+                                    <span class="item-name" style="color: grey;">There are no courses yet.</span>
+                                </li>
+                            </ul>
+                            <a class="button primary-button is-raised"
+                               style="background:#DCDCDC !important;border:1px solid #D2D2D2 ;color: #7F7F7F;;cursor:not-allowed;">View favorite page
+                           </a>`;
+                        $("#fav-parent").html(html)
+                    }
+                } else {
+                    $(obj).css({
+                        'color': 'red',
+                    })
+                    fav_count = $("#favtotalcoursesid").html() * 1
+                    $("#favtotalcoursesid").html(fav_count + 1)
+                    var favdropdownNameAdd = res[0]['fields']['name'];
+                    var favdropdownImageAdd = res[0]['fields']['cover_img'];
+                    var favdropdownPriceAdd = res[0]['fields']['price'];
+                    if ($(".favitem").length == 0) {
+                        $("#fav-parent").empty()
+                        var html = `<div class="shopping-cart-header favzerovanish">
+                                    <a href="#" class="delete_all_fav_course"><u style="color: blue;">Delete all
+                                        courses</u></a>
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text">Total:</span>
+                                        <span class="main-color-text"><b class="favtotalcourses">1</b> courses</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items favitemparent">
+                                    <li class="cart-row favitem" data-id="${course_id}">
+                                        <img src="/static${favdropdownImageAdd}" alt=""/>
+                                        <span class="item-meta">
+                                        <span class="item-name"><a
+                                                href="#">${favdropdownNameAdd}</a></span>
+                                        <span class="meta-info">
+                                        <span class="item-price">$${favdropdownPriceAdd}</span>
+                                        </span>
+                                        </span>
+                                        <span class="item-meta" style="margin-left:auto !important">
+                                        <span class="meta-info">
+                                        <p style="cursor: pointer;" data-id="${course_id}"
+                                           onclick="deleteFromFavDropDown(this)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </p>
+                                        </span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <a href="/showfavlist" class="button primary-button is-raised favzerovanish">Show
+                                    FavList</a>`;
+                        $("#fav-parent").html(html)
+                    } else {
+                        $(".favitemparent").append("<li class='cart-row favitem' data-id='" + course_id + "''></li>");
+                        $(".favitem[data-id='" + course_id + "']").append("<img src='/static" + favdropdownImageAdd + "' alt='' />");
+                        $(".favitem[data-id='" + course_id + "']").append("<span class='item-meta'><span class='item-name'><a>" + favdropdownNameAdd + "</a></span><span class='meta-info'><span class='item-price'>$" + favdropdownPriceAdd + "</span></span></span>");
+                        $(".favitem[data-id='" + course_id + "']").append("<span class='item-meta' style='margin-left:auto !important'><span class='meta-info'><p class='deletefromfav' style='cursor: pointer;' data-id='" + course_id + "'><i class='fa fa-trash' aria-hidden='true'></i></p></span></span>");
+                    }
+                    iziToast.show({
+                        maxWidth: '280px',
+                        class: 'success-toast',
+                        icon: 'mdi mdi-heart',
+                        title: '',
+                        message: 'You have successfully add this course to your favorite page',
+                        titleColor: '#fff',
+                        messageColor: '#fff',
+                        iconColor: "#fff",
+                        backgroundColor: '#2f7bd1',
+                        progressBarColor: '#2066B5',
+                        position: 'bottomRight',
+                        transitionIn: 'fadeInUp',
+                        close: false,
+                        timeout: 4000,
+                        zindex: 99999
+                    });
+                }
+            });
+        }
+
+        function showDelModal(obj) {
+            cur_course_id = $(obj).data('course-id')
+            cur_user_id = $(obj).data('user-id')
+            $("#delete_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function closeDelModal() {
+            $("#delete_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function deleteCart() {
+            var course_id = cur_course_id
+            var user_id = cur_user_id
+            var url = '/student_Cart_courses/';
+            $.post(url, {student: user_id, course: course_id}, function (res) {
+                console.log(res)
+                if (res == "success") {
+                    count = parseInt($("#cartcounterfirst").html())
+                    count = count - 1
+                    $("#cartcounterfirst").html(count)
+                    location.reload()
+                }
+            });
+            closeDelModal()
+        }
+
+        function addToCartList() {
+            var course_id = '{{ course.id }}';
+            var user_id = '{{ request.user.id }}';
+            var url = '/student_Cart_courses/';
+            $.post(url, {student: user_id, course: course_id}, function (res) {
+            });
+        }
+
+        function page_prev() {
+            page = cur_page * 1-1
+            $("#page").val(page)
+            $("#cart_form").submit()
+        }
+
+        function page_next() {
+            page = cur_page * 1+1
+            $("#page").val(page)
+            $("#cart_form").submit()
+        }
+
+        function page_set(page) {
+            $("#page").val(page)
+            $("#cart_form").submit()
+        }
+
+    </script>
+
+{% endblock %} {% block script %}
+    <!-- App JS -->
+    <script src="{% static 'assets/js/sideb.js' %}"></script>
+    <!-- Page and UI related js -->
+    <script src="{% static 'assets/js/videos.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+{% endblock %}

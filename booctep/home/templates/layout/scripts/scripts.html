@@ -1,0 +1,178 @@
+<!-- {% load static %} -->
+
+<script src="/static/{{ lang }}assets/js/help.js"></script>
+
+<script src="/static/{{ lang }}assets/js/writter.js"></script>
+<script src="/static/{{ lang }}assets/js/app.js"></script>
+
+<!-- Concatenated js plugins and jQuery -->
+<!-- Video player js -->
+
+<!-- jQuery -->
+<script src="/static/assets/vendor/jquery.min.js"></script>
+
+<!-- Font Awesome -->
+<script src="/static/{{ lang }}assets/js/all.js"></script>
+
+<!-- Core js -->
+<script src="/static/assets/js/global.js"></script>
+<script src="/static/assets/js/main.js"></script>
+
+<script src="/static/{{ lang }}assets/js/profile.js"></script>
+<script src="/static/{{ lang }}assets/js/explorer.js"></script>
+<script src="/static/{{ lang }}assets/js/shop.js"></script>
+
+
+<!-- Bootstrap -->
+<script src="/static/{{ lang }}assets/vendor/popper.min.js"></script>
+<script src="/static/{{ lang }}assets/vendor/bootstrap.min.js"></script>
+
+<!-- <script src="jquery-3.5.1.min.js"></script> -->
+<script type="text/javascript"
+        src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
+
+<!-- new Add js -->
+
+
+<!-- Concatenated js plugins and jQuery -->
+
+<script src="https://js.stripe.com/v3/"></script>
+
+
+<script src="/static/{{ lang }}assets/data/tipuedrop_content.js"></script>
+
+
+<script src="/static/{{ lang }}assets/js/feed.js "></script>
+<script src="/static/{{ lang }}assets/js/stories.js"></script>
+<script src="/static/{{ lang }}assets/js/chat.js"></script>
+<script src="/static/{{ lang }}assets/js/inbox.js"></script>
+
+<script src="/static/{{ lang }}assets/js/friends.js"></script>
+<script src="/static/{{ lang }}assets/js/events.js"></script>
+
+<script src="/static/{{ lang }}assets/js/news.js"></script>
+<script src="/static/{{ lang }}assets/js/questions.js"></script>
+<script src="/static/{{ lang }}assets/js/videos.js"></script>
+
+<script src="/static/{{ lang }}assets/js/settings.js"></script>
+
+<script src="/static/{{ lang }}assets/js/widgets.js"></script>
+<script src="/static/{{ lang }}assets/js/autocompletes.js"></script>
+<script src="/static/{{ lang }}assets/js/modal-uploader.js"></script>
+<script src="/static/{{ lang }}assets/js/popovers-users.js"></script>
+<script src="/static/{{ lang }}assets/js/popovers-pages.js"></script>
+<script src="/static/{{ lang }}assets/js/go-live.js"></script>
+<script src="/static/{{ lang }}assets/js/touch.js"></script>
+<script src="/static/{{ lang }}assets/js/tour.js"></script>
+
+
+<script type="text/javascript">
+    //  Search (including are you ready search)
+    let cur_no = 0
+    let key = 0
+    $("#tipue_drop_input").on('keyup', function (e) {
+        var inp = $(this).val()
+        if (inp) { //input is given
+            if (e.which == 13) {
+            } else if (e.which == 40) {
+                if ($(".search_list").find("li").length > 0) {
+                    if (cur_no < $(".search_list").find("li").length) {
+                        if (key == 1){
+                            cur_no ++;
+                            key = 0
+                        }
+                        $(".search_list").find("li").each(function() {
+                            $(this).css({
+                                'background': ''
+                            })
+                        })
+                        curitem = $(".search_list").find(`li:eq(${cur_no})`)
+                        $(curitem).css({
+                            'background': 'lightgrey'
+                        })
+                        $("#tipue_drop_input").val($(curitem).html())
+                        if (key == 0) {
+                            cur_no ++;
+                        }
+                    }
+                }
+            } else if (e.which == 38) {
+                if ($(".search_list").find("li").length > 0) {
+                    if (cur_no > 0) {
+                        if (key == 0) {
+                            cur_no -= 2;
+                        } else {
+                            cur_no --;
+                        }
+                        key = 1
+                        $(".search_list").find("li").each(function() {
+                            $(this).css({
+                                'background': ''
+                            })
+                        })
+                        curitem = $(".search_list").find(`li:eq(${cur_no})`)
+                        $(curitem).css({
+                            'background': 'lightgrey'
+                        })
+                        $("#tipue_drop_input").val($(curitem).html())
+
+                    }
+                }
+            } else {
+                console.log("hello fara " + inp);
+                $("#clear-search").removeClass("d-none")
+                let url = '/search_course_name/';
+                let form_data = new FormData()
+                form_data.append('key', inp)
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    dataType: 'json',
+                    async: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                }).then((response) => {
+                    courses = JSON.parse(response.courses)
+                    if(courses.length > 0){
+                        html = `<ul class="search_ul">`
+                        courses.forEach(item =>{
+                            html += `<li class="search_li" data-user-id="${item.fields.user_id}" data-course-name="${item.fields.course_url}" onclick="setName(this)" onpress="alert(123)" >${item.fields.name}</li>`
+                        })
+                        html += `</ul>`
+                        $(".search_list").html(html)
+                        $(".search_list").css({
+                            'display': 'block'
+                        })
+                    } else {
+                        $(".search_list").html('')
+                    }
+                });
+            }
+        } else {
+            $("#clear-search").addClass("d-none")
+            $(".search_list").css({
+                'display': 'none'
+            })
+            cur_no = 0
+            key = 0
+        }
+        console.log("cur_no", cur_no)
+    });
+    $("#clear-search").on('click', function(e) {
+        $("#tipue_drop_input").val('')
+        $(".search_list").css({
+            'display': 'none'
+        })
+        $(this).addClass("d-none")
+        cur_no = 0
+        key = 0
+    })
+
+    function setName(obj) {
+        course_name = $(obj).data("course-name")
+        teacher_id = $(obj).data("user-id")
+        location.href=`/course/${teacher_id}/${course_name}`;
+    }
+
+</script>

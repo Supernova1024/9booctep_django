@@ -1,0 +1,120 @@
+{% macro component(title, image, free, prefix, position='center', avatar=image, class='', account) %}
+{% set link = 'course.html' %}
+{% if account %}
+  {% set link = 'student-take-course.html' %}
+{% endif %}
+
+<div class="card card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay">
+  <a href="{{ prefix or '' }}{{ link }}" class="card-img-top js-image" data-position="{{ position }}" data-height="128">
+    <img src="assets/images/paths/{{ image }}_430x168.png" alt="course">
+    <span class="overlay__content align-items-start2 justify-content-start2">
+      <span class="overlay__action card-body d-flex flex-column text-center align-items-center">
+        <i class="material-icons icon-32pt mb-4pt">play_circle_outline</i>
+        <span class="card-title text-white">{% if account %}Resume{% else %}Preview{% endif %}</span>
+      </span>
+    </span>
+  </a>
+  <div class="card-body d-flex flex-column">
+    <div class="media align-items-center mb-8pt">
+      <div class="media-left mr-12pt">
+        <img src="assets/images/paths/{{ avatar }}_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+      </div>
+      <div class="media-body">
+        <div class="card-title">{{ title }}</div>
+      </div>
+    </div>
+
+    <p class="lh-1 mb-0">
+      <span class="text-black-50 small">with</span>
+      <span class="text-black-50 small font-weight-bold">Elijah Murray</span>
+    </p>
+    <div class="rating mb-16pt">
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star</span></span>
+      <span class="rating__item"><span class="material-icons">star_border</span></span>
+    </div>
+    
+    <!-- <p class="mb-16pt text-black-70">Learn the fundamentals of working with Angular and how to create basic applications.</p> -->
+
+    <div class="mb-16pt d-none">
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>Fundamentals of working with Angular</small></p>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>Create complete Angular applications</small></p>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>Working with the Angular CLI</small></p>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>Testing with Angular</small></p>
+      </div>
+    </div>
+    <div class="flex"></div>
+
+    {% if not account %}
+    <div class="row align-items-center d-none">
+      <div class="col-auto">
+        <div class="d-flex align-items-center mb-4pt">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>6 hours</small></p>
+        </div>
+        <div class="d-flex align-items-center mb-4pt">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Beginner</small></p>
+        </div>
+      </div>
+      <div class="col text-right">
+        <a href="{{ prefix or '' }}{{ link }}" class="btn btn-outline-primary">Watch trailer</a>
+      </div>
+    </div>
+    {% endif %}
+    
+    {% if account %}
+    <div class="my-32pt">
+      <div class="d-flex align-items-center mb-8pt justify-content-center">
+        <div class="d-flex align-items-center mr-8pt">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>50 minutes left</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <a href="{{ prefix or '' }}student-take-lesson.html" class="btn btn-primary mr-8pt">Resume</a>
+        <a href="{{ prefix or '' }}student-take-course.html" class="btn btn-outline-secondary ml-0">Start over</a>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <small class="text-black-50 mr-8pt">Your rating</small>
+      <div class="rating mr-8pt">
+        <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+        <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+        <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+        <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+        <span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
+      </div>
+      <small class="text-black-50">4/5</small>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}
+{{ component() }}

@@ -1,0 +1,14 @@
+@import './variables';
+@import 'ui-huma/scss/app';
+@import './overlay';
+@import './course-nav';
+@import './player';
+@import './accordion';
+@import './quiz';
+@import './avatar';
+
+.sidebar-dark-dodger-blue {
+  .sidebar-submenu .sidebar-menu-text::after {
+    background-color: $accent-red;
+  }
+}

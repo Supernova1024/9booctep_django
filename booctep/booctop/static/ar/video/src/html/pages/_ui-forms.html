@@ -1,0 +1,414 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section">
+
+  {% set description %}
+    {{ brand }} supports all of Bootstrap's default form styling in addition to a handful of new input types and features. Please <a href="https://getbootstrap.com/docs/4.1/components/forms/" target="_blank">read the official documentation</a> for a full list of options from Bootstrap's core library.
+  {% endset %}
+  {% call panel.component(title='Default Forms', description=description) %}
+    <div class="form-group">
+      <label class="form-label" for="exampleInputEmail1">Your email:</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address ..">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="exampleInputPassword1">Your password:</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password ..">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {% endcall %}
+
+  {% call panel.component(title='Form Validation', description='Provide valuable, actionable feedback to your users with HTML5 form validation. Indicate invalid and valid form fields with <code>.is-invalid</code> and <code>.is-valid</code> classes.') %}
+    <div class="was-validated">
+      <div class="form-row">
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="validationSample01">First name</label>
+          <input type="text" class="form-control" id="validationSample01" placeholder="First name" value="Mark" required="">
+          <div class="invalid-feedback">Please provide a first name.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="validationSample02">Last name</label>
+          <input type="text" class="form-control" id="validationSample02" placeholder="Last name" value="Otto" required="">
+          <div class="invalid-feedback">Please provide a last name.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="validationSample03">City</label>
+          <input type="text" class="form-control" id="validationSample03" placeholder="City" required="">
+          <div class="invalid-feedback">Please provide a valid city.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="validationSample04">State</label>
+          <input type="text" class="form-control" id="validationSample04" placeholder="State" required="">
+          <div class="invalid-feedback">Please provide a valid state.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" value="" id="invalidCheck01" required="" checked="">
+        <label class="custom-control-label" for="invalidCheck01">
+          Agree to terms and conditions
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  {% endcall %}
+
+  {% call panel.component(title='Search', description='A dedicated form group alternative for search forms that always keeps the submit button as part of the form control.') %}
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg">
+          <label class="form-label" for="searchSample03">Regular</label>
+          <div class="search-form {{ search_form }}">
+            <input type="text" class="form-control" placeholder="Search icons" id="searchSample03">
+            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+          </div>
+        </div>
+        <div class="col-lg">
+          <label class="form-label" for="searchSample04">Flush</label>
+          <div class="search-form form-control-flush {{ search_form }}">
+            <input type="text" class="form-control px-0" placeholder="Search icons" id="searchSample04">
+            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="searchSample01">Large</label>
+      <div class="search-form {{ search_form }} input-group-lg">
+        <input type="text" class="form-control" placeholder="Search icons" id="searchSample01">
+        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+      </div>
+    </div>
+    <div class="form-group m-0">
+      <label class="form-label" for="searchSample02">Rounded</label>
+      <div class="search-form form-control-rounded {{ search_form }} input-group-lg">
+        <input type="text" class="form-control" placeholder="Search icons" id="searchSample02">
+        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Merge Group', description='A slightly modified version of the default input groups that always keeps icons as a part of the form control. Also works with validation.') %}
+    <div class="form-group">
+      <div class="input-group input-group-merge">
+        <input type="text" class="form-control form-control-prepended" required="" placeholder="Input group prepended">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <span class="material-icons">remove_red_eye</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group input-group-merge">
+        <input type="text" class="form-control form-control-appended" required="" placeholder="Input group appended">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="material-icons">lock_outline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group input-group-merge">
+        <input type="text" class="form-control form-control-prepended is-valid" required="" placeholder="Input group prepended">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <span class="material-icons">remove_red_eye</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-group input-group-merge">
+      <input type="text" class="form-control form-control-appended is-invalid" required="" placeholder="Input group appended">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="material-icons">lock_outline</span>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Rounded', description='Form control with rounded corners with the <code>.form-control-rounded</code> modifier.') %}
+    <label class="form-label" for="roundedSample01">Rounded</label>
+    <input type="text" class="form-control form-control-rounded" placeholder="Rounded form control ..." id="roundedSample01">
+  {% endcall %}
+
+  {% call panel.component(title='Flush', description='Remove paddings and borders from a form control with the <code>.form-control-flush</code> modifier.') %}
+    <label class="form-label" for="flushSample01">Flush</label>
+    <input type="text" class="form-control form-control-flush" placeholder="Flush form control ..." id="flushSample01">
+  {% endcall %}
+
+  {% call panel.component(title='Toggle', description='Replaces a standard checkbox input with a toggle button.') %}
+    <label class="form-label" for="subscribe">Subscribe to newsletter</label><br>
+    <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
+      <input checked="" type="checkbox" id="subscribe" class="custom-control-input">
+      <label class="custom-control-label" for="subscribe">Yes</label>
+    </div>
+    <label class="form-label mb-0" for="subscribe">Yes</label>
+  {% endcall %}
+
+  {% call panel.component(title='Custom controls') %}
+    <div class="form-group">
+      <div class="custom-control custom-checkbox">
+        <input id="customCheck01" type="checkbox" checked="" class="custom-control-input">
+        <label for="customCheck01" class="custom-control-label">Check this custom checkbox</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="custom-controls-stacked">
+        <div class="custom-control custom-radio">
+          <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" checked="">
+          <label for="radioStacked1" class="custom-control-label">Toggle this custom radio</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+          <label for="radioStacked2" class="custom-control-label">Or toggle this other custom radio</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="custom-select">Custom select</label>
+      <select id="custom-select" class="form-control custom-select">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="form-group m-0">
+      <div class="custom-file">
+        <input type="file" id="file" class="custom-file-input">
+        <label for="file" class="custom-file-label">Choose file</label>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Flatpickr', description='A simple yet powerful datepicker powered by Flatpickr. Please read the <a target="_blank" href="https://flatpickr.js.org/">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label">Anchor</label><br>
+      <div class="flatpickr-wrapper">
+        <div
+          id="recent_orders_date"
+          data-toggle="flatpickr" 
+          data-flatpickr-wrap="true"
+          data-flatpickr-mode="range" 
+          data-flatpickr-alt-format="d/m/Y" 
+          data-flatpickr-date-format="d/m/Y">
+          <a href="javascript:void(0)" class="link-date" data-toggle>13/03/2018 to 20/03/2018</a>
+          <input class="flatpickr-hidden-input" type="hidden" value="13/03/2018 to 20/03/2018" data-input>  
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Date</label>
+      <input id="flatpickrSample01" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="today">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Range</label>
+      <input id="flatpickrSample02" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" data-flatpickr-mode="range" value="2018-10-07 to 2018-10-15">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="flatpickrSample04">Date Time</label>
+      <input 
+        id="flatpickrSample04" 
+        type="text" 
+        class="form-control" 
+        placeholder="Flatpickr date time example" 
+        data-toggle="flatpickr" 
+        data-flatpickr-enable-time="true"
+        data-flatpickr-alt-format="F j, Y at H:i" 
+        data-flatpickr-date-format="Y-m-d H:i" 
+        value="2018-10-07 15:35">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="flatpickrSample05">Time Picker</label>
+      <input 
+        id="flatpickrSample05" 
+        type="text" 
+        class="form-control" 
+        placeholder="Flatpickr time example" 
+        data-toggle="flatpickr" 
+        data-flatpickr-enable-time="true"
+        data-flatpickr-no-calendar="true"
+        data-flatpickr-alt-format="H:i" 
+        data-flatpickr-date-format="H:i" 
+        value="15:35">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='DateRangePicker', description='The DateRangePicker can be attached to any webpage element to pop up two calendars for selecting dates, times, or predefined ranges like "Last 30 Days". Please read the <a target="_blank" href="http://www.daterangepicker.com">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="text-label" for="dateRangePickerSample01">Date</label>
+      <input 
+        id="dateRangePickerSample01" 
+        type="text" 
+        class="form-control" 
+        placeholder="Date example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-start-date="2018/11/06"
+        data-daterangepicker-single-date-picker="true">
+    </div>
+    <div class="form-group">
+      <label class="text-label" for="dateRangePickerSample02">Range</label>
+      <input 
+        id="dateRangePickerSample02" 
+        type="text" 
+        class="form-control" 
+        placeholder="Range example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-start-date="2018/11/06"
+        data-daterangepicker-end-date="2018/12/06">
+    </div>
+    <div class="form-group">
+      <label class="text-label" for="dateRangePickerSample03">Date Time</label>
+      <input 
+        id="dateRangePickerSample03" 
+        type="text" 
+        class="form-control" 
+        placeholder="Date Time example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-opens="left"
+        data-daterangepicker-time-picker="true"
+        data-daterangepicker-locale-format="DD/MM Ha"
+        data-daterangepicker-start-date="06/11 7am"
+        data-daterangepicker-end-date="06/12 8pm">
+    </div>
+    <div class="form-group mb-0">
+      <label class="text-label" for="dateRangePickerSample04">Predefined Range</label>
+      <input 
+        id="dateRangePickerSample04" 
+        type="text" 
+        class="form-control" 
+        placeholder="Predefined example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-ranges="true"
+        data-daterangepicker-drops="up">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Input Masking', description='Mask your form controls depending on the context with the jQuery Mask plugin. Please read the <a href="https://igorescobar.github.io/jQuery-Mask-Plugin/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label" for="maskSample01">Number</label>
+      <input id="maskSample01" type="text" class="form-control" placeholder="Number: 2.342,42" data-mask="#.##0,00" data-mask-reverse="true">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="maskSample02">Phone</label>
+      <input id="maskSample02" type="text" class="form-control" placeholder="US phone: (000) 000-0000)" data-mask="(000) 000-0000">
+    </div>
+    <div class="form-group m-0">
+      <label class="form-label" for="maskSample03">Date</label>
+      <input id="maskSample03" type="text" class="form-control" placeholder="US date: 00/00/0000" data-mask="00/00/0000">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Input Spinner', description='A mobile and touch friendly input spinner component. It supports the mouse wheel and the up &amp; down keys.') %}
+    <div class="form-group">
+      <label for="touch-spin-2" class="form-label">Score</label>
+      <input id="touch-spin-2" data-toggle="touch-spin" data-min="-1000000" data-max="1000000" data-step="50" type="text" value="200" name="demo2" class="form-control"/>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Rich Text Editor', description='Powerful WYSIWYG text editor powered by Quill. Please read the <a href="https://quilljs.com/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <label class="form-label">Default</label>
+    <div
+      style="height: 150px;"
+      data-toggle="quill" 
+      data-quill-placeholder="Quill WYSIWYG editor">
+      <h1>Hello World!</h1>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
+
+    <label class="form-label">Custom toolbar</label>
+    <div
+      style="height: 150px;"
+      data-toggle="quill" 
+      data-quill-placeholder="Quill WYSIWYG editor"
+      data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Select', description='Customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options powered by Select2. Please read the <a href="https://select2.org/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label" for="select01">Basic</label>
+      <select 
+        id="select01" 
+        data-toggle="select"
+        class="form-control">
+        <option selected="">My first option</option>
+        <option>Another option</option>
+        <option>Third option is here</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select02">Avatars</label>
+      <select 
+        id="select02" 
+        data-toggle="select" 
+        data-minimum-results-for-search="-1"
+        class="form-control">
+        <option 
+          data-avatar-src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg">
+          Adelle Sherley
+        </option>
+        <option 
+          data-avatar-src="assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg">
+          Adrian Demian
+        </option>
+        <option 
+          data-avatar-src="assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg">
+          Green Doe
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select03">Multiple</label>
+      <select 
+        id="select03" 
+        data-toggle="select" 
+        multiple
+        class="form-control">
+        <option selected="">CSS</option>
+        <option selected="">HTML</option>
+        <option>JavaScript</option>
+        <option>Bootstrap</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select04">Large</label>
+      <select 
+        id="select04" 
+        data-toggle="select" 
+        multiple
+        class="form-control form-control-lg">
+        <option>CSS</option>
+        <option>HTML</option>
+        <option selected="">JavaScript</option>
+        <option>Bootstrap</option>
+      </select>
+    </div>
+    <label class="form-label" for="select05">Small</label>
+    <select 
+      id="select05" 
+      data-toggle="select"
+      class="form-control form-control-sm">
+      <option>My first option</option>
+      <option>Another option</option>
+      <option>Third option is here</option>
+    </select>
+  {% endcall %}
+
+</div>

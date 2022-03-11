@@ -1,0 +1,32 @@
+{% set layout = 'mini-secondary' %}
+{% set prefix = 'mini-secondary-' %}
+{% set containerClass = 'container page__container' %}
+{% set home_url = prefix + 'index.html' %}
+{% set navbar_search = true %}
+{% set sidebar_secondary_stats = true %}
+{% set bodyClass = bodyClass or 'layout-mini-secondary' %}
+{% set drawerFile = 'drawer.mini.html' %}
+{% set dashboards_menu = slug === 'index' or slug === 'analytics' %}
+{% set footer_bg = 'bg-body' %}
+
+{% extends "layouts/app.html" %}
+
+{% block footer %}
+  {{ super() }}
+  <script>
+  (function(){
+    'use strict';
+
+    // ENABLE sidebar menu tabs
+    $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+
+    $('.js-sidebar-mini-tabs').on('show.bs.tab', function(e) {
+      $('.js-sidebar-mini-tabs > .active').removeClass('active')
+      $(e.target).parent().addClass('active')
+    })
+  })()
+  </script>
+{% endblock %}

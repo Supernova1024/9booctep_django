@@ -1,0 +1,48 @@
+<div class="page-section {{ containerClass }}">
+  <div class="page-separator">
+    <div class="page-separator__text">Subscription</div>
+  </div>
+  <div class="col-lg-8 p-0">
+    <div class="list-group list-group-form">
+      <div class="list-group-item">
+        <div class="form-group row align-items-center mb-0">
+          <label class="col-form-label form-label col-sm-3">Your current plan</label>
+          <div class="col-sm-9 d-flex align-items-center">
+            <div class="flex">Basic, &dollar;9 per month</div>
+            <a href="{{ prefix or '' }}billing-upgrade.html" class="text-secondary">Change plan</a>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="form-group row align-items-center mb-0">
+          <label class="col-form-label form-label col-sm-3">Billing cycle</label>
+          <div class="col-sm-9">
+            <p>You will be charged $9 on Aug 20, 2018</p>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" checked id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Enable automatic renewal</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="form-group row align-items-center mb-0">
+          <label class="col-form-label form-label col-sm-3">Payment information</label>
+          <div class="col-sm-9 d-flex align-items-center">
+            <img src="assets/images/visa.svg" alt="visa" width="38" class="mr-16pt">
+            <div class="flex">Visa ending with 2819</div>
+            <a href="{{ prefix or '' }}billing-payment.html" class="text-secondary">Change method</a>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item">
+        <div class="form-group row align-items-center mb-0">
+          <label class="col-form-label form-label col-sm-3">Cancel</label>
+          <div class="col-sm-9">
+            <a href="" class="btn btn-outline-secondary">Cancel subscription</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

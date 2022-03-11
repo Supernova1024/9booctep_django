@@ -1,0 +1,11 @@
+---
+title: Sign Up
+slug: signup
+guest: true
+---
+{% extends "layouts/compact.html" %}
+
+{% block page %}
+  {% include 'pages/_signup.progression-bar.html' %}
+  {{ super() }}
+{% endblock %}

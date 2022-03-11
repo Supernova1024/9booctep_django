@@ -1,0 +1,92 @@
+
+/*=====  17.1: 3 Columns  ======*/
+//Gallery filter
+.gallery-filter .filtr-container {
+    display: none;
+}
+
+.push-down--style {
+    margin: 0 -25px;
+
+    /*rtl:ignore*/
+    direction: ltr;
+    /*rtl:ignore*/
+}
+
+.fltr-controls.active {
+    color: $primary;
+}
+
+.filtr-item--style {
+    flex: 0 0 25%;
+    width: 25%;
+    
+
+    img {
+        width: 100%;
+    }
+
+    @include lg {
+        flex: 0 0 33%;
+        width: 33%;
+    }
+
+    @include md {
+        flex: 0 0 50%;
+        width: 50%;
+    }
+
+    @include sm {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    @include ssm {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+}
+
+.gc__title {
+    p {
+        @include ofs(15px, lh(15px, 22px), 500);
+        @extend .color-dark;
+        margin-bottom: 2px;
+    }
+
+    span {
+        @include ofs(13px, lh(13px, 22px), 400);
+        @extend .color-light;
+    }
+}
+
+.gallery-filter {
+    .ap-tab-main{
+        @include ssm{
+            padding:15px 0;
+        }
+        @include xxs {
+            justify-content: center;
+        }
+        .nav-link{
+            @include ofs(14px, lh(14px, 25px), 400);
+            @extend .color-light;
+            padding:20px 0;
+            @include ssm{
+                padding: 6px 0;
+                margin-bottom: 0px;
+              }
+            &.active{
+                font-weight: 500;
+                @extend .color-primary;
+            }
+            &:not(:last-child){
+                margin-right: 25px;
+            }
+            &:after{
+                height:2px;
+                bottom:0;
+            }
+        }
+    }
+}

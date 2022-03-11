@@ -1,0 +1,25 @@
+{% macro component(title, description, price, color="accent", icon, iconColor="outline-" + color, raised, ribbon, action="Get started", actionColor=color, prefix='', class='') %}
+<div class="card card-group-row__card text-center o-hidden{% if raised %} card--raised{% endif %} {{ class }}">
+  {% if ribbon %}
+  <span class="corner-ribbon corner-ribbon--default-right-top corner-ribbon--shadow bg-accent text-white">{{ ribbon }}</span>
+  {% endif %}
+  <div class="card-body d-flex flex-column">
+    <div class="flex-grow mb-16pt">
+      <span class="w-64 h-64 icon-holder icon-holder--{{ iconColor }} rounded-circle d-inline-flex mb-16pt">
+        <i class="material-icons">{{ icon }}</i>
+      </span>
+      <h4 class="mb-8pt">{{ title }}</h4>
+      <p class="text-70 mb-0">{{ description | safe }}</p>
+    </div>
+    <p class="d-flex justify-content-center align-items-center m-0">
+      <span class="h4 m-0 font-weight-normal">&dollar;</span>
+      <span class="h1 m-0 font-weight-normal">{{ price }}</span>
+      <span class="h4 m-0 font-weight-normal">/ month</span>
+    </p>
+    <p class="lh-1 text-muted mb-0"><small>after the free trial ends</small></p>
+  </div>
+  <div class="card-footer">
+    <a href="{{ prefix }}signup.html" class="btn btn-{{ actionColor }}">{{ action }}</a>
+  </div>
+</div>
+{% endmacro %}

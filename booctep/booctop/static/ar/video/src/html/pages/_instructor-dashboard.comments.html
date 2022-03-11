@@ -1,0 +1,61 @@
+<div class="page-separator">
+  <div class="page-separator__text">Comments</div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="media">
+      <div class="media-left mr-12pt">
+        <a href="#" class="avatar avatar-sm">
+          <!-- <img src="assets/images/people/110/guy-9.jpg" alt="Guy" class="avatar-img rounded-circle"> -->
+          <span class="avatar-title rounded-circle">LB</span>
+        </a>
+      </div>
+      <div class="media-body d-flex flex-column">
+        <div class="d-flex align-items-center">
+          <a href="{{ prefix or '' }}profile.html" class="card-title">Laza Bogdan</a>
+          <small class="ml-auto text-muted">27 min ago</small><br>
+        </div>
+        <span class="text-muted">on <a href="{{ prefix or '' }}instructor-edit-course.html" class="text-50" style="text-decoration: underline;">Data Visualization With Chart.js</a></span>
+        <p class="mt-1 mb-0 text-70">How can I load Charts on a page?</p>
+      </div>
+    </div>
+    <div class="media ml-sm-32pt mt-3 border rounded p-3 {{ comment_bg or 'bg-light' }} d-inline-flex measure-paragraph-max">
+      <div class="media-left mr-12pt">
+        <a href="#" class="avatar avatar-sm">
+          <!-- <img src="assets/images/people/110/guy-6.jpg" alt="Guy" class="avatar-img rounded-circle"> -->
+          <span class="avatar-title rounded-circle">FM</span>
+        </a>
+      </div>
+      <div class="media-body">
+        <div class="d-flex align-items-center">
+          <a href="{{ prefix or '' }}profile.html" class="card-title">FrontendMatter</a>
+          <small class="ml-auto text-muted">just now</small>
+        </div>
+        <p class="mt-1 mb-0 text-70">Hi Bogdan,<br> Thank you for purchasing our course! <br><br>Please have a look at the charts library documentation <a href="#" class="text-underline">here</a> and follow the instructions.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <form action="#" id="message-reply">
+      <div class="input-group input-group-merge">
+        <input type="text" class="form-control form-control-appended" required="" placeholder="Quick Reply">
+        <div class="input-group-append">
+          <div class="input-group-text pr-2">
+            <button class="btn btn-flush" type="button"><i class="material-icons">tag_faces</i></button>
+          </div>
+          <div class="input-group-text pl-0">
+            <div class="custom-file custom-file-naked d-flex" style="width: 24px; overflow: hidden;">
+              <input type="file" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" style="color: inherit;" for="customFile">
+                <i class="material-icons">attach_file</i>
+              </label>
+            </div>
+          </div>
+          <div class="input-group-text pl-0">
+            <button class="btn btn-flush" type="button"><i class="material-icons">send</i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

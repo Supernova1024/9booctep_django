@@ -1,0 +1,100 @@
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+      <div class="d-flex flex-column flex-md-row align-items-center flex mb-16pt mb-lg-0 text-center text-md-left">
+        <div class="avatar mb-16pt mb-md-0 mr-md-16pt">
+          <img src="assets/images/paths/typescript_40x40@2x.png" class="avatar-img rounded" alt="lesson">
+        </div>
+        <div class="flex">
+          <h1 class="h2 m-0">Introduction to TypeScript</h1>
+          <div class="rating mb-8pt d-inline-flex">
+            <div class="rating__item"><i class="material-icons">star</i></div>
+            <div class="rating__item"><i class="material-icons">star</i></div>
+            <div class="rating__item"><i class="material-icons">star</i></div>
+            <div class="rating__item"><i class="material-icons">star</i></div>
+            <div class="rating__item"><i class="material-icons">star_border</i></div>
+          </div>
+        </div>
+      </div>
+      <div class="ml-lg-16pt">
+        <a href="{{ prefix or '' }}courses.html" class="btn btn-light">Library</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass }}">
+    
+    <div class="row">
+      <div class="col-lg-8">
+
+        <div class="js-player card bg-primary embed-responsive embed-responsive-16by9 mb-24pt">
+          <div class="player embed-responsive-item">
+            <div class="player__content">
+              <div class="player__image" style="--player-image: url(assets/images/illustration/player.svg)"></div>
+              <a href="" class="player__play bg-primary">
+                <span class="material-icons">play_arrow</span>
+              </a>
+            </div>
+            <div class="player__embed d-none">
+              <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-24pt">
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">schedule</i>
+            2h 46m
+          </span>
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">assessment</i>
+            Beginner
+          </span>
+        </div>
+
+        <p class="lead measure-lead text-70 mb-24pt">JavaScript is now used to power backends, create hybrid mobile applications, architect cloud solutions, design neural networks and even control robots. Enter TypeScript: a superset of JavaScript for scalable, secure, performant and feature-rich applications.</p>
+
+        <div class="page-separator">
+          <div class="page-separator__text">Table of contents</div>
+        </div>
+
+        {% import 'pages/_course.toc.html' as toc %}
+        {{ toc.component(tocListClass='', prefix=prefix) }}
+
+      </div>
+      <div class="col-lg-4">
+
+        {% import 'components/card-unlock.html' as unlock %}
+        {{ unlock.component(label='Lesson', prefix=prefix) }}
+
+        <div class="page-separator">
+          <div class="page-separator__text">Course</div>
+        </div>
+
+        <a href="{{ prefix or '' }}student-course.html" class="d-flex flex-nowrap mb-24pt">
+          <span class="mr-16pt">
+            <img src="assets/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded">
+          </span>
+          <span class="flex d-flex flex-column align-items-start">
+            <span class="card-title">Angular Fundamentals</span>
+            <span class="card-subtitle text-50">16 Lessons</span>
+          </span>
+        </a>
+
+        {% include 'pages/_course.author.basic.html' %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section {{ alt_bg }}">
+  <div class="{{ containerClass or 'container' }}">
+    {% include 'pages/_feedback.html' %}
+  </div>
+</div>

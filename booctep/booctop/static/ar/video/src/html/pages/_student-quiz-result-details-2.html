@@ -1,0 +1,62 @@
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+      <div class="flex d-flex flex-column align-items-center align-items-lg-start mb-16pt mb-lg-0 text-center text-lg-left">
+        <h1 class="h2 mb-8pt">Your Score: 350</h1>
+        <div>
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">event</i>
+            Submited on 02 Jan 2019
+          </span>
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">schedule</i>
+            12 minutes
+          </span>
+        </div>
+      </div>
+      <div class="ml-lg-16pt">
+        <a href="" class="btn btn-light">
+          Questions
+          <span class="badge badge-notifications badge-accent icon--right">10</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="{{ containerClass }}">
+  
+  <div class="row">
+    <div class="col-lg-8">
+
+      {% include 'pages/_student-quiz-result-details.partial.html' %}
+      
+    </div>
+    <div class="col-lg-4 page-section">
+
+      <div class="d-flex flex-column mb-24pt">
+        <a href="{{ prefix }}student-take-quiz.html" class="btn justify-content-center btn-outline-secondary mb-16pt">Restart Quiz</a>
+        <a href="{{ prefix }}student-take-lesson.html" class="btn justify-content-center btn-outline-secondary mb-16pt">Review Video</a>
+        <a href="{{ prefix }}student-quiz-result-details.html" class="btn justify-content-center btn-accent ">Next Question <i class="material-icons icon--right">keyboard_arrow_right</i></a>
+      </div>
+
+      <div class="page-separator">
+        <div class="page-separator__text">Course</div>
+      </div>
+
+      <a href="{{ prefix or '' }}student-course.html" class="d-flex flex-nowrap mb-24pt">
+        <span class="mr-16pt">
+          <img src="assets/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded">
+        </span>
+        <span class="flex d-flex flex-column align-items-start">
+          <span class="card-title">Angular Fundamentals</span>
+          <span class="card-subtitle text-50">16 Lessons</span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+
+</div>

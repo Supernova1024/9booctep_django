@@ -1,0 +1,36 @@
+//.grid-area
+
+
+.bd-example-row .row > .col,
+.bd-example-row .row > [class^="col-"] {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(95, 99, 242, 0.584);
+  
+  color: white;
+}
+.bd-example-row .row > div:nth-last-child(odd){
+    background-color: $primary;
+}
+
+.bd-example-row .row + .row {
+  margin-top: 1rem;
+}
+
+.bd-example-row .flex-items-top,
+.bd-example-row .flex-items-middle,
+.bd-example-row .flex-items-bottom {
+  min-height: 6rem;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+
+.bd-example-row-flex-cols .row {
+    min-height: 10rem;
+    background-color: rgba(255,0,0,.1);
+}

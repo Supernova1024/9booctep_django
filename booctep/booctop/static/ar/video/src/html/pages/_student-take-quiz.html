@@ -1,0 +1,27 @@
+{% include 'pages/_back-to-course.navbar.html' %}
+
+<div class="bg-primary pb-lg-64pt py-32pt">
+  <div class="{{ containerClass or 'container' }}">
+    <nav class="course-nav">
+      <a href="{{ prefix }}student-take-lesson.html" data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Introduction"><span class="material-icons">check_circle</span></a>
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Introduction to TypeScript" href="{{ prefix }}student-take-lesson.html"><span class="material-icons">check_circle</span></a>
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Comparing Angular to AngularJS" href="{{ prefix }}student-take-lesson.html"><span class="material-icons">check_circle</span></a>
+      <a href="{{ prefix }}student-take-quiz.html" data-toggle="tooltip" data-placement="bottom" data-title="Quiz: Getting Started with Angular"><span class="material-icons text-primary">account_circle</span></a>
+    </nav>
+    
+    <div class="d-flex flex-wrap align-items-end justify-content-end mb-16pt">
+      <h1 class="text-white flex m-0">Question 1 of 5</h1>
+      <p class="h1 text-white-50 font-weight-light m-0">00:14</p>
+    </div>
+
+    <p class="hero__lead measure-hero-lead text-white-50">An angular 2 project written in typescript is* transpiled to javascript duri*ng the build process. Which of the following additional features are provided to the developer while programming on typescript over javascript?</p>
+  </div>
+</div>
+
+{% include 'pages/_student-take-quiz.navbar.html' %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+    {% include 'pages/_student-take-quiz.form.html' %}
+  </div>
+</div>

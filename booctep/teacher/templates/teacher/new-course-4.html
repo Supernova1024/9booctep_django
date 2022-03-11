@@ -1,0 +1,350 @@
+{% extends "teacher/base.html" %}
+
+
+{% block title %}
+    New course
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <!-- Quill Theme -->
+    <link type="text/css" href="{% static 'teacher/assets/css/quill.css' %}" rel="stylesheet">
+
+
+    <!-- Select2 -->
+    <link type="text/css" href="{% static 'teacher/assets/css/select2.css' %}" rel="stylesheet">
+
+    <link type="text/css" href="{% static 'teacher/assets/vendor/select2/select2.min.css' %}" rel="stylesheet">
+
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{% static 'teacher/assets/css/sweetalert.css' %}">
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Add New Course" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div class="progress rounded-0" style="height: 4px;">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="37"
+             aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <!-- // END Header -->
+    <div class="page__container">
+    </div>
+
+    <div class="page-section border-bottom-2">
+        <div class=" page__container">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            {#                            <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>#}
+                            <video poster="{% static 'assets/img/setting.jpg' %}" id="player" playsinline controls
+                                   style="width: 100%;" autoplay>
+                                <source src="{% static promo_video.url %}" type="video/webm"/>
+                                <!-- Captions are optional -->
+                                <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en"
+                                       default/>
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body media" style="height: 50px !important;">
+                            <div class="media-left mr-3">
+                                <div class="avatar">
+                                    <img src="{% static request.user.image %}" alt="Avatar"
+                                         class="avatar-img rounded-circle">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <p>
+                                    <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong><br>
+                                    <span class="text-muted">Founder and CEO</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4>{{ course.name }}
+                                <span class="fa fa-star" style="color: tomato;"></span>
+                                <b>0.0 No one has rated</b>
+                            </h4>
+                            <div id="course_description">{{ course.description }}
+                            </div>
+
+                            <h5>What are the requirments to join this course?</h5>
+                            <div id="course_requirements">
+                                • {{ course.requirements }} <br/>
+                            </div>
+                            <br/>
+                            <h5>What you will learn in this course?</h5>
+                            <div id="course_gains">
+                                • {{ course.gains }} <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <a href="#" class="btn btn-primary mr-4" onclick="addCourse()">Add course</a>
+                            {% if course.approval_status != 2 %}
+                                <a href="#" class="btn btn-accent" onclick="saveLater()">Save for later</a>
+                            {% endif %}
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex">
+                                <a class="flex" href="#"><strong>Save Draft</strong></a>
+                                <i class="material-icons text-muted">check</i>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="text-primary" style="cursor: pointer;"
+                                   onclick="$('#prevStep').submit()"><strong>Go back to Edit previous page</strong></a>
+                            </div>
+                            <form action="/teacher/add_course/?step=3" method="post" id="prevStep">
+                                {% csrf_token %}
+                                <input type="hidden" name="course" value="{{ course_id }}">
+                            </form>
+                            <div class="list-group-item">
+                                <a href="#" class="text-danger"><strong>Delete Course</strong></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-lg-0">
+
+                        <div class="card-header text-center">
+                            <b style="font-size: medium;">This course include</b>
+                        </div>
+
+                        <div class="card-body">
+                            <ul class="list-unstyled list-todo" id="todo">
+                                {% for inc in incList %}
+                                    <li>
+                                        <b class="ml-2">
+                                            <span class="fa fa-check mr-2" style="color: green; "></span>
+                                            {{ inc }}</b>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card mb-lg-0 mt-4">
+
+                        <div class="card-header text-center">
+                            <b style="font-size: medium;">The course Url:</b>
+                        </div>
+
+                        <div class="card-body">
+                            <ul class="list-unstyled list-todo" id="todo">
+                                <a>
+                                    <b class="ml-2">
+                                        <span class="fa fa-check mr-2" style="color: green; "></span>
+                                        <a>https://booctep.com{{ course.course_url }}</b></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="card mb-lg-0 mt-4">
+
+                        <div class="card-header text-center">
+                            <b style="font-size: medium;">Course curriulum</b>
+                        </div>
+
+                        {% for section in section_list %}
+                            {% if section.type == 'video' %}
+                                <ul class="accordion accordion--boxed js-accordion mb-0"
+                                    style="border-radius: 0 !important;" id="toc-1">
+
+                                    <li class="accordion__item open">
+                                        <a class="accordion__toggle" data-toggle="collapse" data-parent="#toc-1"
+                                           href="#toc-video-{{ section.id }}">
+                                            <span class="flex">{{ section.name }}</span>
+                                            <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                        </a>
+                                        <div class="accordion__menu">
+                                            <ul class="list-unstyled collapse show" id="toc-video-{{ section.id }}">
+                                                {% for video in video_list %}
+                                                    {% if video.section_id == section.id %}
+                                                        <li class="accordion__menu-link">
+                                                            <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                                                            <a class="flex">{{ video.name | slice:":-4" }}</a>
+                                                            <span class="text-muted">{{ video.duration }}mins</span>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+
+
+                    <div class="card mb-lg-0 mt-4">
+
+                        <div class="card-header text-center">
+                            <b style="font-size: medium;">Course Quiz</b>
+                        </div>
+
+                        {% for section in section_list %}
+                            {% if section.type == 'question' %}
+                                <ul class="accordion accordion--boxed js-accordion mb-0"
+                                    style="border-radius: 0 !important;" id="toc-1">
+                                    <li class="accordion__item open">
+                                        <a class="accordion__toggle" data-toggle="collapse" data-parent="#toc-1"
+                                           href="#toc-question-{{ section.id }}">
+                                            <span class="flex">Questions</span>
+                                            <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                        </a>
+                                        <div class="accordion__menu">
+                                            <ul class="list-unstyled collapse show" id="toc-question-{{ section.id }}">
+                                                {% for question in question_list %}
+                                                    {% if question.section_id == section.id %}
+                                                        <li class="accordion__menu-link">
+                                                            <span class="material-icons icon-16pt icon--left text-body">hourglass_empty</span>
+                                                            <a class="flex">{{ question.title }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'teacher/assets/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/select2.js' %}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'teacher/assets/vendor/sweetalert.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/sweetalert.js' %}"></script>
+
+    <!-- Quill -->
+    <script src="{% static 'teacher/assets/vendor/quill.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/quill.js' %}"></script>
+    <script>
+
+        function convertSpec(html) {
+            if (html != '')
+                return html.replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+            else
+                return html
+        }
+
+        let course_id = '{{ course_id }}'
+        if (course_id == '') {
+            course_id = localStorage.getItem('course_id')
+        }
+
+        let form_data = new FormData();
+        form_data.append("course_id", course_id);
+
+        function saveLater() {
+            let url = "/store-course_4/";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+                .then(response => {
+                    if (response.msg == "success") {
+                        document.location.href = '/teacher/courses/'
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+
+        function addCourse() {
+            let url = "/store-course_4/";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+                .then(response => {
+                    if (response.msg == "success") {
+                        socket.emit('add_course', {
+                            user: '{{ request.user.id }}',
+                            course_id: '{{ course_id }}'
+                        })
+                        $('#test1').attr('data-toastr-title', 'Thanks')
+                        $('#test1').attr('data-toastr-message', 'Thanks for submitting. we are reviewing your course')
+                        $('#test1').click()
+                        setTimeout(()=>{
+                            document.location.href = '/teacher/dashboard/'
+                        }, 3000)
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+
+        var course_description = convertSpec('{{ course.description }}')
+        var course_requirements = convertSpec('{{ course.requirements }}')
+        var course_gains = convertSpec('{{ course.gains }}')
+
+        $(document).ready(function () {
+            var course_id = localStorage.getItem('course_id');
+            console.log("course id", course_id);
+            // getVideoListByCourseId(course_id);
+            $('#course_requirements').html(course_requirements)
+            $('#course_description').html(course_description)
+            $('#course_gains').html(course_gains)
+        });
+
+        // get video list by courseID.
+        const getVideoListByCourseId = (course_id) => {
+            let url = "/get-coursedetails";
+            jQuery.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id: course_id,
+                }
+            })
+                .then(response => {
+                    var data = response.data;
+                    console.log(data);
+
+                })
+                .catch(error => console.error(error));
+        };
+
+    </script>
+{% endblock %}

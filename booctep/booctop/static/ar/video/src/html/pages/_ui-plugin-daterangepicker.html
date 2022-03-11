@@ -1,0 +1,65 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title=title, description='The DateRangePicker can be attached to any webpage element to pop up two calendars for selecting dates, times, or predefined ranges like "Last 30 Days". Please read the <a target="_blank" href="http://www.daterangepicker.com">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label" for="dateRangePickerSample01">Date</label>
+      <input 
+        id="dateRangePickerSample01" 
+        type="text" 
+        class="form-control" 
+        placeholder="Date example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-start-date="2018/11/06"
+        data-daterangepicker-single-date-picker="true">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="dateRangePickerSample02">Range</label>
+      <input 
+        id="dateRangePickerSample02" 
+        type="text" 
+        class="form-control" 
+        placeholder="Range example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-start-date="2018/11/06"
+        data-daterangepicker-end-date="2018/12/06">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="dateRangePickerSample03">Date Time</label>
+      <input 
+        id="dateRangePickerSample03" 
+        type="text" 
+        class="form-control" 
+        placeholder="Date Time example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-drops="up"
+        data-daterangepicker-opens="left"
+        data-daterangepicker-time-picker="true"
+        data-daterangepicker-locale-format="DD/MM Ha"
+        data-daterangepicker-start-date="06/11 7am"
+        data-daterangepicker-end-date="06/12 8pm">
+    </div>
+    <div class="form-group mb-0">
+      <label class="form-label" for="dateRangePickerSample04">Predefined Range</label>
+      <input 
+        id="dateRangePickerSample04" 
+        type="text" 
+        class="form-control" 
+        placeholder="Predefined example" 
+        data-toggle="daterangepicker"
+        data-daterangepicker-ranges="true"
+        data-daterangepicker-drops="up">
+    </div>
+  {% endcall %}
+</div>

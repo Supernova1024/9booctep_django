@@ -1,0 +1,44 @@
+<div class="page-separator">
+  <div class="page-separator__text">Options</div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <select name="category" class="form-control custom-select">
+        <option value="vuejs">VueJs</option>
+        <option value="vuejs">Angular</option>
+        <option value="vuejs">React</option>
+      </select>
+      <small class="form-text text-muted">Select a category.</small>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Price</label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group form-inline">
+            <span class="input-group-prepend"><span class="input-group-text">$</span></span>
+            <input type="text" class="form-control" value="24">
+          </div>
+        </div>
+      </div>
+      <small class="form-text text-muted">The recommended price is between &dollar;17 and &dollar;24</small>
+    </div>
+    <div class="form-group mb-0">
+      <label class="form-label" for="select03">Tags</label>
+      <select 
+        id="select03" 
+        data-toggle="select" 
+        multiple
+        class="form-control">
+        <option selected="">JavaScript</option>
+        <option selected="">Angular</option>
+        <option>Bootstrap</option>
+        <option>CSS</option>
+        <option>HTML</option>
+      </select>
+      <small class="form-text text-muted">Select one or more tags.</small>
+    </div>
+  </div>
+</div>

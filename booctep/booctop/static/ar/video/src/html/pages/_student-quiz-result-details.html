@@ -1,0 +1,19 @@
+{% include 'pages/_back-to-course.navbar.html' %}
+<div 
+  class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0" 
+  data-effects="blend-background">
+  <div class="mdk-box__content">
+    <div class="py-64pt text-center text-sm-left">
+      <div class="container d-flex flex-column justify-content-center align-items-center">
+        <p class="lead text-white-50 measure-lead-max mb-0">Submited on 02 Jan 2019</p>
+        <h1 class="text-white mb-24pt">Your Score: 350</h1>
+        <a href="{{ prefix or '' }}student-take-quiz.html" class="btn btn-outline-white">Restart quiz</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'pages/_navbar-quiz-result.html' %}
+
+<div class="{{ containerClass or 'container' }}">
+  {% include 'pages/_student-quiz-result-details.partial.html' %}
+</div>

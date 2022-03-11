@@ -1,0 +1,10 @@
+// generating classes based on other colors used in the theme
+@each  $key, $color in ($hover-colors) {
+    .btn-#{$key}{
+        @include dashboard-hover{
+            color: #fff;
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+    }
+}

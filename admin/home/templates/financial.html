@@ -1,0 +1,254 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="contents">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Financial Performance Dashboard</h4>
+                    </div>
+                </div>
+                <form action="" method="post" id="search_form" class="d-none">
+                    {% csrf_token %}
+                    <input type="hidden" id="type1" name="type1" value="{{ type1 }}">
+                    <input type="hidden" id="type2" name="type2" value="{{ type2 }}">
+                    <input type="hidden" id="type3" name="type3" value="{{ type3 }}">
+                </form>
+                <div class="col-xl-6 col-lg-12 mb-25">
+                    <div class="card revenueChartTwo broder-0">
+                        <div class="card-header">
+                            <h6>Sales</h6>
+                            <div class="card-extra">
+                                <ul class="card-tab-links mr-3 nav-tabs nav" role="tablist">
+                                    <li>
+                                        <a class="{% if type1 == 1 %}active{% endif %}" href="#tl_revenue-today" data-toggle="tab" onclick="setType(1,1)"
+                                            role="tab" aria-selected="false">Today</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type1 == 2 %}active{% endif %}" href="#tl_revenue-week" data-toggle="tab" role="tab" onclick="setType(1,2)"
+                                           aria-selected="false">Week</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type1 == 3 %}active{% endif %}" href="#tl_revenue-month" data-toggle="tab" onclick="setType(1,3)"
+                                           role="tab" aria-selected="false">Month</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type1 == 4 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(1,4)"
+                                           aria-selected="true">Year</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type1 == 5 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(1,5)"
+                                           aria-selected="true">All time</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 px-20">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="sale_board" role="tabpanel"
+                                     aria-labelledby="tl_revenue-today-tab">
+                                    <div class="cashflow-display cashflow-display2 d-flex">
+                                        <div class="cashflow-display__single">
+                                            <span class="cashflow-display__title">Today Revenue</span>
+                                            <h3 class="cashflow-display__amount">${{ revenue }}<span
+                                                    class="color-success fs-14 fw-600 mr-10"><i
+                                                    class="las la-arrow-up"></i> <strong>15%</strong></span></h3>
+                                        </div>
+                                        <div class="cashflow-display__single">
+                                            <span class="cashflow-display__title">Yesterday Revenue</span>
+                                            <h3 class="cashflow-display__amount">${{ revenue1 }}<span
+                                                    class="color-danger fs-14 fw-600 mr-10"><i
+                                                    class="las la-arrow-down"></i> <strong>12%</strong></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 mb-25">
+                    <div class="card revenueChartTwo broder-0">
+                        <div class="card-header">
+                            <h6>Costs of good sold</h6>
+                            <div class="card-extra">
+                                <ul class="card-tab-links mr-3 nav-tabs nav" role="tablist">
+                                    <li>
+                                        <a class="{% if type2 == 1 %}active{% endif %}" href="#tl_revenue-today" data-toggle="tab" onclick="setType(2,1)"
+                                            role="tab" aria-selected="false">Today</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type2 == 2 %}active{% endif %}" href="#tl_revenue-week" data-toggle="tab" role="tab" onclick="setType(2,2)"
+                                           aria-selected="false">Week</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type2 == 3 %}active{% endif %}" href="#tl_revenue-month" data-toggle="tab" onclick="setType(2,3)"
+                                           role="tab" aria-selected="false">Month</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type2 == 4 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(2,4)"
+                                           aria-selected="true">Year</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type2 == 5 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(2,5)"
+                                           aria-selected="true">All time</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- ends: .card-header -->
+                        <div class="card-body pt-0 px-20">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="cost_board" role="tabpanel"
+                                     aria-labelledby="tl_revenue-today-tab">
+                                    <div class="cashflow-display cashflow-display2 d-flex">
+                                        <div class="cashflow-display__single">
+                                            <span class="cashflow-display__title">This Month</span>
+                                            <h3 class="cashflow-display__amount">${{ revenue2 }}<span
+                                                    class="color-success fs-14 fw-600 mr-10"><i
+                                                    class="las la-arrow-up"></i> <strong>15%</strong></span></h3>
+                                        </div>
+                                        <div class="cashflow-display__single">
+                                            <span class="cashflow-display__title">Last Month</span>
+                                            <h3 class="cashflow-display__amount">${{ revenue3 }}<span
+                                                    class="color-danger fs-14 fw-600 mr-10"><i
+                                                    class="las la-arrow-down"></i> <strong>12%</strong></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-25">
+                    <div class="card broder-0">
+                        <div class="card-header">
+                            <h6>Income And Expenses<span>Nov 23, 2019 - Nov 29, 2019</span></h6>
+                            <div class="card-extra">
+                                <ul class="card-tab-links mr-3 nav-tabs nav" role="tablist">
+                                    <li>
+                                        <a class="{% if type3 == 1 %}active{% endif %}" href="#tl_revenue-today" data-toggle="tab" onclick="setType(3,1)"
+                                            role="tab" aria-selected="false">Today</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type3 == 2 %}active{% endif %}" href="#tl_revenue-week" data-toggle="tab" role="tab" onclick="setType(3,2)"
+                                           aria-selected="false">Week</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type3 == 3 %}active{% endif %}" href="#tl_revenue-month" data-toggle="tab" onclick="setType(3,3)"
+                                           role="tab" aria-selected="false">Month</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type3 == 4 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(3,4)"
+                                           aria-selected="true">Year</a>
+                                    </li>
+                                    <li>
+                                        <a class="{% if type3 == 5 %}active{% endif %}" href="#tl_revenue-year" data-toggle="tab" role="tab" onclick="setType(3,5)"
+                                           aria-selected="true">All time</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 pb-0">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="incExp-year" role="tabpanel"
+                                     aria-labelledby="incExp-year-tab">
+                                    <div class="inEx-wrap d-flex">
+                                        <div class="inEx-box">
+                                            <div class="inEx__single">
+                                                <span class="inEx-subtitle">Revenue</span>
+                                                <div class="inEx__info d-flex align-items-end">
+                                                    <h3 class="inEx__title">${{ revenue4 }}</h3>
+                                                    <span class="inEx-tail color-light">
+                                                          <span class="inEx__percentage color-success">
+                                                              <span data-feather="arrow-up"></span>37%</span>
+                                                          Since last month
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <!-- ends: .inEx__single -->
+                                            <div class="inEx__single">
+                                                <span class="inEx-subtitle">Gross</span>
+                                                <div class="inEx__info d-flex align-items-end">
+                                                    <h3 class="inEx__title">${{ revenue5 }}</h3>
+                                                    <span class="inEx-tail color-light">
+                                                          <span class="inEx__percentage color-danger">
+                                                              <span data-feather="arrow-down"></span>25%</span>
+                                                          Since last month
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <!-- ends: .inEx__single -->
+                                            <div class="inEx__single">
+                                                <span class="inEx-subtitle">Expenses</span>
+                                                <div class="inEx__info d-flex align-items-end">
+                                                    <h3 class="inEx__title">${{ revenue6 }}</h3>
+                                                    <span class="inEx-tail color-light">
+                                                          <span class="inEx__percentage color-success">
+                                                              <span data-feather="arrow-up"></span>25%</span>
+                                                          Since last month
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <!-- ends: .inEx__single -->
+                                            <div class="inEx__single">
+                                                <span class="inEx-subtitle">Net profit</span>
+                                                <div class="inEx__info d-flex align-items-end">
+                                                    <h3 class="inEx__title">${{ revenue7 }}</h3>
+                                                    <span class="inEx-tail color-light">
+                                                          <span class="inEx__percentage color-success">
+                                                              <span data-feather="arrow-up"></span>17%</span>
+                                                          Since last month
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <!-- ends: .inEx__single -->
+                                        </div>
+                                        <div class="inEx-chart">
+                                            <div class="parentContainer">
+                                                <div>
+                                                    <canvas id="barChartInEx"></canvas>
+                                                </div>
+                                            </div>
+                                            <ul class="legend-static">
+                                                <li style="display: inline-flex; align-items: center;">
+                                                    <span style="background-color: rgb(95, 99, 242);"></span>Revenue
+                                                </li>
+                                                <li style="display: inline-flex; align-items: center;">
+                                                    <span style="background-color: rgb(255, 105, 165);"></span>Gross
+                                                </li>
+                                                <li style="display: inline-flex; align-items: center;">
+                                                    <span style="background-color: rgb(250, 139, 12);"></span>expenses
+                                                </li>
+                                                <li style="display: inline-flex; align-items: center;">
+                                                    <span style="background-color: rgb(32, 201, 151);"></span>Net profit
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+
+    function setType(key, val) {
+        if (key*1 == 1) {
+            $("#type1").val(val)
+        } else if(key*1 == 2) {
+            $("#type2").val(val)
+        } else {
+            $("#type3").val(val)
+        }
+        $("#search_form").submit()
+    }
+
+</script>
+{% endblock %}
+

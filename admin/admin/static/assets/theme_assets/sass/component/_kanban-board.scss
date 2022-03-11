@@ -1,0 +1,539 @@
+.kanban-board {
+    .card-header h4 {
+        @include ofs(20px, lh(20px, 24px), 500);
+    }
+
+    @include e(card) {
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+
+        .kanban-header {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 1699px) {
+            .cus-xl {
+                flex-basis: 0;
+                flex-grow: 1;
+                min-width: 0;
+                max-width: 100%;
+            }
+        }
+
+        @media (min-width: 1399px) {
+            .cus-xl {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+
+    }
+
+    @include e(body) {
+        padding: 14px 20px 14px;
+        border-radius: 5px;
+        @extend .bg-lighter;
+        margin-top: 16px;
+        margin-bottom: 14px;
+
+        h6 {
+            @include ofs(16px, lh(16px, 20px), 500);
+            margin-bottom: 14px;
+            padding-top: 6px;
+        }
+    }
+
+    @include e(body) {
+        li {
+            padding: 16px 15px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 2px rgba(#9299BB, .15);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: $transition-base;
+
+            &:hover {
+                background-color: rgba(white, 0.20);
+            }
+
+        }
+    }
+
+    @include e(inline-body) {
+        @extend .color-gray;
+        @include ofs(15px, lh(15px, 20px), 500);
+    }
+
+    @include e(add-card) {
+        cursor: pointer;
+
+        p {
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-bottom: 0;
+            @extend .color-gray;
+            @include ofs(15px, lh(15px, 20px), 500);
+            display: flex;
+            align-items: center;
+            transition: $transition-base;
+
+            &:hover {
+                background: rgba(#9299BB, 0.20);
+            }
+
+            svg {
+                @extend .color-gray;
+                width: 18px;
+                height: 18px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+/* Lists */
+
+.kanban-container {
+    display: flex;
+    align-items: start;
+    overflow-x: auto;
+    height: calc(100vh - 13.6rem);
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) rgba(146, 153, 184, .30);
+    transition: $transition-base;
+
+    &::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(146, 153, 184, .30);
+    }
+
+    &:hover {
+
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $light-gray;
+            border-radius: 6px;
+            border: 3px solid $light-gray;
+        }
+    }
+}
+
+.kanban-list {
+    flex: 0 0 284px;
+    display: flex;
+    flex-direction: column;
+    @extend .bg-lighter;
+    max-height: calc(100vh - 15.8rem);
+    height: 100%;
+    border-radius: 5px;
+    margin-right: 20px;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    .list-title {
+        @include ofs(16px, lh(16px, 20px), 500);
+        @extend .color-dark;
+        padding: 9px 20px 9px 20px;
+    }
+
+    @include xxs {
+        flex: 0 0 230px;
+    }
+}
+
+
+
+.kanban-items {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    padding: 0 20px 0 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) transparent;
+    transition: $transition-base;
+
+    li {
+        @extend .color-gray;
+        @include ofs(15px, lh(15px, 20px), 500);
+        background-color: #fff;
+        padding: 16px 15px;
+        border-radius: 4px;
+        word-wrap: break-word;
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba($light-gray, .10);
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        button span {
+            @extend .color-gray;
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        border-radius: 6px;
+        margin-right: -10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($light-gray, .30);
+        border-radius: 6px;
+    }
+
+    .lists-items-title {
+        flex: 1;
+    }
+}
+
+.add-card-btn {
+    @extend .content-center;
+    @extend .color-gray;
+    @include ofs(13px, lh(13px, 20px), 500);
+    border-radius: 4px;
+    padding: 10px 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+    margin: 10px 20px 10px 20px;
+    background: #E3E6EF;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #cdd2d4;
+        color: #4d4d4d;
+    }
+
+    svg {
+        @extend .color-gray;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+    }
+}
+
+
+.add-card-btn::after,
+.add-list-btn::after {
+    content: '...';
+}
+
+.kanban-tops svg {
+    width: 24px;
+    color: $text-grey1;
+    margin-right: 18px;
+}
+
+.list__add-card {
+    padding: 14px 20px 14px;
+    border-radius: 5px;
+    @extend .bg-lighter;
+}
+
+.kanban-board__add-card button {
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 0;
+    @extend .color-gray;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    width: 100%;
+    @extend .bg-lighter;
+
+    &:hover {
+        background: rgba(146, 153, 187, 0.2);
+    }
+
+    svg {
+        @extend .color-gray;
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+    }
+}
+
+
+//kanban Board
+
+.kanban-modal__list {
+    .checkbox-group__single {
+        @include xxs {
+            flex: 3;
+        }
+    }
+
+    .dropdown-menu {
+        padding: 10px 0;
+
+        .dropdown-item {
+            padding: 6px 15px;
+        }
+    }
+}
+
+.kanban-modal__header-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 27px 30px 17px 30px;
+
+    .close svg {
+        color: $light-gray;
+    }
+}
+
+.kanban-modal__header {
+    .modal-title {
+        @extend .color-dark;
+        @include ofs(20px, lh(20px, 24px), 500);
+        margin-bottom: 6px;
+    }
+
+    span {
+        color: $text-grey1;
+        @include ofs(14px, lh(14px, 22px), 400);
+    }
+}
+
+.kanban-modal__body {
+    padding: 0 30px 30px 30px;
+}
+
+.kanban-modal__card {
+    background-color: rgba(#111217, 0.60);
+}
+
+.kanban-modal__form {
+    label {
+        @extend .color-dark;
+        @include ofs(16px, lh(16px, 20px), 500);
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        border-radius: 4px;
+        @extend .bg-lighter;
+        resize: none;
+        min-height: 88px;
+
+        &::placeholder {
+            color: $gray;
+            @include ofs(15px, lh(15px, 20px), 400);
+            padding: 4px 0px;
+        }
+    }
+
+    button {
+        padding: 0 25px 0 20px;
+    }
+}
+
+.kanban-modal__research {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    h6 {
+        @include ofs(16px, lh(16px, 20px), 500);
+        @extend .color-dark;
+    }
+
+    button {
+        @extend .bg-lighter;
+        border-radius: 5px;
+        @extend .color-gray;
+        @include ofs(14px, lh(14px, 20px), 500);
+        height: 38px;
+        @extend .content-center;
+        text-transform: capitalize;
+    }
+}
+
+.kanban-modal__progress {
+    .progress-wrap {
+        margin-bottom: 11px;
+
+        .progress-percentage {
+            @include ofs(12px, lh(12px, 16px), 500);
+            @extend .color-gray;
+        }
+    }
+}
+
+.kanban-modal__list {
+
+    button {
+        @extend .bg-lighter;
+        border-radius: 5px;
+        @extend .color-gray;
+        @include ofs(14px, lh(14px, 20px), 500);
+        height: 36px;
+        @extend .content-center;
+        padding: 0 37px;
+        text-transform: capitalize;
+        border: 1px solid transparent;
+    }
+
+    ul {
+        margin-bottom: 10px;
+    }
+
+    .checkbox-group {
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        border-radius: 2px;
+        padding: 4px 12px;
+
+        .dropdown {
+            visibility: hidden;
+            opacity: 0;
+            transition: $transition-base;
+
+            svg {
+                color: $text-grey1;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        &:hover {
+            @extend .bg-lighter;
+
+            .dropdown {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+        @extend .bg-success;
+        @extend .border-success;
+    }
+
+    .custom-checkbox input[type="checkbox"]+label {
+        @extend .color-gray;
+        @include ofs(14px, null, 400);
+        text-transform: capitalize;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label {
+        color: $light-gray;
+    }
+}
+
+//Popup Overlay
+.popup-overlay {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    border-radius: 4px;
+    min-height: 116px;
+    box-shadow: 0 5px 5px rgba($light-gray, .10);
+    display: none;
+
+    &.active {
+        visibility: visible;
+        text-align: center;
+        display: block;
+    }
+}
+
+
+.popup-content {
+    visibility: hidden;
+    transition: $transition-base;
+    transition: none;
+
+    &.active {
+        visibility: visible;
+    }
+
+    textarea {
+        resize: none;
+    }
+}
+
+.kanban-items li {
+    transition: $transition-base;
+
+    .open-popup-modal {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &.active {
+        .open-popup-modal {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+.open-popup-modal {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+
+    svg {
+        @extend .color-gray;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.close-popup-modal {
+    text-transform: capitalize;
+}
+
+.is-open {
+    transition: $transition-base;
+    overflow: hidden;
+
+    &:after {
+        content: "";
+        display: block;
+        position: fixed;
+        padding: 100px 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba($dark, 0.30);
+        z-index: 9998
+    }
+}

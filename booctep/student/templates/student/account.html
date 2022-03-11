@@ -1,0 +1,858 @@
+
+
+{% extends "student/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Account" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<style>
+
+    [dir="rtl"] .sk-double-bounce {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        margin: 40px auto;
+    }
+
+    [dir="rtl"] .sk-double-bounce .sk-child {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: sk-doubleBounce 2s ease-in-out infinite;
+        animation: sk-doubleBounce 2s ease-in-out infinite;
+    }
+
+    [dir="rtl"] .sk-double-bounce .sk-double-bounce2 {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+
+
+
+    [dir="ltr"] .sk-double-bounce {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        margin: 40px auto;
+    }
+
+    [dir="ltr"] .sk-double-bounce .sk-child {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: sk-doubleBounce 2s ease-in-out infinite;
+        animation: sk-doubleBounce 2s ease-in-out infinite;
+    }
+
+    [dir="ltr"] .sk-double-bounce .sk-double-bounce2 {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    @-webkit-keyframes sk-doubleBounce {
+        0%,
+        to {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes sk-doubleBounce {
+        0%,
+        to {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1);
+        }
+    }
+
+    [dir="ltr"] .preloader {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    [dir="ltr"] .preloader .sk-child {
+        background-color: #fff;
+    }
+
+
+    .loading::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        /* Adding animation */
+        animation: loading 1s infinite;
+    }
+
+    /* Loading Animation */
+
+    @keyframes loading {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+
+    .dancin-bc {
+        background: white !important;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .dancing-lao {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .dancing-lao:after {
+        display: block;
+        width: 150px;
+        height: 2px;
+        margin-top: 10px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        background: rgb(43, 148, 209);
+        content: "";
+        -webkit-animation: 1s border infinite;
+        animation: 1s border infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+    }
+
+    .dancing-lao .left-dots {
+        position: absolute;
+        bottom: 20%;
+        left: 20%;
+    }
+
+    .dancing-lao .right-dots {
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    .dancing-lao .dot {
+        display: inline-block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(43, 148, 209);
+        opacity: 0;
+    }
+
+    .dancing-lao .dot-1 {
+        -webkit-animation: 1s dot infinite;
+        animation: 1s dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .dot-2 {
+        -webkit-animation: 1s dot-2 infinite;
+        animation: 1s dot-2 infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .circle-dot {
+        display: inline-block;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid rgb(43, 148, 209);
+        -webkit-animation: 1s cirle-dot infinite;
+        animation: 1s cirle-dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+        opacity: 0;
+    }
+
+    .dancing-lao img {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        margin: auto;
+        width: 90px;
+        height: 80px;
+        margin-bottom: 20px;
+        -webkit-animation: 1s dance infinite;
+        animation: 1s dance infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
+
+    @-webkit-keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @-webkit-keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @-webkit-keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+
+
+</style>
+
+
+
+
+<style>
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+.btn-primary-dark{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+.form-control{
+    background-color: #323741 !important;
+    border: 1px solid  #21242b !important;
+    color: rgb(235, 235, 235);
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #21242b !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control{
+    background-color: #323741 !important;
+    border: 1px solid  #21242b !important;
+    color: rgb(235, 235, 235);
+}
+
+.form-control-dark:hover{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.custom-file-dark label{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: left !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+.custom-file-label{
+    float: right !important;
+    border: 1px solid  #dddddd !important;
+}
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+.form-control{
+    background-color: #f8f8f8 !important;
+    border: 1px solid  #dddddd !important;
+    color: rgb(29, 61, 90);
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control-dark label::selection{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+
+
+</style>
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+
+.form-group label{
+    float: right !important;
+}
+
+.lifft{
+    margin-left: 20px !important;
+}
+
+.custom-file-label{
+    float: right !important;
+    border: 1px solid  #dddddd !important;
+}
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    float: right !important;
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #21242b !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control{
+    background-color: #f8f8f8 !important;
+    border: 1px solid  #dddddd !important;
+    color: rgb(29, 61, 90);
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control-dark label::selection{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.custom-file-dark label{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-label{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600; 
+    font-size: xx-large;
+}
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: left !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.btn-primary{
+    float: right !important;
+}
+</style>
+
+{% endif %}
+
+    {% load static %}
+    <div class=" page__container " style="">
+        <div class="col-md-5 pt-3" style="">
+            <div class="form-group" style="margin-top: 25px;">
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الصورة الشخصية</b></label>
+                <br />
+                <br />
+                <div class="media align-items-center">
+                    <a href="" class="media-left">
+                        <img src="{% static user.image %}" style="border: 2px solid rgb(197, 189, 189); height:56px;" alt="people"
+                             id="photo_img"
+                             width="56" class="rounded-circle lifft"/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file custom-file-dark">
+                            <label class="custom-file-label" for="inputGroupFile01" style="float: right !important;">قم باختيار صورة ( يفضل مقاس ٦٤ * ٦٤ )</label>
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="changeImg()">
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <label class="form-label mediabout mediabout-dark" style="">Your photo</label>
+                <br />
+                <br />
+                <div class="media align-items-center">
+                    <a href="" class="media-left">
+                        <img src="{% static user.image %}" style="border: 2px solid rgb(197, 189, 189); height:56px;" alt="people"
+                             id="photo_img"
+                             width="56" class="rounded-circle lifft"/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file custom-file-dark">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="changeImg()">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الأسم الأول</b></label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.first_name }}" id="first_name" name="first_name"
+                       placeholder="قم بإدخال اسمك الأول" onchange="setMarkChange()">
+                {% else %}
+                <label class="form-label mediabout mediabout-dark">your first name</label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.first_name }}" id="first_name" name="first_name"
+                       placeholder="enter your first name..." onchange="setMarkChange()">
+                {% endif %}
+            </div>
+            <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الأسم الأخير</b></label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.last_name }}" id="last_name" name="last_name"
+                       placeholder="قم بإدخال اسمك الأخير" onchange="setMarkChange()">
+                {% else %}
+                <label class="form-label mediabout mediabout-dark">your last name</label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.last_name }}" id="last_name" name="last_name"
+                       placeholder="enter your last name..." onchange="setMarkChange()">
+                {% endif %}
+            </div>
+            <div class="form-group " style="margin-top: 5px !important;margin-bottom: 25px;">
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> البريد الإلكتروني</b></label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.email }}" id="email" name="email" readonly
+                       placeholder="قم بإدخال البريد الإلكتروني">
+                {% else %}
+                <label class="form-label mediabout mediabout-dark">your E-Mail</label>
+                <input type="text" class="form-control form-control-dark" value="{{ user.email }}" id="email" name="email" readonly
+                       placeholder="enter your email">
+                {% endif %}
+            </div>
+
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <button type="submit" class="btn btn-primary btn-primary-dark" onclick="return updateUser()">حفظ البيانات</button>
+            {% else %}
+            <button type="submit" class="btn btn-primary btn-primary-dark" onclick="return updateUser()">Save changes</button>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="sweet-overlay " tabindex="-1" style="opacity: 1.09; display: none;" id="rating_modal_back"></div>
+    <div class="sweet-alert sweet-alert-dark showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="result_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="margin-top: -169px; display: none;">
+        <div class="sa-icon sa-warning pulseWarning mediabout mediabout-dark" style="display: none;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <div class="sa-icon sa-success animate " style="display: block;">
+            <span class="sa-line sa-tip animateSuccessTip "></span>
+            <span class="sa-line sa-long animateSuccessLong "></span>
+            <div class="sa-placeholder "></div>
+            <div class="sa-fix"></div>
+        </div>
+        <div class="sa-icon sa-custom " style="display: none;"></div>
+        <h2 id="result_title">Information has been changed</h2>
+        <p style="display: block;" id="result_content">Great</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm btn-primary btn-primary-dark" tabindex="1" onclick="hideResultModal()"
+                        style="display: inline-block;">
+                    OK
+                </button>
+                <div class="la-ball-fall " style="">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        let has_change = 0
+
+        // to detect some changes here...
+        function setMarkChange() {
+            has_change = 1
+        }
+
+        $("#inputGroupFile01").on('change', function (e) {
+            var reader = new FileReader()
+            reader.onload = function (e) {
+                $("#photo_img").attr('src', e.target.result)
+            }
+            reader.readAsDataURL(this.files[0]);
+            setMarkChange()
+        })
+
+        function showAlert(type, msg) {
+            if (type * 1 == 0) { //error
+                $(".sa-success").css({
+                    'display': 'none'
+                })
+                $(".sa-warning mediabout mediabout-dark").css({
+                    'display': 'block'
+                })
+                $("#result_title").html('عذرا لم تقم بتغيير شيء')
+            } else {
+                $(".sa-success").css({
+                    'display': 'block'
+                })
+                $(".sa-warning").css({
+                    'display': 'none'
+                })
+                $("#result_title").html('Success!')
+            }
+
+            $("#result_content").html(msg)
+            $("#result_modal").css({
+                'display': 'block'
+            })
+            $("#rating_modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function hideResultModal() {
+            $("#result_modal").css({
+                'display': 'none'
+            })
+            $("#rating_modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function changeImg() {
+            imgPath = $('#inputGroupFile01').val();
+            $("[for='inputGroupFile01']").html(imgPath);
+            setMarkChange()
+        }
+
+        function updateUser() {
+            if(has_change == 0) {
+                showAlert(0, "يرجى المحاولة مرة أخرى وشكرا")
+                return;
+            }
+            if ($("#first_name").val() == "") {
+                showAlert(0, "Please enter the first name")
+                return false
+            } else if ($("#last_name").val() == "") {
+                showAlert(0, 'Please enter the last name')
+                return false
+            } else if ($("#email").val() == "") {
+                showAlert(0, 'Please enter the correct email')
+                return false
+            }
+            var formData = new FormData();
+            formData.append('file', $("#inputGroupFile01")[0].files[0]);
+            formData.append('first_name', $("#first_name").val());
+            formData.append('last_name', $("#last_name").val());
+            formData.append('email', $("#email").val());
+            // Ajax start
+            var action = "/update-user";
+            $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data.msg == "success") {
+                        showAlert(1, 'Save successfully!!!')
+                        return false
+                    } else if (data.msg == 'already') {
+                        showAlert(0, 'Email is already exist')
+                        return false;
+                    } else {
+                        showAlert(0, data.msg)
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            return false
+        }
+    </script>
+
+{% endblock %}

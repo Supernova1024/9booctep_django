@@ -1,0 +1,244 @@
+// Form With icon
+.with-icon {
+    position: relative;
+    .form-control {
+        padding-left:40px;
+    }
+    span {
+        @include ofs(18px, null, null);
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+        top: 50%;
+        left: 0;
+        transform: translate(0%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// Utility Class
+//Input Height
+.form-control {
+    &.ih-large {
+        height: 60px;
+        @extend .content-center;
+    }
+
+    &.ih-medium {
+        height: 48px;
+        @extend .content-center;
+    }
+
+    &.ih-small {
+        height: 38px;
+        @extend .content-center;
+    }
+}
+
+
+//Input Placeholder Color
+.ip-light,
+.form-group .ip-light {
+    &::placeholder {
+        color: #9299B8;
+    }
+}
+
+.ip-gray,
+.form-group .ip-gray {
+    &::placeholder {
+        color: #5A5F7D;
+    }
+}
+
+
+//Input label Color
+
+.il-gray {
+    color: #5A5F7D;
+}
+
+.il-dark {
+ color: #272B41;
+}
+
+//button
+
+.layout-button{
+    margin:-7px;
+    display: flex;
+    flex-wrap: wrap;
+    button{
+        @include ofs(14px, lh(14px, 25px), 500);
+        height: 44px;
+        @extend .content-center;
+        text-transform: capitalize;
+        margin: 7px;
+        &.btn-primary{
+            box-shadow: 0 3px 5px rgba(#20C997, .05);
+        }
+    }
+}
+
+
+//textarea
+.form-element-textarea textarea{
+    height: 80px;
+    border: 1px solid #E3E6EF;
+    border-radius: 4px;
+    resize: none;
+}
+
+
+//Form Element
+.form-element{
+    .atbd-select .select2-selection{
+        min-height: 48px;
+    }
+    .atbd-select.disabled .form-control{
+        border: 1px solid #e3e6ef;
+        background: #EFF0F3;
+        color: #9299B8;
+    }
+    .custom-file-label {
+        overflow: hidden;
+        height: 48px;
+        padding: 0.375rem 0.75rem;
+        line-height: 33px;
+        font-size: 14px;
+        color: #9299B8;
+        border: 1px solid #E3E6EF;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+        &::after{
+            height: 48px;
+            padding: 0 23px;
+            line-height: 1.5;
+            color: #9299B8;
+            content: "Browse";
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+}
+
+
+// .checkbox/.radio
+
+.form-element-radioChecks{
+    .custom-radio input[type="radio"] + label:before{
+        top: 44%;
+    }
+
+    .custom-checkbox.disabled input[type="checkbox"]:checked + label:after {
+        background-color: #5f63f2;
+    }
+    .custom-radio.disabled input[type="radio"] + label{
+        @extend .color-gray;
+    }
+}
+
+
+// Select
+
+.select-style2{
+    .select2-container .select2-selection--single .select2-selection__rendered,
+    .select2-container--default .select2-selection--single .select2-selection__placeholder{
+        color: #9299B8;
+    }
+}
+
+.alert2,
+.option2{
+    border: 1px solid #E3E6EF;
+    box-shadow: none;
+    padding: 16px 15px;
+
+    .select2-results__option{
+        padding:0;
+        color: #5A5F7D;
+        @include ofs(14px, lh(14px, 35px), 400);
+    }
+    .select2-search--dropdown{
+        padding: 0;
+    }
+    .select2-search--dropdown .select2-search__field {
+        height: 48px;
+        border: 1px solid #E3E6EF;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px rgba(146, 153, 184, .15);
+    }
+    .select2-results__option[aria-selected=true],.select2-results__option--highlighted[aria-selected]{
+        background-color: transparent;
+    }
+
+    .select2-results>.select2-results__options {
+        padding: 13px 0;
+    }
+}
+
+// datepicker
+.ui-datepicker-multi{
+    z-index: 11 !important;
+    @media (min-width: 767px) {
+        padding-right: 0;
+     }
+    .ui-datepicker-calendar tbody td a{
+        width: 32px;
+        height: 32px;
+        margin: 2px;
+    }
+}
+
+
+//Text Editor
+
+.formElement-editor{
+    .trumbowyg-editor,
+    .trumbowyg-textarea{
+        min-height: 160px;
+    }
+    .trumbowyg-button-pane{
+        background-color: transparent;
+        border-bottom:1px solid #F1F2F6;
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+    }
+    .trumbowyg-box{
+        border: 1px solid #F1F2F6;
+        border-radius: 4px;
+    }
+    .trumbowyg-button-pane::after{
+        background:#F1F2F6;
+        display: none;
+    }
+    .trumbowyg-button-pane .trumbowyg-button-group::after{
+        background:#F1F2F6;
+        display: none;
+    }
+    .trumbowyg-box{
+        margin: 0;
+        min-height: 160px;
+    }
+    .trumbowyg-editor{
+        @include ofs(15px, null,null);
+    }
+}
+
+
+//color code
+.color-picker input{
+    padding: 9px 0;
+}

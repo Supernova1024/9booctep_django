@@ -1,0 +1,128 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title=title, description="Toasts based notifications can be used to to show important alerts or information to users.") %}
+    <div class="row mb-16pt">
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-primary"
+          data-toggle="toastr"
+          data-toastr-type="primary"
+          data-toastr-title="Heads up!"
+          data-toastr-message="This alert needs your attention, but it is not super important.">
+          Primary
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-info"
+          data-toggle="toastr"
+          data-toastr-type="info"
+          data-toastr-title="Heads up!"
+          data-toastr-message="This alert needs your attention, but it is not super important.">
+          Info
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-warning"
+          data-toggle="toastr"
+          data-toastr-type="warning"
+          data-toastr-title="Heads up!"
+          data-toastr-message="Check below fields please.">
+          Warning
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-success"
+          data-toggle="toastr"
+          data-toastr-type="success"
+          data-toastr-title="Well Done!"
+          data-toastr-message="You successfully read this important alert message.">
+          Success
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-danger"
+          data-toggle="toastr"
+          data-toastr-type="error"
+          data-toastr-title="Oh snap!"
+          data-toastr-message="Change a few things up and try submitting again.">
+          Danger
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-light"
+          data-toggle="toastr"
+          data-toastr-type="info"
+          data-toastr-title="null"
+          data-toastr-message="Set the closeButton to true and the toast will have a close button."
+          data-toastr-time-out="0"
+          data-toastr-extended-time-out="0"
+          data-toastr-progress-bar="false"
+          data-toastr-close-button="true">
+          Close
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-light"
+          data-toggle="toastr"
+          data-toastr-type="info"
+          data-toastr-title="Can I add <em>icons</em>?"
+          data-toastr-message="Yes! check this <a href='https://github.com'>update</a>.">
+          HTML
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-light"
+          data-toggle="toastr"
+          data-toastr-type="success"
+          data-toastr-title="null"
+          data-toastr-message="Set the timeOut and extendedTimeOut options to 0 and the toast will persist until selected."
+          data-toastr-time-out="0"
+          data-toastr-extended-time-out="0"
+          data-toastr-progress-bar="false">
+          Sticky
+        </button>
+      </div>
+      <div class="col-auto">
+        <button 
+          type="button" 
+          class="btn btn-light"
+          data-toggle="toastr"
+          data-toastr-type="info"
+          data-toastr-title="null"
+          data-toastr-message="Use the jQuery show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into jQuery."
+          data-toastr-show-method="slideDown"
+          data-toastr-hide-method="slideUp"
+          data-toastr-close-method="slideUp">
+          Animation
+        </button>
+      </div>
+    </div>
+  {% endcall %}
+</div>

@@ -1,0 +1,61 @@
+<div class="mdk-box bg-primary js-mdk-box mb-0" data-effects="blend-background">
+  <div class="mdk-box__content">
+    <div class="hero py-64pt text-center text-sm-left">
+      <div class="{{ containerClass }}">
+        <h1 class="text-white">Angular Fundamentals</h1>
+        <p class="lead text-white-50 measure-hero-lead">It’s not every day that one of the most important front-end libraries in web development gets a complete overhaul. Keep your skills relevant and up-to-date with this comprehensive introduction to Google’s popular community project.</p>
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
+          <a href="{{ prefix or '' }}student-lesson.html" class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Watch trailer <i class="material-icons icon--right">play_circle_outline</i></a>
+          <a href="{{ prefix or '' }}pricing.html" class="btn btn-white">Start your free trial</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'pages/_course.navbar.html' %}
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+
+    <div class="page-separator">
+      <div class="page-separator__text">Table of Contents</div>
+    </div>
+    <div class="row mb-0">
+      <div class="col-lg-7">
+        {% import 'pages/_course.toc.html' as toc %}
+        {{ toc.component(tocListClass='list-group-flush', prefix=prefix) }}
+      </div>
+      <div class="col-lg-5 justify-content-center">
+        {% import 'components/card-unlock.html' as unlock %}
+        {{ unlock.component(label='Library', prefix=prefix) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  {% include 'pages/_course.description.html' %}
+</div>
+
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  {% include 'pages/_course.author.html' %}
+</div>
+
+<div class="page-section border-bottom-2">
+  {% include 'pages/_course.feedback.html' %}
+</div>
+
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  {% include 'pages/_course.rating.html' %}
+</div>
+
+<div class="page-section">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-heading">
+      <h4>Top Development Courses</h4>
+      <a href="{{ prefix }}library-development.html" class="ml-sm-auto text-underline">See Development Courses</a>
+    </div>
+    {% include '_courses.carousel.html' %}
+  </div>
+</div>

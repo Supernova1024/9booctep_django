@@ -1,0 +1,135 @@
+{% import 'components/pager.html' as pager %}
+{% import '_account-path-card.html' as path %}
+{% import '_course-card-simple.html' as course %}
+{% import '_courses.carousel.html' as carousel %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Featured Paths</div>
+</div>
+
+{% set items = [{
+  title: 'Angular',
+  image: 'angular',
+  description: 'Angular is a platform for building mobile and desktop web applications.',
+  favorite: true,
+  account: true
+}, {
+  title: 'Swift',
+  image: 'swift',
+  description: 'Swift is a powerful and intuitive programming language for macOS, iOS, watchOS, tvOS and beyond.'
+}, {
+  title: 'WordPress',
+  image: 'wordpress',
+  description: 'WordPress is open source software you can use to create a beautiful website, blog, or app.'
+}] %}
+
+<div class="row card-group-row mb-lg-8pt">
+  {% for item in items.slice(0, (featured_paths_limit or 3)) %}
+  <div class="{{ (featured_paths_col or paths_col) or 'col-sm-4' }} card-group-row__col">
+    {{ path.component(
+      class='card-group-row__card', 
+      title=item.title, 
+      description=item.description, 
+      image=item.image,
+      favorite=item.favorite,
+      account=item.account,
+      cta=false,
+      details=true,
+      prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {{ pager.pager() }}
+</div>
+
+<div class="page-separator">
+  <div class="page-separator__text">Development Paths</div>
+</div>
+
+{% set items = [{
+  title: 'React Native',
+  image: 'react'
+}, {
+  title: 'Dev Ops',
+  image: 'devops'
+}, {
+  title: 'Redis',
+  image: 'redis'
+}, {
+  title: 'MailChimp',
+  image: 'mailchimp',
+  open: true,
+  favorite: true
+}, {
+  title: 'Angular',
+  image: 'angular'
+}, {
+  title: 'Swift',
+  image: 'swift'
+}, {
+  title: 'WordPress',
+  image: 'wordpress'
+}] %}
+
+<div class="row card-group-row mb-lg-8pt">
+  {% for item in items %}
+  <div class="{{ paths_col or 'col-sm-4' }} card-group-row__col">
+    {{ path.component(
+      class='card-group-row__card', 
+      title=item.title, 
+      image=item.image,
+      open=item.open,
+      favorite=item.favorite,
+      cta=false,
+      prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {{ pager.pager() }}
+</div>
+
+<div class="page-separator">
+  <div class="page-separator__text">Design Paths</div>
+</div>
+
+{% set items = [{
+  title: 'Sketch',
+  image: 'sketch'
+}, {
+  title: 'Flinto',
+  image: 'flinto'
+}, {
+  title: 'Photoshop',
+  image: 'photoshop'
+}, {
+  title: 'Figma',
+  image: 'figma'
+}, {
+  title: 'Adobe XD',
+  image: 'xd'
+}, {
+  title: 'inVision App',
+  image: 'invision'
+}, {
+  title: 'Craft by inVision',
+  image: 'craft'
+}] %}
+
+<div class="row card-group-row mb-lg-8pt">
+  {% for item in items %}
+  <div class="{{ paths_col or 'col-sm-4' }} card-group-row__col">
+    {{ path.component(
+      class='card-group-row__card', 
+      title=item.title, 
+      image=item.image,
+      cta=false,
+      prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+{{ pager.pager() }}

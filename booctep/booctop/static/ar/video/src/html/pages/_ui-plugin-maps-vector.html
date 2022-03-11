@@ -1,0 +1,53 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Markers', description='Markers on the world map') %}
+    <div id="world-map-markers" data-toggle="vector-world-map-markers" class="vector-map-cnt card card-body"></div>    
+  {% endcall %}
+
+  {% call panel.component(title='GDP', description='Gross domestic product (GDP) by country') %}
+    <div id="world-map-gdp" data-toggle="vector-world-map-gdp" class="vector-map-cnt card card-body"></div>    
+  {% endcall %}
+
+  {% call panel.component(title='USA unemployment', description='The following example demonstrates the visualization of unemployment statistics in the USA by states and metropolitan areas in a 5-years time-period. The step-by-step process of creation of such a map is described in the <a href="/tutorials/data-visualization/">tutorial</a>. The code in Ruby used to convert data could be found in <a href="https://github.com/bjornd/jvectormap-examples/tree/master/us-unemployment">this repository</a>.') %}
+    <div id="usa-unemployment" data-toggle="vector-usa-unemployment" class="vector-map-cnt card card-body"></div>
+  {% endcall %}
+
+  {% call panel.component(title='Selection', description='The following example demonstrates the feature of jVectorMap that allows selection of regions and/or markers by user or programmatically. Specific styles could be assigned for the selected items. User selection is saved between page reloads in the local storage.') %}
+    <div id="regions-selection" data-toggle="vector-region-selection" class="vector-map-cnt card card-body"></div>
+  {% endcall %}
+
+  {% call panel.component(title='Election', description='French presidential election, 2007') %}
+    <div data-toggle="vector-france-elections">
+      <div id="france-2007" class="vector-map-cnt card card-body"></div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Election', description='French presidential election, 2012') %}
+    <div data-toggle="vector-france-elections">
+      <div id="france-2012" class="vector-map-cnt card card-body"></div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Random colors', description='The following example demonstrates how to set colors directly for the map. The map is painted to the random colors upon loading. You can click "Update colors" to generate new colors for the map.') %}
+    <button type="button" id="update-colors-button" class="btn btn-primary">Generate colors</button>
+    <div id="random-colors-map" data-toggle="vector-random-colors" class="vector-map-cnt card card-body"></div>
+  {% endcall %}
+
+  {% call panel.component(title='Map of the mall', description='Example of custom map created from SVG using converter available <a href="http://svgto.jvectormap.com/">here</a>. Please note that if you use map generated from SVG you need to position markers by pixel coordinates, not by latitude and longitude as in case of map generated from GIS data.') %}
+    <div id="mall-map" data-toggle="vector-mall-map" class="vector-map-cnt card card-body"></div>
+  {% endcall %}
+
+  {% call panel.component(title='Reverse projection', description='This example demonstrates the ability to convert pixel coordinates on map to the repsective latitude and longitude coordinates. Click on the map adds marker to the clicked point, click on the added marker removes it.') %}
+    <div id="projection-map" data-toggle="vector-projection-map" class="vector-map-cnt card card-body"></div>
+  {% endcall %}
+</div>

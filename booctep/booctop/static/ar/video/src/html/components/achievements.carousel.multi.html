@@ -1,0 +1,47 @@
+{% macro component(
+  control=true,
+  col_class='col-sm-6'
+) %}
+{% import 'components/achievement.html' as achievement %}
+
+{% set achievements = [{
+  image: 'assets/images/achievements/flinto.png',
+  logo: 'assets/images/paths/flinto_40x40@2x.png',
+  title: 'Flinto',
+  description: 'Introduction to The App Design Application',
+  date: 'Jun 5, 2018'
+}, {
+  image: 'assets/images/achievements/angular.png',
+  logo: 'assets/images/paths/angular_64x64.png',
+  title: 'Angular fundamentals',
+  description: 'Creating and Communicating Between Angular Components',
+  date: 'Jun 5, 2018'
+}] %}
+
+<div class="position-relative carousel-card">
+  <div 
+    class="js-mdk-carousel row d-block" 
+    id="carousel-achievements">
+    {% if control %}
+    <a 
+      class="carousel-control-next js-mdk-carousel-control" 
+      href="#carousel-achievements" 
+      role="button" 
+      data-slide="next">
+      <span 
+        class="carousel-control-icon material-icons" 
+        aria-hidden="true">keyboard_arrow_right</span>
+      <span class="sr-only">Next</span>
+    </a>
+    {% endif %}
+    <div class="mdk-carousel__content">
+      {% for item in achievements %}
+        <div class="col-12 {{ col_class }}">
+          {{ achievement.component(item=item, prefix=prefix) }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endmacro %}
+{{ component() }}

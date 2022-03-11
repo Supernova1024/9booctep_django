@@ -1,0 +1,1515 @@
+// Profile Sider
+.profile-sider {
+  .card {
+    max-width: 570px;
+    margin: 0 auto 1.5625rem;
+
+    .card-header {
+      align-items: flex-start;
+    }
+  }
+
+  .profile-overview {
+    margin: -8px -2px;
+  }
+}
+
+// Profile Grid
+.profile-content {
+  .card-body {
+    @include sm {
+      padding: 1rem;
+    }
+  }
+  @media (min-width: 1600px) {
+    .cos-lg-3 {
+      max-width: 25%;
+      flex: 0 0 25%;
+    }
+  }
+}
+
+// Account Profile Component
+
+.ap-nameAddress {
+  @include e(title) {
+    @include ofs(null, lh(16px, 20px), 500);
+  }
+
+  @include e(subTitle) {
+    @include ofs(null, lh(14px, 25px), 400);
+    @extend .color-light;
+    @extend .content-center;
+    padding-top: 2px;
+
+    svg {
+      width: 13px;
+      height: 15px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.ap-button button {
+  border-radius: $border-radius-lg;
+  @include ofs(13px, lh(13px, 37px), 500);
+  transition: $transition-base;
+  border-radius: $border-radius-lg;
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 16px;
+    margin-right: 8px;
+  }
+}
+
+.po-details {
+  margin: 8px 2px;
+
+  @include e(title) {
+    padding-bottom: 4px;
+  }
+
+  @include e(sTitle) {
+    @include ofs(14px, lh(14px, 25px), 400);
+    @extend .color-light;
+    text-transform: capitalize;
+  }
+}
+
+// Account Profile User Bio
+.user-bio {
+  @include e(content) {
+    @include ofs(15px, lh(15px, 25px), 400);
+    @extend .color-gray;
+    text-transform: capitalize;
+  }
+
+  .card-body {
+    padding-top: 18px;
+    padding-bottom: 21px;
+  }
+}
+
+.profile-header-title {
+  @include ofs(12px, lh(12px, 15px), 400);
+  @extend .color-light;
+  text-transform: uppercase;
+}
+
+.user-content-info {
+  @include e(item) {
+    @extend .color-gray;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    @include ofs(14px, lh(14px, 20px), 400);
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 11px;
+      @extend .color-light;
+    }
+  }
+}
+
+//Account Profile Tags
+.user-skils {
+  .card-body {
+    padding-top: 22px;
+  }
+}
+
+.user-skils-parent {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -6px -6px 0;
+  @include md {
+    margin: 0;
+  }
+
+  @include e(item) {
+    margin: 0 6px 6px 0;
+
+    a {
+      @extend .content-center;
+      padding: 5px 10px;
+      border: 1px solid $border-color;
+      @include ofs(11px, lh(11px, 14px), 500);
+      @extend .color-gray;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+//Profile Account Social Icon
+.db-social-parent {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px -10px;
+
+  @include e(item) {
+    margin: 5px 10px;
+
+    a {
+      border-radius: $rounded-pill;
+      box-shadow: 0px 5px 15px #9299b81a;
+      padding: 11px;
+      @extend .content-center;
+    }
+  }
+}
+
+//Profile Account Tab
+.ap-tab-header {
+  box-shadow: 0px 5px 20px #9299b808;
+  background: $white;
+  border-radius: 10px;
+
+  @include e(img) {
+    img {
+      border-radius: 10px;
+      box-shadow: 0px 5px 20px #9299b808;
+      @extend .bg-opacity-primary;
+      display: flex;
+
+      @include media-breakpoint-up(lg) {
+        height: 220px;
+      }
+    }
+  }
+}
+
+.ap-tab-main {
+  @include xxs {
+    justify-content: center;
+  }
+
+  .nav-item {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0;
+    @include ofs(15px, lh(15px, 22px), 400);
+    padding: 19px 0;
+    cursor: pointer;
+    @extend .color-light;
+    @include ssm {
+      font-size: 14px;
+    }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 100%;
+      height: 1.5px;
+      border-radius: 6px;
+      content: "";
+      opacity: 0;
+      visibility: hidden;
+      @extend .bg-primary;
+    }
+
+    @include xxs {
+      padding: 10px 0;
+    }
+
+    &.active {
+      @extend .color-primary;
+      font-weight: 500;
+
+      //   border-bottom: 1.5px solid $primary;
+      &:after {
+        opacity: 1;
+        visibility: visible;
+        @include ssm {
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+
+      @include xxs {
+        border-bottom: 0 none;
+      }
+    }
+  }
+}
+
+.projects-tab-content .nav-item .nav-link {
+  @include ofs(14px, lh(14px, 20px), 400);
+  padding: 20px 0;
+}
+
+//Time Chart
+.ap-po-details {
+  box-shadow: 0 5px 20px rgba($light, 0.03);
+  padding: 24px 25px 20px 25px;
+}
+
+.ap-content-wrapper {
+  .ap-po-details .overview-content p {
+    @extend .color-gray;
+  }
+
+  .ap-po-details-time {
+    span {
+      font-weight: 500;
+    }
+
+    small {
+      @extend .color-light;
+    }
+  }
+
+  .col-lg-4 {
+    @include xxl {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    @include xl {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.ap-po-details .overview-content p {
+  margin: 2px 0 24px;
+  color: $text-grey1;
+  @include ofs(14px, lh(14px, 25px), 400);
+  text-transform: capitalize;
+}
+
+.ap-po-details-time {
+  i {
+    @include ofs(14px, null, null);
+  }
+
+  strong {
+    @include ofs(14px, lh(14px, 20px), 500);
+  }
+  span {
+    @include lg {
+      display: block;
+    }
+  }
+
+  small {
+    color: $text-grey1;
+    white-space: nowrap;
+    @include ofs(13px, lh(13px, 22px), 400);
+  }
+}
+
+.ap-statistics-charts canvas {
+  @media (min-width: 1600px) {
+    height: fit-content !important;
+    width: 100% !important;
+  }
+}
+
+//Profile Account table
+.ap-product {
+  .table {
+    margin-bottom: 25px;
+  }
+
+  .table thead tr th {
+    border-top: none;
+    border-bottom: 1px solid $border-color;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 17px 25px;
+    @extend .color-dark;
+
+    &:first-child {
+      width: 60%;
+    }
+  }
+
+  .table tbody tr {
+    border-bottom: 1px solid $border-color;
+
+    &:hover {
+      td {
+        @extend .bg-normal;
+      }
+    }
+
+    td {
+      @extend .color-gray;
+      border: none;
+      padding: 17px 25px;
+      @include ofs(14px, null, 400);
+      text-transform: capitalize;
+    }
+  }
+}
+
+//Account Profile Post from
+.ap-content-wrapper .card-header svg {
+  width: 24px;
+}
+
+.ap-profile-image {
+  width: 46px;
+  height: 46px;
+}
+
+.ap-main-post {
+  @include e(header) {
+    padding-top: 14px;
+  }
+}
+
+.ap-post-content {
+  textarea {
+    resize: none;
+  }
+
+  @include e(title) {
+    .dropdown button {
+      height: unset;
+      padding: 0;
+
+      svg {
+        width: 22px;
+      }
+    }
+
+    h6 {
+      @include ofs(14px, lh(14px, 20px), null);
+
+      small {
+        @include ofs(13px, lh(13px, 22px), 400);
+        @extend .color-light;
+      }
+    }
+  }
+
+  @include e(p) {
+    @extend .color-gray;
+    @include ofs(15px, lh(15px, 25px), 400);
+  }
+
+  @include e(feedback) {
+    padding: 16px 0;
+
+    a {
+      @include ofs(13px, lh(13px, 22px), 400);
+      @extend .color-light;
+      text-transform: capitalize;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      svg {
+        width: 15px;
+        margin-right: 5px;
+        @extend .color-extra-light;
+      }
+    }
+  }
+}
+
+.ap-post-attach {
+  min-height: 60px;
+
+  a {
+    line-height: 16px;
+    padding: 7px 15px;
+    height: 30px;
+    background-color: #f4f5f7;
+    @extend .color-gray;
+    @include ofs(12px, null, 500);
+
+    &.ap-post-attach__drop {
+      padding: 0;
+      width: 48px;
+
+      svg {
+        width: 22px;
+      }
+    }
+  }
+
+  @include e(drop) {
+    svg {
+      margin-right: 0;
+      width: 18px;
+      height: auto;
+      @extend .color-extra-light;
+    }
+  }
+
+  @include e(btn) {
+    display: none;
+    height: 35px;
+    @extend .content-center;
+    text-transform: capitalize;
+    box-shadow: 0px 8px 13px #5f63f233;
+  }
+
+  @include e(headImg) {
+    border-radius: 8px;
+  }
+}
+
+.ap-post-content-comment {
+  button {
+    svg {
+      margin-right: 0;
+      width: 16px;
+
+      @include xs {
+        width: 12px;
+      }
+    }
+
+    box-shadow: 0px 8px 13px #5f63f233;
+
+    &.wh-50 {
+      padding: 0 !important;
+
+      @include xs {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  @include e(write) {
+    background-color: #f4f5f7;
+    height: 50px;
+    border-radius: 25px;
+    @extend .color-gray;
+    padding: 0 22px;
+    margin-left: 45px;
+
+    @include xs {
+      height: 40px;
+      padding: 0 10px;
+    }
+
+    input {
+      &:focus {
+        box-shadow: 0 0 !important;
+      }
+
+      @extend .color-gray;
+    }
+
+    input::placeholder {
+      font-size: 14px;
+      color: $light;
+      @include media-breakpoint-down(xs) {
+        font-size: 12px;
+      }
+    }
+
+    a {
+      @extend .color-extra-light;
+
+      svg {
+        width: 18px;
+
+        @include xs {
+          width: 14px;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 18px;
+
+        @include xs {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+//Account Profile Gallery
+.wig {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -4px;
+}
+
+.ap-post-gallery-top,
+.ap-post-gallery-bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 -4px;
+}
+
+.wig__item {
+  display: flex;
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding: 3.5px;
+
+  @include xl {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  @include md {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+
+  img {
+    border-radius: 6px;
+    width: 100%;
+  }
+}
+
+.ap-post-gallery__item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  margin: 4px;
+
+  img {
+    border-radius: 6px;
+    width: 100%;
+  }
+}
+
+.ap-post-gallery-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  @include e(content) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($dark, 0.5);
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: $white;
+    border-radius: 6px;
+    @include ofs(20px, lh(20px, 24px), 400);
+  }
+}
+
+//Account Profile Reply
+.ap-post-cc-reply {
+  p {
+    @include ofs(14px, lh(14px, 22px), 400);
+    text-transform: capitalize;
+  }
+
+  @include e(reaction) {
+    margin-top: 3px;
+    flex-wrap: wrap;
+
+    li {
+      @extend .color-extra-light;
+      @include ofs(13px, lh(13px, 22px), 400);
+      text-transform: capitalize;
+      position: relative;
+
+      &:not(:last-child) {
+        margin-right: 19px;
+
+        &:after {
+          content: "I";
+          right: -11px;
+          top: 0;
+          position: absolute;
+        }
+      }
+
+      a {
+        @extend .color-extra-light;
+
+        &:hover {
+          @extend .color-primary;
+        }
+      }
+    }
+  }
+
+  @include e(reply) {
+    padding-top: 19px;
+  }
+}
+
+.view-more-comment {
+  display: block;
+  margin-top: 18px;
+}
+
+//Friends
+.ffp {
+  padding: 13px 25px;
+  transition: $transition-base;
+
+  @include e(icon) {
+    width: 31px;
+    height: 31px;
+    @extend .content-center;
+    border-radius: 50%;
+    margin-right: 15px;
+
+    svg {
+      width: 15px;
+    }
+  }
+
+  @include e(title) {
+    h6 {
+      @include ofs(14px, lh(14px, 22px), 400);
+      @extend .color-gray;
+
+      span {
+        font-weight: 500;
+      }
+    }
+
+    p {
+      @include ofs(12px, lh(12px, 22px), 400);
+      @extend .color-extra-light;
+      margin-bottom: 0;
+      padding-top: 2px;
+    }
+  }
+
+  @include e(button) {
+    display: none;
+    transition: $transition-base;
+
+    svg {
+      @extend .color-extra-light;
+      width: 22px;
+    }
+  }
+
+  &.ffp--hover:hover {
+    border-radius: 4px;
+    box-shadow: 0px 15px 50px #9299b833;
+
+    .ffp__button {
+      display: block;
+    }
+  }
+}
+
+//Friends Following Widget
+.card {
+  .friends-widget,
+  .photo-gallery-widget,
+  .video-gallery-widget {
+    .card-header {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.ffw {
+  padding: 20px 25px;
+  width: 100%;
+  transition: $transition-base;
+  align-items: center;
+
+  @include xl {
+    flex-flow: column;
+    align-items: flex-start;
+    padding: 15px 25px;
+  }
+
+  @include md {
+    flex-flow: row;
+    align-items: center;
+  }
+
+  &:hover {
+    box-shadow: 0px 15px 50px #9299b833;
+
+    button {
+      @extend .bg-secondary;
+      color: $white !important;
+
+      &:hover {
+        @extend .bg-secondary;
+        color: $white !important;
+      }
+    }
+  }
+
+  button {
+    @include ofs(12px, lh(12px, 15px), 500);
+    text-transform: capitalize;
+    padding: 8px 14px;
+    border-radius: $border-radius;
+    border: 1px solid #f1f2f6;
+
+    &:focus {
+      box-shadow: 0 0;
+    }
+
+    &.friends-follow {
+      border: 1px solid #f1f2f6;
+      @extend .color-gray;
+
+      svg {
+        display: none;
+      }
+
+      &.following {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+
+  @include e(title) {
+    h6 {
+      @include ofs(14px, lh(14px, 20px), 600);
+    }
+
+    span {
+      @include ofs(14px, lh(14px, 22px), 400);
+      @extend .color-light;
+      padding-top: 6px;
+    }
+  }
+
+  @include e(imgWrapper) {
+    align-items: center;
+    display: flex;
+    @include xl {
+      //   margin-right: 0 !important;
+      //   margin-bottom: 8px;
+    }
+
+    @include md {
+      margin: 0 1rem 0 0 !important;
+    }
+  }
+
+  @include e(title){
+    margin: 5px 0;
+  }
+
+  > .d-flex {
+    @include xl {
+      margin-bottom: 15px;
+    }
+    @include md {
+      margin-bottom: 0;
+    }
+    @include xs {
+      margin: -5px 0;
+    }
+  }
+}
+
+//Widget Image Popup Gallery
+.wig-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  @include e(content) {
+    position: absolute;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border-radius: 6px;
+    background: rgba(39, 43, 65, 0.2);
+    flex-direction: column;
+    @extend .content-center;
+  }
+
+  @include e(iconWrapper) {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba($dark, 0.6);
+    @extend .content-center;
+
+    svg {
+      width: 9px;
+      color: $white;
+    }
+  }
+}
+
+.ap-post-form .card {
+  position: relative;
+  transform: scale(1);
+  transition: 0.3s;
+
+  .card-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .form-control::placeholder {
+    color: $light;
+  }
+}
+
+.ap-post-form {
+  &.highlighted {
+    .ap-post-attach__btn {
+      display: flex;
+    }
+
+    .card {
+      z-index: 9999;
+      transform: scale(1.004);
+    }
+  }
+
+  textarea:focus {
+    box-shadow: 0 0;
+  }
+}
+
+//Profile Setting
+
+.ps-tab .nav-link {
+  @include ofs(14px, lh(14px, 20px), 500);
+  border-radius: 6px;
+  text-transform: capitalize;
+  padding: 15px 10px;
+  @extend .color-light;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  transition: $transition-base;
+
+  svg {
+    width: 16px;
+    margin-right: 14px;
+  }
+
+  &:hover,
+  &.active {
+    background: rgba($primary, 0.05);
+    @extend .color-primary;
+    padding: 15px 20px;
+  }
+}
+
+.account-profile-cards__button {
+  button {
+    @extend .content-center;
+    background: transparent;
+
+    &.active {
+      @extend .bg-primary;
+      color: white;
+
+      span {
+        color: white;
+      }
+    }
+  }
+
+  svg {
+    width: 16px;
+    @extend .color-light;
+    margin-right: 8px;
+  }
+
+  span {
+    margin-right: 7px;
+    font-size: 18px;
+    @extend .color-light;
+  }
+}
+
+.account-profile {
+  .pro_img_wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 300px;
+    position: relative;
+  }
+
+  #remove_pro_pic {
+    position: absolute;
+    @extend .bg-primary;
+    color: #fff;
+    border: 4px solid $white;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @extend .content-center;
+    cursor: pointer;
+    transition: $transition-base;
+    font-size: 14px;
+
+    svg {
+      width: 16px;
+    }
+  }
+}
+
+//Cover Upload Button
+.as-cover__imgWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  label {
+    width: 100%;
+  }
+  img {
+    min-height: 120px;
+  }
+}
+
+.ap-cover__changeImgBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  .cover-btn {
+    border: 1px solid #ffffff80;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: #ffffff;
+    @include ofs(13px, lh(13px, 16px), 500);
+  }
+}
+
+.ap-cover__changeImgBtn button {
+  border: 1px solid #ffffff80;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: #ffffff;
+  @include ofs(13px, lh(13px, 16px), 500);
+}
+
+//Edit Profile
+.edit-profile__body {
+  label {
+    text-transform: capitalize;
+  }
+
+  .form-group {
+    label {
+      @include ofs(14px, lh(14px, 20px), 500);
+      @extend .color-dark;
+    }
+
+    .form-control {
+      border: 1px solid #e3e6ef;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+
+      &::placeholder {
+        @include ofs(14px, lh(14px, 25px), 400);
+        color: $gray;
+      }
+
+      &:focus {
+        border: 1px solid $primary;
+        transition: $transition-base;
+      }
+    }
+
+    textarea.form-control {
+      height: auto;
+      resize: none;
+    }
+  }
+}
+
+//Edit Social Profile
+.edit-profile__body {
+  .form-control {
+    height: 48px;
+
+    &--social {
+      height: 44px;
+      padding: 0.375rem 0.9375rem;
+
+      &::placeholder {
+        color: $light;
+      }
+    }
+  }
+}
+
+//Global Select2 Style
+.select2 {
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  background-color: #fff;
+  border: 1px solid #e3e6ef;
+  border-radius: 4px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.select2-container--default
+  .select2-search--inline
+  .select2-search__field::placeholder {
+  @include ofs(14px, lh(14px, 25px), 400);
+  color: $gray;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+
+  b {
+    display: none;
+  }
+
+  &:after {
+    content: "\f107";
+    font-family: "Line Awesome Free";
+    font-weight: 900;
+    @extend .color-gray;
+    font-size: 12px;
+  }
+}
+
+.select2-container--default.select2-container--open
+  .select2-selection--single
+  .select2-selection__arrow {
+  &:after {
+    content: "\f106";
+    font-family: "Line Awesome Free";
+    font-weight: 900;
+    @extend .color-gray;
+    font-size: 12px;
+  }
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 20px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered,
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__placeholder {
+  @include ofs(14px, lh(14px, 25px), 400);
+  color: $gray;
+  text-transform: capitalize;
+}
+
+.select2-results__option {
+  text-transform: capitalize;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  width: 100%;
+}
+
+.select2-container .select2-selection--single .select2-selection__clear {
+  right: 0;
+  display: none;
+}
+
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice {
+  margin-top: 0;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+  margin-top: 0;
+}
+
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice {
+  background: #eff0f3;
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  @extend .content-center;
+  @include ofs(11px, lh(11px, 14px), 400);
+  @extend .color-gray;
+  text-transform: capitalize;
+}
+
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__rendered {
+  padding: 0 20px;
+}
+
+.select2-container--default
+  .select2-selection--multiple
+  .select2-selection__clear {
+  margin-top: 0;
+  padding: 0;
+}
+
+.select2-container--default.select2-container--focus
+  .select2-selection--multiple,
+.select2-container--default.select2-container--focus
+  .select2-selection--single {
+  border: 1px solid $primary;
+}
+
+.field-icon {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 10px;
+  transform: translate(-50%, -50%);
+}
+
+//Notification
+.notification-content {
+  border-radius: 10px;
+  background-color: #f8f9fb;
+
+  @include e(body) {
+    h6 {
+      @extend .color-gray;
+      @include ofs(14px, lh(14px, 20px), 500);
+    }
+
+    span {
+      @extend .color-light;
+      @include ofs(14px, lh(14px, 22px), 400);
+    }
+
+    .custom-control-input:focus ~ .custom-control-label::before {
+      box-shadow: none;
+    }
+
+    .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+      border-color: transparent;
+      background-color: #e3e6ef;
+    }
+
+    .custom-control-label::before {
+      background-color: #e3e6ef;
+      border: transparent;
+      box-shadow: none;
+    }
+
+    .custom-switch .custom-control-label::after {
+      background-color: white;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      @extend .bg-primary;
+      border-color: $primary;
+    }
+  }
+}
+
+//Sign Up Admin Page
+.signUP-admin-left {
+  background-color: #f9eff8;
+  height: 100vh;
+  border-radius: 0px 70px 70px 0px;
+  padding: 147px 75px;
+
+  @include sm {
+    height: 540px;
+    padding: 30px 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @include e(content) {
+    @include ofs(23px, lh(23px, 28px), 700);
+
+    @include media-breakpoint-up(xl) {
+      padding-right: 85px;
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-right: 0;
+    }
+
+    h1 {
+      @include ofs(null, lh(36px, 44px), 700);
+
+      @include media-breakpoint-up(xl) {
+        font-size: 36px;
+      }
+
+      @include media-breakpoint-up(md) {
+        font-size: 27px;
+      }
+    }
+  }
+
+  @include e(img) {
+    top: 64%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    @include sm {
+      top: 60%;
+      left: 50%;
+      width: 100%;
+      padding: 30px;
+    }
+  }
+}
+
+.signUP-admin {
+  background-color: $white;
+}
+
+.signUp-topbar p {
+  @extend .color-gray;
+  @include ofs(14px, lh(14px, 20px), 500);
+}
+
+.signUp-admin-right {
+  .edit-profile {
+    @media (min-width: 1600px) {
+      margin: 0 99px;
+    }
+  }
+  .card .card-header {
+    @include sm {
+      justify-content: center;
+    }
+    h6 {
+      @include ofs(24px, lh(24px, 30px), 600);
+      @extend .color-dark;
+      display: flex;
+      align-items: center;
+
+      span {
+        @extend .color-secondary;
+        @include ofs(24px, lh(24px, 30px), 600);
+        margin: 0;
+        margin-left: 6px;
+      }
+    }
+  }
+  .edit-profile__body .form-group .form-control::placeholder {
+    color: $extra-light;
+  }
+}
+
+.signUp-header-top {
+  p {
+    @include ofs(14px, lh(14px, 22px), 400);
+    @extend .color-gray;
+  }
+}
+
+.signUp-condition {
+  margin-bottom: 22px;
+
+  &.signIn-condition {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    margin-bottom: 24px;
+    margin-top: 18px;
+    @include xxs {
+      flex-flow: column;
+      a {
+        margin-top: 10px;
+      }
+    }
+
+    .custom-checkbox {
+      input[type="checkbox"] + label:before,
+      input[type="checkbox"] + label:after {
+        margin-top: 0;
+      }
+    }
+
+    a {
+      @include ofs(13px, lh(13px, 22px), 400);
+      @extend .color-primary;
+    }
+  }
+
+  .custom-checkbox {
+    .checkbox-text {
+      @include ofs(13px, lh(13px, 22px), 400);
+      @extend .color-light;
+    }
+
+    input[type="checkbox"] + label:before,
+    input[type="checkbox"] + label:after {
+      margin-top: 5px;
+    }
+
+    input[type="checkbox"] + label:before {
+      top: 10px;
+      left: 10px;
+      transform: translate(-50%, -50%);
+    }
+
+    input[type="checkbox"] + label:after {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.signUp-socialBtn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  li {
+    button {
+      box-shadow: 0px 5px 15px #9299b81a;
+      border: 1px solid #f1f2f6;
+      background: #f8f9fb;
+      white-space: nowrap;
+    }
+
+    svg {
+      margin-right: 0;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:first-child {
+      button {
+        height: 48px;
+      }
+
+      svg {
+        margin-right: 8px;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+//Social Connector
+.social-connector {
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+
+  span {
+    @include ofs(13px, lh(13px, 22px), 500);
+    @extend .color-light;
+  }
+}
+
+.social-connector:before,
+.social-connector:after {
+  background-color: #f1f2f6;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.social-connector:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.social-connector:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.signUp-createBtn {
+  width: 185px;
+}
+
+.signIn-createBtn {
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+//Sign Up Overlay
+.signupTop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(-1);
+  /*rtl:begin:remove*/
+  transform: scaleX(1);
+  /*rtl:end:remove*/
+}
+
+.signupBottom {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scaleX(-1);
+  /*rtl:begin:remove*/
+  transform: scaleX(1);
+  /*rtl:end:remove*/
+}
+
+
+//card
+.profile-setting {
+  .card .card-header {
+    padding-top: 24px;
+    padding-bottom: 17px;
+
+    .edit-profile__title h6 {
+      padding-bottom: 1px;
+    }
+  }
+}

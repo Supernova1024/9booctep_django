@@ -1,0 +1,167 @@
+// Avatar Css
+
+// Avatar Type
+.avatar{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 0 10px;
+    &.avatar-light{
+        background: $border-light;
+        &.avatar-transparent{
+            background: rgba($light,.15);
+        }
+    }
+    &.avatar-warning{
+        @extend .bg-warning;
+        &.avatar-transparent{
+            @extend .color-warning;
+            background: rgba($warning,.15);
+        }
+    }
+    &.avatar-primary{
+        @extend .bg-primary;
+        &.avatar-transparent{
+            background: rgba($primary,.15);
+            @extend .color-primary;
+        }
+    }
+    &.avatar-success{
+        @extend .bg-success;
+        &.avatar-transparent{
+            background: rgba($success,.15);
+            @extend .color-success;
+        }
+    }
+    &.avatar-info{
+        @extend .bg-info;
+        @extend .color-info;
+        &.avatar-transparent{
+            background: rgba($info,.15);
+        }
+    }
+    .avatar-text{
+        text-transform: uppercase;
+    }
+    .avatar-img{
+        width: 100%;
+    }
+}
+
+
+// Avatar Size
+
+.avatar{
+    &.avatar-lg{
+        width: 64px;
+        height: 64px;
+        svg,
+        i{
+            transform: scale(1.25);
+        }
+        .avatar-letter{
+            font-size: 24px;
+        }
+        .avatar-text{
+            font-size: 14px;
+        }
+    }
+    &.avatar-md{
+        width: 40px;
+        height: 40px;
+        svg,
+        i{
+            transform: scale(1);
+        }
+        .avatar-letter{
+            font-size: 22px;
+        }
+        .avatar-text{
+            font-size: 12px;
+        }
+    }
+    &.avatar-sm{
+        width: 32px;
+        height: 32px;
+        svg,
+        i{
+            transform: scale(.85);
+        }
+        .avatar-letter{
+            font-size: 20px;
+        }
+        .avatar-text{
+            font-size: 10px;
+        }
+    }
+    &.avatar-xs{
+        width: 24px;
+        height: 24px;
+        svg,
+        i{
+            transform: scale(.6);
+        }
+        .avatar-letter{
+            font-size: 18px;
+        }
+        .avatar-text{
+            font-size: 8px;
+        }
+    }
+}
+
+// Avatar Shape
+
+.avatar{
+    &.avatar-circle{
+        border-radius: 50%;
+    }
+    &.avatar-square{
+        border-radius: 3px;
+    }
+}
+
+// Avatar Badge
+
+.avatar{
+    .avatar-badge-wrap{
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #fff;
+        border-radius: 50%;
+        padding: 1.3px 3px;
+        line-height: 1;
+        .badge{
+            padding: 1.5px 4.52px;
+        }
+        
+        &.avatar-badge-icon{
+            background: transparent;
+        }
+        .badge-icon{
+            width: 16px;
+            height: 16px;
+            &.badge-icon-primary{
+                @extend .color-primary;
+            }
+            &.badge-icon-secondary{
+                @extend .color-secondary;
+            }
+            &.badge-icon-info{
+                @extend .color-info;
+            }
+            &.badge-icon-success{
+                @extend .color-success;
+            }
+            &.badge-icon-warning{
+                @extend .color-warning;
+            }
+            &.badge-icon-danger{
+                @extend .color-danger;
+            }
+        }
+    }
+}

@@ -1,0 +1,587 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+<!-- CSS only -->
+
+<link rel="stylesheet" href="/static/student/assets/css/bootstrap.css">
+
+    <style>
+
+.faq-nav {
+  flex-direction: column;
+  margin: 0 0 32px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+
+.faq-nav-dark{
+  border: 1px solid rgb(15, 15, 15);
+}
+
+.faq-nav .nav-link {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 13px 16px;
+  background-color: rgb(255, 255, 255);
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  color: #616161;
+  transition: background-color 0.2s ease;
+}
+.faq-nav .nav-link-dark {
+  background-color: #222831;
+  border-bottom: 1px solid #151a22;
+  color: #616161;
+}
+.faq-nav .nav-link:hover {
+  background-color: #d6d6d6;
+}
+.faq-nav .nav-link-dark:hover {
+  background-color: #0e0d0d;
+}
+.faq-nav .nav-link.active {
+  background-color: #eeeeee;
+  font-weight: 600;
+  color: rgba(66, 66, 66, 0.87);
+}
+.faq-nav .nav-link-dark.active{
+  background-color: #15171f;
+  font-weight: 700;
+  color: rgba(187, 187, 187, 0.87);
+}
+.faq-nav .nav-link:last-of-type {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 0;
+}
+.faq-nav .nav-link i.mdi {
+  margin-right: 5px;
+  font-size: 18px;
+  position: relative;
+}
+
+.tab-content .card {
+  border-radius: 0;
+}
+.card .card-header {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #1a1919 !important;
+  background: #f6f6f6 !important;
+}
+.card .card-header-dark {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #b8b8b8 !important;
+  background: #15171f !important;
+}
+.card-headerh {
+  color: #1a1919 !important;
+}
+.card-headerh-dark {
+  color: #b8b8b8 !important;
+}
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+.tab-content .card-header h5 {
+  margin: 0;
+}
+.tab-content .card-header h5 button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  white-space: normal;
+}
+.tab-content .card-header h5 button:hover, .tab-content .card-header h5 button:focus, .tab-content .card-header h5 button:active, .tab-content .card-header h5 button:hover:active {
+  text-decoration: none;
+}
+.tab-content .card-body p {
+  color: #616161;
+}
+.tab-content .card-body p:last-of-type {
+  margin: 0;
+}
+
+.accordion > .card:not(:first-child) {
+  border-top: 0;
+}
+
+.collapse.show .card-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+  
+.hero-faqs-dark{
+  position: relative;
+  height: 100%;
+  padding-top: 70px !important;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(42, 52, 66, 0.73), rgba(8, 13, 19, 0.52)),
+  url('../img/faqs.jpg') !important;
+
+}
+
+    </style>
+
+    <style>
+        .accordion__menu {
+            border: 0.5px solid #dbdbdb;
+            background: white !important
+        }
+    </style>
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <div class="terms">
+        <!-- Brands -->
+        <div id="brands-tab" class="store-tab-pane is-active">
+            <!-- Timeline -->
+            <section class="hero is-small is-bold hero-faqs hero-faqs-dark">
+                <div class="hero-body">
+                    <div class="container">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>تواصل معنا</h1>
+                        <h2 class="booctep-h2">منصة بوستيب هنا للمساعدة، اكتشف حساباتنا على وسائل التواصل الاجتماعي والطرق المختلفة للاتصال بنا حتى نتمكن من تزويدك بالدعم الذي تحتاجه.</h2>
+
+                        {% else %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>{% trans 'Contact us' %}</h1>
+                        <h2 class="booctep-h2">Booctep is here to help. Discover our social media accounts and different ways to contact us so that we can provide you with the support you need.</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <div class="terms-page" id="faq">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="nav nav-pills faq-nav faq-nav-dark" id="faq-tabs" role="tablist" aria-orientation="vertical">
+                            <a href="#tab1" class="nav-link active active-dark" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
+                                {% trans 'Contact us' %}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="tab-content" id="faq-tab-content">
+                            <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-1">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">البريد الإلكتروني</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">لديك إستفسار <br>
+                                                سنكون سعداء بخدمتك دائما, نحن متاحون بالخدمة 24 ساعة / كل أيام الأسبوع
+                                                </p>
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-envelope"></i> support@booctep.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">الدردشة المباشرة</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">قدم استفسارك في المربع الأيمن السفلي "الدردشة المباشرة" ونحن مستعدون دائمًا لمساعدتك.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">حسابات مواقع التواصل الإجتماعي</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-smile"></i> انستقرام <a href="https://instagram.com/booctep">أضغط هنا</a>
+                                                <br>
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-twitter-square"></i> تويتر <a href="https://twitter.com/booctep">أضغط هنا</a></p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-1">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">Support Email</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">Have a Query? <br>
+                                                We will be happy for help, we are Available 24/7
+                                                </p>
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-envelope"></i> support@booctep.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">Live chat</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Provide your query in the bottom right box "Live chat" we are always ready to help you.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">Social Media accounts</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-smile"></i> Instagram account click <a href="https://instagram.com/booctep">here</a>
+                                                <br>
+                                                <p class="mediabout mediabout-dark"><i class="fa fa-twitter-square"></i> Twitter account click <a href="https://twitter.com/booctep">here</a></p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shop-page" class="shop-wrapper" style="display:none">
+        <div class="store-sections store-sections-2">
+            <!--Products-->
+            <div id="products-tab" class="store-tab-pane store-tab-pane-2 is-active" id="demo">
+                <section class="hero is-small is-bold hero-about">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="booctep" data-shadow='Booctep'>Booctep</h1>
+                            <h2 class="booctep-h2">
+                                Booctep is a web design course that will keep you signed in the booming e-commerce and
+                                IT sectors. Our course teaches you everything you need to create practical and
+                                attractive web pages. As web designers become more in demand, you will definitely thank
+                                yourself for choosing this course.
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="view-wrapper" style="background-color: #fff;">
+                    <div id="landing-start" class="section landing-wrapper">
+                        <div class="container">
+                            <div class="made-with" style="margin-top: -130px;">
+                                <div id="made-with-bulma" class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step1.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+400,000 Students</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step3.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+19,000 Courses </h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step2.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+10,000 Quizzes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-5">
+                                    <h3>How it works!</h3>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-8 is-offset-2" style="border: 2px solid rgb(238, 238, 238);border-radius: 3px;-webkit-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+                              -moz-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+                              box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);">
+                                    <video poster="{% static 'assets/img/setting.jpg' %}" id="player" playsinline
+                                           controls>
+                                        <source src="{% static 'assets/img/vid/fortnite.webm' %}" type="video/webm" />
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature">
+                        <div class="container">
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+                                    <h3>Many new courses</h3>
+                                    <p>We have many courses from scratch to proffessional be more educated and join us
+                                        now, we have up to 15 categories you can search what you want.</p>
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{% static 'assets/img/about/about-1.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-6  is-hidden-mobile">
+                                    <img src="{% static 'assets/img/download.png' %}" class="booctep-2" alt="">
+                                </div>
+                                <div class="column is-6">
+                                    <h3>Take Quizzes</h3>
+                                    <p>Take quizzes and get your certificate after you done the quize, easy dashboard to
+                                        deal with it.</p>
+                                </div>
+                                <div class="column is-5 is-offset-1 is-hidden-desktop">
+                                    <img src="{% static 'assets/images/illustrations/ui/layouts.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+                                    <h3>Learn what you love</h3>
+                                    <p>We have many courses from scratch to proffessional be more educated and join us
+                                        now, we have up to 15 categories you can search what you want.</p>
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{% static 'assets/img/about/about-3.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about-feat side-feature">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-4">
+                                    <h3 class="section-about-feat-h3">Booctep's Features</h3>
+                                </div>
+                            </div>
+                            <div class="columns ">
+                                <div class="card-features">
+                                    <div class="card-features-row card-features-1">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-universal-access card-features-i"></i>
+                                            <h3>Lifetime Access</h3>
+                                            <p>Access anytime you want one you enrol to any course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-2">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-award card-features-i"></i>
+                                            <h3>Get Certificate</h3>
+                                            <p>Get certificate when you finish your course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-3">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-wallet card-features-i"></i>
+                                            <h3>Money Back</h3>
+                                            <p>Take your money back if you have a problem with the course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-4">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-project-diagram card-features-i"></i>
+                                            <h3>Easy Dashboard</h3>
+                                            <p>Easy dashboard to do your quizzes and watch your courses anytime you
+                                                want.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns ">
+                                <div class="card-features">
+                                    <div class="card-features-row card-features-5">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-pencil-alt card-features-i"></i>
+                                            <h3>Quick Quizzes</h3>
+                                            <p>Take a very quick Quize before you get your certificate.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-6">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-video card-features-i"></i>
+                                            <h3>Many Subjects</h3>
+                                            <p>we got many subjects in all major subjects in the world.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-7">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-closed-captioning card-features-i"></i>
+                                            <h3>Video Translate</h3>
+                                            <p>We translate all English videos for our students.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-8">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-smile card-features-i"></i>
+                                            <h3>Free courses</h3>
+                                            <p>From each 10 paid courses we have at least 1 course free.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature" style="margin-top:60px;margin-bottom: 30px;">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-5">
+                                    <h3>Meet our team</h3>
+                                </div>
+                                <div class="column">
+                                </div>
+                            </div>
+                            <div class="columns is-multiline icon-list">
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/elz.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Elzubair Mohammed </h4>
+                                        <p style="font-size: small;text-align: center;" class="has-text-centered">CEO -
+                                            Founder of Booctep</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ahmed.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Ahmed Alhebshi</h4>
+                                        <p style="font-size: small;">Financial</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/saleh.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Saleh Alaqil</h4>
+                                        <p style="font-size: small;">Human Resours</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/helal.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Helal Mahdi</h4>
+                                        <p style="font-size: small;">Programmer</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ahmed-hatem.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Ahmed Hatim</h4>
+                                        <p style="font-size: small;">Accounting managemnt</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/bander.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Bander Ali</h4>
+                                        <p style="font-size: small;">Markting</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ab.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Abdulrahman Mahdi</h4>
+                                        <p style="font-size: small;">Markting</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/bilal.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Bilal Ahmed Ali</h4>
+                                        <p style="font-size: small;">Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="hero is-small is-bold hero-become">
+            <div class="hero-body">
+                <div class="section-bec side-feature">
+                    <h3 style="font-weight: 600;">How to become a teacher?</h3>
+                    <a href="become.html" class="button">Take a quick Look</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script>
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+        </script>
+
+{% endblock %}

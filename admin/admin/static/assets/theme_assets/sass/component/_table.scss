@@ -1,0 +1,412 @@
+//Table Top Selection
+
+.order-search {
+  @include e(form) {
+    padding: 15px 20px;
+    background: #f4f5f7;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+
+    @include media-breakpoint-up(lg) {
+      width: 300px;
+    }
+
+    .form-control {
+      padding: 13px;
+      background: transparent;
+
+      &::placeholder {
+        @include ofs(14px, lh(14px, 25px), 400);
+        color: $extra-light;
+      }
+    }
+
+    svg {
+      @extend .color-light;
+      width: 18px;
+    }
+  }
+}
+
+.project-tap.order-project-tap {
+  border: 1px solid #e3e6ef;
+
+  &:not(:first-child):after {
+    background-color: #f1f2f6;
+  }
+}
+
+.order-button-group button {
+  height: 38px;
+  @extend .content-center;
+  margin: 4px;
+}
+
+//Order Table
+
+.orderDatatable {
+  .table {
+    thead tr th {
+      padding: 15px 20px;
+    }
+
+    tbody tr td {
+      padding: 6px 20px;
+    }
+  }
+
+  &.sellerDatatable {
+    .project-top-wrapper {
+      @include lg {
+        flex-flow: unset;
+      }
+
+      @include ssm {
+        flex-flow: column;
+      }
+    }
+
+    .order-button-group {
+      @include ssm {
+        margin-top: 15px;
+      }
+    }
+
+    .table tbody tr {
+      td {
+        padding: 8px 20px;
+      }
+
+      &:first-child {
+        td {
+          padding-top: 9px;
+        }
+      }
+
+      &:last-child {
+        td {
+          padding-bottom: 9px;
+        }
+      }
+    }
+  }
+
+  .table-hover tbody tr {
+    transition: $transition-base;
+
+    &:hover {
+      background: #f8f9fb;
+    }
+
+    td {
+      &:first-child {
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+    }
+  }
+
+  tbody .custom-checkbox input[type="checkbox"]+label {
+    margin-right: 0;
+  }
+
+  .project-top-wrapper {
+    @include lg {
+      flex-flow: column;
+    }
+  }
+}
+
+.orderDatatable-title {
+  @include ofs(14px, lh(14px, 20px), 500);
+  @extend .color-dark;
+}
+
+.orderDatatable-status span {
+  height: 24px;
+  padding: 0 10px;
+  @extend .content-center;
+  @include ofs(12px, lh(12px, 15px), 500);
+  text-transform: capitalize;
+}
+
+.orderDatatable_actions {
+  min-width: 130px;
+  max-width: 100%;
+  justify-content: flex-end;
+
+  li a {
+    width: 40px;
+    height: 40px;
+    @extend .content-center;
+    border-radius: 50%;
+
+    &.view:hover {
+      @extend .order-bg-opacity-primary;
+
+      svg {
+        color: $primary;
+      }
+    }
+
+    &.edit:hover {
+      @extend .order-bg-opacity-info;
+
+      svg {
+        color: $info;
+      }
+    }
+
+    &.remove:hover {
+      @extend .order-bg-opacity-danger;
+
+      svg {
+        color: $danger;
+      }
+    }
+
+    svg {
+      width: 16px;
+      @extend .color-extra-light;
+    }
+  }
+}
+
+// Selling Product wrap
+.selling-table-wrap {
+
+  @include lg {
+    padding-bottom: 0;
+  }
+
+  table {
+    tbody {
+      td {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.top-menu {
+  .selling-table-wrap {
+    padding-bottom: 110px;
+
+    @include xxl {
+      padding-bottom: 64px;
+    }
+  }
+}
+
+// Table Basic
+table.table-basic {
+  tr {
+    &:not(:last-child) {
+
+      th,
+      td {
+        border-bottom: 1px solid $border-light;
+      }
+    }
+
+    td {
+      border: 0 none;
+      vertical-align: middle;
+      font-size: 14px;
+      font-weight: 500;
+      @extend .bg-white;
+      @extend .color-dark;
+    }
+  }
+
+  .table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+
+      i,
+      svg,
+      img {
+        width: 16px;
+        @extend .color-light;
+      }
+    }
+  }
+}
+
+// Table Rounded
+table.table-rounded {
+  tr {
+
+    th,
+    td {
+      font-size: 14px;
+      font-weight: 500;
+      @extend .color-dark;
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        padding: 16px 20px;
+        text-transform: capitalize;
+        background-color: $bg-normal;
+        @extend .color-gray;
+
+        &:first-child {
+          border-radius: 10px 0 0 10px;
+        }
+
+        &:last-child {
+          border-radius: 0 10px 10px 0;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        td {
+          background-color: rgba($primary, 0.1);
+        }
+      }
+
+      td {
+        padding: 12px 20px;
+        vertical-align: middle;
+        @extend .bg-white;
+
+        &:first-child {
+          border-radius: 10px 0 0 10px;
+        }
+
+        &:last-child {
+          border-radius: 0 10px 10px 0;
+        }
+      }
+    }
+  }
+}
+
+
+.table4 {
+  border-radius: 10px;
+  .checkbox-group-wrapper{
+    margin-right: 20px;
+  }
+  .table {
+    td {
+      border-bottom: 1px solid #e3e6ef;
+      padding: 18px 20px;
+    }
+
+    thead {
+      th {
+        border-bottom: 1px solid #e3e6ef;
+        border-top: none;
+      }
+
+      tr:first-child th:first-child {
+        border-top-left-radius: 4px;
+      }
+    }
+  }
+
+  tbody tr {
+    transition: $transition-base;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+
+  .userDatatable-header th {
+    background-color: #fafafa;
+    padding: 15px 20px 15px 20px;
+  }
+
+  .userDatatable-title {
+    color: rgba(0, 0, 0, .85);
+  }
+
+  .userDatatable-content {
+    font-weight: 400;
+    white-space: nowrap;
+  }
+}
+
+.table5 {
+  &.table4 .userDatatable-header th {
+    background-color: unset;
+    transition: $transition-base;
+    padding: 15px 20px 15px 20px;
+
+    &:hover {
+      background-color: #f2f2f2;
+    }
+  }
+
+  .userDatatable-header {
+    background: #fafafa;
+  }
+
+  .userDatatable-title {
+    display: flex;
+    align-items: center;
+
+    .userDatatable-sort {
+      display: flex;
+      flex-direction: column;
+      margin-left: 8px;
+      margin-top: 4px;
+
+      i {
+        line-height: 5px;
+        font-size: 13px;
+        @extend .color-light;
+
+        &.down {
+          @extend .color-primary;
+        }
+      }
+    }
+
+    .userDatatable-filter {
+      @include xxs(){
+        padding-left: 60px;
+      }
+      i {
+        font-size: 10px;
+        color:#adb4d2;
+      }
+    }
+  }
+
+  tbody .custom-checkbox input[type="checkbox"]+label {
+    margin-right: 18px;
+  }
+  .pagination-total-text{
+    display: inline-block;
+    height: 32px;
+    margin-right: 10px;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+    @extend .color-dark;
+  }
+}

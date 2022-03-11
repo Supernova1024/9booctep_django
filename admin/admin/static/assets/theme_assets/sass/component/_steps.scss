@@ -1,0 +1,88 @@
+// atbs-steps
+.atbd-steps{
+    .nav{
+        @include ssm{
+            flex-flow: column;
+        }
+    }
+    @include e("item"){
+        position: relative;
+        flex: 1;
+        z-index: 10;
+        @include ssm{
+            &:not(:last-child){
+                margin-bottom: 15px;
+            }
+        }
+        &:last-child{
+            flex: none;
+            padding-right: 0;
+        }
+        &:first-child{
+            padding-left: 0;
+        }
+        &.finished{
+            .atbd-steps__icon{
+                @extend .color-primary;
+                @extend .border-primary;
+            }
+            .atbd-steps__line{
+                @extend .bg-primary;
+            }
+        }
+        &.active{
+            .atbd-steps__icon{
+                @extend .color-white;
+                @extend .border-primary;
+                @extend .bg-primary;
+            }
+            .atbd-steps__line{
+                @extend .bg-primary;
+            }
+        }
+    }
+    @include e("content"){
+        padding: 0 10px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        position: relative;
+        @extend .bg-white;
+    }
+    @include e("line"){
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        background-color: $border-light;
+        z-index: -1;
+        @include ssm{
+            transform: translate(0,0);
+            top: 30px;
+            left: 25px;
+            height: 100%;
+            width: 1px;
+        }
+    }
+    @include e("icon"){
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-width: 1px;
+        border-style: solid;
+        @extend .border-light;
+        @extend .color-extra-light;
+    }
+    @include e("text"){
+        font-weight: 500;
+        display: inline-block;
+        margin-left: 10px;
+        @extend .color-dark;
+    }
+}

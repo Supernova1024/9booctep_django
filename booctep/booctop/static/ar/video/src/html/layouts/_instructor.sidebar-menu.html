@@ -1,0 +1,51 @@
+{% macro component(icons=true, prefix) %}
+<li class="sidebar-menu-item{% if slug === 'instructor-dashboard' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-dashboard.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">school</span>{% endif %}
+    <span class="sidebar-menu-text">Instructor Dashboard</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-courses' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-courses.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>{% endif %}
+    <span class="sidebar-menu-text">Manage Courses</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-quizzes' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-quizzes.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">help</span>{% endif %}
+    <span class="sidebar-menu-text">Manage Quizzes</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-earnings' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-earnings.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">trending_up</span>{% endif %}
+    <span class="sidebar-menu-text">Earnings</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-statement' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-statement.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">receipt</span>{% endif %}
+    <span class="sidebar-menu-text">Statement</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-edit-course' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-edit-course.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">post_add</span>{% endif %}
+    <span class="sidebar-menu-text">Edit Course</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-edit-quiz' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-edit-quiz.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">format_shapes</span>{% endif %}
+    <span class="sidebar-menu-text">Edit Quiz</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'instructor-profile' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}instructor-profile.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">android</span>{% endif %}
+    <span class="sidebar-menu-text">Instructor Profile</span>
+  </a>
+</li>
+{% endmacro %}
+{{ component(prefix=prefix) }}

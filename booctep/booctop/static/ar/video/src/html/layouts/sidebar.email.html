@@ -1,0 +1,85 @@
+{% set members = [{
+  avatar: "assets/images/256_daniel-gaffey-1060698-unsplash.jpg",
+  name: "Sherri J. Cardenas", 
+  title: "When will Windows 11 come out?",
+  subtitle: "Answer: Never. There is no Windows 11. Microsoft does not have a team of pro...",
+  date: "Today"
+}, {
+  avatar: "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+  name: "Jenell D. Matney", 
+  title: "Thank you for contacting XBody",
+  subtitle: "Dear Sean, Thank you for showing and interest in our products, we are looking forward to talking to you and welcoming you in the XBody Family ..",
+  date: "March 24",
+  active: true,
+  starred: true
+}, {
+  avatar: "assets/images/256_jeremy-banks-798787-unsplash.jpg",
+  name: "Joseph S. Ferland", 
+  title: "Why Designing Your Own UI Style Guide System Matters",
+  subtitle: "Stories for Sean Todays highlights Why Designing Your Own Style Guide System Matters Before divind deep into desi...",
+  date: "March 23"
+}, {
+  avatar: "assets/images/256_joao-silas-636453-unsplash.jpg",
+  name: "UX Collective", 
+  title: "How to hire UX Researchers",
+  subtitle: "How to hire UX Researchers &mdash; and more design links this week How to test the skills of a UX researcher...",
+  date: "Feb 28"
+}, {
+  avatar: "assets/images/256_luke-porter-261779-unsplash.jpg",
+  name: "Elizabeth J. Ohara", 
+  title: "Business Analyst",
+  date: "Feb 24"
+}, {
+  avatar: "assets/images/256_michael-dam-258165-unsplash.jpg",
+  name: "Kaci M. Langston", 
+  title: "Human Resources",
+  date: "Feb 22"
+}] %}
+
+{% macro component(sidebarOptions='', drawerOptions='', prefix='', align='start', position='left') %}
+<div class="mdk-drawer sub-layout-drawer js-mdk-drawer" data-align="{{ align }}" id="email-drawer">
+  <div class="mdk-drawer__content {{ drawerOptions }}">
+    <div class="sidebar sidebar-{{ position }} sidebar-light {{ sidebarOptions }} o-hidden" data-perfect-scrollbar>
+
+      <div class="navbar">
+        <div class="search-form form-control-rounded search-form--light">
+          <input type="text" class="form-control" placeholder="What are you looking for?" id="searchSample02">
+          <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+        </div>
+      </div>
+      
+      <div class="list-group list-group-flush" style="position: relative; z-index: 0;">
+        {% for item in members %}
+        <div class="list-group-item d-flex align-items-start{% if item.active %} border-left-3 border-left-primary{% else %} bg-transparent{% endif %}">
+          <div class="mr-3 d-flex flex-column align-items-center">
+            <a href="#" class="avatar avatar-xs mb-2">
+              <img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+            </a>
+            <a href=""{% if not item.starred %} class="text-muted"{% endif %}><i class="material-icons icon-16pt">star{% if not item.starred %}_border{% endif %}</i></a>
+          </div>
+          <div class="flex">
+            <p class="m-0">
+              <span class="d-flex align-items-center mb-1">
+                <a href="#" class="text-dark-gray"><strong>{{ item.name }}</strong></a>
+                <small class="ml-auto text-muted">{{ item.date }}</small>
+              </span>
+              <span class="d-flex align-items-end">
+                <span class="flex mr-3">
+                  <strong class="text-body mb-1">{{ item.title }}</strong><br>
+                  <small class="text-muted" style="max-height: 2rem; overflow: hidden; position: relative; display: inline-block;">{{ item.subtitle | safe }}</small>
+                </span>
+                <a href="" class="d-flex align-items-center mb-1">
+                  <small class="text-muted mr-1">2</small>
+                  <i class="material-icons icon-16pt">attachment</i>
+                </a>
+              </span>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endmacro %}

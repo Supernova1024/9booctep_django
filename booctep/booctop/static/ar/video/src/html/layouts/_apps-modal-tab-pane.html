@@ -1,0 +1,20 @@
+{% macro component(id, active, lists=[], prefix) %}
+<div id="apps-{{ id }}" class="tab-pane{% if active %} show active{% endif %}">
+  <div class="row no-gutters">
+    {% for list in lists %}
+    <div class="col-md-6 p-0">
+      <div class="p-24pt">
+        <h5 class="text-black-100">{{ list.title }}</h5>
+        <ul class="nav flex-column mb-24pt">
+          {% for item in list.items %}
+          <li class="nav-item2">
+            <a class="nav-link2 dropdown-item px-0{% if item.disabled %} disabled{% endif %}" href="{{ prefix }}{{ item.slug or 'index' }}.html">{{ item.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

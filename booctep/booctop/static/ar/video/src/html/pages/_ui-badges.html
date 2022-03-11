@@ -1,0 +1,47 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Default') %}
+    <span class="badge badge-accent">Accent</span>
+    <span class="badge badge-primary">Primary</span>
+    <span class="badge badge-dark">Dark</span>
+    <span class="badge badge-secondary">Secondary</span>
+    <!-- <span class="badge badge-success">Success</span>
+    <span class="badge badge-info">Info</span>
+    <span class="badge badge-warning">Warning</span>
+    <span class="badge badge-danger">Danger</span> -->
+  {% endcall %}
+
+  {% call panel.component(title='Pills') %}
+    <span class="badge badge-pill badge-accent">Accent</span>
+    <span class="badge badge-pill badge-primary">Primary</span>
+    <span class="badge badge-pill badge-dark">Dark</span>
+    <span class="badge badge-pill badge-secondary">Secondary</span>
+    <!-- <span class="badge badge-pill badge-success">Success</span>
+    <span class="badge badge-pill badge-info">Info</span>
+    <span class="badge badge-pill badge-warning">Warning</span>
+    <span class="badge badge-pill badge-danger">Danger</span> -->
+  {% endcall %}
+
+  {% call panel.component(title='Notifications', description='Add <code>.badge-notifications</code> to badges to display notifications.') %}
+    <div class="navbar navbar-light px-0">
+      <div class="nav navbar-nav flex-nowrap d-flex">
+        <div class="nav-item dropdown-notifications">
+          <button class="nav-link btn-flush dropdown-toggle" type="button" data-caret="false">
+            <i class="material-icons">notifications_none</i>
+            <span class="badge badge-notifications badge-accent">2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+</div>

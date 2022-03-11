@@ -1,0 +1,589 @@
+
+
+{% extends "teacher/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Account" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+
+{% block content %}
+
+    <style>
+
+
+        .mediabout{
+            color: rgb(21, 43, 71) !important;
+        }
+          
+        .mediabout-dark{
+           color: rgb(219, 219, 219) !important;
+        }
+        
+        .btn-primary{
+            background-color: rgb(37, 148, 192) !important;
+            border: 1px solid rgb(23, 104, 136) !important;
+        }
+
+        
+        .form-control{
+            background-color: #323741 !important;
+            border: 1px solid  #21242b !important;
+            color: rgb(235, 235, 235);
+        }
+        
+        .form-control-dark{
+            background-color: #323741 !important;
+            border: 1px solid  #21242b !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .form-control{
+            background-color: #323741 !important;
+            border: 1px solid  #21242b !important;
+            color: rgb(235, 235, 235);
+        }
+        
+        .form-control-dark:hover{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .custom-file-dark label{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        .btn-primary-dark{
+            background-color: #323741 !important;
+            color: rgb(199, 199, 199) !important;
+            float: left !important;
+            border: 1px solid  #21242b !important;
+            box-shadow: none !important;
+        }
+        
+        .custom-file-label{
+            float: right !important;
+            border: 1px solid  #dddddd !important;
+        }
+        .sweet-alert-dark{
+            background-color: rgb(158, 171, 179) !important;
+        }
+        .form-control{
+            background-color: #f8f8f8 !important;
+            border: 1px solid  #dddddd !important;
+            color: rgb(29, 61, 90);
+        }
+        
+        .form-control-dark{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .form-control-dark label::selection{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        
+        .alert-soft-primary{
+            background: #84a5ec !important;
+            padding: 10px !important;
+            border-radius: 5px;
+            color: white !important;
+            border: 1px solid #7395df !important;
+        }
+        
+        .alert-soft-primary-dark{
+            background: #1c2435 !important;
+            padding: 10px !important;
+            border-radius: 5px;
+            border: 1px solid #0e121b !important;
+        }
+        
+        .blllu{
+            float: left !important;
+        }
+
+        .toppp{
+            margin-top: 50px !important;
+        }
+
+        .botttom{
+            margin-bottom: 80px !important;
+        }
+        
+        
+        </style>
+        
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        
+        <style>
+        
+        
+        .form-group label{
+            float: right !important;
+        }
+        
+        .lifft{
+            margin-left: 20px !important;
+        }
+        
+        .custom-file-label{
+            float: right !important;
+            border: 1px solid  #dddddd !important;
+        }
+        
+        .btn-primary{
+            background-color: rgb(37, 148, 192) !important;
+            color: rgb(254, 254, 255);
+            float: right !important;
+            border: 1px solid rgb(23, 104, 136) !important;
+        }
+        
+        .btn-primary-dark{
+            background-color: #323741 !important;
+            color: rgb(199, 199, 199) !important;
+            float: right !important;
+            border: 1px solid  #21242b !important;
+            box-shadow: none !important;
+        }
+        
+        .form-control-dark{
+            background-color: #323741 !important;
+            border: 1px solid  #21242b !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .form-control{
+            background-color: #f8f8f8 !important;
+            border: 1px solid  #dddddd !important;
+            color: rgb(29, 61, 90);
+        }
+        
+        .form-control-dark{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .form-control-dark label::selection{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .custom-file-dark label{
+            background-color: #323741 !important;
+            border: 1px solid  #0f1013 !important;
+            color: rgb(199, 199, 199) !important;
+        }
+        
+        .form-label{
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: 600; 
+            font-size: xx-large;
+        }
+        
+        .sweet-alert-dark{
+            background-color: rgb(158, 171, 179) !important;
+        }
+
+        .alert{
+            background-color: teal !important;
+        }
+
+        .blllu{
+            float: right !important;
+        }
+        </style>
+        
+        {% endif %}
+
+        {% load static %}
+    <div class=" page__container " style="margin-bottom: 35px;">
+        <div class=" alert-soft-primary alert-soft-primary-dark fade show" role="alert"
+             style="width:49%;margin-left:5px;margin-top:30px;margin-bottom:30px">
+            <div class="d-flex flex-wrap align-items-start">
+                <div class="mr-8pt">
+                    <i class="material-icons mediabout mediabout-dark">sentiment_satisfied_alt</i>
+                </div>
+                <div class="flex" style="padding-top: 3px !important;">
+                    <small class="text-black-100" style="">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <b style="" class="mediabout mediabout-dark">أستمتع بعرض بوستيب 3 أشهر مجانية.</b>
+                        {% else %}
+                        <b style="" class="mediabout mediabout-dark">Enjoy your 3 Month of booctep offer.</b>
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="col-md-6 pt-3">
+            <div class="text-align-center" style="text-align:center; color :  rgb(233, 151, 151);" id="div_error"></div>
+            
+            <div class="form-group">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الصورة الشخصية</b></label>
+                <br><br>
+                
+                <div class="media align-items-center">
+                    <a href="" class="media-right">
+                        <img src="{% static user.image %}" style="border: 2px solid rgb(197, 189, 189); height:56px;" alt="people"
+                             id="photo_img"
+                             width="56" class="rounded-circle lifft"/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file custom-file-dark">
+                            <label class="custom-file-label" for="inputGroupFile01" style="padding-left: 90px !important;">قم باختيار صورة ( يفضل مقاس ٦٤ * ٦٤ )</label>
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="changeImg()">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+            <div class="form-group toppp" style="">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الأسم الأول</b></label>
+                <input type="text" class="form-control" value="{{ user.first_name }}" id="first_name" name="first_name"
+                       placeholder="قم بكتابة أسمك الأول" onchange="setMarkChange()">
+            </div>
+            <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الأسم الأخير</b></label>
+                <input type="text" class="form-control" value="{{ user.last_name }}" id="last_name" name="last_name"
+                       placeholder="قم بكتابة أسمك الأخير" onchange="setMarkChange()">
+            </div>
+            <div class="form-group " style="margin-top: 5px !important;margin-bottom: 25px;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">الإيميل</b></label>
+                <input type="text" class="form-control" value="{{ user.email }}" id="email" name="email" readonly
+                       disabled style="color: #B4B4B4;cursor:not-allowed">
+            </div>
+            <div class="form-group">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">صورة عرض المعرض</b></label>
+                <br><br>
+                <div class="media ">
+                    <a href="" class="media-right ">
+                        <img src="{% static profile.header_img %}" style="border-radius: 2px;border: 1px solid #dadada;"
+                             id="header_photo"
+                             alt="people" width="60" height="50" class=""/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02" onchange="changeImg1()">
+                            <label class="custom-file-label" for="inputGroupFile01" style="padding-left: 90px !important;">قم باختيار صورة ( يفضل مقاس ١,٢٠٠ * ٤٥٠ )</label>
+                        </div>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div class="form-group toppp">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">نبذة عنك</b></label>
+                <textarea id="acc_bio" rows="3" class="form-control" value=""
+                          placeholder="قم بكتابة نبذة عنك" onchange="setMarkChange()">{{ profile.bio }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">التخصص الأساسي</b></label>
+                <select id="acc_category" data-toggle="select" class="form-control form-control" onchange="setMarkChange()">
+                    {% for c in objC %}
+                        {% if c.id is profile.cat_id %}
+                            <option value="{{ c.id }}" selected>{{ c.name }}</option>
+                        {% else %}
+                            <option value="{{ c.id }}">{{ c.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group ">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;">التخصص الفرعي</b></label>
+                <select id="acc_subcategory" data-toggle="select" class="form-control form-control" onchange="setMarkChange()">
+                    {% for c in sub_categories %}
+
+                        {% if c.categories_id is profile.cat_id %}
+                            {% if c.id is profile.subcat_ids %}
+                                <option value="{{ c.id }}" selected>{{ c.name }}</option>
+                            {% else %}
+                                <option value="{{ c.id }}">{{ c.name }}</option>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-primary-dark botttom" onclick="return updateUser()">حفظ البيانات</button>
+        </div>
+        {% else %}
+        <div class="col-md-6 pt-3">
+            <div class="text-align-center" style="text-align:center; color :  rgb(233, 151, 151);" id="div_error"></div>
+            
+            <div class="form-group">
+                <label class="form-label mediabout mediabout-dark">Profile photo</label>
+                <div class="media align-items-center">
+                    <a style="cursor: pointer" class="media-left ">
+                        <img src="/static{{ user.image }}" style="height: 50px !important;"
+                             id="profile_photo"
+                             alt="people" width="56" class="rounded-circle brd brd-dark"/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="changeImg()">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <small class="blllu blllu-dark" style="margin-top: 5px !important;">Perfect size most be 64 X 64.</small>
+            </div>
+            
+
+            <div class="form-group toppp" style="">
+                <label class="form-label mediabout mediabout-dark" style="">First name</label>
+                <input type="text" class="form-control" value="{{ user.first_name }}" id="first_name" name="first_name"
+                       placeholder="write your first name..." onchange="setMarkChange()">
+            </div>
+            <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+                <label class="form-label mediabout mediabout-dark">Last name</label>
+                <input type="text" class="form-control" value="{{ user.last_name }}" id="last_name" name="last_name"
+                       placeholder="write your last name..." onchange="setMarkChange()">
+            </div>
+            <div class="form-group " style="margin-top: 5px !important;margin-bottom: 25px;">
+                <label class="form-label mediabout mediabout-dark">Email</label>
+                <input type="text" class="form-control" value="{{ user.email }}" id="email" name="email" readonly
+                       disabled style="color: #B4B4B4;cursor:not-allowed">
+            </div>
+            <div class="form-group">
+                <label class="form-label mediabout mediabout-dark">Profile header photo</label>
+                <div class="media align-items-center">
+                    <a href="" class="media-left mr-16pt">
+                        <img src="{% static profile.header_img %}" style="border: 2px solid grey; height: 56px;"
+                             id="header_photo"
+                             alt="people" width="60" height="50" class=""/>
+                    </a>
+                    <div class="media-body">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02" onchange="changeImg1()">
+                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                        </div>
+                    </div>
+                </div>                
+                <small class="blllu blllu-dark " style="margin-top: 5px !important;">Perfect size most be 1,200 X 450.</small>
+
+            </div>
+
+            <div class="form-group toppp">
+                <label class="form-label mediabout mediabout-dark">Bio</label>
+                <textarea id="acc_bio" rows="3" class="form-control" value=""
+                          placeholder="About you ..." onchange="setMarkChange()">{{ profile.bio }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mediabout mediabout-dark" for="select05">Main category</label>
+                <select id="acc_category" data-toggle="select" class="form-control form-control" onchange="setMarkChange()">
+                    {% for c in objC %}
+                        {% if c.id is profile.cat_id %}
+                            <option value="{{ c.id }}" selected>{{ c.name }}</option>
+                        {% else %}
+                            <option value="{{ c.id }}">{{ c.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group ">
+                <label class="form-label mediabout mediabout-dark" for="select05">Sub category</label>
+                <select id="acc_subcategory" data-toggle="select" class="form-control form-control" onchange="setMarkChange()">
+                    {% for c in sub_categories %}
+
+                        {% if c.categories_id is profile.cat_id %}
+                            {% if c.id is profile.subcat_ids %}
+                                <option value="{{ c.id }}" selected>{{ c.name }}</option>
+                            {% else %}
+                                <option value="{{ c.id }}">{{ c.name }}</option>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-primary-dark botttom" onclick="return updateUser()">Save changes</button>
+        </div>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}
+{% block script %}
+    <script>
+
+        let has_change = 0
+
+        // to detect some changes here...
+        function setMarkChange() {
+            has_change = 1
+        }
+
+        $("#inputGroupFile01").on('change', function (e) {
+            var reader = new FileReader()
+            reader.onload = function (e) {
+                $("#profile_photo").attr('src', e.target.result)
+            }
+            reader.readAsDataURL(this.files[0]);
+            setMarkChange()
+        })
+
+        $("#inputGroupFile02").on('change', function (e) {
+            var reader = new FileReader()
+            reader.onload = function (e) {
+                $("#header_photo").attr('src', e.target.result)
+            }
+            reader.readAsDataURL(this.files[0]);
+            setMarkChange()
+        })
+
+        $(document).ready(function () {
+            getSubCat('{{ profile.cat_id }}');
+            $('#acc_category').on('change', function () {
+                let cat_id = $('#acc_category').val();
+                getSubCat(cat_id);
+            });
+        });
+
+        const getSubCat = (cat_id) => {
+            let url = "/getsubcategory";
+            var subCategories = '{{ profile.subcat_ids }}'.split(',');
+            //Ajax Start
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                headers: {'X-CSRFToken': $("#hd_csrf").val(),},
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    category_id: cat_id
+                },
+
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    let sub_cat = data.subcat_list;
+                    let html_subCat = '';
+                    sub_cat.forEach(cat => {
+                        if (subCategories.includes(cat.id.toString())) {
+                            html_subCat += '<option value="' + cat.id + '" selected>' + cat.name + '</option>';
+                        } else {
+                            html_subCat += '<option value="' + cat.id + '">' + cat.name + '</option>';
+                        }
+                    });
+                    $('#acc_subcategory').empty();
+                    $('#acc_subcategory').append(html_subCat);
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            // Ajax end
+            return false
+        }
+
+        function changeImg() {
+            path = $('#inputGroupFile01').val();
+            $("[for='inputGroupFile01']").html(path);
+
+        }
+
+        function changeImg1() {
+            path = $('#inputGroupFile02').val();
+            $("[for='inputGroupFile02']").html(path);
+
+        }
+
+        function updateUser() {
+            if(has_change == 0) {
+                showAlert(0, "You didnt change anything!")
+                return
+            }
+            if ($("#first_name").val() == "") {
+                showAlert(0, "Please enter the first name")
+                return false
+            } else if ($("#last_name").val() == "") {
+                showAlert(0, "Please enter the last name")
+                return false
+            } else if ($("#email").val() == "") {
+                showAlert(0, "Please enter the correct email")
+                return false
+            }
+            var formData = new FormData();
+
+            /*var sub_cats = '';
+            $('#acc_subcategory').children().each(function () {
+                sub_cats += $(this).val();
+                sub_cats += ','
+            });*/
+
+            //var is_notification = document.getElementById('acc_notification').checked;
+
+            formData.append('file1', $("#inputGroupFile01")[0].files[0]);
+            formData.append('file2', $("#inputGroupFile02")[0].files[0]);
+            formData.append('first_name', $("#first_name").val());
+            formData.append('last_name', $("#last_name").val());
+            formData.append('email', $("#email").val());
+            formData.append('acc_bio', $('#acc_bio').val());
+            formData.append('cat_id', $('#acc_category').val());
+            formData.append('subcat_ids', $('#acc_subcategory').val());
+            formData.append('facebook_url', $('#acc_facebook').val());
+            formData.append('instagram_url', $('#acc_instagram').val());
+            formData.append('twitter_url', $('#acc_twitter').val());
+            formData.append('website_url', $('#acc_website').val());
+            formData.append('is_notification', 0);
+            // Ajax start
+            var action = "/update-user";
+            $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data.msg == "success") {
+                        showAlert(1, "Save changes successfully!")
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000)
+                        return false
+                    } else if (data.msg == 'already') {
+                        return false;
+                    } else {
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            return false
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,277 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="طرق الدفع" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Payout" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+
+    <style>
+        html {
+            overflow-y: auto;
+        }
+    </style>
+
+{% block content %}
+    {% load static %}
+
+    <style>
+
+.card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+
+        
+
+.blllu{
+        color: rgb(11, 111, 241) !important;
+        margin-right: 8px !important; 
+        float: right;
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+        float: right;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+
+    
+.right{
+        position: absolute !important;
+        left: 20px !important;
+        top: 5px !important;
+        float: right !important;
+    }
+    
+
+
+    </style>
+
+    <div class=" page__container " style="margin-top: 0px;height: 100vh !important;">
+        <div class="col-lg-6 p-6" style="margin-top: 25px;" style="">
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <div class="list-group list-group-form " style="">
+                <div class="list-group-item d-flex align-items-center  card-header card-header-dark" style="padding-top:20px"> 
+                    <strong id="card_num" class="blllu blllu-dark"> </strong><div class="flex mediabout mediabout-dark riight" style="padding-top: 5px;">بطاقتك الحالية تنتهي بالرقم </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label col-sm-3 mediabout mediabout-dark">أسم حامل البطاقة</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-dark" id="card_name" placeholder="أكتب أسم حامل البطاقة"
+                                   value="{{ card.card_name }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label mediabout mediabout-dark col-sm-3"> أسم البنك</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-dark" id="card_number"
+                                   placeholder="أكتب رقم البطاقة" value="{{ card.card_number }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label col-sm-3 mediabout mediabout-dark" >رقم البطاقة</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control form-control-dark" id="bank_number" placeholder="Bank number"
+                                   value="{{ card.bank_number }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9">
+                            <a style="cursor: pointer" class="btn btn-primary btn-primary-dark" onclick="saveBank()">حفظ البيانات</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="list-group list-group-form " style="">
+                <div class="list-group-item d-flex align-items-center  card-header card-header-dark">
+                    <div class="flex mediabout mediabout-dark">Your current payment method end with  <strong id="card_num" class="blllu blllu-dark"> </strong></div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label col-sm-3 mediabout mediabout-dark">Card name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-dark" id="card_name" placeholder="Card name"
+                                   value="{{ card.card_name }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label mediabout mediabout-dark col-sm-3">Card number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-dark" id="card_number"
+                                   placeholder="Credit / debit card number" value="{{ card.card_number }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <label class="col-form-label form-label col-sm-3 mediabout mediabout-dark" >Bank Number</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control form-control-dark" id="bank_number" placeholder="Bank number"
+                                   value="{{ card.bank_number }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item carddy card-dark">
+                    <div class="form-group row align-items-center mb-0">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-9">
+                            <a style="cursor: pointer" class="btn btn-primary btn-primary-dark" onclick="saveBank()">Save changes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- <div class="col-lg-6 p-6" style="margin-top: 25px;">
+            <div class="list-group list-group-form">
+                <div class="list-group-item d-flex align-items-center">
+                    <img src="{% static 'student/assets/images/paypal.png' %}" alt="visa" height="70" width="90"
+                         class="mr-16pt">
+                    <div class="flex" style="margin-left:10px"><strong>Not Connected</strong></div>
+                    <div class="flex"
+                         style="position: absolute; right:20px;background:#EFEFEF;padding:0px 20px 0px 10px;border:1px solid #DFDFDF">
+                        <strong><a href="#" style="margin-top:5px"><img
+                                src="{% static 'student/assets/images/payp.png' %}" alt="visa" height="35" width="35"
+                                class="">Connect</a></strong></div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <script>
+
+        let change = 0, change1 = 0
+        $(function() {
+            str = $("#card_number").val()
+            console.log("str::", str)
+            str = str.replace(/\w(?=\w{4})/g, "*")
+            console.log("str::", str)
+            $("#card_num").html(str)
+            str = str.replace(/\w(?=\w{0})/g, "*")
+            $("#card_number").val(str)
+        })
+
+        $("#card_name").on('change', function(){
+            change = 1
+        })
+
+        $("#card_number").on('change', function(){
+            change1 = 1
+        })
+
+        $("#bank_number").on('change', function(){
+            change = 1
+        })
+
+        function saveBank() {
+            card_id = '{{ card.id }}'
+            card_name = $("#card_name").val()
+            card_number = $("#card_number").val()
+            bank_number = $("#bank_number").val()
+
+            if (card_name == '' || card_number == '' || bank_number == '') {
+                showAlert(0, 'Please fill all fields!')
+                return;
+            }
+
+            if (isNaN(card_number)) {
+                if (change1 == 0)
+                    card_number = '{{ card.card_number }}'
+                else {
+                    showAlert(0, 'Card Number should be digit!!!')
+                    return;
+                }
+            }
+
+            if (change == 0 && change1 == 0) {
+                showAlert(0, 'You didnt change anything!!')
+                return;
+            }
+
+            user_id = '{{ request.user.id }}'
+            let url = '/save_card_info/'
+            let form_data = new FormData()
+            form_data.append('card_name', card_name)
+            form_data.append('card_number', card_number)
+            form_data.append('bank_number', bank_number)
+            form_data.append('user_id', user_id)
+            form_data.append('card_id', card_id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+                if (response.status == 1) {
+                    showAlert(1, 'Saved Successfully!!!')
+                } else {
+                    showAlert(0, 'Errors in save!!')
+                }
+            })
+        }
+
+    </script>
+
+{% endblock %}

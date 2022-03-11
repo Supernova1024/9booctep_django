@@ -1,0 +1,189 @@
+---
+title: Pricing
+slug: pricing
+guest: true
+header_center: true
+header_hero: false
+navbar_class: navbar-light bg-white navbar-shadow
+---
+{% extends 'layouts/learnly.html' %}
+
+{% block page %}
+{% import '_card-pricing.html' as pricing %}
+
+<div class="mdk-box mdk-box--bg-{{ header_variant or 'white-45' }} bg-white js-mdk-box {{ headerClass or 'mb-0' }}" 
+  data-effects="parallax-background blend-background">
+  <div class="mdk-box__bg">
+    <div class="mdk-box__bg-front" style="background-image: url({{ header_image or 'assets/images/photodune-6745579-modern-creative-man-relaxing-on-workspace-m.jpg' }});"></div>
+  </div>
+  <div class="mdk-box__content d-flex align-items-center justify-content-center {% if header_hero !== false %}hero {% endif %}{{ containerClass }} text-center py-112pt{% if not header_center %} text-md-left{% endif %}" style="min-height: 656px;">
+
+    <div class="row card-group-row no-gutters flex z-0">
+      <div class="col-md-4 col-sm-6 card-group-row__col">
+        {% set description %}
+          <strong>Basic</strong> Support<br>
+          <strong>3 Courses</strong> per Week<br>
+          <strong>Monthly</strong> Digests<br>
+          <strong>Practice Live</strong> System<br>
+          <strong>Members-only</strong> Forums
+        {% endset %}
+
+        {{ pricing.component(
+          title="Student", 
+          description=description,
+          price="9",
+          color="secondary",
+          actionColor="outline-secondary",
+          icon="person",
+          class="border-0 card--transparent mb-md-0",
+          prefix=prefix
+          ) }}
+      </div>
+      <div class="col-md-4 col-sm-6 card-group-row__col">
+        {% set description %}
+          <strong>Dedicated</strong> Support<br>
+          <strong>10 Courses</strong> per Week<br>
+          <strong>Weekly</strong> Digests<br>
+          <strong>Practice Live</strong> System<br>
+          <strong>Members-only</strong> Forums
+        {% endset %}
+
+        {{ pricing.component(
+          title="Team", 
+          description=description,
+          price="19",
+          raised=true,
+          actionColor="accent",
+          iconColor="dark",
+          icon="group",
+          class="border-0 mb-md-0 card--scaled z-2",
+          prefix=prefix
+          ) }}
+      </div>
+      <div class="col-md-4 col-sm-6 card-group-row__col">
+        {% set description %}
+          <strong>Premium</strong> Support<br>
+          <strong>All Courses</strong> per Week<br>
+          <strong>Daily</strong> Digests<br>
+          <strong>Practice Live</strong> System<br>
+          <strong>Members-only</strong> Forums
+        {% endset %}
+
+        {{ pricing.component(
+          title="Enterprise", 
+          description=description,
+          price="49",
+          color="secondary",
+          actionColor="outline-secondary",
+          icon="business_center",
+          class="border-0 card--transparent mb-sm-0",
+          prefix=prefix
+          ) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section bg-white border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-headline page-headline--title text-center">
+      <h2>All plans include</h2>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="row">
+        <div class="col-sm-auto mb-16pt mb-sm-0">
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">24h Access to PRO Courses</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Join 2000+ Community Members</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Access to New Courses Weekly</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Support from our Tutors</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Assets Included per Course</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-auto">
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">24h Access to PRO Courses</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Join 2000+ Community Members</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Access to New Courses Weekly</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Support from our Tutors</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-20 material-icons mr-8pt">check</span>
+              <span class="text-70">Assets Included per Course</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+    {% include 'pages/_feedback.html' %}
+  </div>
+</div>
+
+{% import '_card-faq.html' as faq %}
+<div class="border-top-1 page-section">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-separator">
+      <div class="page-separator__text">Questions</div>
+    </div>
+    <div class="row card-group-row">
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='Do you offer a free trial?',
+          description='We offer everyone a 7 day free trial! You can take advantage of it by visiting our sign-up page! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, ab!',
+          class='card-group-row__card') }}
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='Can I gift a subscription to someone?',
+          description='Yes! We do offer certificates. Please email us for more information. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ad!',
+          class='card-group-row__card') }}  
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='I have a great idea for an application or website, but need help on where to begin. Can you guys help me?',
+          description='We advise posting personal requests in our Community Forum Lorem ipsum dolor sit amet.',
+          class='card-group-row__card') }}
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='I found a bug. Where can I report that?',
+          description='In the unlikely situation you stumble across a bug, go ahead and shoot us an email. Lorem ipsum dolor sit amet.',
+          class='card-group-row__card') }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

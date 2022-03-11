@@ -1,0 +1,71 @@
+<div class="page-section {{ containerClass }}">
+  <div class="page-separator">
+    <div class="page-separator__text">Outstanding Payments</div>
+  </div>
+
+  <div class="alert alert-soft-warning mb-lg-32pt">
+    <div class="d-flex flex-wrap align-items-center">
+      <div class="mr-8pt">
+        <i class="material-icons">access_time</i>
+      </div>
+      <div class="flex" style="min-width: 180px">
+        <small class="text-100">
+          Please pay your amount due of
+          <strong>&dollar;9.00</strong> for invoice <a href="{{ prefix or '' }}billing-invoice.html" class="text-underline">10002331</a>
+        </small>
+      </div>
+      <a href="{{ prefix or '' }}billing-payment.html" class="btn btn-sm btn-link">Pay Now</a>
+    </div>
+  </div>
+
+  <div class="page-separator">
+    <div class="page-separator__text">Payment History</div>
+  </div>
+
+  <div class="card table-responsive">
+    <table class="table table-flush table-nowrap">
+      <thead>
+        <tr>
+          <th>Invoice no.</th>
+          <th>Date</th>
+          <th class="text-center">Amount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% set items = [{
+          document: '10002331',
+          date: '26 Sep 2018'
+        }, {
+          document: '10003815',
+          date: '29 Apr 2018'
+        }, {
+          document: '10007382',
+          date: '31 Mar 2018'
+        }, {
+          document: '10004876',
+          date: '30 May 2018'
+        }, {
+          document: '10009392',
+          date: '30 Apr 2018'
+        }] %}
+
+        {% for item in items %}
+        <tr>
+          <td><a href="{{ prefix or '' }}billing-invoice.html" class="text-underline">{{ item.document }}</a></td>
+          <td>{{ item.date }}</td>
+          <td class="text-center">&dollar;9</td>
+          <td class="text-right">
+            <div class="d-inline-flex align-items-center">
+              <a href="{{ prefix or '' }}billing-invoice.html" class="btn btn-sm btn-outline-secondary mr-16pt">View invoice <i class="icon--right material-icons">keyboard_arrow_right</i></a>
+              <a href="{{ prefix or '' }}billing-invoice.html" class="btn btn-sm btn-outline-secondary">Download <i class="icon--right material-icons">file_download</i></a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>

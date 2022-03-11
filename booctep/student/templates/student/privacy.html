@@ -1,0 +1,418 @@
+{% extends "student/base.html" %}
+ {% load static %}
+{% load i18n %}
+
+{% block title %}
+    Security
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Privacy" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+
+<style>
+.blllu{
+        color: rgb(11, 111, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(115, 147, 189) !important;
+        margin-right: 8px !important;
+    }
+
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: left !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+.alert-soft-primary-dark{
+    background-color: #1d2025 !important;
+    border: 1px solid #14171b !important;
+}
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+</style>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+[dir="rtl"] b, [dir="rtl"] strong{
+    font-weight: 700 !important;
+    margin-right: 10px !important;
+}
+
+    .blllu{
+            color: rgb(11, 111, 241) !important;
+            margin-right: 8px !important; 
+        } 
+        .blllu-dark{
+    
+            color: rgb(115, 147, 189) !important;
+            margin-right: 8px !important;
+        }
+    
+    
+    .btn-primary{
+        background-color: rgb(37, 148, 192) !important;
+        border: 1px solid rgb(23, 104, 136) !important;
+        float: right !important;
+    }
+    
+    .mediabout{
+        color: rgb(21, 43, 71) !important;
+    }
+      
+    .mediabout-dark{
+       color: rgb(219, 219, 219) !important;
+    }
+    
+    .btn-primary-dark{
+        background-color: #323741 !important;
+        color: rgb(199, 199, 199) !important;
+        float: right !important;
+        border: 1px solid  #21242b !important;
+        box-shadow: none !important;
+    }
+    
+    .alert-soft-primary-dark{
+        background-color: #1d2025 !important;
+        border: 1px solid #14171b !important;
+    }
+    
+.riggt{
+    float: right !important;
+}
+
+.toppp{
+    margin-top: 20px !important;
+}
+
+.material-icons{
+    margin-right: 0 !important;
+    float: right !important;
+    right: 0 !important;
+}
+
+.riggggt{
+    position: absolute;right: 5px !important;
+}
+
+.riggggt{
+    position: absolute;right: 5px !important;
+}
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+</style>
+
+
+{% endif %}
+
+    {% load static %}
+    <div class=" page__container " style="margin-top: 0px;height: 100vh !important;">
+        <div class="col-lg-8 d-flex align-items-center" style="">
+        </div>
+        <div class="col-md-7 pt-3">
+            <div class="alert alert-soft-primary alert-dismissible fade show " role="alert" style="width:60%">
+                <div class="d-flex flex-wrap align-items-start" style="justify-content: space-between;">
+                    <div class="mr-8pt riggggt">
+                        <i class="material-icons blllu blllu-dark riggt">help</i>
+                    </div>
+                    <div class="flex" style="min-width: 180px;float: right !important;">
+                        <small class="text-black-100" style="">
+
+                            {% get_current_language as lang %}
+                            {% if lang == "ar" %}
+                            <b style="margin-top: 10px !important;" class=" blllu blllu-dark">السلام عليكم</b>
+                            {% else %}
+                            <b style="margin-top: 10px !important;" class=" blllu blllu-dark">Hello there</b>
+                            {% endif %}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group " style="margin-bottom: 20px !important">
+                <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1 riggt">
+                    <input style="font-size:5px !important;margin-top:-10px !important" type="checkbox"
+                           id="auto_email" class="custom-control-input" style="font-size: x-small;">
+                    <label class="custom-control-label" for="auto_email">Yes</label>
+                </div>
+
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <b style="" class="mediabout mediabout-dark riggt" style="font-size: xx-large !important;font-weight: 700 !important;margin-right: 150px !important;margin-top: 50px !important;">استقبال الإيميلات التلقائية؟</b><br/>
+                {% else %}
+
+                <b style="margin-top:3px !important" class="mediabout mediabout-dark riggt">Recieve automatic emails.</b><br/>
+                {% endif %}
+            </div>
+            <div class="alert alert-soft-primary alert-dismissible fade show " role="alert" style="width:60%">
+                <div class="d-flex flex-wrap align-items-start">
+                    <div class="mr-8pt riggggt">
+                        <i class="material-icons blllu blllu-dark riggt">help</i>
+                    </div>
+                    <div class="flex" style="min-width: 180px;float: right !important;">
+                        <small class="text-black-100" style="">
+
+                            {% get_current_language as lang %}
+                            {% if lang == "ar" %}
+                            <b style="margin-top: 10px !important;" class=" blllu blllu-dark">السلام عليكم</b>
+                            {% else %}
+                            <b style="margin-top: 10px !important;" class=" blllu blllu-dark">Hello there</b>
+                            {% endif %}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px !important">
+                <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1 riggt">
+                    <input style="font-size:5px !important;margin-top:-10px !important" type="checkbox"
+                           {% if user.receive_email == 1 %}checked{% endif %}
+                           id="receive_email" class="custom-control-input" style="font-size: x-small;">
+                    <label class="custom-control-label" for="receive_email">Yes</label>
+                </div>
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <b style="" class="mediabout mediabout-dark riggt" style="font-size: xx-large !important;font-weight: 700 !important;margin-right: 150px !important;">استقبال إيميلات العروض والهدايا؟</b><br/>
+                {% else %}
+
+                <b style="margin-top:3px !important" class="mediabout mediabout-dark riggt">Recieve automatic emails.</b><br/>
+                {% endif %}
+            </div>
+            <div class="form-group" style="margin-bottom: 20px !important">
+                <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1 riggt">
+                    <input style="font-size:5px !important;margin-top:-10px !important" checked="" type="checkbox" onchange="setMode(this)"
+                           id="changemode" class="custom-control-input toggler" style="font-size: x-small;">
+
+                    <label class="custom-control-label" for="changemode">Yes</label>
+                </div>
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                <b style=" margin-top:3px !important" class="mediabout mediabout-dark riggt ">وضع المظهـر (<span
+                    class="getmodename "></span>)</b>
+                {% else %}
+                <b style=" margin-top:3px !important" class="mediabout mediabout-dark riggt ">Set the default mode to (<span
+                    class="getmodename "></span>)</b>
+                {% endif %}
+            </div>
+
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary btn-primary-dark toppp" onclick="saveChanges()">حفظ البيانات</button>
+            {% else %}
+
+            <button type="submit" class="btn btn-primary btn-primary-dark " onclick="saveChanges()">Save changes</button>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true" style="padding-top: 12%;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModal">Really Delete?</h5>
+                    <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                            type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <button style="color:#fff;background: rgb(37,108,136);" type="button" onclick="deleteAccount()"
+                                class="btn">Yes
+                        </button>
+                        <button style="color:#fff;background: rgb(37,108,136);" type="button" onclick="closeModal()"
+                                class="btn">No
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="rating_modal_back"></div>
+    <div class="sweet-alert sweet-alert-dark showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+         id="result_modal"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="margin-top: -169px; display: none;">
+        <div class="sa-icon sa-warning pulseWarning" style="display: none;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <div class="sa-icon sa-success animate" style="display: block;">
+            <span class="sa-line sa-tip animateSuccessTip"></span>
+            <span class="sa-line sa-long animateSuccessLong"></span>
+            <div class="sa-placeholder"></div>
+            <div class="sa-fix"></div>
+        </div>
+        <div class="sa-icon sa-custom" style="display: none;"></div>
+        <h2 id="result_title">Success!</h2>
+        <p style="display: block;" id="result_content">Thanks!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm btn-primary btn-primary-dark" tabindex="1" onclick="hideResultModal()"
+                        style="display: inline-block; ">
+                    OK
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        let privacy_item = '';
+        $(function() {
+            privacy_item = localStorage.getItem('privacyItemStu')
+            if(privacy_item == null || privacy_item ==  '') {
+                privacy_item = {
+                    'mode': 0,
+                    'lang': 0
+                }
+            } else {
+                privacy_item = JSON.parse(privacy_item);
+            }
+            $("#changemode").prop('checked', privacy_item.mode)
+            $("#changelang").prop('checked', privacy_item.lang)
+            let mode = privacy_item.name == 0 ? 'الليلي' : 'الفاتح'
+            $(".getmodename").html(mode)
+        })
+
+        function setMode(obj) {
+            let value = $(obj).is(":checked")
+            value = value == true ? 1 : 0
+            privacy_item.mode = value
+        }
+
+        function setLang(obj) {
+            let value = $(obj).is(":checked")
+            value = value == true ? 1 : 0
+            privacy_item.lang = value
+        }
+
+        function showAlert(type, msg) {
+            if (type * 1 == 0) { //error
+                $(".sa-success").css({
+                    'display': 'none'
+                })
+                $(".sa-warning").css({
+                    'display': 'block'
+                })
+                $("#result_title").html('Warning!')
+            } else {
+                $(".sa-success").css({
+                    'display': 'block'
+                })
+                $(".sa-warning").css({
+                    'display': 'none'
+                })
+                $("#result_title").html('Success!')
+            }
+
+            $("#result_content").html(msg)
+            $("#result_modal").css({
+                'display': 'block'
+            })
+            $("#rating_modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function hideResultModal() {
+            $("#result_modal").css({
+                'display': 'none'
+            })
+            $("#rating_modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function saveChanges() {
+            localStorage.setItem('privacyItemStu', JSON.stringify(privacy_item));
+            auto_email = $("#auto_email").is(":checked")
+            receive_email = $("#receive_email").is(":checked")
+            user_id = '{{ request.user.id }}'
+            let url = '/set_privacy/'
+            let form_data = new FormData()
+            form_data.append('user_id', user_id)
+            form_data.append('auto_email', auto_email)
+            form_data.append('receive_email', receive_email)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data.status == 1) {
+                        showAlert(1, 'Saved Successfully!!!')
+                    } else {
+                        showAlert(0, 'Some errors in Save!')
+                    }
+                    setTimeout(() =>{
+                        location.reload();
+                    }, 2000)
+                },
+            })
+
+        }
+    </script>
+
+{% endblock %}

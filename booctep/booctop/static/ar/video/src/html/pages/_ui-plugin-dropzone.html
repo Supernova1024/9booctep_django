@@ -1,0 +1,60 @@
+{% import 'components/panel.html' as panel %}
+{% import 'components/hljs.html' as hljs %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Drag & Drop Upload', description='Drag and drop file uploads with image previews powered by Dropzone.js. Please read the <a href="http://www.dropzonejs.com/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <div 
+      class="dropzone dropzone-multiple w-100 mb-24pt" 
+      data-toggle="dropzone" 
+      data-dropzone-multiple 
+      data-dropzone-url="http://"
+      data-dropzone-files='["assets/images/256_daniel-gaffey-1060698-unsplash.jpg", "assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg", "assets/images/256_rsz_florian-perennes-594195-unsplash.jpg"]'>
+
+      <div class="fallback">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFileUploadMultiple" multiple>
+          <label class="custom-file-label" for="customFileUploadMultiple">Choose file</label>
+        </div>
+      </div>
+
+      <ul class="dz-preview dz-preview-multiple list-group list-group-flush mt-16pt">
+        <li class="list-group-item">
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <div class="avatar">
+                <img src="assets/images/256_daniel-gaffey-1060698-unsplash.jpg" class="avatar-img rounded" alt="..." data-dz-thumbnail>
+              </div>
+            </div>
+            <div class="col">
+              <div class="font-weight-bold" data-dz-name>...</div>
+              <p class="small text-muted mb-0" data-dz-size>...</p>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="text-muted-light" data-dz-remove>
+                <i class="material-icons">close</i>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+{% call hljs.component() -%}
+<div 
+  class="dropzone dropzone-multiple w-100" 
+  data-toggle="dropzone" 
+  data-dropzone-multiple 
+  data-dropzone-url="http://"
+  data-dropzone-files='["assets/images/256_daniel-gaffey-1060698-unsplash.jpg", "assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg", "assets/images/256_rsz_florian-perennes-594195-unsplash.jpg"]'>...</div>
+{%- endcall %}
+  {% endcall %}
+</div>

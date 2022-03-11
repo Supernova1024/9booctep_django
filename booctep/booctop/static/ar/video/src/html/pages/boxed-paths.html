@@ -1,0 +1,24 @@
+---
+title: Learning Paths 
+slug: paths
+guest: true
+---
+{% extends 'layouts/boxed.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+{% import 'pages/_results-heading.html' as results %}
+
+{% block page %}
+  <div class="page-section">
+    <div class="{{ containerClass or 'container' }}">
+      
+      {{ results.component(label='paths') }}
+      {{ super() }}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block drawer %}
+  {{ super() }}
+  {{ drawer.component() }}
+{% endblock %}

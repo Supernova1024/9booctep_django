@@ -1,0 +1,148 @@
+{% import 'components/avatar.html' as avatar %}
+
+<div class="navbar navbar-expand {{ navbar_class or '' }}" id="default-navbar" data-primary>
+
+  <!-- Navbar toggler -->
+  <button class="navbar-toggler w-auto mr-16pt d-block{% if layout !== 'default' %} d-lg-none{% endif %} rounded-0" type="button" data-toggle="sidebar">
+    <span class="material-icons">short_text</span>
+  </button>
+
+  <!-- Navbar Brand -->
+  <a href="choose.html" class="navbar-brand mr-16pt">
+    {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="Luma Education Platform" class="img-fluid" />', size='sm', class='navbar-brand-icon mr-0 mr-lg-8pt', title_class='bg-primary', circle=false, element='span') }}
+    <span class="d-none d-lg-block">{{ brand }}</span>
+  </a>
+
+  <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-center" id="default-nav">
+    <!-- <li class="nav-item">
+      <a href="javascript:void()" class="nav-link">
+        <img src="assets/images/logo/bootstrap.svg" alt="{{ brand }} Bootstrap" width="40" class="mr-2" />
+        <span class="d-flex flex-column">
+          <strong>{{ brand }}</strong>
+          <small class="mt-n1">Bootstrap</small>
+        </span>
+      </a>
+      <div class="dropdown-menu">
+        <a href="javascript:void()" class="dropdown-item py-2 active">
+          <img src="assets/images/logo/bootstrap_body.svg" alt="Bootstrap" width="24" class="mr-2" />
+          <strong>Bootstrap</strong>
+        </a>
+        <a href="javascript:void()" class="dropdown-item disabled py-2">
+          <img src="assets/images/985px-Laravel.svg.png" alt="Laravel" width="24" class="mr-2" />
+          <span class="flex d-flex">
+            Laravel
+            <span class="badge badge-notifications badge-light ml-2">soon</span>
+          </span>
+        </a>
+        <a href="javascript:void()" class="dropdown-item disabled py-2">
+          <img src="assets/images/Vue.js_Logo_2.svg" alt="Vue" width="24" class="mr-2" />
+          <span class="flex d-flex">
+            Vue
+            <span class="badge badge-notifications badge-light ml-2">soon</span>
+          </span>
+        </a>
+      </div>
+    </li> -->
+    <!-- <li class="nav-item dropdown">
+      <a href="javascript:void()" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-caret="true">
+        <img src="assets/images/icon/rocket-white.svg" alt="Introduction" width="32" class="mr-2" /> 
+        Features
+      </a>
+      <div class="dropdown-menu">
+        <a href="#header" class="dropdown-item">
+          <img src="assets/images/icon/rocket.svg" alt="Introduction" width="24" class="mr-2" /> 
+          Introduction
+        </a>
+        <a href="#layouts" class="dropdown-item">
+          <img src="assets/images/icon/template.svg" alt="Layouts" width="24" class="mr-2" /> 
+          Layouts
+        </a>
+        <a href="#theming" class="dropdown-item">
+          <img src="assets/images/icon/skins.svg" alt="Skins" width="24" class="mr-2" /> 
+          Theming
+        </a>
+        <a href="#components" class="dropdown-item">
+          <img src="assets/images/icon/components.svg" alt="Components" width="24" class="mr-2" /> 
+          UI Components
+        </a>
+        <a href="#rtl" class="dropdown-item">
+          <img src="assets/images/icon/rtl.svg" alt="RTL" width="24" class="mr-2" /> 
+          RTL
+        </a>
+      </div>
+    </li> -->
+    <li class="nav-item">
+      <a href="#header" class="nav-link">
+        <img src="assets/images/icon/rocket-white.svg" alt="Introduction" width="32" class="mr-2" /> 
+        Introduction
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a href="javascript:void()" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="true">
+        <img src="assets/images/icon/prototype-white.svg" alt="Modules" width="32" class="mr-2" /> 
+        Modules
+      </a>
+      <div class="dropdown-menu">
+        <a href="#guest" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Guest" width="24" class="mr-2" /> 
+          Guest - Demo 1
+        </a>
+        <a href="#guest-2" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Guest" width="24" class="mr-2" /> 
+          Guest - Demo 2
+        </a>
+        <a href="#instructor" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Instructor" width="24" class="mr-2" /> 
+          Instructor - Demo 1
+        </a>
+        <a href="#instructor-2" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Instructor Demo 2" width="24" class="mr-2" /> 
+          Instructor - Demo 2
+        </a>
+        <a href="#student" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Student" width="24" class="mr-2" /> 
+          Student - Demo 1
+        </a>
+        <a href="#student-2" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Student Demo 2" width="24" class="mr-2" /> 
+          Student - Demo 2
+        </a>
+        <a href="#enterprise" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Enterprise" width="24" class="mr-2" /> 
+          Enterprise
+        </a>
+        <a href="#auth" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Authentication" width="24" class="mr-2" /> 
+          Authentication
+        </a>
+        <a href="#account" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Account Management" width="24" class="mr-2" /> 
+          Account Management
+        </a>
+        <a href="#billing" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Billing" width="24" class="mr-2" /> 
+          Billing
+        </a>
+        <a href="#messaging" class="dropdown-item">
+          <img src="assets/images/preview/icon/pages.png" alt="Messaging" width="24" class="mr-2" /> 
+          Messaging
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#layouts" class="nav-link">
+        <img src="assets/images/icon/template-white.svg" alt="Layouts" width="32" class="mr-2" /> 
+        Layouts
+      </a>
+    </li>
+  </ul>
+
+  <ul class="nav navbar-nav ml-auto mr-0">
+    <li class="nav-item{% if slug === 'documentation' %} active{% endif %}">
+      <a href="documentation.html" class="nav-link" data-toggle="tooltip" data-title="Documentation" data-placement="bottom" data-boundary="window"><i class="material-icons">help_outline</i></a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ buy_url }}" target="_blank" class="btn btn-outline-white btn-rounded">Buy Now</a>
+    </li>
+  </ul>
+</div>

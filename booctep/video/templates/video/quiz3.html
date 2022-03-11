@@ -1,0 +1,170 @@
+{% extends "video/base.html" %}
+{% block content %}
+    {% load static %}
+
+            <div data-push data-responsive-width="768px" style="background-color: #fff;" data-has-scrollable-region data-fullbleed class="mdk-drawer-layout js-mdk-drawer-layout">
+                <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+
+                    <div class="app-messages__container d-flex flex-column h-100 pb-4">
+                        <div class="navbar navbar-light bg-white navbar-expand-sm navbar-shadow z-1" id="messages-navbar">
+                            <div class="container-fluid flex-wrap px-sm-0">
+                                <div class="nav py-2">
+                                    <div class="nav-item d-flex align-items-center mr-3">
+                                        <div class="d-flex flex-column" style=" font-size: 21px">
+
+
+                                        
+                                            <nav class="nav navbar-nav">
+                                                <div class="nav-item navbar-list__item">
+                                                    <a href="/courses" class="nav-link h-auto"><i class="material-icons icon--left">keyboard_backspace</i> Back to Dashboard</a>
+                                                </div>
+                                                <div class="nav-item navbar-list__item">
+                                                    <div class="d-flex align-items-center flex-nowrap">
+                                                        <div class="mr-16pt">
+                                                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                                                        </div>
+                                                        <div class="flex">
+                                                            <a href="mini-student-take-course.html" class="card-title text-body mb-0">Learn HTML5 and sass with css</a>
+                                                            <p class="lh-1 d-flex align-items-center mb-0">
+                                                                <span class="text-50 small font-weight-bold mr-8pt">Video number 2 : </span>
+                                                                <span class="text-50 small">Intro to HTML5</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </nav> 
+
+                                            <p class="troph">Get your certificate <i class="fa fa-trophy troph-i"></i></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="py-2 flex d-flex align-items-center">
+                                    <button data-target="#messages-drawer" class="navbar-toggler d-block d-md-none ml-3 p-0" data-toggle="sidebar" type="button">
+                                        <i class="material-icons">people_outline</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="Quiz">
+                            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+
+                                <div class="quiz-1">
+                                    <h2 class="quiz-h2-2">Arrange from the largest to the smallest!</h2>
+                                    
+                                   
+                                    <div class="row" data-toggle="dragula" data-dragula-containers='["#cards-left", "#cards-right"]'>
+                                        <div class="col-md">
+                                            <div class="card shadow-none " style="border: 0 !important;"> 
+                                                <div class="card-body">
+                                                    <div id="cards-left" class="card-list">
+                    
+                    
+                    
+                    
+                    
+                                                        <div class="card">
+                                                            <p style="margin-top: 5px !important; ">
+                                                                <span style="font-weight: 500;" class="text-muted">&lt;/head&gt;
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="card">
+                                                            <p>
+                                                                <span class="text-muted">&lt;head&gt;
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="card">
+                                                            <p>
+                                                                <span class="text-muted">&lt;!DOCTYPE&nbsp;html&gt;
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="card">
+                                                            <p>
+                                                                <span class="text-muted">&lt;Title&gt; &lt;/title&gt;
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                    
+                                                       
+                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                        
+    
+                            </div>
+                        </div>
+
+                        <div class=" page__container page__container page__container-2" style="width: 100%;">
+                            
+                           
+                            <form action="#" id="message-reply" class="form-down-2">
+                                
+                            
+
+                                <button type="submit" class="btn btn-accent flex" style="width: 40%;margin:0 auto;margin-top: 30px;" >Skip</button>
+
+
+
+                               
+                                <button type="submit" class="btn btn-accent flex" data-toggle="toastr" data-toastr-type="info" data-toastr-title="null" data-toastr-message="Use the jQuery show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into jQuery." data-toastr-show-method="slideDown" data-toastr-hide-method="slideUp" data-toastr-close-method="slideUp">Hint
+                                    <i class="fa fa-lightbulb" style="margin-left: 5px;"></i>
+                                </button>
+
+
+                                <button type="submit" class="btn flex" style="background: grey;color: #fff; width: 40%;margin:0 auto;margin-top: 30px;cursor: not-allowed;" disabled>check answer</button>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mdk-drawer js-mdk-drawer" data-align="end" id="messages-drawer">
+                    <div class="mdk-drawer__content top-0">
+                        <div class="sidebar sidebar-right sidebar-light bg-white o-hidden">
+                            <div class="d-flex flex-column h-100">
+                               
+                                <div style="margin-top: 10px;" class="flex" data-perfect-scrollbar>
+                                    <div class="sidebar-heading">Quiz Timeline</div>
+                                    
+                                    <ul class="list-group list-group-flush mb-3">
+
+                                        <div class="chart chart-2" style="height: 262px;">
+                                            <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                                                <h2 class="m-0">6 / 27</h2>
+                                                <strong>21 To go</strong>
+                                            </div>
+                                            <canvas class="chart-canvas position-relative z-1" id="attendanceDoughnutChart" data-chart-legend="#attendanceDoughnutChartLegend" data-chart-line-background-color="primary;accent;gray.700;gray">
+                                                <span style="font-size: 1rem;" class="text-muted"><strong>Attendance</strong> doughnut chart goes here.</span>
+                                            </canvas>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="nav border-0">
+                                            </div>
+                                            <div id="attendanceDoughnutChartLegend" class="chart-legend chart-legend--vertical mt-24pt"></div>
+                                        </div>
+
+
+                                   
+                                        <button type="submit" class="btn btn-accent flex" style="width: 90%;margin:0 auto;margin-top: 30px;" >continue later</button>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% macro component(
+  container,
+  containerClass,
+  class,
+  title='About this course', 
+  desc='<p class="text-70">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p><p class="text-70 mb-0">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>') %}
+{% if container !== false %}<div class="{{ containerClass or 'container' }}">{% endif %}
+  <div class="row {{ class }}">
+    <div class="col-md-7">
+      <div class="page-separator">
+        <div class="page-separator__text">{{ title }}</div>
+      </div>
+      {{ desc | safe }}
+    </div>
+    <div class="col-md-5">
+      <div class="page-separator">
+        <div class="page-separator__text {{ alt_bg }}">What you’ll learn</div>
+      </div>
+      <ul class="list-unstyled">
+        <li class="d-flex align-items-center">
+          <span class="material-icons text-50 mr-8pt">check</span>
+          <span class="text-70">Fundamentals of working with Angular</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <span class="material-icons text-50 mr-8pt">check</span>
+          <span class="text-70">Create complete Angular applications</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <span class="material-icons text-50 mr-8pt">check</span>
+          <span class="text-70">Working with the Angular CLI</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <span class="material-icons text-50 mr-8pt">check</span>
+          <span class="text-70">Understanding Dependency Injection</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <span class="material-icons text-50 mr-8pt">check</span>
+          <span class="text-70">Testing with Angular</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% if container !== false %}</div>{% endif %}
+{% endmacro %}
+{{ component(containerClass=containerClass, alt_bg='bg-white') }}

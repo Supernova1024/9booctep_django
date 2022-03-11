@@ -1,0 +1,18 @@
+{% include 'pages/_path-assessment.path-navbar.html' %}
+<div 
+  class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0" 
+  data-effects="blend-background">
+  <div class="mdk-box__content">
+    <div class="py-64pt text-center text-sm-left">
+      <div class="container d-flex flex-column justify-content-center align-items-center">
+        <h1 class="text-white mb-0">Skill Assessment</h1>
+        <p class="lead text-white-50 measure-lead-max">Measure your skill to find out where to start.</p>
+      </div>
+    </div>
+    {% include 'pages/_path-assessment.navbar.html' %}
+  </div>
+</div>
+
+<div class="{{ containerClass or 'container' }}">
+  {% include 'pages/_student-path-assessment.form.html' %}
+</div>

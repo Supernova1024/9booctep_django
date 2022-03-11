@@ -1,0 +1,95 @@
+{% import 'components/avatar.html' as avatar %}
+
+<div class="navbar navbar-expand {{ navbar_class or '' }}" id="default-navbar" data-primary>
+  <div class="{{ navbarContainerClass }}">
+
+    <!-- Navbar Brand -->
+    <a href="{{ prefix }}index.html" class="navbar-brand mr-16pt">
+      {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="logo" class="img-fluid" />', size='sm', class='navbar-brand-icon mr-0 mr-lg-8pt', title_class='bg-primary', circle=false, element='span') }}
+      <span class="d-none d-lg-block">{{ brand }}</span>
+    </a>
+
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler w-auto mr-16pt d-block rounded-0" type="button" data-toggle="sidebar">
+      <span class="material-icons">short_text</span>
+    </button>
+
+    <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start">
+      <li class="nav-item{% if slug === 'index' %} active{% endif %}">
+        <a href="{{ prefix }}index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item dropdown{% if courses_menu %} active{% endif %}">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">Courses</a>
+        <div class="dropdown-menu">
+          <a href="{{ prefix }}courses.html" class="dropdown-item{% if slug === 'courses' %} active{% endif %}">Browse Courses</a>
+          <a href="{{ prefix }}student-course.html" class="dropdown-item{% if slug === 'student-course' %} active{% endif %}">Preview Course</a>
+          <a href="{{ prefix }}student-lesson.html" class="dropdown-item{% if slug === 'student-lesson' %} active{% endif %}">Preview Lesson</a>
+          <a href="{{ prefix }}student-take-course.html" class="dropdown-item{% if slug === 'student-take-course' %} active{% endif %}"><span class="mr-16pt">Take Course</span> <span class="badge badge-notifications badge-accent text-uppercase ml-auto">Pro</span></a>
+          <a href="{{ prefix }}student-take-lesson.html" class="dropdown-item{% if slug === 'student-take-lesson' %} active{% endif %}">Take Lesson</a>
+          <a href="{{ prefix }}student-take-quiz.html" class="dropdown-item{% if slug === 'student-take-quiz' %} active{% endif %}">Take Quiz</a>
+          <a href="{{ prefix }}student-quiz-result-details.html" class="dropdown-item{% if slug === 'student-quiz-result-details' %} active{% endif %}">Quiz Result</a>
+          <a href="{{ prefix }}student-dashboard.html" class="dropdown-item{% if slug === 'student-dashboard' %} active{% endif %}">Student Dashboard</a>
+          <a href="{{ prefix }}student-my-courses.html" class="dropdown-item{% if slug === 'student-my-courses' %} active{% endif %}">My Courses</a>
+          <a href="{{ prefix }}student-quiz-results.html" class="dropdown-item{% if slug === 'student-quiz-results' %} active{% endif %}">My Quizzes</a>
+          <a href="{{ prefix }}student-profile.html" class="dropdown-item{% if slug === 'student-profile' %} active{% endif %}">Student Profile</a>
+          <a href="{{ prefix }}student-help-center.html" class="dropdown-item{% if slug === 'student-help-center' %} active{% endif %}">Help Center</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown{% if paths_menu %} active{% endif %}">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">Paths</a>
+        <div class="dropdown-menu">
+          <a href="{{ prefix }}paths.html" class="dropdown-item{% if slug === 'paths' %} active{% endif %}">Browse Paths</a>
+          <a href="{{ prefix }}student-path.html" class="dropdown-item{% if slug === 'student-path' %} active{% endif %}">Path Details</a>
+          <a href="{{ prefix }}student-path-assessment.html" class="dropdown-item{% if slug === 'student-path-assessment' %} active{% endif %}">Skill Assessment</a>
+          <a href="{{ prefix }}student-path-assessment-result.html" class="dropdown-item{% if slug === 'student-path-assessment-result' %} active{% endif %}">Skill Result</a>
+          <a href="{{ prefix }}student-paths.html" class="dropdown-item{% if slug === 'student-paths' %} active{% endif %}">My Paths</a>
+        </div>
+      </li>
+      <li class="nav-item{% if slug === 'pricing' %} active{% endif %}">
+        <a href="{{ prefix }}pricing.html" class="nav-link">Pricing</a>
+      </li>
+      <li class="nav-item dropdown{% if instructor_menu %} active{% endif %}">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">Teachers</a>
+        <div class="dropdown-menu">
+          <a href="{{ prefix }}instructor-dashboard.html" class="dropdown-item{% if slug === 'instructor-dashboard' %} active{% endif %}">Instructor Dashboard</a>
+          <a href="{{ prefix }}instructor-courses.html" class="dropdown-item{% if slug === 'instructor-courses' %} active{% endif %}">Manage Courses</a>
+          <a href="{{ prefix }}instructor-quizzes.html" class="dropdown-item{% if slug === 'instructor-quizzes' %} active{% endif %}">Manage Quizzes</a>
+          <a href="{{ prefix }}instructor-earnings.html" class="dropdown-item{% if slug === 'instructor-earnings' %} active{% endif %}">Earnings</a>
+          <a href="{{ prefix }}instructor-statement.html" class="dropdown-item{% if slug === 'instructor-statement' %} active{% endif %}">Statement</a>
+          <a href="{{ prefix }}instructor-edit-course.html" class="dropdown-item{% if slug === 'instructor-edit-course' %} active{% endif %}">Edit Course</a>
+          <a href="{{ prefix }}instructor-edit-quiz.html" class="dropdown-item{% if slug === 'instructor-edit-quiz' %} active{% endif %}">Edit Quiz</a>
+          <a href="{{ prefix }}instructor-profile.html" class="dropdown-item{% if slug === 'instructor-profile' %} active{% endif %}">Instructor Profile</a>
+        </div>
+      </li>
+    </ul>
+
+    {% if navbar_search !== false %}
+    <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" action="{{ prefix }}index.html" style="max-width: 230px">
+      <button class="btn" type="submit"><i class="material-icons">search</i></button>
+      <input type="text" class="form-control" placeholder="Search ...">
+    </form>
+    {% endif %}
+
+    {% set cta_class = 'btn-outline-secondary' %}
+    {% if 'dark' in navbar_class %}
+      {% set cta_class = 'btn-outline-white' %}
+    {% endif %}
+
+    {% if guest %}
+    <ul class="nav navbar-nav ml-auto mr-0">
+      <li class="nav-item{% if slug === 'login' %} active{% endif %}">
+        <a href="{{ prefix }}login.html" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window"><i class="material-icons">lock_open</i></a>
+      </li>
+      <li class="nav-item{% if 'signup' in slug %} active{% endif %}">
+        <a href="{{ prefix }}signup.html" class="btn {{ cta_class }}">Get Started</a>
+      </li>
+    </ul>
+    {% else %}
+    <div class="nav navbar-nav ml-auto mr-0 flex-nowrap d-flex">
+      {% include "layouts/_navbar.messages.html" %}
+      {% include "layouts/_navbar.notifications.html" %}
+      {% include "layouts/_navbar.account-dropdown.html" %}
+    </div>
+    {% endif %}
+  </div>
+</div>

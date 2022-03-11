@@ -1,0 +1,134 @@
+{% import 'components/leaves-table.html' as leaves_table %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="page-separator">
+      <div class="page-separator__text">Recent requests</div>
+    </div>
+
+    <div class="card mb-32pt">
+      {{ leaves_table.component(items=[{
+        avatar: { title: 'BN' },
+        name: 'Billy Nunez',
+        email: 'annabell.kris@yahoo.com',
+        status: {
+          title: 'Pending',
+          indicator_bg: 'bg-warning'
+        },
+        policy: 'Anual Leave',
+        reason: 'Family Vacation',
+        days: '15 days',
+        available: '22 days',
+        from: '19/02/2019',
+        to: '19/02/2019'
+      }, {
+        avatar: { title: 'TP' },
+        name: 'Tony Parks',
+        email: 'vida_glover@gmail.com',
+        status: {
+          title: 'Approved',
+          indicator_bg: 'bg-primary'
+        },
+        policy: 'Anual Leave',
+        days: '7 days',
+        available: '15 days',
+        from: '18/02/2019',
+        to: '18/02/2019'
+      }, {
+        selected: false,
+        avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+        name: 'Gilbert Barrett',
+        email: 'paolo.zieme@gmail.com',
+        status: {
+          title: 'Approved',
+          indicator_bg: 'bg-primary'
+        },
+        policy: 'Anual Leave',
+        days: '7 days',
+        available: '22 days',
+        from: '17/02/2019',
+        to: '17/02/2019'
+      }, {
+        selected: false,
+        avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+        name: 'Ollie Wallace',
+        email: 'lorna_kirlin@nora.biz',
+        status: {
+          title: 'Approved',
+          indicator_bg: 'bg-primary'
+        },
+        policy: 'Anual Leave',
+        days: '15 days',
+        available: '15 days',
+        from: '16/02/2019',
+        to: '16/02/2019'
+      }, {
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-3.jpg' },
+        name: 'Ricardo Bell',
+        email: 'smith_winfield@douglas.io',
+        status: {
+          title: 'Rejected',
+          indicator_bg: 'bg-danger'
+        },
+        policy: 'Anual Leave',
+        days: '15 days',
+        available: '7 days',
+        from: '01/12/2018',
+        to: '01/12/2018'
+      }]) }}
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Leave request</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card mb-lg-0">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Leave Period</label>
+              <input type="hidden" data-toggle="flatpickr" data-flatpickr-mode="range" data-flatpickr-inline="true" value="2020-01-09 to 2020-01-17">
+            </div>
+            <div class="alert alert-soft-warning mb-0 p-8pt">
+              <div class="d-flex align-items-start">
+                <div class="mr-8pt">
+                  <i class="material-icons">error_outline</i>
+                </div>
+                <div class="flex">
+                  <small class="text-100">On <strong>January 9</strong>, there’s a shortage of iOS Developers.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <form>
+          <div class="form-group">
+            <label for="leave_type" class="form-label">Leave Type</label>
+            <select name="leave_type" id="leave_type" class="custom-select">
+              <option value="">Anual Leave</option>
+            </select>
+          </div>
+          <div class="form-group mb-24pt">
+            <label for="reason" class="form-label">Reason</label>
+            <input type="text" name="reason" id="reason" class="form-control" placeholder="Optional">
+          </div>
+
+          <p>You’ve selected <strong>January 9 - 17</strong>. That’s a total of <strong>7 working days</strong> spanning over <strong>9 days</strong>.</p>
+
+          <p class="d-flex align-items-center">
+            <i class="material-icons text-accent mr-8pt">check_circle</i>
+            <small>You’re within your <strong>Anual Leave</strong> quota, which will reduce to <strong>15 days</strong>.</small>
+          </p>
+
+          <button type="submit" class="btn btn-accent">Submit Request</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

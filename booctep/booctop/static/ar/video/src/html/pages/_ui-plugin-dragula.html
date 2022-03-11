@@ -1,0 +1,167 @@
+{% import 'components/hljs.html' as hljs %}
+
+<nav class="{{ containerClass }}" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+  </ol>
+</nav>
+
+<div class="{{ containerClass }} page-section">
+  <h1 class="h2">{{ title }}</h1>
+
+  {% set items = [{
+    image: "assets/images/stories/256_rsz_phil-hearing-769014-unsplash.jpg",
+    title: "Learn How To Operate a JVC Camera",
+    date: "November 10, 2018",
+    avatar: "assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg"
+  }, {
+    image: "assets/images/stories/256_rsz_thomas-russell-751613-unsplash.jpg",
+    title: "Selective Focus Photography With iPhone",
+    date: "November 11, 2018",
+    avatar: "assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg"
+  }, {
+    image: "assets/images/stories/256_rsz_ross-sneddon-798476-unsplash.jpg",
+    title: "Learn Amazing Macro Photography",
+    date: "November 13, 2018",
+    avatar: "assets/images/256_rsz_florian-perennes-594195-unsplash.jpg"
+  }] %}
+
+  <div class="row card-group-row" data-toggle="dragula">
+    {% for item in items %}
+    <div class="col-sm-6 col-md-4 card-group-row__col">
+      <div class="card card-sm card-group-row__card">
+        <div class="position-relative">
+          <div class="card-img-top">
+            <img src="{{ item.image }}" class="card-img-top card-img-cover" alt="">
+          </div>
+          <div class="card-body avatar-group position-absolute-top">
+            <div class="avatar avatar-xs">
+              <a href=""><img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle"></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body d-flex">
+          <div class="flex">
+            <small class="text-muted">{{ item.date }}</small>
+            <h5 class="card-title m-0"><a href="">{{ item.title }}</a></h5>
+          </div>
+          <a href="" class="text-muted"><i class="material-icons">more_vert</i></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="card card-body">
+    {% call hljs.component() -%}
+      <div class="row" data-toggle="dragula">...</div>
+    {%- endcall %}
+  </div>
+
+  {% set leftCards = [{
+    name: "Jenell D. Matney", 
+    title: "Founder and CEO",
+    image: "assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg"
+  }, {
+    name: "Sherri J. Cardenas", 
+    title: "Software Engineer",
+    image: "assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg"
+  }, {
+    name: "Joseph S. Ferland", 
+    title: "Web Designer",
+    image: "assets/images/256_rsz_karl-s-973833-unsplash.jpg"
+  }] %}
+
+  {% set rightCards = [{
+    name: "Bryan K. Davis", 
+    title: "Web Developer",
+    image: "assets/images/256_rsz_90-jiang-640827-unsplash.jpg"
+  }, {
+    name: "Elizabeth J. Ohara", 
+    title: "Business Analyst",
+    image: "assets/images/256_rsz_florian-perennes-594195-unsplash.jpg"
+  }, {
+    name: "Kaci M. Langston", 
+    title: "Human Resources",
+    image: "assets/images/256_rsz_james-gillespie-714755-unsplash.jpg"
+  }] %}
+
+  <h4>Containers</h4>
+  <p class="measure-paragraph-max text-70 p-0 mb-32pt">Add the data attribute <code>data-dragula-containers='["#cards-left", "#cards-right"]'</code> to allow the user to drag an element in any of the containers and drop it in any other container in the list.</p>
+  
+  {% import "components/user-feedback.html" as feedback %}
+
+  <div class="row" data-toggle="dragula" data-dragula-containers='["#cards-left", "#cards-right"]'>
+    <div class="col-md">
+      <div class="card shadow-none border border-style-dashed">
+        <div class="card-body">
+          <div class="h6 mb-3">Container #1</div>
+          <div id="cards-left" class="card-list">
+            {% for card in leftCards %}
+              {{ feedback.component(card) }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card shadow-none border border-style-dashed">
+        <div class="card-body">
+          <div class="h6 mb-3">Container #2</div>
+          <div id="cards-right" class="card-list">
+            {% for card in rightCards %}
+              {{ feedback.component(card) }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-body">
+    {% call hljs.component() -%}
+<div class="row" data-toggle="dragula" data-dragula-containers='["#cards-left", "#cards-right"]'>
+<div class="col-md" id="cards-left">...</div>
+<div class="col-md" id="cards-right">...</div>
+</div>
+    {%- endcall %}
+  </div>
+
+  <h4>Handles</h4>
+  <p class="measure-paragraph-max text-70 p-0 mb-32pt">Add the data attribute <code>data-dragula-moves="js-dragula-handle"</code> to allow the user to drag an element in any of the containers and drop it in any other container in the list <strong>using a handle</strong>.</p>
+
+  {% import "components/user-handle.html" as user %}
+
+  <div 
+    class="row" 
+    data-toggle="dragula" 
+    data-dragula-containers='["#cards-moves-left", "#cards-moves-right"]'
+    data-dragula-moves="js-dragula-handle">
+    <div class="col-md">
+      <div class="card shadow-none border border-style-dashed">
+        <div class="card-body">
+          <div class="h6 mb-3">Container #1</div>
+          <div id="cards-moves-left" class="card-list">
+            {% for card in leftCards %}
+              {{ user.component(card) }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card shadow-none border border-style-dashed">
+        <div class="card-body">
+          <div class="h6 mb-3">Container #2</div>
+          <div id="cards-moves-right" class="card-list">
+            {% for card in rightCards %}
+              {{ user.component(card) }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

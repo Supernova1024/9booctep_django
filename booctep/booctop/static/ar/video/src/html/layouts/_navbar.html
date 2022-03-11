@@ -1,0 +1,46 @@
+{% import 'components/avatar.html' as avatar %}
+
+<div class="navbar navbar-expand pr-0 {{ navbar_class or '' }}" id="default-navbar" data-primary>
+  <!-- Navbar toggler -->
+  <button class="navbar-toggler w-auto mr-16pt d-block{% if layout !== 'default' %} d-lg-none{% endif %} rounded-0" type="button" data-toggle="sidebar">
+    <span class="material-icons">short_text</span>
+  </button>
+
+  <!-- Navbar Brand -->
+  <a href="{{ prefix }}index.html" class="navbar-brand mr-16pt{% if layout !== 'default' and layout !== 'sticky' %} d-lg-none{% endif %}">
+    {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="logo" class="img-fluid" />', size='sm', class='navbar-brand-icon mr-0 mr-lg-8pt', title_class='bg-primary', circle=false, element='span') }}
+    <span class="d-none d-lg-block">{{ brand }}</span>
+  </a>
+
+  {% if navbar_stats %}
+    {% include "layouts/_navbar.stats.html" %}
+  {% endif %}
+
+  {% if navbar_search %}
+  <form class="search-form navbar-search d-none d-md-flex mr-16pt" action="{{ prefix }}index.html">
+    <button class="btn" type="submit"><i class="material-icons">search</i></button>
+    <input type="text" class="form-control" placeholder="Search ...">
+  </form>
+  {% endif %}
+
+  <div class="flex"></div>
+
+  {% if layout === 'app' or layout === 'compact' or layout === 'mini' %}
+  <!-- Toggler -->
+  <a 
+    href="{% if layout === 'app' %}compact-{% endif %}{{ slug }}.html" 
+    class="navbar-toggler navbar-toggler-custom align-items-center justify-content-center d-none d-lg-flex"
+    data-toggle="tooltip"
+    data-title="Switch to {% if layout === 'app' %}Compact Layout{% else %}Vertical App Layout{% endif %}" 
+    data-placement="bottom" 
+    data-boundary="window">
+    <span class="material-icons">swap_horiz</span>
+  </a>
+  {% endif %}
+
+  <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+    {% include "layouts/_navbar.messages.html" %}
+    {% include "layouts/_navbar.notifications.html" %}
+    {% include "layouts/_navbar.account-dropdown.html" %}
+  </div>
+</div>

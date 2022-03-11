@@ -1,0 +1,22 @@
+---
+title: Courses 
+slug: courses
+guest: true
+---
+{% extends 'layouts/sticky.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+
+{% block page %}
+  <div class="page-section">
+    <div class="{{ containerClass or 'container' }}">
+      {% include 'pages/_results-heading.html' %}
+
+      {{ super() }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block drawer %}
+  {{ super() }}
+  {{ drawer.component(layout=layout) }}
+{% endblock %}

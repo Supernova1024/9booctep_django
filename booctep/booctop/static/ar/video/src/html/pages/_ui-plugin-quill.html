@@ -1,0 +1,37 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Rich Text Editor', description='Powerful WYSIWYG text editor powered by Quill. Please read the <a href="https://quilljs.com/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <label class="form-label">Default</label>
+    <div
+      style="height: 150px;"
+      data-toggle="quill" 
+      data-quill-placeholder="Quill WYSIWYG editor">
+      <h1>Hello World!</h1>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Custom toolbar') %}
+    <label class="form-label">Custom toolbar</label>
+    <div
+      style="height: 150px;"
+      data-toggle="quill" 
+      data-quill-placeholder="Quill WYSIWYG editor"
+      data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
+  {% endcall %}
+</div>

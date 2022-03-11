@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+    <nav class="navbar mobile-navbar is-hidden-desktop" aria-label="main navigation">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item2" href="/">
+                <img class="mobile-logo" src="{%static 'assets/img/favicon.png' %}" alt="">
+            </a>
+    
+    
+            <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+                <a class="icon-link is-primary">
+                    <i class="mdi mdi-apps"></i>
+                </a>
+            </div>
+    
+            <!-- Mobile menu toggler icon -->
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Navbar mobile menu -->
+        <div class="navbar-menu">
+            <!-- Account -->
+            <div class="navbar-item has-dropdown ">
+                <div class="navbar-link">
+                    <img src="{%static 'assets/img/man.jpg' %}" data-demo-src="{%static 'assets/img/avatars/jenna.png' %}" alt="">
+                    <span class="is-heading">Elzubair Mohammed</span>
+                </div>
+    
+                <div class="navbar-item">
+                    <div id="global-search" class="control">
+                        <input id="tipue_drop_input" class="input " type="text" placeholder="Search" required>
+                        <span id="clear-search" class="reset-search">
+                            <i data-feather="x"></i>
+                        </span>
+                        <span class="search-icon">
+                            <i data-feather="search"></i>
+                        </span>
+                
+                
+                    </div>
+                
+                </div>
+                
+                <!-- Mobile Dropdown -->
+                <div class="navbar-dropdown">
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="user"></i>Profile</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="shopping-cart"></i>Cart</span>
+                        <span class="menu-badge">3</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="activity"></i>Feed</span>
+                        <span class="menu-badge">87</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="settings"></i>Settings</span>
+                    </a>
+                    <a href="#" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="hexagon"></i>Logout</span>
+                    </a>
+                    
+                        <div class="buttons">
+                          <a class="button second-button">
+                            <p>Sign up</p>
+                          </a>
+                          <a class="button primary-button raised quickview-trigger process-button">
+                            <p>Log in</p>
+                          </a>
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Navbar -->
+    
+
+  
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+        
+
+    <!-- Signup steps -->
+        <div class="container">
+              <div class="signup-wrapper signup-wrapper-pad">
+
+
+            <div class="card">
+
+                <h3 style="" class="card-signup-h3">Account Activated</h3>
+                
+                <div id="signup-panel-5" class="process-panel-wrap is-narrow">
+                    <div class="form-panel">
+                        <img class="success-image" src="{%static 'assets/img/mailsent.svg' %}" alt="">
+                        <div class="success-text">
+                            <h3>Congratz, you successfully created your account.</h3>
+                            <p> We just sent you a confirmation email. PLease confirm your account within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+
+
+    </div>
+</div>
+    <!-- Signup steps -->
+
+
+
+
+    {%  endblock %}
+    
+
+                  

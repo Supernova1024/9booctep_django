@@ -1,0 +1,143 @@
+{% import 'components/pager.html' as pager %}
+{% import '_course-card-simple.html' as course %}
+{% import '_course-card.html' as popular %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Popular Courses</div>
+</div>
+
+{% set items = [{
+  title: 'Newsletter Design', 
+  image: 'mailchimp',
+  open: true,
+  favorite: true
+}, {
+  title: 'Adobe XD', 
+  image: 'xd'
+}, {
+  title: 'inVision App', 
+  image: 'invision'
+}, {
+  title: 'Craft by inVision', 
+  image: 'craft'
+}] %}
+
+<div class="row card-group-row">
+  {% for item in items.slice(0, (courses_cols or  4)) %}
+    <div class="{{ courses_col or 'col-md-6 col-lg-4 col-xl-3' }} card-group-row__col">
+      {{ popular.component(
+        prefix=prefix,
+        title=item.title, 
+        image=item.image, 
+        avatar=(item.avatar or item.image), 
+        free=item.free,
+        favorite=item.favorite,
+        position=item.position,
+        open=item.open,
+        author_avatar=item.author_avatar,
+        class='card-group-row__card') }}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {{ pager.pager() }}
+</div>
+
+<div class="page-separator">
+  <div class="page-separator__text">Development Courses</div>
+</div>
+
+{% set items = [{
+  title: 'Learn Angular fundamentals',
+  image: 'angular'
+}, {
+  title: 'Build an iOS Application in Swift',
+  image: 'swift'
+}, {
+  title: 'Build a WordPress Website',
+  image: 'wordpress'
+}, {
+  title: 'Become a React Native Developer', 
+  image: 'react', 
+  position: 'left'
+}] %}
+
+<!-- , {
+  title: 'Become a Redis Developer', 
+  image: 'redis'
+}, {
+  title: 'Introduction to Typescript', 
+  image: 'typescript', 
+  position: 'left'
+}, {
+  title: 'Angular Unit Testing', 
+  image: 'angular_testing', 
+  position: 'left', 
+  avatar: 'angular'
+}, {
+  title: 'Angular Routing In-Depth', 
+  image: 'angular_routing', 
+  position: 'left', 
+  avatar: 'angular'
+} -->
+
+<div class="row card-group-row">
+  {% for item in items.slice(0, (courses_cols or  4)) %}
+    <div class="{{ courses_col or 'col-md-6 col-lg-4 col-xl-3' }} card-group-row__col">
+      {{ course.component(
+        prefix=prefix,
+        title=item.title, 
+        image=item.image, 
+        avatar=(item.avatar or item.image), 
+        free=item.free,
+        favorite=item.favorite,
+        position=item.position,
+        open=item.open,
+        author_avatar=item.author_avatar,
+        class='card-group-row__card') }}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {{ pager.pager() }}
+</div>
+
+<div class="page-separator">
+  <div class="page-separator__text">Design Courses</div>
+</div>
+
+{% set items = [{
+  title: 'Learn Sketch',
+  image: 'sketch'
+}, {
+  title: 'Learn Flinto',
+  image: 'flinto'
+}, {
+  title: 'Learn Photoshop',
+  image: 'photoshop'
+}, {
+  title: 'Learn Figma', 
+  image: 'figma'
+}] %}
+
+<div class="row card-group-row">
+  {% for item in items.slice(0, (courses_cols or  4)) %}
+    <div class="{{ courses_col or 'col-md-6 col-lg-4 col-xl-3' }} card-group-row__col">
+      {{ course.component(
+        prefix=prefix,
+        title=item.title, 
+        image=item.image, 
+        avatar=(item.avatar or item.image), 
+        free=item.free,
+        favorite=item.favorite,
+        position=item.position,
+        open=item.open,
+        author_avatar=item.author_avatar,
+        class='card-group-row__card') }}
+    </div>
+  {% endfor %}
+</div>
+
+{{ pager.pager() }}

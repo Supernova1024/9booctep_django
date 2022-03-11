@@ -1,0 +1,32 @@
+[
+    {
+        "name": "The Colony",
+        "desc": "by Isac Galinov",
+        "pic": "assets/img/icons/feed/book.svg"
+    },
+    {
+        "name": "My Trial",
+        "desc": "by Franz Fafka",
+        "pic": "assets/img/icons/feed/book.svg"
+    },
+    {
+        "name": "The Sand Planet",
+        "desc": "by Franck Ferbet",
+        "pic": "assets/img/icons/feed/book.svg"
+    },
+    {
+        "name": "The Call of Gods",
+        "desc": "by John Belcks",
+        "pic": "assets/img/icons/feed/book.svg"
+    },
+    {
+        "name": "The Lord Of Time",
+        "desc": "by Franck Bright",
+        "pic": "assets/img/icons/feed/book.svg"
+    },
+    {
+        "name": "Les Miséreux",
+        "desc": "by Victor Hugues",
+        "pic": "assets/img/icons/feed/book.svg"
+    }
+]

@@ -1,0 +1,25 @@
+---
+title: Email
+slug: email
+bodyClass: sub-layout
+navbar_search: false
+sidebar_search: false
+footer: false
+---
+{% extends "layouts/sticky.html" %}
+
+{% block page %}
+<div
+  data-push 
+  data-responsive-width="768px"
+  data-has-scrollable-region
+  data-fullbleed
+  class="mdk-drawer-layout js-mdk-drawer-layout">
+  <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+    {{ super() }}
+  </div>
+  
+  {% import 'layouts/sidebar.email.html' as sidebar %}
+  {{ sidebar.component(prefix=prefix, slug=slug) }}
+</div>
+{% endblock %}

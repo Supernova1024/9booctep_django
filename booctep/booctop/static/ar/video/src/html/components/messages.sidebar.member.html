@@ -1,0 +1,19 @@
+{% macro component(item) %}
+<li class="list-group-item px-3 py-12pt{% if item.active %} bg-light{% endif %}">
+  <a href="#" class="d-flex align-items-center position-relative">
+    <span class="avatar avatar-xs avatar-{{ item.status }} mr-3 flex-shrink-0">
+      {% if item.avatar_title %}
+      <span class="avatar-title rounded-circle">{{ item.avatar_title }}</span>
+      {% else %}
+      <img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+      {% endif %}
+    </span>
+    <span class="flex d-flex flex-column" style="max-width: 175px;">
+      <strong class="text-body">{{ item.name }}</strong>
+      {% if item.description %}
+      <span class="text-muted text-ellipsis">{{ item.description }}</span>
+      {% endif %}
+    </span>
+  </a>
+</li>
+{% endmacro %}

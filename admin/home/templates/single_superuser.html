@@ -1,0 +1,77 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop-breadcrumb">
+
+                    <div class="breadcrumb-main">
+                        <b><a href="/superuser/">Go Back</a></b>
+                    </div>
+
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Superuser details</h4>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="cos-lg-12 col-md-12 ">
+                <aside class="profile-sider">
+                    <!-- Profile Acoount -->
+                    <div class="card mb-25">
+                        <div class="card-body text-center pt-sm-30 pb-sm-0  px-25 pb-0">
+
+                            <div class="account-profile">
+                                <div class="ap-img w-100 d-flex justify-content-center">
+                                    <!-- Profile picture image-->
+                                    <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary"
+                                         {% if superuser.img == '' %}
+                                        src="{% static 'img/author/profile.png' %}"
+                                        {% else %}
+                                        src="{% static superuser.img %}"
+                                        {% endif %}
+                                         alt="profile">
+                                </div>
+                                <div class="ap-nameAddress pb-3 pt-1">
+                                    <h5 class="ap-nameAddress__title">{{ superuser.name }}</h5>
+                                    <p class="ap-nameAddress__subTitle fs-14 m-0">{{ superuser.position.name }}</p>
+                                    <p class="ap-nameAddress__subTitle fs-14 m-0">
+                                        <span data-feather="map-pin"></span>{{ superuser.address }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer mt-20 pt-20 pb-20 px-0">
+                                <div class="profile-overview d-flex justify-content-between flex-wrap">
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ superuser.date_joined | date:'D d-m-Y' }}</h6>
+                                        <span class="po-details__sTitle">Joined date</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ superuser.email }}</h6>
+                                        <span class="po-details__sTitle">Email</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ session_time }}</h6>
+                                        <span class="po-details__sTitle">Session duration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile Acoount End -->
+
+                    <!-- Profile User Bio -->
+                </aside>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block script %}
+{% endblock %}

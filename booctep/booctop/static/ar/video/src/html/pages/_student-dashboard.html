@@ -1,0 +1,101 @@
+{% import 'components/discussions.html' as discussions %}
+{% import 'components/pager.html' as pager %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+    
+    <div class="page-separator">
+      <div class="page-separator__text">Overview</div>
+    </div>
+
+    <div class="row mb-lg-8pt">
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-header d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">116</div>
+            <div class="flex">
+              <p class="card-title">Angular</p>
+              <p class="card-subtitle text-50">Best score</p>
+            </div>
+            <div class="dropdown">
+              <a href="#" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Popular Topics</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="" class="dropdown-item">Popular Topics</a>
+                <a href="" class="dropdown-item">Web Design</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-24pt">
+            <div class="chart" style="height: 344px;">
+              <canvas 
+                id="topicIqChart" 
+                class="chart-canvas js-update-chart-line"
+                data-chart-hide-axes="true"
+                data-chart-points="true"
+                data-chart-suffix=" points"
+
+                data-chart-line-border-color="primary"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6">
+        
+        <div class="card">
+          <div class="card-header d-flex align-items-center border-0">
+            <div class="h2 mb-0 mr-3">432</div>
+            <div class="flex">
+              <p class="card-title">Experience IQ</p>
+              <p class="card-subtitle text-50">4 days streak this week</p>
+            </div>
+            <i class="material-icons text-muted ml-2">trending_up</i>
+          </div>
+          <div class="card-body pt-0">
+            <div class="chart" style="height: 128px;">
+              <canvas 
+                id="iqChart" 
+                class="chart-canvas js-update-chart-line"
+                data-chart-hide-axes="false"
+                data-chart-points="true"
+                data-chart-suffix="pt"
+                data-chart-line-border-color="primary"></canvas>
+            </div>
+          </div>
+        </div>
+
+        {% include 'components/achievements.carousel.html' %}
+
+      </div>
+    </div>
+
+    <div class="row mb-lg-16pt">
+      <div class="col-lg-6 mb-8pt mb-sm-0">
+        <div class="page-separator">
+          <div class="page-separator__text">Learning Paths</div>
+        </div>
+
+        {% import '_account-path-card.html' as path %}
+
+        {{ path.component(prefix=prefix, title='Angular', image='angular') }}
+        {{ path.component(prefix=prefix, title='Swift', image='swift', favorite=true) }}
+        {{ path.component(prefix=prefix, title='React Native', image='react', position='left') }}
+      </div>
+      <div class="col-lg-6">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Courses</div>
+        </div>
+
+        {% import '_courses.carousel.html' as carousel %}
+        {{ carousel.component(prefix=prefix, control=true, col_class='col-sm-6', account=true) }}
+      </div>
+    </div>
+
+    {% include 'pages/_student-dashboard.discussions.html' %}
+
+    {% include 'pages/_student-dashboard.quizzes.html' %}
+
+  </div>
+</div>

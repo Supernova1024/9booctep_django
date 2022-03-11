@@ -1,0 +1,29 @@
+<div class="row no-gutters">
+  <div class="col border-right">
+    <div class="dropdown-header">Productivity</div>
+    <a class="dropdown-item{% if slug === 'projects' %} active{% endif %}" href="{{ prefix or '' }}projects.html">Projects</a>
+    <a class="dropdown-item{% if slug === 'tasks-board' %} active{% endif %}" href="{{ prefix or '' }}tasks-board.html">Tasks Board</a>
+    <a class="dropdown-item{% if slug === 'tasks-list' %} active{% endif %}" href="{{ prefix or '' }}tasks-list.html">Tasks List</a>
+
+    <div class="dropdown-header">eCommerce</div>
+    <a class="dropdown-item{% if slug === 'ecommerce' %} active{% endif %}" href="{{ prefix or '' }}ecommerce.html">Shop Dashboard</a>
+  </div>
+
+  <div class="col border-right">
+    <div class="dropdown-header">Messaging</div>
+    <a class="dropdown-item{% if slug === 'messages' %} active{% endif %}" href="{{ prefix or '' }}messages.html">Messages</a>
+    <a class="dropdown-item{% if slug === 'email' %} active{% endif %}" href="{{ prefix or '' }}email.html">Email</a>
+
+    <div class="dropdown-header">Community</div>
+    <a class="dropdown-item{% if slug === 'faq' %} active{% endif %}" href="{{ prefix or '' }}faq.html">FAQ</a>
+    <a class="dropdown-item{% if slug === 'discussions' %} active{% endif %}" href="{{ prefix or '' }}discussions.html">Discussions</a>
+    <a class="dropdown-item{% if slug === 'discussion' %} active{% endif %}" href="{{ prefix or '' }}discussion.html">Discussion Details</a>
+    <a class="dropdown-item{% if slug === 'discussions-ask' %} active{% endif %}" href="{{ prefix or '' }}discussions-ask.html">Ask Question</a>
+  </div>
+
+  <div class="col">
+    <div class="dropdown-header">CMS</div>
+    <a class="dropdown-item{% if slug === 'cms-dashboard' %} active{% endif %}" href="{{ prefix or '' }}cms-dashboard.html">CMS Dashboard</a>
+    <a class="dropdown-item{% if slug === 'posts' %} active{% endif %}" href="{{ prefix or '' }}posts.html">Posts</a>
+  </div>
+</div>

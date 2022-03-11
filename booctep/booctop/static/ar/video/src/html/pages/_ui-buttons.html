@@ -1,0 +1,206 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section">
+  {% set description %}
+    Use the button classes on an <code>{{ "<a>" | escape }}</code>, <code>{{ "<button>" | escape }}</code>, or <code>{{ "<input>" | escape }}</code> element.
+  {%- endset %}
+  {% call panel.component(title='Default', description=description) %}
+    <div class="button-list">
+      <button type="button" class="btn btn-white">White</button>
+      <button type="button" class="btn btn-accent">Accent</button>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+      <!-- <button type="button" class="btn btn-success">Success</button> -->
+      <!-- <button type="button" class="btn btn-danger">Danger</button> -->
+      <!-- <button type="button" class="btn btn-warning">Warning</button> -->
+      <!-- <button type="button" class="btn btn-info">Info</button> -->
+      <!-- <button type="button" class="btn btn-light">Light</button> -->
+      <button type="button" class="btn btn-dark">Dark</button>
+      <button type="button" class="btn btn-link">Link</button>
+    </div>
+  {% endcall %}
+
+  {% set description -%}
+    Use the <code>.btn-outline-*</code> classes to quickly create bordered buttons.
+  {%- endset %}
+  {% call panel.component(title='Outline', description=description) %}
+    <div class="button-list">
+      <button type="button" class="btn btn-outline-accent">Accent</button>
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-secondary">Secondary</button>
+      <!-- <button type="button" class="btn btn-outline-success">Success</button>
+      <button type="button" class="btn btn-outline-danger">Danger</button>
+      <button type="button" class="btn btn-outline-warning">Warning</button>
+      <button type="button" class="btn btn-outline-info">Info</button>
+      <button type="button" class="btn btn-outline-light">Light</button> -->
+      <button type="button" class="btn btn-outline-dark">Dark</button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Rounded', description="Add <code>.btn-rounded</code> to buttons to get large rounded corners.") %}
+    <div class="button-list">
+      <!-- <button type="button" class="btn btn-white btn-rounded">White</button> -->
+      <button type="button" class="btn btn-accent btn-rounded">Accent</button>
+      <button type="button" class="btn btn-primary btn-rounded">Primary</button>
+      <button type="button" class="btn btn-secondary btn-rounded">Secondary</button>
+      <!-- <button type="button" class="btn btn-success btn-rounded">Success</button>
+      <button type="button" class="btn btn-danger btn-rounded">Danger</button>
+      <button type="button" class="btn btn-warning btn-rounded">Warning</button>
+      <button type="button" class="btn btn-info btn-rounded">Info</button>
+      <button type="button" class="btn btn-light btn-rounded">Light</button> -->
+      <button type="button" class="btn btn-dark btn-rounded">Dark</button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Rounded Outline', description="Use the <code>.btn-outline-*</code> and <code>.btn-rounded</code> classes together to quickly create bordered buttons with large rounded corners.") %}
+    <div class="button-list">
+      <button type="button" class="btn btn-outline-accent btn-rounded">Accent</button>
+      <button type="button" class="btn btn-outline-primary btn-rounded">Primary</button>
+      <button type="button" class="btn btn-outline-secondary btn-rounded">Secondary</button>
+      <!-- <button type="button" class="btn btn-outline-success btn-rounded">Success</button>
+      <button type="button" class="btn btn-outline-danger btn-rounded">Danger</button>
+      <button type="button" class="btn btn-outline-warning btn-rounded">Warning</button>
+      <button type="button" class="btn btn-outline-info btn-rounded">Info</button>
+      <button type="button" class="btn btn-outline-light btn-rounded">Light</button> -->
+      <button type="button" class="btn btn-outline-dark btn-rounded">Dark</button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Icon', description="Add icons to any button or even use Icon-only buttons.") %}
+    <div class="button-list">
+      <button type="button" class="btn btn-light">
+        <i class="material-icons">favorite_border</i>
+      </button>
+      <button type="button" class="btn btn-dark">
+        <i class="material-icons">music_note</i>
+      </button>
+      <button type="button" class="btn btn-accent">
+        <i class="material-icons">close</i>
+      </button>
+      <button type="button" class="btn btn-primary">
+        <i class="material-icons">star</i>
+      </button>
+      <button type="button" class="btn btn-secondary">
+        <i class="material-icons">thumb_up</i>
+      </button>
+      <!-- <button type="button" class="btn btn-info">
+        <i class="material-icons">keyboard</i>
+      </button>
+      <button type="button" class="btn btn-warning">
+        <i class="material-icons">settings</i>
+      </button> -->
+      <button type="button" class="btn btn-light">
+        <i class="material-icons icon--left">favorite</i> Favorite
+      </button>
+      <button type="button" class="btn btn-accent">
+        <i class="material-icons icon--left">launch</i> Launch
+      </button>
+      <button type="button" class="btn btn-primary">
+        <i class="material-icons icon--left">cloud</i> Cloud Hosting
+      </button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Size', description="Add <code>.btn-lg</code> or <code>.btn-sm</code> classes for additional button sizes.") %}
+    <div class="button-list">
+      <button type="button" class="btn btn-accent btn-lg">Large</button>
+      <button type="button" class="btn btn-primary">Normal</button>
+      <button type="button" class="btn btn-secondary btn-sm">Small</button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Disabled', description="Add the <code>disabled</code> attribute to disable buttons.") %}
+    <div class="button-list">
+      <button type="button" class="btn btn-accent" disabled="">Accent</button>
+      <button type="button" class="btn btn-primary" disabled="">Primary</button>
+      <button type="button" class="btn btn-secondary" disabled="">Secondary</button>
+      <button type="button" class="btn btn-dark" disabled="">Dark</button>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Block', description="Create block level buttons, by adding add <code>.btn-block</code>.") %}
+    <button type="button" class="btn btn-block btn-outline-secondary">Block Button</button>
+  {% endcall %}
+
+  {% call panel.component(title='Dropdown') %}
+    <div class="button-list">
+      <div class="btn-group">
+        <button type="button" class="btn btn-accent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accent</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secondary</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secondary</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Group', description="Create a group of buttons by wrapping with <code>.btn-group</code>.") %}
+    <div class="btn-group mb-2">
+      <button type="button" class="btn btn-light">Left</button>
+      <button type="button" class="btn btn-light">Middle</button>
+      <button type="button" class="btn btn-light">Right</button>
+    </div>
+    <br>
+    <div class="btn-group mb-2">
+      <button type="button" class="btn btn-light">1</button>
+      <button type="button" class="btn btn-light">2</button>
+      <button type="button" class="btn btn-light">3</button>
+      <button type="button" class="btn btn-light">4</button>
+    </div>
+    <div class="btn-group mb-2">
+      <button type="button" class="btn btn-light">5</button>
+      <button type="button" class="btn btn-light">6</button>
+      <button type="button" class="btn btn-light">7</button>
+    </div>
+    <div class="btn-group mb-2">
+      <button type="button" class="btn btn-light">8</button>
+    </div>
+    <br>
+    <div class="btn-group">
+      <button type="button" class="btn btn-light">1</button>
+      <button type="button" class="btn btn-primary">2</button>
+      <button type="button" class="btn btn-light">3</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Dropdown <span class="caret"></span> </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Dropdown link</a>
+          <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+</div>

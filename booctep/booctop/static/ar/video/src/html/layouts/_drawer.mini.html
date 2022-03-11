@@ -1,0 +1,225 @@
+{% import 'components/avatar.html' as avatar %}
+
+<!-- drawer -->
+<div class="mdk-drawer js-mdk-drawer layout-{{ layout }}__drawer" id="default-drawer">
+  <div class="mdk-drawer__content js-sidebar-mini" data-responsive-width="992px" data-layout="{{ layout }}">
+
+    <div class="sidebar sidebar-mini sidebar-dark-dodger-blue sidebar-left d-flex flex-column">
+
+      <!-- Brand -->
+      <a href="index.html" class="sidebar-brand p-0 navbar-height d-flex justify-content-center">
+        {{ avatar.component(title='<img src="' + navbar_logo + '" class="img-fluid" alt="logo" />', size='sm', title_class='bg-primary', circle=false, element='span') }}
+      </a>
+
+      <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+        <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0{% if layout === 'compact' %} sm-item-bordered{% endif %} js-sidebar-mini-tabs" role="tablist">
+          <li class="sidebar-menu-item{% if student_menu %} active{% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Student" data-placement="right" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_student" data-toggle="tab" role="tab" aria-controls="sm_student" aria-selected="true">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i>
+              <span class="sidebar-menu-text">Student</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item{% if instructor_menu %} active{% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Instructor" data-placement="right" data-container="body" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_instructor" data-toggle="tab" role="tab" aria-controls="sm_instructor" aria-selected="false">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">format_shapes</i>
+              <span class="sidebar-menu-text">Instructor</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item {% if apps_menu %} active {% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Apps" data-placement="right" data-container="body" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_apps" data-toggle="tab" role="tab" aria-controls="sm_apps">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i>
+              <span class="sidebar-menu-text">Apps</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item {% if account_menu %} active {% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Account" data-placement="right" data-container="body" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_account" data-toggle="tab" role="tab" aria-controls="sm_account">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i>
+              <span class="sidebar-menu-text">Account</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item {% if messaging_menu %} active {% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Messaging" data-placement="right" data-container="body" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_messaging" data-toggle="tab" role="tab" aria-controls="sm_messaging">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">message</i>
+              <span class="sidebar-menu-text">Messaging</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item{% if components_menu or plugins_menu %} active {% endif %}"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Components" data-placement="right" data-container="body" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_components" data-toggle="tab" role="tab" aria-controls="sm_components">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">tune</i>
+              <span class="sidebar-menu-text">Components</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item"{% if 'mini' in layout %} data-toggle="tooltip"{% endif %} data-title="Layouts" data-placement="right" data-boundary="window">
+            <a class="sidebar-menu-button" href="#sm_layouts" data-toggle="tab" role="tab" aria-controls="sm_layouts" aria-selected="false">
+              <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">view_compact</i>
+              <span class="sidebar-menu-text">Layouts</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {% if not guest %}
+      <ul class="nav flex-column sidebar-menu align-items-center mb-12pt js-sidebar-mini-tabs" role="tablist">
+        <li class="sidebar-account" style="width: 40px;">
+          <a href="#sm_account_1" class="p-4pt d-flex align-items-center justify-content-center" data-toggle="tab" role="tab" aria-controls="sm_account_1" aria-selected="true">
+            <img width="32" height="32" class="rounded-circle" src="assets/images/people/50/guy-3.jpg" alt="account" />
+          </a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="sidebar sidebar-light sidebar-left flex sidebar-secondary{% if (not sidebar_secondary_search and not sidebar_secondary_stats) or guest %} pt-16pt{% endif %}" data-perfect-scrollbar>
+      {% if sidebar_secondary_search %}
+      <div class="navbar navbar-light navbar-expand mb-12pt">
+        <form class="search-form navbar-search" action="{{ prefix }}index.html">
+          <button class="btn" type="submit"><i class="material-icons">search</i></button>
+          <input type="text" class="form-control" placeholder="Search ...">
+        </form>
+      </div>
+      {% endif %}
+
+      {% if sidebar_secondary_stats and not guest %}
+      <div class="navbar navbar-light navbar-expand mb-12pt">
+        {% include "layouts/_navbar.stats.html" %}
+      </div>
+      {% endif %}
+
+      <div class="tab-content">
+
+        <div class="tab-pane" id="sm_account_1">
+          <div class="sidebar-heading">Account</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item{% if slug === 'edit-account' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}edit-account.html">
+                <span class="sidebar-menu-text">Edit Account</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item{% if slug === 'billing' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}billing.html">Billing</a>
+            </li>
+            <li class="sidebar-menu-item{% if slug === 'billing-history' %} active{% endif %}">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}billing-history.html">Payments</a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-menu-button" href="{{ prefix or '' }}login.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-pane {% if apps_menu %} fade active show {% endif %}" id="sm_apps">
+          <div class="sidebar-heading">Apps</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item{% if enterprise_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button js-sidebar-collapse" data-toggle="collapse" href="#enterprise_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">donut_large</span>
+                Enterprise
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if enterprise_menu %} show{% endif %} sm-indent" id="enterprise_menu">
+                {% include 'layouts/_enterprise.sidebar-menu.html' %}
+              </ul>
+            </li>
+            <li class="sidebar-menu-item{% if community_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#community_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span>
+                Community
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if community_menu %} show{% endif %} sm-indent" id="community_menu">
+                {% include 'layouts/_community.sidebar-menu.html' %}
+              </ul>
+            </li>
+            <li class="sidebar-menu-item{% if productivity_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#productivity_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">access_time</span>
+                Productivity
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if productivity_menu %} show{% endif %} sm-indent" id="productivity_menu">
+                {% include 'layouts/_productivity.sidebar-menu.html' %}
+              </ul>
+            </li>
+            <li class="sidebar-menu-item{% if cms_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#cms_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">content_copy</span>
+                CMS
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if cms_menu %} show{% endif %} sm-indent" id="cms_menu">
+                {% include 'layouts/_cms.sidebar-menu.html' %}
+              </ul>
+            </li>
+            <li class="sidebar-menu-item{% if ecommerce_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#ecommerce_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">shopping_cart</span>
+                eCommerce
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if ecommerce_menu %} show{% endif %} sm-indent" id="ecommerce_menu">
+                {% include 'layouts/_ecommerce.sidebar-menu.html' %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane {% if student_menu %} fade active show {% endif %}" id="sm_student">
+          <div class="sidebar-heading">Student</div>
+          <ul class="sidebar-menu">
+            {% include 'layouts/_student.sidebar-menu.html' %}
+          </ul>
+        </div>
+        <div class="tab-pane {% if instructor_menu %} fade active show {% endif %}" id="sm_instructor">
+          <div class="sidebar-heading">Instructor</div>
+          <ul class="sidebar-menu">
+            {% include 'layouts/_instructor.sidebar-menu.html' %}
+          </ul>
+        </div>
+        <div class="tab-pane {% if account_menu %} fade active show {% endif %}" id="sm_account">
+          <div class="sidebar-heading">Account</div>
+          <ul class="sidebar-menu">
+            {% include 'layouts/_account.sidebar-menu.html' %}
+          </ul>
+        </div>
+        <div class="tab-pane {% if messaging_menu %} fade active show {% endif %}" id="sm_messaging">
+          <div class="sidebar-heading">Messaging</div>
+          <ul class="sidebar-menu">
+            {% include 'layouts/_messaging.sidebar-menu.html' %}
+          </ul>
+        </div>
+        <div class="tab-pane{% if components_menu or plugins_menu %} fade active show{% endif %}" id="sm_components">
+          <div class="sidebar-heading">UI Components</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item{% if components_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">tune</span>
+                Components
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if components_menu %} show{% endif %} sm-indent" id="components_menu">
+                {% include 'layouts/_components.sidebar-menu.html' %}
+              </ul>
+            </li>
+            <li class="sidebar-menu-item{% if plugins_menu %} active open{% endif %}">
+              <a class="sidebar-menu-button" data-toggle="collapse" href="#plugins_menu">
+                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">folder</span>
+                Plugins
+                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+              </a>
+              <ul class="sidebar-submenu collapse{% if plugins_menu %} show{% endif %} sm-indent" id="plugins_menu">
+                {% include 'layouts/_plugins.sidebar-menu.html' %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="sm_layouts">
+          <div class="sidebar-heading">Layouts</div>
+          <ul class="sidebar-menu">    
+            {% include 'layouts/_layouts.sidebar-menu.html' %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- // END drawer -->

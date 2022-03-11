@@ -1,0 +1,645 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    Messages
+{% endblock %}
+
+{% block headercontent %}
+{% with title="Messages" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+
+    <link rel="stylesheet" href="{% static 'assets/css/sweetalert.css' %}">
+    <style>
+        .bluesky {
+            background: #61e076bf !important;
+        }
+
+        .student {
+            float: right !important;
+        }
+
+        .message {
+            max-width: 300px;
+            clear: both;
+            text-decoration: none;
+            list-style-type: none;
+            margin-bottom: 0px;
+            float: left;
+            margin-right: 20px;
+            padding: 0px 0px;
+            min-width: 160px;
+            min-height: 10px;
+            max-width: 350px;
+            border-radius: 5px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            color: #444444;
+            text-align: left;
+        }
+
+
+        .mdk-drawer-layout__content .app-messages__container{
+            margin:0 !important;
+            padding: 0 !important
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+
+.mdk-drawer-layout__content .app-messages__container-dark{
+    background-color: #4c525e !important;
+}
+
+.blllu{
+    color: rgb(11, 111, 241) !important;
+} 
+
+.blllu-dark{
+    color: rgb(177, 197, 223) !important;
+    margin-right: 8px !important;
+}
+
+
+.card-footer{
+    background-color: rgb(255, 255, 255) !important;
+    border-bottom: 0.5px solid rgb(211, 228, 236)!important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+
+.btn-light{
+    background-color: #3a76d1 !important;
+    color: rgb(199, 199, 199) !important;
+    
+    border: 1px solid  #2d62b3 !important;
+    box-shadow: none !important;
+}
+
+
+.btn-light-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.brd{
+    border: 1px solid rgb(201, 201, 201);
+    color: #fff;
+}
+
+.brd-dark{
+    border: 1px solid rgb(98, 112, 121);
+    color: rgb(202, 202, 202);
+}
+
+
+.avatar-offline:after,
+.avatar-offline:before,
+.avatar-online:after,
+.avatar-online:before {
+    display: none !important;
+}
+
+
+.sidebar-dark{
+    background-color: #323741 !important;
+    border-left: 1px solid #323741 !important;
+}
+
+
+.sidebar-dark .divee{
+    background-color: #323741 !important;
+    border-left: 1px solid #1d1f22 !important;
+}
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.ptt{
+    padding-top: 90px !important;
+}
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    float: right !important;
+    margin-left: 15px !important;
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    margin-left: 15px !important;
+    box-shadow: none !important;
+}
+
+
+.message__body{
+    text-align: right !important;
+    width: 250px !important;
+}
+
+.card-dark{
+        background-color: rgb(195, 211, 226) !important;
+        border: 1px solid rgb(196, 201, 211) !important;
+}
+
+
+.message__body .card{
+        background-color: rgb(235, 237, 240) !important;
+        border: 1px solid rgb(215, 220, 228) !important;
+    }
+
+.message{
+    background-color: transparent !important;
+}
+
+.message-dark{
+    background-color: transparent !important;
+}
+
+.teachername{
+    color: rgb(1, 36, 59) !important;
+    font-weight:700 !important;
+    text-decoration: none !important;
+    border: 0 !important;
+}
+
+.teachermsg{
+    color: rgb(0, 77, 128);
+}
+
+strong{
+    border-bottom: none !important;
+}
+
+.mediabout{
+    color: rgb(255, 255, 255) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+</style>
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+<style>
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 800px) {
+
+   .app-messages__container{
+       width: 600px !important;
+   }
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 500px) {
+
+   .app-messages__container{
+       width: 150px !important;
+   }
+
+}
+
+
+.app-messages__container{
+    width: 1150px !important;
+}
+
+.mediabout{
+    color: rgb(255, 255, 255) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+</style>
+{% endif %}
+
+{% get_current_language as lang %}
+{% if lang == "en" %}
+<style>
+
+
+
+.app-messages__container{
+    width: 1200px !important;
+}
+
+.mediabout{
+    color: rgb(255, 255, 255) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 800px) {
+
+.app-messages__container{
+    width: 500px !important;
+}
+
+}
+
+</style>
+{% endif %}
+
+<div class=" page__container page-section"style="margin:0 !important;padding: 0 !important;height:100% !important">
+    <div data-push data-responsive-width="768px" data-has-scrollable-region data-fullbleed
+         class="mdk-drawer-layout js-mdk-drawer-layout" >
+        <div class=" d-none" id="content" data-perfect-scrollbar>
+            <div class="app-messages__container app-messages__container-dark d-flex flex-column h-100 pb-4">
+                <div class="navbar navbar-light card-footer card-footer-dark navbar-expand-sm navbar-shadow z-1" id="messages-navbar">
+                    <div class="container-fluid flex-wrap px-sm-0" style="height:90px;">
+                        <div class="nav py-2">
+                            <div class="nav-item d-flex align-items-center mr-3">
+                                <input type="hidden" value="" id="teacher_id">
+                                <input type="hidden" value="" id="course_id">
+                                <input type="hidden" value="" id="course_name">
+                                <input type="hidden" value="" id="teacher_name">
+                                <input type="hidden" value="" id="teacher_img">
+                                <input type="hidden" value="{{ user_id }}" id="student_id">
+                                <div class="mr-3">
+                                    <div class="avatar avatar-online avatar-sm" style="width: 60px !important;height: 60px !important;">
+                                        <img class="avatar-img rounded-circle">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-column" style="max-width: 200px; font-size: 15px">
+                                    <strong class="text-body">
+                                        <div id="name_teacher" class="mediabout mediabout-dark"></div>
+                                    </strong>
+                                    <span class="text-50 text-ellipsis"><div id="name_course"></div></span>
+                                </div>
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <button type="button" class="btn btn-sm btn-light" style="left: 160px !important;position: absolute;top: 30px !important;" onclick="deleteHistory()">
+                                    <b class="mediabout mediabout-dark" style="font-size: 17px;font-weight: 700;">حذف الدردشة</b>
+                                </button>
+                                {% else %}
+                                <button type="button" class="btn btn-sm btn-light " style="margin-left:100px;" onclick="deleteHistory()">
+                                    DELETE HISTORY
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex pt-4" id="msg_block" style="position: relative;height: 300px; bottom: 140px; margin-top: 120px!important;" data-perfect-scrollbar>
+                    <div class="container page__container page__container" style="height: 100%!important;">
+                        <div id="student_msg_div" class="">
+                        </div>
+                    </div>
+                </div>
+                <div class="container page__container page__container"
+                     style=" bottom: 90px; position: absolute; height: 40px;overflow: hidden !important;">
+                     <div class="hiddd" style="">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                    <div class="input-group input-group-merge">
+                        <input type="text" id="text" class="form-control form-control-appended"
+                               placeholder="أكتب رسالة جديدة" style="padding-right: 15px;">
+                        <button style="margin-right: 10px !important;padding: 0 20px ;" type="button" class="btn btn-primary btn-primary-dark  " style=""
+                                onclick="message_student_to_teacher()">
+                            أرسل
+                        </button>
+                    </div>
+                    {% else %}
+                    <div class="input-group input-group-merge">
+                        <input type="text" id="text" class="form-control form-control-appended"
+                               placeholder="Type message">
+                        <button type="button" class="btn btn-primary btn-primary-dark btn-lr " style=""
+                                onclick="message_student_to_teacher()">
+                            Send
+                        </button>
+                    </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <center>
+        <div class="mdk-drawer-layout__content" id="err" data-perfect-scrollbar>
+            
+            <h2 style="" class="mt-5 mediabout mediabout-dark">من فضلك قم بأختيار محادثة</h2>
+            
+           
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="{% static 'assets/img/no-messages.svg' %}" style="width: 40%; height: auto;" alt="">
+            </div>
+        </div>
+    </center>
+        {% else %}
+        <center>
+        <div class="mdk-drawer-layout__content" id="err" data-perfect-scrollbar>
+            
+            
+            <h2 style="" class="mt-5 mediabout mediabout-dark">Please select the teacher to start</h2>
+           
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="{% static 'assets/img/no-messages.svg' %}" style="width: 40%; height: auto;" alt="">
+            </div>
+        </div>
+        {% endif %}
+        </center>
+        <div class="mdk-drawer js-mdk-drawer" data-align="end" id="messages-drawer">
+            <div class="mdk-drawer__content top-0">
+                <div class="sidebar sidebar-dark sidebar-right sidebar-light o-hidden ptt" style="">
+                    <div class="d-flex flex-column h-100 divee">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <b style="font-weight: 700;font-size: 18px;margin-right: 25px;">معلمي دوراتي</b>
+                        {% else %}
+                        <div class="sidebar-heading" style="">My Teachers</div>
+                        {% endif %}
+                        <div class="flex" data-perfect-scrollbar>
+                            <ul class="list-group list-group-flush mb-3" id="teacher_list">
+                                {% for i in teacher_list %}
+                                    <li class="list-group-item active px-3 py-12pt {% if i.unread == 1 %} bluesky {% endif %}" style="font-size:18px; font-weight:bold;">
+                                        <div class="d-flex align-items-center position-relative"
+                                             onclick="teacher_info(this)" data-teacher-id="{{ i.teacher_id }}"
+                                             data-course-id="{{ i.course_id }}" data-teacher-name="{{ i.teacher_name }}"
+                                             data-course-name="{{ i.course_name }}"
+                                             data-teacher-img="{{ i.teacher_image }}"
+                                             id="{{ i.course_id }}_student_side_div">
+                                        <span class="avatar avatar-sm mr-3 flex-shrink-0">
+                                            <img src="{% static i.teacher_image %}" alt="Avatar"
+                                                 class="avatar-img rounded-circle">
+                                        </span>
+                                            <span class="flex d-flex flex-column" style="max-width: 175px;">
+                                            <b class=" mediabout mediabout-dark"
+                                                    style="cursor: pointer;font-size: 16px !important;">{{ i.teacher_name }}</b>
+                                            <span class=" blllu blllu-dark"
+                                                  style="cursor: pointer;font-size: 12px !important;">{{ i.course_name }}</span>
+                                        </span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'student/assets/js/messages.js' %}"></script>
+    <!-- Sweet Alert -->
+    <script src="{% static 'student/assets/vendor/sweetalert.min.js' %}"></script>
+    <script src="{% static 'student/assets/js/sweetalert.js' %}"></script>
+
+    <!-- Highlight.js -->
+    <script src="{% static 'student/assets/js/hljs.js' %}"></script>
+    <script>
+
+        let cur_teacher_id;
+        let cur_teacher_name;
+        let cur_course_id;
+        let cur_course_name;
+        let cur_id = '{{ request.user.id }}';
+
+        $("#text").on('keypress' , e=>{
+            if(e.keyCode == 13) {
+                message_student_to_teacher()
+            }
+        })
+
+        function deleteHistory() {
+            let url = '/delete_message_history/';
+            let form_data = new FormData()
+            form_data.append('sender_id', cur_teacher_id)
+            form_data.append('receiver_id', cur_id)
+            form_data.append('course_id', cur_course_id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+                if(response.status == 1) {
+                    $("#student_msg_div").empty()
+                }
+            })
+        }
+
+        socket.on('teacher_to_student_message_reply', data =>{
+            if(cur_id * 1 == data.receiver_id * 1) {
+                if (data.sender_id * 1 == cur_teacher_id * 1 && cur_course_id * 1 == data.course_id * 1) {
+                    let url = '/set_message_read/';
+                    let form_data = new FormData()
+                    form_data.append('sender_id', data.sender_id)
+                    form_data.append('receiver_id', data.receiver_id)
+                    form_data.append('course_id', data.course_id)
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        dataType: 'json',
+                        async: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                    }).then(response => {
+                    })
+                    let html = `<li class=" message message-dark " style="">
+                                <div class="message__body card card-dark">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex ">
+                                                <strong class="teachername" style="border-bottom:0 !important">`+ cur_teacher_name +`</strong>
+                                            </div>
+                                        </div>
+                                        <span class="toppp teachermsg">`+ data.text +`</span>
+                                        <div>
+                                            <small class="mediabout mediabout-dark">`+ data.time +`</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>`
+                    $("#student_msg_div").append(html)
+                    scroll_down();
+                } else {
+                    $("#teacher_list").children().each(
+                        function() {
+                            let teacher_id = $(this).children().eq(0).data('teacher-id')
+                            let course_id = $(this).children().eq(0).data('course-id')
+                            if (teacher_id * 1 == data.sender_id * 1 && course_id * 1 == data.course_id * 1) {
+                                if(!$(this).hasClass("bluesky")) {
+                                    $(this).addClass("bluesky")
+                                }
+                            }
+                        }
+                    )
+                }
+            }
+        })
+
+        function scroll_down() {
+            var msgObj = document.getElementById('msg_block');
+            msgObj.scrollTop = msgObj.scrollHeight;
+        }
+
+        function teacher_info(obj) {
+            if ($("#content").hasClass("d-none")) {
+                $("#content").removeClass("d-none")
+            }
+            if (!$("#err").hasClass("d-none")) {
+                $("#err").addClass("d-none")
+            }
+            if ($(obj).parent().hasClass("bluesky")) {
+                $(obj).parent().removeClass("bluesky")
+            }
+            var teacher_id = $(obj).attr("data-teacher-id");
+            cur_teacher_id = teacher_id
+            var course_id = $(obj).attr("data-course-id");
+            cur_course_id = course_id
+            var course_name = $(obj).attr("data-course-name");
+            cur_course_name = course_name
+            var teacher_name = $(obj).attr("data-teacher-name");
+            cur_teacher_name = teacher_name
+            var teacher_img = $(obj).attr("data-teacher-img");
+            var student_id = $("#student_id").val()
+            $('#name_teacher').text(teacher_name)
+            $(".avatar.avatar-online.avatar-sm").find("img").attr("src", "../../../static" + teacher_img)
+            $('#teacher_id').val(teacher_id)
+            $('#course_id').val(course_id)
+            $('#course_name').val(course_name)
+            $('#teacher_img').val(teacher_img)
+            $('#teacher_name').val(teacher_name)
+            let form_data = new FormData()
+            form_data.append('sender_id', teacher_id)
+            form_data.append('receiver_id', student_id)
+            form_data.append('course_id', course_id)
+            let url = '/get_message_history/'
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+                let messages = JSON.parse(response.messages)
+                console.log("messages:::", messages)
+                let html = ''
+                messages.forEach(item => {
+                    if (cur_id * 1 == item.fields.receiver * 1) {
+                        html += `<li class="message message-dark">
+                                <div class="message__body card card-dark">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex ">
+                                                <strong class="teachername" style="border-bottom:0 !important">` + teacher_name + `</strong>
+                                            </div>
+                                        </div>
+                                        <span class="toppp teachermsg">` + item.fields.text + `</span>
+                                        <div>
+                                            <small class=" mediabout mediabout-dark">` + item.fields.time + `</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>`
+                    } else {
+                        html += `<li class="message message-dark student">
+                                <div class="message__body card card-dark">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex ">
+                                                <strong class="teachername" style="border-bottom:0 !important">` + "{{ request.user.first_name }} {{ request.user.last_name }}" + `</strong>
+                                            </div>
+                                        </div>
+                                        <span class="toppp teachermsg">` + item.fields.text + `</span>
+                                        
+                                        <small class="text-50">` + item.fields.time + `</small>
+                                    </div>
+                                </div>
+                            </li>`
+                    }
+                })
+                $("#student_msg_div").html(html)
+                scroll_down();
+            })
+        }
+
+        function message_student_to_teacher() {
+            text = $("#text").val()
+            if (text == '')
+                return;
+            sender_name = '{{ request.user.first_name }} {{ request.user.last_name }}';
+            time = new Date().toISOString()
+            time_format = time.slice(0,10) + " " + time.slice(11,19)
+            html = `<li class="message message-dark student">
+                        <div class="message__body card card-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <strong class="teachername" style="border-bottom:0 !important">`+ sender_name +`</strong>
+                                    </div>
+                                </div>
+                                <span class="toppp teachermsg">`+ text +`</span>
+                            </div>
+                        </div>
+                    </li>`
+            $("#student_msg_div").append(html)
+            socket.emit('student_to_teacher_message', {
+                sender_id: '{{ request.user.id }}',
+                receiver_id: cur_teacher_id,
+                time: time_format,
+                text: text,
+                course_id: cur_course_id,
+                course_name: cur_course_name
+            })
+            scroll_down();
+            $("#text").val('');
+        }
+
+    </script>
+{% endblock %}
+

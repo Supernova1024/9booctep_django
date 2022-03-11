@@ -1,0 +1,24 @@
+<div class="py-32pt navbar-submenu">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="progression-bar progression-bar--active-accent">
+      <a href="pricing.html" class="progression-bar__item progression-bar__item--complete">
+        <span class="progression-bar__item-content">
+          <i class="material-icons progression-bar__item-icon">done</i>
+          <span class="progression-bar__item-text h5 mb-0 text-uppercase">Pricing</span>
+        </span>
+      </a>
+      <a href="{{ prefix or '' }}signup.html" class="progression-bar__item{% if slug === 'signup' or slug === 'signup-payment' %} progression-bar__item--complete{% endif %}{% if slug === 'signup' %} progression-bar__item--active{% endif %}">
+        <span class="progression-bar__item-content">
+          <i class="material-icons progression-bar__item-icon">{% if slug === 'signup-payment' %}done{% endif %}</i>
+          <span class="progression-bar__item-text h5 mb-0 text-uppercase">Account details</span>
+        </span>
+      </a>
+      <a href="{{ prefix or '' }}signup-payment.html" class="progression-bar__item{% if slug === 'signup-payment' %} progression-bar__item--complete progression-bar__item--active{% endif %}">
+        <span class="progression-bar__item-content">
+          <i class="material-icons progression-bar__item-icon"></i>
+          <span class="progression-bar__item-text h5 mb-0 text-uppercase">Payment details</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

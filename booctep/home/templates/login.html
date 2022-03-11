@@ -1,0 +1,1197 @@
+{% extends "base.html" %} 
+
+{% block content %} 
+{% load static %}
+{% load i18n %}
+
+
+
+<style>
+
+.checkout-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 1040px;
+    margin: 0 auto;
+    -webkit-animation: fadeInLeft 0.5s;
+    animation: fadeInLeft 0.5s;
+} /* line 1262, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left,
+.checkout-container .right {
+    width: 49%;
+} /* line 1267, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e8e8e8;
+    -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+} /* line 1275, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+} /* line 1280, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .avatar {
+    display: block;
+    height: 70px;
+    width: 70px;
+    min-width: 70px;
+    border-radius: 8px;
+} /* line 1288, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .separator {
+    height: 34px;
+    width: 1px;
+    margin: 0 24px;
+    border-right: 1px solid #d9d9d9;
+    display: none;
+} /* line 1296, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .logo {
+    display: block;
+    max-width: 110px;
+    max-height: 40px;
+} /* line 1302, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .title-wrap {
+    margin-left: 12px;
+    line-height: 1.3;
+} /* line 1306, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .title-wrap .payment-title {
+    font-family: "Roboto", sans-serif;
+    color: #393a4f;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0;
+} /* line 1314, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-inner .title-wrap .payment-subtitle {
+    font-family: "Roboto", sans-serif;
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+} /* line 1323, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-coupon {
+    padding: 20px 0 0 0;
+    border-top: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+} /* line 1330, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-coupon .field.is-grouped .control:first-child {
+    -webkit-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+} /* line 1337, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-foot {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+} /* line 1345, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-foot span {
+    display: block;
+    font-family: "Roboto", sans-serif;
+} /* line 1349, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-foot span.label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #393a4f;
+    margin-bottom: 0;
+} /* line 1356, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-foot span.amount {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #393a4f;
+} /* line 1361, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-header .header-foot span.amount:before {
+    content: attr(data-currency);
+    position: relative;
+    left: -5px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #999;
+} /* line 1374, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .left .left-body {
+    padding: 20px 0;
+} /* line 1381, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    border: 1px solid #e8e8e8;
+    -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+} /* line 1388, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .provider-form {
+    display: none;
+} /* line 1391, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .provider-form.is-active {
+    display: block;
+} /* line 1398, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .form-section.has-margin-bottom {
+    margin-bottom: 30px;
+} /* line 1402, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .form-section .form-section-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 8px;
+} /* line 1407, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .form-section .form-section-header h3 {
+    font-family: "Roboto", sans-serif;
+    color: #393a4f;
+    font-size: 1.1rem;
+    font-weight: 500;
+} /* line 1414, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .form-section .form-section-header span {
+    display: block;
+    color: #abb0be;
+} /* line 1418, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .form-section .form-section-header span a {
+    color: #3d70b2;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 5px;
+} /* line 1428, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form label {
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-size: 0.7rem;
+    color: #999;
+    letter-spacing: 1px;
+} /* line 1436, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .select {
+    width: 100%;
+} /* line 1439, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .select:after {
+    border-color: #abb0be;
+    border-width: 2px;
+} /* line 1444, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .select select {
+    width: 100%;
+} /* line 1449, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .select + .icon .mdi {
+    position: relative;
+    top: 2px;
+    font-size: 1.2rem;
+} /* line 1457, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .StripeElement {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid #e2e5ec;
+    border-radius: 4px;
+    background-color: white;
+} /* line 1465, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .StripeElement.empty {
+    color: #a2a5b9;
+} /* line 1470, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .StripeElement--focus {
+    -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #cfd7df;
+} /* line 1474, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .StripeElement--invalid {
+    border-color: #fa755a;
+} /* line 1478, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+} /* line 1482, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-disclaimer {
+    padding-top: 10px;
+} /* line 1485, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-disclaimer p {
+    color: #abb0be;
+    font-size: 0.8rem;
+    font-family: "Roboto", sans-serif;
+} /* line 1490, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-disclaimer p a {
+    color: #3d70b2;
+    font-weight: 500;
+} /* line 1497, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-button {
+    text-align: center;
+    margin-top: 20px;
+} /* line 1501, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-button .buttons {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+} /* line 1505, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-button .button {
+    min-height: 42px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+} /* line 1509, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-button .button:nth-child(2) {
+    border-left: 1px solid #6e98cd;
+} /* line 1513, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .right .payment-form .is-button .button.disabled {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    opacity: 0.4;
+    pointer-events: none;
+} /* line 1523, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid #e8e8e8;
+    -webkit-box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: -1px 3px 10px 0 rgba(0, 0, 0, 0.06);
+} /* line 1533, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box > svg {
+    display: block;
+    margin: 0 auto;
+} /* line 1538, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box > h3 {
+    font-family: "Roboto", sans-serif;
+    color: #393a4f;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0;
+} /* line 1547, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box > p {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    color: #999;
+    font-size: 0.9rem;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dedede;
+} /* line 1557, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary {
+    padding-bottom: 10px;
+} /* line 1560, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-size: 0.85rem;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+} /* line 1570, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 8px 20px;
+} /* line 1577, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line .item.is-total span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #393a4f !important;
+} /* line 1584, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line .item span {
+    font-size: 0.9rem;
+    font-family: "Roboto", sans-serif;
+    display: block;
+    color: #abb0be;
+} /* line 1594, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line .amount.is-total span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #393a4f !important;
+} /* line 1601, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line .amount span {
+    font-size: 0.9rem;
+    font-family: "Roboto", sans-serif;
+    display: block;
+    color: #abb0be;
+} /* line 1607, src/assets/scss/pages/_app-commerce.scss */
+.checkout-container .confirmation-box .order-summary .order-line .amount span:before {
+    content: attr(data-currency);
+    position: relative;
+    left: -5px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #abb0be;
+}
+
+
+    .schedule video {
+        width: 100% !important;
+    }
+
+    .plyr--video {
+        width: 100%;
+    }
+
+.modal-open {
+ overflow: hidden;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-modal;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    outline: 0;
+
+ &.fade .modal-dialog {
+   .translate(0, -25%);
+   .transition-transform(~"0.3s ease-out");
+ }
+ &.in .modal-dialog { .translate(0, 0); }
+}
+.modal-open .modal {
+ overflow-x: hidden;
+ overflow-y: auto;
+}
+
+
+.modal-dialog {
+ position: relative;
+ width: auto;
+ margin: 10px;
+}
+
+
+.modal-content {
+ position: relative;
+ background-color: @modal-content-bg;
+ background-clip: padding-box;
+ border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+ border: 1px solid @modal-content-border-color;
+ border-radius: @border-radius-large;
+ .box-shadow(0 3px 9px rgba(0, 0, 0, .5));
+ outline: 0;
+}
+.modal-backdrop {
+ position: fixed;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ z-index: @zindex-modal-background;
+ background-color: @modal-backdrop-bg;
+
+ &.fade { .opacity(0); }
+ &.in { .opacity(@modal-backdrop-opacity); }
+}
+
+
+.modal-header {
+ padding: @modal-title-padding;
+ border-bottom: 1px solid @modal-header-border-color;
+ &:extend(.clearfix all);
+}
+
+.modal-header .close {
+ margin-top: -2px;
+}
+
+
+.modal-title {
+ margin: 0;
+ line-height: @modal-title-line-height;
+}
+
+.modal-body {
+ position: relative;
+ padding: @modal-inner-padding;
+}
+
+.modal-footer {
+ padding: @modal-inner-padding;
+ text-align: right;
+ border-top: 1px solid @modal-footer-border-color;
+ &:extend(.clearfix all);
+
+
+ .btn + .btn {
+   margin-bottom: 0;
+   margin-left: 5px;
+ }
+
+ .btn-group .btn + .btn {
+   margin-left: -1px;
+ }
+
+ .btn-block + .btn-block {
+   margin-left: 0;
+ }
+}
+
+
+.modal-scrollbar-measure {
+ position: absolute;
+ top: -9999px;
+ width: 50px;
+ height: 50px;
+ overflow: scroll;
+}
+
+
+@media (min-width: @screen-sm-min) {
+
+ .modal-dialog {
+   width: @modal-md;
+   margin: 30px auto;
+ }
+ .modal-content {
+   .box-shadow(0 5px 15px rgba(0, 0, 0, .5));
+ }
+
+
+ .modal-sm { width: @modal-sm; }
+}
+
+@media (min-width: @screen-md-min) {
+ .modal-lg { width: @modal-lg; }
+}
+
+textarea {
+    text-align: left;
+}
+
+.cart-content{
+   max-width: 90%
+}
+
+</style>
+
+
+
+
+<style>
+    .loading::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        /* Adding animation */
+        animation: loading 1s infinite;
+    }
+    /* Loading Animation */
+
+    @keyframes loading {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+
+
+
+.cart-container{
+  max-width: 90% !important;
+  align-items: center !important
+}
+
+.form-section-header-1 h3{
+  font-size: 22px !important;
+  font-weight: bold !important;
+  margin-bottom: 15px
+}
+
+.field-1 label{
+  margin-bottom: 70px !important;
+}
+
+.field-1{
+
+  width: 40% !important
+  }
+
+.field-3{
+  width: 300px !important;
+  margin-top: 35px
+}
+
+
+
+
+#successAnimation.animated {
+    -webkit-animation: 1s ease-out 0s 1 both scaleAnimation;
+    animation: 1s ease-out 0s 1 both scaleAnimation;
+} /* line 1495, src/assets/scss/components/_components-utils.scss */
+#successAnimation.animated #successAnimationCircle {
+    -webkit-animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle, 0.3s linear 0.9s 1 both fadeOut;
+    animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCircle, 0.3s linear 0.9s 1 both fadeOut;
+} /* line 1499, src/assets/scss/components/_components-utils.scss */
+#successAnimation.animated #successAnimationCheck {
+    -webkit-animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck, 0.3s linear 0.9s 1 both fadeOut;
+    animation: 1s cubic-bezier(0.77, 0, 0.175, 1) 0s 1 both drawCheck, 0.3s linear 0.9s 1 both fadeOut;
+} /* line 1503, src/assets/scss/components/_components-utils.scss */
+#successAnimation.animated #successAnimationResult {
+    -webkit-animation: 0.3s linear 0.9s both fadeIn;
+    animation: 0.3s linear 0.9s both fadeIn;
+} /*! _chat.scss | Friendkit | © Css Ninja. 2019-2020 */ /* line 17, src/assets/scss/pages/_app-chat.scss */
+
+#successAnimationCircle {
+    stroke-dasharray: 151px 151px;
+    stroke: #41d6c3;
+} /* line 1482, src/assets/scss/components/_components-utils.scss */
+#successAnimationCheck {
+    stroke-dasharray: 36px 36px;
+    stroke: #41d6c3;
+} /* line 1487, src/assets/scss/components/_components-utils.scss */
+#successAnimationResult {
+    fill: #41d6c3;
+    opacity: 0;
+} /* line 1492, src/assets/scss/components/_components-utils.scss */
+
+@-webkit-keyframes scaleAnimation {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes scaleAnimation {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes drawCircle {
+    0% {
+        stroke-dashoffset: 151px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes drawCircle {
+    0% {
+        stroke-dashoffset: 151px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@-webkit-keyframes drawCheck {
+    0% {
+        stroke-dashoffset: 36px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes drawCheck {
+    0% {
+        stroke-dashoffset: 36px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} /* line 1477, src/assets/scss/components/_components-utils.scss */
+
+.card-element-b{
+  color: red;
+}
+
+.confirmation-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.paypl{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+.paypl img{
+   width: 30px;
+   height: 30px
+}
+
+</style>
+
+
+
+
+<div class="products-navigation" style="display: none;">
+</div>
+
+
+
+    <div class="view-wrapper" style="padding-top: 80px;background:none !important">
+            <div class="shop-wrapper" style="background:none !important">
+                <div class="cart-container">
+                    <div class="cart-header">
+                        <div class="header-inner">
+                            <div class="categories-header">
+                            </div>
+
+{#                            <div class="header-actions">#}
+{#                                <a href="#" class="button is-fullwidth primary-button is-raised"><p style="color: #fff;">Save for later</p></a>#}
+{##}
+{#                            </div>#}
+                        </div>
+                    </div>
+
+                    <div class="cart-content">
+                        <div class="columns">
+                            <div class="column is-offset-1 is-10">
+
+                                <div class="wrapper">
+                                    <div class="categories-header">
+                                        <h2>Hi {{ user.first_name }}, Login to activate your account please</h2>
+                                    </div>
+
+                                <div class="cart-summary">
+                                    <!--card-->
+                                    <div class="summary-ca">
+
+                <div id="payment-container" class="checkout-container">
+
+                    <!--Right Side-->
+                    <div class="right" style="display:flex;flex-direction: row !important;width:100%">
+                        <div class="payment-form" style="width: 100%">
+                            <form action="/charge" method="post" id="stripe-payment-form" class="provider-form is-active">
+                               <center>
+                        <img style="margin-top:10px;margin-bottom:25px;margin-left:-20px" class="Loginmodal-img Loginmodal-img-dark" src="{% static 'assets/img/favicon.png' %}" alt="">
+
+                                <div id="checkout-contact-section" class="form-section has-margin-bottom">
+                                    <div class=" form-section-header-1">
+                                        <h3 style="text-algin:center !important">Login</h3>
+                                    </div>
+
+                                <div id="checkout-payment-section" class="form-section">
+
+
+                                    <div class="field field-1">
+                                        <label for="card-element">Enter your Email</label>
+                                        <div class="control">
+                                            <div id="card-element">
+                                                <!-- a Stripe Element will be inserted here. -->
+                                            <input class="input" style="margin-top: 10px !important" placeholder="Enter Email address"
+                                                name="checkout_name" type="email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field field-1">
+                                        <label>Enter your Password</label>
+                                        <div class="control" style="margin-top: 10px;font-size:large !important">
+                                            <input class="input" type="password" placeholder="Enter Password"
+                                                name="checkout_name">
+                                        </div>
+                                    <div class="control">
+                                        <p style="font-size: small;"><input id="remember" type="checkbox"> {% trans 'Remember me' %}</p>
+                                    </div>
+                                    </div>
+
+
+                                <div class="field field-3 is-button">
+                                    <div class="buttons has-addons">
+                                        <button id="payment-button"  style="width: 120px" type="button" onclick = "save_course_to_cart()" class="button is-solid primary-button">
+                                            Login
+                                            </button>
+                                    </div>
+                                </div>
+                                   </center>
+
+
+
+
+                                </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="confirmation-container" class="checkout-container is-hidden">
+
+                    <div class="confirmation-box">
+                         <svg id="successAnimation" class="animated" xmlns="http://www.w3.org/2000/svg" width="70"
+                            height="70" viewBox="0 0 70 70">
+                            <path id="successAnimationResult" fill="#D8D8D8"
+                                d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z" />
+                            <circle id="successAnimationCircle" cx="35" cy="35" r="24" stroke="#979797" stroke-width="2"
+                                stroke-linecap="round" fill="transparent" />
+                            <polyline id="successAnimationCheck" stroke="#979797" stroke-width="2" points="23 34 34 43 47 27"
+                                fill="transparent" />
+                        </svg>
+                        <h3>Congratulations your account has been activated.</h3>
+                        <p>You will redirect in 5 seconds to Homepage.</p>
+
+
+                    </div>
+
+                </div>
+                                </div>
+                                </div>
+                                  </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+{% endblock %} {% block script %}
+
+
+
+<!-- Page and UI related js -->
+
+<script>
+
+
+$(document).ready(function(){
+
+console.log("check")
+
+})
+
+function save_course_to_cart(){
+
+course_id = "{{course.id}}"
+student_id = "{{user_id}}"
+console.log(course_id)
+console.log(student_id)
+
+$.ajax({
+	method : "POST",
+	url : "/student_courses/",
+	data : {
+		'course':course_id,
+		'student':student_id
+		},
+		success : function(response){
+		if (response == "success"){
+			swal("Course Added!", {
+			icon: "success",
+			button: "Ok",
+			closeOnClickOutside: false,
+			}).then(function() {
+				location.href = "/courses/"
+			});
+			}
+		else{
+
+			swal("Course Already Added In My Courses!", {
+			icon: "info",
+			button: "Ok",
+			closeOnClickOutside: false,
+			}).then(function() {
+
+			});
+
+		}
+	}
+});
+
+}
+
+
+
+$(document).ready(function(){
+
+
+});
+function model_open(obj){
+
+    var type = $(obj).attr('data-type');
+    $('#commentId').val($(obj).attr('data-id'));
+    $('#commentDeleteId').val($(obj).attr('data-id'));
+    if(type == 'add'){
+        $('#exampleModal').modal('show');
+        $("#user_comment").val("");
+        $("#user_comment").focus();
+    } else if(type == 'edit'){
+        $('#exampleModal').modal('show');
+        $("#user_comment").val($(obj).attr('data-comment'));
+        $("#user_comment").focus();
+    } else if(type == 'delete'){
+        $('#deleteModal').modal('show');
+    }
+
+}
+
+function save_comment(){
+
+    var course_id = '{{course.id}}'
+    var comment = $("#user_comment").val();
+    var user_id = '{{user_id}}'
+    var comment_id = $('#commentId').val();
+
+    if (comment == 0){
+        swal("Please Add Comment!",{
+        icon: "info",
+        button: "Ok",
+        closeOnClickOutside: false,
+        }).then(function() {
+        });
+    } else{
+        $.ajax({
+            method : "POST",
+            url : "/add_comment/",
+            data : {
+                'comment':comment,
+                'user_id':user_id,
+                'course_id':course_id,
+                'comment_id':comment_id,
+                },
+                success : function(response){
+                if (response == "success"){
+                    swal("Comment Added successfully!", {
+                    icon: "success",
+                    button: "Ok",
+                    closeOnClickOutside: false,
+                    }).then(function() {
+                        location.reload()
+                    });
+                }
+            }
+        });
+    }
+}
+
+function delete_comment(){
+    var id = $('#commentDeleteId').val();
+    $.ajax({
+            method : "POST",
+            url : "/delete_comment/",
+            data : {
+                'id':id,
+                },
+                success : function(response){
+                if (response == "success"){
+                    swal("Comment Deleted succfully!", {
+                    icon: "success",
+                    button: "Ok",
+                    closeOnClickOutside: false,
+                    }).then(function() {
+                        location.reload()
+                    });
+                }
+            }
+        });
+}
+
+function addToCartList(){
+    var course_id = '{{ course.id }}';
+    var user_id = '{{ request.user.id }}';
+    var url = '/student_Cart_courses/';
+    $.post(url,{student:user_id,course:course_id},function (res) {
+    });
+}
+
+
+
+
+
+
+
+
+
+
+// Payment
+
+
+function initSpinner(price) {
+  $('.spinner .add').off().on('click', function () {
+    var $this = $(this);
+    var $input = $this.closest('.spinner').find('input');
+    var value = parseInt($input.val());
+    value = ++value;
+    $input.val(value).trigger('change');
+  });
+  $('.spinner .remove').off().on('click', function () {
+    var $this = $(this);
+    var $input = $this.closest('.spinner').find('input');
+    var value = parseInt($input.val());
+    value = --value;
+
+    if (value < 1) {
+      value = 1;
+    }
+
+    $input.val(value).trigger('change');
+  });
+  $('.spinner input').off().on('change', function () {
+    var $this = $(this);
+    var value = parseInt($this.val());
+    console.log(value);
+    $this.closest('.spinner').find('.value').html(value);
+    var newPrice = price * value;
+    $('#quickview-button-price').html(newPrice.toFixed(2));
+  });
+}
+
+$(document).ready(function () {
+  if ($('#shop-page').length) {
+    //Tabs
+    $('.store-tabs .tab-control').on('click', function () {
+      var targetSection = $(this).attr('data-tab');
+      $(this).closest('.store-tabs').find('.tab-control').removeClass('is-active');
+      $(this).addClass('is-active');
+      $('.store-tab-pane').removeClass('is-active');
+      $('#' + targetSection).addClass('is-active');
+    }); //Product quickview
+
+    $('.quickview-trigger').on('click', function () {
+      var $this = $(this);
+      var path = $this.closest('.product-card').attr('data-path');
+      var productName = $this.closest('.product-card').attr('data-name');
+      var productPrice = parseInt($this.closest('.product-card').attr('data-price'));
+      var productImage = $this.closest('.product-card').find('img').attr('src');
+      var productColors = $this.closest('.product-card').attr('data-colors');
+      var productVariants = $this.closest('.product-card').attr('data-colors');
+      $('#quickview-name').html(productName);
+      $('.product-quickview .product-image img').attr('src', productImage);
+      $('#quickview-price, #quickview-button-price').html(productPrice.toFixed(2));
+      setTimeout(function () {
+        $('.quickview-loader').removeClass('is-active');
+      }, 1000);
+      initSpinner(productPrice);
+
+      if (productColors === 'true') {
+        $('#color-properties').removeClass('is-hidden');
+        $('#color-properties input').off().on('change', function () {
+          var value = $(this).attr('id');
+          $('.product-quickview .product-image img').attr('src', path + '-' + value + '.svg');
+        });
+      }
+
+      $('#product-quickview').addClass('is-active');
+    });
+    $('.quickview-background').on('click', function () {
+      $('#product-quickview').removeClass('is-active');
+      $('.quickview-loader').addClass('is-active');
+      $('#color-properties').addClass('is-hidden');
+      $('.spinner input').val('1');
+      $('.spinner .value').html('1');
+    });
+  }
+
+  if ($('.products-navigation').length) {
+    $(window).on('scroll', function () {
+      var height = $(window).scrollTop();
+
+      if (height > 65) {
+        $(".products-navigation").addClass('is-active');
+      } else {
+        $(".products-navigation").removeClass('is-active');
+        $(".navigation-panel").fadeOut();
+        $('.products-navigation .shop-action').removeClass('is-active');
+      }
+    });
+    $('.products-navigation .shop-action').on('click', function () {
+      var targetPanel = $(this).attr('data-panel');
+
+      if ($(this).hasClass('is-active')) {
+        $(this).removeClass('is-active');
+      } else {
+        $(this).addClass('is-active');
+      }
+
+      $('#' + targetPanel).slideToggle();
+    });
+    initComboBox();
+  } //Checkout
+
+
+  if ($('#checkout-button').length) {
+    //Checkout next
+    $('#checkout-button').on('click', function () {
+      var $this = $(this);
+      var title = $('#checkout-step-title');
+      var backButton = $('#checkout-back');
+      var nextStep = parseInt($this.attr('data-step'));
+      var prevStep = parseInt($('#checkout-back').attr('data-step'));
+      $this.addClass('is-loading');
+      setTimeout(function () {
+        $this.removeClass('is-loading');
+        $('.checkout-section').removeClass('is-active');
+        $('#checkout-section-' + nextStep).addClass('is-active');
+        $this.attr('data-step', nextStep + 1);
+        backButton.attr('data-step', prevStep + 1);
+
+        if (nextStep === 2) {
+          title.html('2. Choose a shipping address');
+
+          if ($('.shipping-address input:checked').length === 0) {
+            $this.addClass('is-disabled');
+          } else {
+            $this.removeClass('is-disabled');
+          }
+        } else if (nextStep === 3) {
+          title.html('3. Choose a shipping method');
+
+          if ($('.shipping-box input:checked').length === 0) {
+            $this.addClass('is-disabled');
+          } else {
+            $this.removeClass('is-disabled');
+          }
+        } else if (nextStep === 4) {
+          $('.shipping-logo').addClass('is-active');
+          title.html('4. Choose a billing address');
+
+          if ($('.billing-address input:checked').length === 0) {
+            $this.addClass('is-disabled');
+          } else {
+            $this.removeClass('is-disabled');
+          }
+        } else if (nextStep === 5) {
+          window.location.href = '/ecommerce-payment.html';
+        }
+      }, 800);
+    }); //Checkout back
+
+    $('#checkout-back').on('click', function () {
+      var $this = $(this);
+      var title = $('#checkout-step-title');
+      var backButton = $('#checkout-back');
+      var prevStep = parseInt($('#checkout-back').attr('data-step'));
+      $this.addClass('is-loading');
+      setTimeout(function () {
+        $this.removeClass('is-loading');
+        $('.checkout-section').removeClass('is-active');
+        $('#checkout-section-' + prevStep).addClass('is-active');
+        $('#checkout-button').removeClass('is-disabled').attr('data-step', prevStep + 1);
+        $this.attr('data-step', prevStep - 1);
+
+        if (prevStep === 0) {
+          window.location.href = '/ecommerce-cart.html';
+        } else if (prevStep === 1) {
+          title.html('1. Confirm your order');
+        } else if (prevStep === 2) {
+          title.html('2. Choose a shipping address');
+          $('.shipping-logo').removeClass('is-active');
+        } else if (prevStep === 3) {
+          title.html('3. Choose a shipping method');
+          $('.shipping-logo').addClass('is-active');
+        }
+      }, 800);
+    }); //Steps validation
+
+    $('.address-box input').on('change', function () {
+      $('#checkout-button').removeClass('is-disabled');
+      var address = $(this).closest('.address-box').find('.address-box-inner').html();
+      $('#shipping-address-box p').remove();
+      $('#shipping-address-box').append(address);
+      $('#shipping-placeholder-box').addClass('is-hidden');
+      $('#shipping-address-box').removeClass('is-hidden');
+    });
+    $('.shipping-box input').on('change', function () {
+      var shipppingLogo = $(this).closest('.shipping-box').find('img').attr('src');
+      $('.shipping-logo').attr('src', shipppingLogo).addClass('is-active');
+      $('#shipping-amount').find('.is-text').removeClass('is-text').html('15.00');
+      $('#total-amount span:nth-child(2)').html('216.92');
+      $('#checkout-button').removeClass('is-disabled');
+    });
+  } //Payment
+
+
+  if ($('#payment-container').length) {
+    // Create a Stripe client
+    var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh'); // Create an instance of Elements
+
+    var elements = stripe.elements(); // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+
+    var style = {
+      base: {
+        // Add your base input styles here. For example:
+        fontSize: '14px',
+        color: "#595d6e"
+      }
+    }; // Create an instance of the card Element
+
+
+
+
+
+    $('.is-button .buttons').on('click', function () {
+      var $this = $(this);
+      $('#payment-button').addClass('is-loading');
+      setTimeout(function () {
+        $('#payment-button').removeClass('is-loading');
+        $('#payment-container, #confirmation-container, .header-actions .button').toggleClass('is-hidden');
+      }, 2000);
+    });
+  }
+});
+
+
+
+</script>
+{% endblock %}

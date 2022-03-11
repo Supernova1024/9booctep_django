@@ -1,0 +1,54 @@
+//Normal responsive font size
+  
+@mixin ofs($size, $lineHeight, $weight) {
+  @if $size !=null {
+      @include rfs($size); //Added responsive font size for use bootstrap.Just include this mixin and normally put the font size
+  }
+  @if $lineHeight !=null {
+      line-height: $lineHeight;
+  }
+  @if $weight !=null {
+      font-weight: $weight;
+  }
+
+}
+
+@mixin padding_tb($top, $bottom){
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+
+@mixin radius($width){
+  -webkit-border-radius: remy($width);
+  -moz-border-radius: remy($width);
+  border-radius: remy($width);
+}
+
+.content-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inline-content-center{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center{
+  display: flex;
+  align-items: center;
+}
+
+// BEM Elements & Modifiers
+@mixin e($element){
+  &__#{$element}{
+    @content
+  }
+}
+
+@mixin m($modifier){
+  &--#{$modifier}{
+    @content
+  }
+}

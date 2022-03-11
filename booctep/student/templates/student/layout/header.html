@@ -1,0 +1,231 @@
+ {% block content %} {% load static %}
+ {% load i18n %}
+
+
+
+<style>
+
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.navbar{
+    background-color: #d2e9ff !important;
+    border-bottom: 1px solid #abcae7 !important;
+}
+ 
+ 
+.navbar-dark{
+    background-color: #323741 !important;
+    border-bottom: 1px solid #1b1d22!important;
+}
+
+.dropdown-menu-right{
+    top: 50px !important;
+    background-color: #c4d8f0 !important;
+    border: 1px solid #96b0cf !important;
+}
+.dropdown-menu-right-dark{
+    background-color: #323741 !important;
+    border: 1px solid #202329 !important;
+}
+
+.dropdown-menu-right-dark a{
+    color: #b5bbc7 !important;
+    direction: ltr !important;
+}
+
+.dropdown-menu-right-dark:after,
+.dropdown-menu-right-dark:before
+{
+    border: none !important;
+}
+
+.dropdown-menu-right:after,
+.dropdown-menu-right:before {
+    border: none !important;
+}
+ 
+ .dropdown-menu-right {
+     right: 0 !important;
+     left: auto !important;
+     float: right;
+ }
+
+.material-icons-dark{
+    color: rgb(208, 223, 226) !important;
+}
+
+.dropdown-menu-right-dark{
+    background-color: #323741 !important;
+    border: 1px solid #202329 !important;
+}
+
+
+ 
+
+
+.navbar{
+    background-color: #d2e9ff !important;
+    border-bottom: 1px solid #abcae7 !important;
+}
+ 
+.navbar-dark{
+    background-color: #323741 !important;
+    border-bottom: 1px solid #0e1013 !important;
+}
+
+.brd{
+    border: 1px solid rgb(45, 116, 163) !important;
+    color: rgb(45, 116, 163) !important;
+}
+
+.brd-dark{
+    border: 1px solid rgb(14, 13, 13) !important;
+    color: rgb(202, 202, 202) !important;
+}
+
+
+</style>
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+ 
+ 
+.dropdown-menu-right{
+    top: 50px !important;
+    background-color: #c4d8f0 !important;
+    border: 1px solid #96b0cf !important;
+}
+
+.dropdown-menu-right-dark a{
+    color: #b5bbc7 !important;
+    direction: rtl !important;
+}
+
+
+.dropdown-menu-right {
+    left: 0 !important;
+    right: auto !important;
+    float: left;
+}
+
+
+.dropdown-menu-right-dark{
+    background-color: #323741 !important;
+    border: 1px solid #202329 !important;
+}
+
+.dropdown-menu-right-dark a{
+    color: #b5bbc7 !important;
+    direction: ltr !important;
+}
+
+.dropdown-menu-right-dark:after,
+.dropdown-menu-right-dark:before
+{
+    border: none !important;
+}
+
+.dropdown-menu-right:after,
+.dropdown-menu-right:before {
+    border: none !important;
+}
+
+.lifffft{
+    margin-right: 30px !important;
+}
+
+.brd{
+    border: 1px solid rgb(45, 116, 163) !important;
+    color: rgb(45, 116, 163) !important;
+}
+
+.brd-dark{
+    border: 1px solid rgb(14, 13, 13) !important;
+    color: rgb(202, 202, 202) !important;
+}
+
+
+
+</style>
+
+{% endif %}
+<div class="navbar navbar-dark navbar-expand pr-0 navbar-light " id="default-navbar" data-primary>
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0" type="button" data-toggle="sidebar">
+        <span class="material-icons">short_text</span>
+    </button>
+
+    <!-- Navbar Brand -->
+    <a href="mini-index.html" class="navbar-brand mr-16pt d-lg-none">
+
+        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+            <span class="avatar-title rounded bg-primary"><img src="{% static 'student/assets/images/illustration/student/128/white.svg' %}" alt="logo" class="img-fluid" /></span>
+
+        </span>
+
+        <span class="d-none d-lg-block">Luma</span>
+    </a>
+
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    
+    <h4 class="mediabout mediabout-dark lifffft" style="margin-top: 15px;">{{ title }}</h4>
+
+    {% else  %}
+
+    <h4 class="mediabout mediabout-dark lifffft" style="margin-top: 15px;">{{ title }}</h4>
+
+    {%  endif %}
+
+    <div class="flex"></div>
+    <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" style="border: 0 !important;" data-toggle="dropdown" data-caret="false">
+
+                <span class="avatar avatar-sm mr-8pt2" style="border: 0 !important;">
+
+                    <span class="avatar-title   " style="border: 0 !important;background: none !important;">
+                        <img src="/static{{user.image}}" alt="" style="border-radius: 50%;width: 50px !important;height: 40px !important;" class="brd brd-dark">
+                    </span>
+
+                </span>
+
+            </a>
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-right-dark" style="">
+                <a class="dropdown-item" href="{% url 'home' %}">العودة لـبوستيب</a>
+                <a class="dropdown-item" href="{% url 'student account' %}">الإعدادات الرئيسية</a>
+                <a class="dropdown-item" href="{% url 'student courses' %}">دوراتي</a>
+                <a class="dropdown-item" href="{% url 'student notifications' %}">التنبيهات</a>
+                <a class="dropdown-item" style="color: rgb(218, 126, 126) !important;" href="{% url 'logout' %}">تسجيل خروج</a>
+            </div>
+            {% else %}
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-right-dark" style="">
+                <a class="dropdown-item" href="{% url 'home' %}">Back to Booctep</a>
+                <a class="dropdown-item" href="{% url 'student account' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'student courses' %}">My courses</a>
+                <a class="dropdown-item" href="{% url 'student notifications' %}">Notifications</a>
+                <a class="dropdown-item" style="color: rgb(218, 126, 126) !important;" href="{% url 'logout' %}">Logout</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

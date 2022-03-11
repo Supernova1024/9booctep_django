@@ -1,0 +1,33 @@
+//Order
+
+.ordertable-btns li {
+    &:not(:last-child) {
+        a {
+            margin-right: 25px;
+        }
+    }
+
+    svg {
+        @extend .color-extra-light;
+        width: 18px;
+    }
+}
+
+.order-profile-icon {
+    @extend .content-center;
+
+    svg {
+        width: 16px;
+        @extend .color-primary;
+    }
+}
+
+.order-dateTitle {
+    margin-left: 94px;
+}
+
+.shipped-dataTable table tbody tr {
+    &:not(:last-child){
+        border-bottom: 1px solid #F1F2F6;
+    }
+}

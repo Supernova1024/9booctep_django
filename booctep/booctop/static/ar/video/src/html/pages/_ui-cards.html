@@ -1,0 +1,140 @@
+{% import '_account-path-card.html' as path %}
+{% import '_course-card.html' as course_compact %}
+{% import '_course-card-simple.html' as course %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">Cards</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+
+  <div class="page-separator">
+    <div class="page-separator__text">Courses / Details</div>
+  </div>
+
+  {% set items = [{
+    title: 'Learn Angular fundamentals',
+    image: 'angular',
+    free: true
+  }, {
+    title: 'Build an iOS Application in Swift',
+    image: 'swift',
+    favorite: true
+  }, {
+    title: 'Build a WordPress Website',
+    image: 'wordpress'
+  }, {
+    title: 'Become a React Native Developer',
+    image: 'react',
+    position: 'left'
+  }] %}
+
+  <div class="row card-group-row mb-lg-8pt">
+    {% for item in items %}
+      <div class="col-lg-3 card-group-row__col">
+        {{ course.component(
+          account=true, 
+          title=item.title, 
+          image=item.image, 
+          avatar=(item.avatar or item.image), 
+          free=item.free,
+          favorite=item.favorite,
+          position=item.position,
+          open=item.open,
+          class='card-group-row__card') }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% set items = [{
+    title: 'Learn Sketch',
+    image: 'sketch'
+  }, {
+    title: 'Learn Flinto',
+    image: 'flinto'
+  }, {
+    title: 'Learn Photoshop',
+    image: 'photoshop'
+  }, {
+    title: 'Newsletter Design',
+    image: 'mailchimp'
+  }] %}
+
+  <div class="page-separator">
+    <div class="page-separator__text">Courses / Compact</div>
+  </div>
+  <div class="row align-items-center mb-8pt">
+    {% for item in items %}
+      <div class="col-sm-6 col-md-4 col-xl-3">
+        {{ course_compact.component(
+          title=item.title, 
+          image=item.image, 
+          avatar=(item.avatar or item.image), 
+          free=item.free,
+          favorite=item.favorite,
+          position=item.position) 
+        }}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="page-separator">
+    <div class="page-separator__text">Learning Paths</div>
+  </div>
+  <div class="row mb-lg-8pt">
+    <div class="col-sm-6">
+      {{ path.component(class='', title='Angular', image='angular', free=true) }}
+    </div>
+    <div class="col-sm-6">
+      {{ path.component(class='', title='Swift', image='swift', favorite=true) }}
+    </div>
+    <div class="col-sm-6">
+      {{ path.component(class='', title='WordPress', image='wordpress') }}
+    </div>
+    <div class="col-sm-6">
+      {{ path.component(class='', title='React Native', image='react', position='left') }}
+    </div>
+  </div>
+
+  <div class="page-separator">
+    <div class="page-separator__text">Featured Paths</div>
+  </div>
+
+  {% set items = [{
+    title: 'Angular',
+    image: 'angular',
+    description: 'Angular is a platform for building mobile and desktop web applications.',
+    favorite: true,
+    account: true
+  }, {
+    title: 'Swift',
+    image: 'swift',
+    description: 'Swift is a powerful and intuitive programming language for macOS, iOS, watchOS, tvOS and beyond.'
+  }, {
+    title: 'WordPress',
+    image: 'wordpress',
+    description: 'WordPress is open source software you can use to create a beautiful website, blog, or app.'
+  }] %}
+
+  <div class="row card-group-row mb-lg-8pt">
+    {% for item in items %}
+    <div class="col-sm-4 card-group-row__col">
+      {{ path.component(
+        class='card-group-row__card', 
+        title=item.title, 
+        description=item.description, 
+        image=item.image,
+        favorite=item.favorite,
+        account=item.account,
+        cta=false,
+        details=true) }}
+    </div>
+    {% endfor %}
+  </div>
+
+</div>

@@ -1,0 +1,502 @@
+{% import 'components/discussions.html' as discussions %}
+{% import 'components/staff-table.html' as staff %}
+{% import 'components/pager.html' as pager %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="alert alert-soft-warning mb-lg-32pt">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-100">
+            <strong>Analytics Service Issues.</strong><br>
+            <span>You may experience some issues with the Analytics API. Stay up to date by following our status page.</span>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Overview</div>
+    </div>
+    
+    <div class="row card-group-row mb-lg-8pt">
+      <div class="col-xl-3 col-md-6 card-group-row__col">
+        <div class="card card-group-row__card">
+          <div class="card-body d-flex flex-column align-items-center">
+            <i class="material-icons icon-32pt text-20 mb-4pt">access_time</i>
+            <div class="d-flex align-items-center">
+              <div class="h2 mb-0 mr-3">3.6k</div>
+              <div class="flex">
+                <div class="card-title">Visits</div>
+                <p class="card-subtitle text-50 d-flex align-items-center">
+                  31.5%
+                  <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 card-group-row__col">
+        <div class="card card-group-row__card">
+          <div class="card-body d-flex flex-column align-items-center">
+            <i class="material-icons icon-32pt text-20 mb-4pt">attach_money</i>
+            <div class="d-flex align-items-center">
+              <div class="h2 mb-0 mr-3">$12.3k</div>
+              <div class="flex">
+                <div class="card-title">Sales</div>
+                <p class="card-subtitle text-50 d-flex align-items-center">
+                  51.5%
+                  <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 card-group-row__col">
+        <div class="card card-group-row__card card-body" style="position: relative; padding-bottom: calc(80px - 1.25rem); overflow: hidden; z-index: 0;">
+
+          <div class="d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">$8.3k</div>
+            <div class="flex">
+              <div class="card-title">Products</div>
+              <p class="card-subtitle text-50 d-flex align-items-center">
+                31.5%
+                <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+              </p>
+            </div>
+          </div>
+
+          <div class="chart" style="height: 80px; position: absolute; left: 0; right: 0; bottom: 0;">
+            <canvas 
+              class="chart-canvas js-update-chart-line" 
+              id="productsChart"
+              data-chart-hide-axes="true"
+              data-chart-line-border-color="primary"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 card-group-row__col">
+        <div class="card card-group-row__card card-body" style="position: relative; padding-bottom: calc(80px - 1.25rem); overflow: hidden; z-index: 0;">
+
+          <div class="d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">$15.0k</div>
+            <div class="flex">
+              <div class="card-title">Courses</div>
+              <p class="card-subtitle text-50 d-flex align-items-center">
+                31.5%
+                <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_down</i>
+              </p>
+            </div>
+          </div>
+
+          <div class="chart" style="height: 80px; position: absolute; left: 0; right: 0; bottom: 0;">
+            <canvas 
+              class="chart-canvas js-update-chart-line-accent" 
+              id="coursesChart"
+              data-chart-hide-axes="true"
+              data-chart-line-border-color="accent"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row card-group-row mb-lg-8pt">
+      <div class="col-lg-6 card-group-row__col">
+
+        <div class="card card-group-row__card dashboard-area-tabs p-relative o-hidden" id="dashboard-area-tabs">
+          <div class="card-header p-0 nav">
+            <div class="row no-gutters flex" role="tablist">
+              <div 
+                class="col" 
+                data-toggle="chart" 
+                data-target="#earningsTrafficChart" 
+                data-update='{"data":{"datasets":[{"label": "Traffic", "data":[10,2,5,15,10,12,15,25,22,30,25,40]}]}}' 
+                data-prefix="" 
+                data-suffix="k">
+                <a 
+                  href="#" 
+                  data-toggle="tab" 
+                  role="tab" 
+                  aria-selected="true" 
+                  class="dashboard-area-tabs__tab card-body text-center active">
+                  <span class="card-title">Sessions</span>
+                  <span class="h2 mb-0 mt-n1">18.3k</span>
+                </a>
+              </div>
+              <div 
+                class="col border-left" 
+                data-toggle="chart" 
+                data-target="#earningsTrafficChart" 
+                data-update='{"data":{"datasets":[{"label": "Earnings", "data":[7,35,12,27,34,17,19,30,28,32,24,39]}]}}' 
+                data-prefix="$" 
+                data-suffix="k">
+                <a 
+                  href="#" 
+                  data-toggle="tab" 
+                  role="tab" 
+                  aria-selected="false" 
+                  class="dashboard-area-tabs__tab card-body text-center">
+                  <span class="card-title">Orders</span>
+                  <span class="h2 mb-0 mt-n1">&dollar;8.9k</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-muted">
+            <div id="earningsTrafficChartLegend" class="chart-legend mt-0 mb-24pt justify-content-start"></div>
+            <div class="chart" style="height: 150px;">
+              <canvas 
+                class="chart-canvas js-update-chart-line" 
+                id="earningsTrafficChart"
+                data-chart-suffix="k"
+                data-chart-legend="#earningsTrafficChartLegend"
+                data-chart-line-border-color="primary"
+                data-chart-points="true">
+                <span style="font-size: 1rem;"><strong>Website Traffic / Earnings</strong> area chart goes here.</span>
+              </canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 card-group-row__col">
+
+        <div class="card card-group-row__card p-relative o-hidden">
+          <div class="card-header card-header-tabs-basic nav justify-content-center" role="tablist">
+            <div 
+              data-toggle="chart" 
+              data-target="#locationDoughnutChart" 
+              data-update='{"data":{
+                "labels": ["United States", "United Kingdom", "Germany"], 
+                "datasets": [{"label": "Traffic", "data":[25,25,15]}]
+              }}'>
+                <a 
+                  href="#" 
+                  class="active" 
+                  data-toggle="tab" 
+                  role="tab" 
+                  aria-selected="true">
+                Traffic
+              </a>
+            </div>
+            <div 
+              data-toggle="chart" 
+              data-target="#locationDoughnutChart" 
+              data-update='{"data":{
+                "labels": ["United States", "United Kingdom", "Germany"], 
+                "datasets": [{"label": "Purchases", "data":[15,17,25]}]
+              }}'>
+              <a 
+                href="#" 
+                data-toggle="tab" 
+                role="tab" 
+                aria-selected="false">
+                Purchases
+              </a>
+            </div>
+            <div 
+              data-toggle="chart" 
+              data-target="#locationDoughnutChart" 
+              data-update='{"data":{
+                "labels": ["United States", "United Kingdom", "Germany"], 
+                "datasets": [{"label": "Quotes", "data":[53,17,25]}]
+              }}'>
+              <a 
+                href="#" 
+                data-toggle="tab" 
+                role="tab" 
+                aria-selected="false">
+                Quotes
+              </a>
+            </div>
+          </div>
+          <div class="card-body d-flex align-items-center justify-content-center" style="height: 220px;">
+            <div class="row">
+              <div class="col-7">
+                <div class="position-relative" style="height: calc(220px - 1rem * 2);">
+                  <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                    <h3 class="mb-0">38%</h3>
+                    <small class="text-uppercase">United States</small>
+                  </div>
+                  <canvas
+                    class="chart-canvas" 
+                    id="locationDoughnutChart" 
+                    data-chart-legend="#locationDoughnutChartLegend"
+                    data-chart-line-background-color="primary;accent;gray"
+                    data-chart-suffix="%">
+                    <span style="font-size: 1rem;" class="text-muted"><strong>Location</strong> doughnut chart goes here.</span>
+                  </canvas>
+                </div>
+              </div>
+              <div class="col-5">
+                <div id="locationDoughnutChartLegend" class="chart-legend chart-legend--vertical"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Current Users</div>
+    </div>
+
+    <div class="card mb-lg-32pt">
+      {{ staff.component(filters=true, items=[{
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+        name: 'Michael Smith',
+        employer: 'Black Ops',
+        projects: 12,
+        chips: ['Admin'],
+        date: '3 days ago',
+        earnings: '$12,402'
+      }, {
+        avatar: { title: 'CS' },
+        name: 'Connie Smith',
+        employer: 'Backend Ltd',
+        projects: 42,
+        chips: ['User'],
+        date: '1 week ago',
+        earnings: '$1,943'
+      }, {
+        avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+        name: 'John Connor',
+        employer: 'Frontted',
+        projects: 31,
+        chips: ['Manager'],
+        date: '2 weeks ago',
+        earnings: '$1,401'
+      }, {
+        selected: true,
+        avatar: { title: 'LB' },
+        name: 'Laza Bogdan',
+        employer: 'Frontted',
+        projects: 44,
+        chips: ['Admin'],
+        date: '3 weeks ago',
+        earnings: '$22,402'
+      }]) }}
+    </div>
+
+    <div class="row mb-lg-8pt">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">&dollar;12.9k</div>
+            <div class="flex">
+              <div class="card-title">Target</div>
+              <p class="card-subtitle text-50 d-flex align-items-center">
+                31.5%
+                <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+              </p>
+            </div>
+            <i class="material-icons icon-32pt text-20 ml-2">access_time</i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">&dollar;3.6k</div>
+            <div class="flex">
+              <div class="card-title">Earnings</div>
+              <p class="card-subtitle text-50 d-flex align-items-center">
+                51.5%
+                <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
+              </p>
+            </div>
+            <i class="material-icons icon-32pt text-20 ml-2">attach_money</i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body d-flex align-items-center">
+            <div class="h2 mb-0 mr-3">8.3k</div>
+            <div class="flex">
+              <div class="card-title">Visits</div>
+              <p class="card-subtitle text-50 d-flex align-items-center">
+                3.5%
+                <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_down</i>
+              </p>
+            </div>
+            <i class="material-icons icon-32pt text-20 ml-2">person_outline</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row card-group-row mb-lg-8pt">
+      <div class="col-lg card-group-row__col">
+        <div class="card card-group-row__card">
+          <div class="card-header d-flex align-items-center">
+            <strong class="card-title flex">Checklist</strong>
+            <div><a href="#" data-target="#todo" class="js-toggle-check-all">Mark All as Completed</a></div>
+          </div>
+          <div class="progress rounded-0" style="height: 4px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled list-todo" id="todo">
+              <li>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Wireframe the CRM application pages</label>
+                </div>
+              </li>
+              <li>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck2">
+                  <label class="custom-control-label" for="customCheck2">Design a new page in Sketch</label>
+                </div>
+              </li>
+              <li>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" checked="" id="customCheck3">
+                  <label class="custom-control-label" for="customCheck3">Quote the custom work</label>
+                </div>
+              </li>
+              <li>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" checked="" id="customCheck4">
+                  <label class="custom-control-label" for="customCheck4">Interview John for Full-Stack Developer</label>
+                </div>
+              </li>
+              <li>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" checked="" id="customCheck5">
+                  <label class="custom-control-label" for="customCheck5">Research the success of CRM</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer p-8pt">
+            {{ pager.pager() }}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg card-group-row__col">
+        <div class="card card-group-row__card">
+          <div class="card-header d-flex align-items-center">
+            <strong class="card-title flex">Team Skills</strong>
+            <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+          </div>
+          <div class="card-body d-flex flex-column align-items-center justify-content-center">
+            <ul class="list-unstyled list-skills w-100">
+              <li class="mb-8pt">
+                <div class="text-50 border-right"><small>HTML</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 61%;" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>61%</small></div>
+              </li>
+              <li class="mb-8pt">
+                <div class="text-50 border-right"><small>CSS</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>39%</small></div>
+              </li>
+              <li class="mb-8pt">
+                <div class="text-50 border-right"><small>JavaScript</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 76%;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>76%</small></div>
+              </li>
+              <li class="mb-8pt">
+                <div class="text-50 border-right"><small>Rails</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-black-50" role="progressbar" style="width: 28%;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>28%</small></div>
+              </li>
+              <li class="mb-8pt">
+                <div class="text-50 border-right"><small>Vue.js</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-black-20" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>50%</small></div>
+              </li>
+              <li class="mb-0">
+                <div class="text-50 border-right"><small>Laravel</small></div>
+                <div class="flex">
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar bg-black-20" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="text-70"><small>60%</small></div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer p-8pt">
+            {{ pager.pager() }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Discussions</div>
+    </div>
+
+    <div class="card mb-0">
+      <div class="card-header">
+        <div class="row align-items-center" style="white-space: nowrap;">
+          <div class="col-lg-auto">
+            <form class="search-form {{ search_form }} d-lg-inline-flex mb-8pt mb-lg-0" action="{{ prefix or ''}}discussions.html">
+              <input type="text" class="form-control w-lg-auto" placeholder="Search discussions">
+              <button class="btn" type="submit" role="button"><i class="material-icons">search</i></button>
+            </form>
+          </div>
+          <div class="col-lg d-flex flex-wrap align-items-center">
+            <div class="ml-lg-auto dropdown">
+              <a href="#" class="btn btn-link dropdown-toggle text-70" data-toggle="dropdown">My Posts</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="" class="dropdown-item active">My Posts</a>
+                <a href="" class="dropdown-item">All Posts</a>
+              </div>
+            </div>
+            <a href="{{ prefix or '' }}discussions-ask.html" class="btn btn-outline-secondary">Ask a question</a>
+          </div>
+        </div>
+      </div>
+      
+      {{ discussions.component(items=[{
+        avatar: 'LB',
+        date: '2 days ago',
+        name: 'Laza Bogdan',
+        title: 'Using Angular HttpClientModule instead of HttpModule',
+        chips: ['Angular fundamentals']
+      }, {
+        avatar: 'AC',
+        date: '3 days ago',
+        name: 'Adam Curtis',
+        title: 'Why am I getting an error when trying to install angular/http@2.4.2'
+      }], prefix=prefix) }}
+
+      <div class="card-footer p-8pt">
+        {{ pager.pager() }}
+      </div>
+    </div>
+
+  </div>
+</div>

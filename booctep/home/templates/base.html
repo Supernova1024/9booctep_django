@@ -1,0 +1,866 @@
+{% load static %}
+<!DOCTYPE html>
+{% if lang == "ar/" %}
+    <html lang="en" dir="rtl">
+{% else %}
+    <html lang="en" dir="ltr">
+{% endif %}
+<style>
+    #loadings {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.9;
+        z-index: 99;
+        text-align: center;
+    }
+
+    .nav-drop-header-dark{
+        background-color: rgb(206, 215, 219) !important;
+    }
+    #loading-image {
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        z-index: 100;
+    }
+
+    .pagination li {
+        width: 45px;
+        height: 45px;
+        border-radius: 50% !important;
+        border: 1px solid #E7E7E7;
+        padding-top: 5px;
+        font-size: 22px;
+        border-radius: 0%;
+        margin-left: 5px;
+        background: #fff;
+    }
+
+    .pagination li a {
+        margin-top: 50px
+    }
+
+    .accordion__item {
+        background-color: rgba(79, 34, 34, 0) !important;
+        font-size: 13px;
+    }
+
+
+
+/*
+Page loader
+*/
+
+
+
+
+
+    .dancing-lao {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.dancing-lao:after {
+  display: block;
+  width: 150px;
+  height: 2px;
+  margin-top: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background: rgb(43, 148, 209);
+  content: "";
+  -webkit-animation: 1s border infinite;
+          animation: 1s border infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+          animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+}
+.dancing-lao .left-dots {
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+}
+.dancing-lao .right-dots {
+  position: absolute;
+  bottom: 20%;
+  right: 20%;
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+.dancing-lao .dot {
+  display: inline-block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(43, 148, 209);
+  opacity: 0;
+}
+.dancing-lao .dot-1 {
+  -webkit-animation: 1s dot infinite;
+          animation: 1s dot infinite;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+}
+.dancing-lao .dot-2 {
+  -webkit-animation: 1s dot-2 infinite;
+          animation: 1s dot-2 infinite;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+}
+.dancing-lao .circle-dot {
+  display: inline-block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgb(3, 7, 8);
+  -webkit-animation: 1s cirle-dot infinite;
+          animation: 1s cirle-dot infinite;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+  opacity: 0;
+}
+.dancing-lao img {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  margin: auto;
+  width: 90px;
+  height: 80px;
+  margin-bottom: 20px;
+  -webkit-animation: 1s dance infinite;
+          animation: 1s dance infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+          animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes dance {
+  0% {
+    -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+  }
+  50% {
+    -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+  }
+  100% {
+    -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+  }
+}
+
+@keyframes dance {
+  0% {
+    -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+  }
+  50% {
+    -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+  }
+  100% {
+    -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+  }
+}
+@-webkit-keyframes border {
+  0% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.5;
+  }
+  50% {
+    -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.5;
+  }
+}
+@keyframes border {
+  0% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.5;
+  }
+  50% {
+    -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.5;
+  }
+}
+@-webkit-keyframes dot {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  50% {
+    -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+    opacity: 0;
+  }
+}
+@keyframes dot {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  50% {
+    -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes dot-2 {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  70% {
+    -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+    opacity: 0;
+  }
+}
+@keyframes dot-2 {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  70% {
+    -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes cirle-dot {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  80% {
+    -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+    opacity: 0;
+  }
+}
+@keyframes cirle-dot {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+  }
+  80% {
+    -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+    opacity: .8;
+  }
+  100% {
+    -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+    opacity: 0;
+  }
+}
+
+
+    
+.dancin-bc{
+  background-color: #fff !important;
+
+}
+
+.dancin-bc-dark{
+  background-color: #000 !important;
+
+}
+
+.dancin-bc-dark.hidden{
+   animation: fadeout 2s;
+   animation-fill-mode: forwards;
+}
+
+@keyframes fadeout2 {
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+
+.screen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #fff !important;
+  z-index: 9999;
+  opacity: 1;
+}
+
+
+
+.screen.hidden{
+   animation: fadeout 2s;
+   animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.screen-dark{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgb(17, 25, 36) !important;
+  z-index: 9999;
+  opacity: 1;
+}
+
+
+</style>
+
+<head>
+    <!-- head -->
+    {% include "layout/head/head.html" %}
+    {% block head %}
+    {% endblock %}
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{% static 'video/assets/css/sweetalert.css' %}">
+    <link type="text/css" href="/static/{{ lang }}student/assets/vendor/toastr.min.css" rel="stylesheet">
+    <link type="text/css" href="/static/{{ lang }}student/assets/css/toastr.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="screen hidden screen-dark ">
+    <div id="loadings" style="">
+        <div class="dancin-bc dancin-bc-dark" style="">
+            <div class="dancing-lao">
+                <div class="left-dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="circle-dot"></div>
+                </div>
+                <div class="right-dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="circle-dot"></div>
+                </div>
+                <img src="{% static 'assets/img/favicon.png' %}" class="cls-1" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hd_csrf" value="{{ csrf_token }}">
+
+{% include "layout/header.html" %}
+
+{% block content %}
+
+{% endblock %}
+<!-- END MAIN WRAPPER -CONTENT -->
+    <button type="button" class="btn btn-primary" style="display: none;" data-toggle="toastr"
+        data-toastr-type="primary" id="test1" data-toastr-title="Heads up!"
+        data-toastr-message="This alert needs your attention, but it is not super important.">
+    Primary
+</button>
+<!-- DIALOGS -->
+{% include "layout/dialogs.html" %}
+<!-- END DIALOGS -->
+
+<!-- FOOTER -->
+{% include "layout/footer.html" %}
+<!-- END FOOTER -->
+
+{% include "layout/scripts/scripts.html" %}
+
+
+<script src="http://sandywalker.github.io/webui-popover/dist/jquery.webui-popover.min.js"></script>
+
+
+<!-- Sweet Alert -->
+<script src="{% static 'video/assets/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'video/assets/vendor/sweetalert.min.js' %}"></script>
+<script src="{% static 'video/assets/js/sweetalert.js' %}"></script>
+<script src="{% static 'assets/js/toastr.min.js' %}"></script>
+<script src="{% static 'assets/js/toastr.js' %}"></script>
+
+<script type="text/javascript">
+
+    let user_id = '{{ request.user.id }}';
+    let user_role = '{{ request.user.group_id }}';
+
+    $(document).ready(function () {
+        user_id = localStorage.getItem('user_id');
+        password = localStorage.getItem('password');
+        if (user_id != null && password != null) {
+            $('#login_email').val(user_id);
+            $('#login_password').val(password);
+            $('#remember').prop("checked", true)
+        }
+
+        $('#language').val('{{lang}}')
+        console.log(localStorage.getItem('search_value'))
+        var inp = localStorage.getItem('search_value')
+        $("#tipue_drop_input").val(inp)
+        if (inp == "") {
+        } else {
+            console.log("inp", inp)
+        }
+        var ur = localStorage.getItem("ur");
+        var cur = window.location.toString().split('/')
+        $('#loadings').fadeOut(3000);
+    });
+
+    function getPromo(obj) {
+        id = $(obj).attr('data-id')
+        url = $(obj).attr('data-url')
+        $.post('/getPromoData/', {course_id: id, url: url}, function (res) {
+            $("#videos-modal").attr('style', 'display:block !important')
+            $('#videos-modal').html("");
+            $('#videos-modal').html(res.lender)
+            $("#videos-modal").html(html)
+        });
+    }
+
+    $.ajaxSetup({
+        headers: {'X-CSRFToken': $("#hd_csrf").val(),}
+    });
+
+    function login() {
+        console.log("logging in");
+        $("#login_div_error").html("");
+        if ($("#login_email").val() == "") {
+            $("#login_div_error").html("Please enter the valid email");
+            return false
+        } else if ($("#login_password").val() == "") {
+            $("#login_div_error").html("Please enter the password");
+            return false
+        }
+
+        var action = "/login/";
+        $.ajax({
+            url: action,
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {
+                email: $("#login_email").val(),
+                password: $("#login_password").val(),
+                remember: $('#remember').is(":checked")
+            },
+
+            beforeSend: function () {
+                console.log("Beforesend")
+            },
+            success: function (data) {
+                console.log(data)
+                if (data.msg == "success") {
+                    console.log("success")
+                    if ($('#remember').is(":checked") == true) {
+                        localStorage.setItem("user_id", $("#login_email").val());
+                        localStorage.setItem("password", $("#login_password").val());
+                    }
+                    if (localStorage.getItem('after_login') == '' || localStorage.getItem('after_login') == null) {
+                        window.location.href = "/{{lang}}";
+                    } else {
+                        afterlogin = JSON.parse(localStorage.getItem('after_login'))
+                        url = afterlogin.url
+                        course_id = afterlogin.course_id
+                        user_id = data.user_id
+                        $.post(url, {student: user_id, course: course_id}, function (res) {
+
+                        })
+                        localStorage.setItem('after_login', '')
+                        window.location.href = "/{{lang}}";
+                    }
+                } else {
+                    $("#login_div_error").html("Please enter the correct email and password.");
+                    return false
+                }
+                return false
+            },
+            error: function (err) {
+                return false
+            }
+        })
+        return false
+    }
+
+    var lang = "{{ lang }}"
+
+    let head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    let link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = "{%static 'assets/css/dark.css' %}";
+
+    if (lang == "ar/") {
+        link.href = "{%static 'ar/assets/css/dark.css' %}";
+    }
+
+    $('.toggler').on('click', function () {
+        if (localStorage.getItem('mode') == 'light') {
+            localStorage.setItem('mode', 'dark');
+
+            console.log(localStorage.getItem('mode'))
+        } else {
+            localStorage.setItem('mode', 'light');
+            console.log(localStorage.getItem('mode'))
+        }
+        color_mode();
+    });
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            $("body").addClass('body_bg');
+            $(".button-become-a-teacher").removeClass('is-light');
+            $(".is-cart").addClass('is-dark-cart');
+            $(".second-button").addClass('signup-button-is-dark');
+            $(".primary-button").addClass('login-button-is-dark');
+            $(".shop-header").addClass('shop-header-is-dark');
+            $(".is-combo").addClass('is-combo-dark');
+            $(".product-card").addClass('product-card-dark');
+            $(".categories-bg").addClass('categories-dark-bg');
+            $(".card-terms").addClass('card-terms-dark');
+            $(".is-comboe").addClass('is-comboe-dark');
+            $(".categories").addClass('categories-dark');
+            $(".summary-card").addClass('summary-card-dark');
+            $(".top").addClass('top-dark');
+            $(".hero-about").addClass('hero-about-dark');
+            $(".slide").addClass('slide-dark');
+            $(".aboutus").addClass('aboutus-dark');
+            $(".clicck").addClass('clicck-dark'); 
+            $(".cennnter").addClass('cennnter-dark'); 
+            $(".active").addClass('active-dark'); 
+            $(".mediabout").addClass('mediabout-dark'); 
+            $(".abuth3").addClass('abuth3-dark'); 
+            $(".accordd").addClass('accordd-dark'); 
+            $(".accorddd").addClass('accorddd-dark'); 
+            $(".signup-button").addClass('signup-button-is-dark'); 
+            $(".signin-button").addClass('signin-button-is-dark'); 
+            $(".track").addClass('track-dark');
+            $(".dancin-bc").addClass('dancin-bc-dark');
+            $(".screen").addClass('screen-dark');
+            $(".hidden").addClass('hidden-dark');
+            $(".icn").addClass('icn-dark'); 
+            $(".account-item").addClass('account-item-dark'); 
+            $(".is-light").addClass('is-light-dark'); 
+            $(".faq-nav").addClass('faq-nav-dark');  
+            $(".is-box-reveal").addClass('is-box-reveal-dark'); 
+            $(".nav-link").addClass('nav-link-dark'); 
+            $(".card-support").addClass('card-support-dark'); 
+            $(".footcolor").addClass('footcolor-dark'); 
+            $(".ordd").addClass('ordd-dark'); 
+            $(".liness").addClass('liness-dark');
+            $(".tab-content").addClass('tab-content-dark'); 
+            $(".is-com").addClass('is-com-dark'); 
+            $(".card-headerh").addClass('card-headerh-dark'); 
+            $(".card-header").addClass('card-header-dark'); 
+            $(".about-card").addClass('about-card-dark'); 
+            $(".lineeee").addClass('lineeee-dark'); 
+            $(".social-follow").addClass('social-follow-dark'); 
+            $(".accordion__menu").addClass('accordion__menu-dark'); 
+            $(".categories-header").addClass('categories-dark-header');
+            $(".category-box").addClass('category-dark-box');
+            $(".product-quickview").addClass('product-quickview-dark'); 
+            $(".field").addClass('field-dark'); 
+            $(".card").addClass('card-dark');
+            $(".blllu").addClass('blllu-dark'); 
+            $(".activve").addClass('activve-dark'); 
+            $(".disabled").addClass('disabled-dark'); 
+            $(".explore-item-dark").addClass('explore-item-dark');
+            $(".time").addClass('time-dark');
+            $(".navbar-menu").addClass('navbar-menu-dark');
+            $(".hrrrr").addClass('hrrrr-dark');
+            $(".tg").addClass('tg-dark'); 
+            $(".bar").addClass('bar-dark');
+            $(".probtn").addClass('probtn-dark');
+            $(".nextt").addClass('nextt-dark'); 
+            $(".lineeeet").addClass('lineeeet-dark');
+            $(".place-wrapper").addClass('place-wrapper-dark');
+            $(".brd").addClass('brd-dark');
+            $(".soci").addClass('soci-dark'); 
+            $(".hero-single-course").addClass('hero-single-course-dark'); 
+            $(".socig").addClass('socig-dark'); 
+            $(".Loginmodal-img").addClass('Loginmodal-img-dark');
+            $(".user-meta-span").addClass('user-meta-span-dark');
+            $(".footer-column").addClass('footer-column-dark');
+            $(".hero-become-4").addClass('hero-become-4-dark'); 
+            $(".hero-homepage").addClass('dark-homepage');
+            $(".grree").addClass('grree-dark'); 
+            $(".cookiees").addClass('cookiees-dark'); 
+            $(".button-become-a-teacher").addClass('button-become-a-teacher-dark'); 
+            $(".footer").addClass('dark-footer'); 
+            $(".material-icons").addClass('material-icons-dark');
+            $(".left-menu").addClass('left-menu-dark');
+            $(".cart-button").addClass('cart-button-dark'); 
+            $(".nav-drop-header").addClass('nav-drop-header-dark');  
+            $(".shrt").addClass('shrt-dark');  
+            $(".nav-drop").addClass('nav-drop-dark');
+            $(".cart-row").addClass('cart-row-dark');  
+            $(".hero-faqs").addClass('hero-faqs-dark'); 
+            $(".next").addClass('next-dark'); 
+            $(".accordion__toggle").addClass('accordion__toggle-dark'); 
+            $(".prev").addClass('prev-dark'); 
+            $(".summary-card").addClass('summary-card-dark'); 
+            $(".shopping-cart-total").addClass('shopping-cart-total-dark');
+            $(".shrt").addClass('shrt-dark'); 
+            $(".shopping-cart-header").addClass('shopping-cart-header-dark'); 
+            $(".cart-count").addClass('cart-count-dark'); 
+            $(".menu-icon").addClass('menu-icon-dark'); 
+            $(".accordion__toggle").addClass('accordion__toggle-dark'); 
+            $(".cnti").addClass('cnti-dark'); 
+            $(".dropdown-menu-right").addClass('dropdown-menu-right-dark'); 
+            $(".shrl").addClass('shrl-dark'); 
+            $(".hero-become").addClass('hero-become-dark');
+            $(".btncheck").addClass('btncheck-dark'); 
+            $(".shrf").addClass('shrf-dark'); 
+            $(".card-body").addClass('card-body-dark'); 
+            $(".card-footter").addClass('card-footter-dark'); 
+            $(".prcg").addClass('prcg-dark'); 
+            $(".accordion__menu-link").addClass('accordion__menu-link-dark'); 
+            $(".prcgr").addClass('prcgr-dark'); 
+            $(".account-type").addClass('account-type-dark');
+            $(".mode_images").attr('src', "/static/{{ lang }}assets/img/logo/dark-logo.png");
+            $(".primary__title").attr('style', 'color: #1a1c20;font-weight: 500;font-size: large');
+            $(".secondary__title").attr('style', 'color: #222831;');
+            $(".fa-users").attr('style', 'color: #e2e2e4;');
+            $(".fa-video").attr('style', 'color: #e2e2e4;');
+            $(".footer-columns:first-child").attr('style', 'border-bottom: 1px solid #222831;');
+            head.appendChild(link);
+
+        } else {
+            $("body").removeClass('body_bg');
+            $("body").css('background', 'white');
+            $(".button-become-a-teacher").removeClass('is-light');
+            $(".is-cart").removeClass('is-dark-cart');
+            $(".account-type").removeClass('account-type-dark');
+            $(".cart-row").removeClass('cart-row-dark');  
+            $(".shopping-cart-total").removeClass('shopping-cart-total-dark');
+            $(".material-icons").removeClass('material-icons-dark');
+            $(".bar").removeClass('bar-dark');
+            $(".dancin-bc").removeClass('dancin-bc-dark');
+            $(".hero-faqs").removeClass('hero-faqs-dark'); 
+            $(".cookiees").removeClass('cookiees-dark'); 
+            $(".hero-become-4").removeClass('hero-become-4-dark'); 
+            $(".clicck").removeClass('clicck-dark'); 
+            $(".cart-summary").removeClass('cart-summary-dark');
+            $(".screen").removeClass('screen-dark');
+            $(".hidden").removeClass('hidden-dark');
+            $(".hero-about").removeClass('hero-about-dark');
+            $(".hero-become").removeClass('hero-become-dark');
+            $(".accordion__toggle").removeClass('accordion__toggle-dark');
+            $(".navbar-menu").removeClass('navbar-menu-dark');
+            $(".cart-summary").removeClass('cart-summary-dark');
+            $(".nav-drop").removeClass('nav-drop-dark');
+            $(".shopping-cart-header").removeClass('shopping-cart-header-dark'); 
+            $(".second-button").removeClass('signup-button-is-dark');
+            $(".primary-button").removeClass('login-button-is-dark');
+            $(".shop-header").removeClass('shop-header-is-dark');
+            $(".is-combo").removeClass('is-combo-dark');
+            $(".dropdown-menu-right").removeClass('dropdown-menu-right-dark'); 
+            $(".hero-single-course").removeClass('hero-single-course-dark'); 
+            $(".tg").removeClass('tg-dark'); 
+            $(".button-become-a-teacher").removeClass('button-become-a-teacher-dark'); 
+            $(".vidddd").removeClass('vidddd-dark'); 
+            $(".account-item").removeClass('account-item-dark'); 
+            $(".active").removeClass('active-dark'); 
+            $(".nextt").removeClass('nextt-dark'); 
+            $(".btncheck").removeClass('btncheck-dark'); 
+            $(".activve").removeClass('activve-dark'); 
+            $(".icn").removeClass('icn-dark'); 
+            $(".slide").removeClass('slide-dark');
+            $(".top").removeClass('top-dark');
+            $(".menu-icon").removeClass('menu-icon-dark'); 
+            $(".nav-drop-header").removeClass('nav-drop-header-dark');  
+            $(".disabled").removeClass('disabled-dark'); 
+            $(".cnti").removeClass('cnti-dark'); 
+            $(".left-menu").removeClass('left-menu-dark'); 
+            $(".probtn").removeClass('probtn-dark');
+            $(".next").removeClass('next-dark'); 
+            $(".prev").removeClass('prev-dark'); 
+            $(".blllu").removeClass('blllu-dark'); 
+            $(".brd").removeClass('brd-dark');
+            $(".place-wrapper").removeClass('place-wrapper-dark');
+            $(".about-card").removeClass('about-card-dark'); 
+            $(".accordion__menu-link").removeClass('accordion__menu-link-dark'); 
+            $(".field").removeClass('field-dark'); 
+            $(".accordion__toggle").removeClass('accordion__toggle-dark'); 
+            $(".accordion__menu").removeClass('accordion__menu-dark'); 
+            $(".grree").removeClass('grree-dark'); 
+            $(".ordd").removeClass('ordd-dark'); 
+            $(".shrt").removeClass('shrt-dark'); 
+            $(".card-body").removeClass('card-body-dark'); 
+            $(".shrl").removeClass('shrl-dark'); 
+            $(".cart-count").removeClass('cart-count-dark'); 
+            $(".lineeeet").removeClass('lineeeet-dark');
+            $(".cart-button").removeClass('cart-button-dark'); 
+            $(".card-footter").removeClass('card-footter-dark'); 
+            $(".shrf").removeClass('shrf-dark'); 
+            $(".product-card").removeClass('product-card-dark');
+            $(".categories-bg").removeClass('categories-dark-bg');
+            $(".card-terms").removeClass('card-terms-dark');
+            $(".aboutus").removeClass('aboutus-dark'); 
+            $(".hrrrr").removeClass('hrrrr-dark');
+            $(".accordd").removeClass('accordd-dark'); 
+            $(".is-light").removeClass('is-light-dark'); 
+            $(".card-headerh").removeClass('card-headerh-dark'); 
+            $(".card-header").removeClass('card-header-dark'); 
+            $(".faq-nav").removeClass('faq-nav-dark'); 
+            $(".is-comboe").removeClass('is-comboe-dark');
+            $(".nav-link").removeClass('nav-link-dark');
+            $(".explore-item-dark").removeClass('explore-item-dark');
+            $(".accorddd").removeClass('accorddd-dark'); 
+            $(".track").removeClass('track-dark'); 
+            $(".socig").removeClass('socig-dark'); 
+            $(".soci").removeClass('soci-dark'); 
+            $(".is-box-reveal").removeClass('is-box-reveal-dark'); 
+            $(".time").removeClass('time-dark');
+            $(".liness").removeClass('liness-dark');
+            $(".liness").removeClass('liness-dark');
+            $(".signup-button").removeClass('signup-button-is-dark'); 
+            $(".signin-button").removeClass('signin-button-is-dark'); 
+            $(".accorddd").removeClass('accorddd-dark'); 
+            $(".tab-content").removeClass('tab-content-dark'); 
+            $(".card-support").removeClass('card-support-dark'); 
+            $(".cennnter").removeClass('cennnter-dark'); 
+            $(".abuth3").removeClass('abuth3-dark'); 
+            $(".footcolor").removeClass('footcolor-dark'); 
+            $(".is-com").removeClass('is-com-dark'); 
+            $(".social-follow").removeClass('social-follow-dark'); 
+            $(".mediabout").removeClass('mediabout-dark'); 
+            $(".lineeee").removeClass('lineeee-dark'); 
+            $(".prcg").removeClass('prcg-dark'); 
+            $(".prcgr").removeClass('prcgr-dark'); 
+            $(".categories-header").removeClass('categories-dark-header');
+            $(".category-box").removeClass('category-dark-box');
+            $(".product-quickview").removeClass('product-quickview-dark');
+            $(".card").removeClass('card-dark');
+            $(".Loginmodal-img").removeClass('Loginmodal-img-dark');
+            $(".user-meta-span").removeClass('user-meta-span-dark');
+            $(".footer-column").removeClass('footer-column-dark');
+            $(".hero-homepage").removeClass('dark-homepage');
+            $(".footer").removeClass('dark-footer');
+            $(".mode_images").attr('src', "/static/{{ lang }}assets/img/logo/booctep-tran.png");
+            $(".primary__title").attr('style', 'color: #fff;font-weight: 500;font-size: large');
+            $(".secondary__title").attr('style', '');
+            $(".fa-users").attr('style', '');
+            $(".fa-video").attr('style', '');
+            $(".footer-columns:first-child").attr('style', 'border-bottom: 1px solid rgb(226, 226, 226);');
+            head.removeChild(link);
+        }
+    }
+
+    $('#directionSwitch').change(function () {
+        console.log('hi')
+    })
+
+    window.onbeforeunload = function () {
+        location = "ar";
+    };
+
+    $('#language').val('{{lang}}')
+    var l = $('#language').val()
+    var ur = localStorage.getItem("ur");
+    var cur = window.location.toString().split('/')
+    if (l == "ar/") {
+        console.log("hi", cur)
+        $('#ar_page').attr("href", cur[0] + "//" + cur[1] + "/" + cur[2] + "/" + cur[3] + "/" + ur);
+    } else {
+        $('#en_page').attr("href", cur[0] + "//" + cur[1] + "/" + cur[2] + "/" + cur[3] + "/" + ur);
+    }
+
+    window.onload = onPageLoad();
+    function onPageLoad() {
+        color_mode();
+        if (localStorage.getItem('mode') == 'dark') {
+            localStorage.setItem('mode', 'dark');
+            $("#toggle_check").prop('checked', true);
+        } else {
+            localStorage.setItem('mode', 'light');
+            $("#toggle_check").prop('checked', false);
+        }
+    }
+</script>
+{% block script %}
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<div class="page-section">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="flex search-form form-control-rounded search-form--light mb-16pt" style="min-width: 200px;">
+      <input type="text" class="form-control" placeholder="Search articles" id="searchSample02">
+      <button class="btn pr-3" type="button" role="button"><i class="material-icons">search</i></button>
+    </div>
+    <div class="mb-32pt d-flex align-items-center">
+      <small class="text-black-70 text-headings text-uppercase mr-3">Displaying 10 out of 5,234 articles</small>
+      <div class="dropdown ml-auto">
+        <a href="" data-toggle="dropdown" class="dropdown-toggle text-black-70">All Topics</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="" class="dropdown-item active">All Topics</a>
+          <a href="" class="dropdown-item">General</a>
+          <a href="" class="dropdown-item">Lessons</a>
+          <a href="" class="dropdown-item">Customer Support</a>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/_faq.html' %}
+  </div>
+</div>

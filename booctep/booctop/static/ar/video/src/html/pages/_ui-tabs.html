@@ -1,0 +1,107 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h2 class="mb-0">{{ title }}</h2>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">Tabs</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+
+  {% call panel.component(title='Statistics', description='Display numbers within tabs, perfect for incorporating some statistics on a birds-eye view.') %}
+    <div class="card dashboard-area-tabs p-relative o-hidden mb-0">
+      <div class="card-header p-0 nav">
+        <div class="row no-gutters" role="tablist">
+          <div class="col-auto">
+            <a 
+              href="#" 
+              data-toggle="tab" 
+              role="tab" 
+              aria-selected="true" 
+              class="dashboard-area-tabs__tab card-body d-flex flex-row align-items-center justify-content-start active">
+              <span class="h2 mb-0 mr-3">3</span>
+              <span class="flex d-flex flex-column">
+                <strong class="card-title">Active</strong>
+                <small class="card-subtitle text-50">Ongoing Projects</small>
+              </span>
+            </a>
+          </div>
+          <div class="col-auto border-left border-right">
+            <a 
+              href="#" 
+              data-toggle="tab" 
+              role="tab" 
+              aria-selected="false" 
+              class="dashboard-area-tabs__tab card-body d-flex flex-row align-items-center justify-content-start">
+              <span class="h2 mb-0 mr-3">2</span>
+              <span class="flex d-flex flex-column">
+                <strong class="card-title">Archived</strong>
+                <small class="card-subtitle text-50">Past Projects</small>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body tab-content">
+        <div class="tab-pane active text-70">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eaque error laborum ipsum consequatur nobis dicta totam facilis corporis, porro cupiditate inventore minus vero neque accusamus illo temporibus officiis natus.</div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Underline', description='Display the active tab with an underline.') %}
+    <div class="card p-relative o-hidden mb-0">
+      <div class="card-header card-header-tabs-basic nav px-0" role="tablist">
+        <a href="#" class="active" data-toggle="tab" role="tab" aria-selected="true">Traffic</a>
+        <a href="#" data-toggle="tab" role="tab" aria-selected="false">Purchases</a>
+        <a href="#" data-toggle="tab" role="tab" aria-selected="false">Quotes</a>
+      </div>
+      <div class="card-body text-70">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptas voluptate saepe tenetur sit rem non, laborum nam animi? Magnam voluptatibus numquam, doloremque maiores, quibusdam fugiat iste recusandae magni impedit!
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Background', description='Display the active tab with a background color.') %}
+    <div class="card p-relative o-hidden mb-0">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-toggle="tab">First</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="tab">Second</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="tab">Third</a>
+        </li>
+      </ul>
+      <div class="card-body tab-content text-70">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aperiam quisquam dolorem vitae aliquam, cum hic voluptatem perferendis laudantium veniam odit debitis error tenetur assumenda possimus, voluptatum! Perspiciatis beatae, ducimus.
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Pills') %}
+    <div class="card mb-0">
+      <div class="card-body">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#">Second</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#">Third</a>
+          </li>
+        </ul>
+        <div class="tab-content mt-3 text-70">
+          <div class="tab-pane active">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum commodi ullam, quaerat unde sint hic sit. Ipsam minima expedita doloribus quos, praesentium. Molestiae itaque eveniet, totam excepturi fugiat veniam architecto?</div>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+  
+</div>

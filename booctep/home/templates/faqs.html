@@ -1,0 +1,793 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+
+
+
+    <style>
+        .accordion__menu {
+            border: 0.5px solid #dbdbdb;
+            background: white !important
+        }
+        .accordd{
+            background-color: rgb(241, 241, 241) !important;
+            border: 1px solid rgb(223, 223, 223) !important;
+        }
+        .accordd-dark{
+            background-color: #75a5ec !important;
+            border: 1px solid #16181b !important;
+            color: #dbdbdb !important;
+        }
+        .accorddd{
+            background-color: rgb(240, 240, 240) !important;
+            border: 1px solid rgb(207, 205, 205) !important;
+        }
+        .accorddd-dark{
+            background-color: #29313b !important;
+            border: 1px solid #1d2229 !important;
+            color: #dbdbdb !important;
+        }
+        [dir=ltr] .accordion__toggle{
+            border: 1px solid #c0c0c0 !important;
+            border-radius: 4px 4px 0 0;
+            background-color: rgb(224, 224, 224) !important;
+        }
+        [dir=rtl] .accordion__toggle{
+            border: 1px solid #c0c0c0 !important;
+            border-radius: 4px 4px 0 0;
+            background-color: rgb(224, 224, 224) !important;
+        }
+        [dir=ltr] .accordion__toggle-dark{
+            border: 1px solid #1d2229 !important;
+            background-color: rgb(33, 39, 46) !important;
+        }
+        
+        [dir=rtl] .accordion__toggle-dark{
+            border: 1px solid #1d2229 !important;
+            background-color: rgb(33, 39, 46) !important;
+        }
+        
+.hero-faqs-dark{
+  position: relative;
+  height: 100%;
+  padding-top: 70px !important;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(42, 52, 66, 0.73), rgba(8, 13, 19, 0.52)),
+  url('../img/faqs.jpg') !important;
+
+}
+
+    </style>
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <div class="terms">
+        <!-- Brands -->
+        <div id="brands-tab" class="store-tab-pane is-active">
+            <!-- Timeline -->
+            <section class="hero is-small is-bold hero-faqs hero-faqs-dark">
+                <div class="hero-body">
+                    <div class="container">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        
+                        <h1 class="booctep-1" data-shadow='Booctep'>{% trans 'الأسئلة الشائعة' %}</h1>
+                        <h2 class="booctep-h2">{% trans "أعرف أكثر عن الاسئلة الشائعة في منصة بوستيب, تعلم كيف تستخدم المنصة, قم بحل مشكلة وأحصل على إجابات سريعة لأسئلتك." %}</h2>
+
+                        {% else %}
+                        
+                        <h1 class="booctep-1" data-shadow='Booctep'>{% trans 'FAQs' %}</h1>
+                        <h2 class="booctep-h2">{% trans "Read about Booctep's FAQs, Learn how to use Booctep, fix a problem, and get answers to your questions." %}</h2>
+                        
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <div class="terms-page" id="faq">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-4">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="height: 100% !important;">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-1" data-parent="#parent" style="">
+                                        <span class="flex" style="font-size: small;">{% trans 'Is there deadline for my courses?' %}</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-1">
+                                        <p>{% trans 'Booctep members once enrolled/bought a course they will get lifetime access for that course, they can start learn anytime they want, and finish anytime they want as well.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="overflow: hidden !important;">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-2" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">The courses might be removing?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-2">
+                                        <p>On rare occasions, Booctep may be required to remove a course from the platform due to policy or legal reasons. If this does happen to a course you're enrolled in, please <a href="{% url 'contact_us' %}">contact us</a> and we'll be ready to help.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل من الممكن أن تحذف دورة من دوراتي؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-2">
+                                    <p>في حالات نادرة ، قد يُطلب من منصة بوستيب إزالة دورة تدريبية من النظام الأساسي لأسباب تتعلق بالسياسة أو لأسباب قانونية. إذا كان هذا ينطبق على الدورة التدريبية التي قمت بالتسجيل فيها ، فيرجى <a href="{% url 'contact_us' %}">الاتصال بنا</a> وسنكون على استعداد للمساعدة.</p>
+                                </div>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed  accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-3" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">How do I become a teacher?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-3">
+                                        <p>We’re happy you’re interested in becoming on of our Booctep community. At Booctep you can teach what you know, for more info <a href="{% url 'become' %}">click here.</a></p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">كيف أصبح معلم في منصة بوستيب؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-3">
+                                    <p>يسعدنا ويشرفنا اهتمامك بالإنضمام لمجتمع مدربي منصة بوستيب, تستطيع في منصة بوستيب أن تعلًم ما تعلمت في أي وقت, لمزيد من المعلومات <a href="{% url 'become' %}">اضغط هنا</a></p>
+                                </div>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-4" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'Do I have to pay any fees to become a teacher?' %}</span>
+                                        {% else %}
+                                        <span class="flex" style="font-size: small;">هل هنالك رسوم في حال أردت أن أصبح مدرب؟</span>
+                                        {% endif %}
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-4">
+                                        <p>{% trans 'No, there is no fee to become a teacher at Booctep, the teachers are paid when students buys their course.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-5" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">What I need to qualified Booctep requirements as a teacher?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-5">
+                                        <p>You’ll need to have a good camera and good microphone to qualified Booctep’s courses, for more info <a href="{% url 'terms' %}">click here.</a></p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">ماهي متطلبات منصة بوستيب من كل مدرب جديد؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-5">
+                                    <p>تحتاج أن تحصل على كاميرا ومكرفون جيدين لمطابقة شروط المنصة الأساسية, لمزيد من المعلومات <a href="{% url 'terms' %}">اضغط هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-6" data-parent="#parent">
+                                        <span class="flex" style="font-size: small;">{% trans 'How does Booctep choose best quality of the teachers?' %}</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-6">
+                                        <p>{% trans 'In Booctep anyone has qualified video and audio requirements can teach in our platform, you can choose your teacher carefully by looking into their ratings, comments etc, please note we promote the best teachers always through our social media accounts, emails or even advertising.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-7" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">How do I get the new courses promotions?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-7">
+                                        <p>You can check your email ( be sure to check spam as well ), or Follow us on <a href="https://instagram.com/booctep">Instagram</a> or <a href="https://twitter.com/booctep">Twitter</a>, all the promotions will be sharing with our community.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">كيف يمكنني الحصول على العروض الجديدة؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-7">
+                                    <p>تستطيع تفعيل خاصية تلقي الإيميلات عن طريق لوحة التحكم أو متابعتنا في مواقع التواصل الإجتماعي  <a href="https://instagram.com/booctep" target="_blank">انستقرام</a> أو <a href="https://twitter.com/booctep" target="_blank">تويتر</a>, نقوم بمشاركة الكثير من العروض بإستمرار.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-8" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Can I download my courses?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-8">
+                                        <p>No, unfortunately you can’t, to protect or teacher privacy we make sure to not download any of Booctep contents <a href="{% url 'privacy_policy' %}">click here to see our privacy & policy.</a></p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل أستطيع تحميل دوراتي؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-8">
+                                    <p>لا يمكنك ذلك, نحن نحمي مدربي منصة بوستيب ولحمايتهم يجب أن نحمي محتواهم <a href="{% url 'privacy_policy' %}">اضغط هنا لمشاهدة سياسة الخصوصية.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-9" data-parent="#parent">
+                                        <span class="flex" style="font-size: small;">{% trans 'How I can download my certificates?' %}</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-9">
+                                        <p>{% trans 'Once finish the course curriculum and it quiz, students will be able to download the certificate through their dashboard.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-10" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Will the certificate be accredited?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-10">
+                                        <p>Booctep is an online learning platform is not accredited by an official institution yet, the certificate is only accredited by Booctep.com, we looking forward to deal with some institution in the future, until then you can include the certificates of completion on your CV to prove your skills and abilities that you have acquired through self-learning.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل شهادات منصة بوستيب معتمدة؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-10">
+                                    <p>بوستيب عبارة عن منصة تعليمية عبر الإنترنت غير معتمدة من قبل مؤسسة رسمية حتى الآن والشهادة معتمدة فقط من قبل Booctep.com ، ونتطلع إلى التعامل مع بعض المؤسسات في المستقبل ، حتى ذلك الحين يمكنك تضمين شهادات الإنجاز في سيرتك الذاتية إلى إثبات مهاراتك وقدراتك التي اكتسبتها من خلال التعلم الذاتي.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-11" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">What’s the difference between Free courses and Paid courses?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-11">
+                                        <p>Free courses has limited features, while in paid courses you will get the full features such as certificates, direct chatting with your teacher and more, read more info <a href="{% url 'terms' %}">Here</a>.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">ماهو الفرق بين الدورات المجانية والدورات المدفوعة؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-11">
+                                    <p>الدورات المجانية لديها مميزات محدودة, بعكس الدورات المدفوعة التي لديها كل المميزات من اختبارات والحصول على الشهادة, لمزيد من المعلومات <a href="{% url 'terms' %}">اضغط هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-12" data-parent="#parent">
+                                        <span class="flex" style="font-size: small;">{% trans 'Where I can find my courses after enrolled/bought it?' %}</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-12">
+                                        <p>{% trans 'Once you enrolled or bought a course immediately the courses will be in your dashboard.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-13" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Sign up at Booctep?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-13">
+                                        <p>Register at Booctep is a free, to register click on ‘ Sign up ‘ button on the top of nav bar or go to this <a href="{% url 'signup' %}">link</a> </p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">كيفية التسجيل في منصة بوستيب؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-13">
+                                    <p>التسجيل في منصة بوستيب هو متاح بشكل مجاني للجميع, يمكنك التسجيل عن طريق الضغط على زر التسجيل أعلى الصفحة أو الضغط <a href="{% url 'signup' %}">هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-14" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Can I become an ambassador for Booctep?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-14">
+                                        <p>We always encourage community participation! feel free to write/create video content or use other means of spreading the word about Booctep. If you create anything Booctep related, feel free to show us, and we’ll make sure to share this with the rest of the community! <a href="{% url 'contact_us' %}">contact us</a> if you have any questions.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل بالإمكان أن أصبح سفيرا لمنصة بوستيب؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-14">
+                                    <p>بكل تأكيد نشجع دائما مجتمعنا, لا تتردد في الكتابة أو إنشاء فيديوهات ومشاركتها أو إستخدام كلمة بوستيب, اذا قمت بإنشاء أي شيء متعلق بمنصة بوستيب لا تتردد في إظهاره لنا وسنتأكد من مشاركته مع بقية مجتمع بوستيب, <a href="{% url 'contact_us' %}">تواصل معنا</a> في حال كان لديك أي استفسار</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-15" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "ar" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'تغيير كلمة المرور أو الأسم؟' %}</span>
+                                        {% else %}
+                                        <span class="flex" style="font-size: small;">{% trans 'Change User name or Password?' %}</span>
+                                        {% endif %}
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-15">
+                                        <p>{% trans 'Booctep members can change their user name or password through their Booctep account settings, once you wish to change your user name or password Login into your account.' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-16" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Can I get my money back?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-16">
+                                        <p>yes of course, actually we want you to be happy with what you learn, if you unhappy please open ticket on that matter, make sure the process be before 30 days from your purchase date, for more info click <a href="{% url 'terms' %}">here.</a></p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل أستطيع استعادة مالي؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-16">
+                                    <p>نعم بالتأكيد يمكنك, في الواقع نحن نريد ضمان أنك تتمتع بتجربة فريدة في التعليم في حال كنت غير سعيد في أي دورة تستطيع استعادة أموالك, كن متأكد انك قدمت طلب استعادة قبل ٣٠ يوم من تاريخ الشراء, لمزيد من المعلومات <a href="{% url 'terms' %}">اضغط هنا</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-17" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Urgent issues?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-17">
+                                        <p>If you got any urgent issue, questions or problems, etc, you can easily open a ticket on through our email support@booctep.com or live chat box, we’ll ready to help, We are available 24/7, <a href="{% url 'contact_us' %}">contact us</a> now.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">مشكلة عاجلة؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-17">
+                                    <p>لا تتردد في الإتصال بنا مباشرة في حال كان لديك أمر طاريء, تستطيع التواصل معنا عبر الإيميل support@booctep.com أو عبر اللايف شات نحن في أتم الإستعداد لمساعدتك على مدار الساعة 24/7 , تواصل معنا <a href="{% url 'contact_us' %}">هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-18" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'How can I pay for a course?' %}</span>
+                                        
+                                       
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-18">
+                                        <p>{% trans 'We support Paypal, Mada cards, STC Pay, Visa/ MasterCard for payments, any way if you got any payments problem you could open ticket through our email support@booctep.com, or Live chat box, we’ll be ready to help.' %}</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">{% trans 'كيف أستطيع دفع رسوم الدوة؟' %}</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-18">
+                                    <p>{% trans 'نحن ندعم كلا من, بايبال, بطاقة مدى, اس تي سي باي, فيزا, ماستر كارد, على أية حال في حال واجهتك مشاكل في الدفع قم بمراسلتنا عبر الايميل support@booctep.com أو عبر اللايف شات وسوف نكون مستعدين لخدمتك.' %}</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-19" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">What I need to get started as a teacher? </span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-19">
+                                        <p>You can Just become a teacher from <a href="{% url 'become' %}">here</a>, please note, to create a paid courses, you’ll need an active Paypal account or Visa/Mastercard account.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">ماذا أحتاج لكي أصبح معلم؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-19">
+                                    <p>تستطيع أن تصبح معلم فقط بالتسجيل كمعلم وفي حالة كنت طالب تستطيع أن تصبح معلم من <a href="{% url 'become' %}">هنا</a>, تنويه لإنشاء دورات مدفوعة يجب على المدرب أن يحصل على حساب بايبال او بطافة بنكية.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-20" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Will Booctep promote my courses?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-20">
+                                        <p>Yes, but only for teachers whom met our requirements, for more in read <a href="{% url 'terms' %}">here,</a>.
+                                          </p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل منصة بوستيب سوف تقوم بالتسويق لدورتي؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-20">
+                                    <p>نعم, لكن فقط للمدربين الذين أتمموا متطلبات المنصة من جودة الدورة المقدمة لعدد الطلاب والمزيد من المتطلبات الضرورية, لمزيد من المعلومات اضغط <a href="{% url 'contact_us' %}">هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-21" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'How to change my user name on the certificate?' %}</span>
+                                        
+                                       
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-21">
+                                        <p>{% trans 'Booctep’s mempers can change their user name through the dashboard, once change user name the certificate will automatically rename to the new user name.' %}</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">{% trans 'كيف أستطيع تغيير اسمي على الشهادة؟' %}</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-21">
+                                    <p>{% trans 'أعضاء منصة بوستيب يستطيعون تغيير اسمائهم عبر لوحة التحكم, وبالتالي فإن الأسم المطبوع على الشهادة سيكون ذات الأسم في لوحة التحكم, لتغيير الأسم قم بالدخول إلى حسابك.' %}</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-22" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Can I watch my courses through my phone?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-22">
+                                        <p>Yes you can, but for better study experience, we recommend you’ll to use Pc or Laptop.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">أستطيع مشاهدة دوراتي عبر الهاتف؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-22">
+                                    <p>نعم تستطيع, لكن لتجربة أفضل قم بالدخول عبر الكمبيوتر المكتبي أو اللاب توب.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-23" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">How many courses can I take?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-23">
+                                        <p>No limit, you can enrol as much as you want, however it’s a free courses or paid courses.
+                                          </p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">كم دورة أستطيع الشراء أو الأنضمام لها؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-23">
+                                    <p>ليس هناك حد, تستطيع الأنضمام للعدد الذي تريد, سواء كانت  مجانية أم مدفوعة.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-24" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'Can I change my emails address?' %}</span>
+                                        
+                                       
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-24">
+                                        <p>{% trans 'Unfortunately this feature it’s not possible, but for difficult issues contact our technician support support@booctep.com we’ll be ready to help.' %}</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">{% trans 'هل أستطيع تغيير بريدي الإلكتروني؟' %}</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-24">
+                                    <p>{% trans 'للأسف لا يمكنك, لكن في حال كانت هنالك مشكلة تستحق التغيير قم بمراسلتنا عبر الإيميل support@booctep.com سوف نكون سعداء بخدمتك.' %}</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="columns">
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-25" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Am I required to finish the course that I enrolled in?</span>
+                                        
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-25">
+                                        <p>No, you have the complete of freedom to finish the course or don't finish it.</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل أنا ملزم بإنهاء دورة قمت بالانضمام لها؟</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-25">
+                                    <p>لا, أنت غير ملزم تماما بإكمال الدورات, لك كامل الحرية في إتمام الدورة أو عدم إتمامها.</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item"
+                                     style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-26" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">Can I teach and study at the same time?</span>
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-26">
+                                        <p>Yes of course, if you want to share what you have learned, feel free to read our become a teacher guideline <a href="{% url 'become' %}">here.</a>.
+                                          </p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">هل أستطيع أن أصبح معلم وطالب في نفس الوقت؟</span>
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-26">
+                                    <p>نعم تستطيع بالتأكيد, إذا أردت أن تعلًم ما تعلمت, ألقي نظرة على صفحة كن معلم من <a href="{% url 'become' %}">هنا.</a></p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-4 ">
+                            <div class="accordion js-accordion list-group-flush" id="parent" style="margin-top: 5px;">
+                                <div class="accordion__item" style="">
+                                    <a href="#"
+                                       style=""
+                                       class="accordion__toggle accordion__toggle-dark collapsed accordd accordd-dark" data-toggle="collapse"
+                                       data-target="#course-toc-27" data-parent="#parent">
+                                       {% get_current_language as lang %}
+                                       {% if lang == "en" %}
+                                        <span class="flex" style="font-size: small;">{% trans 'Am i required to finish the quiz to get my certificate?' %}</span>
+                                        
+                                       
+                                    </a>
+                                    <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-27">
+                                        <p>{% trans 'Yes, to get the certificate of any course you must finish the quiz of that course.' %}</p>
+                                    </div>
+                                    {% else %}
+                                    <span class="flex" style="font-size: small;">{% trans 'هل أنا ملزم بإنهاء الاختبار للحصول على الشهادة؟' %}</span>
+                                    
+                                </a>
+                                <div class="accordion__menu collapse accorddd accorddd-dark" id="course-toc-27">
+                                    <p>{% trans 'نعم أنت ملزم لإنهاء الاختبار للحصول على الشهادة.' %}</p>
+                                </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+        </script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title=title, description='Nestable is a component for hierarchical lists with drag &amp; drop capabilities, compatible with both mouse events and touch enabled devices.') %}
+    <div class="nestable" id="nestable">
+      <ul class="nestable-list">
+        <li class="nestable-item" data-id="1">
+          <div class="nestable-handle">Item 1</div>
+        </li>
+        <li class="nestable-item" data-id="2">
+          <div class="nestable-handle">Item 2</div>
+          <ul class="nestable-list">
+            <li class="nestable-item" data-id="2.1">
+              <div class="nestable-handle">Item 2.1</div>
+            </li>
+            <li class="nestable-item" data-id="2.2">
+              <div class="nestable-handle">Item 2.2</div>
+              <ul class="nestable-list">
+                <li class="nestable-item" data-id="2.3.1">
+                  <div class="nestable-handle">Item 2.2.1</div>
+                </li>
+                <li class="nestable-item" data-id="2.3.2">
+                  <div class="nestable-handle">Item 2.2.2</div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  {% endcall %}
+</div>

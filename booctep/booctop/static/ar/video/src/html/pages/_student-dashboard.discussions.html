@@ -1,0 +1,23 @@
+{% import 'components/discussions.html' as discussions %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Discussions</div>
+</div>
+
+<div class="card">
+  {{ discussions.component(prefix=prefix, items=[{
+    avatar: 'LB',
+    date: '2 days ago',
+    name: 'Laza Bogdan',
+    title: 'Using Angular HttpClientModule instead of HttpModule',
+    chips: ['Angular fundamentals']
+  }, {
+    avatar: 'AC',
+    date: '3 days ago',
+    name: 'Adam Curtis',
+    title: 'Why am I getting an error when trying to install angular/http@2.4.2'
+  }]) }}
+  <div class="card-footer p-8pt">
+    {% include 'layouts/_pagination.html' %}
+  </div>
+</div>

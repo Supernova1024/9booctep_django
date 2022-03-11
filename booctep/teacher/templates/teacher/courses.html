@@ -1,0 +1,465 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+    Courses
+{% endblock %}
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="دوراتي" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="My courses" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block content %}
+
+<style>
+ 
+ 
+
+ .card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.blllu{
+        color: rgb(57, 137, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.carousel-item{
+    background-color: rgb(18, 76, 163) !important;
+}
+
+.carousel-item-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+
+
+h3.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+h3.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+strong.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+strong.mediabout-dark{
+   color: rgb(186, 193, 204) !important;
+}
+
+p.mediabout{
+    color: rgb(188, 216, 240) !important;
+}
+
+p.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+a.mediabout{
+    background-color: rgb(207, 228, 245) !important;
+    border: 1px solid #0d2150 !important;
+    color: rgb(11, 41, 68) !important;
+}
+
+a.mediabout-dark{
+   background-color: rgb(42, 51, 65) !important;
+   color: rgb(204, 213, 221) !important;
+}
+
+
+.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+.mediabout-dark{
+   color: rgb(100, 152, 248) !important;
+}
+
+  
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+   color: none !important;
+}
+
+
+        
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+th,td {
+    text-align: center !important;
+    border-top: 1px solid rgb(25, 25, 29)
+}
+
+.table thead{
+    height: 65px !important;
+}
+
+.tehead{
+    background-color: rgb(197, 223, 235) !important;
+    border-top: 0!important;
+    border-bottom: 0 !important;
+}
+
+.table .tehead {
+        
+}
+    
+.tehead-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+}
+
+
+.flllot{
+    float: left !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(185, 197, 206) !important;
+}
+
+[dir="ltr"] .table td, [dir="ltr"] .table th{
+    border: 0 !important;
+
+}
+
+a.disabled{
+    cursor: not-allowed !important;
+}
+
+.card-header:first-child{
+    border-radius: 0 !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+.progress .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+    background-color: rgb(189, 209, 245) !important;
+    border-radius: 0 !important;
+}
+
+.card .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+.card .bg-primary-dark{
+    background-color: rgb(13, 16, 22) !important;
+    border-radius: 0 !important;
+}
+
+.progress{
+    border-radius: 0 !important;
+}
+
+</style>    
+
+
+<style>
+
+@media only screen and (min-width: 500px) {
+
+    .mbil{
+        margin-top: 230px;
+    }
+
+}
+
+</style>
+
+    <!-- <div class="filter-head" style="height: 100% !important;">
+        <form id="submitForm" action="/teacher/courses/" method="GET" style="border-radius: 0 !important;">
+            <div class="card-header card-header-2 card-header-tabs-basic nav px-0 mb-3" role="tablist">
+                <input type="hidden" name="filter_type" id="filter_type">
+                <a {% if filter_type == -1 %} class="active" {% endif %} data-toggle="tab" role="tab"
+                                              aria-selected="true"
+                                              onclick="$('#filter_type').val('-1');$('#submitForm').submit();">All
+                    courses</a>
+                <a {% if filter_type == 1 %} class="active" {% endif %} data-toggle="tab" role="tab"
+                                             aria-selected="false"
+                                             onclick="$('#filter_type').val('1');$('#submitForm').submit()">Free</a>
+                <a {% if filter_type == 0 %} class="active" {% endif %} data-toggle="tab" role="tab"
+                                             aria-selected="false"
+                                             onclick="$('#filter_type').val('0');$('#submitForm').submit()">Paid</a>
+            </div>
+        </form>
+    </div> -->
+    <div class="page__container page-section" style="height: 100vh !important;">
+        <div class="row card-group-row">
+            {% for course in course_list %}
+                <div class="col-lg-3 col-sm-6 card-group-row__col">
+                    <div class="card card-group-row__card text-center o-hidden card--raised mb-lg-10">
+                        <img style="height: 180px;" src="
+
+                                {% if user_type == 'teacher' %}{% static course.cover_img %}{% else %}{% static '/user_images/7c586b74-138a-4018-86c6-9ca1edab4486.png' %}{% endif %}"
+                             alt="">
+                        <span class="corner-ribbon corner-ribbon--default-right-top corner-ribbon--shadow bg-primary bg-primary-dark text-white">
+                   
+                 {% get_current_language as lang %}
+                 {% if lang == "ar" %}
+                    {% if course.approval_status == 1 %}
+                        <b style="font-size: 13px">في الانتظار</b>
+                    {% elif course.approval_status == 2 %}
+                        <b style="font-size: 15px">مقبول</b>
+                    {% else %}
+                    <b style="font-size: 15px">مرفوض</b>
+                    {% endif %}
+                  {% else %}
+                  {% if course.approval_status == 1 %}
+                      Waiting
+                  {% elif course.approval_status == 2 %}
+                      Accepted
+                  {% else %}
+                      Rejected
+                  {% endif %}
+                  {% endif %}
+                </span>
+                {% get_current_language as lang %}
+                 {% if lang == "ar" %}
+
+                        <div class="card-body d-flex flex-column">
+                            <div class="flex-grow mb-0pt">
+                                <h4 class="mb-8pt mediabout mediabout-dark" style="margin-top: 0px;font-size: large;">{{ course.name }}</h4>
+                            </div>
+                            <p class="d-flex justify-content-center align-items-center m-0">
+                                <span class=" m-0 font-weight-normal blllu blllu-dark"
+                                      style="font-size: medium;">{% if course.price > 0 %}{{ course.price }}{% else %}
+                                    مجانا{% endif %}</span>
+                            </p>
+                        </div>
+                        <div class="progress " style="height: 4px;position: absolute;bottom: 40px;left: 0;">
+                            <div class="progress-bar bg-primary bg-primary-dark" role="progressbar"
+                                 style="width: {{ course.progress }}%;" aria-valuenow="37" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <div class="card-footer" style="border: 0px !important;">
+                            {% if course.pending == 0 %}
+                                <form method="post" action="/teacher/add_course/?step=1">
+                            {% else %}
+                                <form method="post" action="/teacher/add_course/?step={{ course.pending }}">
+                            {% endif %}
+                            {% csrf_token %}
+                            <input type="hidden" name="course" value="{{ course.id }}">
+                            <button class="btn btn-primary" type="submit" style="margin-left:10px">تعديل الدورة</button>
+                            </form>
+                            <button class="btn" style="background-color: rgb(224, 155, 155);" onclick="showDelModal({{ course.id }})">حذف الدورة
+                            </button>
+                        </div>
+                   {% else %}
+                   <div class="card-body d-flex flex-column">
+                       <div class="flex-grow mb-0pt">
+                           <h4 class="mb-8pt mediabout mediabout-dark" style="margin-top: 0px;font-size: large;">{{ course.name }}</h4>
+                       </div>
+                       <p class="d-flex justify-content-center align-items-center m-0">
+                           <span class=" m-0 font-weight-normal blllu blllu-dark"
+                                 style="font-size: medium;">$ {% if course.price > 0 %}{{ course.price }}{% else %}
+                               Free!!{% endif %}</span>
+                       </p>
+                   </div>
+                   <div class="progress " style="height: 4px;position: absolute;bottom: 40px;left: 0;">
+                       <div class="progress-bar bg-primary bg-primary-dark" role="progressbar"
+                            style="width: {{ course.progress }}%;" aria-valuenow="37" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                   </div>
+                   <div class="card-footer" style="border: 0px !important;">
+                       {% if course.pending == 0 %}
+                           <form method="post" action="/teacher/add_course/?step=1">
+                       {% else %}
+                           <form method="post" action="/teacher/add_course/?step={{ course.pending }}">
+                       {% endif %}
+                       {% csrf_token %}
+                       <input type="hidden" name="course" value="{{ course.id }}">
+                       <button class="btn btn-primary" type="submit" style="margin-right:10px">Edit course</button>
+                       </form>
+                       <button class="btn" style="background-color: rgb(224, 155, 155);" onclick="showDelModal({{ course.id }})">Delete course
+                       </button>
+                   </div>
+                   {% endif %}     
+
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="col-lg-3 col-sm-6 card-group-row__col" >
+                <a href="/new-course" class="card card-dark card-group-row__card text-center card--raised "
+                   style="">
+                    <div class="card-body d-flex flex-column" style="margin-top: 135px;">
+                        <div class="flex-grow mb-0pt">
+                            <i class="fa fa-plus mediabout mediabout-dark" style=""></i>
+                            {% get_current_language as lang %}
+                             {% if lang == "ar" %}
+                            <h4 class="mb-8pt mediabout mediabout-dark" style="margin-top: 0px;font-size: large;">أضف دورة جديدة</h4>
+                            {% else %}
+                            <h4 class="mb-8pt mediabout mediabout-dark" style="margin-top: 0px;font-size: large;">Add new course</h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="sweet-alert showSweetAlert visible" id="delete_modal" data-custom-class="" data-has-cancel-button="true"
+         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+         data-animation="pop" data-timer="null" style="display: none; margin-top: -169px;">
+        <div class="sa-icon sa-error" style="display: none;">
+      <span class="sa-x-mark">
+        <span class="sa-line sa-left"></span>
+        <span class="sa-line sa-right"></span>
+      </span>
+        </div>
+        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+            <span class="sa-body pulseWarningIns"></span>
+            <span class="sa-dot pulseWarningIns"></span>
+        </div>
+        <h2>Are you sure?</h2>
+        <p style="display: block;">You will not be able to recover this imaginary file!</p>
+        <fieldset>
+            <input type="text" tabindex="3" placeholder="">
+            <div class="sa-input-error"></div>
+        </fieldset>
+        <div class="sa-error-container">
+            <div class="icon">!</div>
+            <p>Not valid!</p>
+        </div>
+        <div class="sa-button-container">
+            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                    onclick="closeDelModal()">Cancel!
+            </button>
+            <div class="sa-confirm-button-container">
+                <button class="confirm" tabindex="1" onclick="deleteCourse()"
+                        style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                    Yes, delete it!
+                </button>
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="modal_back"></div>
+
+{% endblock %}
+{% block script %}
+    <script>
+        let cur_course_id;
+
+        function showDelModal(course_id) {
+            cur_course_id = course_id
+            $("#delete_modal").css({
+                'display': 'block'
+            })
+            $("#modal_back").css({
+                'display': 'block'
+            })
+        }
+
+        function closeDelModal() {
+            $("#delete_modal").css({
+                'display': 'none'
+            })
+            $("#modal_back").css({
+                'display': 'none'
+            })
+        }
+
+        function deleteCourse() {
+            var course_id = cur_course_id
+            var url = '/delete_course_by_id/';
+            $.post(url, {course: course_id}, function (res) {
+                if(res.status == 1) {
+                    setTimeout(()=>{
+                        location.reload()
+                    },800)
+                }
+            });
+            closeDelModal()
+        }
+
+    </script>
+{% endblock %}

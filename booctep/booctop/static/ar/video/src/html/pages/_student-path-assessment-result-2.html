@@ -1,0 +1,107 @@
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+      <div class="flex d-flex flex-column align-items-center align-items-lg-start mb-24pt mb-lg-0 text-center text-lg-left">
+        <h1 class="h2 mb-0">Skill Result</h1>
+        <p class="lead measure-lead text-70">Measure your skill to find out where to start.</p>
+        <div>
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">help_outline</i>
+            30 Questions
+          </span>
+          <span class="chip chip-outline-secondary d-inline-flex align-items-center">
+            <i class="material-icons icon--left">schedule</i>
+            1m 10s
+          </span>
+        </div>
+      </div>
+      <div class="ml-lg-16pt d-flex flex-column justify-content-center">
+        <a href="{{ prefix or '' }}student-path.html" class="d-flex flex-nowrap mb-16pt">
+          <span class="mr-16pt">
+            <img src="assets/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded">
+          </span>
+          <span class="flex d-flex flex-column align-items-start">
+            <span class="card-title">Learn Angular</span>
+            <span class="card-subtitle text-50">24 Courses</span>
+          </span>
+        </a>
+        <a href="{{ prefix or '' }}student-path.html" class="btn btn-light">Back to Path</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section {{ containerClass or 'container' }}">
+  <div class="row">
+    <div class="col-lg-9">
+      
+      <div class="row mb-24pt">
+        <div class="col-lg-6 mb-24pt mb-sm-0">
+          <div class="border-left-3 border-left-primary pl-24pt pl-md-32pt">
+            <h4 class="mb-8pt">Assessment details</h4>
+            <p class="text-70 mb-24pt mb-lg-0">Based on your skill level we recommend you take the Intermediate level Angular courses.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+          <div class="page-num-timeline d-flex flex-column flex-sm-row align-items-center justify-content-center flex">
+            <a href="" data-toggle="tooltip" data-placement="top" data-title="Beginner" class="page-num-timeline__item">
+              <span class="page-num-timeline__item-tip"></span>
+              <span class="page-num">1</span>
+            </a>
+            <a href="" data-toggle="tooltip" data-placement="top" data-title="Your current level: Intermediate" class="page-num-timeline__item page-num-timeline__item-current">
+              <span class="page-num-timeline__item-tip"></span>
+              <span class="page-num"><i class="material-icons">person</i></span>
+            </a>
+            <a href="" data-toggle="tooltip" data-placement="top" data-title="Advanced" class="page-num-timeline__item">
+              <span class="page-num-timeline__item-tip"></span>
+              <span class="page-num">3</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {% import '_courses.carousel.html' as courses %}
+
+      <div class="border-left pl-32pt page-section">
+        <div class="d-flex align-items-center page-num-container">
+          <div class="page-num">2</div>
+          <h4>Recommended: Intermediate</h4>
+        </div>
+        <p class="text-70 mb-lg-32pt">Once you have the basics using the Angular framework, you will continue to build on your existing knowledge and, with these intermediate courses you will have a deeper understanding into features like services, routing and testing.</p>
+        {{ courses.component(
+          pager=false, 
+          control=true,
+          prefix=prefix,
+          col_class='col-sm-6 col-md-4',
+          items=[{
+            title: 'Angular Unit Testing',
+            image: 'angular_testing',
+            avatar: 'angular',
+            position: 'left'
+          }, {
+            title: 'Angular Routing In-Depth',
+            image: 'angular_routing',
+            avatar: 'angular',
+            position: 'left'
+          }, {
+            title: 'Angular Services',
+            image: 'angular_services',
+            avatar: 'angular',
+            position: 'left'
+          }, {
+            title: 'Angular Patterns',
+            image: 'angular_patterns',
+            avatar: 'angular'
+          }]) }}
+
+        <div class="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-center justify-content-sm-start mt-8pt">
+          <a href="{{ prefix }}student-path.html" class="btn btn-accent flex-auto mb-8pt mb-sm-0 mr-sm-16pt">Begin Angular Intermediate</a>
+          <a href="{{ prefix }}student-path-assessment.html" class="btn btn-outline-secondary flex-auto">Explore other Angular paths</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

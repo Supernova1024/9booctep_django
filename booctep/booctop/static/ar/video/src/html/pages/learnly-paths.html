@@ -1,0 +1,13 @@
+---
+title: Browse Paths
+slug: paths
+page: paths-2
+guest: true
+---
+{% extends 'layouts/learnly.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+
+{% block drawer %}
+  {{ super() }}
+  {{ drawer.component() }}
+{% endblock %}

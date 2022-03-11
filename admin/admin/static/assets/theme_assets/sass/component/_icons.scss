@@ -1,0 +1,23 @@
+// Icon Css
+.icon-list{
+    margin: -10px 0;
+    .col-sm-6{
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        .icon-text{
+            font-size: 14px;
+        }
+    }
+    i,
+    svg{
+        min-width: 25px;
+        margin-right: 8px;
+        @extend .color-dark;
+    }
+    svg,
+    img{
+        width: 18px;
+        height: 18px;
+    }
+}

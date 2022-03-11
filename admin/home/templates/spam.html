@@ -1,0 +1,374 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Report Spam Dashboard</h4>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-search order-search  global-shadow mt-10">
+                                <form action="" id="search_form" method="post" class="order-search__form">
+                                    {% csrf_token %}
+                                    <span data-feather="search"></span>
+                                    <input class="form-control mr-sm-2 border-0 box-shadow-none" type="search" name="search" id="search"
+                                           placeholder="Filter by keyword" aria-label="Search" value="{{search}}">
+                                    <input type="hidden" id="type" value="{{type}}" name="type">
+                                    <input type="hidden" id="page" value="{{page}}" name="page">
+                                </form>
+                            </div><!-- End: .project-search -->
+                            <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" id="ap-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 1 %} active {% endif %}" id="ap-overview-tab" data-toggle="pill"
+                                               href="#ap-overview" role="tab" aria-controls="ap-overview" onclick="setType(1)"
+                                               aria-selected="true">Awaiting
+                                                For review</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 2 %} active {% endif %}" id="timeline-tab" data-toggle="pill"
+                                               href="#timeline" role="tab" aria-controls="timeline" onclick="setType(2)"
+                                               aria-selected="false">checked</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+                        </div>
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content" id="ap-tabContent">
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                             aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                    <tr class="userDatatable-header">
+                                        <th>
+                                            <span class="userDatatable-title">Student name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Teacher name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Teacher email</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Course name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Course id</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Total Report spam for this course</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title float-right">Actions</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for spam in spams %}
+                                    <tr>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.student.first_name }}  {{ spam.student.last_name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.teacher.first_name }} {{ spam.teacher.last_name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.teacher.email }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.course.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.course.id }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ spam.total_count }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                <li>
+                                                    <a href="#" class="">
+                                                            <span data-feather="send" onclick="showNotiModal('{{ spam.teacher_id }}')"></span></a>
+                                                </li>
+                                                <li>
+                                                    <div class="action-btn">
+                                                        <a href="#" style="width: 50px !important;margin-right:-5px" data-title="{{ spam.title }}"
+                                                           data-content="{{ spam.content }}"
+                                                           class=" px-15" onclick="showDetail(this)">
+                                                            <span data-feather="eye"></span></a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="edit" onclick="showApproveModal('{{ spam.id }}')" data-toggle="modal" data-target="#modal-info-approve">
+                                                        <span data-feather="thumbs-up"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {% if spams.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if spams.has_previous %}
+                                    <a href="#" onclick="page_prev()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in spams.paginator.page_range %}
+                                    {% if spams.number == i %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if spams.has_next %}
+                                    <a href="#" onclick="page_next()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+</div>
+<div class="modal fade new-member" id="new-member"
+     role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content  radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500">Message</h6>
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-member-modal">
+                    <div class="atbd-notice__content">
+                        <h3 id="spam_title">Title of Report</h3>
+                    </div>
+                    <div class="atbd-notice__content">
+                        <div class="notice-listBlock bg-normal mt-30">
+                            <h6 id="spam_content">I don't like the
+                                course!</h6>
+                        </div>
+                    </div>
+                    <div class="button-group d-flex pt-25">
+                        <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light" onclick="$('#new-member').modal('hide')">
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade add-contact" id="add-contact"
+     role="dialog" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-xl">
+            <div class="modal-header">
+                <h6 class="modal-title fw-500"
+                    id="staticBackdropLabel">Send notification
+                    to teacher</h6>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-new-contact">
+                    <div class="form-group mb-20">
+                        <input type="text" id="noti_title"
+                               class="form-control"
+                               placeholder="Notification title">
+                    </div>
+                    <div class="form-group mb-20">
+                            <textarea class="form-control" id="noti_content"
+                                      id="exampleFormControlTextarea1"
+                                      rows="3"
+                                      placeholder="Notification description"></textarea>
+                    </div>
+
+                    <div class="button-group d-flex pt-20">
+
+                        <button class="btn btn-primary btn-default btn-squared " onclick="sendNoti()">
+                            Send notification
+                        </button>
+
+                        <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">
+                            cancel
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-info-confirmed modal fade show" id="modal-info-approve" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to approve this Spam report?</h6>
+                        <p>This is serious act please make sure what you doing!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light btn-outlined btn-sm" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal" onclick="setApprove()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+{% endblock %}
+{% block script %}
+<script>
+
+    let cur_page = '{{ page }}'
+    let teacher_id = ''
+    let spam_id = ''
+
+    function setType(type) {
+        $("#type").val(type)
+        console.log("type::", type)
+        $("#search_form").submit()
+    }
+
+    function showDetail(obj) {
+        $("#new-member").modal("show")
+        title = $(obj).data('title')
+        content = $(obj).data('content')
+        $("#spam_title").html(title)
+        $("#spam_content").html(content)
+    }
+
+    function showApproveModal(id) {
+        spam_id = id
+    }
+
+    function setApprove() {
+        let url = '/spam_set_approve/'
+        let form_data = new FormData()
+        form_data.append('id', spam_id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+            if (response.status == 1){
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            }
+        })
+    }
+
+    function sendNoti() {
+        $("#new-member").modal("hide")
+        let title = $("#noti_title").val()
+        let content = $("#noti_content").val()
+        socket.emit('send_noti_to_teacher', {
+            receiver_id: teacher_id,
+            sender_id: '{{ request.user.id }}',
+            noti_title: title,
+            noti_content: content,
+        })
+        hideNotiModal()
+    }
+
+    function showNotiModal(id) {
+        teacher_id = id
+        $("#add-contact").modal('show')
+    }
+
+    function hideNotiModal() {
+        $("#add-contact").modal("hide")
+        $("#noti_title").val('')
+        $("#noti_content").val('')
+    }
+
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+</script>
+{% endblock %}

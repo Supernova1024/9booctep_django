@@ -1,0 +1,92 @@
+// Tag Css
+.atbd-tag-wrap {
+  h6 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .tag-box {
+    margin: -4px;
+  }
+}
+.atbd-tag {
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+  line-height: 1.4;
+  padding: 4px 10px;
+  border-radius: 5px;
+  @extend .color-white;
+  margin: 4px;
+  &.tag-primary {
+    font-weight: 600;
+    @extend .bg-primary;
+    &.tag-transparented {
+      background-color: rgba($primary, 0.15);
+      @extend .color-primary;
+    }
+  }
+  &.tag-secondary {
+    font-weight: 600;
+    @extend .bg-secondary;
+    &.tag-transparented {
+      background-color: rgba($secondary, 0.15);
+      @extend .color-secondary;
+    }
+  }
+  &.tag-success {
+    font-weight: 600;
+    @extend .bg-success;
+    &.tag-transparented {
+      background-color: rgba($success, 0.15);
+      @extend .color-success;
+    }
+  }
+  &.tag-info {
+    font-weight: 600;
+    @extend .bg-info;
+    &.tag-transparented {
+      background-color: rgba($info, 0.15);
+      @extend .color-info;
+    }
+  }
+  &.tag-warning {
+    font-weight: 600;
+    @extend .bg-warning;
+    &.tag-transparented {
+      background-color: rgba($warning, 0.15);
+      @extend .color-warning;
+    }
+  }
+  &.tag-danger {
+    font-weight: 600;
+    @extend .bg-danger;
+    &.tag-transparented {
+      background-color: rgba($danger, 0.15);
+      @extend .color-danger;
+    }
+  }
+  &.tag-light {
+    font-weight: 500;
+    @extend .color-gray;
+    @extend .bg-deep;
+    &.tag-transparented {
+      background-color: rgba($light, 0.15);
+      @extend .color-light;
+    }
+  }
+  i,
+  span,
+  span {
+    font-size: 10px;
+    @extend .color-gray;
+  }
+  a {
+    @extend .color-gray;
+  }
+}
+
+.atbd-tag-mode {
+  .select2-search__field {
+    text-align: left;
+  }
+}

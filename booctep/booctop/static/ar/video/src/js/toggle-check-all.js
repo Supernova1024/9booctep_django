@@ -1,0 +1,1 @@
+import 'ui-huma/js/toggle-check-all'

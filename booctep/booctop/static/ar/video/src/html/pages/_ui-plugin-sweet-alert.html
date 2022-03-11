@@ -1,0 +1,177 @@
+{% import 'components/hljs.html' as hljs %}
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% set description %}
+    Sweet Alert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. It's even highly customizable, as you can see below. Please read the <a href="http://sweetalert.js.org/docs/" target="_blank">official plugin documentation</a> for a full list of options.
+  {% endset %}
+  {% call panel.component(title=title, description=description) %}
+    <p>
+      <button 
+        class="btn btn-outline-primary" 
+        data-toggle="swal" 
+        data-swal-title="Here's a message!">
+        Try Basic
+      </button>
+    </p>
+{% call hljs.component() -%}
+<button 
+  class="btn btn-primary" 
+  data-toggle="swal" 
+  data-swal-title="Here's a message!">
+  Basic
+</button>  
+{%- endcall %}
+  {% endcall %}
+
+  {% call panel.component(title='Title & Subtitle') %}
+    <p>
+      <button 
+        class="btn btn-primary" 
+        data-toggle="swal" 
+        data-swal-title="Here's a message!"
+        data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
+        Title &amp; Subtitle
+      </button>
+    </p>
+{% call hljs.component() -%}
+<button 
+  class="btn btn-primary" 
+  data-toggle="swal" 
+  data-swal-title="Here's a message!"
+  data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
+  Title &amp; Subtitle
+</button>
+{%- endcall %}
+  {% endcall %}
+
+  {% call panel.component(title='Success') %}
+    <p>
+      <button 
+        class="btn btn-success" 
+        data-toggle="swal" 
+        data-swal-title="Good job!"
+        data-swal-text="You clicked the button!"
+        data-swal-type="success">
+        Success
+      </button>
+    </p>
+{% call hljs.component() -%}
+<button 
+  class="btn btn-success" 
+  data-toggle="swal" 
+  data-swal-title="Good job!"
+  data-swal-text="You clicked the button!"
+  data-swal-type="success">
+  Success
+</button>
+{%- endcall %}
+  {% endcall %}
+
+  <div 
+    id="swal-confirm-delete" 
+    class="d-none"
+    data-swal-type="success"
+    data-swal-title="Deleted!"
+    data-swal-text="Your imaginary file has been deleted."></div>
+
+  <div 
+    id="swal-cancel-delete" 
+    class="d-none"
+    data-swal-type="error"
+    data-swal-title="Cancelled"
+    data-swal-text="Your imaginary file is safe :)"></div>
+
+  {% call panel.component(title='Confirm', description='A warning message, with a function attached to the confirm button.') %}
+    <p>
+      <button 
+        class="btn btn-warning" 
+        data-toggle="swal" 
+        data-swal-title="Are you sure?"
+        data-swal-text="You will not be able to recover this imaginary file!"
+        data-swal-type="warning"
+        data-swal-show-cancel-button="true"
+        data-swal-confirm-button-text="Yes, delete it!"
+        data-swal-confirm-cb="#swal-confirm-delete"
+        data-swal-close-on-confirm="false">
+        Confirm
+      </button>
+    </p>
+{% call hljs.component() -%}
+<button 
+  class="btn btn-warning" 
+  data-toggle="swal" 
+  data-swal-title="Are you sure?"
+  data-swal-text="You will not be able to recover this imaginary file!"
+  data-swal-type="warning"
+  data-swal-show-cancel-button="true"
+  data-swal-confirm-button-text="Yes, delete it!"
+  data-swal-confirm-cb="#swal-confirm-delete"
+  data-swal-close-on-confirm="false">
+  Confirm
+</button>
+
+<div 
+  id="swal-confirm-delete" 
+  class="d-none"
+  data-swal-type="success"
+  data-swal-title="Deleted!"
+  data-swal-text="Your imaginary file has been deleted.">
+</div>
+{%- endcall %}
+  {% endcall %}
+
+  {% call panel.component(title='Confirm and Cancel', description='And by passing a parameter, you can execute something else for Cancel.') %}
+    <p>
+      <button 
+        class="btn btn-danger" 
+        data-toggle="swal" 
+        data-swal-title="Are you sure?"
+        data-swal-text="You will not be able to recover this imaginary file!"
+        data-swal-type="warning"
+        data-swal-confirm-button-text="Yes, delete it!"
+        data-swal-confirm-cb="#swal-confirm-delete"
+        data-swal-show-cancel-button="true"
+        data-swal-cancel-button-text="No, cancel please!"
+        data-swal-cancel-cb="#swal-cancel-delete"
+        data-swal-close-on-confirm="false"
+        data-swal-close-on-cancel="false">
+        Confirm and Cancel
+      </button>
+    </p>
+{% call hljs.component() -%}
+<button 
+  class="btn btn-danger" 
+  data-toggle="swal" 
+  data-swal-title="Are you sure?"
+  data-swal-text="You will not be able to recover this imaginary file!"
+  data-swal-type="warning"
+  data-swal-confirm-button-text="Yes, delete it!"
+  data-swal-confirm-cb="#swal-confirm-delete"
+  data-swal-show-cancel-button="true"
+  data-swal-cancel-button-text="No, cancel please!"
+  data-swal-cancel-cb="#swal-cancel-delete"
+  data-swal-close-on-confirm="false"
+  data-swal-close-on-cancel="false">
+  Confirm and Cancel
+</button>
+
+<div 
+  id="swal-cancel-delete" 
+  class="d-none"
+  data-swal-type="error"
+  data-swal-title="Cancelled"
+  data-swal-text="Your imaginary file is safe :)">
+</div>
+{%- endcall %}
+  {% endcall %}
+</div>

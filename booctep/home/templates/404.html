@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+    <!-- UTF-8 For MultiLanguages -->
+    <meta charset="utf-8">
+
+    <!-- For Flixable -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Title of website -->
+    <title>Booctep | No search found</title>
+
+    <!-- Tab Logo -->
+    <link rel="icon" type="image/png" href="/static/assets/img/favicon.png"/>
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="/static/assets/css/material-icons.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="/static/assets/css/sideb.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="/static/assets/css/bulma.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+    <link rel="stylesheet" href="/static/assets/css/core.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="stylesheet" href="/static/assets/css/media.css">
+
+    <!-- Video Player And jQuery -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
+    <!-- Video Player And jQuery -->
+
+</head>
+<body>
+
+<!-- Pageloader -->
+<!-- <div class="pageloader"></div>
+<div class="infraloader is-active"></div>
+<div class="app-overlay"></div> -->
+
+<!-- Main Navbar -->
+<div id="main-navbar" class="navbar is-inline-flex no-shadow is-hidden-mobile">
+    <div class="container ">
+        <div class="navbar-brand">
+            <a href="index.html" class="navbar-item logo">
+                <img src="/static/assets/img/logo/booctep-tran.png" alt=""/>
+            </a>
+        </div>
+
+
+        <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+            <a class="icon-link is-primary">
+                <i class="mdi mdi-apps"></i>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item">
+                    <div id="global-search" class="control">
+                        <input id="tipue_drop_input" class="input " type="text" placeholder="Search" required>
+                        <span id="clear-search" class="reset-search">
+                                        <i data-feather="x"></i>
+                                    </span>
+                        <span class="search-icon">
+                                        <i data-feather="search"></i>
+                                    </span>
+
+
+                    </div>
+
+                </div>
+                <div class="navbar-item">
+                    <a href="become.html" class="button-become-a-teacher button is-light" data-lang="about">Become a
+                        teacher</a>
+                </div>
+                <label class="animated-toggle">
+                    <input type="checkbox">
+                    <span class="toggler">
+                                <span class="dark">
+                                    <i data-feather="moon"></i>
+                                </span>
+                                <span class="light">
+                                    <i data-feather="sun"></i>
+                                </span>
+                            </span>
+                </label>
+
+
+            </div>
+
+
+            <div class="navbar-end">
+
+
+                <div class="navbar-item is-cart" style="margin-left: -20px;">
+                    <div class="cart-button">
+                        <i class="fa fa-bell"></i>
+                    </div>
+
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner">
+
+
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+
+
+                            <div class="shopping-cart-header">
+                                <u style="color: grey; cursor: not-allowed;" disabled>Mark all as read</u>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text">Total:</span>
+                                    <span class="main-color-text">0 Notifications</span>
+                                </div>
+                            </div>
+
+
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="assets/img/illstrators/no-not.svg" alt=""/>
+                                    <span class="item-name"
+                                          style="color: grey;">Sorry there are no notifications yet..</span>
+
+                                </li>
+
+                            </ul>
+
+                            <a href="student.0/dist/notifications.html" class="button primary-button is-raised">See
+                                Notifications Page</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="navbar-item is-cart" style="margin-left: -20px;">
+                    <div class="cart-button">
+                        <i class="fa fa-comment-alt"></i>
+                    </div>
+
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner">
+
+
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+
+
+                            <div class="shopping-cart-header">
+                                <u style="color: grey;cursor: not-allowed;">Mark all as read</u>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text">Total:</span>
+                                    <span class="main-color-text">0 Messages</span>
+                                </div>
+                            </div>
+
+
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="assets/img/illstrators/no-msg.svg" alt=""/>
+                                    <span class="item-name"
+                                          style="color: grey;">Sorry there are no Messages yet..</span>
+
+                                </li>
+
+                            </ul>
+                            <a href="student.0/dist/messages.html" class="button primary-button is-raised">See Messages
+                                Page</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="navbar-item is-cart" style="margin-left: -20px;">
+                    <div class="cart-button">
+                        <i class="fa fa-heart"></i>
+                    </div>
+
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner">
+
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+
+                            <div class="shopping-cart-header">
+                                <a href="#"><u style="color: grey;cursor: not-allowed;" disabled>Delete items</u></a>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text">Total:</span>
+                                    <span class="main-color-text">0 courses</span>
+                                </div>
+                            </div>
+                            <!--end shopping-cart-header -->
+
+
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="assets/img/illstrators/no-fave.svg" alt=""/>
+                                    <span class="item-name"
+                                          style="color: grey;">Sorry there are no Fav courses yet..</span>
+
+                                </li>
+
+                            </ul>
+                            <a href="wishlist.html" class="button primary-button is-raised">See Favourite Page</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="navbar-item is-cart" style="margin-left: -20px;margin-right: 50px;">
+                    <div class="cart-button">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner">
+
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+
+                            <div class="shopping-cart-header">
+                                <a href="cart.html"><u disabled style="cursor: not-allowed;color: gray;">View
+                                    Cart</u></a>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text">Total:</span>
+                                    <span class="main-color-text">$00.00</span>
+                                </div>
+                            </div>
+                            <!--end shopping-cart-header -->
+
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="assets/img/illstrators/Ez.svg" alt=""/>
+                                    <span class="item-name" style="color: grey;">Sorry there are no courses yet..</span>
+
+                                </li>
+
+                            </ul>
+
+                            <a href="cart.html" class="button primary-button is-raised">View Cart Page</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="account-dropdown" class="navbar-item is-account drop-trigger has-caret">
+
+                    <div class="small-avatar">
+                        <img class="avatar" src="assets/img/manPro.jpg" style="border: 2px solid #ccc;"
+                             data-demo-src="assets/img/avatars/jenna.png" data-user-popover="0" alt="">
+                    </div>
+
+                    <div class="nav-drop is-account-dropdown">
+                        <div class="inner">
+                            <div class="nav-drop-header">
+                                <span class="username">Elzubair Mohammed</span>
+                            </div>
+                            <div class="nav-drop-body account-items">
+                                <a href="student.0/dist/account.html" class="account-item">
+                                    <div class="media">
+                                        <div class="icon-wrap">
+                                            <i data-feather="settings"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3>Settings</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="support.html" class="account-item">
+                                    <div class="media">
+                                        <div class="icon-wrap">
+                                            <i data-feather="life-buoy"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3>Help</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="student.0/dist/courses.html" class="account-item">
+                                    <div class="media">
+                                        <div class="icon-wrap">
+                                            <i data-feather="life-buoy"></i>
+                                        </div>
+                                        <div href="student.0/dist/courses.html" class="media-content">
+                                            <h3>My courses</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="student.0/dist/messages.html" class="account-item">
+                                    <div class="media">
+                                        <div class="icon-wrap">
+                                            <i data-feather="life-buoy"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3>messages</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="account-item">
+                                    <div class="media media1">
+                                        <div class="icon-wrap">
+                                            <i data-feather="power" style="color:rgb(236, 11, 11) !important;"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3 style="color: rgb(236, 11, 11);">Log out</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Navbar -->
+
+
+<!-- Mobile Navbar -->
+<nav class="navbar mobile-navbar is-hidden-desktop" aria-label="main navigation">
+    <!-- Brand -->
+    <div class="navbar-brand">
+        <a class="navbar-item2" href="/">
+            <img class="mobile-logo" src="assets/img/favicon.png" alt="">
+        </a>
+
+
+        <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+            <a class="icon-link is-primary">
+                <i class="mdi mdi-apps"></i>
+            </a>
+        </div>
+
+        <!-- Mobile menu toggler icon -->
+        <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Navbar mobile menu -->
+    <div class="navbar-menu">
+        <!-- Account -->
+        <div class="navbar-item has-dropdown ">
+            <div class="navbar-link">
+                <img src="assets/img/man.jpg" data-demo-src="assets/img/avatars/jenna.png" alt="">
+                <span class="is-heading">Elzubair Mohammed</span>
+            </div>
+
+            <div class="navbar-item">
+                <div id="global-search" class="control">
+                    <input id="tipue_drop_input" class="input " type="text" placeholder="Search" required>
+                    <span id="clear-search" class="reset-search">
+                            <i data-feather="x"></i>
+                        </span>
+                    <span class="search-icon">
+                            <i data-feather="search"></i>
+                        </span>
+
+
+                </div>
+
+            </div>
+
+            <!-- Mobile Dropdown -->
+            <div class="navbar-dropdown">
+                <a href="#" class="navbar-item is-flex is-mobile-icon">
+                    <span><i data-feather="user"></i>Profile</span>
+                </a>
+                <a href="#" class="navbar-item is-flex is-mobile-icon">
+                    <span><i data-feather="shopping-cart"></i>Cart</span>
+                    <span class="menu-badge">3</span>
+                </a>
+                <a href="#" class="navbar-item is-flex is-mobile-icon">
+                    <span><i data-feather="activity"></i>Feed</span>
+                    <span class="menu-badge">87</span>
+                </a>
+                <a href="#" class="navbar-item is-flex is-mobile-icon">
+                    <span><i data-feather="settings"></i>Settings</span>
+                </a>
+                <a href="#" class="navbar-item is-flex is-mobile-icon">
+                    <span><i data-feather="hexagon"></i>Logout</span>
+                </a>
+
+                <div class="buttons">
+                    <a class="button second-button">
+                        <p>Sign up</p>
+                    </a>
+                    <a class="button primary-button raised quickview-trigger process-button">
+                        <p>Log in</p>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Mobile Navbar -->
+
+<div class="products-navigation" style="display: none;">
+</div>
+
+
+<!-- 404 page -->
+<div class="container">
+
+
+    <div class="c404">
+
+        <img src="assets/img/404.svg" alt="">
+
+        <h2>Opps!, No Page Found '404', Be More specific..</h2>
+
+
+        <input id="tipue_drop_input" class="input c404-input" type="text" placeholder="Search" required>
+
+        <h3>
+            <a href="index.html" class="button">Search &nbsp;<span class="fa fa-search"></span></a>
+        </h3>
+
+
+    </div>
+
+</div>
+<!-- 404 page -->
+
+
+<!-- Categories -->
+<div class="explorer-menu">
+    <div class="explorer-inner">
+        <div class="container">
+            <!--Header-->
+            <div class="explorer-header">
+                <h3>Explore</h3>
+            </div>
+            <!--List-->
+            <div class="explore-list">
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/coding.svg" alt="">
+                    <h4>Web Development</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/business.svg" alt="">
+                    <h4>Business</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/aviation.svg" alt="">
+                    <h4>Aviation</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/controller.svg" alt="">
+                    <h4>Games</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/math.svg" alt="">
+                    <h4>Mathmatics</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/lifestyle.svg" alt="">
+                    <h4>life Style</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/arts.svg" alt="">
+                    <h4>Arts</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/It.svg" alt="">
+                    <h4>Information Technology</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/drama.svg" alt="">
+                    <h4>Cenima & Drama</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/software.svg" alt="">
+                    <h4>Software Programming</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/languages.svg" alt="">
+                    <h4>Languages</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/coock.svg" alt="">
+                    <h4>Food & Cooking</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/maintanece.svg" alt="">
+                    <h4>Repare & Maintaince</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/skills.svg" alt="">
+                    <h4>Skills</h4>
+                </a>
+                <!--item-->
+                <a href="index.html" class="explore-item">
+                    <img src="assets/img/icons/explore/other.svg" alt="">
+                    <h4>Others</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Categories -->
+
+
+<!-- Login Modal Start -->
+<div id="product-quickview" class="modal product-quickview is-xsmall has-light-bg">
+    <div class="modal-background quickview-background"></div>
+    <div class="modal-content">
+        <div class="card">
+            <div class="quickview-loader is-active">
+                <div class="loader is-loading"></div>
+            </div>
+            <div class="right">
+                            <span class="close-modal close-modal-2">
+                                <i data-feather="x"></i>
+                            </span>
+                <div class="header">
+                    <div class="product-info">
+                        <img class="Loginmodal-img" src="assets/img/favicon.png" alt="">
+                        <h3 id="quickview-name">Login</h3>
+                        <p style="margin-bottom: 10px;">Welcome Back</p>
+                        <a href="#" class="button is-fullwidth"
+                           style="margin-bottom: 5px;background-color: rgb(218, 1, 1);color: #fff;">Login via Gmail
+                            &nbsp;<i class="mdi mdi-gmail"></i>
+                        </a>
+                        <a href="#" class="button is-fullwidth"
+                           style="background-color: rgb(61, 136, 206);color: #fff;">Login via Twitter
+                            &nbsp;<i class="mdi mdi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="signup-panel-2" class="process-panel-wrap is-narrow">
+                    <div class="form-panel">
+                        <div class="search-filter" style="margin-bottom: 10px;">
+                            <div class="control has-icon">
+                                <input type="text" class="input is-fade" placeholder="Enter username or email">
+                                <div class="form-icon">
+                                    <i class="fa fa-user" style="font-size: x-small;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-filter" style="margin-bottom: 10px;">
+                            <div class="control has-icon">
+                                <input type="password" class="input is-fade" placeholder="Enter your password">
+                                <div class="form-icon">
+                                    <i class="fa fa-key" style="font-size: x-small;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <p style="font-size: small;"><input type="checkbox"> Remember me</p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button primary-button raised is-fullwidth">
+                                    <p>Login</p>
+                                </button>
+                            </div>
+                        </div>
+                        <p> Already have an account ? <a href="signup.html">Sign up</a></p>
+                        <div class="has-text-centered" style="margin-top: 10px;">
+                            <a class=" modal-trigger " data-modal="albums-help-modal">Forget Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Modal End -->
+
+
+<!-- Forget Password -->
+<div id="albums-help-modal" class="modal albums-help-modal is-xsmall has-light-bg">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+
+        <div class="card">
+            <div class="card-heading">
+                <h3>Forget Password</h3>
+                <!-- Close X button -->
+                <div class="close-wrap">
+                        <span class="close-modal">
+                            <i data-feather="x"></i>
+                        </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="content-block is-active" style="margin-left: -35px;text-align: center;align-items: center;">
+                    <img src="assets/img/forget_email.svg" alt="">
+                    <div class="help-text">
+                        <p style="margin-bottom: 10px;color: rgb(29, 29, 29);">Enter your Email address.</p>
+                        <input type="text" style="margin-bottom: 10px;" class="input is-fade"
+                               placeholder="Enter your Email">
+                        <a href="#" style="background-color:rgb(0, 81, 128);color: #fff;" class="button is-fullwidth">Send
+                            link</a>
+
+                    </div>
+
+
+                </div>
+
+                <div class="content-block">
+                </div>
+
+                <div class="slide-dots">
+                    <div class="column is-12">
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p style="font-size: small;margin-top: 10px;font-weight: 400;">Forgot which email address you signed up
+                    with? <a href="support.html">Get help!</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Forget Password -->
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <!-- Column -->
+            <div class="column is-2">
+                <div class="logo-footer">
+                    <img src="assets/img/logo/booctep.png" alt="">
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="column is-6 is-offset-1">
+                <div class="footer-columns columns" style="border-bottom: 1px solid rgb(226, 226, 226);">
+                    <!-- Column -->
+                    <div class="column">
+                        <ul class="footer-column">
+                            <div class="column">
+                                <a href="about.html" style="font-weight: 400;">About us</a>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- Column -->
+                    <div class="column">
+                        <ul class="footer-column">
+                            <div class="column">
+                                <a href="faqs.html" style="font-weight: 400;">FAQs</a>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- Column -->
+                    <div class="column">
+                        <ul class="footer-column">
+                            <div class="column">
+                                <a href="support.html" style="font-weight: 400;">Help</a>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- Column -->
+                    <div class="column">
+                        <ul class="footer-column">
+                            <div class="column">
+                                <a href="terms.html" style="font-weight: 400;">Terms</a>
+                            </div>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="footer-columns columns">
+                    <!-- Column -->
+                    <div class="column is-offset-2">
+                        <ul class="footer-column ">
+                            <div class="column">
+                                <a href="become.html" style="font-weight: 400;margin: 0 auto;">Become a teacher</a>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- Column -->
+                    <div class="column">
+                        <ul class="footer-column">
+                            <div class="column">
+                                <a href="signup.html" style="font-weight: 400;">My courses</a>
+                            </div>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column is-2 is-offset-1">
+
+
+                <div class="control-language-parent">
+
+                    <div class="control-language is-combo">
+                        <div class="combo-box">
+                            <div class="box-inner">
+                                <div class="combo-item">
+                                    <i class="combo-item-i fa fa-language"></i>
+                                    <span class="combo-item-span selected-item" selected="selected">English</span>
+                                </div>
+                            </div>
+                            <div class="box-chevron">
+                                <i data-feather="chevron-down" class="box-chevron-i"></i>
+                            </div>
+                            <div class="box-dropdown" id="directionSwitch">
+                                <div class="dropdown-inner has-slimscroll">
+                                    <ul>
+                                        <li>
+                                            <span class="item-icon">
+                                            </span>
+                                            <span class="item-name translate" class="" id="en">English</span>
+                                            <span class="checkmark">
+                                                <i data-feather="check"></i>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="item-icon">
+                                            </span>
+                                            <span class="item-name translate" class="" id="ar">Arabic</span>
+                                            <span class="checkmark">
+                                                <i data-feather="check"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</footer>
+<div class="copyright">
+    <div class="container">
+        <p> Made with <span class="fa fa-heart" style="color: red;"></span>&nbsp; By Booctep's Designers.</p>
+    </div>
+</div>
+<!-- Footer -->
+
+
+<script src="assets/js/writter.js"></script>
+
+<!-- Concatenated js plugins and jQuery -->
+<script src="assets/js/app.js"></script>
+<!-- Video player js -->
+
+<!-- Font Awesome -->
+<script src="assets/js/all.js"></script>
+
+<!-- Core js -->
+<script src="assets/js/global.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="assets/js/profile.js"></script>
+<script src="assets/js/explorer.js"></script>
+<script src="assets/js/shop.js"></script>
+
+
+<!-- jQuery -->
+<script src="assets/vendor/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/vendor/popper.min.js"></script>
+<script src="assets/vendor/bootstrap.min.js"></script>
+
+
+</body>
+</html>

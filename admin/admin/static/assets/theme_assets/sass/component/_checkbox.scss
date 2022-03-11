@@ -1,0 +1,172 @@
+// Custom Checkbox
+
+.custom-checkbox {
+    input {
+        display: none;
+    }
+
+    label {
+        display: inline-block !important;
+        font-size: 14px;
+    }
+
+    input[type="checkbox"]+label {
+        min-width: 18px;
+        min-height: 18px;
+        font-size: 14px;
+        display: flex;
+        flex-flow: column;
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 0;
+        line-height: 1.2;
+        font-weight: 400;
+        @extend .color-light;
+
+        &:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            content: "";
+            background-color: #fff;
+            border-width: 1px;
+            border-style: solid;
+            @extend .border-deep;
+        }
+
+        &:before {
+            position: absolute;
+            font-size: 10px;
+            left: 3px;
+            top: 2px;
+            font-weight: 900;
+            font-family: 'Font Awesome 5 Free';
+            content: "\f00c";
+            display: block;
+            opacity: 0;
+            transition: all 0.3s ease 0s;
+            z-index: 2;
+            @extend .color-primary;
+        }
+    }
+
+    input[type="checkbox"] {
+        &:checked+label {
+            &:after {
+                @extend .bg-primary;
+                @extend .border-primary;
+            }
+
+            &:before {
+                opacity: 1;
+                color: #fff;
+            }
+        }
+
+    }
+}
+
+// Custom Indeterminate
+.custom-checkbox {
+
+    input:indeterminate~label {
+
+        &::after {
+            background: $primary;
+            font-weight: 900;
+            font-family: 'Font Awesome 5 Free';
+            content: "\f068";
+            color: $white;
+            @extend .content-center;
+            font-size: 10px;
+            line-height: lh(10px, 20px);
+            border: 1px solid $primary;
+        }
+    }
+}
+
+// Custom Checkbox Disabled
+
+.custom-checkbox {
+    &.disabled {
+        opacity: .4;
+
+        label {
+            cursor: not-allowed;
+        }
+
+        input[type="checkbox"] {
+            &:checked+label {
+                &:after {
+                    background-color: #fff;
+                    @extend .border-deep;
+                }
+
+                &:before {
+                    @extend .color-extra-light;
+                    font-size: 8px;
+                    left: 4px;
+                    top: 4px;
+                }
+            }
+        }
+    }
+}
+
+// Checboc Theme 2
+
+.custom-checkbox {
+    &.checkbox-theme-2 {
+        input[type="checkbox"]+label {
+            &:after {
+                background-color: #fff;
+                @extend .border-light;
+            }
+
+            &::before {
+                top: 3px;
+                content: '';
+                width: 10px;
+                height: 10px;
+                border-radius: 3px;
+                @extend .bg-primary;
+            }
+        }
+    }
+}
+
+// Custom Checkbox Toggle
+
+.checkbox-controll {
+    @include e('actions') {
+        margin-top: 35px;
+
+        .btn-checkToggle {
+            min-width: 95px;
+            margin-right: 10px;
+        }
+
+        .btn-activeToggle {
+            min-width: 70px;
+        }
+    }
+}
+
+// Custom Checkbox Group
+
+.checkbox-group-header {
+    border-bottom: 1px solid $border-light;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+.checkbox-group {
+    @include e("single") {
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}

@@ -1,0 +1,407 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-main user-member justify-content-sm-between mt-50">
+                    <div class=" d-flex flex-wrap justify-content-center breadcrumb-main__wrapper">
+                        <div class="d-flex align-items-center user-member__title justify-content-center mr-sm-25">
+                            <h4 class="text-capitalize fw-500 breadcrumb-title">Tasks</h4>
+                            <span class="sub-title ml-sm-25 pl-sm-25">{{ taskcount }} Running tasks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="search_form" action="" method="post" class="order-search__form d-none">
+                {% csrf_token %}
+                <input type="hidden" name="type" id="type" value="{{ type }}">
+                <input type="hidden" name="page" id="page" value="{{ taskList.number }}">
+            </form>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                            <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                                <div class="d-flex align-items-center flex-wrap justify-content-center">
+                                    <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                        <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                        <div class="project-tap order-project-tap global-shadow">
+                                            <ul class="nav px-1" id="ap-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link {% if type == 0 %} active {% endif %}"
+                                                       id="ap-overview-tab" data-toggle="pill" onclick="setType(0)"
+                                                       href="#ap-overview" role="tab" aria-controls="ap-overview"
+                                                       aria-selected="true">Running tasks</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link {% if type == 1 %} active {% endif %}"
+                                                       id="timeline-tab" data-toggle="pill" onclick="setType(1)"
+                                                       href="#timeline" role="tab" aria-controls="timeline"
+                                                       aria-selected="false">Completed tasks</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link {% if type == 2 %} active {% endif %}"
+                                                       id="activity-tab" data-toggle="pill" onclick="setType(2)"
+                                                       href="#activity" role="tab" aria-controls="activity"
+                                                       aria-selected="false">Late tasks</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link {% if type == 3 %} active {% endif %}"
+                                                       id="draft-tab" data-toggle="pill" href="#draft"
+                                                       onclick="setType(3)"
+                                                       role="tab" aria-controls="draft" aria-selected="false">Incompleted
+                                                        tasks</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- End: .project-category -->
+                                </div><!-- End: .d-flex -->
+                            </div><!-- End: .project-top-wrapper -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" role="tabpanel"
+                                     aria-labelledby="ap-overview-tab">
+                                    <!-- Start Table Responsive -->
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-hover table-borderless border-0">
+                                            <thead>
+                                            <tr class="userDatatable-header">
+                                                <th>
+                                                    <span class="userDatatable-title">Task</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">StartDate</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">EndDate</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">Priority</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title">Status</span>
+                                                </th>
+                                                <th>
+                                                    <span class="userDatatable-title float-right">Actions</span>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for task in taskList %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="orderDatatable-title" data-title="{{ task.title }}" data-description="{{ task.description }}" onclick="showTaskModal('{{ task.id }}', this)">
+                                                            <p class="d-block mb-0">
+                                                                {{ task.title }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="orderDatatable-title">
+                                                            <p class="d-block mb-0">
+                                                                {{ task.start_date }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="orderDatatable-title">
+                                                            <p class="d-block mb-0">
+                                                                {{ task.end_date }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-inline-block">
+                                                        {% if task.priority == 0 %}
+                                                        <span class="media-badge color-white bg-primary">Low</span>
+                                                        {% endif %}
+                                                        {% if task.priority == 1 %}
+                                                        <span class="media-badge color-white bg-primary">High</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="orderDatatable-status d-inline-block">
+                                                        {% if task.status == 0 %}
+                                                        <span class="order-bg-opacity-success  text-success rounded-pill active">New</span>
+                                                        {% endif %}
+                                                        {% if task.status == 1 %}
+                                                        <span class="order-bg-opacity-success  text-success rounded-pill active">Completed</span>
+                                                        {% endif %}
+                                                        {% if task.status == 2 %}
+                                                        <span class="order-bg-opacity-success  text-success rounded-pill active">Late</span>
+                                                        {% endif %}
+                                                        {% if task.status == 3 %}
+                                                        <span class="order-bg-opacity-success  text-success rounded-pill active">Incompleted</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                        <li>
+                                                            <a href="#" class="view" data-toggle="modal" {% if task.status == 0 %} style="visibility: hidden;" {% endif %}
+                                                               onclick="showDelModal('{{ task.id }}')">
+                                                                <span data-feather="trash-2"></span></a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Table Responsive End -->
+                                </div>
+                            </div>
+                            {% if taskList.has_other_pages %}
+                            <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                                <nav class="atbd-page ">
+                                    <ul class="atbd-pagination d-flex">
+                                        <li class="atbd-pagination__item">
+                                            {% if taskList.has_previous %}
+                                            <a href="#" onclick="page_prev()"
+                                               class="atbd-pagination__link pagination-control"><span
+                                                    class="la la-angle-left"></span></a>
+                                            {% else %}
+                                            <a href="#" class="atbd-pagination__link pagination-control"
+                                               style="cursor: not-allowed; background: white;"><span
+                                                    class="la la-angle-left"></span></a>
+                                            {% endif %}
+                                            {% for i in taskList.paginator.page_range %}
+                                            {% if taskList.number == i %}
+                                            <a href="#" onclick="page_set('{{ i }}')"
+                                               class="atbd-pagination__link active"><span
+                                                    class="page-number">{{ i }}</span></a>
+                                            {% else %}
+                                            <a href="#" onclick="page_set('{{ i }}')"
+                                               class="atbd-pagination__link"><span
+                                                    class="page-number">{{ i }}</span></a>
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if taskList.has_next %}
+                                            <a href="#" onclick="page_next()"
+                                               class="atbd-pagination__link pagination-control"><span
+                                                    class="la la-angle-right"></span></a>
+                                            {% else %}
+                                            <a href="#" class="atbd-pagination__link pagination-control"
+                                               style="cursor: not-allowed; background: white;"><span
+                                                    class="la la-angle-right"></span></a>
+                                            {% endif %}
+                                            <a href="#" class="atbd-pagination__option">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            {% endif %}
+                        </div><!-- End: .userDatatable -->
+                    </div><!-- End: .col -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class=" kanban-modal__header-wrapper">
+                <div class="kanban-modal__header">
+                    <h1 id="task_title">Check course name = How to expert python.</h1>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span>  
+                </button>
+            </div>
+            <div class="modal-body kanban-modal__body">
+                <div style="background: #ECEEEF;border-radius: 6px;margin-bottom: 20px">
+                    <div style="word-break: break-word; padding: 10px;" id="task_description"></div>
+                </div>
+                <label for="upload" class="file-upload__label">
+                      <span class="upload-product-img px-10 d-block">
+                          <span class="file-upload">
+                              <span data-feather="upload"></span>
+                              <input id="upload"
+                                     class="file-upload__input"
+                                     type="file"
+                                     name="file-upload">
+                          </span>
+                          <span class="pera" id="upload_name">Drag and drop PDF/WORD file only</span>
+                          <span>or <a
+                                  href="#"
+                                  class="color-secondary">Browse</a> to choose a
+                              file</span>
+                      </span>
+                </label>
+                <div class="kanban-modal__form ">
+                    <div class="mb-30">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3"
+                                  placeholder="Add a more detailed description"></textarea>
+                    </div>
+                </div>
+                <div class="button-group d-flex pt-20">
+                    <button class="btn btn-primary btn-default btn-squared " onclick="completeTask()">Complete task
+                    </button>
+                    <button class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light">
+                        cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-info-delete modal fade show" id="modal-info-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to delete this task?</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success btn-outlined btn-sm" data-dismiss="modal" onclick="deleteTask()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-info-delete modal fade show" id="file_alert" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 10000;">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content" style="background: #5F63F2">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info" style="color: white"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6 id="alert_content" style="color: white"></h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+
+    let cur_page = '{{ taskList.number }}';
+    let cur_task_id;
+
+    function setType(id) {
+        console.log("here")
+        $("#type").val(id)
+        $("#search_form").submit()
+    }
+
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function showTaskModal(id, obj) {
+        cur_task_id = id
+        let title = $(obj).data('title')
+        let description = $(obj).data('description')
+        $("#task_title").html(title)
+        $("#task_description").html(description)
+        $("#exampleModal").modal("show")
+    }
+
+    function showDelModal(id) {
+        $("#modal-info-delete").modal("show")
+        cur_task_id = id
+    }
+
+    $("#upload").on('change', function (e) {
+        var reader = new FileReader()
+        reader.onload = function (e) {
+        };
+        reader.readAsDataURL(this.files[0]);
+        fileName = this.files[0].name
+        file_ext = fileName.split('.').pop()
+        if(file_ext != 'pdf') {
+            this.value = null
+            $("#file_alert").modal("show")
+            $("#alert_content").html("You must upload pdf file!")
+        }
+        $("#upload_name").html(fileName)
+    })
+
+    function completeTask() {
+        let file = $("#upload")[0].files[0]
+        let description = $("#description").val()
+        let form_data = new FormData()
+        let url = '/complete_task/'
+        form_data.append('file', file)
+        form_data.append('task_id', cur_task_id)
+        form_data.append('answer', description)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if(data.msg == "success"){
+                    console.log(data.msg)
+                } else {
+                }
+                location.reload()
+            },
+        })
+    }
+
+    function deleteTask() {
+        let url = '/delete_task/'
+        let form_data = new FormData()
+        form_data.append('id', cur_task_id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                location.reload()
+            },
+        })
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Size', description="Using Bootstrap's typical naming structure, you can create a standard avatar, or scale it up to different sizes based on what's needed.") %}
+    <div class="avatar avatar-xxl">
+      <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-xl">
+      <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-lg">
+      <img src="assets/images/people/256/256_rsz_florian-perennes-594195-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar">
+      <img src="assets/images/people/256/256_rsz_james-gillespie-714755-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-sm">
+      <img src="assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-xs">
+      <img src="assets/images/people/256/256_rsz_90-jiang-640827-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Status Indicator', description="Add an online or offline status indicator to show user's availability.") %}
+    <div class="avatar avatar-xxl avatar-offline">
+      <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-xl avatar-online">
+      <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-lg avatar-offline">
+      <img src="assets/images/people/256/256_rsz_florian-perennes-594195-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-online">
+      <img src="assets/images/people/256/256_rsz_james-gillespie-714755-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-sm avatar-offline">
+      <img src="assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-xs avatar-online">
+      <img src="assets/images/people/256/256_rsz_90-jiang-640827-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Shape', description='Change the shape of an avatar with the default Bootstrap image classes.') %}
+    <div class="avatar avatar-xxl">
+      <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar avatar-xxl">
+      <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar avatar-lg">
+      <img src="assets/images/people/256/256_rsz_florian-perennes-594195-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar avatar-lg">
+      <img src="assets/images/people/256/256_rsz_james-gillespie-714755-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+    <div class="avatar">
+      <img src="assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar">
+      <img src="assets/images/people/256/256_rsz_90-jiang-640827-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Ratio', description='Change the proportional relationship between the width and height of an avatar to 4 by 3 with an <code>.avatar-4by3</code> modifier.') %}
+    <div class="avatar avatar-xxl avatar-4by3">
+      <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar avatar-xl avatar-4by3">
+      <img src="assets/images/people/256/256_rsz_james-gillespie-714755-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar avatar-lg avatar-4by3">
+      <img src="assets/images/people/256/256_rsz_florian-perennes-594195-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+    <div class="avatar avatar-4by3">
+      <img src="assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="Avatar" class="avatar-img rounded">
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Initials', description="You won't always have an image for every user, so easily use initials instead.") %}
+    <div class="avatar avatar-xxl">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+    <div class="avatar avatar-xl">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+    <div class="avatar avatar-lg">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+    <div class="avatar">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+    <div class="avatar avatar-sm">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+    <div class="avatar avatar-xs">
+      <span class="avatar-title rounded-circle">LB</span>
+    </div>
+  {% endcall %}
+
+  {% set description %}
+    Easily group avatars of any size, shape and content with a single component. Each avatar can also use an <code>{{ '<a>' | escape }}</code> to link to the corresponding profile.
+  {% endset %}
+
+  {% call panel.component(title='Groups', description=description) %}
+    <div class="avatar-group">
+      <div class="avatar avatar-lg">
+        <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-lg">
+        <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-lg">
+        <img src="assets/images/people/256/256_rsz_florian-perennes-594195-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-lg">
+        <span class="avatar-title rounded-circle">LB</span>
+      </div>
+    </div>
+
+    <div class="avatar-group">
+      <div class="avatar">
+        <img src="assets/images/people/256/256_rsz_90-jiang-640827-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar">
+        <img src="assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar">
+        <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar">
+        <span class="avatar-title rounded-circle">LB</span>
+      </div>
+    </div>
+
+    <div class="avatar-group">
+      <div class="avatar avatar-xs">
+        <img src="assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-xs">
+        <img src="assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-xs">
+        <img src="assets/images/people/256/256_rsz_james-gillespie-714755-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+      </div>
+      <div class="avatar avatar-xs">
+        <span class="avatar-title rounded-circle">LB</span>
+      </div>
+    </div>
+  {% endcall %}
+</div>

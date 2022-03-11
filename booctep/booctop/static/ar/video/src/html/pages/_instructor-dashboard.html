@@ -1,0 +1,26 @@
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass }}">
+    
+    {% include 'pages/_instructor-dashboard.stats.html' %}
+
+  </div>
+</div>
+
+<div class="{{ containerClass or 'container' }} page-section">
+
+  {% include 'pages/_instructor-dashboard.earnings.html' %}
+
+  <div class="row mb-8pt">
+    <div class="col-lg-6">
+      
+      {% include 'pages/_instructor-dashboard.transactions.html' %}
+
+    </div>
+    <div class="col-lg-6">
+
+      {% include 'pages/_instructor-dashboard.comments.html' %}
+
+    </div>
+  </div>
+
+</div>

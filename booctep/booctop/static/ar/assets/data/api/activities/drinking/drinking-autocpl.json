@@ -1,0 +1,34 @@
+[
+    {
+        "name": "water",
+        "pic": "assets/img/icons/activities/drinking/water.svg"
+    },
+    {
+        "name": "a coffee",
+        "pic": "assets/img/icons/activities/drinking/coffee.svg"
+    },
+    {
+        "name": "a soda",
+        "pic": "assets/img/icons/activities/drinking/soda.svg"
+    },
+    {
+        "name": "an energy drink",
+        "pic": "assets/img/icons/activities/drinking/energy-drink.svg"
+    },
+    {
+        "name": "a smoothie",
+        "pic": "assets/img/icons/activities/drinking/smoothie.svg"
+    },
+    {
+        "name": "a beer",
+        "pic": "assets/img/icons/activities/drinking/water.svg"
+    },
+    {
+        "name": "a glass of wine",
+        "pic": "assets/img/icons/activities/drinking/water.svg"
+    },
+    {
+        "name": "a cocktail",
+        "pic": "assets/img/icons/activities/drinking/cocktail.svg"
+    }
+]

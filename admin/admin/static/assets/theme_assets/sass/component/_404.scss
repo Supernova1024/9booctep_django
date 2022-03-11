@@ -1,0 +1,23 @@
+//Error Page
+.error-page {
+    padding: 30px;
+    padding-top:0;
+    @include e(title) {
+        @include ofs(60px, lh(60px, 38px), 600);
+        @extend .color-extra-light;
+        margin-top: 107px;
+        margin-bottom: 37px;
+        @include sm{
+            margin-top:60px;
+        }
+
+        @include ssm {
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+    }
+    svg {
+        max-width: 100%;
+        height: auto;
+    }
+}

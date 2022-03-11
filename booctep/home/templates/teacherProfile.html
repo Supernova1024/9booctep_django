@@ -1,0 +1,195 @@
+{% extends "student/base.html" %}
+
+{% block title %}
+Account
+{% endblock %}
+
+{% block content %} 
+{% load static %}
+
+
+<div class=" page__container " style="margin-bottom: 35px;">
+
+    <div class="col-md-6 pt-3">
+        <div class="text-align-center" style="text-align:center; color :  rgb(218, 1, 1);" id="div_error"></div>
+        <div class="form-group">
+            <label class="form-label">Teacher photo</label>
+            <div class="media align-items-center">
+                <a href="" class="media-left mr-16pt">
+                    <img src="/static{{user.image}}" style="border: 2px solid grey;     height: 56px;" alt="people" width="56" class="rounded-circle" />
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group " style="margin-top: 25px !important;">
+            <label class="form-label">First name</label>
+            <input disabled type="text" class="form-control" value="{{user.first_name}}" id="first_name" name="first_name" placeholder="write your first name...">
+        </div>
+        <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+            <label class="form-label">Last name</label>
+            <input disabled type="text" class="form-control" value="{{user.last_name}}" id="last_name" name="last_name" placeholder="write your last name...">
+        </div>
+        <div class="form-group " style="margin-top: 5px !important;margin-bottom: 25px;">
+            <label class="form-label">Email</label>
+            <input disabled type="text" class="form-control" value="{{user.email}}" id="email" name="email" readonly placeholder="write your last name...">
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label">Bio</label>
+            <textarea readonly id="acc_bio" rows="3" class="form-control" value="" placeholder="About you ...">{{ user.profile.bio }}</textarea>
+        </div>
+
+        <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+            <label class="form-label">Facebook </label>
+            <input disabled id="acc_facebook" type="text" class="form-control" value="{{ user.profile.facebook_url }}" placeholder="write your last name...">
+        </div>
+
+        <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+            <label class="form-label">Instagram </label>
+            <input disabled id="acc_instagram" type="text" class="form-control" value="{{ user.profile.instagram_url }}" placeholder="write your last name...">
+        </div>
+
+        <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+            <label class="form-label">Twitter </label>
+            <input disabled id="acc_twitter" type="text" class="form-control" value="{{ user.profile.twitter_url }}" placeholder="write your last name...">
+        </div>
+
+        <div class="form-group " style="margin-top: 15px !important;margin-bottom: 15px;">
+            <label class="form-label">Website</label>
+            <input disabled id="acc_website" type="text" class="form-control" value="{{ user.profile.website_url }}" placeholder="write your website domain...">
+        </div>
+
+    </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+    $(document).ready(function() {
+        getSubCat('{{ profile.cat_id }}');
+        $('#acc_category').on('change', function() {
+            let cat_id = $('#acc_category').val();
+            getSubCat(cat_id);
+        });
+    });
+
+    const getSubCat = (cat_id) => {
+        let url = "/getsubcategory";
+        var subCategories = '{{ profile.subcat_ids }}'.split(',');
+        //Ajax Start
+        $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                headers: {'X-CSRFToken': $("#hd_csrf").val(),},
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    category_id: cat_id
+                },
+
+                beforeSend: function() {},
+                success: function(data) {
+                    let sub_cat = data.subcat_list;
+                    let html_subCat = '';
+                    sub_cat.forEach(cat => {
+                        if (subCategories.includes(cat.id.toString())) {
+                            html_subCat += '<option value="' + cat.id + '" selected>' + cat.name + '</option>';
+                        } else {
+                            html_subCat += '<option value="' + cat.id + '">' + cat.name + '</option>';
+                        }
+
+                    });
+                    console.log("html", html_subCat);
+                    $('#acc_subcategory').empty();
+                    $('#acc_subcategory').append(html_subCat);
+                },
+                error: function(err) {
+                    return false
+                }
+            })
+            // Ajax end
+        return false
+    }
+
+    function changeImg(){
+        path = $('#inputGroupFile01').val();
+        $("[for='inputGroupFile01']").html(path);
+    }
+
+    function updateUser() {
+        $("#div_error").html("");
+
+        if ($("#first_name").val() == "") {
+            $("#div_error").html("Please enter the first name");
+            return false
+        } else if ($("#last_name").val() == "") {
+            $("#div_error").html("Please enter the last name");
+            return false
+        } else if ($("#email").val() == "") {
+            $("#div_error").html("Please enter the correct email");
+            return false
+        }
+        var formData = new FormData();
+
+
+        var arr_subcat = $('#acc_subcategory').val();
+        var sub_cats = '';
+        arr_subcat.forEach(cat => {
+            sub_cats += ",";
+            sub_cats += cat;
+        });
+        var is_notification = document.getElementById('acc_notification').checked;
+
+        formData.append('file', $("#inputGroupFile01")[0].files[0]);
+        formData.append('first_name', $("#first_name").val());
+        formData.append('last_name', $("#last_name").val());
+        formData.append('email', $("#email").val());
+        formData.append('acc_bio', $('#acc_bio').val());
+        formData.append('cat_id', $('#acc_category').val());
+        formData.append('subcat_ids', sub_cats);
+        formData.append('facebook_url', $('#acc_facebook').val());
+        formData.append('instagram_url', $('#acc_instagram').val());
+        formData.append('twitter_url', $('#acc_twitter').val());
+        formData.append('website_url', $('#acc_website').val());
+        formData.append('is_notification', is_notification);
+        // Ajax start
+        var action = "/update-user";
+        $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                // headers: {'X-CSRFToken': $("#hd_csrf").val(),},
+                // contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: formData,
+
+                beforeSend: function() {
+
+                },
+                success: function(data) {
+                    if (data.msg == "success") {
+                        window.location.reload();
+                        return false
+
+                    } else if (data.msg == 'already') {
+
+                        $("#div_error").html("Email is already exist.");
+                        return false;
+                    } else {
+                        $("#div_error").html(data.msg);
+                        return false;
+                    }
+
+                },
+                error: function(err) {
+                    return false
+                }
+            })
+            // Ajax end
+        return false
+    }
+</script>
+
+{% endblock %}

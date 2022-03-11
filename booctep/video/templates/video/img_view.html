@@ -1,0 +1,10 @@
+<html>
+<body>
+{% load static %}
+{% if src %}
+<img  style="width:100%;" src="{% static src %}" />
+{% else %}
+<p style="font-size:70px; font-weight:bolder; text-align:center;"> Nothing to show </p>
+{% endif %}
+</body>
+</html>

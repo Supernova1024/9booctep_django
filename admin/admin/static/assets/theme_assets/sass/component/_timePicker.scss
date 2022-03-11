@@ -1,0 +1,23 @@
+// Time Picker Css
+.time-picker{
+    .input-container{
+        width: 34%;
+        @include ssm{
+            width: 100%;
+        }
+        .input-icon{
+            i,
+            svg,
+            img{
+                width: 18px;
+                height: 18px;
+            }
+        }
+        .form-control-lg{
+            height: 3rem;
+        }
+    }
+}
+.wickedpicker{
+    z-index: 1;
+}

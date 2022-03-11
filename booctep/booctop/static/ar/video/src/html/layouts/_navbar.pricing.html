@@ -1,0 +1,55 @@
+{% import 'components/avatar.html' as avatar %}
+
+<div class="navbar navbar-expand {{ navbar_class or '' }}" id="default-navbar" data-primary>
+
+  <!-- Navbar toggler -->
+  <button class="navbar-toggler w-auto mr-16pt d-block{% if layout !== 'default' %} d-lg-none{% endif %} rounded-0" type="button" data-toggle="sidebar">
+    <span class="material-icons">short_text</span>
+  </button>
+
+  <!-- Navbar Brand -->
+  <a href="{{ prefix }}index.html" class="navbar-brand mr-16pt{% if layout !== 'default' and layout !== 'sticky' %} d-lg-none{% endif %}">
+    <!-- <img class="navbar-brand-icon" src="assets/images/logo/white-100@2x.png" width="30" alt="{{ brand }}"> -->
+    {{ avatar.component(title='<img src="assets/images/illustration/student/128/white.svg" alt="logo" class="img-fluid" />', size='sm', class='navbar-brand-icon mr-0 mr-lg-8pt', title_class='bg-primary', circle=false, element='span') }}
+    <span class="d-none d-lg-block">{{ brand }}</span>
+  </a>
+
+  {% if navbar_search !== false %}
+  <form class="search-form navbar-search d-none d-lg-flex mr-16pt" action="{{ prefix }}index.html" style="max-width: 230px">
+    <button class="btn" type="submit"><i class="material-icons">search</i></button>
+    <input type="text" class="form-control" placeholder="Search ...">
+  </form>
+  {% endif %}
+
+  <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-center">
+    <li class="nav-item{% if slug === 'index' %} active{% endif %}">
+      <a href="{{ prefix }}index.html" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item{% if slug === 'courses' %} active{% endif %}">
+      <a href="{{ prefix }}courses.html" class="nav-link">Courses</a>
+    </li>
+    <li class="nav-item{% if slug === 'paths' %} active{% endif %}">
+      <a href="{{ prefix }}paths.html" class="nav-link">Paths</a>
+    </li>
+    <li class="nav-item{% if slug === 'pricing' %} active{% endif %}">
+      <a href="{{ prefix }}pricing.html" class="nav-link">Pricing</a>
+    </li>
+    <li class="nav-item{% if slug === 'blog' %} active{% endif %}">
+      <a href="{{ prefix }}blog.html" class="nav-link">Blog</a>
+    </li>
+  </ul>
+
+  {% set cta_class = 'btn-outline-dark' %}
+  {% if 'dark' in navbar_class %}
+    {% set cta_class = 'btn-outline-white' %}
+  {% endif %}
+
+  <ul class="nav navbar-nav ml-auto mr-0">
+    <li class="nav-item{% if slug === 'login' %} active{% endif %}">
+      <a href="{{ prefix }}login.html" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window"><i class="material-icons">lock_open</i></a>
+    </li>
+    <li class="nav-item{% if 'signup' in slug %} active{% endif %}">
+      <a href="{{ prefix }}signup.html" class="btn {{ cta_class }}">Get Started</a>
+    </li>
+  </ul>
+</div>

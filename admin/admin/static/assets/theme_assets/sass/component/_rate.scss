@@ -1,0 +1,41 @@
+// Rate Css
+.atbd-rating-wrap {
+    .rater {
+        line-height: 1;
+    }
+
+    .rater-text {
+        font-weight: 500;
+        display: inline-block;
+        font-size: 14px;
+        margin-left: 6px;
+        @extend .color-gray;
+
+        .rate-count {
+            margin-right: 3px;
+        }
+    }
+}
+
+//rating
+.rating-basic,
+.rating-half-star,
+.rater,
+.rating-readOnly {
+    display: flex;
+    align-items: center;
+}
+
+.jq-star {
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+
+    .jq-star-svg {
+        padding-left: 0;
+    }
+}
+
+.jq-star polygon{
+    stroke: none !important;
+}

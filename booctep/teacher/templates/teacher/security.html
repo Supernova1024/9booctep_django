@@ -1,0 +1,202 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="إعدادات الأمان" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Security" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+
+    <style>
+        html {
+            overflow-y: auto;
+        }
+    </style>
+
+{% block content %}
+    {% load static %}
+
+<style>
+
+.sweet-alert-dark{
+    background-color: rgb(158, 171, 179) !important;
+}
+
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+
+
+.form-control{
+    background-color: #f8f8f8 !important;
+    border: 1px solid  #dddddd !important;
+    color: rgb(29, 61, 90);
+}
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.form-control-dark label::selection{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: left !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+</style>
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+<style>
+
+
+.form-group label{
+    float: right !important;
+}
+
+.btn-primary{
+    float: right !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+</style>
+
+{% endif %}
+
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    <div class=" page__container " style="margin-top: 0px;height: 100vh;">
+        <div class="col-md-6 pt-3">
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> كلمة المرور الحالية</b></label>
+                <input type="password" id="currentpassword" class="form-control" placeholder="قم بكتابة كلمة المرور">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> كلمة المرور الجديدة</b></label>
+                <input type="password" id="newpassword" class="form-control" placeholder="قم بكتابة كلمة المرور">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class=" mediabout mediabout-dark" style=""><b style="font-size: 18px; font-weight: 700;"> إعادة كلمة المرور الجديدة</b></label>
+                <input type="password" id="retypenewpassword" class="form-control" placeholder="قم بكتابة كلمة المرور">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="return changepassword()">حفظ البيانات</button>
+        </div>
+    </div>
+    {% else %}
+    <div class=" page__container " style="margin-top: 0px;height: 100vh;">
+        <div class="col-md-6 pt-3">
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">Current Password</label>
+                <input type="password" id="currentpassword" class="form-control" placeholder="Enter password">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">New Password</label>
+                <input type="password" id="newpassword" class="form-control" placeholder="Enter password">
+            </div>
+
+            <div class="form-group " style="margin-top: 25px !important;">
+                <label class="form-label mediabout mediabout-dark">Retype new Password</label>
+                <input type="password" id="retypenewpassword" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="return changepassword()">Save changes</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        function checkPass() {
+            passVal = $('#currentpassword').val();
+            pass = '{{ password }}';
+            if (pass != passVal) {
+                showAlert(0, 'Current Password Incorrect!')
+                return;
+            }
+        }
+
+        function changepassword() {
+            checkPass()
+            if ($("#currentpassword").val() == "") {
+                showAlert(0, 'Please enter the current password')
+                return
+            }
+            if ($("#newpassword").val().trim().length < 6) {
+                showAlert(0, 'New password must be greater than 5 digit')
+                return
+            } else if ($("#retypenewpassword").val() == $("#newpassword").val() == "") {
+                showAlert(0, "password is not match. Please re-enter the correct password.")
+                return
+            }
+            // Ajax start
+            var action = "/changepassword/";
+            $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                // headers: {'X-CSRFToken': $("#hd_csrf").val(),},
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    currentpassword: $("#currentpassword").val(),
+                    newpassword: $("#newpassword").val()
+                },
+
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data.msg == "success") {
+                        showAlert(1, 'Changed Successfully!!!')
+                    } else {
+                        showAlert(0, 'Change error!!!')
+                    }
+                    return;
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+            return
+        }
+
+    </script>
+{% endblock %}
+

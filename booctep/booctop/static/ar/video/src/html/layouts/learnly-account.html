@@ -1,0 +1,101 @@
+{% extends "layouts/learnly.html" %}
+
+{% block page %}
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+      <div class="flex d-flex flex-column align-items-center align-items-lg-start mb-16pt mb-lg-0 text-center text-lg-left">
+        <h1 class="h2 mb-8pt">{{ title }}</h1>
+        <div>
+          {% if 'student' in slug %}
+            <span class="chip chip-outline-secondary d-inline-flex align-items-center" data-toggle="tooltip" data-title="Experience IQ" data-placement="bottom">
+              <i class="material-icons icon--left">opacity</i> 2,300 points
+            </span>
+          {% else %}
+            <span class="chip chip-outline-secondary d-inline-flex align-items-center" data-toggle="tooltip" data-title="Earnings" data-placement="bottom">
+              <i class="material-icons icon--left">trending_up</i> &dollar;12.3k
+            </span>
+            <span class="chip chip-outline-secondary d-inline-flex align-items-center" data-toggle="tooltip" data-title="Sales" data-placement="bottom">
+              <i class="material-icons icon--left">receipt</i> 264
+            </span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="ml-lg-16pt">
+        <a href="{{ prefix }}{% if 'student' in slug %}student{% else %}instructor{% endif %}-profile.html" class="btn btn-light">My Profile</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% if sidebar !== false %}
+<div class="page-section">
+  <div class="{{ containerClass }}">
+    
+    <div class="row">
+      <div class="col-lg-8">
+      {% endif %}
+
+        {% if results %}
+          {% import 'pages/_results-heading.html' as results %}
+          {{ results.component(sidebar_toggle=false, label='results') }}
+        {% endif %}
+
+        {{ super() }}
+
+      {% if sidebar !== false %}
+      </div>
+      <div class="col-lg-4">
+
+        {% if 'student' in slug %}
+
+          <div class="page-separator">
+            <div class="page-separator__text">Achievements</div>
+          </div>
+
+          {% include 'components/achievements.carousel.html' %}
+
+        {% else %}
+
+          <div class="accordion js-accordion accordion--boxed mb-24pt" id="instructor-accordion">
+            <div class="accordion__item">
+              <a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#instructor-accordion-menu" data-parent="#instructor-accordion">
+                <span class="flex">My Account</span>
+                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+              </a>
+              <div class="accordion__menu collapse" id="instructor-accordion-menu">
+                <div class="accordion__menu-link{% if slug === 'instructor-dashboard' %} active{% endif %}">
+                  <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
+                    <i class="material-icons icon-16pt">school</i>
+                  </span>
+                  <a class="flex" href="{{ prefix or '' }}instructor-dashboard.html">Dashboard</a>
+                </div>
+                <div class="accordion__menu-link{% if slug === 'instructor-courses' %} active{% endif %}">
+                  <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
+                    <i class="material-icons icon-16pt">import_contacts</i>
+                  </span>
+                  <a class="flex" href="{{ prefix or '' }}instructor-courses.html">Manage Courses</a>
+                </div>
+                <div class="accordion__menu-link{% if slug === 'instructor-quizzes' %} active{% endif %}">
+                  <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
+                    <i class="material-icons icon-16pt">help</i>
+                  </span>
+                  <a class="flex" href="{{ prefix or '' }}instructor-quizzes.html">Manage Quizzes</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endif %}
+
+        {% include 'pages/_course.recommended.html' %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}

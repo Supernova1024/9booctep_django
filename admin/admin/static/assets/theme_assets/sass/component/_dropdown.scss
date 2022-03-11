@@ -1,0 +1,216 @@
+.dropdown {
+  display: inline-block;
+  a,
+  i,
+  span,
+  svg {
+    font-size: 14px;
+  }
+  svg,
+  img {
+    width: 16px;
+  }
+  button {
+    padding: 0 21.36px;
+    height: 36px;
+    .icon-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: -42px;
+      top: 0;
+      width: 36px;
+      height: 36px;
+      z-index: 9;
+      border: 1px solid $border-light;
+      border-left: 0;
+      border-radius: 0 5px 5px 0;
+      svg,
+      i,
+      span {
+        margin-right: 0;
+        @extend .color-gray;
+      }
+    }
+  }
+  .btn-group {
+    button {
+      border-radius: 5px 0 0 5px;
+      padding: 0 16px;
+      &:first-child{
+        border-radius: 5px 0 0 5px !important;
+      }
+    }
+  }
+  .dropdown-toggle-split {
+    padding: 0 9.5px !important;
+    border-radius: 0 5px 5px 0 !important;
+    svg,
+    i,
+    img,
+    span {
+      margin: 0;
+    }
+  }
+}
+
+.dropdown-list {
+  margin: -4px -2px;
+  .dropdown {
+    margin: 4px 2px;
+  }
+}
+/* custom dropdown */
+.dropdown-custom {
+  position: relative;
+  .dropdown-wrapper {
+    position: absolute;
+    right: 0;
+    top: 54px;
+    min-width: 360px;
+    transition: $transition-base;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: #fff;
+    box-shadow: 0 5px 30px rgba($light-gray, 0.15);
+    transform: scale(0.7);
+    transform-origin: top right;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 35px;
+      top: -35px;
+      left: 0;
+    }
+    @include m("large") {
+      min-width: 700px;
+    }
+    @include m("small") {
+      min-width: 130px;
+    }
+  }
+  &:hover {
+    .dropdown-wrapper {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1);
+    }
+  }
+}
+
+/* basic dropdown */
+.dropdown-default,
+.dropdown-menu {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 5px 30px rgba($light-gray, 0.15);
+  padding: 15px 0;
+  z-index: 2222;
+  transform: none!important;
+  top: 40px !important;
+  left: auto !important;
+  right: 0 !important;
+  .dropdown-item {
+    font-size: 14px;
+    display: block;
+    line-height: 1.1;
+    padding: 13px 30px;
+    font-weight: 500;
+    @extend .color-light;
+    &:hover {
+      background: rgba($primary, 0.06);
+      @extend .color-primary;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
+
+.dropdown-hover {
+  position: relative;
+  &:hover {
+    .dropdown-default {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+    &.dropdown-btn {
+      .dropdown-default {
+        transform: translateY(15px);
+        top: 40px !important;
+      }
+    }
+  }
+  .dropdown-default {
+    left: 0 !important;
+    right: auto !important;
+    top: 30px !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition-base;
+  }
+}
+
+// Dropdown Placement
+
+.dropdown-default {
+  &.dropdown-bottomRight {
+    left: auto !important;
+    right: 0;
+  }
+  &.dropdown-bottomCenter {
+    left: 50%;
+    transform: translate(-50%, 0px) !important;
+  }
+  &.dropdown-topLeft {
+    top: 0;
+    transform: translateY(-110%) !important;
+  }
+  &.dropdown-topCenter {
+    top: 0;
+    transform: translate(-50%, -110%) !important;
+    left: 50%;
+  }
+  &.dropdown-topRight {
+    top: 0;
+    transform: translateY(-110%) !important;
+    left: auto !important;
+    right: 0;
+  }
+}
+.dropdown-hover {
+  &:hover {
+    .dropdown-default {
+      &.dropdown-bottomCenter {
+        transform: translate(-50%, 0px) !important;
+      }
+      &.dropdown-topLeft {
+        transform: translateY(-130%) !important;
+      }
+      &.dropdown-topCenter {
+        transform: translate(-50%, -130%) !important;
+      }
+      &.dropdown-topRight {
+        transform: translateY(-130%) !important;
+      }
+    }
+  }
+}
+
+// Dropdown Disabled
+
+.dropdown {
+  &.dropdown-disable {
+    @extend .bg-lighter;
+    button {
+      color: $extra-light !important;
+      cursor: not-allowed !important;
+    }
+  }
+}

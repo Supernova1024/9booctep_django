@@ -1,0 +1,297 @@
+//Add Product
+.add-product {
+    border-radius: 20px;
+    border: 1px solid #F1F2F6;
+    background-color: $bg-normal;
+    padding: 30px;
+
+    .card-body {
+        box-shadow: 0px 10px 30px #9299B81A;
+        border-radius: 20px;
+        background-color: $white;
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid $border-color;
+            padding: 27px 40px;
+        }
+    }
+
+    @include e(body) {
+        padding: 24px 40px;
+
+        .form-group {
+            margin-bottom: 23px;
+
+            label {
+                @include ofs(14px, lh(14px, 20px), 500);
+                @extend .color-dark;
+                text-transform: capitalize;
+                margin-bottom: 7px;
+            }
+
+            .form-control {
+                height: 48px;
+                border: 1px solid #E3E6EF;
+                border-radius: 4px;
+                resize: none;
+
+                &::placeholder {
+                    @include ofs(14px, lh(14px, 20px), 400);
+                    color: $light;
+                    text-transform: capitalize;
+                }
+                &:-moz-placeholder { 
+                    line-height: 35px;
+                 }
+                 
+                 &::-moz-placeholder { 
+                    line-height: 35px;
+                 }
+
+            }
+
+            textarea {
+                padding: 15px 20px;
+                min-height: 150px;
+            }
+
+            .input-group-text {
+                background-color: #F8F9FB;
+                border: 1px solid #E3E6EF;
+                @include ofs(15px, lh(15px, 20px), 400);
+                @extend .color-gray;
+                svg{
+                    width:16px;
+                }
+            }
+
+            .input-group input {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+
+                &::placeholder {
+                    color: $gray;
+                }
+            }
+        }
+
+        &-img {
+            padding: 30px 40px;
+        }
+    }
+}
+
+.add-product-btn {
+    button {
+        &:last-child {
+            box-shadow: 0px 8px 13px #5F63F233;
+        }
+    }
+}
+
+//Add Image
+.upload-product-img {
+    width: 100%;
+    border: 2px dashed #C6D0DC;
+    background: #F8F9FB;
+    border-radius: 10px;
+    text-align: center;
+    padding: 80px 0;
+    display: block;
+
+    svg {
+        @extend .color-extra-light;
+        width: 60px;
+        height: auto;
+    }
+
+    .pera {
+        font-weight: 500;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        font-size:20px;
+        display:block;
+    }
+
+    span {
+        @include ofs(15px, lh(15px, 22px), 500);
+        @extend .color-gray;
+
+        a {
+            @extend .color-secondary;
+        }
+    }
+}
+
+//Upload button
+.file-upload {
+    position: relative;
+    display: inline-block;
+
+    @include e(label) {
+        display: block;
+        @extend .color-dark;
+
+        &:hover {
+            cursor: pointer;
+            @extend .color-dark;
+        }
+    }
+
+    @include e(input) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 1;
+        width: 0;
+        height: 100%;
+        opacity: 0;
+    }
+}
+
+.upload-media-area {
+    width:100%;
+
+    img {
+        border-radius: 6px;
+        width: 100px;
+        height: 80px;
+        flex:1;
+        @include xxs{
+            width:70px;
+            height:60px;
+        }
+    }
+
+    @include e(title) {
+        flex:8;
+        justify-content: space-between;
+        word-break: break-all;
+        p {
+            @include ofs(14px, lh(14px, 20px), 500);
+            @extend .color-dark;
+            margin-bottom: 0;
+        }
+
+        span {
+            @include ofs(14px, lh(14px, 20px), 400);
+            @extend .color-light;
+        }
+    }
+
+    @include e(btn) {
+        button {
+            padding: 0;
+            transition: $transition-base;
+            &:hover{
+                background:rgba($light, 0.2);
+            }
+
+            svg {
+                @extend .color-danger;
+                width: 14px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+
+//Radio
+.add-product-status-radio {
+    .custom-radio input {
+        &[type="radio"]+label {
+            @extend .color-gray;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        &[type="radio"]:checked+label {
+            @extend .color-dark;
+        }
+    }
+
+}
+
+
+//Custom Number
+.quantity-appearance {
+    input[type="number"] {
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    .input-group-prepend {
+        flex: 1;
+    }
+
+    .pt_Quantity {
+        position: relative;
+        display: flex;
+        flex: 12;
+
+        input {
+            font-size: 15px;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        &:hover {
+            .pt_QuantityNav {
+                opacity: 1;
+            }
+        }
+    }
+
+    .pt_QuantityNav {
+        float: left;
+        position: relative;
+        height: 48px;
+        opacity: 0;
+        transition: $transition-base;
+    }
+
+    .pt_QuantityButton {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #e3e6ef;
+        width: 25px;
+        text-align: center;
+        height: 24px;
+        color: #9299b8;
+        font-size: 9px;
+        transform: translateX(-100%);
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:active {
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        &.pt_QuantityUp {
+            position: absolute;
+            height: 52%;
+            top: 0;
+            border-bottom: 1px solid #e3e6ef;
+        }
+
+        &.pt_QuantityDown {
+            position: absolute;
+            bottom: 0px;
+            height: 50%;
+        }
+    }
+}

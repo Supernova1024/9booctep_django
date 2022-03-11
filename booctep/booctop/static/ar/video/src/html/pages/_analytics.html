@@ -1,0 +1,477 @@
+{% import 'components/projects-table.html' as projects_table %}
+{% import 'components/pager.html' as pager %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="page-separator">
+      <div class="page-separator__text">Overview</div>
+    </div>
+
+    <div class="row mb-lg-8pt">
+      <div class="col-md-6 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-header p-0 nav border-0">
+            <div class="row no-gutters flex" role="tablist">
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">2,412</div>
+                  <div class="flex d-flex flex-column">
+                    <p class="mb-0"><strong>Website Visits</strong></p>
+                    <small class="text-50 d-flex align-items-center">Unique Visitors</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto ml-sm-auto">
+                <div class="p-card-header"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart" style="height: 128px;">
+              <canvas 
+                id="viewsChart"
+                class="chart-canvas js-update-chart-line js-update-chart-area"
+                data-chart-points="true"
+                data-chart-line-border-color="primary"
+                data-chart-prefix="$"
+                data-chart-suffix="k"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 card-group-row__col">
+
+        <div class="card card-group-row__card card-body" style="position: relative; padding-bottom: calc(80px - 1.25rem); overflow: hidden; z-index: 0;">
+
+          <div class="d-flex">
+            <div class="flex mr-3">
+              <div class="h2 mb-0">$1,450</div>
+              <div class="d-flex flex-column">
+                <p class="mb-0"><strong>Product Sales</strong></p>
+                <small class="text-50">30 transactions</small>
+              </div>
+            </div>
+            <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+          </div>
+
+          <div class="chart" style="height: 100px; position: absolute; left: 0; right: 0; bottom: 0;">
+            <canvas 
+              class="chart-canvas js-update-chart-line js-update-chart-area" 
+              id="productsChart"
+              data-chart-hide-axes="true"
+              data-chart-line-border-color="primary"></canvas>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-body">
+            <div class="d-flex mb-16pt">
+              <div class="flex mr-3">
+                <div class="h2 mb-0">1.24%</div>
+                <div class="d-flex flex-column">
+                  <p class="mb-0"><strong>Conversion Rate</strong></p>
+                  <small class="text-50">out of 5%</small>
+                </div>
+              </div>
+              <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+            </div>
+            <div class="progress" style="height: 8px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 42%;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="card-body d-flex flex-column align-items-center justify-content-center">
+            <div>
+              <small class="text-50">From last week</small>
+              <div class="d-flex align-items-center">
+                <i class="material-icons text-primary mr-4pt">trending_up</i>
+                <div class="text-70">12%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row card-group-row mb-lg-8pt">
+      <div class="col-md-6 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-header p-0 nav">
+            <div class="row no-gutters flex" role="tablist">
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">417</div>
+                  <div class="flex">
+                    <p class="mb-0"><strong>Orders</strong></p>
+                    <p class="text-50 mb-0 d-flex align-items-center">
+                      <small>This year</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto border-left">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">$67</div>
+                  <div class="flex">
+                    <p class="mb-0"><strong>Average</strong></p>
+                    <p class="text-50 mb-0 d-flex align-items-center">
+                      <small>Order Value</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto ml-sm-auto">
+                <div class="p-card-header"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="legend" class="chart-legend mt-0 mb-24pt justify-content-start"></div>
+            <div class="chart" style="height: 182px;">
+              <canvas 
+                id="earningsChart"
+                class="chart-canvas js-update-chart-bar" 
+                data-chart-legend="#legend"
+                data-chart-line-background-color="primary,gray"
+                data-chart-prefix="$"
+                data-chart-suffix="k">
+                <span style="font-size: 1rem;"><strong>Views</strong> area chart goes here.</span>
+              </canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6 card-group-row__col">
+
+        <div class="card card-group-row__card">
+          <div class="card-header p-0 nav">
+            <div class="row no-gutters flex" role="tablist">
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">103</div>
+                  <div class="flex">
+                    <p class="mb-0"><strong>Alerts</strong></p>
+                    <p class="text-50 mb-0 d-flex align-items-center">
+                      <small>All categories</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto ml-sm-auto">
+                <div class="p-card-header"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body d-flex flex-column">
+
+            <div class="alert alert-soft-warning">
+              <div class="d-flex flex-wrap align-items-start">
+                <div class="mr-8pt">
+                  <i class="material-icons">error_outline</i>
+                </div>
+                <div class="flex" style="min-width: 180px">
+                  <small class="text-100">
+                    <strong>Something's up!</strong> There were 98 alerts over your average.
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex flex-column align-items-center justify-content-center">
+              <ul class="list-unstyled list-skills w-100">
+                <li class="mb-8pt">
+                  <div class="text-50 border-right"><small>Site Offline</small></div>
+                  <div class="flex">
+                    <div class="progress" style="height: 4px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="text-70"><small>+60</small></div>
+                </li>
+                <li class="mb-8pt">
+                  <div class="text-50 border-right"><small>Total DDoS Attacks</small></div>
+                  <div class="flex">
+                    <div class="progress" style="height: 4px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="text-70"><small>+6</small></div>
+                </li>
+                <li class="mb-8pt">
+                  <div class="text-50 border-right"><small>Attack Mitigations</small></div>
+                  <div class="flex">
+                    <div class="progress" style="height: 4px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="text-70"><small>+5</small></div>
+                </li>
+                <li class="mb-8pt">
+                  <div class="text-50 border-right"><small>NVRs Offline</small></div>
+                  <div class="flex">
+                    <div class="progress" style="height: 4px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="text-70"><small>+10</small></div>
+                </li>
+                <li class="mb-0">
+                  <div class="text-50 border-right"><small>Shutdown</small></div>
+                  <div class="flex">
+                    <div class="progress" style="height: 4px;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="text-70"><small>+12</small></div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Projects</div>
+        </div>
+
+        <div class="card dashboard-area-tabs mb-lg-0">
+          <div class="card-header p-0 nav">
+            <div class="row no-gutters" role="tablist">
+              <div class="col-auto">
+                <a 
+                  href="#" 
+                  data-toggle="tab" 
+                  role="tab" 
+                  aria-selected="true" 
+                  class="dashboard-area-tabs__tab card-body d-flex flex-row align-items-center justify-content-start active">
+                  <span class="h2 mb-0 mr-3">3</span>
+                  <span class="flex d-flex flex-column">
+                    <strong>Active</strong>
+                    <small class="text-50">Ongoing Projects</small>
+                  </span>
+                </a>
+              </div>
+              <div class="col-auto border-left border-right">
+                <a 
+                  href="#" 
+                  data-toggle="tab" 
+                  role="tab" 
+                  aria-selected="false" 
+                  class="dashboard-area-tabs__tab card-body d-flex flex-row align-items-center justify-content-start">
+                  <span class="h2 mb-0 mr-3">2</span>
+                  <span class="flex d-flex flex-column">
+                    <strong>Archived</strong>
+                    <small class="text-50">Past Projects</small>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {{ projects_table.component(items=[{
+            avatar: { title: 'BN' },
+            name: 'Billy Nunez',
+            email: 'Quality Assurance',
+            department: 'Social Media API',
+            department_initials: 'SM',
+            department_bg: 'bg-primary text-white',
+            role: 'Twitter',
+            status: {
+              title: 'QA',
+              indicator_bg: 'bg-warning'
+            },
+            budget: {
+              amount: '1,200',
+              status: 'Invoice Sent'
+            },
+            date: '19/02/2019',
+            date_status: '18 days'
+          }, {
+            avatar: { title: 'TP' },
+            name: 'Tony Parks',
+            email: 'iOS Development',
+            department: 'Project Management App',
+            department_initials: 'PM',
+            department_bg: 'bg-accent text-white',
+            role: 'Github',
+            status: {
+              title: 'Finished',
+              indicator_bg: 'bg-accent'
+            },
+            budget: {
+              amount: '12,500',
+              status: 'Paid'
+            },
+            date: '18/02/2019',
+            date_status: 'Overdue',
+            date_status_class: 'text-danger'
+          }, {
+            selected: false,
+            avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+            name: 'Gilbert Barrett',
+            email: 'Marketing',
+            department: 'Advertising Platform',
+            department_initials: 'AD',
+            department_bg: 'bg-warning text-white',
+            role: 'Facebook',
+            status: {
+              title: 'Finished',
+              indicator_bg: 'bg-accent'
+            },
+            budget: {
+              amount: '7,100',
+              status: 'Paid'
+            },
+            date: '17/02/2019',
+            date_status: '15 days'
+          }, {
+            selected: false,
+            avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+            name: 'Ollie Wallace',
+            email: 'Design',
+            department: 'Frontend Development',
+            department_initials: 'FD',
+            department_bg: 'bg-light text-black-100',
+            role: 'Trello',
+            status: {
+              title: 'Designing',
+              indicator_bg: 'bg-primary'
+            },
+            budget: {
+              amount: '4,200',
+              status: 'Paid'
+            },
+            date: '16/02/2019',
+            date_status: '15 days'
+          }, {
+            selected: true,
+            avatar: { image: 'assets/images/people/110/guy-3.jpg' },
+            name: 'Ricardo Bell',
+            email: 'Web Development',
+            department: 'Database Upgrade',
+            department_initials: 'DU',
+            department_bg: 'bg-light text-black-100',
+            role: 'MySQL',
+            status: {
+              title: 'Waiting',
+              indicator_bg: 'bg-danger'
+            },
+            budget: {
+              amount: '130',
+              status: 'Overdue',
+              status_class: 'text-danger'
+            },
+            date: '01/12/2018',
+            date_status: '1 day'
+          }], status=false, budget=false) }}
+        </div>
+
+      </div>
+      <div class="col-lg-4">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Tasks</div>
+        </div>
+
+        {% set tasks = [
+          {
+            title: "Add Fluid Layout Featuring A Vertical Menu With Icons Only",
+            date: "Today",
+            attachments: true,
+            avatars: [
+              "assets/images/256_luke-porter-261779-unsplash.jpg",
+              "assets/images/256_michael-dam-258165-unsplash.jpg",
+              "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+            ],
+            indicators: [
+              "bg-primary",
+              "bg-accent"
+            ]
+          },
+          {
+            title: "Add Layout Options",
+            date: "Tomorrow",
+            avatars: [
+              "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+              "assets/images/256_michael-dam-258165-unsplash.jpg",
+              "assets/images/256_luke-porter-261779-unsplash.jpg"
+            ],
+            indicators: [
+              "bg-primary"
+            ],
+            image: "assets/images/stories/256_rsz_jared-rice-388260-unsplash.jpg"
+          }
+        ] %}
+
+        <div class="card mb-lg-0">
+          <div class="card-header d-flex align-items-center">
+            <strong class="flex">Tasks</strong>
+            <div><a href="#">View all</a></div>
+          </div>
+          <div class="progress rounded-0" style="height: 4px;">
+            <div class="progress-bar bg-accent" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="list-group list-group-flush">
+
+            {% for item in tasks %}
+            <div class="list-group-item p-16pt">
+
+              {% if item.image %}
+              <a href="" class="d-block mb-16pt"><img src="{{ item.image }}" alt="" style="height: 64px;" class="card-img card-img-cover"></a>
+              {% endif %}
+
+              <div class="d-flex">
+                <div class="d-flex flex-column flex">
+                  <a href="#" class="mb-8pt"><strong>{{ item.title }}</strong></a>
+                  <div class="d-flex align-items-center mb-8pt">
+                    {% for indicator in item.indicators %}
+                    <a href="" class="mr-4pt"><span class="indicator-line rounded {{ indicator }}"></span></a>
+                    {% endfor %}
+                  </div>
+                </div>
+                <a href="#"><i class="material-icons text-50">more_horiz</i></a>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="flex d-flex align-items-center">
+                  <small class="text-50 mr-16pt">{{ item.date }}</small>
+
+                  {% if item.attachments %}
+                  <i class="material-icons icon-16pt text-20 mr-4pt">link</i>
+                  <small class="text-50">2</small>
+                  {% endif %}
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="avatar-group flex mr-8pt">
+                    {% for avatar in item.avatars %}
+                    <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                      <a href=""><img src="{{ avatar }}" alt="Avatar" class="avatar-img rounded-circle"></a>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <a style="text-decoration: none;" class="rounded-circle d-flex align-items-center border align-items-center text-50" href=""><i class="material-icons icon-16pt m-1">add</i></a>
+                </div>
+              </div>              
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,60 @@
+{% macro component(
+  items=[
+    {
+      avatar: "assets/images/people/256/256_rsz_nicolas-horn-689011-unsplash.jpg",
+      name: "Jenell D. Matney", 
+      title: "Founder and CEO"
+    }, {
+      avatar: "assets/images/people/256/256_rsz_sharina-mae-agellon-377466-unsplash.jpg",
+      name: "Sherri J. Cardenas", 
+      title: "Software Engineer"
+    }, {
+      avatar: "assets/images/people/256/256_rsz_90-jiang-640827-unsplash.jpg",
+      name: "Joseph S. Ferland", 
+      title: "Web Designer"
+    }, {
+      avatar: "assets/images/people/256/256_rsz_karl-s-973833-unsplash.jpg",
+      name: "Bryan K. Davis", 
+      title: "Web Developer"
+    }
+]) %}
+<div 
+  data-toggle="lists" 
+  data-lists-values='["js-lists-values-employee-name", "js-lists-values-employee-title"]'
+  class="table-responsive">
+  <table class="table table-flush">
+    <thead>
+      <tr>
+        <th colspan="2">
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-employee-name">Employee name</a>
+          <a 
+            href="javascript:void(0)" 
+            class="sort" 
+            data-sort="js-lists-values-employee-title">Employee title</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      {% for item in items %}
+      <tr>
+        <td>
+          <div class="media align-items-center">
+            <div class="avatar avatar-sm mr-3">
+              <img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+            </div>
+            <div class="media-body">
+              <strong class="js-lists-values-employee-name">{{ item.name }}</strong><br>
+              <span class="text-muted js-lists-values-employee-title">{{ item.title }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="text-right"><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}

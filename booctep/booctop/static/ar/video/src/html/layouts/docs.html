@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ title }}</title>
+
+  {% include 'layouts/_header.html' %}
+
+  {% block head %}
+    {% include 'pages/_' + slug + '.head.html' ignore missing %}
+  {% endblock %}
+
+</head>
+<body class="{{ bodyClass or 'layout-default layout-sticky-subnav' }}">
+
+  {% set brand = 'Luma' %}
+  {% set layout = layout or 'default' %}
+  {% set prefix = prefix or '' %}
+  {% set containerClass = containerClass or 'container-fluid' %}
+  {% set drawerAlign = drawerAlign or 'start' %}
+  {% set home_url = home_url or 'index.html' %}
+  {% set drawerFile = drawerFile or '_drawer.docs.html' %}
+  
+  {% set bootstrap_version = 'v4.3.1' %}
+  {% set buy_label = 'Buy' %}
+  {% set buy_url = 'https://themeforest.net/item/luma-education-platform-lms-admin-template/26541343' %}
+  {% set demo_url = 'http://luma.humatheme.com/' %}
+  {% set docs_menu = slug === 'documentation' or slug === 'build' or slug === 'configuration' or slug === 'installation' or slug === 'community' %}
+
+  {% include 'layouts/_preloader.html' %}
+
+  <!-- Header Layout -->
+  <div class="mdk-header-layout js-mdk-header-layout">
+
+    <!-- Header -->
+    {% block header %}
+      <div id="header" class="mdk-header js-mdk-header m-0" data-fixed>
+        <div class="mdk-header__content">
+          {% block navbar %}
+            {% include 'layouts/_navbar.docs.html' %}
+          {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
+    <!-- // END Header -->
+
+    <!-- Header Layout Content -->
+    <div class="mdk-header-layout__content">
+
+      <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+        <div class="mdk-drawer-layout__content">
+
+          <div class="bg-white py-32pt border-bottom-2 mb-32pt">
+            <div class="{{ containerClass }} page__container">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a href="#">Documentation</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ section }}</li>
+                </ol>
+              </nav>
+              <h1 class="m-0">{{ title }}</h1>
+            </div>
+          </div>
+
+          {% block page %}
+            {% include 'pages/_' + slug + '.html' ignore missing %}
+          {% endblock %}
+
+        </div>
+        <!-- // END drawer-layout__content -->
+
+        {% include 'layouts/' + drawerFile ignore missing %}
+      </div>
+      <!-- // END drawer-layout -->
+
+    </div>
+    <!-- // END header-layout__content -->
+
+  </div>
+  <!-- // END header-layout -->
+
+  {% include 'layouts/_footer.html' %}
+
+  <!-- Highlight.js -->
+  <script src="assets/js/hljs.js"></script>
+
+  {% block footer %}
+    {% include 'pages/_' + slug + '.footer.html' ignore missing %}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+{% load i18n %}
+{% if lang == "ar" %}
+    {% include 'ar/home/contents.html' %}
+{% else %}
+<!-- Section Up -->
+
+<style>
+  element.style{
+    width: 0;
+  }
+</style>
+
+<section class="hero is-medium hero-homepage">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          {% trans 'Are you ready to learn?' %}
+        </h1>
+
+
+        <div class="typewritter">
+           <div class="container-title" style="margin-bottom:15px">
+               <h1 class="typewritter-title">
+                   <span class="primary__title" style="color: #fff;font-weight: 500;font-size: large">{% trans 'Learn' %}  &nbsp;</span><span class="secondary__title"> </span></h1>
+           </div>
+         </div>
+
+         {% get_current_language as lang %}
+         {% if lang == "en" %}
+         <div class="buttons" id='section2'>
+             <a class="button second-button" href="/{{lang}}/signup">
+               <b><p style="padding-right: 50px;">{% trans 'Get Started' %}</p></b>
+             </a>
+         </div>
+         {% else %}
+         <div class="buttons" id='section2'>
+             <a class="button second-button" href="/{{lang}}/signup">
+               <b><p style="padding-left: 50px;">{% trans 'Get Started' %}</p></b>
+             </a>
+         </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Section -->
+{% endif %}

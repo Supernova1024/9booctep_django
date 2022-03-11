@@ -1,0 +1,195 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  <div class="alert alert-soft-warning mb-24pt">
+    <div class="d-flex flex-wrap align-items-start">
+      <div class="mr-8pt">
+        <i class="material-icons">access_time</i>
+      </div>
+      <div class="flex" style="min-width: 180px">
+        <small class="text-black-100">
+          <strong>API gateways are now Offline.</strong><br>
+          <span>Please try the API later. If you want to stay up to date follow our status.</span>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  {% call panel.component(title='Light') %}
+    <div class="alert alert-light border-1 border-left-4 border-left-primary" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-light border-1 border-left-4 border-left-accent" role="alert">
+      <div class="d-flex flex-wrap align-items-center">
+        <i class="material-icons mr-8pt">access_time</i>
+        <div class="media-body" style="min-width: 180px">
+          <small class="text-black-100">Your subscription ends on <strong>25 February 2015</strong></small>
+        </div>
+        <div class="ml-8pt mt-2 mt-sm-0">
+          <a href="#" class="btn btn-link btn-sm">Upgrade</a>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-light border-1 border-left-4 border-left-warning mb-0" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+          </small>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Soft background', description='For a soft background, use one of the eight contextual classes i.e. <code>.alert-success</code>.') %}
+    <div class="alert alert-primary" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-accent" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Well done!</strong> You successfully read this important alert message.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warning mb-0" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+          </small>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Strong background', description='For a stronger background color use the <code>.bg-*</code> classes and <code>.text-white.border-0</code>.') %}
+    <div class="alert bg-primary text-white border-0" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small>
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert bg-accent text-white border-0" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small>
+            <strong>Well done!</strong> You successfully read this important alert message.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert bg-warning text-white border-0 mb-0" role="alert">
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small>
+            <strong>Warning!</strong> Better check yourself, you're not looking too good.
+          </small>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Dismissible Alerts', description='Add a button and the <code>.alert-dismissible</code> class, which adds extra padding to the right of the alert and positions the <code>.close</code> button.') %}
+    <div class="alert alert-soft-primary alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Primary - </strong> A simple primary alert - check it out!
+          </small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="alert alert-soft-accent alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Success - </strong> A simple success alert - check it out!
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-soft-warning alert-dismissible fade show mb-0" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="d-flex flex-wrap align-items-start">
+        <div class="mr-8pt">
+          <i class="material-icons">access_time</i>
+        </div>
+        <div class="flex" style="min-width: 180px">
+          <small class="text-black-100">
+            <strong>Secondary - </strong> A simple secondary alert - check it out!
+          </small>
+        </div>
+      </div>
+    </div>
+  {% endcall %}
+
+</div>

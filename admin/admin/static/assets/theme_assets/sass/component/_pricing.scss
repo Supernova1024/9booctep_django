@@ -1,0 +1,184 @@
+//Pages
+.pricing {
+    &-action button {
+        border-radius: 6px;
+    }
+
+    @include e(tag) {
+        @include ofs(13px, lh(13px, 20px), 500);
+        padding: 7px 22px;
+        height: 32px;
+        @extend .content-center;
+    }
+
+    @include e(badge) {
+        @include ofs(12px, lh(12px, 20px), 500);
+        color: $white;
+        margin-left: 12px;
+        height: 20px;
+        border-radius: 3px;
+        @extend .content-center;
+        padding: 3px 6px;
+    }
+
+    @include e(price) {
+        .pricing_offer {
+            @include ofs(16px, lh(16px, 25px), 400);
+            @extend .color-light;
+            margin-right: 10px;
+        }
+
+        .pricing_user {
+            @include ofs(13px, lh(13px, 22px), 400);
+            @extend .color-light;
+            margin-left: 8px;
+        }
+
+        .pricing_value {
+            margin-top: 21px;
+        }
+
+        .pricing_subtitle {
+            @include ofs(13px, lh(13px, 20px), 500);
+            @extend .color-gray;
+            text-transform: capitalize;
+        }
+
+        sup {
+            @include ofs(16px, lh(16px, 20px), 600);
+            @extend .color-extra-light;
+        }
+    }
+
+    @include e(features) {
+        ul {
+            padding-top: 30px;
+            padding-bottom: 2px;
+        }
+
+        ul li {
+            list-style-type: none;
+            @include ofs(14px, normal, 400);
+            position: relative;
+            padding-left: 1.33333rem;
+            margin-left: 0;
+            @extend .color-gray;
+            text-transform: capitalize;
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
+            >span:first-child {
+                position: absolute;
+                left: 0;
+                top: 4px;
+                margin-right: 4px;
+                width: 1.13333rem;
+                font-size: 0.73333rem;
+            }
+
+            span.fa-check {
+                @extend .color-success;
+            }
+
+            span.fa-times {
+                color: #e23636;
+            }
+        }
+
+    }
+}
+
+
+/*=====  13.1: Active Switcher  ======*/
+
+.ai-list {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-list-item {
+    margin: 0 8px;
+
+    span {
+        @extend .color-extra-light;
+        @include ofs(14px, lh(14px, 18px), 500);
+
+        &.active {
+            @extend .color-dark;
+        }
+    }
+}
+
+.ail {
+    display: none;
+
+    &,
+    &:after,
+    &:before,
+    & *,
+    & *:after,
+    & *:before,
+    &+.ail-btn {
+        box-sizing: border-box;
+
+        &::selection {
+            background: none;
+        }
+    }
+
+    +.ail-btn {
+        outline: 0;
+        display: block;
+        width: 45px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        margin: 0;
+
+        &:after,
+        &:before {
+            position: relative;
+            display: block;
+            content: "";
+            width: 18px;
+            height: 18px;
+        }
+
+        &:after {
+            left: 1px;
+            top: 1px;
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+
+    &:checked+.ail-btn:after {
+        left: 53%;
+    }
+}
+
+.ail-light {
+    +.ail-btn {
+        @extend .bg-primary;
+        border-radius: 2em;
+        padding: 2px;
+        transition: all .4s ease;
+
+        &:after {
+            border-radius: 50%;
+            background: $white;
+            transition: $transition-base;
+        }
+    }
+
+    &:checked+.ail-btn {
+        @extend .bg-primary;
+    }
+}

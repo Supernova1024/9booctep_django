@@ -1,0 +1,1826 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-03 20:44+0000\n"
+"PO-Revision-Date: 2020-07-02 01:07+1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: home/models.py:37
+msgid "email address"
+msgstr "البريد الإلكتروني"
+
+#: home/models.py:38
+msgid "staf status"
+msgstr ""
+
+#: home/models.py:39
+msgid "active"
+msgstr "متاح"
+
+#: home/models.py:40
+msgid "superuser status"
+msgstr ""
+
+#: home/models.py:61
+msgid "User"
+msgstr ""
+
+#: home/models.py:62
+msgid "Users"
+msgstr ""
+
+#: home/templates/about.html:675
+msgid "Booctep"
+msgstr "منصة بوستيب"
+
+#: home/templates/about.html:679
+msgid ""
+"It's an Arabic platform aims to spread scientific culture & circle of "
+"knowledge for those interested in self-learning to build a generation aware "
+"of all life sciences."
+msgstr ""
+"منصة تعليم عربية تهدف لنشر الثقافة العلمية و رفع الكفاءة و التطوير في شتى المجالات وتوسيع دائرة المعرفة للمهتمين بالتعلم الذاتي لبناء جيل واعي بكل علوم الحياة، من خلال تمكينهم من تطوير مهاراتهم و الوصول الى اهدافهم و زيادة المعرفة المهنية و توفير تجربة فريدة و بيئة مناسبة لرفع كفاءة التعليم الإلكتروني."
+
+#: home/templates/about.html:792 home/templates/become.html:250
+msgid "How it works!"
+msgstr "ماهي منصة بوستيب؟"
+
+#: home/templates/about.html:814
+msgid "مهارات جديدة"
+msgstr ""
+
+#: home/templates/about.html:815
+msgid ""
+"تعلم مهارات جديدة, تابع اهتماماتك وشغفك و تقدم في حياتك المهنية مع دورات "
+"منصة بوستيب, نقدم دورات جديدة كل أسبوع, تابع المنصة بشكل أسبوعي ليصلك كل "
+"جديد من دورات رعاية صحية, حاسب الي, تاريخ, علوم والكثير من العلوم."
+msgstr ""
+
+#: home/templates/about.html:819
+#, fuzzy
+#| msgid "Skills"
+msgid "New skills"
+msgstr "مهارات"
+
+#: home/templates/about.html:820
+msgid ""
+"Learn new skills, pursue your interests or advance your career with our "
+"online courses, Each week we add new online courses, check the platform "
+"weekly for new courses starting soon in subjects such as healthcare, "
+"infotmation technology, history, science and more."
+msgstr ""
+
+#: home/templates/about.html:837
+msgid "أحصل على شهادة إتمام"
+msgstr ""
+
+#: home/templates/about.html:838
+msgid ""
+"للتأكد من أنك تتحسن ، نقدم شهادة بعد إكمال الاختبار بنجاح ، مما يمنح الطلاب "
+"دليلًا على إنجازاتهم وعملهم الجاد."
+msgstr ""
+
+#: home/templates/about.html:842
+#, fuzzy
+#| msgid "Get Started"
+msgid "Get certificate"
+msgstr "أبدأ الآن"
+
+#: home/templates/about.html:843
+msgid ""
+"To ensure you are getting better, we offer a certificate after a test is "
+"successfully completed, giving students evidence of their accomplishments "
+"and hard work."
+msgstr "للتأكد من أنك تتحسن ، نقدم لك شهادة إتمام بعد الاختبار، دليل على إنجازك
+وعملك الجاد."
+
+#: home/templates/about.html:857
+msgid "تعلم ما تحب"
+msgstr ""
+
+#: home/templates/about.html:858
+msgid ""
+"التعرف على نفسك هو الخطوة الأولى في تعلم أن تحب ما تفعله. نحن نقدم العديد من "
+"الموضوعات والدورات للتواصل مع ما يلهمك."
+msgstr ""
+
+#: home/templates/about.html:862
+msgid "Learn what you love"
+msgstr "تعلم ما تحب"
+
+#: home/templates/about.html:863
+msgid ""
+"Getting to know yourself is the first step in learning to love what you do. "
+"we offer many topics and courses to get in touch with what inspires you."
+msgstr ""
+
+#: home/templates/about.html:893
+msgid "مميزات منصة بوستيب"
+msgstr ""
+
+#: home/templates/about.html:900
+#, fuzzy
+#| msgid "By Booctep's Designers."
+msgid "Booctep's Features"
+msgstr "من مصممي بوستيب"
+
+#: home/templates/about.html:919
+msgid "Lifetime Access"
+msgstr "وصول مدى الحياة"
+
+#: home/templates/about.html:921
+msgid "Access anytime you want one you enrol to any course."
+msgstr "قم بالدخول في أي وقت تريد لمتابعة وإنهاء دوراتك."
+
+#: home/templates/about.html:930
+#, fuzzy
+#| msgid "Get Started"
+msgid "Get Certificate"
+msgstr "أبدأ الآن"
+
+#: home/templates/about.html:932
+msgid "Get certificate when you finish your course."
+msgstr "أحصل على شهادة إتمام بعد الإنتهاء من الدورة."
+
+#: home/templates/about.html:940
+#, fuzzy
+#| msgid "Go Back"
+msgid "Money Back"
+msgstr "العودة"
+
+#: home/templates/about.html:942
+msgid "Take your money back if you have a problem with the course."
+msgstr "أسترد أموالك في حالة لم تعجبك الدورة المقدمة."
+
+#: home/templates/about.html:951
+msgid "Easy Dashboard"
+msgstr "لوحة تحكم سهلة"
+
+#: home/templates/about.html:953
+msgid ""
+"Easy dashboard to do your quizzes and watch your courses anytime you want."
+msgstr ""
+
+#: home/templates/about.html:967
+msgid "Quick Quizzes"
+msgstr "أختبارات سريعة"
+
+#: home/templates/about.html:969
+msgid "Take a very quick Quize before you get your certificate."
+msgstr "أختبارات لضمان استحقاقك الحصول على الشهادة."
+
+#: home/templates/about.html:978
+msgid "Many Subjects"
+msgstr "العديد من العلوم"
+
+#: home/templates/about.html:980
+msgid "we got many subjects in all major subjects in the world."
+msgstr "نقوم بتوفير العديد من علوم الحياة لتلبية احتياجات جميع محبي التعلم."
+
+#: home/templates/about.html:992
+msgid "المظهر الداكن"
+msgstr ""
+
+#: home/templates/about.html:994
+msgid "تمتع بتجربة فريدة بإستخدام المظهر الداكن لمنصة بوستيب."
+msgstr ""
+
+#: home/templates/about.html:998
+msgid "Dark Mode"
+msgstr "المظهر الداكن"
+
+#: home/templates/about.html:1000
+msgid "We translate all English videos for our students."
+msgstr "نقوم بترجمة للإنجليزي"
+
+#: home/templates/about.html:1010
+#, fuzzy
+#| msgid "Newest courses"
+msgid "Free courses"
+msgstr "الدورات الجديدة"
+
+#: home/templates/about.html:1012
+msgid "From each 10 paid courses we have at least 1 course free."
+msgstr "ندعم التعلم المجاني لبعض من دوراتنا في المنصة."
+
+#: home/templates/about.html:1044
+msgid "كيف أصبح معلما؟"
+msgstr ""
+
+#: home/templates/about.html:1045
+msgid "ألقي نظرة سريعة"
+msgstr ""
+
+#: home/templates/about.html:1049
+#, fuzzy
+#| msgid "Become a teacher"
+msgid "How to become a teacher?"
+msgstr "أصبح معلم"
+
+#: home/templates/about.html:1050
+msgid "Take a quick Look"
+msgstr "أحصل على نظرة سريعة."
+
+#: home/templates/become-teacher.html:311
+msgid "What are you going to teach?"
+msgstr "ماذا ستعلم؟"
+
+#: home/templates/become-teacher.html:313
+msgid "What are the sub category?"
+msgstr "ماهو التخصص الفرعي؟"
+
+#: home/templates/become-teacher.html:315
+msgid "Congrots! you have became a teacher."
+msgstr "مبروك! لقد أصبحت معلم في منصة بوستيب."
+
+#: home/templates/become-teacher.html:335 home/templates/signup.html:349
+#: home/templates/signup.html:395 home/templates/signup.html:403
+msgid "Next"
+msgstr "التالى"
+
+#: home/templates/become-teacher.html:404 home/templates/signup.html:347
+#: home/templates/signup.html:396 home/templates/signup.html:400
+#: home/templates/support.html:425 home/templates/support.html:507
+#: home/templates/support.html:579 home/templates/support.html:653
+#: home/templates/support.html:736 home/templates/support.html:789
+#: home/templates/support.html:833 home/templates/support.html:902
+#: home/templates/support.html:953 home/templates/support.html:1014
+#: home/templates/support.html:1089 home/templates/support.html:1140
+#: home/templates/support.html:1194 home/templates/support.html:1245
+#: home/templates/support.html:1293 home/templates/support.html:1348
+#: home/templates/support.html:1424 home/templates/support.html:1515
+#: home/templates/support.html:1606 home/templates/support.html:1711
+#: home/templates/support.html:1801 home/templates/support.html:1874
+#: home/templates/support.html:1942 home/templates/support.html:2006
+#: home/templates/support.html:2069 home/templates/support.html:2141
+#: home/templates/support.html:2236 home/templates/support.html:2303
+#: home/templates/support.html:2395 home/templates/support.html:2448
+#: home/templates/support.html:2513 home/templates/support.html:2604
+#: home/templates/support.html:2695 home/templates/support.html:2766
+#: home/templates/support.html:2858 home/templates/support.html:2930
+#: home/templates/support.html:3020 home/templates/support.html:3082
+#: home/templates/support.html:3173 home/templates/support.html:3264
+#: home/templates/support.html:3355 home/templates/support.html:3446
+#: home/templates/support.html:3537 home/templates/support.html:3628
+#: home/templates/support.html:3732 home/templates/support.html:3822
+#: home/templates/support.html:3892 home/templates/support.html:3983
+#: home/templates/support.html:4074 home/templates/support.html:4165
+#: home/templates/support.html:4256 home/templates/support.html:4347
+#: home/templates/support.html:4438
+msgid "Back"
+msgstr "رجوع"
+
+#: home/templates/become-teacher.html:408
+msgid "Finish"
+msgstr ""
+
+#: home/templates/become-teacher.html:466
+#, fuzzy
+#| msgid "we sent you an email to activate your account."
+msgid "please login again to configure your account."
+msgstr "قم بتفعيل حسابك."
+
+#: home/templates/become-teacher.html:482 home/templates/signup.html:428
+msgid "Crop your picture"
+msgstr "اقتصاص صورتك"
+
+#: home/templates/become.html:168 home/templates/become.html:171
+#: home/templates/layout/footer.html:366 home/templates/layout/footer.html:369
+#: home/templates/layout/header.html:472 home/templates/single_course.html:933
+#: home/templates/single_course.html:1535 home/templates/support.html:1722
+#: home/templates/support.html:1803
+msgid "Become a teacher"
+msgstr "أصبح معلم"
+
+#: home/templates/become.html:169
+msgid ""
+"Teach what you learn and earn money now, see this step for how to be a "
+"teacher than sign as a teacher."
+msgstr ""
+"قم بتدريب ما تعلمت واكسب المزيد من المال ، تقدم بطلب الالتحاق كمعلم الان."
+
+#: home/templates/become.html:192
+msgid "Step 1"
+msgstr "الخطوة الأولى"
+
+#: home/templates/become.html:193
+msgid "Sign up as a teacher."
+msgstr "قم بتسجيل الدخول كمعلم."
+
+#: home/templates/become.html:198
+msgid "Step 2"
+msgstr "الخطوة الثالثة"
+
+#: home/templates/become.html:199
+msgid "Set up your profile information."
+msgstr "قم بتسجيل الدخول كمعلم."
+
+#: home/templates/become.html:204
+msgid "Step 3"
+msgstr "الخطوة الثالثة"
+
+#: home/templates/become.html:205
+#, fuzzy
+#| msgid "What are you going to teach?"
+msgid "Select what you are going to teach."
+msgstr "ماذا ستعلم؟"
+
+#: home/templates/become.html:210
+msgid "Step 4"
+msgstr "الخطوة الرابعة"
+
+#: home/templates/become.html:211
+msgid "Teach what you have learned."
+msgstr ""
+
+#: home/templates/become.html:216
+msgid "Step 5"
+msgstr "الخطوة الخامسة"
+
+#: home/templates/become.html:217
+msgid "Not ready? submit a test course."
+msgstr "لست جاهز؟ قم بإرسال اختبار تجريبي."
+
+#: home/templates/become.html:222
+msgid "Step 6"
+msgstr "الخطوة السادسة"
+
+#: home/templates/become.html:223
+msgid "Meet your students and communicate with them."
+msgstr "التقي بطلابك وقم بمراسلتهم."
+
+#: home/templates/become.html:228
+msgid "Step 7"
+msgstr "الخطوة السابعة"
+
+#: home/templates/become.html:229
+msgid "Set up payout method"
+msgstr "قم بإضافة طرق استلامك لأرباحك"
+
+#: home/templates/become.html:234
+#, fuzzy
+#| msgid "Step 1"
+msgid "Step 8"
+msgstr "الخطوة الأولى"
+
+#: home/templates/become.html:235
+msgid "Receive what you have earned."
+msgstr "أستلم أرباحك من المنصة."
+
+#: home/templates/contact.html:145 home/templates/contact.html:156
+#: home/templates/layout/footer.html:351 home/templates/layout/footer.html:354
+msgid "Contact us"
+msgstr "تواصل معنا"
+
+#: home/templates/faqs.html:63
+msgid "الأسئلة الشائعة"
+msgstr ""
+
+#: home/templates/faqs.html:64
+msgid ""
+"أعرف أكثر عن الاسئلة الشائعة في منصة بوستيب, تعلم كيف تستخدم المنصة, قم بحل "
+"مشكلة وأحصل على إجابات سريعة لأسئلتك."
+msgstr ""
+
+#: home/templates/faqs.html:68 home/templates/layout/footer.html:294
+#: home/templates/layout/footer.html:296 home/templates/layout/header.html:1076
+#: home/templates/single_course.html:1529
+msgid "FAQs"
+msgstr "الاسئلة الشائعة"
+
+#: home/templates/faqs.html:69
+msgid ""
+".Read about Booctep's FAQs, Learn how to use Booctep, fix a problem, and get "
+"answers to your questions"
+msgstr ""
+
+#: home/templates/faqs.html:86
+msgid "Is there deadline for my courses?"
+msgstr "هل هناك وقت إنتهى لدوراتي؟"
+
+#: home/templates/faqs.html:89
+msgid ""
+"Booctep members once enrolled/bought a course they will get lifetime access "
+"for that course, they can start learn anytime they want, and finish anytime "
+"they want as well."
+msgstr ""
+"أعضاء منصة بوستيب في حالة شرائهم أو دخولهم لدورات في المنصة سوف يحصلون على "
+"دخول مدى الحياة في تلك الدورات, يستطيع العضو إكمال الدورة في أي وقت."
+
+#: home/templates/faqs.html:157
+#, fuzzy
+#| msgid "Become a teacher"
+msgid "Do I have to pay any fees to become a teacher?"
+msgstr "هل هناك رسوم في حال أردت أن أصبح مدرب؟"
+
+#: home/templates/faqs.html:163
+msgid ""
+"No, there is no fee to become a teacher at Booctep, the teachers are paid "
+"when students buys their course."
+msgstr ""
+"ليس هنالك رسوم لتصبح مدرب في منصة بوستيب, المدربون يتلقون أرباحهم بمجرد أن "
+"يحصلوا على طلاب."
+
+#: home/templates/faqs.html:202
+msgid "How does Booctep choose best quality of the teachers?"
+msgstr "كيف تختار منصة بوستيب جودة المعلمين؟"
+
+#: home/templates/faqs.html:205
+msgid ""
+"In Booctep anyone has qualified video and audio requirements can teach in "
+"our platform, you can choose your teacher carefully by looking into their "
+"ratings, comments etc, please note we promote the best teachers always "
+"through our social media accounts, emails or even advertising."
+msgstr ""
+"في منصة بوستيب هناك فريق مختص في التحري من جودة الدورات, لكن يجب عليك أن "
+"تعلم ان الجميع يستطيع التعليم في منصة بوستيب فلذلك يجب عليك اختيار دورتك "
+"بعناية, تنصح منصة بوستيب الطلاب بالنظر لتقييمات الدورة قبل شرائها. "
+
+#: home/templates/faqs.html:273
+msgid "How I can download my certificates?"
+msgstr "كيف أستطيع تحميل شهادتي؟"
+
+#: home/templates/faqs.html:276
+msgid ""
+"Once finish the course curriculum and it quiz, students will be able to "
+"download the certificate through their dashboard."
+msgstr ""
+"بعد الإنتهاء من الدورة كاملة و الإنتهاء من اختبار الحصول على الشهادة, تستطيع "
+"طباعة الشهادة من ذات المكان أو عن طريق لوحة التحكم ومن يمين الشاشة ( قسم "
+"شهاداتي )."
+
+#: home/templates/faqs.html:344
+msgid "Where I can find my courses after enrolled/bought it?"
+msgstr "أين أجد دوراتي التي قمت بشرائها أو الإنضمام لها؟"
+
+#: home/templates/faqs.html:347
+msgid ""
+"Once you enrolled or bought a course immediately the courses will be in your "
+"dashboard."
+msgstr ""
+"بمجرد شراء او الإنضمام إلى دورة سوف تكون تلقائيا في لوحة التحكم الخاصة "
+"بالطالب."
+
+#: home/templates/faqs.html:418
+msgid "تغيير كلمة المرور أو الأسم؟"
+msgstr ""
+
+#: home/templates/faqs.html:420
+#, fuzzy
+#| msgid "Choose a password"
+msgid "Change User name or Password?"
+msgstr "تغيير أسمك أو كلمة المرور؟"
+
+#: home/templates/faqs.html:424
+msgid ""
+"Booctep members can change their user name or password through their Booctep "
+"account settings, once you wish to change your user name or password Login "
+"into your account."
+msgstr ""
+"أعضاء منصة بوستيب يستطيعون تغيير أسمائهم أو كلمات مرورهم عن طريق لوحة التحكم "
+"الخاصة بهم, في أي وقت تريد أن تغيير فيه كلمة مرورك أو اسمك قم بتسجيل الدخول "
+"إلى حسابك."
+
+#: home/templates/faqs.html:494
+msgid "How can I pay for a course?"
+msgstr "كيف أستطيع الدفع للدورة؟"
+
+#: home/templates/faqs.html:499
+msgid ""
+"We support Paypal, Mada cards, STC Pay, Visa/ MasterCard for payments, any "
+"way if you got any payments problem you could open ticket through our email "
+"support@booctep.com, or Live chat box, we’ll be ready to help."
+msgstr ""
+
+#: home/templates/faqs.html:502
+msgid "كيف أستطيع دفع رسوم الدوة؟"
+msgstr ""
+
+#: home/templates/faqs.html:506
+msgid ""
+"نحن ندعم كلا من, بايبال, بطاقة مدى, اس تي سي باي, فيزا, ماستر كارد, على أية "
+"حال في حال واجهتك مشاكل في الدفع قم بمراسلتنا عبر الايميل support@booctep."
+"com أو عبر اللايف شات وسوف نكون مستعدين لخدمتك."
+msgstr ""
+
+#: home/templates/faqs.html:578
+#, fuzzy
+#| msgid "How I can download my certificates?"
+msgid "How to change my user name on the certificate?"
+msgstr "كيف أستطيع تحميل شهادتي؟"
+
+#: home/templates/faqs.html:583
+msgid ""
+"Booctep’s mempers can change their user name through the dashboard, once "
+"change user name the certificate will automatically rename to the new user "
+"name."
+msgstr ""
+
+#: home/templates/faqs.html:586
+msgid "كيف أستطيع تغيير اسمي على الشهادة؟"
+msgstr ""
+
+#: home/templates/faqs.html:590
+msgid ""
+"أعضاء منصة بوستيب يستطيعون تغيير اسمائهم عبر لوحة التحكم, وبالتالي فإن الأسم "
+"المطبوع على الشهادة سيكون ذات الأسم في لوحة التحكم, لتغيير الأسم قم بالدخول "
+"إلى حسابك."
+msgstr ""
+
+#: home/templates/faqs.html:662
+#, fuzzy
+#| msgid "Enter your email address"
+msgid "Can I change my emails address?"
+msgstr "قم بادخال ايميلك"
+
+#: home/templates/faqs.html:667
+msgid ""
+"Unfortunately this feature it’s not possible, but for difficult issues "
+"contact our technician support support@booctep.com we’ll be ready to help."
+msgstr ""
+
+#: home/templates/faqs.html:670
+msgid "هل أستطيع تغيير بريدي الإلكتروني؟"
+msgstr ""
+
+#: home/templates/faqs.html:674
+msgid ""
+"للأسف لا يمكنك, لكن في حال كانت هنالك مشكلة تستحق التغيير قم بمراسلتنا عبر "
+"الإيميل support@booctep.com سوف نكون سعداء بخدمتك."
+msgstr ""
+
+#: home/templates/faqs.html:747
+msgid "Am i required to finish the quiz to get my certificate?"
+msgstr ""
+
+#: home/templates/faqs.html:752
+msgid ""
+"Yes, to get the certificate of any course you must finish the quiz of that "
+"course."
+msgstr ""
+
+#: home/templates/faqs.html:755
+msgid "هل أنا ملزم بإنهاء الاختبار للحصول على الشهادة؟"
+msgstr ""
+
+#: home/templates/faqs.html:759
+msgid "نعم أنت ملزم لإنهاء الاختبار للحصول على الشهادة."
+msgstr ""
+
+#: home/templates/filter_course_list.html:129
+msgid "Previous"
+msgstr "التالي"
+
+#: home/templates/filter_course_list.html:142
+msgid "Next page"
+msgstr "السابق"
+
+#: home/templates/home/contents-2.html:80
+#: home/templates/layout/dialogs.html:232
+msgid "Welcome Back"
+msgstr "مرحبا بك من جديد"
+
+#: home/templates/home/contents-2.html:82
+#: home/templates/home/contents-2.html:84
+#: home/templates/home/contents-2.html:86
+#: home/templates/home/contents-2.html:208
+#: home/templates/home/contents-2.html:210
+#, fuzzy
+#| msgid "My courses"
+msgid "Move to My courses"
+msgstr "دوراتي"
+
+#: home/templates/home/contents-2.html:139 home/templates/signup.html:281
+#: home/templates/signup.html:293 home/templates/signup.html:304
+msgid "Continue"
+msgstr "سجل"
+
+#: home/templates/home/contents-2.html:206
+#, fuzzy
+#| msgid "Welcome Back"
+msgid "Welcome"
+msgstr "مرحبا بك من جديد"
+
+#: home/templates/home/contents.html:18
+msgid "Are you ready to learn?"
+msgstr "هل أنت جاهز للتعلم؟"
+
+#: home/templates/home/contents.html:25
+msgid "Learn"
+msgstr "تعلم"
+
+#: home/templates/home/contents.html:33 home/templates/home/contents.html:39
+msgid "Get Started"
+msgstr "أبدأ الآن"
+
+#: home/templates/index.html:114 home/templates/search.html:62
+#: home/templates/single_category.html:80
+msgid "All"
+msgstr "الكل"
+
+#: home/templates/index.html:116 home/templates/search.html:63
+#: home/templates/single_category.html:82
+msgid "Paid"
+msgstr "مدفوعة"
+
+#: home/templates/index.html:118 home/templates/search.html:64
+#: home/templates/single_category.html:84
+msgid "Free"
+msgstr "مجانية"
+
+#: home/templates/index.html:353 home/templates/single_course.html:1985
+#: home/templates/single_course.html:1992
+msgid "Demo"
+msgstr "عرض تجريبي"
+
+#: home/templates/index.html:432
+msgid "Categories"
+msgstr "الأقسام"
+
+#: home/templates/index.html:439 home/templates/layout/dialogs.html:119
+msgid "Web Development"
+msgstr "تطوير الويب"
+
+#: home/templates/index.html:440
+msgid ""
+"#HTML, #Css, #Js, #PHP, #Python, #Java, #Ruby, #C++, #R, #SQl, #C, #swift, "
+"#Swift, #kotlin, #etc."
+msgstr ""
+"#اتش-تي-ام-ال-٥، #بايثون، #بي-اتش-بي، #جيكوري، #جافا-سكربت، #جافا، #سويفت، "
+"#روبي، #الخ.."
+
+#: home/templates/index.html:447 home/templates/layout/dialogs.html:132
+msgid "Aviation"
+msgstr "طيران"
+
+#: home/templates/index.html:448
+msgid ""
+"#AirCraft_Maintenance, #Professional_Pilot, #Flight_instructure, "
+"#Airport_security, #Airline_managment, #etc.."
+msgstr "#طيار، #مضيف-طيران، #هندسة-طيران، #مساعد-طيار، #مدير-مطارات، #الخ.."
+
+#: home/templates/index.html:459
+#, fuzzy
+#| msgid "Business"
+msgid "#Business"
+msgstr "ادارة اعمال"
+
+#: home/templates/index.html:460
+msgid "#Human resource"
+msgstr ""
+
+#: home/templates/index.html:460
+msgid "#Markting"
+msgstr ""
+
+#: home/templates/index.html:461
+msgid "#international business_managment"
+msgstr ""
+
+#: home/templates/index.html:462
+msgid "#business managment"
+msgstr ""
+
+#: home/templates/index.html:462
+msgid "#Finance"
+msgstr ""
+
+#: home/templates/index.html:463
+#, fuzzy
+#| msgid "Accounts"
+msgid "#Accounting"
+msgstr "حسابات"
+
+#: home/templates/index.html:463
+msgid "#Audit"
+msgstr ""
+
+#: home/templates/index.html:464
+msgid "#Analysis of business"
+msgstr ""
+
+#: home/templates/index.html:464
+msgid "#etc"
+msgstr ""
+
+#: home/templates/index.html:471
+msgid "Physical & Chemistry"
+msgstr "كيمياء وفيزياء"
+
+#: home/templates/index.html:472
+msgid "#General_chemistry, #Medical_chemistry, #Biochemistry"
+msgstr ""
+
+#: home/templates/index.html:473
+msgid "#General_physical, #Engineering_physical, #Physical_science,"
+msgstr ""
+
+#: home/templates/index.html:474
+msgid "#Laser_physic,#Optics, #Mevhanics, #Cosmology, #etc.."
+msgstr ""
+
+#: home/templates/index.html:484
+msgid "Gaming"
+msgstr "ترفيه"
+
+#: home/templates/index.html:485
+msgid "#Furtnite, #Pes, #Fifa, #Pubg, #COD, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:493
+msgid "Engineering"
+msgstr "هندسة"
+
+#: home/templates/index.html:494
+#, fuzzy
+#| msgid ""
+#| "#Civil_engineering, #Architecter_engineering, #electronic_engineering, "
+#| "#etc.."
+msgid ""
+"#Civil_engineering, #Architecter_engineering,#electronic_engineering, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:504 home/templates/layout/dialogs.html:144
+msgid "Mathmatics"
+msgstr "رياضيات"
+
+#: home/templates/index.html:505
+msgid "#Analysis, #Calculate, #algebra, #algorithm, #statics, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:517 home/templates/layout/dialogs.html:200
+msgid "Skills"
+msgstr "مهارات"
+
+#: home/templates/index.html:518
+#, fuzzy
+#| msgid ""
+#| "#Eyes_Connect, #Insurance_market, #Communication, #Content_industry, "
+#| "#Costumers_needs, #the_Secretary, #etc.."
+msgid ""
+"#Eyes_Connect, #Insurance_market, #Communication, #Content_industry,"
+"#Costumers_needs, #the_Secretary, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:526
+msgid "Maintaince & Reparing"
+msgstr "صيانة"
+
+#: home/templates/index.html:527
+msgid "#Cars, #Motorocycle, #PC, #Aircone, #Plumbing, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:539
+msgid "Hospitality & Tourism"
+msgstr "فندقة وضيافة"
+
+#: home/templates/index.html:540
+#, fuzzy
+#| msgid "#Management, #Kitchen, #Leader, #jerson, #Tourism_industry , #etc.."
+msgid "#Management, #Kitchen, #Leader, #jerson, #Tourism_industry ,#etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:547 home/templates/layout/dialogs.html:162
+msgid "Information Technology"
+msgstr "تكنولوجيا المعلومات"
+
+#: home/templates/index.html:548
+#, fuzzy
+#| msgid ""
+#| "#Cyber_security, #Virtual_environment, #Networking, #Data_analysis, "
+#| "#Data_base, #Robots, #Haking, #etc.."
+msgid ""
+"#Cyber_security, #Virtual_environment, #Networking, #Data_analysis,"
+"#Data_base, #Robots, #Haking, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:557
+msgid "Life style"
+msgstr "أمور حيوية"
+
+#: home/templates/index.html:558
+#, fuzzy
+#| msgid ""
+#| "#Fitness, #sports, #Diet, #resistance_trainging, #healthy_life_style, "
+#| "#athletics, #Physical_therapy , #Dance ,#etc.."
+msgid ""
+"#Fitness, #sports, #Diet, #resistance_trainging,#healthy_life_style, "
+"#athletics, #Physical_therapy , #Dance ,#etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:565
+msgid "Self development"
+msgstr "تطوير الذات"
+
+#: home/templates/index.html:566
+#, fuzzy
+#| msgid ""
+#| "#Entrepreneurship, #Confidence, #Communicate, #persuasion, #team_work, "
+#| "#time_managment, #etc.."
+msgid ""
+"#Entrepreneurship, #Confidence, #Communicate, #persuasion,#team_work, "
+"#time_managment, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:576 home/templates/layout/dialogs.html:156
+msgid "Arts"
+msgstr "فن ورسم"
+
+#: home/templates/index.html:577
+msgid "#Sketch, #Faces, #places, #Softwares, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:589 home/templates/layout/dialogs.html:180
+msgid "Languages"
+msgstr "لغات"
+
+#: home/templates/index.html:590
+msgid "#Arabic, #English, #chinese, #Spanish, #France, #Turkiesh, #Malay."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:598 home/templates/layout/dialogs.html:207
+msgid "Others"
+msgstr "أخرى"
+
+#: home/templates/index.html:599
+msgid "General courses in differents subjects are here.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:611
+msgid "Drama"
+msgstr "سينماء"
+
+#: home/templates/index.html:612
+#, fuzzy
+#| msgid ""
+#| "#Cinematography, #Documentaries, #Photographing, #Acting, #Director, "
+#| "#etc.."
+msgid ""
+"#Cinematography, #Documentaries, #Photographing, #Acting,#Director, #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:619
+msgid "Sewing design"
+msgstr "خياطة"
+
+#: home/templates/index.html:620
+msgid "#Pants, #T-shirt, #Kids, #Fashion, #dress , #etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:629
+msgid "Food and coocking"
+msgstr "طبخ"
+
+#: home/templates/index.html:630
+#, fuzzy
+#| msgid ""
+#| "#Arabic_food, #Amirecan_food, #Indian_food, #Pasta, #Pizza, #spaghetti, "
+#| "#Burger, #Rice, #Chicken, #Fries ,#etc.."
+msgid ""
+"#Arabic_food, #Amirecan_food, #Indian_food, #Pasta, #Pizza,#spaghetti, "
+"#Burger, #Rice, #Chicken, #Fries ,#etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:637
+msgid "Design"
+msgstr "تصميم"
+
+#: home/templates/index.html:638
+msgid ""
+"#T-shirt, #Building, #Studiom, #Gardens, #Educationals_building, #Museum, "
+"#etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/index.html:648
+msgid "Software Programs"
+msgstr "برامج"
+
+#: home/templates/index.html:649
+msgid ""
+"#Adobe_photoshop, #illustrator, #Maya, #Adobe_XD, #Excel, #Word, "
+"#Visual_studio, #Adobe_after_effect, #Filmora, #Terminal, #CMD ,#etc.."
+msgstr "#العاب، #ترفيه، رياضة، #شطرنج، #الخ.."
+
+#: home/templates/layout/dialogs.html:111
+msgid "Explore"
+msgstr "الأقسام"
+
+#: home/templates/layout/dialogs.html:126
+msgid "Business"
+msgstr "ادارة اعمال"
+
+#: home/templates/layout/dialogs.html:138
+msgid "Games"
+msgstr "ترفيه"
+
+#: home/templates/layout/dialogs.html:150
+msgid "life Style"
+msgstr "أسلوب الحياة"
+
+#: home/templates/layout/dialogs.html:168
+msgid "Cenima & Drama"
+msgstr "سينما و دراما"
+
+#: home/templates/layout/dialogs.html:174
+msgid "Software Programming"
+msgstr "برمجة"
+
+#: home/templates/layout/dialogs.html:186
+msgid "Food & Cooking"
+msgstr "طعام وطبخ"
+
+#: home/templates/layout/dialogs.html:193
+msgid "Repare & Maintaince"
+msgstr "صيانة"
+
+#: home/templates/layout/dialogs.html:231
+#: home/templates/layout/dialogs.html:274
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: home/templates/layout/dialogs.html:234
+msgid "Login via Gmail"
+msgstr "تسجيل الدخول عن طريق قوقل"
+
+#: home/templates/layout/dialogs.html:238
+#, fuzzy
+#| msgid "Sign up via Facebook"
+msgid "Login via Facebook"
+msgstr "تسجيل عن طريق فيسبوك"
+
+#: home/templates/layout/dialogs.html:249
+msgid "Enter email"
+msgstr "ادخل البريد الالكتروني"
+
+#: home/templates/layout/dialogs.html:258
+msgid "Enter your password"
+msgstr "ادخل كلمة المرور"
+
+#: home/templates/layout/dialogs.html:267 home/templates/login.html:746
+msgid "Remember me"
+msgstr "تذكرني"
+
+#: home/templates/layout/dialogs.html:278
+msgid "Already have an account ?"
+msgstr "ليس لديك حساب؟"
+
+#: home/templates/layout/dialogs.html:278 home/templates/layout/header.html:935
+#: home/templates/layout/header.html:1089
+#: home/templates/single_course.html:1405
+#: home/templates/single_course.html:1540
+msgid "Sign up"
+msgstr "تسجيل جديد"
+
+#: home/templates/layout/dialogs.html:280
+#: home/templates/layout/dialogs.html:297
+msgid "Forget Password"
+msgstr "نسيت الرمز السري"
+
+#: home/templates/layout/dialogs.html:310
+msgid "Enter your Email address."
+msgstr "أدخل البريد الالكتروني."
+
+#: home/templates/layout/dialogs.html:315
+msgid "Enter your Email"
+msgstr "ادخل ايميلك"
+
+#: home/templates/layout/dialogs.html:317
+msgid "Send link"
+msgstr "ارسل رابط"
+
+#: home/templates/layout/dialogs.html:330
+#: home/templates/layout/dialogs.html:375
+#, fuzzy
+#| msgid "Enter your Email"
+msgid "Forget your email?"
+msgstr "ادخل ايميلك"
+
+#: home/templates/layout/dialogs.html:330
+#: home/templates/layout/dialogs.html:375
+msgid "Get help!"
+msgstr "احصل على المساعدة!"
+
+#: home/templates/layout/dialogs.html:343
+#, fuzzy
+#| msgid "Repeat Password"
+msgid "Reset Password"
+msgstr "اعادة كلمة السر"
+
+#: home/templates/layout/dialogs.html:355
+#, fuzzy
+#| msgid "Enter your Email address."
+msgid "Enter your Email and Password."
+msgstr "أدخل البريد الالكتروني."
+
+#: home/templates/layout/dialogs.html:359
+msgid "Email"
+msgstr "ايميلك"
+
+#: home/templates/layout/dialogs.html:360
+msgid "Password"
+msgstr "كلمة السر"
+
+#: home/templates/layout/dialogs.html:362 home/templates/support.html:479
+#: home/templates/support.html:835
+#, fuzzy
+#| msgid "Repeat Password"
+msgid "Reset password"
+msgstr "اعادة كلمة السر"
+
+#: home/templates/layout/footer.html:281 home/templates/layout/footer.html:283
+#: home/templates/layout/header.html:1073
+#: home/templates/single_course.html:1526
+msgid "About us"
+msgstr "عن بوستيب"
+
+#: home/templates/layout/footer.html:307 home/templates/layout/footer.html:309
+#: home/templates/layout/header.html:886 home/templates/single_course.html:1356
+msgid "Help"
+msgstr "مساعدة"
+
+#: home/templates/layout/footer.html:320 home/templates/layout/footer.html:322
+msgid "Terms"
+msgstr "الشروط"
+
+#: home/templates/layout/footer.html:336 home/templates/layout/footer.html:339
+#: home/templates/privacy.html:145
+msgid "Privacy & Policy"
+msgstr "سياسة الخصوصية"
+
+#: home/templates/layout/footer.html:388 home/templates/layout/footer.html:406
+#: home/templates/layout/footer.html:434
+msgid "Arabic"
+msgstr "عربي"
+
+#: home/templates/layout/footer.html:451
+msgid "نتشرف بمتابعتك"
+msgstr ""
+
+#: home/templates/layout/footer.html:453
+msgid "Follow us"
+msgstr ""
+
+#: home/templates/layout/footer.html:466
+msgid "Made with"
+msgstr "صمم بحب"
+
+#: home/templates/layout/footer.html:467
+msgid "By Booctep's Designers."
+msgstr "من مصممي بوستيب."
+
+#: home/templates/layout/head/head.html:4
+msgid "Booctep | Homepage"
+msgstr "الصفحة الرئيسية"
+
+#: home/templates/layout/header.html:421 home/templates/layout/header.html:983
+#: home/templates/layout/header.html:1064 home/templates/single_course.html:887
+#: home/templates/single_course.html:1450
+#: home/templates/single_course.html:1517
+msgid "Search course"
+msgstr "أبحث عن دورة"
+
+#: home/templates/layout/header.html:461 home/templates/single_course.html:922
+#, fuzzy
+#| msgid "Learn"
+msgid "My Learning"
+msgstr "تعلم"
+
+#: home/templates/layout/header.html:480
+#, fuzzy
+#| msgid "Search course"
+msgid "Add course"
+msgstr "أبحث عن دورة"
+
+#: home/templates/layout/header.html:513 home/templates/layout/header.html:542
+#: home/templates/layout/header.html:589 home/templates/layout/header.html:618
+#: home/templates/layout/header.html:670 home/templates/layout/header.html:703
+#: home/templates/layout/header.html:783 home/templates/single_course.html:976
+#: home/templates/single_course.html:1006
+#: home/templates/single_course.html:1054
+#: home/templates/single_course.html:1084
+#: home/templates/single_course.html:1170
+#: home/templates/single_course.html:1253
+msgid "Total:"
+msgstr "مجموع:"
+
+#: home/templates/layout/header.html:544 home/templates/single_course.html:1008
+#, fuzzy
+#| msgid "4 Notifications"
+msgid "0 Notifications"
+msgstr "4 الإخطارات"
+
+#: home/templates/layout/header.html:557 home/templates/layout/header.html:560
+#: home/templates/single_course.html:1021
+#: home/templates/single_course.html:1024
+#, fuzzy
+#| msgid "view all Notifications"
+msgid "View all Notifications"
+msgstr "عرض جميع الإخطاراتn"
+
+#: home/templates/layout/header.html:590 home/templates/single_course.html:1055
+#, fuzzy
+#| msgid "messages"
+msgid " Messages"
+msgstr "الرسائل"
+
+#: home/templates/layout/header.html:620 home/templates/single_course.html:1086
+#, fuzzy
+#| msgid "messages"
+msgid "0 Messages"
+msgstr "الرسائل"
+
+#: home/templates/layout/header.html:632 home/templates/layout/header.html:635
+#: home/templates/single_course.html:1098
+#: home/templates/single_course.html:1101
+msgid "View all Messages"
+msgstr ""
+
+#: home/templates/layout/header.html:671 home/templates/layout/header.html:704
+#, fuzzy
+#| msgid "Newest courses"
+msgid " Favorite courses"
+msgstr "الدورات الجديدة"
+
+#: home/templates/layout/header.html:717 home/templates/layout/header.html:721
+#: home/templates/single_course.html:1185
+#: home/templates/single_course.html:1189
+msgid "View favorite page"
+msgstr ""
+
+#: home/templates/layout/header.html:784 home/templates/single_course.html:1172
+#: home/templates/single_course.html:1255
+#, fuzzy
+#| msgid "My courses"
+msgid "0 Courses"
+msgstr "دوراتي"
+
+#: home/templates/layout/header.html:798 home/templates/layout/header.html:802
+#: home/templates/single_course.html:1269
+#: home/templates/single_course.html:1273
+#, fuzzy
+#| msgid "Next page"
+msgid "View cart page"
+msgstr "السابق"
+
+#: home/templates/layout/header.html:830 home/templates/layout/header.html:841
+#: home/templates/single_course.html:1300
+#: home/templates/single_course.html:1311
+msgid "Settings"
+msgstr "الاعدادات"
+
+#: home/templates/layout/header.html:851 home/templates/single_course.html:1321
+msgid "Payout"
+msgstr ""
+
+#: home/templates/layout/header.html:863 home/templates/layout/header.html:875
+#: home/templates/single_course.html:1333
+#: home/templates/single_course.html:1345
+msgid "My courses"
+msgstr "دوراتي"
+
+#: home/templates/layout/header.html:898 home/templates/layout/header.html:909
+#: home/templates/single_course.html:1368
+#: home/templates/single_course.html:1379
+msgid "messages"
+msgstr "الرسائل"
+
+#: home/templates/layout/header.html:920 home/templates/single_course.html:1390
+msgid "Log out"
+msgstr "تسجيل خروج"
+
+#: home/templates/layout/header.html:939 home/templates/layout/header.html:1093
+#: home/templates/single_course.html:1409
+#: home/templates/single_course.html:1543
+msgid "Log in"
+msgstr "تسجيل دخول"
+
+#: home/templates/layout/header.html:1079
+msgid "Help center"
+msgstr ""
+
+#: home/templates/layout/header.html:1082
+msgid "Terms of use"
+msgstr ""
+
+#: home/templates/layout/header.html:1231
+#: home/templates/single_course.html:2978
+msgid "Write a course name please!"
+msgstr "أكتب أسم الدورة من فضلك!"
+
+#: home/templates/privacy.html:156 home/templates/terms.html:157
+msgid "General"
+msgstr ""
+
+#: home/templates/privacy.html:159
+#, fuzzy
+#| msgid "Information Technology"
+msgid "Information"
+msgstr "تكنولوجيا المعلومات"
+
+#: home/templates/privacy.html:162
+#, fuzzy
+#| msgid "messages"
+msgid "Usage"
+msgstr "الرسائل"
+
+#: home/templates/privacy.html:165
+msgid "Disclaimer"
+msgstr ""
+
+#: home/templates/privacy.html:168
+msgid "Updates"
+msgstr ""
+
+#: home/templates/registration/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""
+
+#: home/templates/signup.html:259
+#, fuzzy
+#| msgid "Sign up as"
+msgid "Sign up as a"
+msgstr "تسجيل كـ"
+
+#: home/templates/signup.html:262
+msgid "Tell us more about you."
+msgstr "أخبرنا اكثر عن نفسك."
+
+#: home/templates/signup.html:264
+msgid "we sent you an email to activate your account."
+msgstr "قم بتفعيل حسابك."
+
+#: home/templates/signup.html:278 home/templates/signup.html:290
+msgid "Student"
+msgstr "طالب"
+
+#: home/templates/signup.html:301
+msgid "Teacher"
+msgstr "معلمين"
+
+#: home/templates/signup.html:310
+msgid "Or"
+msgstr "أو"
+
+#: home/templates/signup.html:316
+msgid "Sign up via Gmail"
+msgstr "تسجيل  عن طريق قوقل"
+
+#: home/templates/signup.html:322
+msgid "Sign up via Facebook"
+msgstr "تسجيل عن طريق فيسبوك"
+
+#: home/templates/signup.html:342
+msgid "Add Categories"
+msgstr "أضف فئات"
+
+#: home/templates/signup.html:360
+msgid "Enter your first name"
+msgstr "قم بادخال اسمك الاول"
+
+#: home/templates/signup.html:366
+msgid "Enter your last name"
+msgstr "قم بادخال اسمك الاخير"
+
+#: home/templates/signup.html:372
+msgid "Enter your email address"
+msgstr "قم بادخال ايميلك"
+
+#: home/templates/signup.html:378
+msgid "Choose a password"
+msgstr "ادخل كلمة السر"
+
+#: home/templates/signup.html:385
+msgid "Repeat your password"
+msgstr "اعد ادخال كلمة السر"
+
+#: home/templates/signup.html:413
+msgid "Congratz, you successfully created your account."
+msgstr "مبروك، لقد قمت بالتسجيل بنجاح."
+
+#: home/templates/signup.html:414
+msgid ""
+"We just sent you a confirmation email. PLease confirm your account within 24 "
+"hours."
+msgstr "لإكمال التسجيل قم بتفعيل حسابك، قمنا بارسال رابط التفعيل في ايميلك."
+
+#: home/templates/signup.html:453
+msgid "What will you teach?"
+msgstr "ماذا ستعلم؟"
+
+#: home/templates/signup.html:500
+msgid "Go Back"
+msgstr "العودة"
+
+#: home/templates/signup.html:511
+msgid "Add"
+msgstr "أضف"
+
+#: home/templates/signup.html:617
+msgid "Please enter the first name"
+msgstr "يرجى إدخال الاسم الأول"
+
+#: home/templates/signup.html:620
+msgid "Please enter the last name"
+msgstr "الرجاء إدخال الاسم الأخير"
+
+#: home/templates/signup.html:623
+msgid "Please enter the valid email"
+msgstr "يرجى إدخال البريد الإلكتروني الصحيح"
+
+#: home/templates/signup.html:665
+msgid "Password must be greater than 5 digit"
+msgstr ""
+
+#: home/templates/signup.html:669
+msgid "Please enter the password"
+msgstr "يرجى إدخال كلمة المرور"
+
+#: home/templates/signup.html:672
+msgid "Please enter the confirm password"
+msgstr "الرجاء إدخال كلمة المرور لتأكيدها"
+
+#: home/templates/signup.html:675
+msgid "password is not match. Please re-enter the correct password."
+msgstr "كلمة المرور غير متطابقة. يرجى إعادة إدخال كلمة المرور الصحيحة."
+
+#: home/templates/single_category.html:60
+#, python-format
+msgid " %(course_cnt)s courses in %(course_name)s "
+msgstr ""
+
+#: home/templates/single_category.html:61
+msgid "If you don't find what you want, be more specific.."
+msgstr "اذا لم تجد ما تبحث عنه قم بكتابة الكلمات بعناية"
+
+#: home/templates/single_course.html:941
+#, fuzzy
+#| msgid "Search course"
+msgid "Add a course"
+msgstr "أبحث عن دورة"
+
+#: home/templates/single_course.html:1532
+#, fuzzy
+#| msgid "Help & Support"
+msgid "Support"
+msgstr "مساعدة"
+
+#: home/templates/single_course.html:1603
+msgid "Created by"
+msgstr ""
+
+#: home/templates/support.html:114
+msgid "Help & Support"
+msgstr "مساعدة"
+
+#: home/templates/support.html:115
+msgid ""
+"We're here to help you learn about Booctep. Browse our collection of helpful "
+"articles and videos and find answers <br> to your questions quickly."
+msgstr ""
+
+#: home/templates/support.html:324 home/templates/terms.html:160
+msgid "Accounts"
+msgstr "حسابات"
+
+#: home/templates/support.html:334
+#, fuzzy
+#| msgid "My courses"
+msgid "Courses"
+msgstr "دوراتي"
+
+#: home/templates/support.html:344 home/templates/terms.html:169
+#, fuzzy
+#| msgid "Teacher"
+msgid "Teachers"
+msgstr "معلمين"
+
+#: home/templates/support.html:354 home/templates/support.html:2450
+#: home/templates/support.html:2697
+#, fuzzy
+#| msgid "Get Started"
+msgid "Certificates"
+msgstr "أبدأ الآن"
+
+#: home/templates/support.html:369
+msgid "Refund"
+msgstr ""
+
+#: home/templates/support.html:379
+#, fuzzy
+#| msgid "Help & Support"
+msgid "Quick support"
+msgstr "مساعدة"
+
+#: home/templates/support.html:389 home/templates/support.html:3022
+msgid "Payments issues"
+msgstr ""
+
+#: home/templates/support.html:399
+#, fuzzy
+#| msgid "Others"
+msgid "Other articles"
+msgstr "أخرى"
+
+#: home/templates/support.html:407
+msgid "What’s happening with you?"
+msgstr "ماذا يحدث معك؟"
+
+#: home/templates/support.html:427
+#, fuzzy
+#| msgid "Secure your account."
+msgid "Managing your account"
+msgstr "ادخل كلمة السر الخاصة بك."
+
+#: home/templates/support.html:436 home/templates/support.html:509
+#, fuzzy
+#| msgid "Already have an account ?"
+msgid "Creating an account"
+msgstr "ليس لديك حساب؟"
+
+#: home/templates/support.html:444 home/templates/support.html:581
+#, fuzzy
+#| msgid "Enter your Email"
+msgid "Edit your profile"
+msgstr "ادخل ايميلك"
+
+#: home/templates/support.html:452
+#, fuzzy
+#| msgid "Login Problems"
+msgid "Sign in problems"
+msgstr "مشاكل تسجيل الدخول"
+
+#: home/templates/support.html:460 home/templates/support.html:738
+#, fuzzy
+#| msgid "Forget Password"
+msgid "Forget password"
+msgstr "نسيت الرمز السري"
+
+#: home/templates/support.html:471 home/templates/support.html:791
+#, fuzzy
+#| msgid "Enter your Email"
+msgid "Forget Email"
+msgstr "ادخل ايميلك"
+
+#: home/templates/support.html:487 home/templates/support.html:904
+#, fuzzy
+#| msgid "Enter your Email address."
+msgid "Change Email address"
+msgstr "أدخل البريد الالكتروني."
+
+#: home/templates/support.html:495
+msgid "Stop receiving emails"
+msgstr ""
+
+#: home/templates/support.html:655
+#, fuzzy
+#| msgid "Login Problems"
+msgid "Login in problems"
+msgstr "مشاكل تسجيل الدخول"
+
+#: home/templates/support.html:955
+msgid "Stop receiving marketing emails?"
+msgstr ""
+
+#: home/templates/support.html:1016
+#, fuzzy
+#| msgid "My courses"
+msgid "Managing your courses"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1025 home/templates/support.html:1091
+#, fuzzy
+#| msgid "My courses"
+msgid "My Enrolled courses"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1033
+msgid "My course got deleted"
+msgstr ""
+
+#: home/templates/support.html:1041
+#, fuzzy
+#| msgid "My courses"
+msgid "Download my courses?"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1049
+#, fuzzy
+#| msgid "My courses"
+msgid "Cannot access my courses"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1061 home/templates/support.html:1295
+msgid "Free courses and paid courses"
+msgstr ""
+
+#: home/templates/support.html:1071 home/templates/support.html:1350
+msgid "Requirements to watch the courses"
+msgstr ""
+
+#: home/templates/support.html:1142
+#, fuzzy
+#| msgid "My courses"
+msgid "My courses got deleted"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1196 home/templates/support.html:1247
+#, fuzzy
+#| msgid "My courses"
+msgid "Download my courses"
+msgstr "دوراتي"
+
+#: home/templates/support.html:1426 home/templates/support.html:2992
+#: home/templates/support.html:3539 home/templates/support.html:3794
+#: home/templates/support.html:4349
+msgid "7"
+msgstr ""
+
+#: home/templates/support.html:1517 home/templates/support.html:1608
+#: home/templates/support.html:3000 home/templates/support.html:3630
+#: home/templates/support.html:3802 home/templates/support.html:4440
+msgid "8"
+msgstr ""
+
+#: home/templates/support.html:1713 home/templates/support.html:2397
+msgid "Managing your teacher account"
+msgstr ""
+
+#: home/templates/support.html:1730
+#, fuzzy
+#| msgid "Teacher"
+msgid "Teacher levels"
+msgstr "معلمين"
+
+#: home/templates/support.html:1738 home/templates/support.html:1944
+msgid "How to payout"
+msgstr ""
+
+#: home/templates/support.html:1746 home/templates/support.html:2008
+msgid "Marketing"
+msgstr ""
+
+#: home/templates/support.html:1757 home/templates/support.html:2071
+#, fuzzy
+#| msgid "By Booctep's Designers."
+msgid "Booctep requirements"
+msgstr "من مصممي بوستيب"
+
+#: home/templates/support.html:1765
+#, fuzzy
+#| msgid "Newest courses"
+msgid "Create courses"
+msgstr "الدورات الجديدة"
+
+#: home/templates/support.html:1773
+#, fuzzy
+#| msgid "Newest courses"
+msgid "Delete courses"
+msgstr "الدورات الجديدة"
+
+#: home/templates/support.html:1781
+msgid "Coupon & discount"
+msgstr ""
+
+#: home/templates/support.html:1876
+#, fuzzy
+#| msgid "Teacher"
+msgid "Teachers Levels"
+msgstr "معلمين"
+
+#: home/templates/support.html:2143
+#, fuzzy
+#| msgid "Newest courses"
+msgid "Create a course"
+msgstr "الدورات الجديدة"
+
+#: home/templates/support.html:2238
+#, fuzzy
+#| msgid "Search course"
+msgid "Delete a course"
+msgstr "أبحث عن دورة"
+
+#: home/templates/support.html:2305
+msgid "Coupon & discounts"
+msgstr ""
+
+#: home/templates/support.html:2406 home/templates/support.html:2941
+#: home/templates/support.html:3743
+msgid "1"
+msgstr ""
+
+#: home/templates/support.html:2414 home/templates/support.html:2515
+#: home/templates/support.html:2949 home/templates/support.html:3084
+#: home/templates/support.html:3751 home/templates/support.html:3894
+msgid "2"
+msgstr ""
+
+#: home/templates/support.html:2422 home/templates/support.html:2606
+#: home/templates/support.html:2957 home/templates/support.html:3175
+#: home/templates/support.html:3759 home/templates/support.html:3985
+msgid "3"
+msgstr ""
+
+#: home/templates/support.html:2430 home/templates/support.html:2965
+#: home/templates/support.html:3266 home/templates/support.html:3767
+#: home/templates/support.html:4076
+msgid "4"
+msgstr ""
+
+#: home/templates/support.html:2768
+msgid "refund"
+msgstr ""
+
+#: home/templates/support.html:2860
+#, fuzzy
+#| msgid "Help & Support"
+msgid "Quick Support"
+msgstr "مساعدة"
+
+#: home/templates/support.html:2932
+msgid "Managing your payments"
+msgstr ""
+
+#: home/templates/support.html:2976 home/templates/support.html:3357
+#: home/templates/support.html:3778 home/templates/support.html:4167
+msgid "5"
+msgstr ""
+
+#: home/templates/support.html:2984 home/templates/support.html:3448
+#: home/templates/support.html:3786 home/templates/support.html:4258
+msgid "6"
+msgstr ""
+
+#: home/templates/support.html:3734 home/templates/support.html:3824
+#, fuzzy
+#| msgid "Others"
+msgid "Other issues"
+msgstr "أخرى"
+
+#: home/templates/terms.html:146
+msgid "Terms and Conditions of Use"
+msgstr ""
+
+#: home/templates/terms.html:163
+msgid "User behaviour"
+msgstr ""
+
+#: home/templates/terms.html:166
+msgid "Payments & Refund"
+msgstr ""
+
+#: home/templates/terms.html:172
+msgid "Copyright"
+msgstr ""
+
+#: home/templates/terms.html:175
+#, fuzzy
+#| msgid "Terms"
+msgid "Legal Terms"
+msgstr "الشروط"
+
+#: home/templates/terms.html:186
+msgid "Introduction"
+msgstr ""
+
+#: home/templates/terms.html:191
+msgid ""
+"Booctep is an online learning platform it's offers courses across a wide "
+"range of categories, some of which include: business & entrepreneurship, "
+"programming, academics, the arts, health & fitness, language and much more."
+msgstr ""
+
+#: home/templates/terms.html:201
+msgid ""
+"For all those registered or not registered, by using our service, you are "
+"trusting us with your information we know it's a big responsibility and "
+"thats why we have put these terms of use to protect your information, by "
+"guiding you with the perfect use of our platfrom and give you the full power "
+"of control on your information."
+msgstr ""
+
+#: home/templates/terms.html:215
+msgid ""
+"Use of this service by registering or browsing as a visitor is subject to "
+"the policies, terms and conditions set out below (“Terms and Conditions of "
+"Use”). Your use of this service indicates your acceptance of these terms and "
+"conditions of use."
+msgstr ""
+
+#~ msgid ""
+#~ "Set up your payments methods to collect your income and manage your money."
+#~ msgstr "قم بتسجيل الدخول كمعلم."
+
+#~ msgid ""
+#~ "Test your Videos and Audios Quality by sending your videos to our team "
+#~ "via test course page."
+#~ msgstr "قم بتسجيل الدخول كمعلم."
+
+#~ msgid ""
+#~ "Be Spacific when you choose your target students when you set up your "
+#~ "profile."
+#~ msgstr "قم بتسجيل الدخول كمعلم."
+
+#~ msgid "Read our Teacher's Terms and Privacy."
+#~ msgstr "قم بتسجيل الدخول كمعلم."
+
+#~ msgid "Get help if you want in your dashboard."
+#~ msgstr "قم بتسجيل الدخول كمعلم."
+
+#~ msgid "First Name"
+#~ msgstr "الاسم الاول"
+
+#~ msgid "Last Name"
+#~ msgstr "الاسم الاخير"
+
+#~ msgid "Repeat Password"
+#~ msgstr "اعادة كلمة السر"
+
+#~ msgid ""
+#~ "Get help and support with our Articles or contact us if you don't find "
+#~ "what you want!"
+#~ msgstr "احصل على مساعدة عبر مقالاتنا او اطلب مساعدة في حال لم تجد ماتريد!"
+
+#~ msgid "Get help about your account profile."
+#~ msgstr "احصل على مساعدة لمعرفة ادارة حسابك."
+
+#~ msgid "Set up your account correctly"
+#~ msgstr "الحسابات"
+
+#, fuzzy
+#~| msgid "Students"
+#~ msgid "+400,000 Students"
+#~ msgstr "طلاب"
+
+#, fuzzy
+#~| msgid "My courses"
+#~ msgid "+19,000 Courses"
+#~ msgstr "دوراتي"
+
+#~ msgid "Continue learning now.."
+#~ msgstr "اكمل التعلم.."
+
+#~ msgid "Search"
+#~ msgstr "أبحث عن دورة"
+
+#~ msgid "Sort By"
+#~ msgstr "البحث عن طريق"
+
+#~ msgid "Most students"
+#~ msgstr "الأعلى شراءاً"
+
+#~ msgid "Most Ratings"
+#~ msgstr "الأعلى تقييماً"
+
+#~ msgid ""
+#~ "#Human_resource, #Markting, #international_business_managment, "
+#~ "#business_managment, #Finance, #Accounting, #Audit, "
+#~ "#Analysis_of_business ,#etc.."
+#~ msgstr "#موارد-بشرية، #ادارة-اعمال-عالمية، #تسويق، #محاسبة، #توظيف #الخ.."
+
+#~ msgid ""
+#~ "#General_chemistry, #Medical_chemistry, #Biochemistry, #General_physical, "
+#~ "#Engineering_physical, #Physical_science, #Laser_physic, #Optics, "
+#~ "#Mevhanics, #Cosmology, #etc.."
+#~ msgstr "#كيمياء ، #فيزياء، #هندسة، #علم-الارض، #الجبر، #الخ.."
+
+#~ msgid "Login via Twitter"
+#~ msgstr "تسجيل الدخول عن طريق فيسبوك"
+
+#~ msgid "Forgot which email address you signed up with?"
+#~ msgstr "نسيت البريد الالكتروني الذي قمت بالتسجيل به؟"
+
+#~ msgid "Mark all as read"
+#~ msgstr "اشر عليها بانها قرات"
+
+#~ msgid "Hello Bandar How are you?"
+#~ msgstr "مرحبا بندر كيف حالك؟"
+
+#~ msgid "3 mins"
+#~ msgstr "3 دقائق"
+
+#~ msgid "Upload a profile picture."
+#~ msgstr "حمل صورة شخصية."
+
+#~ msgid "Sign up via Twitter"
+#~ msgstr "تسجيل عن طريق تويتر"
+
+#~ msgid "Only images with a size lower than 3MB are allowed."
+#~ msgstr "فقط مسموح بحجم صورة ٣٠ ميقا بايت وصيغة جي بي جي."
+
+#~ msgid "199 courses in “Gaming”"
+#~ msgstr "١٩٩ دورة في “لا ت”"

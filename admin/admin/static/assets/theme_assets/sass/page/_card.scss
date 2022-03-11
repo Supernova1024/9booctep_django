@@ -1,0 +1,28 @@
+// Column Card Wrapper 
+
+.columnCard-wrapper{
+    padding: 50px 30px 30px;
+    border-radius: 4px;
+    @extend .bg-normal;
+    @include ssm{
+        padding: 40px 20px 30px;
+    }
+    .card{
+        .card-header{
+            border-bottom: 1px solid $border-normal;
+        }
+    }
+}
+
+// Grid Card Wrapper 
+
+.columnGrid-wrapper{
+    .card{
+        .card-body{
+            padding: 0;
+            table{
+                margin: 0;
+            }
+        }
+    }
+}

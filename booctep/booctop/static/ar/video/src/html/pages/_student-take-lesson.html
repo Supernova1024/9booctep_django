@@ -1,0 +1,75 @@
+<div class="navbar navbar-light border-0 navbar-expand-sm" style="white-space: nowrap;">
+  <div class="{{ containerClass }} flex-column flex-sm-row">
+    <nav class="nav navbar-nav">
+      <div class="nav-item py-16pt py-sm-0">
+        <div class="media flex-nowrap">
+          <div class="media-left mr-16pt">
+            <a href="{{ prefix or '' }}student-take-course.html"><img src="assets/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded"></a>
+          </div>
+          <div class="media-body d-flex flex-column">
+            <a href="{{ prefix or '' }}student-take-course.html" class="card-title">Angular Fundamentals</a>
+            <div class="d-flex">
+              <span class="text-50 small font-weight-bold mr-8pt">Elijah Murray</span>
+              <span class="text-50 small">Software Engineer and Developer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <ul class="nav navbar-nav ml-sm-auto align-items-center align-items-sm-end d-none d-lg-flex">
+      <li class="nav-item active ml-sm-16pt">
+        <a href="" class="nav-link">Video</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">Downloads</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">Notes</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">Discussions</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="bg-primary pb-lg-64pt py-32pt">
+  <div class="{{ containerClass }}">
+    <nav class="course-nav">
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Introduction" href=""><span class="material-icons">check_circle</span></a>
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Introduction to TypeScript" href=""><span class="material-icons text-primary">account_circle</span></a>
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Getting Started with Angular: Comparing Angular to AngularJS" href=""><span class="material-icons">play_circle_outline</span></a>
+      <a data-toggle="tooltip" data-placement="bottom" data-title="Quiz: Getting Started with Angular" href="{{ prefix }}student-take-quiz.html"><span class="material-icons">hourglass_empty</span></a>
+    </nav>
+    <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt">
+      <div class="player embed-responsive-item">
+        <div class="player__content">
+          <div class="player__image" style="--player-image: url(assets/images/illustration/player.svg)"></div>
+          <a href="" class="player__play bg-primary">
+            <span class="material-icons">play_arrow</span>
+          </a>
+        </div>
+        <div class="player__embed d-none">
+          <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap align-items-end mb-16pt">
+      <h1 class="text-white flex m-0">Introduction to TypeScript</h1>
+      <p class="h1 text-white-50 font-weight-light m-0">50:13</p>
+    </div>
+
+    <p class="hero__lead measure-hero-lead text-white-50 mb-24pt">JavaScript is now used to power backends, create hybrid mobile applications, architect cloud solutions, design neural networks and even control robots. Enter TypeScript: a superset of JavaScript for scalable, secure, performant and feature-rich applications.</p>
+
+    <a href="" class="btn btn-white">Resume lesson</a>
+  </div>
+</div>
+{% include 'pages/_course.navbar.html' %}
+
+<div class="page-section">
+  <div class="{{ containerClass or 'container' }}">
+
+    {% include 'pages/_student-take-lesson.discussions.html' %}
+
+  </div>
+</div>

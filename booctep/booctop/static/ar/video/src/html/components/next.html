@@ -1,0 +1,11 @@
+{% macro component(title, to, prev) %}
+<a
+  href="{{ to }}" 
+  class="btn btn-white docs-next measure-lead-max d-flex p-3 btn-block align-items-center">
+  <span class="d-flex flex-column flex{% if prev %} order-1 align-items-end{% else %} align-items-start{% endif %}">
+    <small class="text-black-50">{% if prev %}Previous{% else %}Next{% endif %}</small>
+    <strong>{{ title }}</strong>
+  </span>
+  <i class="material-icons text-muted">{% if prev %}arrow_backward{% else %}arrow_forward{% endif %}</i>
+</a>
+{% endmacro %}

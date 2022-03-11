@@ -1,0 +1,39 @@
+{% extends 'layouts/' + layout + '.html' %}
+{% import 'components/avatar.html' as avatar %}
+
+{% block pageHeader %}
+{% if header !== false %}
+<div class="pt-32pt">
+  <div class="{{ containerClass }} d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+    <div class="flex d-flex flex-column flex-sm-row align-items-center{% if new_button_label %} mb-24pt mb-md-0{% endif %}">
+
+      <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+        <h2 class="mb-0">{{ title }}</h2>
+        {% if breadcrumb %}
+        <ol class="breadcrumb p-0 m-0">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          {% for item in breadcrumb %}
+          <li class="breadcrumb-item{% if loop.last %} active{% endif %}">
+            {% if loop.last %}
+              {{ item.title }}
+            {% else %}
+              <a href="{{ item.slug }}">{{ item.title }}</a>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if new_button_label %}
+    <div class="row" role="tablist">
+      <div class="col-auto">
+        <a href="{% if new_button_slug %}{{ prefix or '' }}{{ new_button_slug }}.html{% endif %}" class="btn btn-outline-secondary">{{ new_button_label }}</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

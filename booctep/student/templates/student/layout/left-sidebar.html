@@ -1,0 +1,317 @@
+{% block content %} {% load static %}
+{% load i18n %}
+
+
+<style>
+    .sidebar-light-dodger-blue{
+        background-color: #d2e9ff !important;
+        border-right: 1px solid #abcae7 !important;
+    }
+    .sidebar-light-dodger-blue-dark{
+        background-color: #323741 !important;
+        border-right: 1px solid #1b1d22!important;
+        color: #fff !important;
+    }
+    .sidebar-secondary{
+        background-color: #b9d7f1 !important;
+        border-right: 1px solid #97b8d4 !important;
+        border-left: 0 !important;
+    }
+    .sidebar-secondary-dark {
+        background: rgb(33, 36, 41) !important;
+        border-right: 1px solid rgb(20, 22, 26) !important;
+    }
+
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+
+</style>
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+
+
+<style>
+
+.sidebar-light-dodger-blue{
+        background-color: #d2e9ff !important;
+        border-left: 1px solid #abcae7 !important;
+    }
+    .sidebar-light-dodger-blue-dark{
+        background-color: #323741 !important;
+        border-left: 1px solid #1b1d22!important;
+        color: #fff !important;
+    }
+
+.sidebar-secondary{
+        background-color: #b9d7f1 !important;
+        border-left: 1px solid #97b8d4 !important;
+        border-right: 0 !important;
+    }
+    .sidebar-secondary-dark {
+        background: rgb(33, 36, 41) !important;
+        border-left: 1px solid rgb(20, 22, 26) !important;
+    }
+
+    .sidebar-menu-icon{
+        right: 0px !important;
+    }
+
+
+    .mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+</style>
+
+{% endif %}
+
+<!-- drawer -->
+<div class="mdk-drawer js-mdk-drawer layout-mini__drawer" id="default-drawer">
+    <div class="mdk-drawer__content js-sidebar-mini" data-responsive-width="992px" data-layout="mini">
+
+        <div class="sidebar sidebar-mini sidebar-light-dodger-blue sidebar-light-dodger-blue-dark sidebar-light-dodger-dark sidebar-left d-flex flex-column">
+
+            <!-- Brand -->
+            <a href="/" class="sidebar-brand p-0 navbar-height d-flex justify-content-center">
+
+                <span class="avatar avatar-sm ">
+
+                    <span class="avatar-title rounded bg-primary"><img src="{%static 'student/assets/images/illustration/student/128/white.svg' %}" class="img-fluid" alt="logo" /></span>
+
+                </span>
+
+            </a>
+
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+                <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0 js-sidebar-mini-tabs" role="tablist">
+                    <li class="sidebar-menu-item active" data-toggle="tooltip" data-title="" data-placement="right" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#supervised_user_circle" data-toggle="tab" role="tab" aria-controls="supervised_user_circle" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark" style="">supervised_user_circle</i>
+                            <span class="sidebar-menu-text">الإعدادات</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_student" data-toggle="tab" role="tab" aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark">school</i>
+                            <span class="sidebar-menu-text">إدارة الدورات</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right" data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_messaging" data-toggle="tab" role="tab" aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark">message</i>
+                            <span class="sidebar-menu-text">تواصل</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+            <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+                <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0 js-sidebar-mini-tabs" role="tablist">
+                    <li class="sidebar-menu-item active" data-toggle="tooltip" data-title="" data-placement="right" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#supervised_user_circle" data-toggle="tab" role="tab" aria-controls="supervised_user_circle" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark" style="">supervised_user_circle</i>
+                            <span class="sidebar-menu-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_student" data-toggle="tab" role="tab" aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark">school</i>
+                            <span class="sidebar-menu-text">My courses</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right" data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_messaging" data-toggle="tab" role="tab" aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons material-icons-dark">message</i>
+                            <span class="sidebar-menu-text">Communicate</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+
+
+            <ul class="nav flex-column sidebar-menu align-items-center mb-12pt " role="">
+                <a class="" href="../../index.html" data-title="Swip to Booctep">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">swap_horiz</i>
+                    <span class="sidebar-menu-text">swap_horiz</span>
+                </a>
+            </ul>
+
+        </div>
+
+        <div class="sidebar sidebar-light sidebar-left flex sidebar-secondary pt-16pt" style="" data-perfect-scrollbar>
+
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <div class="tab-content" style="">
+
+
+                <div class="tab-pane  fade active show " id="supervised_user_circle">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class="">إعدادات الحساب</b>
+                    </div>
+                    <ul class="sidebar-menu">
+
+                        <li class="sidebar-menu-item ">
+                            <a class="sidebar-menu-button" href="{% url 'student account' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">contacts</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark" style="">الإعدادات الرئيسية</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student security' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">verified_user
+                                </span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark" style="">الأمان</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student privacy' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">lock_open</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark" style="">الخصوصية</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane  fade  show " id="sm_student">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class="">تعليمي</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student courses' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">dvr</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">دوراتي</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student certificates' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">class</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">شهاداتي</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_messaging">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class="">تواصل</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student messages' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">mail</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">الرسائل</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student notifications' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">notifications_none</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">التنبيهات</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="tab-content" style="">
+
+
+                <div class="tab-pane  fade active show " id="supervised_user_circle">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-left: 25px;" class="">Profile</b>
+                    </div>
+                    <ul class="sidebar-menu">
+
+                        <li class="sidebar-menu-item ">
+                            <a class="sidebar-menu-button" href="{% url 'student account' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">contacts</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Settings</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student security' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">verified_user
+                                </span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Security</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student privacy' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">lock_open</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Privacy</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane  fade  show " id="sm_student">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-left: 25px;" class="">My learning</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student courses' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">dvr</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Courses</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student certificates' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">class</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Certificates</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_messaging">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-left: 25px;" class="">Communicate</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student messages' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">mail</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Messages</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'student notifications' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">notifications_none</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Notifications</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- // END drawer -->
+
+
+{% endblock %}

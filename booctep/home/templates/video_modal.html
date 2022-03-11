@@ -1,0 +1,129 @@
+{% load static %}
+
+{% load i18n %}
+
+<style>
+    .modal-content{
+       padding-top: 55px !important;
+       z-index:9999999999 !important;
+    }
+    .accordion__menu{
+       border: 0.5px solid #dbdbdb;
+       background: white !important
+    }
+    .plyr {
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+</style>
+
+<input type="hidden" value="{{ course.id }}" id="video_course_id"/>
+<div class="modal-background"></div>
+<div class="modal-content">
+    <div class="card">
+        <div class="card-heading">
+            <div class="user-meta">
+                <img src="/static{{ course.user.image }}"
+                    data-demo-src="{% static 'assets2/images/avatars/jenna.png' %}" alt="">
+            </div>
+            <span class="user-meta-span">{{ course.user.first_name }}{{ course.user.last_name }} </span>
+            <span class="user-meta-span">&nbsp; &nbsp; |   {{ course.name }}&nbsp; &nbsp;</span>
+                {% if user.is_authenticated %}
+                <a type="button" class="button" style="background-color: rgb(202, 0, 51);color: #fff;" onclick="addToFavInVideoPage()">Add to Fav  &nbsp;<i class="fa fa-heart"></i></a>
+                {% endif %}
+            <div class="close-wrap">
+                <span class="close-modal" onclick="closeModal()"  style="background: #F4F4F4 !important;border: 1px solid #E4E4E4;color: #939393">
+                    &times;
+                </span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="inner">
+                <div class="left-section" style="align-items: center; display: flex;">
+                    <div class="app-video" style="width: 100% !important; height: 100% !important;">
+                        <video autoplay poster="{% static 'assets/img/setting.jpg' %}" id="player2" playsinline controls style="width: 100% !important; height: 100% !important;">
+                        <source type="video/webm" src=""/>
+                        <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                        </video>
+                    </div>
+
+                    <script type="text/javascript">
+                        var player2 = new Plyr('#player2');
+                    </script>
+                </div>
+                <div class="right-section">
+                    <div class="inner-content">
+                        <div class="live-stats">
+                            <div class="social-count-2">
+                                <div class="likes-count">
+                                    <i class="fa fa-users"></i>
+                                    <span style="color:#000">{{ studentCnt }}</span>
+                                </div>
+                                <div class="shares-count">
+                                    <i class="fa fa-star" style="color: rgb(212, 173, 0);"></i>
+                                    <span>{{ course.rating }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-wrapper">
+                        <div class="tabs is-fullwidth">
+                            <ul>
+                                <li class="is-active">
+                                    <a>Promo Videos</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content ">
+                            <div class="accordion js-accordion  list-group-flush" id="parent">
+                                <div class="accordion__item" style="border: 1px solid #ccc;height: 100% !important;">
+                                    <a style="background-color: rgb(240, 240, 240);border: 1px solid rgb(223, 223, 223); cursor: pointer;" class="accordion__toggle collapsed" data-toggle="collapse">
+                                        <span class="flex" style="font-size: small;">Course Overview</span>
+                                        <i style="position: absolute;right: 15px;top: 15px;font-size: small;" class="fa fa-arrow-down"></i>
+                                    </a>
+                                    <div class="accordion__menu collapse" id="course-toc-1">
+                                        {% if course.video %}
+                                        {% for videoEle in course.video %}
+                                        <div class="accordion__menu-link">
+                                            <i class="fa fa-video" style="margin-right: 5px;color: rgb(194, 194, 194);"></i>
+                                            <a class="flex" data-path="{{ videoEle.url }}" style="color: rgb(1, 100, 192);" onclick="showVideo(this)">{{ videoEle.name }}</a>
+                                            <span class="text-muted" style="color: rgb(3, 73, 139) !important;margin-left: 90px;">1m 10s</span>
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function addToFavInVideoPage(){
+        var course_id = '{{ course.id }}';
+        var user_id = '{{ user.id }}';
+        var url = '/student_favourite_courses/';
+        $.post(url,{student:user_id,course:course_id},function (res) {
+
+        });
+    }
+
+    function closeModal(){
+        $("#videos-modal").attr('style','display:none !important')
+    }
+
+    function showVideo(obj){
+        dataurl = $(obj).attr('data-path');
+        $(".app-video video source").attr("src","../../../../static"+dataurl)
+        $(".app-video video")[0].load();
+    }
+
+</script>
+
+<link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
+<script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
+<script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>

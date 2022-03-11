@@ -1,0 +1,24 @@
+---
+title: Messages
+slug: messages
+bodyClass: app-messages
+footer: false
+navbar: false
+---
+{% extends "layouts/compact.html" %}
+
+{% block page %}
+<div
+  data-push 
+  data-responsive-width="768px"
+  data-has-scrollable-region
+  data-fullbleed
+  class="mdk-drawer-layout js-mdk-drawer-layout">
+  <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+    {% include 'pages/_messages.html' %}
+  </div>
+  
+  {% import 'layouts/sidebar.messages.html' as sidebar %}
+  {{ sidebar.component(prefix=prefix, slug=slug, drawerOptions="top-0") }}
+</div>
+{% endblock %}

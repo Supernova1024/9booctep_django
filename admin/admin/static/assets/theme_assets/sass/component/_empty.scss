@@ -1,0 +1,22 @@
+// Empty Css
+
+.atbd-empty{
+    @include e("text"){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+        @extend .color-dark;
+        p{
+            @include ofs(14px, lh(14px, 22px), 400);
+            margin-bottom:0;
+            &.disabled{
+                @extend .color-extra-light;
+            }
+        }
+    }
+
+    @include e("action"){
+        margin-top: 17px;
+    }
+}

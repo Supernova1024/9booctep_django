@@ -1,0 +1,56 @@
+.bookmark {
+    &--grid {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(#9299B8, .14);
+    }
+    @include e(image) {
+        img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .like-icon{
+            width: 30px;
+            height: 30px;
+            i{
+                @include ofs(16px, null,null);
+            }
+        }
+    }
+    @include e(body){
+        h6{
+            @include ofs(15px, lh(15px, 22px), 500);
+            margin-bottom:4px;
+        }
+        a{
+            @include ofs(13px, lh(13px, 22px), 400);
+            color: #9299B8;
+        }
+    }
+    @include e(button){
+        margin: -5px;
+        .btn{
+            margin: 5px;
+            text-transform: capitalize;
+            border-radius: 3px;
+            height:32px;
+            @extend .content-center;
+            padding: 0 15px;
+        }
+    }
+}
+
+.bookmark-card{
+    .card-body{
+        padding: 30px 22px;
+    }
+    .card-header{
+        padding: 0 30px;
+    }
+}
+
+
+.bookmark-sidebar{
+    max-height: calc(100vh - 10.8rem);
+    height: 100%;
+}

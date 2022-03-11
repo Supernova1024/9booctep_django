@@ -1,0 +1,31 @@
+{% set layout = 'compact' %}
+{% set prefix = 'compact-' %}
+{% set containerClass = 'container page__container' %}
+{% set home_url = prefix + 'index.html' %}
+{% set navbar_search = true %}
+{% set bodyClass = bodyClass or 'layout-compact' %}
+{% set drawerFile = 'drawer.mini.html' %}
+
+{% extends "layouts/app.html" %}
+
+{% block footer %}
+  {{ super() }}
+  <!-- Sidebar Mini JS -->
+  <script src="assets/js/sidebar-mini.js"></script>
+  <script>
+  (function(){
+    'use strict';
+
+    // ENABLE sidebar menu tabs
+    $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+
+    $('.js-sidebar-mini-tabs').on('show.bs.tab', function(e) {
+      $('.js-sidebar-mini-tabs > .active').removeClass('active')
+      $(e.target).parent().addClass('active')
+    })
+  })()
+  </script>
+{% endblock %}

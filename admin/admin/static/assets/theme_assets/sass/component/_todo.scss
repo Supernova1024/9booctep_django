@@ -1,0 +1,60 @@
+// Todo List
+.todo-list {
+  td {
+    padding: 12px 25px !important;
+  }
+  @include e(right) {
+    li {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+    li a {
+      svg,
+      i,
+      img {
+        width: 16px;
+        color: $extra-light;
+      }
+      &.active {
+        svg,
+        i {
+          @extend .color-warning;
+        }
+      }
+    }
+  }
+  .custom-checkbox {
+    input[type="checkbox"] {
+      &:checked + label {
+        color: $primary !important;
+      }
+      + label {
+        color: $gray !important;
+      }
+    }
+  }
+}
+
+// Add task Action
+.add-task-action {
+  margin: 15px 0 0 25px;
+  button {
+    padding: 0 1.018rem;
+    font-size: 12px;
+    width: auto;
+    background-color: rgba($primary, 0.08);
+  }
+}
+
+// Add todo Modal
+.add-todo-modal {
+  .modal-header {
+    .close {
+      svg,
+      img {
+        width: 18px;
+      }
+    }
+  }
+}

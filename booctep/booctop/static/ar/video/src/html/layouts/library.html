@@ -1,0 +1,26 @@
+{% set footer = false %}
+{% extends 'layouts/guest.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+
+{% block page %}
+<div
+  data-push 
+  data-responsive-width="992px"
+  class="mdk-drawer-layout js-mdk-drawer-layout">
+  <div class="mdk-drawer-layout__content">
+    
+    <div class="page-section border-bottom-2">
+      <div class="{{ containerClass or 'container' }}">
+
+        {% include 'pages/_results-heading.html' %}
+
+        {{ super() }}
+
+      </div>
+    </div>
+
+  </div>
+  
+  {{ drawer.component(content_class='top-navbar') }}
+</div>
+{% endblock %}

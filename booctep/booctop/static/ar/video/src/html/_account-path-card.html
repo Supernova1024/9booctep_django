@@ -1,0 +1,164 @@
+{% macro component(title, image, open, favorite, prefix, position='center', class='mb-16pt', cta, details, description, account) %}
+<div class="card{% if not details %} js-overlay card-sm{% else %}{% if account %} overlay--show{% endif %} card-lg{% endif %} overlay--primary-dodger-blue stack stack--1 {{ class }}" 
+{% if open and not details %} data-overlay-onload-show data-popover-onload-show{% endif %}
+{% if not details %} data-toggle="popover" data-trigger="click"{% endif %}>
+{% set link = prefix + 'student-path.html' %}
+  <div class="card-body d-flex flex-column">
+    <div class="d-flex align-items-center">
+      <div class="flex">
+        <div class="d-flex align-items-center">
+          <div class="rounded mr-12pt z-0 o-hidden">
+            <div class="overlay">
+              <img src="assets/images/paths/{{ image }}_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+              <span class="overlay__content overlay__content-transparent">
+                <span class="overlay__action d-flex flex-column text-center lh-1">
+                  <small class="h6 small text-white mb-0" style="font-weight: 500;">80%</small>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="card-title">{{ title }}</div>
+            <p class="flex text-black-50 lh-1 mb-0"><small>18 courses</small></p>
+          </div>
+        </div>
+      </div>
+      {% if cta !== false %}
+      <a href="{{ link }}" class="ml-4pt btn btn-sm btn-link text-secondary{% if favorite %} border-1 border-secondary{% endif %}">Resume</a>
+      {% else %}
+      <a href="{{ link }}" data-toggle="tooltip" data-title="{% if favorite !== true %}Add{% else %}Remove{% endif %} Favorite" data-placement="top" data-boundary="window" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite{% if favorite !== true %}_border{% endif %}</a>
+      {% endif %}
+    </div>
+    
+    {% if details %}
+      {% if not account %}
+      <div class="rating mt-8pt">
+        <span class="rating__item"><span class="material-icons">star</span></span>
+        <span class="rating__item"><span class="material-icons">star</span></span>
+        <span class="rating__item"><span class="material-icons">star</span></span>
+        <span class="rating__item"><span class="material-icons">star</span></span>
+        <span class="rating__item"><span class="material-icons">star_border</span></span>
+      </div>
+      {% else %}
+      <div class="d-flex align-items-center mt-8pt">
+        <small class="text-black-50 mr-8pt">Your rating</small>
+        <div class="rating mr-8pt">
+          <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+          <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+          <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+          <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+          <span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
+        </div>
+        <small class="text-black-50">4/5</small>
+      </div>
+      {% endif %}
+
+      <p class="mt-16pt text-black-70 flex">{{ description or 'Learn the fundamentals of working with ' + title + ' and how to create basic applications.' }}</p>
+
+      <div class="mb-16pt d-none">
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Fundamentals of working with {{ title }}</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Create complete {{ title }} applications</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Working with the {{ title }} CLI</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>Testing with {{ title }}</small></p>
+        </div>
+      </div>
+
+      {% if not account %}
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <div class="d-flex align-items-center mb-4pt">
+            <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+            <p class="flex text-black-50 lh-1 mb-0"><small>6 hours</small></p>
+          </div>
+          <div class="d-flex align-items-center mb-4pt">
+            <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+            <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+          </div>
+          <div class="d-flex align-items-center">
+            <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+            <p class="flex text-black-50 lh-1 mb-0"><small>Beginner</small></p>
+          </div>
+        </div>
+        <div class="col text-right">
+          <a href="{{ link }}" class="btn btn-outline-secondary">Begin</a>
+        </div>
+      </div>
+      {% else %}
+      <div class="d-flex align-items-center mb-8pt justify-content-center">
+        <div class="d-flex align-items-center mr-8pt">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>50 minutes left</small></p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+          <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <a href="{{ prefix or '' }}student-take-lesson.html" class="btn btn-primary">Resume</a>
+      </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% if not details %}
+<div class="popoverContainer d-none">
+  <div class="media">
+    <div class="media-left mr-12pt">
+      <img src="assets/images/paths/{{ image }}_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+    </div>
+    <div class="media-body">
+      <div class="card-title">{{ title }}</div>
+      <p class="text-black-50 d-flex lh-1 mb-0 small">18 courses</p>
+    </div>
+  </div>
+
+  <p class="mt-16pt text-black-70">{{ description or 'Learn the fundamentals of working with ' + title + ' and how to create basic applications.' }}</p>
+
+  <div class="my-32pt">
+    <div class="d-flex align-items-center mb-8pt justify-content-center">
+      <div class="d-flex align-items-center mr-8pt">
+        <span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>50 minutes left</small></p>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+        <p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <a href="{{ link }}" class="btn btn-primary mr-8pt">Resume</a>
+      <a href="{{ link }}" class="btn btn-outline-secondary ml-0">Start over</a>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <small class="text-black-50 mr-8pt">Your rating</small>
+    <div class="rating mr-8pt">
+      <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+      <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+      <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+      <span class="rating__item"><span class="material-icons text-primary">star</span></span>
+      <span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
+    </div>
+    <small class="text-black-50">4/5</small>
+  </div>
+</div>
+{% endif %}
+{% endmacro %}
+{{ component() }}

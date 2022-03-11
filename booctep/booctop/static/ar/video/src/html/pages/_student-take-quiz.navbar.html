@@ -1,0 +1,17 @@
+<div class="navbar navbar-expand-md navbar-list {{ navbar_submenu_class }} {{ navbarQuizResultClass or '' }}" style="white-space: nowrap;">
+  <div class="{{ containerClass }}">
+    <ul class="nav navbar-nav flex navbar-list__item">
+      <li class="nav-item">
+        <i class="material-icons text-50 mr-8pt">tune</i>
+        Choose the correct answer below:
+      </li>
+    </ul>
+    <div class="nav navbar-nav ml-sm-auto navbar-list__item">
+      <div class="nav-item d-flex flex-column flex-sm-row ml-sm-16pt">
+        <a href="{{ prefix }}student-quiz-result-details.html" class="btn justify-content-center btn-outline-secondary w-100 w-sm-auto mb-16pt mb-sm-0">Skip Quiz</a>
+        <a href="{{ prefix }}student-take-lesson.html" class="btn justify-content-center btn-outline-secondary w-100 w-sm-auto mb-16pt mb-sm-0 ml-sm-16pt">Review Video</a>
+        <a href="{{ prefix }}student-quiz-result-details.html" class="btn justify-content-center btn-accent w-100 w-sm-auto mb-16pt mb-sm-0 ml-sm-16pt">Next Question <i class="material-icons icon--right">keyboard_arrow_right</i></a>
+      </div>
+    </div>
+  </div>
+</div>

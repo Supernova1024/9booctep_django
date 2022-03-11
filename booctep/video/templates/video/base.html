@@ -1,0 +1,1124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Messages</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">   
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}">
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="{% static 'video/assets/vendor/perfect-scrollbar.css' %}" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="{% static 'video/assets/vendor/fix-footer.css' %}" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="{% static 'video/assets/css/material-icons.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="{% static 'video/assets/css/fontawesome.css' %}" rel="stylesheet">
+
+
+    {% if lang == "en/" %}
+        <link type="text/css" href="{% static 'video/assets/css/preloader.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'video/assets/css/preloader.rtl.css' %}" rel="stylesheet">
+    {% endif %}
+
+    <!-- Preloader -->
+
+    <!-- App CSS -->
+    <link type="text/css" href="{% static 'video/assets/css/app.css' %}" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link type="text/css" href="{% static 'video/assets/vendor/toastr.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'video/assets/css/toastr.css' %}" rel="stylesheet">
+
+
+    <!-- Video Player And jQuery -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
+    <!-- Video Player And jQuery -->
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{% static 'video/assets/css/sweetalert.css' %}">
+
+    <style type="text/css">
+
+
+        em {
+            display: block;
+            margin: .5em auto 2em;
+            color: #bbb;
+        }
+
+        p, p a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        p a:hover,
+        p a:focus {
+            text-decoration: underline;
+        }
+
+        p + p {
+            color: #bbb;
+            margin-top: 2em;
+        }
+
+        .detail {
+            position: absolute;
+            text-align: right;
+            right: 5px;
+            bottom: 5px;
+            width: 50%;
+        }
+
+        a[href*="intent"] {
+            display: inline-block;
+            margin-top: 0.4em;
+        }
+
+        /* Ratings widget */
+        .rate {
+            display: inline-block;
+            border: 0;
+        }
+
+        /* Hide radio */
+        .rate > input {
+            display: none;
+        }
+
+        /* Order correctly by floating highest to the right */
+        .rate > label {
+            float: right;
+        }
+
+        /* The star of the show */
+        .rate > label:before {
+            display: inline-block;
+            font-size: 1.1rem;
+            padding: .3rem .2rem;
+            margin-right: 0;
+            cursor: pointer;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            content: "\f005"; /* full star */
+        }
+
+        /* Half star trick */
+        .rate .half:before {
+            content: "\f005"; /* half star no outline */
+            position: absolute;
+            padding-right: 0;
+            width: 0.6rem;
+            overflow: hidden;
+            margin-right: 0.4rem;
+        }
+
+        /* Click + hover color */
+        input:checked ~ label, /* color current and previous stars on checked */
+        label:hover, label:hover ~ label {
+            color: #e36e18;
+        }
+
+        /* color previous stars on hover */
+
+        /* Hover highlights */
+        input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+        input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+        label:hover ~ input:checked ~ label /* highlight previous selected stars */
+        {
+            color: #eeac52;
+        }
+
+    </style>
+
+
+</head>
+
+<style>
+        #loadings {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.9;
+        background-color: #000;
+        z-index: 99;
+        text-align: center;
+    }
+
+    #loading-image {
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        z-index: 100;
+    }
+
+    .loading::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        /* Adding animation */
+        animation: loading 1s infinite;
+    }
+
+    /* Loading Animation */
+
+    @keyframes loading {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+
+    #loading-image {
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        z-index: 100;
+    }
+
+
+    .dancin-bc {
+        background: white !important;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .dancing-lao {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .dancing-lao:after {
+        display: block;
+        width: 150px;
+        height: 2px;
+        margin-top: 10px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        background: rgb(43, 148, 209);
+        content: "";
+        -webkit-animation: 1s border infinite;
+        animation: 1s border infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+    }
+
+    .dancing-lao .left-dots {
+        position: absolute;
+        bottom: 20%;
+        left: 20%;
+    }
+
+    .dancing-lao .right-dots {
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    .dancing-lao .dot {
+        display: inline-block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(43, 148, 209);
+        opacity: 0;
+    }
+
+    .dancing-lao .dot-1 {
+        -webkit-animation: 1s dot infinite;
+        animation: 1s dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .dot-2 {
+        -webkit-animation: 1s dot-2 infinite;
+        animation: 1s dot-2 infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .circle-dot {
+        display: inline-block;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid rgb(43, 148, 209);
+        -webkit-animation: 1s cirle-dot infinite;
+        animation: 1s cirle-dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+        opacity: 0;
+    }
+
+    .dancing-lao img {
+        display: block;
+        margin: auto;
+        width: 90px;
+        height: 80px;
+        margin-bottom: 20px;
+        -webkit-animation: 1s dance infinite;
+        animation: 1s dance infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
+
+    @-webkit-keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @-webkit-keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @-webkit-keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+
+</style>
+
+<body class="layout-mini backgg backgg-dark" style="height: 100%;">
+
+    <input type="hidden" id="hd_csrf" value="{{ csrf_token }}">
+    
+    <div class="screen hidden">
+        <div id="loadings">
+            <div class="dancin-bc">
+                <div class="dancing-lao">
+                    <div class="left-dots">
+                        <div class="dot dot-1"></div>
+                        <div class="dot dot-2"></div>
+                        <div class="circle-dot"></div>
+                    </div>
+                    <div class="right-dots">
+                        <div class="dot dot-1"></div>
+                        <div class="dot dot-2"></div>
+                        <div class="circle-dot"></div>
+                    </div>
+    
+                    <img src="{% static 'assets/img/favicon.png' %}" class="cls-1" alt="">
+                </div>
+            </div>
+        </div>
+    
+    </div> 
+    
+<div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
+
+        <!-- Header -->
+        <!-- // END Header -->
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+    <!-- // END drawer-layout__content -->
+</div>
+<!-- // END drawer-layout -->
+
+<!-- jQuery -->
+<script src="{% static 'video/assets/vendor/jquery.min.js' %}"></script>
+
+<!-- Bootstrap -->
+<script src="{% static 'video/assets/vendor/popper.min.js' %}"></script>
+<script src="{% static 'video/assets/vendor/bootstrap.min.js' %}"></script>
+
+<!-- Perfect Scrollbar -->
+<script src="{% static 'video/assets/vendor/perfect-scrollbar.min.js' %}"></script>
+
+<!-- DOM Factory -->
+<script src="{% static 'video/assets/vendor/dom-factory.js' %}"></script>
+
+<!-- MDK -->
+<script src="{% static 'video/assets/vendor/material-design-kit.js' %}"></script>
+
+<!-- Fix Footer -->
+<script src="{% static 'video/assets/vendor/fix-footer.js' %}"></script>
+
+<!-- App JS -->
+<script src="{% static 'video/assets/js/app.js' %}"></script>
+
+<!-- Global Settings -->
+<script src="{% static 'video/assets/js/settings.js' %}"></script>
+
+<!-- Sweet Alert -->
+<script src="{% static 'video/assets/vendor/sweetalert.min.js' %}"></script>
+<script src="{% static 'video/assets/js/sweetalert.js' %}"></script>
+
+<!-- Highlight.js -->
+<script src="{% static 'video/assets/js/hljs.js' %}"></script>
+
+<!-- Moment.js -->
+<script src="{% static 'video/assets/vendor/moment.min.js' %}"></script>
+<script src="{% static 'video/assets/vendor/moment-range.min.js' %}"></script>
+
+<!-- Flatpickr -->
+<script src="{% static 'video/assets/vendor/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'video/assets/js/flatpickr.js' %}"></script>
+
+<!-- Chart.js -->
+<script src="{% static 'video/assets/vendor/Chart.min.js' %}"></script>
+<script src="{% static 'video/assets/js/chartjs.js' %}"></script>
+
+<!-- Chart.js Samples -->
+<script src="{% static 'video/assets/js/page.hr-dashboard.js' %}"></script>
+
+<!-- List.js -->
+<script src="{% static 'video/assets/vendor/list.min.js' %}"></script>
+<script src="{% static 'video/assets/js/list.js' %}"></script>
+
+
+<!-- Sidebar Mini JS -->
+<script src="{% static 'video/assets/js/sidebar-mini.js' %}"></script>
+
+<script>
+
+    const player = new Plyr('#player');
+
+
+
+</script>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var color = localStorage.getItem('mode');
+        if (color == "light") {
+            $(".getmodename").append("dark");
+        } else {
+            $(".getmodename").append("light");
+        }
+        console.log(color);
+        color_mode();
+        console.log("{{lang}}");
+    });
+
+    let head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    let link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+
+    link.type = 'text/css';
+
+    link.href = "/static/{{lang}}student/assets/css/dark.css";
+
+    $('.toggler').on('click', function () {
+        if (localStorage.getItem('mode') == 'light') {
+            localStorage.setItem('mode', 'dark');
+            $(".getmodename").empty();
+            $(".getmodename").append("light");
+
+        } else {
+            localStorage.setItem('mode', 'light');
+            $(".getmodename").empty();
+            $(".getmodename").append("dark");
+
+        }
+        color_mode();
+    });
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            head.appendChild(link);
+
+        } else {
+            head.removeChild(link);
+        }
+    }
+
+
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            $("body").addClass('body-dark');
+            $(".active").addClass('active-dark'); 
+            $(".nextt").addClass('nextt-dark'); 
+            $(".material-icons").addClass('material-icons-dark'); 
+            $(".btncheck").addClass('btncheck-dark'); 
+            $(".activve").addClass('activve-dark'); 
+            $(".icn").addClass('icn-dark'); 
+            $(".btn-light").addClass('btn-light-dark'); 
+            $(".navbar").addClass('navbar-dark'); 
+            $(".sidebar").addClass('sidebar-dark'); 
+            $(".border-left-2").addClass('border-left-2-dark'); 
+            $(".accordion").addClass('accordion-dark'); 
+            $(".backgg").addClass('backgg-dark'); 
+            $(".sidebar-secondary").addClass('sidebar-secondary-dark'); 
+            $(".btn-primary").addClass('btn-primary-dark');
+            $(".top").addClass('top-dark');
+            $(".top").addClass('top-dark');
+            $(".carousel-item").addClass('carousel-item-dark'); 
+            $(".message").addClass('message-dark');
+            $(".card").addClass('card-dark');
+            $(".active-a").addClass('active-a-dark'); 
+            $(".menu-icon").addClass('menu-icon-dark'); 
+            $(".nav-drop-header").addClass('nav-drop-header-dark');  
+            $(".disabled").addClass('disabled-dark'); 
+            $(".alert-soft-primary ").addClass('alert-soft-primary-dark'); 
+            $(".cnti").addClass('cnti-dark'); 
+            $(".sidebar-light-dodger-blue").addClass('sidebar-light-dodger-blue-dark'); 
+            $(".blllu").addClass('blllu-dark'); 
+            $(".bllu").addClass('bllu-dark'); 
+            $(".addbg").addClass('addbg-dark'); 
+            $(".progress").addClass('progress-dark'); 
+            $(".carddy").addClass('card-dark'); 
+            $(".accordion__item").addClass('accordion__item-dark'); 
+            $(".brd").addClass('brd-dark');
+            $(".card-footer").addClass('card-footer-dark');
+            $(".custom-file").addClass('custom-file-dark');
+            $(".accordion__menu").addClass('accordion__menu-dark'); 
+            $(".lineeeet").addClass('lineeeet-dark');
+            $(".app-messages__container").addClass('app-messages__container-dark'); 
+            $(".hrrrr").addClass('hrrrr-dark');
+            $(".sweet-alert").addClass('sweet-alert-dark'); 
+            $(".is-light").addClass('is-light-dark'); 
+            $(".page-num").addClass('page-num-dark'); 
+            $(".form-control").addClass('form-control-dark'); 
+            $(".bgg-primary").addClass('bgg-primary-dark'); 
+            $(".Quiz").addClass('Quiz-dark'); 
+            $(".accorddd").addClass('accorddd-dark'); 
+            $(".dropdown-menu-right").addClass('dropdown-menu-right-dark'); 
+            $(".track").addClass('track-dark'); 
+            $(".selecttt").addClass('selecttt-dark'); 
+            $(".tehead").addClass('tehead-dark'); 
+            $(".bgk").addClass('bgk-dark'); 
+            $(".bg-primary").addClass('bg-primary-dark'); 
+            $(".socig").addClass('socig-dark'); 
+            $(".couponbg").addClass('couponbg-dark'); 
+            $(".soci").addClass('soci-dark'); 
+            $(".card-support").addClass('card-support-dark'); 
+            $(".cennnter").addClass('cennnter-dark'); 
+            $(".mediabout").addClass('mediabout-dark'); 
+            head.removeChild(link);
+
+        } else {
+            $("body").removeClass('body-dark');
+            $(".active").removeClass('active-dark'); 
+            $(".form-control").removeClass('form-control-dark'); 
+            $(".sweet-alert").removeClass('sweet-alert-dark'); 
+            $(".nextt").removeClass('nextt-dark'); 
+            $(".couponbg").removeClass('couponbg-dark'); 
+            $(".bgk").removeClass('bgk-dark'); 
+            $(".tehead").removeClass('tehead-dark'); 
+            $(".Quiz").removeClass('Quiz-dark'); 
+            $(".selecttt").removeClass('selecttt-dark'); 
+            $(".accordion__menu").removeClass('accordion__menu-dark'); 
+            $(".btncheck").removeClass('btncheck-dark'); 
+            $(".custom-file").removeClass('custom-file-dark');
+            $(".activve").removeClass('activve-dark'); 
+            $(".page-num").removeClass('page-num-dark'); 
+            $(".border-left-2").removeClass('border-left-2-dark'); 
+            $(".app-messages__container").removeClass('app-messages__container-dark'); 
+            $(".material-icons").removeClass('material-icons-dark'); 
+            $(".icn").removeClass('icn-dark'); 
+            $(".accordion").removeClass('accordion-dark'); 
+            $(".carddy").removeClass('card-dark'); 
+            $(".addbg").removeClass('addbg-dark'); 
+            $(".accordion__item").removeClass('accordion__item-dark'); 
+            $(".bgg-primary").removeClass('bgg-primary-dark'); 
+            $(".carousel-item").removeClass('carousel-item-dark'); 
+            $(".sidebar").removeClass('sidebar-dark'); 
+            $(".alert-soft-primary ").removeClass('alert-soft-primary-dark'); 
+            $(".navbar").removeClass('navbar-dark');  
+            $(".btn-light").removeClass('btn-light-dark'); 
+            $(".btn-primary").removeClass('btn-primary-dark');
+            $(".sidebar-secondary").removeClass('sidebar-secondary-dark'); 
+            $(".top").removeClass('top-dark');
+            $(".card-footer").removeClass('card-footer-dark');
+            $(".backgg").removeClass('backgg-dark'); 
+            $(".message").removeClass('message-dark');
+            $(".dropdown-menu-right").removeClass('dropdown-menu-right-dark'); 
+            $(".menu-icon").removeClass('menu-icon-dark'); 
+            $(".nav-drop-header").removeClass('nav-drop-header-dark');  
+            $(".disabled").removeClass('disabled-dark'); 
+            $(".sidebar-light-dodger-blue").removeClass('sidebar-light-dodger-blue-dark'); 
+            $(".cnti").removeClass('cnti-dark'); 
+            $(".card").removeClass('card-dark');
+            $(".progress").removeClass('progress-dark'); 
+            $(".blllu").removeClass('blllu-dark'); 
+            $(".bllu").removeClass('bllu-dark'); 
+            $(".active-a").removeClass('active-a-dark'); 
+            $(".card-header").removeClass('card-header-dark');
+            $(".brd").removeClass('brd-dark');
+            $(".lineeeet").removeClass('lineeeet-dark');
+            $(".hrrrr").removeClass('hrrrr-dark');
+            $(".is-light").removeClass('is-light-dark'); 
+            $(".accorddd").removeClass('accorddd-dark'); 
+            $(".track").removeClass('track-dark'); 
+            $(".socig").removeClass('socig-dark'); 
+            $(".bg-primary").removeClass('bg-primary-dark'); 
+            $(".soci").removeClass('soci-dark'); 
+            $(".card-support").removeClass('card-support-dark'); 
+            $(".cennnter").removeClass('cennnter-dark'); 
+            $(".mediabout").removeClass('mediabout-dark'); 
+            head.removeChild(link);
+        }
+    }
+
+
+
+    function check_video(id) {
+        $.ajax({
+            method: "POST",
+            url: "/video_check/",
+            data: {
+                'id': id,
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['msg'] == "success") {
+                    if(response['continous'] == 1){
+                        course_name = response['course_name']
+                        quiz_id = response['quiz_id']
+                        question_no = response['question_no']
+                        window.location = `/quiz/${course_name}/${quiz_id}/?question=${question_no}`
+                    } else{
+                        window.location = "/video/playground/" + response['id'];
+                    }
+
+                } else if (response['msg'] == "error") {
+                    swal("Course Video Not Found!", {
+                        icon: "info",
+                        button: "Ok",
+                        closeOnClickOutside: false,
+                    }).then(function () {
+                    });
+                }
+            }
+        });
+    }
+</script>
+<script>
+
+    $(function () {
+        'use strict';
+
+        // ENABLE sidebar menu tabs
+        $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        $('.js-sidebar-mini-tabs').on('show.bs.tab', function (e) {
+            $('.js-sidebar-mini-tabs > .active').removeClass('active')
+            $(e.target).parent().addClass('active')
+        })
+    });
+    //})()
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRFToken': $("#hd_csrf").val(),
+        }
+    });
+    let config = {
+        headers: {'X-CSRFToken': $("#hd_csrf").val()},
+    };
+</script>
+<script>
+
+    var Botkit = require('botkit');
+
+    var controller = new Botkit({});
+
+
+    controller.hears('hello', 'message', async (bot, message) => {
+
+        await bot.reply(message, 'Howdy!');
+
+    })
+    // Tell the bot to listen for users saying "hello," and use `bot.reply` to send an immediate response.
+
+
+    const tacos = new BotkitConversation('tacos', controller);
+    tacos.say('Oh boy, taco time!');
+    tacos.ask('What type of taco do you want?', async (answer, convo, bot) => {
+
+        // do something with the answer!
+
+    }, 'type_of_taco');
+    tacos.say('Yum!!');
+    controller.addDialog(tacos);
+
+    controller.hears('tacos', 'message', async (bot, message) => {
+        await bot.beginDialog('tacos');
+    });
+</script>
+<script>
+    const accessToken = "2af13bcd195349aba75a1c003d0dd75b";
+    const baseUrl = "https://api.api.ai/api/query?v=20150910";
+    const sessionId = "1234567890";
+    const loadingMarkups = "<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>";
+    const errorMessage = "Stay around while we repling..";
+    const urlPattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    const loadingDelay = 700;
+    const aiReplyDelay = 1800;
+    const $document = document;
+    const $chatbot = $document.querySelector(".chatbot");
+    const $chatbotMessageWindow = $document.querySelector(".chatbot__message-window");
+    const $chatbotHeader = $document.querySelector(".chatbot__header");
+    const $chatbotMessages = $document.querySelector(".chatbot__messages");
+    const $chatbotInput = $document.querySelector(".chatbot__input");
+    const $chatbotSubmit = $document.querySelector(".chatbot__submit");
+
+    /*$chatbotHeader.addEventListener("click", () => {
+        toggle($chatbot, "chatbot--closed");
+        $chatbotInput.focus();
+    }, false);*/
+
+    document.addEventListener("keypress", event => {
+        if (event.which === 13) {
+            validateMessage();
+        }
+    }, false);
+
+    /*$chatbotSubmit.addEventListener("click", () => {
+        validateMessage();
+    }, false);*/
+
+    let toggle = (element, klass) => {
+        let classes = element.className.match(/\S+/g) || [],
+            index = classes.indexOf(klass);
+        if (index >= 0) {
+            classes.splice(index, 1);
+        } else {
+            classes.push(klass);
+        }
+        element.className = classes.join(" ");
+    };
+
+    let userMessage = content => {
+        $chatbotMessages.innerHTML += `
+          <li class='is-user animation'>
+
+        <p class='chatbot__message'>
+          ${content}
+        </p>
+        <span class='chatbot__arrow chatbot__arrow--right'></span>
+        <img src="./../static{{user.image}}" style="border:2px solid grey;margin-left:5px;width:40px;float:right;height:40px;border-radius:50%" />
+
+      </li>`;
+    };
+
+    let aiMessage = (content, isLoading = false, delay = 0) => {
+        setTimeout(() => {
+            removeLoader();
+            $chatbotMessages.innerHTML += `<li
+            class='is-ai animation'
+            id='${isLoading ? "is-loading" : ""}'>
+              <div class="is-ai__profile-picture">
+                 <img src="../../assets/img/favicon.png" alt="">
+              </div>
+              <span class='chatbot__arrow chatbot__arrow--left'></span>
+              <div class='chatbot__message'>
+                ${content}
+                <small style="position:absolute;right:40px;bottom:5px;color: grey;"><b>now</b></small>
+
+              </div>
+            </li>
+
+            `;
+            scrollDown();
+        }, delay);
+    };
+
+    let removeLoader = () => {
+        let loadingElem = document.getElementById("is-loading");
+        if (loadingElem) {
+            $chatbotMessages.removeChild(loadingElem);
+        }
+    };
+
+    let escapeScript = unsafe => {
+        let safeString = unsafe.replace(/</g, " ")
+            .replace(/>/g, " ")
+            .replace(/&/g, " ")
+            .replace(/"/g, " ")
+            .replace(/\\/, " ")
+            .replace(/\s+/g, " ");
+        return safeString.trim();
+    };
+
+    let linkify = inputText => {
+        return inputText.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+    };
+
+    let validateMessage = () => {
+        let text = $chatbotInput.value;
+        let safeText = text ? escapeScript(text) : "";
+        if (safeText.length && safeText !== " ") {
+            resetInputField();
+            userMessage(safeText);
+            send(safeText);
+        }
+        scrollDown();
+        return;
+    };
+
+    let multiChoiceAnswer = text => {
+        let decodedText = text.replace(/zzz/g, "'");
+        userMessage(decodedText);
+        send(decodedText);
+        scrollDown();
+        return;
+    };
+
+    let processResponse = val => {
+        removeLoader();
+        if (val.fulfillment) {
+            let output = "";
+            let messagesLength = val.fulfillment.messages.length;
+            for (let i = 0; i < messagesLength; i++) {
+                let message = val.fulfillment.messages[i];
+                let type = message.type;
+                switch (type) {
+                    // 0 fulfillment is text
+                    case 0:
+                        let parsedText = linkify(message.speech);
+                        output += `<p>${parsedText}</p>`;
+                        break;
+                    // 1 fulfillment is card
+                    case 1:
+                        // let imageUrl = message.imageUrl
+                        // let imageTitle = message.title
+                        // let imageSubtitle = message.subtitle
+                        // output += `<img src="${imageUrl}" alt="${imageTitle}${imageSubtitle}" />`
+                        break;
+                    // 2 fulfillment is button list
+                    case 2:
+                        let title = message.title;
+                        let replies = message.replies;
+                        let repliesLength = replies.length;
+                        output += `<p>${title}</p>`;
+                        for (let i = 0; i < repliesLength; i++) {
+                            let reply = replies[i];
+                            let encodedText = reply.replace(/'/g, "zzz");
+                            output += `<button onclick='multiChoiceAnswer("${encodedText}")'>${reply}</button>`;
+                        }
+                        break;
+                    // 3 fulfillment is image
+                    case 3:
+                        // console.log("Fulfillment is image - TODO")
+                        break;
+                }
+            }
+            return output;
+        } else {
+            return val;
+        }
+    };
+
+    let setResponse = (val, delay = 0) => {
+        setTimeout(() => {
+            aiMessage(processResponse(val));
+        }, delay);
+    };
+
+    let resetInputField = () => {
+        $chatbotInput.value = "";
+    };
+
+    let scrollDown = () => {
+        let distanceToScroll = $chatbotMessageWindow.scrollHeight - ($chatbotMessages.lastChild.offsetHeight + 60);
+        $chatbotMessageWindow.scrollTop = distanceToScroll;
+        return false;
+    };
+
+    let send = (text) => {
+        fetch(`${baseUrl}&query=${text}&lang=en&sessionId=${sessionId}`, {
+            method: "GET",
+            dataType: "json",
+            headers: {
+                Authorization: "Bearer " + accessToken,
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        })
+            .then(response => response.json())
+            .then(res => {
+                if (res.status < 200 || res.status >= 300) {
+                    let error = new Error(res.statusText);
+                    throw error;
+                }
+                return res;
+            }).then(res => {
+            // console.log(JSON.stringify(response.result, undefined, 2))
+            setResponse(res.result, loadingDelay + aiReplyDelay);
+        }).catch(error => {
+            setResponse(errorMessage, loadingDelay + aiReplyDelay);
+            resetInputField();
+            //console.log( error );
+        });
+        aiMessage(loadingMarkups, true, loadingDelay);
+    };
+</script>
+<script>
+    $(document).ready(function () {
+        var color = localStorage.getItem('mode');
+        console.log(color);
+        color_mode();
+    });
+
+    let head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    let link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+
+    link.type = 'text/css';
+
+    link.href = "/static/{{lang}}teacher/assets/css/dark.css";
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            head.appendChild(link);
+
+        } else {
+            head.removeChild(link);
+        }
+    }
+</script>
+<script>
+
+    $(document).ready(function () {
+        $('#text_message').attr('disabled', true);
+        $('#loadings').fadeOut(3000);
+    });
+
+</script>
+
+
+</body>
+
+</html>

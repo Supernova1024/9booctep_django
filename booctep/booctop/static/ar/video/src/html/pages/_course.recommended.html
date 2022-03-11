@@ -1,0 +1,63 @@
+<div class="page-separator">
+  <div class="page-separator__text">Recommended</div>
+</div>
+
+{% set courses = [{
+  course: "Angular Routing In-Depth",
+  image: "assets/images/paths/angular_routing_200x168.png",
+  rating: 3
+}, {
+  course: "Angular Unit Testing",
+  image: "assets/images/paths/angular_testing_200x168.png",
+  rating: 4
+}] %}
+
+{% for item in courses %}
+<div class="mb-{% if loop.last %}16pt{% else %}8pt{% endif %} d-flex align-items-center">
+  <a href="{{ prefix or '' }}student-course.html" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+    <img src="{{ item.image }}" alt="{{ item.course }}" class="avatar-img rounded">
+    <span class="overlay__content"></span>
+  </a>
+  <div class="flex">
+    <a class="card-title mb-4pt" href="{{ prefix or '' }}student-course.html">{{ item.course }}</a>
+    <div class="d-flex align-items-center">
+      <div class="rating mr-8pt">
+        {% for rating in range(item.rating) %}
+        <span class="rating__item"><span class="material-icons">star</span></span>
+        {% endfor %}
+        {% for rating in range(5 - item.rating) %}
+        <span class="rating__item"><span class="material-icons">star_border</span></span>
+        {% endfor %}
+      </div>
+      <small class="text-muted">{{ item.rating }}/5</small>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="list-group list-group-flush">
+  <div class="list-group-item px-0">
+    <a href="{{ prefix or '' }}student-course.html" class="card-title mb-4pt">Angular Best Practices</a>
+    <p class="lh-1 mb-0">
+      <small class="text-muted mr-8pt">6h 40m</small>
+      <small class="text-muted mr-8pt">13,876 Views</small>
+      <small class="text-muted">13 May 2018</small>
+    </p>
+  </div>
+  <div class="list-group-item px-0">
+    <a href="{{ prefix or '' }}student-course.html" class="card-title mb-4pt">Unit Testing in Angular</a>
+    <p class="lh-1 mb-0">
+      <small class="text-muted mr-8pt">6h 40m</small>
+      <small class="text-muted mr-8pt">13,876 Views</small>
+      <small class="text-muted">13 May 2018</small>
+    </p>
+  </div>
+  <div class="list-group-item px-0">
+    <a href="{{ prefix or '' }}student-course.html" class="card-title mb-4pt">Migrating Applications from AngularJS to Angular</a>
+    <p class="lh-1 mb-0">
+      <small class="text-muted mr-8pt">6h 40m</small>
+      <small class="text-muted mr-8pt">13,876 Views</small>
+      <small class="text-muted">13 May 2018</small>
+    </p>
+  </div>
+</div>

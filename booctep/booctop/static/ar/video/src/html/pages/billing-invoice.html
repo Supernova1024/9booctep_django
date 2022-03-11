@@ -1,0 +1,14 @@
+---
+title: Invoice 
+slug: billing-invoice
+layout: app
+---
+{% extends "layouts/billing.html" %}
+
+{% block pageHeader %}
+  {% include 'pages/_billing-invoice.navbar.html' %}
+{% endblock %}
+
+{% block beforePage %}
+  {% include 'pages/_billing-invoice.beforePage.html' %}
+{% endblock %}

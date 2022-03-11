@@ -1,0 +1,32 @@
+[
+    {
+        "name": "status",
+        "desc": "how do you feel?",
+        "pic": "assets/img/icons/activities/feeling.svg"
+    },
+    {
+        "name": "drinking",
+        "desc": "What are you drinking?",
+        "pic": "assets/img/icons/activities/drinking.svg"
+    },
+    {
+        "name": "eating",
+        "desc": "What are you eating?",
+        "pic": "assets/img/icons/activities/eating.svg"
+    },
+    {
+        "name": "reading",
+        "desc": "What are you reading?",
+        "pic": "assets/img/icons/activities/reading.svg"
+    },
+    {
+        "name": "watching",
+        "desc": "What are you watching?",
+        "pic": "assets/img/icons/activities/watching.svg"
+    },
+    {
+        "name": "travelling",
+        "desc": "Where are you travelling to?",
+        "pic": "assets/img/icons/activities/travelling.svg"
+    }
+]

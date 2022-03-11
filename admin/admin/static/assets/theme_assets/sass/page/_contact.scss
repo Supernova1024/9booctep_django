@@ -1,0 +1,228 @@
+.contact-card-group {
+  .col-xl-3 {
+    @include xl {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+    @include md {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @include ssm {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+// Contact Breadcrumb
+.contact-breadcrumb {
+  .breadcrumb-main__wrapper {
+    @include ssm {
+      flex-flow: column;
+    }
+    @include sm {
+      margin-bottom: 15px;
+    }
+    .sub-title {
+      display: none;
+    }
+    .add-contact__form {
+      width: 280px;
+      border-radius: 6px;
+      box-shadow: 0 5px 5px rgba($light, 0.03);
+      height: 40px;
+      padding: 15px 18px;
+      @extend .bg-white;
+      @include ssm {
+        margin: 10px 0 2px 0;
+      }
+      svg,
+      img,
+      i {
+        @extend .color-light;
+        width: 16px;
+      }
+      .form-control {
+        height: 40px;
+        &::placeholder {
+          color: $extra-light;
+        }
+      }
+    }
+  }
+  .action-btn {
+    .btn {
+      box-shadow: 0 5px 10px rgba($primary, 0.1);
+      padding: 0 0.75rem ;
+    }
+  }
+}
+
+// add contact modal
+.add-contact {
+  .close {
+    svg,
+    img {
+      width: 18px;
+    }
+  }
+  .add-new-contact {
+    margin-top: -8px;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      @extend .color-dark;
+    }
+    .form-control {
+      &.form-control-lg {
+        height: 3rem;
+      }
+    }
+    button {
+      text-transform: capitalize;
+    }
+  }
+}
+
+// Contact List Table
+.contact-list-wrap {
+  padding: 25px 25px 30px 25px;
+  @extend .bg-white;
+}
+.contact-list {
+  table {
+    th {
+      &.c-name {
+        min-width: 120px;
+      }
+      &.c-company {
+        min-width: 120px;
+      }
+      &.c-position {
+        min-width: 120px;
+      }
+      &.c-phone {
+        min-width: 170px;
+      }
+      &.c-action {
+        min-width: 110px;
+      }
+    }
+  }
+  
+  .contact-item {
+    min-width: 210px;
+    .contact-personal-info {
+      align-items: center;
+      margin-left: 20px;
+      .profile-image {
+        margin-right: 12px !important;
+      }
+    }
+    .contact_title {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+      a {
+        @extend .color-dark;
+      }
+      .location {
+        font-size: 12px;
+        font-weight: 400;
+        @extend .color-light;
+      }
+    }
+  }
+  .table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    a {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+      &.active {
+        .feather-star {
+          @extend .color-warning;
+        }
+      }
+      svg,
+      img,
+      i {
+        width: 18px;
+        @extend .color-extra-light;
+      }
+    }
+    .dropdown-menu {
+      min-width: 7rem;
+    }
+    .btn-link svg {
+      width: 18px;
+      @extend .color-extra-light;
+    }
+  }
+}
+
+// Contact Profile Card
+.contact-card {
+  position: relative;
+  .dropdown-menu {
+    min-width: 7rem;
+  }
+  .card__more-action {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+  }
+  .cp-img {
+    margin-bottom: 20px;
+    img {
+      max-width: 120px;
+    }
+  }
+  .cp-info {
+    @include e(title) {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      @extend .color-dark;
+    }
+    @include e(designation) {
+      font-size: 14px;
+      color: #8288a4;
+    }
+  }
+  .c-info-list {
+    margin-bottom: 5px;
+    margin-top: -2px;
+    @include e(item) {
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+        margin-bottom: 4px;
+      }
+      .c-info-item-icon {
+        svg,
+        img,
+        i {
+          width: 14px;
+          margin-right: 12px;
+          @extend .color-light;
+        }
+      }
+      p {
+        font-size: 14px;
+        color: #8288a4;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

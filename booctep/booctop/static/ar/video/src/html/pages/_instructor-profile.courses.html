@@ -1,0 +1,46 @@
+{% set courses = [{
+  course: "Angular Routing In-Depth",
+  image: "assets/images/paths/angular_routing_200x168.png",
+  rating: 3
+}, {
+  course: "Angular Unit Testing",
+  image: "assets/images/paths/angular_testing_200x168.png",
+  rating: 4
+}, {
+  course: "Introduction to TypeScript",
+  image: "assets/images/paths/typescript_200x168.png",
+  rating: 5
+}, {
+  course: "Learn Angular Fundamentals",
+  image: "assets/images/paths/angular_200x168.png",
+  rating: 5
+}] %}
+
+<div class="row card-group-row mb-8pt">
+  {% for item in courses %}
+  <div class="col-sm-6 card-group-row__col">
+    <div class="card card-sm card-group-row__card">
+      <div class="card-body d-flex align-items-center">
+        <a href="{{ prefix or '' }}course.html" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+          <img src="{{ item.image }}" alt="{{ item.course }}" class="avatar-img rounded">
+          <span class="overlay__content"></span>
+        </a>
+        <div class="flex">
+          <a class="card-title mb-4pt" href="{{ prefix or '' }}course.html">{{ item.course }}</a>
+          <div class="d-flex align-items-center">
+            <div class="rating mr-8pt">
+              {% for rating in range(item.rating) %}
+              <span class="rating__item"><span class="material-icons">star</span></span>
+              {% endfor %}
+              {% for rating in range(5 - item.rating) %}
+              <span class="rating__item"><span class="material-icons">star_border</span></span>
+              {% endfor %}
+            </div>
+            <small class="text-muted">{{ item.rating }}/5</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+{% macro component(
+  label='courses',
+  sort=['Newest', 'Popularity'],
+  drawer_id='library-drawer',
+  sidebar_toggle
+) %}
+<div class="d-flex flex-column flex-sm-row align-items-sm-center mb-24pt" style="white-space: nowrap;">
+  <small class="flex text-muted text-headings text-uppercase mr-3 mb-2 mb-sm-0">Displaying 4 out of 10 {{ label }}</small>
+  <div class="w-auto ml-sm-auto table d-flex align-items-center mb-2 mb-sm-0">
+    <small class="text-muted text-headings text-uppercase mr-3 d-none d-sm-block">Sort by</small>
+    {% for item in sort %}
+      <a href="#" class="sort{% if loop.first %} desc{% endif %} small text-headings text-uppercase{% if not loop.first %} ml-2{% endif %}">{{ item }}</a>
+    {% endfor %}
+  </div>
+  {% if sidebar_toggle !== false %}
+  <a href="#" data-target="#{{ drawer_id }}" data-toggle="sidebar" class="btn btn-sm btn-white ml-sm-16pt">
+    <i class="material-icons icon--left">tune</i> Filters
+  </a>
+  {% endif %}
+</div>
+{% endmacro %}
+{{ component() }}

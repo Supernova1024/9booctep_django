@@ -1,0 +1,1328 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+<!-- CSS only -->
+
+<link rel="stylesheet" href="/static/student/assets/css/bootstrap.css">
+
+    <style>
+
+.faq-nav {
+  flex-direction: column;
+  margin: 0 0 32px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+
+.faq-nav-dark{
+  border: 1px solid rgb(15, 15, 15);
+}
+
+.faq-nav .nav-link {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 13px 16px;
+  background-color: rgb(255, 255, 255);
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  color: #616161;
+  transition: background-color 0.2s ease;
+}
+.faq-nav .nav-link-dark {
+  background-color: #222831;
+  border-bottom: 1px solid #151a22;
+  color: #616161;
+}
+.faq-nav .nav-link:hover {
+  background-color: #d6d6d6;
+}
+.faq-nav .nav-link-dark:hover {
+  background-color: #0e0d0d;
+}
+.faq-nav .nav-link.active {
+  background-color: #eeeeee;
+  font-weight: 600;
+  color: rgba(66, 66, 66, 0.87);
+}
+.faq-nav .nav-link-dark.active{
+  background-color: #15171f;
+  font-weight: 700;
+  color: rgba(187, 187, 187, 0.87);
+}
+.faq-nav .nav-link:last-of-type {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 0;
+}
+.faq-nav .nav-link i.mdi {
+  margin-right: 5px;
+  font-size: 18px;
+  position: relative;
+}
+
+.tab-content .card {
+  border-radius: 0;
+}
+.card .card-header {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #1a1919 !important;
+  background: #f6f6f6 !important;
+}
+.card .card-header-dark {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #b8b8b8 !important;
+  background: #15171f !important;
+}
+.card-headerh {
+  color: #1a1919 !important;
+}
+.card-headerh-dark {
+  color: #b8b8b8 !important;
+}
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+.tab-content .card-header h5 {
+  margin: 0;
+}
+.tab-content .card-header h5 button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  white-space: normal;
+}
+.tab-content .card-header h5 button:hover, .tab-content .card-header h5 button:focus, .tab-content .card-header h5 button:active, .tab-content .card-header h5 button:hover:active {
+  text-decoration: none;
+}
+.tab-content .card-body p {
+  color: #616161;
+}
+.tab-content .card-body p:last-of-type {
+  margin: 0;
+}
+
+.accordion > .card:not(:first-child) {
+  border-top: 0;
+}
+
+.collapse.show .card-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+     
+   
+.hero-faqs-dark{
+  position: relative;
+  height: 100%;
+  padding-top: 70px !important;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(42, 52, 66, 0.73), rgba(8, 13, 19, 0.52)),
+  url('../img/faqs.jpg') !important;
+
+}
+
+    
+    </style>
+
+    <style>
+        .accordion__menu {
+            border: 0.5px solid #dbdbdb;
+            background: white !important
+        }
+    </style>
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <div class="terms">
+        <!-- Brands -->
+        <div id="brands-tab" class="store-tab-pane is-active">
+            <!-- Timeline -->
+            <section class="hero is-small is-bold hero-faqs hero-faqs-dark">
+                <div class="hero-body">
+                    <div class="container">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>الشروط والأحكام وسياسة الإستخدام</h1>
+                        <h2 class="booctep-h2">{% trans "أعرف أكثر عن الشروط والأحكام وسياسة الإستخدام في منصة بوستيب, تعلم كيف تستخدم المنصة وماذا نتوقع منك وما الذي تتوقعه منا." %}</h2>
+
+                        {% else %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>Terms and Conditions of Use</h1>
+                        <h2 class="booctep-h2">{% trans "Read more about our terms & condition and how to use booctep in a best way." %}</h2>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <div class="terms-page" id="faq">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <div class="nav nav-pills faq-nav faq-nav-dark" id="faq-tabs" role="tablist" aria-orientation="vertical">
+                            <a href="#tab1" class="nav-link active active-dark" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
+                                شروط عامة
+                            </a>
+                            <a href="#tab2" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab2" aria-selected="false">
+                                حسابات
+                            </a>
+                            <a href="#tab3" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab3" aria-selected="false">
+                                سلوك المستخدم
+                            </a>
+                            <a href="#tab4" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab4" aria-selected="false">
+                                المالية وسياسة الإسترداد
+                            </a>
+                            <a href="#tab5" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab5" aria-selected="false">
+                                سياسة المعلم
+                            </a>
+                            <a href="#tab6" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab6" aria-selected="false">
+                                حقوق النشر
+                            </a>
+                            <a href="#tab7" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab7" aria-selected="false">
+                                شروط قانونية
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="nav nav-pills faq-nav faq-nav-dark" id="faq-tabs" role="tablist" aria-orientation="vertical">
+                            <a href="#tab1" class="nav-link active active-dark" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
+                                {% trans 'General' %}
+                            </a>
+                            <a href="#tab2" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab2" aria-selected="false">
+                                {% trans 'Accounts' %}
+                            </a>
+                            <a href="#tab3" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab3" aria-selected="false">
+                                {% trans 'User behaviour' %}
+                            </a>
+                            <a href="#tab4" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab4" aria-selected="false">
+                                {% trans 'Payments & Refund' %}
+                            </a>
+                            <a href="#tab5" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab5" aria-selected="false">
+                                {% trans 'Teachers' %} 
+                            </a>
+                            <a href="#tab6" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab6" aria-selected="false">
+                                {% trans 'Copyright' %} 
+                            </a>
+                            <a href="#tab7" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab7" aria-selected="false">
+                                {% trans 'Legal Terms' %} 
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="tab-content" id="faq-tab-content">
+                            <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                <div class="accordion" id="accordion-tab-1">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">مقدمة</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">منصة بوستيب هي منصة تعليم عربية تقدم دورات عبر مجموعة واسعة من الفئات ، تشمل بعضها: الأعمال وريادة الأعمال ، والبرمجة ، والأكاديميين ، والفنون ، والصحة واللياقة البدنية ، واللغة وغير ذلك الكثير.</p>
+                                                <p class="mediabout mediabout-dark">نحن نعلم أنه من المغري تخطي شروط الاستخدام هذه ، ولكن من المهم معرفة ما يمكن أن تتوقعه منا أثناء استخدامك لخدمات بوستيب وما نتوقعه منك، لذا يرجى قراءتها بعناية.</p>
+                                                <p class="mediabout mediabout-dark">تسري هذه الشروط بين منصة بوستيب التي تمثل كل ما يقدمه الموقع وبين المستخدم أو الزائر سواء تم استخدام الموقع عبر الهاتف المحمول أو الكمبيوتر المحمول أو أي جهاز آخر يدخل إلى الخدمات.</p>
+                                                <p class="mediabout mediabout-dark">تمت كتابة هذه الشروط لمساعدتك في استخدام النظام الأساسي بأمان خالي من المشاكل الناجمة عن سهو أو نسيان من المستخدم.</p>
+                                                <p class="mediabout mediabout-dark">تحتفظ المنصة بالحق في إجراء تغييرات على شروط وأحكام الاستخدام هذه في أي وقت. على هذا النحو ، قد تحتاج إلى زيارة هذه الصفحة من وقت لآخر لمراجعة شروط وأحكام الاستخدام.</p>
+
+                                                <p class="mediabout mediabout-dark">كل هذه الشروط من جهة ، وتتعامل منصة بوستيب مع الأشخاص الذين يحترمون الشروط وسياسة الخصوصية من جهة أخرى ، ونريد إعادة التأكيد على أننا سنكون دائمًا إلى جانب كل من يحترم سياساتنا وشروطنا. إذا واجهت أي مشكلة أو كنت ترغب في تقديم شكوى بشأن شيء ما ، فيرجى الاتصال بالدعم الفني ، فنحن على استعداد لحل مشكلتك مباشرة.</p>
+
+                                                <!-- <p class="mediabout mediabout-dark">{% trans "For all those registered or not registered, by using our service, you are trusting us with your information we know it's a big responsibility and thats why we have put these terms of use to protect your information, by guiding you with the perfect use of our platfrom and give you the full power of control on your information." %}</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">إخلاء مسؤولية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">نحن لا نوظف مدربين ولسنا مسؤولين عن أي تفاعلات بين المدرسين والطلاب وكذلك لسنا مسؤولين عن النزاعات أو المطالبات أو الخسائر أو الإصابات أو الأضرار من أي نوع التي قد تنشأ أو تتعلق بسلوك المعلمين أو الطلاب.
+                                                </p>
+                                                <p class="mediabout mediabout-dark">
+                                                    يخضع استخدام هذه الخدمة عن طريق التسجيل أو التصفح كزائر للسياسات والشروط والأحكام الموضحة أدناه ("شروط وأحكام الاستخدام"). يشير استخدامك لهذه الخدمة إلى موافقتك على شروط وأحكام الاستخدام هذه.
+                                                </p>
+                                                <p class="mediabout mediabout-dark">عند استخدام منصة بوستيب ، قد تتلقى منشورات من مستخدمين من مجموعة متنوعة من المصادر وأننا أو مستخدمين آخرين غير مسؤولين عن الدقة أو الفائدة أو الموثوقية أو حقوق الملكية الفكرية المتعلقة بهذه المنشورات. أنت تدرك أيضًا وتقر بأنك قد تتعرض لمشاركات مستخدم غير دقيقة أو مسيئة أو تشهيرية أو غير لائقة أو مرفوضة وتوافق على التنازل عن أي حقوق أو تعويضات قانونية أو منصفة لديك ضدنا. نحن لا نؤيد أي منشورات مستخدم أو أي رأي أو توصية أو نصيحة واردة في مثل هذه المنشورات. كما أننا غير ملزمين بمراقبة أي مواد ينشرها المستخدمون أو أي اتصالات من مستخدمين آخرين عبر موقعنا.</p>
+
+                                                <p class="mediabout mediabout-dark">يحق لـ منصة بوستيب ، وفقًا لتقديرها الخاص ، تعليق أي حساب ينتهك أيًا من هذه الشروط ومقاضاته ، إذا لزم الأمر.</p>
+                                            
+                                                <p class="mediabout mediabout-dark">أنت توافق على أن جميع المعلومات المقدمة على أساس "الوضع الراهن" وإلى الحد الذي يسمح به القانون ، دون ضمان أو تمثيل أو شرط من أي نوع سواء كان صريحًا أو ضمنيًا أو قانونيًا أو غير ذلك ، ولا نتحمل جميع المسؤوليات والمخاطر الناشئة من سوء الاستخدام أو الاعتماد على المعلومات والمنصة أو أي مواد أخرى يتم الوصول إليها من خلال المنصة ، بما في ذلك من خلال أي موقع أو تطبيق مرتبط.</p>
+                                                <p class="mediabout mediabout-dark">تمت كتابة هذه الشروط باللغتين العربية والإنجليزية ، وفي حالة حدوث تغيير أو ارتباك في صياغة المعنى ، فسيتم استخدام اللغة العربية.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">الخدمات المقدمة</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">ينشئ بوستيب تقنيات وخدمات التعلم عبر الإنترنت التي تمكن المعلمين من التواصل مع الطلاب.
+                                                </p>
+                                                <p class="mediabout mediabout-dark">توضح <a href="{% url 'privacy_policy' %}"> سياسة الخصوصية </a> كيفية تعاملنا مع بياناتك الشخصية وكيفية حماية خصوصيتك عند استخدام خدماتنا ، باستخدام خدماتنا ، فإنك توافق على أن بوستيب قد تستخدم هذه البيانات وفقًا لسياسة الخصوصية الخاصة بنا.</p>
+                                                <p class="mediabout mediabout-dark">يمنح الطالب ترخيصًا محدودًا وغير حصري وغير قابل للتحويل وغير قابل للتحويل لجميع أنواع الدورات المشتراة.</p>
+                                                <p class="mediabout mediabout-dark">يحتفظ المعلم بحق تعديل المقرر متى شاء.</p>
+                                                <p class="mediabout mediabout-dark">أنت توافق على أن جميع المعلومات المقدمة على الموقع أو أي مادة أخرى يتم الوصول إليها من خلال المنصة ، بما في ذلك عبر أي موقع أو تطبيق مرتبط ، هي معلومات عامة وليست في شكل نصيحة.</p>
+                                                <p class="mediabout mediabout-dark">قد تمنحك الدورات إمكانية الوصول إلى روابط لمنصات خارجية أخرى ، سواء بشكل مباشر أو غير مباشر ، ولا نتحكم في تلك المنصات ولا نتحمل أي مسؤولية عما يحدث على المنصات الخارجية ، يجب عليك اتخاذ الخطوات المناسبة لحماية معلوماتك الشخصية وخصوصيتك على تلك المنصات الخارجية .</p>
+                                                <p class="mediabout mediabout-dark">يجب أن تعتمد على جهودك الخاصة لمراقبة مستوى وأداء الدورة التي تشتريها ، وانظر التعليقات والتقييمات التي قدمها الطلاب المشاركون.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-4">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-4" aria-expanded="false" aria-controls="accordion-tab-1-content-4">الخسائر أو التلف</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-4" aria-labelledby="accordion-tab-1-heading-4" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">قد يحدث انقطاع غير مخطط له أو مخطط له في النظام. أنت توافق على أن بوستيب ليست مسؤولة عن فقدان الخدمات أو البيانات أو أي معلومات أخرى ناتجة عن فقدان النظام أو الانقطاعات التي تسببها أطراف ثالثة ، بما في ذلك على سبيل المثال لا الحصر الخوادم, والدورات.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">{% trans 'Introduction' %}</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">{% trans "Booctep is an online learning platform it's offers courses across a wide range of categories, some of which include: business & entrepreneurship, programming, academics, the arts, health & fitness, language and much more." %}</p>
+                                                <p class="mediabout mediabout-dark">We know it’s tempting to skip these Terms of use, but it’s important to establish what you can expect from us as you use Booctep services, and what we expect from you.</p>
+                                                <p class="mediabout mediabout-dark">These conditions are valid between the Booctep platform, which represents everything provided by the site, and between the user or the visitor, whether the site is used via mobile, laptop, or any other device that accesses the services.</p>
+                                                <p class="mediabout mediabout-dark">These terms are written to help you use the platform safely and free of problems caused by an oversight or forgetfulness from the user. We know that it is tempting to skip these terms of service, but it is important to specify what you can expect from us while using our services, and what we expect from you, so please Read it carefully.</p>
+                                                <p class="mediabout mediabout-dark">The platform reserves the right to make changes on this Terms and Conditions of Use at any time. As such, you may need to visit this page from time to time to review the Terms and conditions of use.</p>
+
+                                                <p class="mediabout mediabout-dark">All of these conditions are on one side, and Booctep platform deals with people who respect the terms and privacy policy on the other, we want to re-emphasize that we will always be on the side of everyone who respects our policies and conditions.
+
+                                                    If you encounter any problem or would like to complain about something, please contact technical support, we are ready to solve your problem directly.</p>
+
+                                                <!-- <p class="mediabout mediabout-dark">{% trans "For all those registered or not registered, by using our service, you are trusting us with your information we know it's a big responsibility and thats why we have put these terms of use to protect your information, by guiding you with the perfect use of our platfrom and give you the full power of control on your information." %}</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">Disclaimer</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We do not hire or employ instructors and are not responsible or liable for any interactions between instructors and students We are not responsible for disputes, claims, losses, injuries or damages of any kind that may arise out of or relate to the behavior of teachers or students.</p>
+                                                <p class="mediabout mediabout-dark">
+                                                    {% trans "Use of this service by registering or browsing as a visitor is subject to the policies, terms and conditions set out below (“Terms and Conditions of Use”). Your use of this service indicates your acceptance of these terms and conditions of use." %}
+                                                </p>
+                                                <p class="mediabout mediabout-dark">When you use Booctep Platform you may receive Postings from Users from a variety of sources and that we or other Users are not responsible for the accuracy, usefulness, reliability or intellectual property rights related to such Postings. You also understand and acknowledge that you may be exposed to User Postings that are inaccurate, offensive, defamatory, indecent or objectionable and you agree to waive any legal or equitable rights or remedies you have against us. We do not endorse any User Postings or any opinion, recommendation or advice contained in such Postings. Nor do we have any obligation to monitor any materials posted by users or any communications by other users through our site.</p>
+
+                                                <p class="mediabout mediabout-dark">Booctep has the right, at its own discretion, to suspend any account that violates any of these terms and to prosecute them, if necessary.</p>
+                                            
+                                                <p class="mediabout mediabout-dark">You agree that all information provided is on a “status quo” basis and to the extent permitted by law, without warranty, representation or condition of any kind whether express, implied, statutory or otherwise, and we do not assume all liability and risk arising from Misuse or reliance on the information and the Platform or any other materials accessed through the Platform, including through any linked website or application.</p>
+                                                <p class="mediabout mediabout-dark">These conditions are written in both Arabic and English, and in the event of a change or confusion in the wording of the meaning, the use of the Arabic language is likely.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">The offered services</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Booctep creates online learning technologies and services that enable teachers to connect with students.</p>
+                                                <p class="mediabout mediabout-dark"><a href="{% url 'privacy_policy' %}">The Privacy Policy</a> explains how we treat your personal data and how to protect your privacy When you use our Services, by using our Services, you agree that Booctep may use this data in accordance with our Privacy Policy.</p>
+                                                <p class="mediabout mediabout-dark">The student is granted a limited, non-exclusive, non-transferable, non-transferable license of all kinds for the courses purchased.</p>
+                                                <p class="mediabout mediabout-dark">The teacher reserves the right to modify the course whenever he wants.</p>
+                                                <p class="mediabout mediabout-dark">You agree that all information provided on the site or any other material accessed through the Platform, including via any linked website or application, is general information and not in the form of advice.</p>
+                                                <p class="mediabout mediabout-dark">Courses may give you access to links to other external platforms, either directly or indirectly, we do not control those platforms and take no responsibility for what happens on external platforms, you must take appropriate steps to protect your personal information and privacy on those external platforms.</p>
+                                                <p class="mediabout mediabout-dark">You should rely on your own efforts to monitor the level and performance of the course you purchase, see comments and ratings given by participating students.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-4">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-4" aria-expanded="false" aria-controls="accordion-tab-1-content-4">Damages / Losses</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-4" aria-labelledby="accordion-tab-1-heading-4" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Unplanned or planned system outages may occur. You agree that Booctep is not responsible for loss of services, data, or any other information resulting from system loss, or interruptions caused by third parties, including but not limited to servers.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">إنشاء حساب في بوستيب</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">أنت توافق على أنه بالتسجيل في خدماتنا أو الوصول إليها أو استخدامها ، فإنك توافق على إبرام عقد ملزم قانونًا مع بوستيب.</p>
+                                                <p class="mediabout mediabout-dark">الموقع متاح للأفراد (معلمين ، متعلمين).</p>
+                                                <p class="mediabout mediabout-dark">لا يحق للمستخدم التسجيل ، إذا كان المستخدم غير مؤهل قانونيًا للتعامل مع الموقع ، وبناءً عليه فإننا نتنصل من المسؤولية الكاملة عن جميع عواقب المشاكل القانونية التي تحدث على الموقع ، وجميع الأمور القانونية هي مسؤولية المستخدم. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">تنويه</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">يجب أن يكون مستخدمو الموقع فوق السن القانوني وهو 18 عامًا ، وإذا لم يكن الأمر كذلك ، فسيتم استخدام الدورات تحت إشراف الوالدين أو أحدهما أو الوصي ، ولا يجوز لمن هم دون سن 13 عامًا التسجيل أو شراء الدورات.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">الية الإستخدام</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">يتم استخدام الخدمات المقدمة بواسطتك فقط ولا يُسمح لك بمشاركة حسابك مع مستخدم آخر أو بيع حسابك.</p>
+                                                <p class="mediabout mediabout-dark">أنت وحدك المسؤول عن الحفاظ على معلومات حسابك بشكل عام مثل اسم المستخدم وكلمة المرور وجميع الأنشطة المتعلقة بحسابك وأنت تقر وتضمن أن معلومات حسابك صحيحة ودقيقة في جميع الأوقات.</p>
+                                                <p class="mediabout mediabout-dark">لشراء الدورات على المنصة ، ستحتاج إلى التسجيل والحصول على حساب وكلمة مرور. عند التسجيل ، يجب أن تكون المعلومات التي تقدمها لنا صحيحة ، مع الأخذ في الاعتبار أن الاسم المستخدم للتسجيل هو الاسم الذي سيتم طباعته على الشهادة.</p>
+                                                <p class="mediabout mediabout-dark">أنت توافق على أننا قد نرسل لك إعلانات ترويجية للخدمات والرسائل الإدارية وغيرها من المعلومات. يمكنك تعطيل بعض الاتصالات من خلال الإعدادات.</p>
+                                                <p class="mediabout mediabout-dark">أنت توافق على الدفاع عن منصة بوستيب وعدم الضرر بها أو بأعضاء بوستيب والطلاب والمعلمين ومجلس الإدارة والمسؤولين والوكلاء والموظفين من وضد أي مطالبات أو إجراءات أو مطالب خاصة بطرف ثالث تنشأ عن أو تنشأ خارج أو بأي شكل من الأشكال المتعلقة باستخدامك للموقع ، بما في ذلك المسؤولية أو النفقات الناشئة عن جميع المطالبات والخسائر والأضرار والدعاوى والأحكام وتكاليف القاضي (الفعلية والتبعية) وأتعاب المحاماة ، من كل نوع وطبيعتها.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Create account</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">You agree that by registering, accessing or using our Services, you agree to enter into a legally binding contract with Booctep. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT REGISTER, ACCESS OR USE ANY OF OUR SERVICES.</p>
+                                                <p class="mediabout mediabout-dark">The site is available to individuals (teachers, learners).</p>
+                                                <p class="mediabout mediabout-dark">The user is not entitled to register, if the user is not legally qualified to deal with the site, and accordingly we disclaim all responsibility for all the consequences of legal problems that occur on the site, all legal matters are the responsibility of the user.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">Notes (+18)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Users of the site must be above the legal age of 18 years, and if not, the courses will be used under the supervision of the parents or one of them or the guardian, and it is not permissible for those under 13 years old to register or purchase the courses.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">Usage</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">The services provided are used by you only and you are not allowed to share your account with another user or sell your account.</p>
+                                                <p class="mediabout mediabout-dark">You are solely responsible for maintaining your account information in general such as your username and password and all activities related to your account and you represent and warrant that your account information is true and accurate at all times.</p>
+                                                <p class="mediabout mediabout-dark">To purchase courses on the platform, you will need to register and obtain an account and password. When registering, the information you provide to us must be correct, bearing in mind that the name used for registration is the one that will be printed on the certificate.</p>
+                                                <p class="mediabout mediabout-dark">You agree that we may send you promotional advertisements for the Services, administrative messages and other information. You may disable certain communications through the settings.</p>
+                                                <p class="mediabout mediabout-dark">You agree to defend and hold harmless the Booctep Platform or the participation of Booctep and Site members, students, teachers, members, board of directors, officers, agents and employees from and against any third party claims, actions or demands arising out of, arising out of or in any way related to your use of the Site , including liability or expenses arising out of all claims, losses, damages, suits, judgments, judge costs (actual and consequential) and attorneys’ fees, of every kind and nature, Booctep platform or any Booctep platform participant shall, in such event at its discretion, provide you with written notice or orally for a similar claim, suit or action.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab3" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">المحتوى</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                               <p class="mediabout mediabout-dark">نحن لا نتحكم في المحتوى المقدم ونخلي مسؤوليتنا عن أي محتوى ضار أو جنسي يرفقه المعلم ، وبالتالي لا نضمن صحة أو موثوقية أو أصالة المحتوى المقدم.
+                                            </p>
+                                               <p class="mediabout mediabout-dark">نحن لسنا مسؤولين عن أي أضرار مباشرة أو غير مباشرة أو تبعية أو خاصة أو تعبيرية مثل فقدان البيانات أو خسارة الأرباح أو الدورات التدريبية أو سوء الاستخدام بسبب الإهمال أو المسؤولية الصارمة الناشئة عن الخدمات المقدمة ، بما في ذلك أي مواد متاحة من خلال طرف ثالث عند شرائها الخدمات أو الرموز أو المنتجات.</p>
+                                               <p class="mediabout mediabout-dark">كما أننا لا نتحمل مسؤولية القذف أو القذف أو التشهير أو الإغفال أو الأكاذيب أو الإساءة أو المواد الإباحية أو الإهانات التي قد تواجهها أثناء استخدام منصة بوستيب ، ولا نتحمل أي مسؤولية عن أي بيانات أو تعهدات أو محتوى مقدم من المعلم.</p>
+                                               <p class="mediabout mediabout-dark">هناك احتمال أن تتضمن الخدمات المقدمة على أي منصة تابعة لجهة خارجية أخطاء أو مواد ضارة أو مواد تنتهك هذه الشروط ، لذلك لا نقدم ضمانات حول اكتمال أو صحة الخدمات ، بما في ذلك على سبيل المثال لا الحصر ، الاستضافة والهدايا والمجالات وما إلى ذلك.</p>
+                                               <p class="mediabout mediabout-dark">إذا كنت تعتقد أن المحتوى المقدم ينتهك خصوصيتك أو أي قانون أو أي لائحة أو أن المعلومات المقدمة غير دقيقة أو تشكل أي خطر ، فأبلغنا بذلك على الفور حتى نتمكن من تصحيح الموقف.</p>
+                                               <p class="mediabout mediabout-dark">إذا كنت تعتقد أن محتوى الطرف الثالث أو أي محتوى ينتهك شروط استخدام النظام الأساسي أو ينتهك أي قوانين أو لوائح معمول بها بما في ذلك على سبيل المثال لا الحصر قوانين حقوق النشر ، فيجب عليك الإبلاغ عنه للحفاظ على حقوق النشر والقيام بما هو ضروري.</p>
+                                               <p class="mediabout mediabout-dark">منصة بوستيب غير مسؤولة عن أي أمور تتعلق بالمعلم وعدم تجاوبه مع الطلاب المشاركين في المقرر.</p>
+                                               <p class="mediabout mediabout-dark">نحن لسنا مسؤولين عن أي أضرار مباشرة أو غير مباشرة أو تبعية أو خاصة أو تعبيرية مثل فقدان البيانات أو خسارة الأرباح أو الدورات التدريبية أو سوء الاستخدام بسبب الإهمال أو المسؤولية الصارمة الناشئة عن الخدمات المقدمة ، بما في ذلك أي مواد متاحة من خلال طرف ثالث عند شرائها الخدمات أو الرموز أو المنتجات.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">محدودية الإستخدام</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                               <p class="mediabout mediabout-dark">يحظر على المستخدمين إضافة أي رابط إعلاني على الموقع ، سواء من خلال الخدمات أو الرسائل بين الأعضاء أو وصف الخدمات أو الأمور الأخرى ، ويجب أن تنتمي روابط الويب الخارجية إلى منصة بوستيب.</p>
+                                               <p class="mediabout mediabout-dark">لا تحاول الوصول إلى جزء عميق أو إداري من هذه المنصة دون إذن مسبق منا.</p>
+                                               <p class="mediabout mediabout-dark">في بعض الحالات ، قد يتم تعليق حسابك ، دون إشعار مسبق بسبب الاشتباه في حدوث اختراق ، وفي هذه الحالة قد يُطلب منك التحقق من مستندات اثبات الملكية لاستعادة الحساب.</p>
+
+                                               <p class="mediabout mediabout-dark">يحتفظ بوستيب بالحق في تعليق أو تعليق أي حساب مستخدم بشكل مؤقت أو دائم بسبب سوء الاستخدام دون تقديم أي إشعار مسبق.</p>
+                                               <p class="mediabout mediabout-dark">في حالة الاشتباه في حدوث اختراق ، قد تتم استعادة الحساب في غضون 30 إلى 45 يومًا بعد التحقق من جميع المستندات والمستندات التي تثبت أنه حسابك.</p>
+                                               <p class="mediabout mediabout-dark">إذا شعرت بوجود خطأ في حسابك أو محاولة اختراق ، فيرجى إبلاغ الدعم الفني عبر البريد الإلكتروني support@booctep.com.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-4">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-4" aria-expanded="false" aria-controls="accordion-tab-2-content-4">جرائم الإساءة</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-4" aria-labelledby="accordion-tab-2-heading-4" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">
+                                                    1. الإضرار بالموقع بأي شكل من الأشكال. <br>
+2. محاولة الوصول إلى أجزاء عميقة من النظام الأساسي دون إذن مسبق. <br>
+3. سرقة المحتوى بدون إذن. <br>                                      
+4. لقطة شاشة من الجلسات. <br>                                                  
+5. نشر معلومات خاصة عن المعلم في التعليقات. <br>                                                   
+6. استخدام بطاقة مصرفية مسروقة أو حساب PayPal مسروق. <br>
+7. الإساءة إلى أي مستخدم آخر داخل المنصة. <br>                                                  
+8. الألفاظ النابية أو غير اللائقة أو السياسية أو استخدام أسلوب عنيف أو غير متسامح للدين أو العرق أو الجنس أو العنصرية ، وما إلى ذلك ، سواء في التعليقات أو في محادثة خاصة. <br>                                                    
+9. انتحال شخصية شخص آخر. <br>                                                    
+10. استخدام العلامة التجارية (الشعار) لمنصة بوستيب بشكل سيء ، سواء كانت الادعاء الكاذب ، أو التشهير ، أو الشائعات ، وما إلى ذلك ، من وجهة نظرنا ، إساءة استخدام. <br>                                                   
+11. استنساخ المحتوى المقدم. <br>                                                    
+12. بث المحتوى وإعادة توزيعه.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-5">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-5" aria-expanded="false" aria-controls="accordion-tab-2-content-5">سياسة الخصوصية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-5" aria-labelledby="accordion-tab-2-heading-5" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">نحن في بوستيب لأننا ندرك أهمية الحفاظ على حقوق مدرسينا. نحن نأخذ هذا الأمر على محمل الجد ، ولن نتسامح مع أي مسألة تنشأ عن خلل في هذه الاتفاقية ، وفي هذا السياق تعاقدنا مع شركة ستتابع أي محتوى منشور خارج منصة بوستيب وهي تابعة حصريًا لـ حقوق بوستيب.</p>
+                                               <p class="mediabout mediabout-dark">يسعى بوستيب إلى التأكد من أن المعلومات موثوقة ودقيقة ، وقد تحدث أخطاء أو سهو ، وبالتالي لا تقدم منصة بوستيب أي ضمانات صريحة أو ضمنية من أي نوع لأي مسألة تتعلق بالمنصة أو أي موقع ويب أو تطبيق مرتبط ، بما في ذلك على سبيل المثال لا الحصر يقتصر على ، بخصوص الشعبية وعدم التعدي على حقوق الملكية الفكرية.</p>
+                                               
+                                               <p class="mediabout mediabout-dark">عندما تتفاعل مباشرة مع طالب أو مدرس ، يجب أن تكون حريصًا بشأن أنواع المعلومات الشخصية التي تشاركها. بينما نقوم بتقييد أنواع المعلومات التي قد يطلبها المعلمون من الطلاب ، فإننا لا نتحكم في ما يفعله الطلاب والمعلمون بالمعلومات التي يحصلون عليها من المستخدمين الآخرين على المنصة. يجب ألا تشارك بريدك الإلكتروني أو أي معلومات شخصية أخرى عنك من أجل سلامتك الشخصية.</p>
+                                               <p class="mediabout mediabout-dark">إذا كنت تعتقد أن المحتوى المقدم ينتهك خصوصيتك أو أي قانون أو أي لائحة أو أنه ينتهك سياسة الملكية الفكرية أو أن المعلومات المقدمة غير دقيقة أو تشكل أي خطر من أي نوع عليك أو على المنصة ، فيرجى إبلاغنا بها حتى نتمكن من ذلك تصحيح الوضع.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">Contents</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                               <p class="mediabout mediabout-dark">We do not control the content provided and disclaim all responsibility for any harmful or sexual content that is attached by the teacher, and therefore we do not guarantee the correctness, reliability or authenticity of the submitted content.</p>
+                                               <p class="mediabout mediabout-dark">We are not liable for any direct, indirect, consequential, special or expressive damages such as loss of data, loss of profits or courses or misuse under negligence or strict liability arising from the services provided, including any materials available through a third party as purchased services or codes or products.</p>
+                                               <p class="mediabout mediabout-dark">We also do not bear the responsibility of slander, slander, defamation, omission, lies, abuse, pornography, or insults that you may encounter while using the Booctep platform, and we do not assume any responsibility for any statements, pledges or content provided by the teacher.</p>
+                                               <p class="mediabout mediabout-dark">There is a possibility that the services provided on any third party platform may include errors, harmful material or material that violates these terms, so we do not provide guarantees about the completeness or correctness of the services, including but not limited to, hosting, gifts, domains etc.</p>
+                                               <p class="mediabout mediabout-dark">If you believe that the submitted content violates your privacy or any law or any regulation or that the information provided is inaccurate or poses any danger, report it to us immediately so that we can correct the situation.</p>
+                                               <p class="mediabout mediabout-dark">If you believe that third party content or any content violates the terms of use of the platform or violates any applicable laws or regulations including but not limited to copyright laws, you must report it to preserve the copyright and do what is necessary.</p>
+                                               <p class="mediabout mediabout-dark">The platform is not responsible for any issues related to the teacher and his lack of response to the students participating in the course.</p>
+                                               <p class="mediabout mediabout-dark">We are not liable for any direct, indirect, consequential, special or expressive damages such as loss of data, loss of profits or courses or misuse under negligence or strict liability arising from the services provided, including any materials available through a third party as purchased services or codes or products.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">Limits</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                               <p class="mediabout mediabout-dark">Users are prohibited from adding any advertising link on the site, whether through services, messages between members, description of services or other matters, and external web links must belong to the Booctep platform.</p>
+                                               <p class="mediabout mediabout-dark">Do not attempt to access a deep or administrative part of this platform without our prior permission.</p>
+                                               <p class="mediabout mediabout-dark">In some cases your account may be suspended, without prior notification due to suspected hacking, in which case you may be required to verify user identification documents to restore the account.</p>
+
+                                               <p class="mediabout mediabout-dark">Booctep reserves the right to temporarily or permanently suspend or suspend any user's account due to misuse without providing any prior notice.</p>
+                                               <p class="mediabout mediabout-dark">In case of suspicion of hacking, the account may be restored within 30 to 45 days after verifying all documents and documents that prove that it is your account.</p>
+                                               <p class="mediabout mediabout-dark">If you feel a bug in your account or an attempt to hack, please report to technical support via email support@booctep.com.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-4">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-4" aria-expanded="false" aria-controls="accordion-tab-2-content-4">abuse offenses</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-4" aria-labelledby="accordion-tab-2-heading-4" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">
+                                                    1. Damage the site in any way. <br>
+                                                    2. Attempting to access deep parts of the platform without prior permission. <br>
+                                                    3. Stealing the content without permission. <br>
+                                                    4. Screen capture of sessions. <br>
+                                                    5. Post private information about the teacher in the comments. <br>
+                                                    6. Using a stolen bank card or a stolen PayPal account. <br>
+                                                    7. Offending any other user within the platform. <br>
+                                                    8. Profanity, indecent, political, use of a violent or intolerant way of religion, race, gender, racism, etc., whether in comments or in private conversation. <br>
+                                                    9. Impersonate another person. <br>
+                                                    10. Using the trademark (logo) of Booctep platform badly, whether false claim, defamation, rumors, etc., from our perspective, is misuse. <br>
+                                                    11. Reproduction of the submitted content. <br>
+                                                    12. Broadcast and redistribute content.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-5">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-5" aria-expanded="false" aria-controls="accordion-tab-2-content-5">Privacy and policy</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-5" aria-labelledby="accordion-tab-2-heading-5" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We are in Booctep because we are aware of the importance of preserving the rights of our teachers. We take this matter very seriously, and we will not tolerate any matter that arises resulting from a defect in this agreement, and in this context we have contracted with a company that will pursue any content published outside Booctep platform and it is exclusively affiliated for Booctep platform.</p>
+                                               <p class="mediabout mediabout-dark">Booctep seeks to ensure the information is reliable and accurate, and errors or omissions may occur, and therefore Booctep platform does not give any express or implied warranties of any kind for any matter related to the platform or any linked website or application, including but not limited to, Regarding. Popularity and non-infringement of intellectual property rights.</p>
+                                               
+                                               <p class="mediabout mediabout-dark">When you interact directly with a student or teacher, you should be careful about the types of personal information you share. While we restrict the types of information teachers may request from students, we do not control what students and teachers do with information they obtain from other users on the Platform. You should not share your email or any other personal information about yourself for your own safety.</p>
+                                               <p class="mediabout mediabout-dark">If you believe that the submitted content violates your privacy or any law or any regulation or that it violates the intellectual property policy or that the information provided is inaccurate or poses any danger whatsoever to you or the Platform please inform us about it so that we can correct the situation.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab4" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">الأمور المالية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark"> أنت توافق على دفع رسوم هذه الدورات والخدمات وأنت ملزم بدفع الضرائب المتعلقة ببلدك ، وسيتم خصم هذه الرسوم من بطاقتك الائتمانية. </p>
+                                                
+                                                    <p class="mediabout mediabout-dark"> عندما تقدم معلومات بطاقة الائتمان ، فإنك تتعهد بأنه مصرح لك بتقديم هذه المعلومات. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> تخلي بوستيب مسؤوليتها عن أي مبلغ يتم دفعه خارج منصة Booctep. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> يحق لنا وفقًا لتقديراتنا تقريب السعر ، على سبيل المثال: 101.60 دولارًا سيصبح 102.00 دولارًا. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> في حالة وجود عيب في عملية الشراء ، فأنت ملزم بالدفع في غضون 30 يومًا ، ويتم دفع عمولة إضافية بنسبة 1.5٪ عن كل شهر أو الحد الذي يسمح به القانون ، أيهما أكبر. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> إذا قمت بتسجيل الدخول إلى حسابك ، فإن العملة المدرجة التي تراها تستند إلى موقعك عندما أنشأت حسابك. إذا لم تقم بتسجيل الدخول إلى حسابك ، فإن عملة السعر تعتمد على البلد الذي تتواجد فيه ، ولا يمكننا تمكين المستخدمين من رؤية الأسعار بالعملات الأخرى. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> إذا كنت طالبًا مقيمًا في بلد تسري فيه ضريبة الاستخدام والمبيعات أو ضريبة السلع والخدمات أو ضريبة القيمة المضافة (VAT) على مبيعات المستهلكين ، فإننا مسؤولون عن تحصيل تلك الضريبة وتحويلها إلى السلطات الضريبية المناسبة. اعتمادًا على موقعك ، قد يشمل السعر الذي تراه مثل هذه الضرائب ، أو يمكن إضافة الضريبة عند الخروج. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">سياسة إسترداد الأموال</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">يحق لمستخدمي منصة بوستيب استرداد أي مبالغ مدفوعة في حالة عدم تناسب الدورات التدريبية معهم بما يتماشى مع شروط الاستخدام العامة وسياسة الإرجاع الخاصة بنا ، وأنت ، بصفتك مدرسًا ، توافق على أن منصة بوستيب ستخصم هذه المبالغ المستردة من المبالغ المستحقة لك إذا حدث ذلك.</p>
+                                                <p class="mediabout mediabout-dark">وفقًا لتقديرنا ، إذا اعتقدنا أنك تسيء استخدام سياسة الاسترداد الخاصة بنا ، مثل إذا كنت قد استهلكت جزءًا كبيرًا من الدورة التدريبية التي تريد استردادها أو إذا قمت برد إحدى الدورات التدريبية مسبقًا ، فإننا نحتفظ بالحق في رفض استرداد أموالك أو حظرها حسابك و / أو تقييد جميع الاستخدامات المستقبلية للخدمات. إذا قمنا بحظر حسابك أو تعطيل وصولك إلى دورة تدريبية بسبب انتهاك هذه الشروط أو إرشادات الثقة والأمان الخاصة بنا ، فلن تكون مؤهلاً لاسترداد الأموال.</p>
+                                                <p class="mediabout mediabout-dark">إذا كانت الدورة التي اشتريتها غير مرضية لك ، فيمكنك أن تطلب ، في غضون 30 يومًا كحد أقصى من شرائك للدورة ، أن يقوم بوستيب برد الأموال إلى حسابك. نحتفظ بالحق في تطبيق المبلغ المسترد كرصيد أو استرداد لطريقة الدفع الأصلية ، وفقًا لتقديرنا ، اعتمادًا على قدرات شركاء معالجة الدفع لدينا ، وعوامل أخرى. لا يوجد رد مستحق لك إذا طلبت ذلك بعد انتهاء فترة الضمان البالغة 30 يومًا. ومع ذلك ، إذا تم تعطيل الدورة التدريبية التي اشتريتها مسبقًا لأسباب قانونية أو متعلقة بالسياسة ، فيحق لك استرداد ما يزيد عن 30 يومًا. يحتفظ بوستيب أيضًا بالحق في استرداد الأموال للطلاب بعد حد 30 يومًا في حالات الاحتيال المشتبه به أو المؤكّد في الحساب.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Payments</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">You agree to pay the fees for these courses and services and are obligated to pay taxes related to your country, and these fees will be debited from your credit card.</p>
+                                                <p class="mediabout mediabout-dark">When you provide credit card information, you warrant that you are authorized to provide such information.</p>
+                                                <p class="mediabout mediabout-dark">Booctep disclaims responsibility for any amount paid outside the Booctep platform.</p>
+                                                <p class="mediabout mediabout-dark">We have the right, according to our estimates, to approximate the price, for example: 101.60 dollars will become 102.00 dollars.</p>
+                                                <p class="mediabout mediabout-dark">In the event of a defect in the purchase process, you are obligated to pay within a period of 30 days, and an additional 1.5% commission is paid for each month or the limit allowed by law, whichever is greater.</p>
+                                                <p class="mediabout mediabout-dark">If you are logged into your account, the listed currency you see is based on your location when you created your account. If you are not logged into your account, the price currency depends on the country you are located in, we do not enable users to see prices in other currencies.</p>
+                                                <p class="mediabout mediabout-dark">If you are a student residing in a country where Use and Sales Tax, Goods and Services Tax or Value Added Tax (VAT) applies to consumer sales, we are responsible for collecting that tax and remitting it to the appropriate tax authorities. Depending on your location, the price you see may include such taxes, or the tax may be added at checkout.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">Refund</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Booctep platform users have the right to refund any amounts paid in the event that the courses do not suit them in line with our general terms of use and return policy, and you, as a teacher, agree that Booctep platform will deduct these refunds from the amounts owed to you if this happens.</p>
+                                                <p class="mediabout mediabout-dark">At our discretion, if we believe you are abusing our refund policy, such as if you have consumed a large portion of a course that you want to redeem or if you have previously refunded a course, we reserve the right to refuse your refund, block your account, and/or limit All future uses of the Services. If we block your account or disable your access to a course due to a violation of these Terms or our Trust and Security Guidelines, you will not be eligible for a refund.</p>
+                                                <p class="mediabout mediabout-dark">If the course you have purchased is not satisfactory to you, you can request, within a maximum of 30 days of your purchase of the course, that Booctep will make a refund to your account. We reserve the right to apply your refund as a credit or refund to the original payment method, at our discretion, depending on the capabilities of our payment processing partners, and other factors. No refund is due to you if you request it after the 30 day warranty period has expired. However, if your previously purchased course is disabled for legal or policy reasons, you are entitled to a refund in excess of 30 days. Booctep also reserves the right to refund students after the 30-day limit in cases of suspected or confirmed account fraud.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab5" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">إتفاقية الاستخدام</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark"> في حال كنت مدرسًا على منصة بوستيب ، فأنت تخضع للشروط والأحكام العامة للمعلم في نفس الوقت ، وفي حالة حدوث تعارض ، فإن بند المعلم هو الذي يحكم. </p>
+                                                
+                                                    <p class="mediabout mediabout-dark"> يتحمل المعلم المسؤولية الكاملة عن الدورة التدريبية المقدمة وما قد يترتب عليه قانونيًا في حالة انتهاك الشروط والأحكام وسياسة الملكية الفكرية. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> أنت كمدرس توافق وتقر بأن الموقع لا يحتاج إلى الحصول على تراخيص أو موافقات أو أذونات من طرف ثالث أو إجراء أي مدفوعات له مقابل أي استخدام للمحتوى المقدم. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> أنت توافق على أنه يحق للطالب استرداد مبلغ الدورة المدفوعة في حالة عدم رضاه عن محتوى الدورة. </p>
+                                                                                                    
+                                                    <p class="mediabout mediabout-dark"> أنت توافق على اتفاقيات مستويات المعلم حيث يكون لمنصة بوستيب الحق في منح أي معلم أي حصة من العمل بالنسبة التي تراها مناسبة وفقا لتقديرها الخاص. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">البلاغات</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">يحتفظ الموقع بالحق في مراقبة أي محتوى يدخله المعلم ، ونحن نحتفظ بالحق ، دون إشعار مسبق للمعلم ، في حذف أو تعليق المحتوى المقدم وفقًا لتقديرنا.</p>
+                                                <p class="mediabout mediabout-dark">في حالة تكرار عمليات الشكاوى المقدمة من الطلاب إلى المعلم ، سيتم الاتصال به بغرض طلب الشروحات واتخاذ الإجراءات إذا ثبت وجود مشاكل مع المعلم.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">محتوى الدورات</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">أنت مسؤول عن جميع المحتويات المقدمة أنت توافق على أنك لم تنتهك حقوق الطبع والنشر أو براءات الاختراع أو سرقة الأسرار المهنية أو اختلست أو انتهكت أي حق من حقوق الملكية الفكرية لطرف ثالث.</p>
+                                                <p class="mediabout mediabout-dark">لن تدخل أي فيروس أو أدوات خبيثة أو برامج تجسس أو أي رمز برمجي قد يهدف إلى تدمير الملفات أو سرقتها من النظام الأساسي.</p>
+                                                <p class="mediabout mediabout-dark">تعمل منصة بوستيب فقط كموزع للمحتوى دون تقديم أي ضمانات على نشر المحتوى أو نشر محتوى المستخدم.</p>
+                                                <p class="mediabout mediabout-dark">لن يُسمح لك بتحميل أو نشر أو نقل من خلال المنصة إلى المنتج أو المستخدمين أي محتوى يحتوي على إعلانات غير مصرح بها أو غير مصرح بها أو مواد ترويجية أو أي أشياء تجارية أخرى مثل المخططات الهرمية أو البريد المزعج.</p>
+                                                <p class="mediabout mediabout-dark">عندما تقوم بتحميل المحتوى عبر منصة بوستيب، فإنك تمنحنا ترخيصًا عالميًا لاستخدام واستضافة وتخزين وإعادة إنتاج وتعديل وتوزيع علني وإنشاء أعمال مشتقة من هذا المحتوى على الموقع ، بما في ذلك على سبيل المثال لا الحصر الترجمات والدبلجة والترويج ، إلخ.</p>
+                                                <p class="mediabout mediabout-dark">يتحمل المعلم المسؤولية الكاملة عن الدورة التي يقدمها والإجراءات القانونية التي قد تتبعها ، إذا لزم الأمر.</p>
+                                                <p class="mediabout mediabout-dark">لن تنشر أي محتوى مخالف للشريعة الإسلامية أو غير ملائم أو عنصري أو إباحي أو قومي أو كاذب أو تحريضي أو تشهيري أو آراء سياسية أو أي محتوى يتضمن كيفية التعامل مع التكنولوجيا العسكرية أو أي تقنية تستخدمها الأجهزة الأمنية أو ما يحاكي هذه التكنولوجيا أو تساعد في تقليل تأثيرها أو تقليل فعالية المؤسسات المعنية باستخدامها ، أو الفيروسات أو المواد الضارة ، أو النشاط الإجرامي أو الضار ، بما في ذلك المواد الإباحية للأطفال ، والاحتيال ، والاتجار في المواد الإباحية ، والاتجار بالمخدرات أو الأشخاص ، والمقامرة ، والتحرش ، المطاردة ، تفسير الأحلام ، الزواج ، الفتاوى ، الأبراج ، البريد الإلكتروني غير المرغوب فيه ، تقديم محتوى يخالف قوانين الدول والحكومات وشروط الاستخدام.</p>
+                                                <p class="mediabout mediabout-dark">لن تشارك في أي نشاط قد يحصل على ترخيص أو يدفع أي رسوم إضافية من الشركة لأي طرف ثالث.</p>
+                                                <p class="mediabout mediabout-dark">تحتفظ منصة بوستيب بالحق في التوقف عن نشر أي محتوى ينتهك الشروط. والشروط ، أو الانتهاك المشتبه به لهذه الشروط ، دون إشعار مسبق لمالك المحتوى.</p>
+                                                <p class="mediabout mediabout-dark">أنت توافق على أنه يجوز لنا تسجيل كل الدورات أو جزء منها (بما في ذلك رسائل الدردشة الكتابية) لمراقبة ومراقبة الجودة وتقييم وتسويق وترويج عمليات ومنتجات المنصة ، وأنت بموجب هذا تمنح الإذن للمنصة لاستخدام اسمك وصورتك أو صوت في الاتصال للعرض والتسليم والتسويق لتشجيع البيع على المنصة والمنتجات والدورات التدريبية ومحتوى المنصة والمحتوى المقدم والتنازل عن جميع حقوق الخصوصية أو الدعاية أو أي حقوق أخرى ذات طبيعة مماثلة ، إلى الحد المسموح بموجب القانون المعمول به في البلد المعني.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Agreement</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">In the event that you are a teacher on Booctep platform, you are subject to the general terms and conditions of the teacher at the same time, and in the event of a conflict, the teacher’s clause governs.</p>
+                                                <p class="mediabout mediabout-dark">The teacher undertakes fully responsibility for the presented course and what it may legally entail in case you violate the terms and conditions and the intellectual property policy.</p>
+                                                <p class="mediabout mediabout-dark">You as a teacher agree and acknowledge that the Site does not need to obtain licenses, approvals or permissions from a third party or make any payments to it for any use of the submitted content.</p>
+                                                <p class="mediabout mediabout-dark">You agree that the student is entitled to a refund of the paid course amount in the event he is not satisfied with the course content.</p>
+                                                <p class="mediabout mediabout-dark">You agree for teacher levels agreements where  Booctep platform has the right to give any teacher any share work of percentage.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">Spam</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">The site reserves the right to monitor any content entered by the teacher, we reserve the right, without prior notice to the teacher, to delete or suspend the submitted content at our discretion.</p>
+                                                <p class="mediabout mediabout-dark">In the event of repeated spam operations and complaints submitted by students to the teacher, he will be contacted with the purpose of requesting explanations and taking action if it is proven that there are problems with the teacher.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">Course content</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">YOU ARE RESPONSIBLE FOR ALL CONTENT SUBMITTED You agree that you have not infringed copyright, patent, theft of professional secrets, misappropriated or infringed any intellectual property right of a third party.</p>
+                                                <p class="mediabout mediabout-dark">You will not enter any virus, malicious tools, spyware, or any software code that may aim to destroy or hijack files from the platform.</p>
+                                                <p class="mediabout mediabout-dark">Booctep platform is acting only as a distributor of the content without making any guarantees on the publication of the content or the publication of the user content.</p>
+                                                <p class="mediabout mediabout-dark">You will not be allowed to upload, post or transmit through the Platform to the Product or Users any content that contains unauthorized or unauthorized advertising, promotional materials or any other commercial objects such as pyramid schemes or spam.</p>
+                                                <p class="mediabout mediabout-dark">When you upload Content via Booctep Platform, you grant Booctep Platform a worldwide license to use, host, store, reproduce, modify, publicly distribute and create derivative works from such Content on the Site, including but not limited to translations, dubbing, promotion, etc.</p>
+                                                <p class="mediabout mediabout-dark">The teacher bears all responsibility for the course he offers and the legal actions that may follow, if necessary.</p>
+                                                <p class="mediabout mediabout-dark">You will not post any content that is contrary to Islamic law, inappropriate, racist, pornographic, nationalistic, false, inflammatory, defamatory, political opinions, any content that includes how to deal with military technology or any technology used by security services or what simulates this technology or helps To reduce their impact or reduce the effectiveness of the institutions concerned with their use, viruses or harmful substances, criminal or tortious activity, including child pornography, fraud, trade in pornographic materials, trafficking in drugs or people, gambling, harassment, stalking, dream interpretation , marriage, fatwas, horoscopes, unsolicited e-mail, providing content that violates the laws of countries and governments and terms of use.</p>
+                                                <p class="mediabout mediabout-dark">You will not engage in any activity that might obtain a license or pay any additional fees from the company for any third party.</p>
+                                                <p class="mediabout mediabout-dark">Booctep platform reserves the right to stop publishing any content that violates the terms. and terms, or suspected violation of these terms, without prior notice to the owner of the content.</p>
+                                                <p class="mediabout mediabout-dark">You agree that we may record all or part of sessions (including voice/write chat communication) to monitor, control quality, evaluate, market and promote the Platform’s operations and products, and you hereby grant permission to the Platform to use your name, photo or voice in communication for offering, delivery and marketing To encourage selling on the Platform, products, courses, Platform Content and Submitted Content, and to waive all rights of privacy, publicity, or any other rights of a similar nature, to the extent permitted by applicable law in the relevant country.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab6" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">اتفاقية حقوق التأليف والنشر</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">تعود ملكية الدورات والامتحانات والصور والأصوات والمعلومات الأخرى المقدمة داخل المنصة حصريًا إلى بوستيب ، ولا يجوز استخدامها أو توزيعها أو عرضها أو إعادة إنتاجها بأي شكل من الأشكال ، بخلاف ما هو مذكور على وجه التحديد في هذه الشروط والأحكام.</p>
+                                                <p class="mediabout mediabout-dark">بصفتك المالك أو المرخص له لجميع حقوق الملكية الفكرية في موقعنا والمواد المنشورة عليه ، فإن هذه الأعمال محمية بموجب قوانين ومعاهدات حقوق النشر في جميع أنحاء العالم. وفقًا لذلك ، يتم الاحتفاظ بجميع هذه الحقوق.</p>
+                                                <p class="mediabout mediabout-dark">تضمن منصة بوستيب جميع حقوق المعلمين الذين ينشرون محتوى التدريب على المنصة لأنهم المالك الوحيد والحصري للمحتوى أو أي محتوى آخر مدرج في المحتوى المنشور وفقًا لقانون حماية الملكية الفكرية.</p>
+                                                <p class="mediabout mediabout-dark">تحترم المنصة جميع حقوق النشر والخصوصية والقوانين الأخرى المتعلقة بالمحتوى والمعلومات ولن تتسامح مع أي انتهاك لهذه القوانين. على الرغم مما سبق ، لا تتحمل المنصة المسؤولية عن المحتوى المعروض والمُقدم وكل المحتويات الأخرى تعتبر ضمن المسؤولية الشخصية لمالك المحتوى ولا تتحمل المنصة أي مسؤولية عن أي إساءة استخدام للمنصة على وجه الخصوص لعرضها ، نشر أو عرض المحتوى المقدم على المنصة أو من خلال المنتجات الأخرى ولا يوضح أو يضمن أن المحتوى خالٍ من أي حقوق نشر أو خصوصية أو أي انتهاك للقانون أو مناسب للعرض ليكون دقيقًا ومفيدًا.</p>
+                                                <p class="mediabout mediabout-dark">كل هذه الحقوق ليست ضمانًا صريحًا لمنتجي المحتوى أو مالكي الطريقة التي يستخدم بها مستخدمو النظام الأساسي المحتوى الخاص بهم ، ولا تمنح هذه الشروط أي ترخيص ضمني لأي طرف غير مصرح له.</p>
+                                                <p class="mediabout mediabout-dark">إذا كنت تنوي تقديم شكوى إلى المحكمة ، فأنت توافق على أن الشكوى ضد مالك الخدمة وليس النظام الأساسي وأنك تتنازل عن حقك بالكامل فيما يتعلق بمنصة بوستيب.</p>
+                                                <p class="mediabout mediabout-dark">إذا كنت تتصرف بطريقة تسبب لنا مشكلة قانونية ، فقد نمارس حق الرجوع القانوني ضدك. أنت توافق على التعويض والدفاع (إذا طلبنا ذلك) وإبعاد الضرر عن منصة الدفع الآجل وشركات مجموعتنا والمسؤولين والمديرين والموردين والشركاء والوكلاء ضد أي مطالبات أو مطالب أو خسائر أو مصاريف أضرار لطرف ثالث (بما في ذلك أتعاب المحاماة المعقولة ) الناشئة عن (أ) المحتوى الذي تنشره أو تنقله ، (ب) استخدامك للخدمات (ج) انتهاكك لهذه الشروط ، أو (د) انتهاكك لأي حقوق لطرف ثالث. سيظل التزامك بالتعويض ساريًا بعد إنهاء هذه الشروط واستخدامك للخدمات.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Agreement of copyright</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Courses, exams, images, sounds and other information provided within the platform are owned exclusively by Booctep and, other than as specifically indicated in these terms and conditions, may not be used, distributed, displayed or reproduced in any way, by any means.</p>
+                                                <p class="mediabout mediabout-dark">As the owner or licensee of all intellectual property rights in our site, and the material published on it, those works are protected by copyright laws and treaties around the world. Accordingly, all such rights are reserved.</p>
+                                                <p class="mediabout mediabout-dark">Booctep platform guarantees all rights of teachers publishing training content on the platform as they are the sole and exclusive owner of the content or any other content included in the published content in accordance with the law of intellectual property protection.</p>
+                                                <p class="mediabout mediabout-dark">The platform respects all copyright, privacy and other laws related to content and information and will not tolerate any violation of these laws. Despite the foregoing, the platform does not bear responsibility for the displayed and submitted content and all other content is considered within the personal responsibility of the content owner and the platform does not bear any responsibility for any misuse of the platform on in particular to display, publish, or display Content provided on the Platform or through other Products and does not represent or warrant that the Content is free of any copyright, privacy or other law infringement or appropriate to the display to be accurate and useful.</p>
+                                                <p class="mediabout mediabout-dark">All of these rights are not an express guarantee to the content producers or owners of the way their content is used by users of the platform, and these terms do not grant any implied license to any unauthorized party.</p>
+                                                <p class="mediabout mediabout-dark">In the event that you intend to file a court complaint, you agree that the complaint is against the service owner and not the platform and that you waive your entire right in relation to Booctep platform.</p>
+                                                <p class="mediabout mediabout-dark">If you are acting in a way that causes us to have legal trouble, we may exercise legal recourse against you. You agree to indemnify, defend (if required by us) and hold harmless the Postpaid Platform and our group companies, officers, directors, suppliers, partners and agents against any third party claims, demands, losses or damages expenses (including reasonable attorneys' fees) arising out of (a) Content that you you post or transmit, (b) your use of the Services (c) your violation of these Terms, or (d) your violation of any rights of a third party. Your obligation to indemnify will survive the termination of these Terms and your use of the Services.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab7" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">حل النزاعات</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">قبل تقديم أي. القضايا القانونية الرسمية ، يرجى الاتصال بفريق الدعم لدينا ، يمكن حل معظم النزاعات.</p>
+                                                <p class="mediabout mediabout-dark">في حالة قيامك أنت أو نحن برفع دعوى في المحكمة ، يجب عليك إلزاميًا ، ويحق لـ بوستيب أن تطلب من المحكمة إيقاف إجراءات المحكمة أثناء إجراءات التحكيم.</p>
+                                                <p class="mediabout mediabout-dark">إذا تبين أن أي بند من هذه الشروط غير قانوني أو باطل أو غير قابل للتنفيذ ، فسيتم اعتبار هذا الحكم قابلاً للفصل عن هذه الشروط ، ولن يؤثر على صلاحية وقابلية تنفيذ أي أحكام متبقية من هذه الشروط..</p>
+                                                <p class="mediabout mediabout-dark">لا يجوز التنازل عن شرط هذه الشروط إلا من خلال أداة مكتوبة ينفذها الطرف المخول للاستفادة من هذا الحكم ، وفشل منصة بوستيب في. إن ممارسة أو إنفاذ أي حق أو حكم من هذه الشروط لن يشكل تنازلاً عن هذا الحق أو الحكم.</p>
+                                                <p class="mediabout mediabout-dark">لا توجد وكالة أو طرف ثالث أو وكيل قانوني أو صاحب عمل لإصدار بيانات أو تعهدات من أي نوع.</p>
+                                                <p class="mediabout mediabout-dark">يدفع المدعي مصاريف المحكمة والمحامين إلا في حالة كسب الدعوى ترفع عنه والدفع للطرف الآخر.</p>
+                                                <p class="mediabout mediabout-dark">ستقوم بتعويض منصة بوستيب من وضد جميع الخسائر والتكاليف والمتطلبات اللاحقة وذات الصلة بما في ذلك أتعاب المحاماة المعقولة والتكاليف والنفقات المتعلقة بالقضايا الناجمة عن خرقك لأي تمثيل أو ضمان بموجب هذه الاتفاقية.</p>
+                                                <p class="mediabout mediabout-dark">في حالة وجود مشاكل مالية أو غيرها بين المعلم والطالب يكون الحكم النهائي لإدارة الموقع ولا يحق للطرفين الاعتراض على الحكم بأي شكل من الأشكال ، ويعتبر هذا الحكم ملزمًا لكليهما.</p>
+                                                <p class="mediabout mediabout-dark">بلغة قانونية أكثر اكتمالاً ، إلى الحد الذي يسمح به القانون ، لن نتحمل نحن (وشركات مجموعتنا وموردينا وشركائنا ووكلائنا) أي مسؤولية عن أي أضرار غير مباشرة أو عرضية أو تأديبية أو تبعية (بما في ذلك فقدان البيانات أو الإيرادات أو الأرباح أو فرص العمل أو الإصابة الشخصية أو الوفاة) ، سواء كانت ناشئة عن العقد أو الضمان أو المسؤولية التقصيرية أو المسؤولية عن المنتج أو غير ذلك ، وحتى إذا تم إبلاغنا بإمكانية حدوث أضرار مسبقًا. تقتصر مسؤوليتنا (وتلك الخاصة بكل من شركات المجموعة والموردين والشركاء والوكلاء) تجاهك أو تجاه أي طرف ثالث تحت أي ظرف من الظروف على أكثر من مائة دولار (100 دولار) أو المبلغ الذي دفعته لنا في الاثني عشر (12) ) قبل أشهر من الحدث الذي أدى إلى ظهور مطالباتك. لا تسمح بعض السلطات القضائية باستثناء أو تحديد المسؤولية عن الأضرار التبعية أو العرضية ، لذلك قد لا ينطبق عليك بعض ما سبق ذكره.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Dispute Resolution</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Before submitting any. Formal legal issues, please contact our support team, most disputes can be resolved.</p>
+                                                <p class="mediabout mediabout-dark">In the event that you or we file a claim in court, you must compulsorily, and Postep has the right to ask the court to stop the court proceedings while the arbitration proceedings are in progress.</p>
+                                                <p class="mediabout mediabout-dark">If any provision of these Terms is found to be illegal, void or unenforceable, that provision shall be deemed severable from these Terms, and shall not affect the validity and enforceability of any remaining provisions of these Terms.</p>
+                                                <p class="mediabout mediabout-dark">The provision of these Terms may not be waived except by a written instrument executed by the party entitled to benefit from this provision, the failure of Booctep platform in. The exercise or enforcement of any right or provision of these Terms will not constitute a waiver of such right or provision.</p>
+                                                <p class="mediabout mediabout-dark">There is no agency, third party, legal agent or business owner to issue statements or undertakings of any kind.</p>
+                                                <p class="mediabout mediabout-dark">The plaintiff pays the costs of the court and the lawyers, except in the case of winning the case, it is lifted from him and the payment is to the other party.</p>
+                                                <p class="mediabout mediabout-dark">You will indemnify Booctep platform from and against all consequential and related losses, costs and requirements including reasonable attorneys' fees and costs and expenses related to the cases caused by your breach of any representation or warranty under this Agreement.</p>
+                                                <p class="mediabout mediabout-dark">In the event of financial or other problems between the teacher and the student, the final ruling is for the administration of the site, and the two parties have no right to object to the ruling in any way, and this ruling is considered binding on both parties.</p>
+                                                <p class="mediabout mediabout-dark">In more complete legal language, to the extent permitted by law, we (and our group companies, suppliers, partners and agents) will not be liable for any indirect, incidental, punitive or consequential damages (including loss of data, revenue, profits, business opportunities or personal injury or death), whether arising from contract, warranty, tort, product liability, or otherwise, and even if we have been advised of the possibility of damages in advance. Our liability (and that of each of our group companies, suppliers, partners and agents) to you or any third party under any circumstance is limited to more than one hundred dollars ($100) or the amount you paid to us in the twelve (12) months prior to the event giving rise to to the appearance of your claims. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, SO SOME OF THE ABOVE MAY NOT APPLY TO YOU.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab8" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Does anybody else feel jealous and aroused and worried? (8)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Kif, I have mated with a woman. Inform the men. This is the worst part. The calm before the battle. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket.</p>
+                                                <p><strong>Example: </strong>There's no part of that sentence I didn't like! You, a bobsleder!? That I'd like to see!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab9" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Does anybody else feel jealous and aroused and worried? (9)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Kif, I have mated with a woman. Inform the men. This is the worst part. The calm before the battle. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket.</p>
+                                                <p><strong>Example: </strong>There's no part of that sentence I didn't like! You, a bobsleder!? That I'd like to see!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab10" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Does anybody else feel jealous and aroused and worried? (10)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Kif, I have mated with a woman. Inform the men. This is the worst part. The calm before the battle. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket.</p>
+                                                <p><strong>Example: </strong>There's no part of that sentence I didn't like! You, a bobsleder!? That I'd like to see!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab11" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Does anybody else feel jealous and aroused and worried? (11)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Kif, I have mated with a woman. Inform the men. This is the worst part. The calm before the battle. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket.</p>
+                                                <p><strong>Example: </strong>There's no part of that sentence I didn't like! You, a bobsleder!? That I'd like to see!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab12" role="tabpanel" aria-labelledby="tab2">
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Does anybody else feel jealous and aroused and worried? (12)</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Kif, I have mated with a woman. Inform the men. This is the worst part. The calm before the battle. Bender, being God isn't easy. If you do too much, people get dependent on you, and if you do nothing, they lose hope. You have to use a light touch. Like a safecracker, or a pickpocket.</p>
+                                                <p><strong>Example: </strong>There's no part of that sentence I didn't like! You, a bobsleder!? That I'd like to see!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shop-page" class="shop-wrapper" style="display:none">
+        <div class="store-sections store-sections-2">
+            <!--Products-->
+            <div id="products-tab" class="store-tab-pane store-tab-pane-2 is-active" id="demo">
+                <section class="hero is-small is-bold hero-about">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="booctep" data-shadow='Booctep'>Booctep</h1>
+                            <h2 class="booctep-h2">
+                                Booctep is a web design course that will keep you signed in the booming e-commerce and
+                                IT sectors. Our course teaches you everything you need to create practical and
+                                attractive web pages. As web designers become more in demand, you will definitely thank
+                                yourself for choosing this course.
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="view-wrapper" style="background-color: #fff;">
+                    <div id="landing-start" class="section landing-wrapper">
+                        <div class="container">
+                            <div class="made-with" style="margin-top: -130px;">
+                                <div id="made-with-bulma" class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step1.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+400,000 Students</h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step3.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+19,000 Courses </h3>
+                                    </div>
+                                </div>
+                                <div class="made-block">
+                                    <div class="block-icon is-box-reveal">
+                                        <img src="{% static 'assets/img/about/step2.png' %}" alt="" style="width: 90%;">
+                                    </div>
+                                    <div class="block-title" style="border-bottom: 1px solid rgb(10, 70, 161);">
+                                        <h3>+10,000 Quizzes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-5">
+                                    <h3>How it works!</h3>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-8 is-offset-2" style="border: 2px solid rgb(238, 238, 238);border-radius: 3px;-webkit-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+                              -moz-box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);
+                              box-shadow: -1px 4px 9px 9px rgba(245,245,245,1);">
+                                    <video poster="{% static 'assets/img/setting.jpg' %}" id="player" playsinline
+                                           controls>
+                                        <source src="{% static 'assets/img/vid/fortnite.webm' %}" type="video/webm" />
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature">
+                        <div class="container">
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+                                    <h3>Many new courses</h3>
+                                    <p>We have many courses from scratch to proffessional be more educated and join us
+                                        now, we have up to 15 categories you can search what you want.</p>
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{% static 'assets/img/about/about-1.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-6  is-hidden-mobile">
+                                    <img src="{% static 'assets/img/download.png' %}" class="booctep-2" alt="">
+                                </div>
+                                <div class="column is-6">
+                                    <h3>Take Quizzes</h3>
+                                    <p>Take quizzes and get your certificate after you done the quize, easy dashboard to
+                                        deal with it.</p>
+                                </div>
+                                <div class="column is-5 is-offset-1 is-hidden-desktop">
+                                    <img src="{% static 'assets/images/illustrations/ui/layouts.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="columns is-vcentered" style="margin-bottom: 55px;">
+                                <div class="column is-5 ">
+                                    <h3>Learn what you love</h3>
+                                    <p>We have many courses from scratch to proffessional be more educated and join us
+                                        now, we have up to 15 categories you can search what you want.</p>
+                                </div>
+                                <div class="column is-7">
+                                    <img src="{% static 'assets/img/about/about-3.png' %}" class="booctep-2" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about-feat side-feature">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-4">
+                                    <h3 class="section-about-feat-h3">Booctep's Features</h3>
+                                </div>
+                            </div>
+                            <div class="columns ">
+                                <div class="card-features">
+                                    <div class="card-features-row card-features-1">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-universal-access card-features-i"></i>
+                                            <h3>Lifetime Access</h3>
+                                            <p>Access anytime you want one you enrol to any course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-2">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-award card-features-i"></i>
+                                            <h3>Get Certificate</h3>
+                                            <p>Get certificate when you finish your course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-3">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-wallet card-features-i"></i>
+                                            <h3>Money Back</h3>
+                                            <p>Take your money back if you have a problem with the course.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-features-row card-features-4">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-project-diagram card-features-i"></i>
+                                            <h3>Easy Dashboard</h3>
+                                            <p>Easy dashboard to do your quizzes and watch your courses anytime you
+                                                want.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns ">
+                                <div class="card-features">
+                                    <div class="card-features-row card-features-5">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-pencil-alt card-features-i"></i>
+                                            <h3>Quick Quizzes</h3>
+                                            <p>Take a very quick Quize before you get your certificate.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-6">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-video card-features-i"></i>
+                                            <h3>Many Subjects</h3>
+                                            <p>we got many subjects in all major subjects in the world.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-7">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-closed-captioning card-features-i"></i>
+                                            <h3>Video Translate</h3>
+                                            <p>We translate all English videos for our students.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-features-row card-features-8">
+                                        <div class="card-features-rro">
+                                            <i class="fa fa-smile card-features-i"></i>
+                                            <h3>Free courses</h3>
+                                            <p>From each 10 paid courses we have at least 1 course free.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-about side-feature" style="margin-top:60px;margin-bottom: 30px;">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column is-12 is-offset-5">
+                                    <h3>Meet our team</h3>
+                                </div>
+                                <div class="column">
+                                </div>
+                            </div>
+                            <div class="columns is-multiline icon-list">
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/elz.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Elzubair Mohammed </h4>
+                                        <p style="font-size: small;text-align: center;" class="has-text-centered">CEO -
+                                            Founder of Booctep</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ahmed.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Ahmed Alhebshi</h4>
+                                        <p style="font-size: small;">Financial</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/saleh.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Saleh Alaqil</h4>
+                                        <p style="font-size: small;">Human Resours</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/helal.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Helal Mahdi</h4>
+                                        <p style="font-size: small;">Programmer</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ahmed-hatem.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Ahmed Hatim</h4>
+                                        <p style="font-size: small;">Accounting managemnt</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/bander.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Bander Ali</h4>
+                                        <p style="font-size: small;">Markting</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/ab.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Abdulrahman Mahdi</h4>
+                                        <p style="font-size: small;">Markting</p>
+                                    </div>
+                                </div>
+                                <div class="column is-3">
+                                    <div class="feature-icon has-text-centered">
+                                        <div class="icon-wrap is-icon-reveal">
+                                            <img src="{% static 'assets/img/team/bilal.png' %}" alt=""
+                                                 style="width:55px;height:55px;border-radius:50%;margin-bottom:10px">
+                                        </div>
+                                        <h4 style="font-weight: 500;">Bilal Ahmed Ali</h4>
+                                        <p style="font-size: small;">Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="hero is-small is-bold hero-become">
+            <div class="hero-body">
+                <div class="section-bec side-feature">
+                    <h3 style="font-weight: 600;">How to become a teacher?</h3>
+                    <a href="become.html" class="button">Take a quick Look</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+        </script>
+
+{% endblock %}

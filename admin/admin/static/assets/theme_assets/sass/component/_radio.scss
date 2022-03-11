@@ -1,0 +1,106 @@
+// Radio Css
+
+
+.custom-radio{
+    input{
+        display: none;
+    }
+    label{
+        display: inline-block !important;
+        font-size: 14px;
+    }
+    &.disabled{
+        input[type="radio"] + label{
+            @extend .color-extra-light;
+        }
+        input[type="radio"]{
+            &:checked + label{
+                &:after{
+                    background: $border-deep;
+                    @extend .border-deep;
+                }
+            }		
+        }
+        label{
+            cursor: not-allowed;
+        }
+    }
+    input[type="radio"] + label{
+        min-width: 18px;
+        min-height: 18px;
+        font-size: 14px;
+        display: flex;
+		flex-flow: column;
+		position: relative;
+		padding-left: 28px;
+		margin-bottom: 0;
+        line-height: 1.2;
+        font-weight: 400;
+        @extend .color-gray;
+        &:after{
+            position: absolute;
+			left: 0;
+			top: 0;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+            content: "";
+            border-width: 1px;
+            border-style: solid;
+            @extend .border-deep;
+            @extend .bg-white;
+        }
+        &:before{
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+			left: 5px;
+			top: 46%;
+			font-weight: 900;
+			display: block;
+			opacity: 0;
+            transition: all 0.3s ease 0s;
+            
+            z-index: 2;
+            transform: translateY(-50%);
+			content: "";
+			@extend .bg-white;
+        }
+    }
+    input[type="radio"]{
+        &:checked + label{
+            &:after{
+                @extend .bg-primary;
+                @extend .border-primary;
+            }
+            &:before {
+                opacity: 1;
+                color: #fff;
+            }	
+        }		
+    }	
+}	
+.radio-vertical-list{
+    .custom-radio{
+        &:not(:last-child){
+            margin-bottom: 14px;
+        }
+    }
+}
+.radio-horizontal-list{
+    &:not(:last-child){
+        margin-bottom: 14px;
+    }
+    .custom-radio{
+        margin-right: 20px;
+    }
+}
+.radio-horizontal-list2{
+    .custom-radio input[type="radio"]:checked + label:after{
+        background-color: #fff;
+    }
+    .custom-radio input[type="radio"] + label:before{
+        @extend .bg-primary;
+    }
+}

@@ -1,0 +1,230 @@
+ {% extends "base.html" %}{% block content %} {% load static %} 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        Required meta tags
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title> Friendkit | Cart</title>
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}" />
+        <!-- Fonts -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800,900" rel="stylesheet"> -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet"> -->
+        <link href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto-brands.min.css" rel="stylesheet">
+
+        <!-- <link rel="stylesheet" href="{% static 'assets/css/bulma.css' %}"> -->
+        <!-- <link rel="stylesheet" href="{% static 'assets/css/app.css' %}"> -->
+        <!-- <link rel="stylesheet" href="{% static 'assets/css/core.css' %}"> -->
+    </head>
+    <body>
+
+
+
+<style>
+ 
+</style>
+
+
+        <div class="view-wrapper">
+            
+            <div class="shop-wrapper">
+                <div class="cart-container">
+                    <div class="cart-header">
+                        <div class="header-inner">
+                            <h2>My Cart</h2>
+                            <div class="header-actions">
+                                <div class="buttons">
+                                    <a class="button is-light">Save Order</a>
+                                    <a href="/ecommerce-checkout.html" class="button is-solid accent-button raised">Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="cart-content">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <!--Table-->
+                                <div class="flex-table">
+                                    <!--Table header-->
+                                    <div class="flex-table-header">
+                                        <span class="product"><span>Product</span></span>
+                                        <span class="quantity">Quantity</span>
+                                        <span class="price">Price</span>
+                                        <span class="discount">Discount</span>
+                                        <span class="total">Total</span>
+                                    </div>
+                                    <!--Table item-->
+                                    <div class="flex-table-item">
+                                        <div class="product">
+                                            <img src="{% static 'assets/img/products/2.svg' %}" alt="">
+                                            <span class="product-name">Cool Shirt</span>
+                                        </div>
+                                        <div class="quantity has-spinner">
+                                            <div class="spinner">
+                                                <button class="remove">
+                                                    <i data-feather="minus"></i>
+                                                </button>
+                                                <span class="value">1</span>
+                                                <button class="add">
+                                                    <i data-feather="plus"></i>
+                                                </button>
+                                                <input class="spinner-input" type="hidden" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <span class="has-price">29.00</span>
+                                        </div>
+                                        <div class="discount">
+                                            <span class="has-price">0</span>
+                                        </div>
+                                        <div class="total">
+                                            <span class="has-price">29.00</span>
+                                        </div>
+                                    </div>
+                                    <!--Table item-->
+                                    <div class="flex-table-item">
+                                        <div class="product">
+                                            <img src="{% static 'assets/img/products/3.svg'%}" alt="">
+                                            <span class="product-name">Military Short</span>
+                                        </div>
+                                        <div class="quantity has-spinner">
+                                            <div class="spinner">
+                                                <button class="remove">
+                                                    <i data-feather="minus"></i>
+                                                </button>
+                                                <span class="value">1</span>
+                                                <button class="add">
+                                                    <i data-feather="plus"></i>
+                                                </button>
+                                                <input class="spinner-input" type="hidden" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <span class="has-price">39.00</span>
+                                        </div>
+                                        <div class="discount">
+                                            <span class="has-price">0</span>
+                                        </div>
+                                        <div class="total">
+                                            <span class="has-price">39.00</span>
+                                        </div>
+                                    </div>
+                                    <!--Table item-->
+                                    <div class="flex-table-item">
+                                        <div class="product">
+                                            <img src="{% static 'assets/img/products/4.svg' %}" alt="">
+                                            <span class="product-name">Cool Backpack</span>
+                                        </div>
+                                        <div class="quantity has-spinner">
+                                            <div class="spinner">
+                                                <button class="remove">
+                                                    <i data-feather="minus"></i>
+                                                </button>
+                                                <span class="value">1</span>
+                                                <button class="add">
+                                                    <i data-feather="plus"></i>
+                                                </button>
+                                                <input class="spinner-input" type="hidden" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <span class="has-price">125.00</span>
+                                        </div>
+                                        <div class="discount">
+                                            <span class="has-price">0</span>
+                                        </div>
+                                        <div class="total">
+                                            <span class="has-price">125.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="continue-shopping">
+                                    <a href="/ecommerce-products.html">Continue Shopping</a>
+                                </div>
+                            </div>
+                            <div class="column is-4">
+                                <div class="cart-summary">
+                                    <div class="summary-header">
+                                        <h3>Order Summary</h3>
+                                    </div>
+            
+                                    <!--card-->
+                                    <div class="summary-card">
+                                        <div class="order-line">
+                                            <span>Subtotal</span>
+                                            <span>193.00</span>
+                                        </div>
+                                        <div class="order-line">
+                                            <span>Shipping</span>
+                                            <span class="is-text">Not calculated</span>
+                                        </div>
+                                        <div class="order-line">
+                                            <span>Taxes</span>
+                                            <span>8.92</span>
+                                        </div>
+                                        <div class="order-line">
+                                            <span class="is-total">Total</span>
+                                            <span class="is-total">201.92</span class="is-total">
+                                        </div>
+                                    </div>
+                                    
+                                    <!--card-->
+                                    <div class="summary-card">
+                                        <img src="assets/img/icons/questions/help.svg" alt="">
+                                        <h4>Help center</h4>
+                                        <p>Having trouble? Please search our <a class="standard-link">Help Center</a> for a quick
+                                            answer to your problem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        
+        <!-- Concatenated js plugins and jQuery -->
+        <!-- <script src="assets/js/app.js"></script> -->
+        <!-- <script src="https://js.stripe.com/v3/"></script> -->
+        
+        <!-- Core js -->
+        <!-- <script src="assets/data/tipuedrop_content.js"></script> -->
+        <!-- <script src="assets/js/global.js"></script> -->
+        <!-- <script src="assets/js/main.js"></script> -->
+        
+        <!-- Page and UI related js -->
+        <!-- <script src="assets/js/feed.js"></script> -->
+        <!-- <script src="assets/js/stories.js"></script> -->
+        <!-- <script src="assets/js/chat.js"></script> -->
+        <!-- <script src="assets/js/inbox.js"></script> -->
+        <!-- <script src="assets/js/profile.js"></script> -->
+        <!-- <script src="assets/js/friends.js"></script> -->
+        <!-- <script src="assets/js/events.js"></script> -->
+        <!-- <script src="assets/js/explorer.js"></script> -->
+        <!-- <script src="assets/js/news.js"></script> -->
+        <!-- <script src="assets/js/questions.js"></script> -->
+        <!-- <script src="assets/js/videos.js"></script> -->
+        <!-- <script src="assets/js/shop.js"></script> -->
+        <!-- <script src="assets/js/settings.js"></script> -->
+        
+        <!-- Components js -->
+        <!-- <script src="assets/js/widgets.js"></script> -->
+        <!-- <script src="assets/js/autocompletes.js"></script> -->
+        <!-- <script src="assets/js/modal-uploader.js"></script> -->
+        <!-- <script src="assets/js/popovers-users.js"></script> -->
+        <!-- <script src="assets/js/popovers-pages.js"></script> -->
+        <!-- <script src="assets/js/go-live.js"></script> -->
+        <!-- <script src="assets/js/lightbox.js"></script> -->
+        <!-- <script src="assets/js/touch.js"></script> -->
+        <!-- <script src="assets/js/tour.js"></script> -->   
+		</body> 
+</html>
+  {%  endblock %}

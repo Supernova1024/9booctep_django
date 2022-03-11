@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    {% load i18n %}
+
+    <style>
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+    </style>
+    <div class="products-navigation" style="display: none;">
+    </div>
+    <div class="container">
+        <div>
+            <center>
+            <img src="{% static '/assets/img/no-courses.svg' %}" alt="">
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <b style="text-align: center !important;font-size: 26px !important;" class="mediabout mediabout-dark">عذرا, الصفحة المطلوبة غير متاحة</b>
+            <div style="margin-bottom: 45px !important;"></div>
+            {% else %}
+            <b style="text-align: center !important;font-size: 26px !important;" class="mediabout mediabout-dark">Sorry, This page is not Available.</b>
+            <div style="margin-bottom: 45px !important;"></div>
+
+            {% endif %}
+           </center> 
+        </div>
+    </div>
+{% endblock %}

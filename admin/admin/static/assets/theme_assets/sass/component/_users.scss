@@ -1,0 +1,746 @@
+//Users
+.user-member {
+  .breadcrumb-main__wrapper{
+    @include sm{
+      margin-bottom:15px;
+    }
+  }
+  .action-btn a {
+    @include ofs(12px, lh(12px, 15px), 500);
+    height: 40px;
+    @extend .content-center;
+    border-radius: 6px;
+    text-transform: capitalize;
+
+    svg {
+      width: 13px;
+      height: 13px;
+      margin-right: 7px;
+    }
+  }
+
+  @include e(title) {
+    margin-right: 25px;
+
+    span {
+      position: relative;
+      @include ofs(14px, lh(14px, 20px), 500);
+      @extend .color-gray;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 1px;
+        background-color: #e3e6ef;
+      }
+    }
+  }
+
+  @include e(form) {
+    padding: 15px 25px;
+    background: white;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 5px 20px #9299b808;
+    border-radius: 23px;
+
+    .form-control {
+      padding: 0 13px;
+      line-height: 25px;
+      height: 46px;
+
+      &::placeholder {
+        @include ofs(14px, lh(14px, 25px), 400);
+        color: $extra-light;
+      }
+    }
+
+    svg {
+      width: 20px;
+      @extend .color-extra-light;
+    }
+  }
+}
+
+//Team Member card
+.tm-card-overlay {
+  top: 17px;
+  right: 30px;
+
+  .dropdown {
+    button {
+      height: unset;
+    }
+
+    svg {
+      @extend .color-extra-light;
+      width: 24px;
+    }
+  }
+}
+
+//Users List
+.users-list__button {
+  button {
+    @include ofs(13px, lh(13px, 38px), 500);
+    height: 38px;
+    @extend .content-center;
+  }
+
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+  }
+}
+
+.users-list-body__title {
+  h6 {
+    margin-bottom: 3px;
+  }
+
+  span {
+    @include ofs(13px, lh(13px, 22px), 400);
+    @extend .color-light;
+
+    span {
+      font-weight: 600;
+      @extend .color-dark;
+    }
+  }
+
+  p {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    @include ofs(15px, lh(15px, 25px), 400);
+    @extend .color-gray;
+  }
+}
+
+.users-list-body__bottom span {
+  padding-top: 6px;
+  @include ofs(14px, lh(14px, 22px), 400);
+}
+
+.status-radio .radio-horizontal-list .custom-radio {
+  padding-left: 0;
+  margin-right: 35px;
+}
+
+.user-social-profile {
+  .edit-profile__body label {
+    @extend .color-dark;
+    font-weight: 500;
+  }
+}
+
+.user-social-profile,
+.edit-social {
+  .input-group {
+    border-radius: 4px;
+
+    .input-group-prepend {
+      margin-right: 0;
+    }
+
+    .input-group-text {
+      border-radius: 4px;
+    }
+
+    .form-control {
+      border-left: none;
+      margin-left: -2px;
+      background: none;
+    }
+  }
+}
+
+//user group
+.user-group {
+  .progress {
+    height: 5px;
+  }
+
+  .user-group-progress-bar p {
+    margin-top: 2px;
+  }
+
+  .user-group-progress-top {
+    margin-top: 14px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+}
+
+.user-group-media button svg {
+  width: 24px;
+  @extend .color-extra-light;
+}
+
+.user-group-people p {
+  margin-bottom: 23px;
+  @include ofs(15px, lh(15px, 25px), 400);
+  @extend .color-gray;
+}
+
+.user-group-people__parent {
+  li:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  @include lg {
+    li:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.user-group {
+  .dropdown-default .dropdown-item,
+  .dropdown-menu .dropdown-item {
+    padding: 1px 25px;
+    @include ofs(14px, lh(14px, 32px), 400);
+    @extend .color-gray;
+
+    &:hover {
+      background: rgba($primary, 0.05);
+    }
+  }
+
+  .dropdown-default,
+  .dropdown-menu {
+    padding: 18px 0;
+  }
+}
+
+.media-ui {
+  &.user-group {
+    .user-group-progress-top {
+      margin-top: 0;
+      margin-bottom: 22px;
+    }
+  }
+  .user-group-people > p {
+    @include ofs(14px, lh(14px, 22px), 400);
+    @extend .color-gray;
+    margin-bottom: 22px;
+  }
+  .user-group-progress-top p {
+    @include ofs(14px, lh(14px, 22px), 500);
+    @extend .color-dark;
+  }
+}
+
+.user-group:not(.media-ui) {
+  .media-body h6 {
+    margin-bottom: 6px;
+  }
+}
+
+// User Pagination 
+.user-pagination{
+    .justify-content-end{
+      @include sm{
+        justify-content: center !important;
+      }
+    }
+}
+
+//Users Table
+.userDatatable {
+  table {
+    border-bottom: 1px solid #f1f2f6;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    td {
+      border-top: 0;
+      border-bottom: none;
+      padding: 10px 20px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    thead tr {
+      border-radius: 10px;
+
+      th {
+        color: rgb(90, 95, 125);
+        background: rgb(248, 249, 251);
+        border-top: 1px solid rgb(241, 242, 246);
+        border-bottom: 1px solid rgb(241, 242, 246);
+        white-space: nowrap;
+
+        &:first-child {
+          border-left: 1px solid rgb(241, 242, 246);
+          border-radius: 10px 0px 0px 10px;
+        }
+
+        &:last-child {
+          border-right: 1px solid rgb(241, 242, 246);
+          border-radius: 0px 10px 10px 0px !important;
+        }
+      }
+    }
+
+    tbody tr {
+      &:first-child {
+        td {
+          padding-top: 11px;
+        }
+      }
+
+      &:last-child {
+        td {
+          padding-bottom: 11px;
+        }
+      }
+    }
+  }
+
+  table > thead > tr:first-child th:last-child {
+    border-top-right-radius: 4px;
+  }
+
+  .userDatatable__imgWrapper {
+    margin-right: 12px;
+  }
+
+  tbody .custom-checkbox input[type="checkbox"] + label {
+    margin-right: 18px;
+  }
+}
+
+.userDatatable-header th {
+  border-bottom: none;
+  padding: 13px 20px 15px 20px;
+  vertical-align: middle;
+  background: #f8f9fb;
+  .checkbox-text{
+    @extend .color-gray;
+    font-size:14px;
+    font-weight:500;
+    text-transform: capitalize;
+  }
+}
+
+.userDatatable-title {
+  @include ofs(14px, null, 500);
+  @extend .color-gray;
+  text-transform: capitalize;
+}
+
+.projectDatatable-title {
+  @include ofs(14px, null, 400);
+  @extend .color-light;
+  text-transform: capitalize;
+}
+
+.userDatatable-inline-title p {
+  @include ofs(12px, lh(12px, 22px), 400);
+  @extend .color-light;
+  text-transform: capitalize;
+}
+
+.project-table .userDatatable-inline-title h6 {
+  @include ofs(15px, lh(15px, 20px), 500);
+}
+
+.userDatatable-inline-title h6,
+.userDatatable-content {
+  @include ofs(14px, lh(14px, 20px), 500);
+  @extend .color-dark;
+  text-transform: capitalize;
+}
+
+.userDatatable-content-status {
+  padding: 5px 12px;
+  height: 25px;
+  @extend .content-center;
+  @include ofs(12px, lh(12px, 15px), 500);
+}
+
+.checkbox-text.userDatatable-title {
+  margin-left: 18px;
+}
+
+.userDatatable_actions {
+  li:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  svg {
+    width: 16px;
+    @extend .color-extra-light;
+  }
+}
+
+.projectDatatable.userDatatable {
+  .table th {
+    padding: 14px 20px;
+  }
+
+  .table td {
+    padding: 16px 20px;
+  }
+}
+
+.projects-tab-content .projectDatatable tbody tr {
+  border-bottom: 1px solid $border-color;
+}
+
+// User Info Tab
+.user-info-tab .ap-tab-main .nav-item .nav-link {
+  @include ofs(14px, lh(14px, 20px), 500);
+  @extend .color-gray;
+  padding: 22px 0;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+
+  svg {
+    @extend .color-light;
+    width: 18px;
+    margin-right: 8px;
+  }
+
+  &.active {
+    @extend .color-primary;
+    border-bottom: 2px solid $primary;
+    @include ssm{
+      border-bottom: 2px solid transparent;
+    }
+
+    svg {
+      @extend .color-primary;
+    }
+  }
+}
+
+.user-info-tab {
+  .custom-control-label::before {
+    border: 1px solid #adb4d2;
+  }
+
+  .custom-control-label::after {
+    background: no-repeat 65% / 77% 65%;
+  }
+
+  .custom-control-label::before,
+  .custom-control-label::after {
+    width: 16px;
+    height: 16px;
+    left: -25px;
+  }
+
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: $primary;
+    background-color: $primary;
+  }
+
+  .custom-radio {
+    padding-left: 25px;
+  }
+  .ap-tab-main .nav-link:after {
+    display: none;
+  }
+}
+
+.form-group-calender a {
+  content: "";
+  position: absolute;
+  right: 15px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+
+  svg {
+    width: 16px;
+    @extend .color-light;
+  }
+}
+
+//Project tab
+.project-tap {
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  .nav-link {
+    @include ofs(14px, lh(14px, 25px), 400);
+    @extend .color-light;
+    padding: 0 15px;
+    text-transform: capitalize;
+
+    &.active {
+      @extend .color-primary;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+
+    &:not(:first-child):after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 1px;
+      background-color: #e3e6ef;
+    }
+  }
+}
+
+.project-search {
+  &--height {
+    @include sm {
+      width: 382px;
+    }
+
+    .user-member__form,
+    .form-control {
+      height: 40px;
+    }
+  }
+
+  &.shop-search .form-control {
+    height: 46px;
+  }
+}
+
+.project-category {
+  text-transform: capitalize;
+
+  .select2-container--default .select2-selection--single,
+  .select2-container--default .select2-selection--multiple {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    min-width: 100px;
+  }
+
+  .select2-container .select2-selection--single .select2-selection__rendered,
+  .select2-container--default
+    .select2-selection--single
+    .select2-selection__placeholder {
+    @include ofs(14px, lh(14px, 25px), 400);
+    @extend .color-light;
+  }
+
+  .select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 0px 100px 0 25px;
+  }
+
+  // .select2-container .select2-selection--single .select2-selection__clear {
+  //   right: -60px;
+  // }
+}
+
+/*=====  2.1: Social Icon ======*/
+
+.icon-list-social {
+  &__link {
+    @include ofs(18px, lh(18px, 30px), 500);
+    @extend .content-center;
+    transition: $transition-base;
+    @extend .color-light;
+    box-shadow: 0px 5px 10px #9299b81a;
+    @extend .wh-40;
+
+    &:hover {
+      @extend .color-light;
+    }
+
+    &.active {
+      background: white;
+      @extend .color-primary;
+    }
+
+    i {
+      font-size: 20px;
+    }
+
+    svg {
+      width: 16px;
+    }
+  }
+}
+
+//User Profile
+
+.profile-card-3 {
+  position: relative;
+  float: left;
+  width: 100%;
+  text-align: center;
+  border: none;
+
+  .profile {
+    border-radius: 50%;
+    border: 8px solid #ffffff;
+  }
+
+  .background-block {
+    float: left;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+
+    .background {
+      width: 100%;
+      vertical-align: top;
+      height: 150px;
+      border-radius: 10px 10px 0px 0px;
+    }
+  }
+
+  .card-dropdown {
+    margin-top: 7px;
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-base;
+
+    &:hover {
+      background: #f4f5f7;
+    }
+
+    .dropdown svg {
+      @extend .color-extra-light;
+      width: 24px;
+    }
+  }
+
+  .card-content {
+    background: #ffffff;
+    border-radius: 30px 30px 10px 10px;
+
+    .card-content__body {
+      width: 100%;
+      padding: 25px 25px;
+    }
+  }
+}
+
+.user-group-progress-bar .progress-percentage {
+  @include ofs(12px, lh(12px, 15px), 500);
+  @extend .color-gray;
+}
+
+.media-ui--completed .progress-icon {
+  @extend .wh-18;
+  @extend .content-center;
+  flex: unset;
+  border-radius: 50%;
+  @extend .bg-success;
+
+  svg {
+    width: 12px;
+    color: white;
+  }
+}
+
+//Project Data table
+
+.projectDatatable.project-table .table {
+  border-bottom: none;
+
+  td {
+    border-bottom: 1px solid $border-color;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+//Progress
+.project-progress {
+  .dropdown svg {
+    width: 22px;
+    @extend .color-extra-light;
+  }
+
+  .user-group-progress-bar {
+    @include media-breakpoint-up(lg) {
+      width: 340px;
+    }
+
+    .progress {
+      height: 5px;
+    }
+  }
+}
+
+//User Modal
+.new-member-modal {
+  .form-control {
+    height: 48px;
+
+    &::placeholder {
+      color: $light;
+    }
+  }
+
+  .form-group label {
+    text-transform: capitalize;
+    @extend .color-dark;
+    @include ofs(14px, lh(14px, 26px), 500);
+    margin-bottom: 8px;
+  }
+
+  textarea.form-control {
+    padding: 13px 20px;
+    height: 120px;
+    resize: none;
+  }
+
+  button.b-light {
+    @extend .b-light;
+  }
+}
+
+.new-member-calendar {
+  .form-control {
+    &::placeholder {
+      color: $extra-light;
+    }
+  }
+}
+
+.select2-dropdown.category-member {
+  z-index: 9999;
+}
+
+//user card
+
+.cos-xl-2 {
+  @media (min-width: 1600px) {
+  flex: 0 0 20%;
+  max-width: 20%;
+ }
+}

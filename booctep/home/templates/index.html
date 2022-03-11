@@ -1,0 +1,1205 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+
+    <!-- HOEM SECTION -->
+    <!-- USER LOGE OUT -->
+    {% if request.user.id == None %} {% include "home/contents.html" %} {% else %}
+        {% include './home/contents-2.html' %} {% endif %}
+    <!-- END HOME SECTION -->
+
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    <style>
+        .image-owner{
+            direction: ltr;
+            float: left;
+        }
+        .full{
+            direction: ltr;
+            float: left;
+        }
+        .rating{
+            direction: ltr;
+            float: left;
+        }
+        .name{
+            direction: ltr;
+            float: left;
+        }
+        .accordion__menu{
+            background-color: none !important;
+
+        }
+        .accordion__menu-dark{
+            background-color: rgb(241, 241, 241) !important;
+        }
+    </style>
+    {% endif %}
+
+    <style>
+
+
+        .in-blk {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .goldstardiv {
+            color: gold;
+            position: relative;
+        }
+
+
+        .nocourseavailable {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        /****** Style Star Rating Widget *****/
+        @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        .rating {
+            border: none;
+            float: left;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .rating > input:checked ~ label
+        {
+            color: #FFD700;
+        }
+
+        .is-comboe{
+            background-color: #fff;
+        }
+
+        .is-comboe-dark{
+            background: #adadad !important; 
+            border: 1px solid #707070 !important;
+            color: #616B75 ;
+        }
+
+.prcgr{
+    color: rgb(25, 139, 82) !important;
+}
+
+.prcgr-dark{
+    color: rgb(177, 241, 209) !important;
+}
+
+.prcg{
+    color: rgb(204, 29, 29) !important;
+}
+
+.prcg-dark{
+    color: rgb(214, 169, 169) !important;
+}
+
+
+    </style>
+
+    <form method="post" id="index_form" action="" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" id="type" value="{{ type }}" name="type">
+        <input type="hidden" id="page" value="{{ page }}" name="page">
+        <input type="hidden" id="order" value="{{ order }}" name="order">
+    </form>
+
+    <!-- Filters and courses -->
+    <div id="shop-page" class="shop-wrapper">
+        <div class="products-navigation" style="display: none;"></div>
+        <div class="shop-header shop-header-is-dark ">
+            <div class="container" style="display: flex; justify-content: space-between;">
+                <div class="store-tabs">
+                    <a class="tab-control {% if type == -1 %}is-active{% endif %}"
+                       onclick="setType(-1)">{% trans 'All' %}</a>
+                    <a class="tab-control {% if type == 0 %}is-active{% endif %}"
+                       onclick="setType(0)">{% trans 'Paid' %}</a>
+                    <a class="tab-control {% if type == 1 %}is-active{% endif %}"
+                       onclick="setType(1)">{% trans 'Free' %}</a>
+                    <div class="store-naver"></div>
+                </div>
+                <div class="combo-item is-combo-dark">
+                    <div class="select is-rounded  ">
+                        <select class="is-comboe is-comboe-dark" style="border-radius:3px;height:40px;margin-top:2px;"
+                                id="category_id_2">
+                            {% get_current_language as lang %}
+                            {% if lang == "ar" %}
+                            <option value="0" {% if order == 0 %}selected{% endif %}>الكل</option>
+                            <option value="1" {% if order == 1 %}selected{% endif %}>الأعلى تقييم</option>
+                            <option value="2" {% if order == 2 %}selected{% endif %}>الأكثر مشاركة</option>
+                            <option value="3" {% if order == 3 %}selected{% endif %}>الأحدث</option>
+                            {% else %}
+                            <option value="0" {% if order == 0 %}selected{% endif %}>All</option>
+                            <option value="1" {% if order == 1 %}selected{% endif %}>Most Rating</option>
+                            <option value="2" {% if order == 2 %}selected{% endif %}>Most Students</option>
+                            <option value="3" {% if order == 3 %}selected{% endif %}>Newest</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="select is-rounded " >
+                        <select class="is-comboe is-comboe-dark" id="category_id" data-select="{{ cat_id }}"
+                                style="border-radius:3px;height:40px;margin-top:2px" onchange="category()">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                            <option value="0">الكل</option>
+                            {% else %}
+                            <option value="0">All</option>
+                            {% endif %}
+                            {% for i in category_obj %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="store-sections ">
+            <div class="container">
+                <div id="products-tab" class="store-tab-pane is-active sortingdivparent" id="demo">
+                    <div class="columns is-multiline sortingdiv allcoursearea">
+                        {% for course in course_list %}
+                            <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile coursecard"
+                                 data-cat-id="{{ course.scat_id }}" data-rating="{{ course.rating }}"
+                                 data-ts="{{ course.stuCnt }}" data-cd="{{ course.created_at.timestamp }}">
+                                <div class="product-card  product-card-dark" data-name="{{ course.name }}"
+                                     data-price="44.00" data-colors="true" data-variants="true"
+                                     data-path="{% static 'assets/img/products/1' %}">
+                                    <a href="/course/{{ course.link }}" class="product-image">
+                                        <div class="image-grid-wrap">
+                                            <div class="image-grid">
+                                                <div class="image-row">
+                                                    <div class="flex-1 has-background-image show-image"
+                                                         data-background="{% static course.cover_img %}"
+                                                         data-demo-background="{% static 'assets/img/courses/pc.jpg' %}"
+                                                         style="border-bottom: 1px solid #E4E4E4;display: none;border-radius:0px">
+                                                        <a href="/course/{{ course.link }}">
+                                                            <div class="overlay"></div>
+                                                        </a>
+                                                        
+                                                        
+                                                        <div class="image-owner">
+                                                            <div class="name" style="display: flex; align-items: center;" style="font-size: 10px !important;">
+                                                                <form class="rating" data-rating="{{ course.rating }}" data-course="{{ course.id }}">
+                                                                    <input type="radio" id="star10-{{ course.id }}" name="rating" value="5"/><label
+                                                                        class="full" for="star10-{{ course.id }}"
+                                                                        title="Awesome - 5 stars"></label>
+                                                                    <input type="radio" id="star9-{{ course.id }}" name="rating"
+                                                                           value="4 and a half"/><label class="half"
+                                                                                                        for="star9-{{ course.id }}"
+                                                                                                        title="Pretty good - 4.5 stars"></label>
+                                                                    <input type="radio" id="star8-{{ course.id }}" name="rating" value="4"/><label
+                                                                        class="full" for="star8-{{ course.id }}"
+                                                                        title="Pretty good - 4 stars"></label>
+                                                                    <input type="radio" id="star7-{{ course.id }}" name="rating"
+                                                                           value="3 and a half"/><label class="half"
+                                                                                                        for="star7-{{ course.id }}"
+                                                                                                        title="Meh - 3.5 stars"></label>
+                                                                    <input type="radio" id="star6-{{ course.id }}" name="rating" value="3"/><label
+                                                                        class="full" for="star6-{{ course.id }}"
+                                                                        title="Meh - 3 stars"></label>
+                                                                    <input type="radio" id="star5-{{ course.id }}" name="rating"
+                                                                           value="2 and a half"/><label class="half"
+                                                                                                        for="star5-{{ course.id }}"
+                                                                                                        title="Kinda bad - 2.5 stars"></label>
+                                                                    <input type="radio" id="star4-{{ course.id }}" name="rating" value="2"/><label
+                                                                        class="full" for="star4-{{ course.id }}"
+                                                                        title="Kinda bad - 2 stars"></label>
+                                                                    <input type="radio" id="star3-{{ course.id }}" name="rating"
+                                                                           value="1 and a half"/><label class="half"
+                                                                                                        for="star3-{{ course.id }}"
+                                                                                                        title="Meh - 1.5 stars"></label>
+                                                                    <input type="radio" id="star2-{{ course.id }}" name="rating" value="1"/><label
+                                                                        class="full" for="star2-{{ course.id }}"
+                                                                        title="Sucks big time - 1 star"></label>
+                                                                    <input type="radio" id="star1-{{ course.id }}" name="rating"
+                                                                           value="half"/><label class="half" for="star1-{{ course.id }}"
+                                                                                                title="Sucks big time - 0.5 stars"></label>
+                                                                </form>
+                                                                <span style="font-size: small; color: rgb(255, 238, 80);">{{ course.rating }} &nbsp; ( {{ course.student_num }} )</span>
+                                                            </div>
+                                                        </div>
+
+
+                                                        {% if course.price > 0 %}
+                                                            {% if user.is_authenticated %}
+                                                                {% if course.id in alreadyinFav %}
+                                                                    <div class="photo-like pop-button has-tooltip is-shifted is-active favbutton"
+                                                                         id="invite-pop" data-id="{{ course.id }}">
+                                                                        <a class="inner"
+                                                                           data-title="Relationship"
+                                                                           data-type="addFav" data-id="">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                 aria-hidden="true" focusable="false"
+                                                                                 width="1em"
+                                                                                 height="1em"
+                                                                                 style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                                 preserveAspectRatio="xMidYMid meet"
+                                                                                 viewBox="0 0 24 24">
+                                                                                <g fill="red" stroke="red"
+                                                                                   stroke-width="2"
+                                                                                   stroke-linecap="round"
+                                                                                   stroke-linejoin="round">
+                                                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="photo-like pop-button has-tooltip favbutton"
+                                                                         id="invite-pop" data-id="{{ course.id }}">
+                                                                        <a class="inner"
+                                                                           data-title="Relationship"
+                                                                           data-type="addFav" data-id="">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                 aria-hidden="true" focusable="false"
+                                                                                 width="1em"
+                                                                                 height="1em"
+                                                                                 style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                                 preserveAspectRatio="xMidYMid meet"
+                                                                                 viewBox="0 0 24 24">
+                                                                                <g fill="none" stroke="#626262"
+                                                                                   stroke-width="2"
+                                                                                   stroke-linecap="round"
+                                                                                   stroke-linejoin="round">
+                                                                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </a>
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% if course.id in alreadyinCart %}
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip is-shifted is-active"
+                                                                   data-title="Relationship" data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style=";font-size: 22px;color: skyblue"></i>
+                                                                </a>
+                                                            {% else %}
+                                                                <a id="follow-pop"
+                                                                   class="photo-time pop-button has-tooltip"
+                                                                   data-title="Relationship" data-id="{{ course.id }}">
+                                                                    <i class="fa fa-shopping-cart"
+                                                                       style="font-size: 22px;color: #fff;"></i>
+                                                                </a>
+                                                            {% endif %}
+                                                            {% endif %}
+                                                        {% else %}
+                                                            {% if user.is_authenticated %}
+                                                                <div class="photo-like pop-button has-tooltip favbutton"
+                                                                     style="left:10px !important"
+                                                                     data-title="Relationship"
+                                                                     id="invite-pop" data-type="addFav"
+                                                                     onclick="addFav({{ course.id }})">
+                                                                    <a class="inner">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                             aria-hidden="true" focusable="false"
+                                                                             width="1em"
+                                                                             height="1em"
+                                                                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                                                             preserveAspectRatio="xMidYMid meet"
+                                                                             viewBox="0 0 24 24">
+                                                                            <g fill="none" stroke="#626262"
+                                                                               stroke-width="2"
+                                                                               stroke-linecap="round"
+                                                                               stroke-linejoin="round">
+                                                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="product-skeleton">
+                                        <div class="pd_title loading"></div>
+                                        <div class="pd_description">
+                                            <div class="pd_description1 loading"></div>
+                                            <div class="pd_description2 loading"></div>
+                                        </div>
+                                        <div class="pd_review" style="display: flex;">
+                                            <div class="pd_users loading"></div>
+                                            <div class="pd_videos loading"></div>
+                                        </div>
+                                        <div class="pd_footer" style="display: flex;">
+                                            <div class="pd_price loading"></div>
+                                            <div class="pd_button loading"></div>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>
+                                            <a href="# "
+                                               style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">{{ course.name }}</a>
+                                        </h3>
+                                        <div style="line-height: 1.5em; height: 3em; overflow: hidden; text-overflow: ellipsis;">{{ course.description | safe | truncatechars:30 }}</div>
+                                        <i class="fa fa-users "></i>
+                                        <span style="font-size: small; ">{{ course.student_num }}</span>
+                                        <i class="fa fa-video "></i>
+                                        <span style="font-size: small; ">{{ course.video }} Videos</span>
+                                        {% if course.booctep_choice %}
+                                            <img src="{% static 'assets/img/check-mark.png' %}" alt="Booctep's choice"
+                                                 style="width:25px;height:25px;position:absolute;right:23px"/>
+
+                                        {% endif %}
+                                        <div class="product-actions ">
+                                            <div class="left ">
+                                                {% if course.price > 0 %}
+                                                    {% if course.price != course.discount_price %}
+                                                    <b class="prcg prcg-dark"><del style="font-weight: bold" class="prcg prcg-dark">${{ course.price }}</del>   <b class="prcgr prcgr-dark">${{ course.discount_price }}</b></b>
+                                                    {% else %}
+                                                    <b class="prcg prcg-dark">${{ course.price }}</b>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <b class="prcgr prcgr-dark"> Free </b>
+                                                {% endif %}
+                                            </div>
+                                            <div class="right ">
+                                                <a class="button primary-button is-solid raised story modal-trigger promo"
+                                                   data-modal="videos-modal" onclick="showVideoModal(this)"
+                                                   data-id="{{ course.id }}">
+                                                    <i class="fa fa-play"></i> {% trans 'Demo' %}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <center>
+                        {% if course_list.has_other_pages %}
+                            <ul class="pagination">
+                                {% if course_list.number != 1 %}
+                                <li class="active" style="background: #0d79df; color: white; cursor: pointer;"
+                                    onclick="page_set({{ 1 }})"><span style="font-size:18px;">First</span>
+                                </li>
+                                {% endif %}
+                                {% if course_list.has_previous %}
+                                    <li><a onclick="page_prev()">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    </a></li>
+                                {% else %}
+                                    <li class="disabled">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i></li>
+                                {% endif %}
+                                {% if course_list.number > 2 %}
+                                    <li style="cursor: pointer;">
+                                        <span>...</span>
+                                    </li>
+                                {% endif %}
+                                {% if course_list.number > 1 %}
+                                    <li style="cursor: pointer;" onclick="page_set({{ course_list.number|add:"-1" }})">
+                                        <span>{{ course_list.number|add:"-1" }}</span>
+                                    </li>
+                                {% endif %}
+                                <li class="active" style="background: #0d79df; color: white; cursor: pointer;" onclick="page_set({{ course_list.number }})">
+                                    <span>{{ course_list.number }}</span>
+                                </li>
+                                {% if course_list.number < course_list.paginator.num_pages %}
+                                    <li style="cursor: pointer;" onclick="page_set({{ course_list.number|add:"1" }})">
+                                        <span>{{ course_list.number|add:"1" }}</span>
+                                    </li>
+                                {% endif %}
+                                {% if course_list.number < course_list.paginator.num_pages|add:"-1" %}
+                                    <li style="cursor: pointer;">
+                                        <span>...</span>
+                                    </li>
+                                {% endif %}
+                                {% if course_list.has_next %}
+                                    <li><a onclick="page_next()">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a></li>
+                                {% else %}
+                                    <li class="disabled">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </li>
+                                {% endif %}
+                                {% if course_list.number != course_list.paginator.num_pages %}
+                                <li style="background: #0d79df; color: white; cursor: pointer;"
+                                    onclick="page_set({{ course_list.paginator.num_pages }})"><span style="font-size:18px;">Last</span>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Filters and courses -->
+
+    <div id="parent" style="display: none"></div>
+
+    <!-- More categories start -->
+    <div class="categories-bg categories-dark-bg">
+        <div class="container ">
+            <div class="columns ">
+                <div class="column ">
+                    <div class="categories-header categories-dark-header ">
+                        <h2>{% trans 'Categories' %}</h2>
+                    </div>
+                    <div class="tile is-ancestor ">
+                        <div class="tile is-parent is-vertical ">
+                            <a href="/category/1" class="tile is-child category-box category-dark-box is-accent ">
+                                <img src="{% static 'assets/img/categories/p-language.svg' %} " alt=" ">
+                                <div class="box-content ">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <h3 class="title is-6 "> تطوير الويب</h3>
+                                    {% else %}
+                                    <h3 class="title is-6 "> {% trans 'Web Development' %}</h3>
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <a href="/category/3" class="tile is-child category-box category-dark-box is-accent ">
+                                <img src="{% static 'assets/img/categories/aviation.svg' %} " alt=" ">
+                                <div class="box-content ">
+                                    <h3 class="title is-6 ">{% trans 'Aviation' %}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tile is-vertical is-8 ">
+                            <div class="tile ">
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/2"
+                                       class="tile is-child category-box category-dark-box is-accent ">
+                                        <img src="{% static 'assets/img/categories/business.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">ريادة أعمال</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">{% trans '#Business' %}</h3>
+                                            {% endif %}    
+                                        </div>
+                                    </a>
+                                    <a href="/category/5"
+                                       class="tile is-child category-box category-dark-box is-primary ">
+                                        <img src="{% static 'assets/img/categories/physical.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Physical & Chemistry' %}</h3>
+                                           
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/4"
+                                       class="tile is-child category-box category-dark-box is-primary is-taller ">
+                                        <img src="{% static 'assets/img/categories/gaming.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">صحة</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">Health</h3>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+
+                                    <a href="/category/13"
+                                       class="tile is-child category-box category-dark-box is-accent is-taller ">
+                                        <img src="{% static 'assets/img/categories/Engineer.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Engineering' %}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tile is-parent ">
+                                <a href="/category/5"
+                                   class="tile is-child category-box category-dark-box is-accent is-row ">
+                                    <img src="{% static 'assets/img/categories/math.svg' %} " alt=" ">
+                                    <div class="box-content ">
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        <h3 class="title is-6 ">تصوير وإخراج</h3>
+                                        {% else %}
+                                        <h3 class="title is-6 ">Photograph and cinema directing</h3>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-ancestor ">
+                        <div class="tile is-parent is-vertical ">
+                            <a href="/category/14"
+                               class="tile is-child category-box category-dark-box is-accent is-taller ">
+                                <img src="{% static 'assets/img/categories/skills.svg' %} " alt=" ">
+                                <div class="box-content ">
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <h3 class="title is-6 ">مهارات شخصية</h3>
+                                    {% else %}
+                                    <h3 class="title is-6 ">Soft skills</h3>
+                                    {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                            <a href="/category/13"
+                               class="tile is-child category-box category-dark-box is-primary is-taller ">
+                                <img src="{% static 'assets/img/categories/repare.svg' %} " alt=" ">
+                                <div class="box-content ">
+                                    <h3 class="title is-6 ">{% trans 'Maintaince & Reparing' %}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tile is-vertical is-8 ">
+                            <div class="tile ">
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/6"
+                                       class="tile is-child category-box category-dark-box is-primary ">
+                                        <img src="{% static 'assets/img/categories/hospitality.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Hospitality & Tourism' %}</h3>
+                                        </div>
+                                    </a>
+                                    <a href="/category/8"
+                                       class="tile is-child category-box category-dark-box is-accent ">
+                                        <img src="{% static 'assets/img/categories/robot.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">طبخ</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">Cooking</h3>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/6"
+                                       class="tile is-child category-box category-dark-box is-accent ">
+                                        <img src="{% static 'assets/img/categories/fitness.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">أسلوب حياة</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">{% trans 'Life style' %}</h3>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                    <a href="/category/14"
+                                       class="tile is-child category-box category-dark-box is-primary ">
+                                        <img src="{% static 'assets/img/categories/self-dev.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Self development' %}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tile is-parent ">
+                                <a href="/category/7"
+                                   class="tile is-child category-box category-dark-box is-accent is-row ">
+                                    <img src="{% static 'assets/img/categories/art.svg' %} " alt=" ">
+                                    <div class="box-content ">
+                                        <h3 class="title is-6 ">{% trans 'Arts' %}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-ancestor ">
+                        <div class="tile is-parent is-vertical ">
+                            <a href="/category/11"
+                               class="tile is-child category-box category-dark-box is-accent is-taller ">
+                                <img src="{% static 'assets/img/categories/laguage.svg' %} " alt=" ">
+                                <div class="box-content ">
+                                    <h3 class="title is-6 ">{% trans 'Languages' %}</h3>
+                                </div>
+                            </a>
+                            <a href="/category/15"
+                               class="tile is-child category-box category-dark-box is-primary is-taller ">
+                                <img src="{% static 'assets/img/categories/other.svg' %} " alt=" ">
+                                <div class="box-content ">
+
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <h3 class="title is-6 ">أمن المعلومات والذكاء الإصطناعي</h3>
+                                    {% else %}
+                                    <h3 class="title is-6 ">Cyber security & AI</h3>
+                                    {% endif %}
+                                                                
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tile is-vertical is-8 ">
+                            <div class="tile ">
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/9"
+                                       class="tile is-child category-box category-dark-box is-primary ">
+                                        <img src="{% static 'assets/img/categories/dramaa.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">الصيانة والإصلاح</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">Maintenance and Repair</h3>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                    <a href="/category/14"
+                                       class="tile is-child category-box category-dark-box is-accent ">
+                                        <img src="{% static 'assets/img/categories/sewiing.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Sewing design' %}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile is-parent is-vertical ">
+                                    <a href="/category/12"
+                                       class="tile is-child category-box category-dark-box is-accent ">
+                                        <img src="{% static 'assets/img/categories/food.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <h3 class="title is-6 ">الأعمال اليدوية</h3>
+                                            {% else %}
+                                            <h3 class="title is-6 ">Hard skills</h3>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                    <a href="/category/10"
+                                       class="tile is-child category-box category-dark-box is-primary ">
+                                        <img src="{% static 'assets/img/categories/design.svg' %} " alt=" ">
+                                        <div class="box-content ">
+                                            <h3 class="title is-6 ">{% trans 'Design' %}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tile is-parent ">
+                                <a href="/category/10"
+                                   class="tile is-child category-box category-dark-box is-accent is-row ">
+                                    <img src="{% static 'assets/img/categories/softwares.svg' %} " alt=" ">
+                                    <div class="box-content ">
+                                        {% get_current_language as lang %}
+                                        {% if lang == "ar" %}
+                                        <h3 class="title is-6 ">العلوم</h3>
+                                        {% else %}
+                                        <h3 class="title is-6 ">Sciences</h3>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- More categories End -->
+
+    <div id="videos-modal" class="modal videos-modal is-large has-light-bg">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="height: auto !important;">
+            <div class="card">
+                <div class="card-heading">
+                    <div class="user-meta">
+                        <img id="modal-img" src="/static/assets/img/man.jpg">
+                    </div>
+                    <span class="user-meta-span"
+                          id="modal-user-name">{{ course.user.first_name }}{{ course.user.last_name }} </span>
+                    <span class="user-meta-span"
+                          id="modal-course-name">&nbsp; &nbsp; |   {{ course.name }}&nbsp; &nbsp;</span>
+                          {% get_current_language as lang %}
+                          {% if lang == "ar" %}
+                    <a type="button" class="button" style="background-color: rgb(201, 106, 128);color: #fff;">أضف للمفضلة
+                        &nbsp;<i class="fa fa-heart"></i></a>
+                        {% else %}
+                        <a type="button" class="button" style="background-color:  rgb(201, 106, 128);color: #fff;">{% trans 'Add to Fav' %}
+                            &nbsp;<i class="fa fa-heart"></i></a>
+                        {% endif %}
+                    <!-- Close X button -->
+                    <div class="close-wrap" >
+                        <span class="close-modal" onclick="closeModal()" style="background-color: #e9e9e9 !important;">
+                            <i data-feather="x" style="color: #c7c7c7 !important;"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="inner">
+                        <div class="app-video left-section">
+                            <video autoplay poster="/static/assets/img/setting.jpg" class="special" style=""
+                                   id="videoplayer"
+                                   playsinline controls>
+                                <source id="modal-video-src" src="/static/assets/img/vid/html.mp4" type="video/webm"/>
+
+                                <!-- Captions are optional -->
+                                <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en"
+                                       default/>
+                            </video>
+                        </div>
+                        <div class="right-section">
+                            <div class="inner-content">
+                                <div class="live-stats">
+                                    <div class="social-count-2">
+                                        <div class="likes-count">
+                                            <i class="fa fa-users"></i>
+                                            <span id="modal-users">140,440</span>
+                                        </div>
+                                        <div class="shares-count">
+                                            <i class="fa fa-star" style="color: rgb(212, 173, 0);"></i>
+                                            <span id="modal-rating">4.8</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tabs-wrapper">
+                                <div class="tabs is-fullwidth">
+                                    <ul>
+                                        <li class="is-active">
+                                            {% get_current_language as lang %}
+                                            {% if lang == "ar" %}
+                                            <a> مواد الدورة </a>
+                                            {% else %}
+                                            <a> Course curriculum </a>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content ">
+                                    <div class="accordion js-accordion accordion--boxed list-group-flush"
+                                         id="modal-parent">
+                                        <div class="accordion__item">
+                                            
+                                            <div class="accordion__menu collapse" id="course-toc-{{ ele.id }}">
+                                                <div class="accordion__menu-link" style="cursor: pointer;">
+                                                    <i class="material-icons icon-16pt tick{{ i.id }}"
+                                                       onclick="checkThis(this)"
+                                                       data-sr_no="{{ i.sr_no }}"></i> &nbsp
+                                                    <div data-id="{{ i.id }}" data-srno="{{ i.sr_no }}"
+                                                         data-url="{{ i.url }}"
+                                                         onclick="playmyvideo(this)">{{ i.video_name }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    <script>
+
+        let cur_page = '{{ page }}'
+
+        function page_set(page) {
+            $("#page").val(page)
+            $("#index_form").submit()
+        }
+
+        function page_prev() {
+            page = cur_page * 1 - 1
+            $("#page").val(page)
+            $("#index_form").submit()
+        }
+
+        function page_next() {
+            page = cur_page * 1 + 1
+            $("#page").val(page)
+            $("#index_form").submit()
+        }
+
+        $("#category_id_2").on('change', function(){
+            $("#order").val($(this).val())
+            $("#index_form").submit()
+        })
+
+        function showVideoModal(obj) {
+            id = $(obj).data('id')
+            video_url = $(obj).data('url')
+            let url = `/get_course_detail_by_id/`
+            let form_data = new FormData()
+            form_data.append('id', id)
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then((response) => {
+                $("#modal-user-name").html(response.user_name)
+                course = JSON.parse(response.course)
+                sections = JSON.parse(response.sections)
+                console.log("test::", course)
+                console.log("sections::", sections)
+                $("#modal-course-name").html(course[0].fields.name)
+                $("#modal-users").html(response.user_count)
+                $("#modal-rating").html(response.rating)
+                $("#modal-img").attr('src', '/static' + response.user_img)
+                html = ``;
+                key = 0
+                eleKey = 0
+                sections.forEach(item =>{
+                    html += `<div class="accordion__item">
+                                <a href="#" class="accordion__toggle collapsed" style="display:flex; justify-content: space-between;" data-toggle="collapse"
+                                   data-target="#course-toc-${key}" data-parent="#parent">
+                                    <span class="flex">${item.name}</span>
+                                    <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                </a>`
+                        item.video_list.forEach(ele =>{
+                            if (eleKey == 0 && ele.lock == 0) {
+                                $("#modal-video-src").attr('src', "../../../../static" + ele.url)
+                                $("#modal-video-src").parent()[0].load()
+                            }
+                            videoname = ele.name.slice(0, -4)
+                            icon_name = `fa fa-lock`
+                            if (ele.lock == 0)
+                                icon_name = `fa fa-video`
+                            if (ele.lock == 0 && eleKey == 0) {
+                                icon_name = `fa fa-play`
+                                eleKey ++
+                            }
+                            html += `<div class="accordion__menu collapse" id="course-toc-${key}">
+                                        <div class="accordion__menu-link" style="cursor: pointer;">
+                                            <i class="${icon_name}" style="margin-right: 5px;color: rgb(194, 194, 194);"></i> &nbsp
+                                            <div data-url="${ele.url}"`
+                            if (ele.lock == 0)
+                                 html +=  `onclick="playmyvideo(this)"`
+                             html += `>${videoname}</div>
+                                        </div>
+                                    </div>`
+                        })
+                    html += `</div>`
+                    key ++
+                })
+                $("#modal-parent").html(html)
+            })
+        }
+
+        function closeModal() {
+            $(".app-video #videoplayer")[0].pause()
+        }
+
+        function setType(type) {
+            $("#type").val(type)
+            $("#index_form").submit()
+        }
+
+        function category() {
+            var category_id = $("#category_id").val();
+            var category_id_2 = $("#category_id_2").val();
+            $('#loadings').show();
+            if (!category_id) {
+                category_id = 0
+            }
+            if (!category_id_2) {
+                category_id_2 = 0
+            }
+            if (category_id_2 == 1) { // Most rated
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.paidcoursearea');
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.freecoursearea');
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('rating') - $(a).data('rating');
+                }).appendTo('.allcoursearea');
+            }
+            if (category_id_2 == 2) {  // Most students
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.paidcoursearea');
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.freecoursearea');
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('ts') - $(a).data('ts');
+                }).appendTo('.allcoursearea');
+            }
+            if (category_id_2 == 3) {  // Newest
+                $('.paidcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.paidcoursearea');
+                $('.freecoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.freecoursearea');
+                $('.allcoursearea .coursecard').sort(function (a, b) {
+                    return $(b).data('cd') - $(a).data('cd');
+                }).appendTo('.allcoursearea');
+            }
+            if (category_id == 0) {
+                $(".coursecard").show();
+            } else {
+                $(".coursecard").hide();
+                $(".coursecard[data-cat-id=" + category_id + "]").show();
+                $('#loadings').hide();
+                if ($(".coursecard[data-cat-id=" + category_id + "]").length == 0) {
+                    swal({
+                        title: "Sorry, there are no course in this category ",
+                        icon: "warning",
+                        button: "Ok",
+                        closeOnClickOutside: false,
+                    })
+                }
+            }
+        }
+
+        category();
+
+        var myTimer = setInterval(Dataloading, 2000);
+
+        function Dataloading() {
+            $(".skeleton").hide();
+            $(".show-image ").delay(200).fadeIn(650);
+            $(".product-skeleton").hide();
+            $(".product-info ").delay(200).fadeIn(650);
+        }
+
+        $(document).ready(function () {
+
+            $(".rating").each(function() {
+                rating = $(this).data('rating')*1.0
+                course = $(this).data('course')
+                num = Math.floor(rating / 0.5)
+                $(`#star${num}-${course}`).attr('checked', true)
+            })
+
+            const controls = [
+                'restart', // Restart playback
+                'rewind', // Rewind by the seek time (default 10 seconds)
+                'play', // Play/pause playback
+                'fast-forward', // Fast forward by the seek time (default 10 seconds)
+                'progress', // The progress bar and scrubber for playback and buffering
+                'current-time', // The current time of playback
+                'duration', // The full duration of the media
+                'mute', // Toggle mute
+                'volume', // Volume control
+                'airplay', // Airplay (currently Safari only)
+            ];
+
+            const player = Plyr.setup('#videoplayer', {controls});
+
+            $('#loadings').fadeOut(3000);
+            var inp = $("#tipue_drop_input").val();
+            var img = document.createElement("img");
+            img.src = "{% static 'assets/img/no-courses.svg' %}";
+
+            if ($(".freecoursearea").children().length == 0) {
+                $(".freecoursearea").append(img);
+            }
+
+            if ($(".allcoursearea").children().length == 0) {
+                $(".allcoursearea").append(img);
+            }
+
+            if ($(".paidcoursearea").children().length == 0) {
+                $(".paidcoursearea").append(img);
+            }
+        });
+
+        $(document).ready(function () {
+            $(".SlickCarousel ").slick({
+                rtl: false, // If RTL Make it true & .slick-slide{float:right;}
+                autoplay: true,
+                autoplaySpeed: 5000, //  Slide Delay
+                speed: 1000, // Transition Speed
+                slidesToShow: 4, // Number Of Carousel
+                slidesToScroll: 1, // Slide To Move
+                pauseOnHover: false,
+                appendArrows: $(".Head .Arrows "), // Class For Arrows Buttons
+                prevArrow: '<span class="Slick-Prev "></span>',
+                nextArrow: '<span class="Slick-Next "></span>',
+                easing: "linear ",
+                responsive: [{
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                }, {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                },],
+            })
+        })
+
+        var slider = document.getElementById('slider'),
+            sliderItems = document.getElementById('slides'),
+            prev = document.getElementById('prev'),
+            next = document.getElementById('next');
+
+        function slide(wrapper, items, prev, next) {
+            var posX1 = 0,
+                posX2 = 0,
+                posInitial,
+                posFinal,
+                threshold = 100,
+                slides = items.getElementsByClassName('slide'),
+                slidesLength = slides.length,
+                slideSize = items.getElementsByClassName('slide')[0].offsetWidth,
+                firstSlide = slides[0],
+                lastSlide = slides[slidesLength - 1],
+                cloneFirst = firstSlide.cloneNode(true),
+                cloneLast = lastSlide.cloneNode(true),
+                index = 0,
+                allowShift = true;
+
+            // Clone first and last slide
+            items.appendChild(cloneFirst);
+            items.insertBefore(cloneLast, firstSlide);
+            wrapper.classList.add('loaded');
+
+            // Mouse events
+            items.onmousedown = dragStart;
+
+            // Touch events
+            items.addEventListener('touchstart', dragStart);
+            items.addEventListener('touchend', dragEnd);
+            items.addEventListener('touchmove', dragAction);
+
+            // Click events
+            prev.addEventListener('click', function () {
+                shiftSlide(-1)
+            });
+            next.addEventListener('click', function () {
+                shiftSlide(1)
+            });
+
+            // Transition events
+            items.addEventListener('transitionend', checkIndex);
+
+            function dragStart(e) {
+                e = e || window.event;
+                e.preventDefault();
+                posInitial = items.offsetLeft;
+
+                if (e.type == 'touchstart') {
+                    posX1 = e.touches[0].clientX;
+                } else {
+                    posX1 = e.clientX;
+                    document.onmouseup = dragEnd;
+                    document.onmousemove = dragAction;
+                }
+            }
+
+            function dragAction(e) {
+                e = e || window.event;
+                if (e.type == 'touchmove') {
+                    posX2 = posX1 - e.touches[0].clientX;
+                    posX1 = e.touches[0].clientX;
+                } else {
+                    posX2 = posX1 - e.clientX;
+                    posX1 = e.clientX;
+                }
+                items.style.left = (items.offsetLeft - posX2) + "px ";
+            }
+
+            function dragEnd(e) {
+                posFinal = items.offsetLeft;
+                if (posFinal - posInitial < -threshold) {
+                    shiftSlide(1, 'drag');
+                } else if (posFinal - posInitial > threshold) {
+                    shiftSlide(-1, 'drag');
+                } else {
+                    items.style.left = (posInitial) + "px ";
+                }
+
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+
+            function shiftSlide(dir, action) {
+                items.classList.add('shifting');
+
+                if (allowShift) {
+                    if (!action) {
+                        posInitial = items.offsetLeft;
+                    }
+
+                    if (dir == 1) {
+                        items.style.left = (posInitial - slideSize) + "px ";
+                        index++;
+                    } else if (dir == -1) {
+                        items.style.left = (posInitial + slideSize) + "px ";
+                        index--;
+                    }
+                }
+                ;
+
+                allowShift = false;
+            }
+
+            function checkIndex() {
+                items.classList.remove('shifting');
+                if (index == -1) {
+                    items.style.left = -(slidesLength * slideSize) + "px ";
+                    index = slidesLength - 1;
+                }
+                if (index == slidesLength) {
+                    items.style.left = -(1 * slideSize) + "px ";
+                    index = 0;
+                }
+                allowShift = true;
+            }
+        }
+
+        slide(slider, sliderItems, prev, next);
+
+        function addFav(course_id) {
+            console.log("test add fav");
+            var user_id = '{{ request.user.id }}';
+            var url = '/student_favourite_courses/';
+            $.post(url, {student: user_id, course: course_id}, function (res) {
+                // document.location.reload();
+            });
+        }
+
+        function playmyvideo(obj) {
+            url = $(obj).data('url')
+            $("#modal-video-src").attr('src', "../../../../static" + url)
+            $(".app-video video")[0].load();
+            $("#videos-modal .fa-play").attr('class', 'fa fa-video')
+            $(obj).prev().attr('class', 'fa fa-play')
+        }
+
+        document.querySelector(".banner__close").addEventListener("click", function () {
+            this.closest(".banner").style.display = "none";
+        });
+
+    </script>
+
+{% endblock %}

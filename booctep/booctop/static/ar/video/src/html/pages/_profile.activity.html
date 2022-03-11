@@ -1,0 +1,61 @@
+{% set activity = [{
+  avatar: 'assets/images/people/50/guy-2.jpg',
+  avatar_title: 'LB',
+  name: 'Laza Bogdan',
+  date: "3 days ago",
+  content: '<p class="measure-lead">Thanks for contributing to the release of LearnPlus - Learning Management Template <a href="">https://www.frontendmatter.com/themes/learnpl...</a> 🔥</p><p><a href="">#themeforest</a> <a href="">#EnvatoMarket</a></p>',
+  favorites: 26,
+  likes: 123
+}, {
+  avatar: 'assets/images/people/50/woman-5.jpg',
+  avatar_title: 'LB',
+  name: 'Laza Bogdan',
+  date: "4 days ago",
+  content: '<p class="measure-lead">Checkout our new JVC camera course on <a href="">https://t.co/Wh7jE0yz4h</a> 😉',
+  card: {
+    image: "assets/images/stories/256_rsz_phil-hearing-769014-unsplash.jpg",
+    title: "Learn How To Operate a JVC Camera",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    link: "frontendmatter.com"
+  },
+  favorites: 156,
+  likes: 351
+}] %}
+
+{% for item in activity %}
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex mb-1">
+      <div class="avatar avatar-sm mr-3">
+        <!-- <img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle"> -->
+        <span class="avatar-title rounded-circle">{{ item.avatar_title }}</span>
+      </div>
+      <div class="flex">
+        <div class="d-flex align-items-center mb-1">
+          <strong class="card-title">{{ item.name }}</strong>
+          <small class="ml-auto text-muted">{{ item.date }}</small>
+        </div>
+        <div>
+          {{ item.content | safe }}
+        </div>
+        {% if item.card %}
+        <a href="" class="card my-3 text-body text-decoration-0 measure-lead">
+          <img src="{{ item.card.image }}" alt="image" class="card-img-top">
+          <span class="card-footer d-flex flex-column">
+            <strong>{{ item.card.title }}</strong>
+            <span class="text-black-70">{{ item.card.description }}</span>
+            <span class="text-muted">{{ item.card.link }}</span>
+          </span>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <a href="" class="text-muted d-flex align-items-center text-decoration-0"><i class="material-icons mr-1" style="font-size: inherit;">favorite_border</i> {{ item.favorites }}</a>
+      <a href="" class="text-muted d-flex align-items-center text-decoration-0 ml-3"><i class="material-icons mr-1" style="font-size: inherit;">thumb_up</i> {{ item.likes }}</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<a href="" class="btn btn-block btn-light mb-32pt">Load more ...</a>

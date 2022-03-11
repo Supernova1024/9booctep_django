@@ -1,0 +1,29 @@
+{% macro component(count, title, list, cta_route, cta_label, class) %}
+<div class="card {{ class }}">
+  <div class="card-header pb-0 border-0 d-flex">
+    <div class="flex">
+      <div class="h2 mb-0">{{ count }}</div>
+      <p class="card-title">{{ title }}</p>
+    </div>
+    <i class="material-icons text-50">more_horiz</i>
+  </div>
+  <div class="card-body">
+    <div class="text-50 mb-16pt">
+      {% for item in list %}
+      <div{% if not loop.last %} class="mb-4pt"{% endif %}>
+        <p class="d-flex align-items-center mb-0">
+          <small class="flex lh-24pt">{{ item.title }}</small>
+          <small class="lh-24pt">{{ item.count }}</small>
+        </p>
+        <div class="progress" style="height: 4px;">
+          <div class="progress-bar {{ item.class }}" role="progressbar" style="width: {{ item.percent }}%;" aria-valuenow="{{ item.percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a href="{{ cta_route }}" class="btn btn-sm btn-outline-secondary">{{ cta_label }}</a>
+    </div>
+  </div>
+</div>
+{% endmacro %}

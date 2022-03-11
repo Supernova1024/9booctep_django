@@ -1,0 +1,111 @@
+// Switch Css
+
+.custom-switch{
+    .custom-control-input{
+        &:focus~.custom-control-label{
+            &:before{
+                box-shadow: none;
+            }
+        }
+        &:focus:not(:checked)~.custom-control-label{
+            &:before{
+                border-color: transparent;
+                background-color: #E3E6EF;
+            }
+        }
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-primary;
+            border-color: $primary;
+        }
+    }
+    .custom-control-label{
+        &:before{
+            background-color: #E3E6EF;
+            border: transparent;
+            box-shadow: none;
+        }
+        &:after{
+            top: calc(0.0425rem + 4px);
+            left: calc(-3rem + 4px);
+            background-color: white;
+        }
+    }
+}
+
+
+// Switch Size
+.custom-switch{
+    &.switch-md{
+        .custom-control-input:checked ~ .custom-control-label::after{
+            transform: translateX(.85rem);
+        }
+        .custom-control-label{
+            &:before{
+                width: 2.188rem;
+                height: 1.25rem;
+            }
+            &:after{
+                top: calc(0.0425rem + 3px);
+                width: calc(1.25rem - 6px);
+                height: calc(1.25rem - 6px);
+            }
+        }
+    }
+    &.switch-sm{
+        .custom-control-input:checked ~ .custom-control-label::after{
+            transform: translateX(.88rem);
+        }
+        .custom-control-label{
+            &:before{
+                width: 1.875rem;
+                height: .938rem;
+            }
+            &:after{
+                top: calc(0.041rem + 2.9px);
+                left: calc(-3rem + 3px);
+                width: calc(1.125rem - 8px);
+                height: calc(1.125rem - 8px);
+            }
+        }
+    }
+}
+
+// Switch Color
+.custom-switch{
+    &.switch-primary{
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-primary;
+            border-color: $primary;
+        }
+    }
+    &.switch-info {
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-info;
+            border-color: $info;
+        }
+    }
+    &.switch-secondary{
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-secondary;
+            border-color: $secondary;
+        }
+    }
+    &.switch-success{
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-success;
+            border-color: $success;
+        }
+    }
+    &.switch-warning{
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-warning;
+            border-color: $warning;
+        }
+    }
+    &.switch-danger{
+        .custom-control-input:checked~.custom-control-label::before{
+            @extend .bg-danger;
+            border-color: $danger;
+        }
+    }
+}

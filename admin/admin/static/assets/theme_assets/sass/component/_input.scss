@@ -1,0 +1,46 @@
+// Input Css
+.input-list-wrap{
+    margin-bottom: -10px;
+}
+.input-list{
+    @include e("single"){
+        margin: 0 10px 10px 0;
+        flex: 0 0 33.33%;
+        @include ssm{
+            flex: 0 0 100%;
+        }
+    }
+}
+
+.input-container{
+    .input-icon{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 0;
+        &.icon-left{
+            left: 20px;
+        }
+        &.icon-right{
+            right: 20px;
+        }
+        svg,
+        img{
+            width: 14px;
+            @extend .color-extra-light;
+        }
+    }
+    &.icon-left{
+        input{
+            padding-left: 40px;
+        }
+    }
+}
+
+.form-group{
+    input{
+        &::placeholder{
+            color:$light;
+        }
+    }
+}

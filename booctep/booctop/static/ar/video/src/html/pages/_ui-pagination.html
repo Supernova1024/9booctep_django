@@ -1,0 +1,21 @@
+{% import "components/pagination.html" as pagination %}
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Pagination', description='The pagination component provides a way to indicate that a series of related content exists across multiple pages.') %}
+    {{ pagination.component(pages=4, first=true, last=true) }}
+  {% endcall %}
+
+  {% call panel.component(title='Labels') %}
+    {{ pagination.component(pages=2, labels=true) }}
+  {% endcall %}
+</div>

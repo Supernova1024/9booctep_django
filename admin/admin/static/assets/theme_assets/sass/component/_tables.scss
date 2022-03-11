@@ -1,0 +1,271 @@
+/* table social metric */
+.table-social {
+  min-height: 382px;
+  th {
+    border-top: 0 none !important;
+    border-bottom: 0 none !important;
+    font-size: 14px;
+    font-weight: 500;
+    color: $dark;
+    @extend .bg-normal;
+  }
+  tr {
+    th:first-child,
+    td:first-child {
+      border-left: 0 none;
+    }
+    th:last-child,
+    td:last-child {
+      border-right: 0 none;
+    }
+    td:first-child {
+      padding-left: 25px;
+    }
+    td:last-child {
+      padding-right: 25px;
+    }
+  }
+  tbody {
+    tr:not(:first-child) {
+      transition: $transition-base;
+      &:hover {
+        background: $bg-normal;
+      }
+      color: $gray;
+    }
+    tr:first-child {
+      td {
+        color: $dark;
+        font-weight: 500;
+      }
+    }
+    tr td:not(:first-child) {
+      text-align: right;
+    }
+  }
+  a {
+    @extend .color-info;
+    &:hover {
+      @extend .color-info;
+    }
+  }
+  td {
+    font-size: 14px;
+  }
+  th,
+  td {
+    padding: 12.8px 15px;
+  }
+}
+
+.top-menu {
+  .table-social {
+    margin-bottom: 64px;
+    @include xxl {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/* table Landing Pages */
+.landing-pages-table {
+  @include xxl {
+    padding-bottom: 58px;
+  }
+  @include xl {
+    padding-bottom: 40px;
+  }
+  @include lg {
+    padding-bottom: 0px;
+  }
+  table tbody {
+    td {
+      a {
+        white-space: nowrap;
+        &:hover {
+          @extend .color-primary;
+        }
+      }
+    }
+  }
+}
+
+/* table /.traffic channel */
+.table--default {
+  th {
+    border-top: 0 none !important;
+    border-bottom: 0 none !important;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: $dark;
+  }
+  tr {
+    th:first-child,
+    td:first-child {
+      border-left: 0 none;
+    }
+    th:last-child,
+    td:last-child {
+      border-right: 0 none;
+    }
+    th:first-child,
+    td:first-child {
+      padding-left: 25px;
+    }
+    th:last-child,
+    td:last-child {
+      padding-right: 25px;
+    }
+  }
+  tbody {
+    tr {
+      transition: $transition-base;
+      color: $gray;
+      &:hover {
+        background: $bg-normal;
+      }
+      &:last-child {
+        border-bottom: 1px solid $border-normal;
+      }
+    }
+    tr td:not(:first-child) {
+      text-align: right;
+    }
+  }
+  thead tr th:not(:first-child) {
+    text-align: right;
+  }
+  td {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  th,
+  td {
+    padding: 16px 15px;
+  }
+}
+
+.table-borderless {
+  tr {
+    &:last-child {
+      border-bottom: 0 none !important;
+    }
+  }
+}
+
+.traffic-table {
+  .progress {
+    height: 5px;
+  }
+}
+
+.top-menu {
+  .traffic-table {
+    margin-bottom: 35px;
+  }
+}
+
+/* table top region */
+.table-top-regions {
+  border: 1px solid $border-normal;
+  max-height: 289px;
+  max-width: 300px;
+  overflow-y: auto;
+  @include xxl {
+    max-width: 400px;
+  }
+  @include sm {
+    margin: 0 auto 25px;
+  }
+  table {
+    margin-bottom: 0;
+    thead {
+      background: #f8f9fb;
+    }
+    th {
+      padding: 12px 15px;
+    }
+    td {
+      padding: 8px 15px;
+    }
+    tbody {
+      tr {
+        &:first-child {
+          td {
+            padding-top: 20px;
+          }
+        }
+        &:last-child {
+          td {
+            padding-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* table top selling location  */
+.table-top-location {
+  border-top: 1px solid $border-normal;
+  margin-top: 18px;
+  padding-top: 10px;
+  margin-bottom: -8px;
+  table {
+    thead {
+      th {
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $text-grey1;
+      }
+    }
+    tbody {
+      tr {
+        &:hover {
+          background: #fff;
+          td {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    th,
+    td {
+      padding: 7px 0 !important;
+    }
+  }
+}
+
+.top-menu {
+  .table-top-location {
+    margin-bottom: 38px;
+    @include xxl {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Table Revenue  */
+.table-revenue {
+  min-height: 378px;
+  @include lg {
+    min-height: 100%;
+  }
+  th {
+    padding: 15px 18px;
+  }
+  td {
+    padding: 10px 18px;
+  }
+}
+
+.top-menu {
+  .table-revenue {
+    margin-bottom: 42px;
+    @include xxl {
+      margin-bottom: 0;
+    }
+  }
+}

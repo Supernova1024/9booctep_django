@@ -1,0 +1,425 @@
+{% block content %} {% load static %}
+{% load i18n %}
+
+
+<style>
+    .sidebar-light-dodger-blue{
+        background-color: #d2e9ff !important;
+        border-right: 1px solid #abcae7 !important;
+    }
+    .sidebar-light-dodger-blue-dark{
+        background-color: #323741 !important;
+        border-right: 1px solid #1b1d22!important;
+        color: #fff !important;
+    }
+    .sidebar-secondary{
+        background-color: #b9d7f1 !important;
+        border-right: 1px solid #97b8d4 !important;
+        border-left: 0 !important;
+    }
+    .sidebar-secondary-dark {
+        background: rgb(33, 36, 41) !important;
+        border-right: 1px solid rgb(20, 22, 26) !important;
+    }
+
+
+
+.mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+
+</style>
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+
+
+
+<style>
+
+.sidebar-light-dodger-blue{
+        background-color: #d2e9ff !important;
+        border-left: 1px solid #abcae7 !important;
+    }
+    .sidebar-light-dodger-blue-dark{
+        background-color: #323741 !important;
+        border-left: 1px solid #1b1d22!important;
+        color: #fff !important;
+    }
+
+.sidebar-secondary{
+        background-color: #b9d7f1 !important;
+        border-left: 1px solid #97b8d4 !important;
+        border-right: 0 !important;
+    }
+    .sidebar-secondary-dark {
+        background: rgb(33, 36, 41) !important;
+        border-left: 1px solid rgb(20, 22, 26) !important;
+    }
+
+    .sidebar-menu-icon{
+        right: 0px !important;
+    }
+
+
+    .mediabout{
+    color: rgb(21, 43, 71) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+</style>
+
+{% endif %}
+
+<style>
+
+ .sidebar-menu-icon--right {
+  margin-left: 0.5rem;
+}
+</style>
+
+<!-- drawer -->
+<div class="mdk-drawer js-mdk-drawer layout-mini__drawer" id="default-drawer">
+    <div class="mdk-drawer__content js-sidebar-mini" data-responsive-width="992px" data-layout="mini">
+
+        <div class="sidebar sidebar-mini sidebar-light-dodger-blue sidebar-light-dodger-dark sidebar-left d-flex flex-column">
+
+            <!-- Brand -->
+            <a href="/" class="sidebar-brand p-0 navbar-height d-flex justify-content-center">
+
+                <span class="avatar avatar-sm ">
+
+                    <span class="avatar-title rounded bg-primary"><img
+                            src="{% static 'teacher/assets/images/illustration/teacher/128/white.svg' %}"
+                            class="img-fluid" alt="logo"/></span>
+
+                </span>
+
+            </a>
+
+            {% get_current_language as lang %}
+            {% if lang == "ar" %}
+            <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+                <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0 js-sidebar-mini-tabs"
+                    role="tablist">
+                    <li class="sidebar-menu-item active" data-toggle="tooltip" data-title="" data-placement="right"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#supervised_user_circle" data-toggle="tab" role="tab"
+                           aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--right material-icons">supervised_user_circle</i>
+                            <span class="sidebar-menu-text">الإعدادات الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_student" data-toggle="tab" role="tab"
+                           aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--right material-icons">school</i>
+                            <span class="sidebar-menu-text">إدارة حساب المعلم</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_messaging" data-toggle="tab" role="tab"
+                           aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--right material-icons">people_outline</i>
+                            <span class="sidebar-menu-text">تواصل</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_help" data-toggle="tab" role="tab"
+                           aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--right material-icons">help</i>
+                            <span class="sidebar-menu-text">مساعدة</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% else %}
+            <div class="flex d-flex flex-column justify-content-start" data-perfect-scrollbar>
+                <ul class="nav flex-shrink-0 flex-nowrap flex-column sidebar-menu mb-0 js-sidebar-mini-tabs"
+                    role="tablist">
+                    <li class="sidebar-menu-item active" data-toggle="tooltip" data-title="" data-placement="right"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#supervised_user_circle" data-toggle="tab" role="tab"
+                           aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">supervised_user_circle</i>
+                            <span class="sidebar-menu-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_student" data-toggle="tab" role="tab"
+                           aria-controls="sm_student" aria-selected="true">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i>
+                            <span class="sidebar-menu-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_messaging" data-toggle="tab" role="tab"
+                           aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">people_outline</i>
+                            <span class="sidebar-menu-text">Community</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item " data-toggle="tooltip" data-title="" data-placement="right"
+                        data-container="body" data-boundary="window">
+                        <a class="sidebar-menu-button" href="#sm_help" data-toggle="tab" role="tab"
+                           aria-controls="sm_messaging">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i>
+                            <span class="sidebar-menu-text">Help</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+
+            <ul class="nav flex-column sidebar-menu align-items-center mb-12pt js-sidebar-mini-tabs" role="tablist">
+                <a class="sidebar-menu-button" href="../..//" data-toggle="tooltip" data-title="Swip to Booctep"
+                   role="tab" aria-controls="sm_student" aria-selected="true">
+                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">swap_horiz</i>
+                    <span class="sidebar-menu-text">swap_horiz</span>
+                </a>
+            </ul>
+
+        </div>
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="sidebar sidebar-light sidebar-left flex sidebar-secondary pt-16pt" data-perfect-scrollbar>
+            <div class="tab-content">
+
+                
+
+
+                <div class="tab-pane  fade  show " id="supervised_user_circle">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class="">إعدادات الحساب</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item ">
+                            <a class="sidebar-menu-button" href="{% url 'teacher account' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">contacts</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark" style="">الإعدادات الرئيسية</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher security' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">verified_user</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">الأمان</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher payout' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">subtitles</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">طرق الدفع</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher privacy' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">lock_open</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">الخصوصية</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_student">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class="">إدارة حساب المعلم</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher dashboard' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">business_center</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">لوحة التحكم</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher courses' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">live_tv</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">دوراتي</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher course engagement' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">visibility</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">تفاعل</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher transactions' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">euro_symbol
+                                </span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">حوالاتي</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tab-pane " id="sm_messaging">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class=""> تواصل</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher messages' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">mail</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">الرسائل</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher notifications' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">notifications_none</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">التنبيهات</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_help">
+                    <div class="mediabout mediabout-dark">
+                        <b style="font-family: Arial, Helvetica, sans-serif !important;font-size: 22px !important;font-weight: 700 !important;margin-right: 25px;" class=""> مركز المساعدة</b>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher faqs' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">live_help</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">الأسئلة الشائعة</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher guideline' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--right mediabout mediabout-dark">class</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">إرشادات</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        {% else %}
+        <div class="sidebar sidebar-light sidebar-left flex sidebar-secondary pt-16pt" data-perfect-scrollbar>
+            <div class="tab-content">
+
+                
+
+
+                <div class="tab-pane  fade  show " id="supervised_user_circle">
+                    <div class="sidebar-heading mediabout mediabout-dark">Profile</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher account' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">contacts</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Account</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher security' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">verified_user</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Security</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher payout' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">subtitles</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Payout Method</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher privacy' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">lock_open</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+                <div class="tab-pane " id="sm_student">
+                    <div class="sidebar-heading mediabout mediabout-dark">Teacher dashboard</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher dashboard' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">business_center</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher courses' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">live_tv</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">My courses</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher course engagement' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">visibility</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Engagement</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher transactions' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">euro_symbol
+                                </span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Transactions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_messaging">
+                    <div class="sidebar-heading mediabout mediabout-dark">Communicate</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher messages' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">mail</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Messages</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher notifications' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">notifications_none</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Notifications</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane " id="sm_help">
+                    <div class="sidebar-heading mediabout mediabout-dark">Help center</div>
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher faqs' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">live_help</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">FAQs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{% url 'teacher guideline' %}">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left mediabout mediabout-dark">class</span>
+                                <span class="sidebar-menu-text mediabout mediabout-dark">Guidline</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- // END drawer -->
+{% endblock %}

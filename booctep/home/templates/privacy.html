@@ -1,0 +1,763 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+<!-- CSS only -->
+
+<link rel="stylesheet" href="/static/student/assets/css/bootstrap.css">
+
+    <style>
+
+.faq-nav {
+  flex-direction: column;
+  margin: 0 0 32px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+
+.faq-nav-dark{
+  border: 1px solid rgb(15, 15, 15);
+}
+
+.faq-nav .nav-link {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 13px 16px;
+  background-color: rgb(255, 255, 255);
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  color: #616161;
+  transition: background-color 0.2s ease;
+}
+.faq-nav .nav-link-dark {
+  background-color: #222831;
+  border-bottom: 1px solid #151a22;
+  color: #616161;
+}
+.faq-nav .nav-link:hover {
+  background-color: #d6d6d6;
+}
+.faq-nav .nav-link-dark:hover {
+  background-color: #0e0d0d;
+}
+.faq-nav .nav-link.active {
+  background-color: #eeeeee;
+  font-weight: 600;
+  color: rgba(66, 66, 66, 0.87);
+}
+.faq-nav .nav-link-dark.active{
+  background-color: #15171f;
+  font-weight: 700;
+  color: rgba(187, 187, 187, 0.87);
+}
+.faq-nav .nav-link:last-of-type {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 0;
+}
+.faq-nav .nav-link i.mdi {
+  margin-right: 5px;
+  font-size: 18px;
+  position: relative;
+}
+
+.tab-content .card {
+  border-radius: 0;
+}
+.card .card-header {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #1a1919 !important;
+  background: #f6f6f6 !important;
+}
+.card .card-header-dark {
+  padding: 15px 16px;
+  border-radius: 0;
+  color: #b8b8b8 !important;
+  background: #15171f !important;
+}
+.card-headerh {
+  color: #1a1919 !important;
+}
+.card-headerh-dark {
+  color: #b8b8b8 !important;
+}
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+.tab-content .card-header h5 {
+  margin: 0;
+}
+.tab-content .card-header h5 button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  white-space: normal;
+}
+.tab-content .card-header h5 button:hover, .tab-content .card-header h5 button:focus, .tab-content .card-header h5 button:active, .tab-content .card-header h5 button:hover:active {
+  text-decoration: none;
+}
+.tab-content .card-body p {
+  color: #616161;
+}
+.tab-content .card-body p:last-of-type {
+  margin: 0;
+}
+
+.accordion > .card:not(:first-child) {
+  border-top: 0;
+}
+
+.collapse.show .card-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+   
+.hero-faqs-dark{
+  position: relative;
+  height: 100%;
+  padding-top: 70px !important;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, rgba(42, 52, 66, 0.73), rgba(8, 13, 19, 0.52)),
+  url('../img/faqs.jpg') !important;
+
+}
+    </style>
+
+    <style>
+        .accordion__menu {
+            border: 0.5px solid #dbdbdb;
+            background: white !important
+        }
+    </style>
+
+    <div class="products-navigation" style="display: none;">
+    </div>
+
+    <div class="terms">
+        <!-- Brands -->
+        <div id="brands-tab" class="store-tab-pane is-active">
+            <!-- Timeline -->
+            <section class="hero is-small is-bold hero-faqs hero-faqs-dark">
+                <div class="hero-body">
+                    <div class="container">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>سياسة الخصوصية</h1>
+                        <h2 class="booctep-h2">توضح المعلومات التي نجمعها والأسباب التي تدفعنا إلى ذلك، وكيفية استخدامها، وكيفية مراجعتها وتحديثها.
+                        </h2>
+                        {% else %}
+                        <h1 class="booctep-1" data-shadow='Booctep'>{% trans 'Privacy & Policy' %}</h1>
+                        <h2 class="booctep-h2">Explains what information we collect and why, how it is used, and how to review and update it.</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <div class="terms-page" id="faq">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <div class="nav nav-pills faq-nav faq-nav-dark" id="faq-tabs" role="tablist" aria-orientation="vertical">
+                            <a href="#tab1" class="nav-link active active-dark" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
+                                سياسة عامة
+                            </a>
+                            <a href="#tab2" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab2" aria-selected="false">
+                                معلوماتك الشخصية
+                            </a>
+                            <a href="#tab3" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab3" aria-selected="false">
+                                سياسة الإستخدام
+                            </a>
+                            <a href="#tab4" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab4" aria-selected="false">
+                                إخلاء مسؤولية
+                            </a>
+                            <a href="#tab5" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab5" aria-selected="false">
+                                تحديثات السياسة
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="nav nav-pills faq-nav faq-nav-dark" id="faq-tabs" role="tablist" aria-orientation="vertical">
+                            <a href="#tab1" class="nav-link active active-dark" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
+                                {% trans 'General' %}
+                            </a>
+                            <a href="#tab2" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab2" aria-selected="false">
+                                {% trans 'Information' %}
+                            </a>
+                            <a href="#tab3" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab3" aria-selected="false">
+                                {% trans 'Usage' %}
+                            </a>
+                            <a href="#tab4" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab4" aria-selected="false">
+                                {% trans 'Disclaimer' %}
+                            </a>
+                            <a href="#tab5" class="nav-link" data-toggle="pill" role="tab" aria-controls="tab5" aria-selected="false">
+                                {% trans 'Updates' %} 
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="tab-content" id="faq-tab-content">
+                            <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-1">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">مقدمة</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">عندما تستخدم خدمات بوستيب ، فإنك تأتمننا على معلوماتك. نحن ندرك أن هذه مسؤولية كبيرة ونعمل بجد لحمايتك ومنحك التحكم في معلوماتك.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">الغرض من سياسة الخصوصية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">تهدف الخصوصية والسياسة هذه إلى مساعدتك في فهم المعلومات التي نجمعها ولماذا نجمعها ، وكذلك كيفية تحديث وتصدير وحذف معلوماتك.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">تحكم بمعلوماتك</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">ينشئ بوستيب تقنيات وخدمات التعلم عبر الإنترنت التي تمكن المعلمين من التواصل مع الطلاب والعكس.</p>
+                                                <p class="mediabout mediabout-dark">يمكنك استخدام خدماتنا بعدة طرق لإدارة خصوصيتك. على سبيل المثال ، يمكنك الاشتراك في النظام الأساسي إذا كنت ترغب في تعديل أو إدارة أو حذف خصوصيتك الممنوحة.</p>
+                                                <p><b>حذف المعلومات:</b><br>
+                                                    1. سنحتفظ بالمعلومات الخاصة لأولئك الذين توقفوا عن استخدام المنصة لفترة زمنية محدودة (بحد أقصى عامين). <br>
+                                                    2. سنحذف المعلومات فورًا إذا طلب صاحب هذه البيانات حذف حسابه.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-1">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-1-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">Introduction</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                            <div class="card-body  ">
+                                                <p class="mediabout mediabout-dark">When you use Booctep services, you trust us with your information. We understand that this is a huge responsibility and we work hard to protect and give you control over your information.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">Purpose of Privacy & Policy</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">This Privacy & Policy is intended to help you understand what information we collect and why we collect it, as well as how to update, export and delete your information.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="accordion-tab-1-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">control your information</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Booctep creates online learning technologies and services that enable teachers to communicate with students.</p>
+                                                <p class="mediabout mediabout-dark">You can use our services in a variety of ways to manage your privacy. For example, you can subscribe to the platform if you want to modify, manage or delete your granted privacy.</p>
+                                                <p><b>Delete information:</b><br>
+                                                    1. We will retain the private information of those who no longer use the Platform for a limited period of time (maximum two years). <br>
+                                                    2. We will delete the information immediately if the owner of this data requests deletion of his account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">معلومات عامة وملفات الأرتباط ( الكعكات )</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">نريدك أن تميز بين أنواع المعلومات التي نجمعها أثناء استخدامك لخدماتنا. نقوم بجمع المعلومات لتقديم خدمات أفضل لجميع مستخدمينا ، بدءًا من الأساسيات ، مثل اللغة التي تتحدثها ، إلى الأمور الأكثر تعقيدًا مثل موقعك الجغرافي على سبيل المثال لا الحصر.</p>
+
+                                                <p class="mediabout mediabout-dark">
+                                                    1. اسمك. <br>
+                                                   
+2. موقعك الجغرافي. <br>
+                                                    
+3. نظام التشغيل الخاص بك. <br>
+                                                    
+4. اللغة المفضلة. <br>
+                                                    
+5. الوضع المفضل. <br>
+                                                    
+6. متصفحك. <br>
+                                                    
+7. مزود خدمة الإنترنت. <br>
+                                                    
+8. عنوان IP الخاص بك. <br>
+                                                    
+9. صورتك الشخصية. <br>
+                                                    
+10. بريدك الإلكتروني. <br>
+                                                    
+11. ما هي الأقسام التي تقوم بتدريسها؟ <br>
+                                                    
+12. بيانات تعلم الطلاب ، بما في ذلك على سبيل المثال لا الحصر ، استهلاكهم للمحتوى الرقمي والنتائج المحققة في التمارين والاختبارات. <br>
+                                                    
+13. رسائل الدردشة بين مستخدمي المنصة.
+                                                </p>
+
+                                                <p class="mediabout mediabout-dark">ملاحظة: قد لا تعمل بعض ميزات بوستيب بشكل صحيح بدون ملفات تعريف الارتباط.</p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">معلومات إضافية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">قد نطلب منك تزويدنا ببعض المعلومات الإضافية التي ستظهر في خدماتنا أو التي نريد استخدامها في تحليل خدماتنا لتقديم مستوى أفضل من الخدمة.</p>
+                                                <p class="mediabout mediabout-dark">المعلومات التي قد نسأل عنها: <br>
+                                                    - تاريخ الميلاد. <br>
+                                                    - الدورات المفضلة.</p>
+                                                <p class="mediabout mediabout-dark">عندما تتصل بالدعم الفني أو تتواصل معنا بطريقة أخرى ، سنجمع معلومات منك قد نحتاجها لحل المشكلة التي تواجهها.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">طرف ثالث</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">المعلومات التي نتلقاها من مصادر أخرى:
+                                                     
+                                                    قد نتلقى معلومات عنك إذا كنت تستخدم أيًا من المواقع الأخرى التي نديرها أو تستفيد من الخدمات الأخرى التي نقدمها.
+                                                                                                         
+                                                    نعمل أيضًا عن كثب مع أطراف ثالثة (بما في ذلك ، على سبيل المثال ، شركاء الأعمال والمقاولين من الباطن والفنيين والدفع والتسليم وشبكات الإعلانات وموفري التحليلات وموفري معلومات البحث والوكالات المرجعية الائتمانية)
+                                                                                                         
+                                                    يمكننا من خلالها الحصول على معلومات عنك.</p>
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    
+                                                    <b class="mediabout mediabout-dark">عنوان الـ IP</b><br>
+                                                    تستخدم منصة بوستيب معلومات من ملفات تعريف الارتباط للتعرف على المستخدمين وتتبعهم وطريقة استخدامهم للمنصة ، بما في ذلك نوع المتصفح ونظام التشغيل وموفر خدمة الإنترنت وتفضيلاتهم للوصول إلى الموقع.
+                                                    
+                                                    هذه المعلومات غير الشخصية التي نتتبعها هي معلومات لا يمكن للزوار أو أعضاء الموقع الآخرين تتبعها. تساعدنا هذه المعلومات في تحسين تجربة المستخدم والزائر على الموقع. إذا كنت لا تريد منا ملفات تعريف الارتباط على جهاز الكمبيوتر الخاص بك ، فيجب عليك تحديد هذا الخيار من متصفحك حتى لا يقبل ملفات تعريف الارتباط من بوستيب.
+                                                    </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-2">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">General information & cookies</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We want you to distinguish between the types of information we collect as you use our services. We collect information to provide better services to all of our users, starting with the basics, such as the language you speak, to more complex matters such as but not limited to your geographical location.</p>
+
+                                                <p class="mediabout mediabout-dark">
+                                                    1. Your name. <br>
+                                                    2. Your geographical location. <br>
+                                                    3. Your Operating System. <br>
+                                                    4. Preferred language. <br>
+                                                    5. Preferred mode. <br>
+                                                    6. Your browser. <br>
+                                                    7. Internet service provider. <br>
+                                                    8. Your IP address. <br>
+                                                    9. your personal picture. <br>
+                                                    10. your E-mail. <br>
+                                                    11. What departments do you teach? <br>
+                                                    12. Students learning data, including but not limited to, their consumption of digital content and results achieved in exercises and tests. <br>
+                                                    13. Chat messages between platform users.
+                                                </p>
+
+                                                <p class="mediabout mediabout-dark">Note: Some Booctep features may not function properly without cookies.</p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">Additional information</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We may ask you to provide us with some additional information that will appear on our Services or that we want to use in analyzing our Services to provide a better level of service.</p>
+                                                <p>Things you may be asked: <br>
+                                                    - Date of birth. <br>
+                                                    - Favorite courses.</p>
+                                                <p>When you contact Technical Support or otherwise communicate with us, we will collect information from you that we may need to resolve the issue you are having.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-2-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">Third party</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
+                                            <div class="card-body">
+                                                <p>Information we receive from other sources:
+                                                    We may receive information about you if you use any of the other websites that we operate or take advantage of other services we offer. 
+                                                    We also work closely with third parties (including, for example, business partners, technical, payment and delivery subcontractors, advertising networks, analytics providers, search information providers, and credit reference agencies) 
+                                                    from which we can obtain Information about you.
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    
+                                                    <b>The address: IP address</b><br>
+                                                    Booctep platform uses information from cookies to learn and track users and the way they use the platform, including the type of browser, their operating system, the Internet service provider and their preferences for accessing the site. 
+                                                    This non-personally identifiable information that we track is information that cannot be tracked by other visitors or members of the site. This information helps us improve both the user and visitor experience on the site. If you do not want cookies on your computer from us, you should select this option from your browser so that it does not accept cookies from Booctep.</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-3">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-1" aria-expanded="false" aria-controls="accordion-tab-3-content-1">الغرض من حفظ معلوماتك</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-3-content-1" aria-labelledby="accordion-tab-3-heading-1" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">لماذا يقوم بوستيب بجمع المعلومات منك؟
+                                                    
+                                                    نستخدم البيانات لإعداد خدمات أفضل واستخدام المعلومات التي نجمعها من جميع خدماتنا للأغراض التالية: <br></p>
+                                                <p class="mediabout mediabout-dark">
+                                                    
+
+                                                   <b>- تقديم خدماتنا:</b> <br>
+                                                   نستخدم معلوماتك لتقديم خدماتنا ودوراتك المفضلة. الدورات التي تهمك والدورات التي تعزز هواياتك.
+                                                   <br><br>
+                                                   <b>- تطوير خدماتنا:</b><br>
+                                                   نستخدم المعلومات التي نجمعها في الخدمات الحالية لمساعدتنا في تطوير خدماتنا وتقديم خدمات جديدة ، بما في ذلك على سبيل المثال لا الحصر ، معالجة المصطلحات التي تبحث عنها للحصول على نتائج ونتائج بحث مشابهة لبحثك ولمساعدتك على مشاركة المحتوى ومساعدتك تقييم خدماتنا ومنتجاتنا أو إذا كان لديك تعليق على محتوى معين.
+                                                   
+                                                   <br><br>
+                                                   <b>- قياس الأداء:</b><br>
+                                                   نستخدم البيانات للتحليلات والقياس لفهم كيفية استخدام خدماتنا ، على سبيل المثال ، نقوم بتحليل البيانات حول زياراتك لمواقعنا ، مثل معلمك المفضل ، وبيانات حول الدورات التي تتفاعل معها لمساعدتك في العثور على دورات ومعلمين مشابهين لما تحب، إلخ. .
+                                                   
+                                                   <br><br>
+                                                   <b>- لأمور مهمة أخرى:</b><br>
+                                                  
+                                                   * لمعالجة إجراءات الاسترداد ، في الحالات التي ينطبق عليها ذلك. <br>
+                                                   
+* لإدارة موقعنا وإجراء العمليات الداخلية ، بما في ذلك استكشاف الأخطاء وإصلاحها وتحليل البيانات والاختبار والبحث والأغراض الإحصائية والمسح. <br>
+                                                   
+* لتوثيق هويتك عند التسجيل لبعض الخدمات المقدمة على موقعنا. <br>
+                                                  
+ * للأغراض الموضحة في مكان آخر في سياسة الخصوصية (بما في ذلك ، على سبيل المثال ، تبادل المعلومات مع أطراف ثالثة). <br>
+                                                  
+ * مراقبة واكتشاف انتهاكات (شروط وأحكام بوستيب) بالإضافة إلى إساءة الاستخدام المحتملة الأخرى لموقعنا على الويب. <br>
+                                                   
+* لتزويدك بتحديثات حول الخدمات أو المنتجات أو الأحداث الأخرى التي نقدمها نحن أو شركاؤنا أو موردو الجهات الخارجية التي قد تهمك ، والتي قد يتم إرسالها إليك عبر رسائل البريد الإلكتروني أو حسابات وسائل التواصل الاجتماعي. <br>
+                                                   <br>
+                                                   
+                                                   <b>- التواصل معك:</b> <br>
+                                                   نستخدم المعلومات التي نجمعها مثل عنوان بريدك الإلكتروني للتفاعل معك مباشرةً ، على سبيل المثال لا الحصر ، قد نرسل إليك إشعارًا أو نتصل بك إذا اكتشفنا نشاطًا مشبوهًا أو حتى إذا اتصلت بالدعم الفني ، مثل المحاولة لتسجيل الدخول أكثر من مرة باستخدام كلمة مرور خاطئة ، أو قد نخطرك بالتغييرات والتحسينات المستقبلية التي نجريها على خدماتنا.
+                                                   
+                                                   
+إذا اتصلت بالدعم الفني ، فسنحتفظ بسجل لطلبك ونساعدك في حل أي مشاكل قد تواجهها مستقبلا.
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-2" aria-expanded="false" aria-controls="accordion-tab-3-content-2">مشاركة معلوماتك</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-3-content-2" aria-labelledby="accordion-tab-3-heading-2" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">تسمح لك العديد من خدماتنا بمشاركة المعلومات مع أشخاص آخرين ، ويمكنك التحكم في كيفية مشاركتها أو منعها ، على سبيل المثال ، على سبيل المثال لا الحصر ، يمكنك مشاركة التعليقات علنًا ، أو حتى يمكنك تقييم الدورات التدريبية ، تجدر الإشارة إلى ذلك عندما تشارك المعلومات بشكل عام ، فهذا يعني أنه يمكنك الوصول إلى ملف التعريف الخاص بك.</p>
+                                                <p class="mediabout mediabout-dark">لا نشارك معلوماتك الشخصية مع الشركات أو المؤسسات أو الأفراد خارج منصة بوستيب إلا في الحالات التالية: <br></p>
+                                                <p class="mediabout mediabout-dark"><b>1. بإذن منك: <br> </b>
+                                                    سنشارك معلوماتك الشخصية مع جهات خارجية غير تابعة لمنصة بوستيب ، بعد الحصول على موافقتك فقط. على سبيل المثال ، إذا كنت ستشارك أو تطلب من زملائك أو أصدقائك الانضمام إلى دورة تدريبية خارج الموقع ، فقد يظهر لهم اسم المستخدم أو البريد الإلكتروني الخاص بهم.</p>
+                                                <p class="mediabout mediabout-dark"><b>2. للمعالجة الخارجية: <br></b>
+                                                    نحن نقدم المعلومات الشخصية للشركات التابعة لنا أو غيرها من المنظمات أو الأشخاص الموثوق بهم حتى يتمكنوا من معالجتها لنا ، بناءً على تعليماتنا وبما يتوافق مع سياسة الخصوصية وحقوق الملكية الفكرية وأي إجراءات أخرى مناسبة للسرية والأمان ، بما في ذلك على سبيل المثال لا الحصر ، استخدام مزودي الخدمة لمساعدتنا في دعم العملاء.</p>
+                                                <p class="mediabout mediabout-dark"><b>3. للإحالات القانونية: <br></b>
+                                                    سنشارك المعلومات خارج منصة بوستيب إذا كنا نعتقد بحسن نية أنه من الضروري الوصول إلى المعلومات أو استخدامها أو الاحتفاظ بها لأي من الأسباب التالية:
+                                                    
+الامتثال لأي قانون أو لائحة أو إجراء معمول به. طلب حكومي قانوني أو واجب النفاذ ، ونشارك المعلومات حول عدد ونوع الطلبات التي نتلقاها من الحكومات في تقرير الشفافية الخاص بنا.</p>    
+                                                <p class="mediabout mediabout-dark">4. فرض شروط الخدمة السارية ، بما في ذلك الانتهاكات المحتملة.</p>
+                                                <p class="mediabout mediabout-dark">5. اكتشاف أو منع الاحتيال أو المشكلات الفنية أو المشكلات الأمنية أو إجراءات أخرى للتعامل معها.</p>
+                                                <p class="mediabout mediabout-dark">6. الحماية من الضرر الذي يلحق بحقوق الملكية أو الحصرية أو سلامة منصة بوستيب أو مستخدميها أو زوارها كما يقتضي القانون أو يسمح به.</p> 
+                                                <p class="mediabout mediabout-dark">7. يجوز لنا مشاركة معلومات غير شخصية مع الجميع ومع شركائنا ومقدمي الخدمات ، مثل الناشرين أو المعلنين أو المطورين أو أصحاب الحقوق. متصفحك أو جهازك لأغراض الإعلان والقياس باستخدام ملفات تعريف الارتباط أو التقنيات المماثلة.</p>
+                                                <p class="mediabout mediabout-dark">8. في حالة دخول منصة بوستيب في عملية دمج أو استحواذ أو بيع أصول ، سنواصل ضمان سرية معلوماتك الشخصية وتقديم إشعار للمستخدمين المعنيين قبل نقل المعلومات الشخصية أو إخضاعها. سياسة خصوصية مختلفة.</p>
+                                                <p class="mediabout mediabout-dark">9. تم تجهيز جميع خدمات بوستيب بميزات أمان قوية تحمي معلوماتك باستمرار والرؤى التي نكتسبها من صيانة خدماتنا تساعدنا في اكتشاف التهديدات الأمنية ومنعها تلقائيًا من الوصول إليك.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-3" aria-expanded="false" aria-controls="accordion-tab-3-content-3">حماية معلوماتك</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-3-content-3" aria-labelledby="accordion-tab-3-heading-3" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">نعمل بجد لحمايتك وحماية بوستيب من الوصول غير المصرح به أو التعديل أو الكشف أو إتلاف المعلومات التي بحوزتنا ، بما في ذلك:</p>
+                                                <p class="mediabout mediabout-dark">- نستخدم التشفير للحفاظ على خصوصية بياناتك أثناء نقلها. <br>
+                                                   
+                                                    - نراجع ممارسات جمع المعلومات وتخزينها ومعالجتها ، بما في ذلك إجراءات الأمان المادية لمنع الوصول غير المصرح به إلى أنظمتنا. <br>
+                                                                                                       
+                                                    - يقتصر الوصول إلى المعلومات الشخصية على موظفي بوستيب والمسؤولين والوكلاء الذين يحتاجون إلى معرفة تلك المعلومات من أجل معالجتها وأي شخص لديه حق الوصول إلى هذه المعلومات يخضع لالتزامات تعاقدية صارمة بشأن السرية حيث يؤدي عدم الوفاء بالتزاماتهم إلى كشفهم للتأديب أو الإنهاء. <br>
+                                                                                                       
+                                                    - يمكنك تصدير نسخة من المعلومات أو حذفها من منصة بوستيب عن طريق طلب الدعم الفني.
+                                                    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-3">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-1" aria-expanded="false" aria-controls="accordion-tab-3-content-1">Purpose of your information</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-3-content-1" aria-labelledby="accordion-tab-3-heading-1" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Why does Booctep collect information from you?
+                                                    We use data to prepare better services and use the information we collect, from all of our services for the following purposes: <br></p>
+                                                <p class="mediabout mediabout-dark">
+                                                    
+
+                                                   <b>- Providing our services:</b> <br>
+                                                   We use your information to provide our services, your preferred languages ​​and courses. Courses that interest you and courses that enhance your hobby.
+                                                   <br><br>
+                                                   <b>- Developing and improving our services:</b><br>
+                                                   We use the information we collect in existing services to help us develop our services and provide new services, including but not limited to, processing the terms you search for results and search results similar to your search and to help you share content and to help you evaluate our services and products or if you have a comment on content a certain.
+                                                   
+                                                   <br><br>
+                                                   <b>- Performance Measurement:</b><br>
+                                                   We use data for analytics and measurement to understand how our services are used, for example, we analyze data about your visits to our sites, such as your favorite teacher, data about courses you interact with to help you find similar courses and teachers, etc.
+                                                   
+                                                   <br><br>
+                                                   <b>- For other important matters:</b><br>
+                                                   * To process the refund procedures, in the cases to which this applies. <br>
+                                                   * To administer our site and perform internal operations, including troubleshooting, data analysis, testing, research, statistical and survey purposes. <br>
+                                                   * To authenticate your identity when registering for some of the services provided on our site. <br>
+                                                   * For the purposes described elsewhere in the Privacy Policy (including, for example, exchanging information with third parties). <br>
+                                                   * Monitor and detect violations of (Booctep Terms and Conditions) as well as other potential misuses of our website. <br>
+                                                   * To provide you with updates about services, products or other events offered by us, our partners or third party suppliers that may be of interest to you, which may be sent to you by emails or social media accounts. <br>
+                                                   <br>
+                                                   
+                                                   <b>- Contacting you:</b> <br>
+                                                   We use the information we collect such as your email address to interact with you directly, for example, but not limited to, we may send you a notification or contact you if we detect suspicious activity or even if you contact technical support, such as trying to login more than once with the wrong password, or We may notify you about future changes and improvements we make to our Services.
+                                                   
+                                                   If you contact technical support, we will keep a record of your request and help you solve any problems you may encounter.
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-2">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-2" aria-expanded="false" aria-controls="accordion-tab-3-content-2">Sharing your information</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-3-content-2" aria-labelledby="accordion-tab-3-heading-2" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">Many of our services allow you to share information with other people, and you can control how it is shared or prevented, for example, but not limited to, you can share comments publicly, or even you can rate courses, it should be noted that when you share information publicly this means that You can access your profile.</p>
+                                                <p class="mediabout mediabout-dark">We do not share your personal information with companies, organizations or individuals outside of Booctep except in the following cases: <br></p>
+                                                <p class="mediabout mediabout-dark"><b>1. With your consent: <br> </b>
+                                                    We will share your personal information with third parties not affiliated with Booctep platform, after obtaining your consent only. For example, if you are to participate or request that your colleagues or friends join a course outside the site, their username or email may appear to them.</p>
+                                                <p class="mediabout mediabout-dark"><b>2. For external treatment: <br></b>
+                                                    We provide personal information to our affiliates or other trusted organizations or persons for them to process for us, based on our instructions and in compliance with our Privacy Policy, Intellectual Property Rights and any other appropriate confidentiality and security measures, including but not limited to, use service providers to help us with customer support .</p>
+                                                <p class="mediabout mediabout-dark"><b>3. For legal reasons: <br></b>
+                                                    We will share information outside of Booctep platform if we believe in good faith that it is necessary to access, use or retain the information for any of the following reasons:
+                                                    Comply with any applicable law, regulation, or procedure. A legal or enforceable government request, and we share information about the number and type of requests we receive from governments in our transparency report.</p>    
+                                                <p class="mediabout mediabout-dark">4. Enforce applicable terms of service, including possible violations.</p>
+                                                <p class="mediabout mediabout-dark">5. Discovering or preventing fraud, technical problems, or security problems, or other measures to deal with them.</p>
+                                                <p class="mediabout mediabout-dark">6. Protection against harm to the rights of ownership, exclusivity, or integrity of Booctep platform, its users, or visitors as required or permitted by law.</p> 
+                                                <p class="mediabout mediabout-dark">7. We may share non-personally identifiable information with everyone and with our partners and service providers, such as publishers, advertisers, developers, or rights holders. your browser or device for the purposes of advertising and measurement using cookies or similar technologies.</p>
+                                                <p class="mediabout mediabout-dark">8. In the event the Booctep Platform enters into a merger, acquisition or sale of assets, we will continue to ensure the confidentiality of your personal information and provide notice to relevant users before personal information is transferred or subjected. different privacy policy.</p>
+                                                <p class="mediabout mediabout-dark">9. All Booctep services are equipped with powerful security features that constantly protect your information and the insights we gain from maintaining our services help us detect security threats and automatically prevent them from reaching you.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-3-heading-3">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-3" aria-expanded="false" aria-controls="accordion-tab-3-content-3">Protect your information</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse " id="accordion-tab-3-content-3" aria-labelledby="accordion-tab-3-heading-3" data-parent="#accordion-tab-3">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We work hard to protect you and Booctep from unauthorized access, modification, disclosure or destruction of information in our possession, including:</p>
+                                                <p class="mediabout mediabout-dark">- We use encryption to keep your data private while it is being transmitted. <br>
+                                                   - We review our information collection, storage and processing practices, including physical security measures to prevent unauthorized access to our systems. <br>
+                                                   - Access to personal information is restricted to Booctep employees, officers and agents who need to know that information in order to process it and any person who has access to such information is subject to strict contractual obligations of confidentiality where failure to fulfill their obligations exposes them to discipline or termination. <br>
+                                                   - You can export a copy of the information or delete it from Booctep platform by requesting technical support. 
+                                                    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane" id="tab4" role="tabpanel" aria-labelledby="tab4">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-4">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-4-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-1" aria-expanded="false" aria-controls="accordion-tab-4-content-1">تنويه</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-4-content-1" aria-labelledby="accordion-tab-4-heading-1" data-parent="#accordion-tab-4">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">نقوم بإجراء تغييرات من وقت لآخر على سياسة الخصوصية هذه ، لكننا لن ننتقص من الحقوق التي تضمنها لك هذه السياسة دون الحصول على موافقتك الصريحة ونحدد دائمًا تاريخ نشر التغييرات الأخيرة ، لذلك نطلب منك التفضل دائمًا العودة إلى هذه الصفحة لمراقبة التحديثات إن وجدت ، ومع ذلك سنرسل إليك إشعارات عند تعديل سياسة الخصوصية.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-4">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-4-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-1" aria-expanded="false" aria-controls="accordion-tab-4-content-1">Notes</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-4-content-1" aria-labelledby="accordion-tab-4-heading-1" data-parent="#accordion-tab-4">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark">We make changes from time to time to this privacy policy, but we will not detract from the rights guaranteed to you by this policy without obtaining your explicit consent and we always indicate the date of publication of recent changes, so we kindly ask you to always return to this page to monitor updates if any, however We will send you notices when the Privacy Policy is modified.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane" id="tab5" role="tabpanel" aria-labelledby="tab5">
+                                {% get_current_language as lang %}
+                                {% if lang == "ar" %}
+                                <div class="accordion" id="accordion-tab-5">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-5-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-1" aria-expanded="false" aria-controls="accordion-tab-5-content-1">سريان صلاحية سياسة الخصوصية</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-5-content-1" aria-labelledby="accordion-tab-5-heading-1" data-parent="#accordion-tab-5">
+                                            <div class="card-body">
+                                                <p class="mediabout mediabout-dark"><b>متى تنطبق هذه السياسة: </b><br>
+                                                    تنطبق سياسة الخصوصية هذه على جميع الخدمات التي تقدمها منصة بوستيب والشركات التابعة لها والخدمات المقدمة على مواقع الويب الخارجية لأطراف ثالثة ، بما في ذلك على سبيل المثال لا الحصر الخدمات الإعلانية ، ولا تنطبق سياسة الخصوصية على الخدمات التي لها سياسة خصوصية منفصلة لا تضمين سياسة الخصوصية هذه. <br>
+                                                    <br>
+                                                    <b class="mediabout mediabout-dark">أمثلة على ما لا تنطبق عليه سياسة الخصوصية هذه:</b> <br>
+                                                    * ممارسات المعلومات الخاصة بالشركات والمؤسسات المتعلقة بالشركات والمؤسسات الأخرى التي تعلن عن خدماتنا.
+                                                  
+<br> * الخدمات التي تقدمها شركات أو أفراد آخرون ، بما في ذلك. بما في ذلك المنتجات أو مواقع الويب التي قد تكون مرتبطة بخدماتنا ، بما في ذلك على سبيل المثال لا الحصر ، عندما يقدم المعلم هدية للطلاب موقع ويب.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="accordion" id="accordion-tab-5">
+                                    <div class="card">
+                                        <div class="card-header card-header-dark" id="accordion-tab-5-heading-1">
+                                            <h5>
+                                                <button class="btn btn-link card-headerh card-headerh-dark" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-1" aria-expanded="false" aria-controls="accordion-tab-5-content-1">Validation of this Privacy & ploicy agreemens</button>
+                                            </h5>
+                                        </div>
+                                        <div class="collapse show" id="accordion-tab-5-content-1" aria-labelledby="accordion-tab-5-heading-1" data-parent="#accordion-tab-5">
+                                            <div class="card-body">
+                                                <p><b>When does this policy apply: </b><br>
+                                                    This Privacy Policy applies to all services offered by Booctep Platform and its affiliates and services offered on third-party external websites, including but not limited to advertising services, and the Privacy Policy does not apply to services that have a separate privacy policy that does not include this Privacy Policy. <br>
+                                                    <br>
+                                                    <b>Examples of what this Privacy Policy does not apply to:</b> <br>
+                                                    * The information practices of companies and organizations relating to companies and other organizations that advertise our services.
+                                                  <br>  * Services provided by other companies or individuals, including. Including products or websites that may be linked from our services, including but not limited to, when a teacher gives a gift to students a website.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+        </script>
+
+{% endblock %}

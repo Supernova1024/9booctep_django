@@ -1,0 +1,127 @@
+// Collapse Css
+
+.atbd-collapse{
+    .atbd-collapse-item{
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        @extend .border-light;
+        &:not(:last-child){
+            border-bottom: 0 none;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            .atbd-collapse-item__header{
+                border-radius: 5px 0 0 5px;
+            }
+        }
+        &:not(:first-child){
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            .atbd-collapse-item__header{
+                border-radius: 0 5px 5px 0;
+            }
+        }
+        @include e("header"){
+            border-bottom: 1px solid $border-light;
+            margin-bottom: -1px;
+            @extend .bg-normal;
+            &.active{
+                i,
+                span{
+                    &:before{
+                        content: '\f107';
+                    }
+                }
+            }
+            .item-link{
+                display: flex;
+                align-items: center;
+                padding: 15px 20px;
+                i,
+                span,
+                svg,
+                img{
+                    font-size: 12px;
+                    margin-right: 18px;
+                    @extend .color-light;
+                }
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6{
+                font-size: 14px;
+                font-weight: 400;
+                @extend .color-gray;
+            }
+        }
+        @include e("body"){
+            .collapse-body-text{
+                padding: 15px 20px;
+                p{
+                    font-size: 14px;
+                    margin-bottom: 0;
+                    @extend .color-light;
+                }
+            }
+        }
+    }
+}
+
+
+// Collapse Nested
+
+.atbd-collapse{
+    .atbd-collapse-item{
+        .callapse-nested-block{
+            padding: 20px;
+            .atbd-collapse-item{
+                border-width: 1px;
+                border-style: solid;
+                border-radius: 5px;
+                @extend .border-light;
+            }
+        }
+    }
+}
+
+
+// Collapse Borderless
+
+.atbd-collapse{
+    &.atbd-collapse-borderless{
+        .atbd-collapse-item{
+            border-width: 0px;
+            border-radius: 0px;
+            border-bottom: 1px solid $border-light;
+        }
+    }
+}
+
+
+// Collapse Custom Panel
+
+.atbd-collapse{
+    &.atbd-collapse-custom{
+        .atbd-collapse-item{
+            border-width: 0px;
+            border-bottom: 0 none;
+            border-radius: 0px;
+            @extend .bg-normal;
+            &:not(:last-child){
+                margin-bottom: 20px;
+            }
+            @include e("header"){
+                border-bottom: 0;
+                border-radius: 3px !important;
+            }
+            @include e("body"){
+                .collapse-body-text{
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+}

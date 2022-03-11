@@ -1,0 +1,10 @@
+{% macro component(image, title, title_class, size, class, circle=true, element='div') %}
+<{{ element }} class="avatar{% if size %} avatar-{{ size }}{% endif %} {{ class }}">
+  {% if image %}
+    <img src="{{ image }}" alt="Avatar" class="avatar-img rounded{% if circle %}-circle{% endif %}">
+  {% elseif title %}
+    <span class="avatar-title rounded{% if circle %}-circle{% endif %} {{ title_class }}">{{ title | safe }}</span>
+  {% endif %}
+</{{ element }}>
+{% endmacro %}
+{{ component(title='AB') }}

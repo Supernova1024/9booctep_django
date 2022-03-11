@@ -1,0 +1,335 @@
+{% extends "video/base.html" %}
+{% block content %}
+    {% load static %}
+    <div data-push data-responsive-width="768px" data-has-scrollable-region data-fullbleed
+         class="mdk-drawer-layout js-mdk-drawer-layout">
+        <div class="mdk-drawer-layout__content" data-perfect-scrollbar>
+            <div class="app-messages__container d-flex flex-column h-100 pb-4">
+                <div class="navbar navbar-light bg-white navbar-expand-sm navbar-shadow z-1" id="messages-navbar">
+                    <div class="container-fluid flex-wrap px-sm-0">
+                        <div class="nav py-2">
+                            <div class="nav-item d-flex align-items-center mr-3">
+                                <div class="d-flex flex-column" style=" font-size: 21px">
+                                    <nav class="nav navbar-nav">
+                                        <div class="nav-item navbar-list__item">
+                                            <a href="/courses" class="nav-link h-auto"><i
+                                                    class="material-icons icon--left">keyboard_backspace</i> Back to
+                                                Dashboard</a>
+
+                                        </div>
+                                        <div class="nav-item navbar-list__item">
+                                            <div class="d-flex align-items-center flex-nowrap">
+                                                <div class="mr-16pt">
+                                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>
+                                                </div>
+                                                <div class="flex">
+                                                    <a href="mini-student-take-course.html"
+                                                       class="card-title text-body mb-0">{{ course_name }}</a>
+                                                    <p class="lh-1 d-flex align-items-center mb-0">
+                                                        <span class="text-50 small"
+                                                              id="cur_video_name">Intro to HTML5</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <a class="troph-2" href="#" style="margin-left: 45px !important;"
+                                       data-swal-title="Leave your rating here!" data-swal-text="*****"
+                                       data-swal-type="warning" data-swal-show-cancel-button="true"
+                                       data-swal-confirm-button-text="Add rating"
+                                       data-swal-confirm-cb="#swal-confirm-delete" data-swal-close-on-confirm="false"
+                                       onclick="openRatingModal()">Leave your ratings <i class="fa fa-star troph-i"></i></a>
+                                    <div id="swal-confirm-delete" class="d-none" data-swal-type="success"
+                                         data-swal-title="Thanks You!"
+                                         data-swal-text="You can change your ratings anytime"></div>
+                                    <div id="swal-cancel-delete" class="d-none" data-swal-type="error"
+                                         data-swal-title="Cancelled"
+                                         data-swal-text="Your imaginary file is safe :)"></div>
+                                    <p class="troph" id="cert" style="cursor:pointer!important;">Get your certificate <i
+                                            class="fa fa-trophy troph-i"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2 flex d-flex align-items-center">
+                            <button data-target="#messages-drawer" class="navbar-toggler d-block d-md-none ml-3 p-0"
+                                    data-toggle="sidebar" type="button">
+                                <i class="material-icons">people_outline</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-video" style="height: 85% !important">
+                    <video autoplay poster="{% static 'assets/img/setting.jpg' %}" id="player" playsinline controls>
+                        <source type="video/webm" src="../../../../static{{ first_video.url }}"/>
+                        <!-- Captions are optional -->
+                        <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en"
+                               default/>
+                    </video>
+                </div>
+                <div class=" page__container page__container page__container-2" style="width: 100%;">
+                    <form action="#" id="message-reply" class="form-down-2">
+                        <div class="progress" style="height: 10px;margin-top: 25px; width: 50%;border-radius: 10px;">
+                            <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" id="progress"
+                                 style="width: 75%;height: 10px;" aria-valuenow="10" aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                        <span style="font-weight: 500;margin-left: 30px;margin-top: 20px;"
+                              id="showProgress">2 / 30</span> <i class="fa fa-trophy"
+                                                                 style="margin-right: 10px;margin-left: 5px;font-size: large;margin-top: 20px;"></i>
+
+                        <button type="button" id="videoPrevBtn" class="btn flex"
+                                style="background: rgb(37, 108, 156);color: #fff; width: 40%;margin:0 auto;margin-top: 30px;"
+                                onclick="previousinlist()"
+                        >Previous
+                        </button>
+                        <button type="button" id="videoNextBtn" class="btn flex"
+                                style="background:  rgb(37, 108, 156);color: #fff; width: 40%;margin:0 auto;margin-top: 30px;"
+                                onclick="nextinlist()"
+                        >Next
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="mdk-drawer js-mdk-drawer" data-align="end" id="messages-drawer">
+            <div class="mdk-drawer__content top-0">
+                <div class="sidebar sidebar-right sidebar-light bg-white o-hidden">
+                    <div class="d-flex flex-column h-100">
+                        <div style="margin-top: 30px;" class="flex" data-perfect-scrollbar>
+                            <div class="sidebar-headig"
+                                 style="width: 100%;position: fixed;top: 0;right: 0;height: 50px !important; z-index: 99999;;background-color: rgb(255, 255, 255);border: 1px solid rgb(223, 223, 223);">
+                                <b style="top:12px;position:absolute;left:20px">Course curriculum</b></div>
+                            <hr>
+                            <ul class="list-group mb-3" style="border-bottom: 1px solid #f8f8f8;">
+                                <div class="accordion js-accordion accordion--boxed list-group-flush" id="parent">
+                                    {% for ele in section_list %}
+                                        <div class="accordion__item">
+                                            <a href="#" class="accordion__toggle collapsed" data-toggle="collapse"
+                                               data-target="#course-toc-{{ ele.id }}" data-parent="#parent">
+                                                <span class="flex">{{ ele.name }}</span>
+                                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                            </a>
+                                            <div class="accordion__menu collapse" id="course-toc-{{ ele.id }}">
+                                                {% if ele.videoList %}
+                                                    {% for i in ele.videoList %}
+                                                        <div class="accordion__menu-link" style="cursor: pointer;">
+                                                            {% if section_continue >= i.id %}
+                                                                <i class="material-icons icon-16pt tick{{ i.id }}"
+                                                                   id="icon_first" style="color: blue;">check_circle</i>
+                                                                &nbsp
+                                                            {% else %}
+                                                                <i class="material-icons icon-16pt tick{{ i.id }}"
+                                                                   id="icon_first">check_circle</i> &nbsp
+                                                            {% endif %}
+                                                            <div data-id="{{ i.id }}" data-srno="{{ i.sr_no }}"
+                                                                 data-url="{{ i.url }}"
+                                                                 class="flex videourl v{{ forloop.parentloop.counter }}"
+                                                                 style="color: rgb(1, 100, 192);"
+                                                                 onclick="playmyvideo(this)"
+                                                                 id="name_first">{{ i.video_name }}</div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true" style="padding-top: 12%;">
+        <input type="hidden" id="commentId" value="">
+        <input type="hidden" id="commentType" value="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background: white; padding: 30px;border: 1px solid #ccc;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModal">Leave your rating and comment here!</h5>
+                    <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                            type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" style="margin-bottom: 5px;">Give a rating. Max is Very Good!</h5>
+                    <div class="input-group leaverating"
+                         style="border: 1px solid black; height: 70px; margin-bottom: 5px;">
+                        <div class="rating rating2" id="ratinginteger" data-value="0">
+                            <a href="#5" title="Very good" class="ratingnumber">★</a>
+                            <a href="#4" title="Good" class="ratingnumber">★</a>
+                            <a href="#3" title="Not bad" class="ratingnumber">★</a>
+                            <a href="#2" title="Bad" class="ratingnumber">★</a>
+                            <a href="#1" title="Very bad" class="ratingnumber">★</a>
+                        </div>
+                    </div>
+                    <h5 class="modal-title" style="margin-bottom: 5px;">Leave your Comment here!</h5>
+                    <div class="input-group" style="margin-bottom: 5px;">
+                      <textarea rows="4" cols="50" name="comment" form="usrform" id="comment" class="form-control"
+                                placeholder="Please Add Your Comment...">
+                    </textarea>
+                    </div>
+                    <button style="color:#fff;background: rgb(37,108,136);" type="button" onclick="saveRating()"
+                            class="btn">Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        /*$(function () {
+            localStorage.setItem('video', 1);
+        });*/
+
+        $(document).ready(function () {
+            var startfromthis_getter = ({{ section_continue }});
+            var startfromthis = startfromthis_getter + 1;
+            if (startfromthis_getter == 0 || startfromthis_getter == 999) {
+                playmyvideo($(".videourl[data-srno=1]"));
+            } else {
+                playmyvideo($(".videourl[data-id=" + startfromthis + "]"));
+            }
+            $(".ratingnumber").click(function () {
+                var ratingnumber = $(this).attr("href");
+                ratingnumber = parseInt(ratingnumber.replace("#", ""));
+                $("#ratinginteger").removeAttr("data-value");
+                $("#ratinginteger").attr("data-value", ratingnumber);
+            });
+            var currentno = $(".videourl.current").attr("data-srno");
+            var totallist = $(".videourl").length;
+            $('#showProgress').html(currentno + ' / ' + totallist);
+            prog = (currentno - 1) / totallist * 100;
+            $('#progress').css('width', prog + '%');
+        });
+
+        function openRatingModal() {
+            $('#exampleModal4').modal('show');
+            $('#comment').val('');
+            $('#exampleModal1').css('padding-top', '60%');
+            $('.modal-backdrop').css('display', 'none');
+        }
+
+        function saveRating() {
+            var comment = $('textarea#comment').val();
+            console.log("Comment is: " + comment);
+            user_id = '{{ request.user.id }}';
+            course_id = '{{ course_id }}';
+            rating = parseInt($("#ratinginteger").attr("data-value"));
+            comment_id = ''
+            $.ajax({
+                method: "POST",
+                url: "/add_comment/",
+                data: {
+                    'comment': comment,
+                    'user_id': user_id,
+                    'course_id': course_id,
+                    'comment_id': comment_id,
+                    'rating': rating
+                },
+                success: function (response) {
+                    if (response == "success") {
+                        swal("Added successfully!", {
+
+                            button: "Ok",
+                            closeOnClickOutside: false,
+                        });
+                        $('#exampleModal4').modal('hide');
+                    }
+                }
+            });
+        }
+
+        function playmyvideo(cname) {
+            $(".videourl").removeClass("current");
+            var dataurl = $(cname).attr("data-url");
+            var srno = $(cname).attr("data-srno");
+            $(cname).addClass("current");
+            let cur_video_name = $(cname).html().split('.')
+            cur_video_name.pop()
+            $("#cur_video_name").html(cur_video_name.toString())
+            $(".app-video video source").attr("src", "../../../../static" + dataurl)
+            $(".app-video video")[0].load();
+            $(".list-group .flex").removeAttr("style")
+            $(cname).css({"color": "rgb(1, 100, 192)"});
+            localStorage.setItem("video", srno);
+        }
+
+        function previousinlist() {
+            var currentno = $(".videourl.current").attr("data-srno");
+            var dataurl = "";
+            var totallist = $(".videourl").length;
+            var newvideono = 0;
+
+            var currentno = $(".videourl.current").attr("data-srno");
+            var totallist = $(".videourl").length;
+            $('#showProgress').html(currentno + ' / ' + totallist);
+            prog = currentno / totallist * 100;
+            $('#progress').css('width', prog + '%');
+
+            if (currentno == 1) {
+                newvideono = totallist;
+            } else {
+                newvideono = parseInt(currentno) - 1;
+            }
+
+            $(".videourl").removeClass("current");
+            $(".videourl[data-srno=" + newvideono + "]").addClass("current");
+            dataurl = $(".videourl[data-srno=" + newvideono + "]").attr("data-url");
+            $(".list-group .videourl").removeAttr("style")
+            $(".videourl[data-srno=" + newvideono + "]").css({"color": "rgb(1, 100, 192)"});
+            $(".app-video video source").attr("src", "../../../../static" + dataurl)
+            $(".app-video video")[0].load();
+
+            localStorage.setItem("video", "");
+            localStorage.setItem("video", newvideono);
+
+        }
+
+        function nextinlist() {
+            var currentvidid = parseInt($(".videourl.current").attr("data-id"));
+            var currentno = $(".videourl.current").attr("data-srno");
+            var dataurl = "";
+            console.log("current=>", currentno)
+            var totallist = $(".videourl").length;
+            var newvideono = 0;
+            var currentno = $(".videourl.current").attr("data-srno");
+            var totallist = $(".videourl").length;
+            $('#showProgress').html(currentno + ' / ' + totallist);
+            prog = currentno / totallist * 100;
+            $('#progress').css('width', prog + '%');
+            if (currentno == totallist) {
+                newvideono = 1;
+                $('#cert').attr('onclick', "gotoQuiz()");
+                $('#cert').css({"color": "sandybrown", "cursor": "pointer"})
+            } else {
+                newvideono = parseInt(currentno) + 1;
+                $("p.troph").css('cursor', '');
+            }
+            $(".videourl").removeClass("current");
+            $(".videourl[data-srno=" + newvideono + "]").addClass("current");
+            dataurl = $(".videourl[data-srno=" + newvideono + "]").attr("data-url");
+            $(".list-group .videourl").removeAttr("style")
+            $(".videourl[data-srno=" + newvideono + "]").css({"color": "rgb(1, 100, 192)"});
+            $(".app-video video source").attr("src", "../../../../static" + dataurl)
+            $(".app-video video")[0].load();
+            localStorage.setItem("video", "");
+            localStorage.setItem("video", newvideono);
+            var user_id = '{{ request.user.id }}';
+            var course = '{{ course_id }}';
+            var url = 'addtoprogress/';
+            $.post(url, {student: user_id, course: course, currentvidid: currentvidid}, function (res) {
+                $(".tick" + currentvidid).css("color", "blue");
+                console.log("here" + res);
+            });
+        }
+
+    </script>
+{% endblock %}
+
+
+

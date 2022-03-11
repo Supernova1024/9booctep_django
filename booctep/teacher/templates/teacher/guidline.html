@@ -1,0 +1,388 @@
+{% extends "teacher/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+
+
+{% block headercontent %}
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+    {% with title="إرشادات الإستخدام" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% else %}
+{% with title="Guidline" %}
+    {% include "./layout/header.html" %}
+{% endwith %}
+{% endif %}    
+{% endblock %}
+
+{% block content %}
+
+<style>
+ 
+ 
+
+ .card-header{
+        background-color: rgb(225, 235, 247) !important;
+        border: 1px solid rgb(196, 206, 218) !important;
+    }
+    .card-header-dark{
+        background-color: rgb(25, 32, 41) !important;
+        border: 0 !important;
+    }
+    .carddy{
+        background-color: rgb(247, 247, 247) !important;
+    }
+    .card-dark{
+        background-color: rgb(33, 41, 51) !important;
+        border: 0 !important;
+    }
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+
+.blllu{
+        color: rgb(57, 137, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+    }
+
+
+.form-control-dark{
+    background-color: #323741 !important;
+    border: 1px solid  #0f1013 !important;
+    color: rgb(199, 199, 199) !important;
+}
+
+.carousel-item{
+    background-color: rgb(18, 76, 163) !important;
+}
+
+.carousel-item-dark{
+    background-color: rgb(136, 145, 168) !important;
+}
+
+
+h3.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+h3.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+strong.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+strong.mediabout-dark{
+   color: rgb(186, 193, 204) !important;
+}
+
+p.mediabout{
+    color: rgb(188, 216, 240) !important;
+}
+
+p.mediabout-dark{
+   color: rgb(42, 51, 65) !important;
+}
+
+a.mediabout{
+    background-color: rgb(207, 228, 245) !important;
+    border: 1px solid #0d2150 !important;
+    color: rgb(11, 41, 68) !important;
+}
+
+a.mediabout-dark{
+   background-color: rgb(42, 51, 65) !important;
+   color: rgb(204, 213, 221) !important;
+}
+
+
+.mediabout{
+    color: rgb(214, 223, 231) !important;
+}
+
+.mediabout-dark{
+   color: rgb(100, 152, 248) !important;
+}
+
+  
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+   color: none !important;
+}
+
+
+        
+.btn-primary{
+    background-color: rgb(37, 148, 192) !important;
+    color: rgb(254, 254, 255);
+    border: 1px solid rgb(23, 104, 136) !important;
+}
+        
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+        
+th,td {
+    text-align: center !important;
+    border-top: 1px solid rgb(25, 25, 29)
+}
+
+.table thead{
+    height: 65px !important;
+}
+
+.tehead{
+    background-color: rgb(197, 223, 235) !important;
+    border-top: 0!important;
+    border-bottom: 0 !important;
+}
+
+.table .tehead {
+        
+}
+    
+.tehead-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border-top: 1px solid rgb(24, 31, 36) !important;
+    border-bottom: 1px solid rgb(24, 31, 36) !important;
+}
+
+
+.flllot{
+    float: left !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(26, 28, 34) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+
+.bgk{
+    background-color: #fff !important;
+}
+.bgk-dark{
+    background-color: rgb(185, 197, 206) !important;
+}
+
+[dir="ltr"] .table td, [dir="ltr"] .table th{
+    border: 0 !important;
+
+}
+
+a.disabled{
+    cursor: not-allowed !important;
+}
+
+.card-header:first-child{
+    border-radius: 0 !important;
+}
+
+
+.card-footer-dark{
+    background-color: rgb(33, 41, 51) !important;
+    border: 1px solid rgb(9, 10, 12) !important;
+}
+    
+.progress .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+}
+
+.progress .bg-primary-dark{
+    background-color: rgb(189, 209, 245) !important;
+    border-radius: 0 !important;
+}
+
+.card .bg-primary{
+    background-color: rgb(45, 95, 189) !important;
+    border-radius: 0 !important;
+    font-size: 11px !important;
+}
+
+.card .bg-primary-dark{
+    background-color: rgb(13, 16, 22) !important;
+    border-radius: 0 !important;
+}
+
+.progress{
+    border-radius: 0 !important;
+}
+
+
+    .bgg-primary{
+        background-color: rgb(63, 0, 82) !important;
+    }
+    .bgg-primary-dark{
+        background-color: rgb(136, 145, 168) !important;
+    }
+    .accordion{
+        background-color: lightgreen !important;
+        border: 1px solid rgb(255, 255, 255) !important;
+    }
+    .accordion-dark{
+        background-color: rgb(136, 145, 168) !important;
+        border: 1px solid rgb(26, 29, 36) !important;
+        border-radius: 3px !important;
+    }
+    .accordion__item{
+        border-radius: 3px !important;
+        border: 0 !important;
+    }
+    
+[dir="ltr"] .border-left-2 {
+  border-left: 2px solid #e9edf2 !important;
+}
+
+[dir="ltr"] .border-left-2-dark {
+  border-left: 2px solid rgb(98, 105, 124) !important;
+}
+
+.page-num-dark{
+    border: 1px solid rgb(85, 91, 107) !important;
+}
+
+</style> 
+
+            
+            <div class=" bgg-primary bgg-primary-dark " style="">
+                <div class="py-64pt ">
+                    {% get_current_language as lang %}
+                    {% if lang == "ar" %}
+                   <div class="container d-flex flex-column justify-content-center align-items-center">
+                       <h1 class="text-white text-shadow">إرشادات المعلم</h1>
+                   </div>
+                   {% else %}
+                   <div class="container d-flex flex-column justify-content-center align-items-center">
+                       <h1 class="text-white text-shadow">Taacher's Guidline</h1>
+                       <p class="">Measure your skill to find out where to start.</p>
+                   </div>
+                   {% endif %}
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        {% get_current_language as lang %}
+                        {% if lang == "ar" %}
+                        <div class="border-left-2 page-section pl-32pt" >
+    
+                            <div class="d-flex align-items-center page-num-container">
+                                <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">1</div>
+                                <h4 class=" mediabout mediabout-dark">قم بكتابة صفحة هبوط قوية</h4>
+                            </div>
+    
+                            <p class=" mb-24pt blllu blllu-dark">
+                                تقود صفحات الهبوط الطلاب إلى الدورة التدريبية الخاصة بك وتلهمهم للإنضمام، وكتابة صفحة مقصودة جيدة للدورة التدريبية تشجعهم على اتخاذ إجراء. هذه هي فرصتك لإنشاء تحويلات وبناء قاعدة طلابك.
+                            </p>
+    
+    
+                                <div class="d-flex align-items-center page-num-container">
+                                    <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">2</div>
+                                    <h4 class=" mediabout mediabout-dark">اتبع توصية الأسعار لدينا.</h4>
+                                </div>      
+                                <p class=" mb-24pt blllu blllu-dark">
+                                    بشكل عام ، لا نوصي ببيع دورتك التعليمية عبر الإنترنت بأقل من 30 ريال سعودي. ما لم يكن هدفك هو تحقيق أقصى قدر من الإيرادات من مبيعات الدورة التدريبية الخاصة بك ، فمن المحتمل أن تقوم بتسعير دورتك مقابل 200 ريال سعودي.</p>
+                                
+                                    <div class="d-flex align-items-center page-num-container">
+                                        <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">3</div>
+                                        <h4 class=" mediabout mediabout-dark">بناء دليل اجتماعي.</h4>
+                                    </div>      
+                                    <p class=" mb-24pt blllu blllu-dark">
+                                        لا تقتصر زيادة شعبيتك على مقاطع الفيديو الخاصة بك أو شعارك - أو أي شيء ملموس في المنصة بل إنها الثقة — ثقة طلابك فيك ، نوصيك بمواصلة متابعة طلابك من خلال لوحة صفحة الرسائل.</p>
+                                
+                                        <div class="d-flex align-items-center page-num-container">
+                                            <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">4</div>
+                                            <h4 class=" mediabout mediabout-dark">قم بإنشاء كوبونات وقم بتسويق نفسك.</h4>
+                                        </div>      
+                                        <p class=" mb-24pt blllu blllu-dark">
+                                            من بين جميع الأسباب التي تدفع الطلاب إلى شراء دورة تدريبية ، يكون بتوفير المال بالحصول على قسائم خصم، واستمر في إنشاء قسائم لطلابك ومشاركتها في قنواتك الأخرى وزيادة جمهورك.</p>
+                                                                                                                             
+    
+                        </div>
+                        {% else %}
+                        <div class="border-left-2 page-section pl-32pt" >
+    
+                            <div class="d-flex align-items-center page-num-container">
+                                <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">1</div>
+                                <h4 class=" mediabout mediabout-dark">Write a good course Landing Page.</h4>
+                            </div>
+    
+                            <p class=" mb-24pt blllu blllu-dark">
+                                Landing pages lead students to your course, writting a good course landing page encourage them to take action. this is your opportunity to create conversions and build your students base.</p>
+    
+    
+                                <div class="d-flex align-items-center page-num-container">
+                                    <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">2</div>
+                                    <h4 class=" mediabout mediabout-dark">Follow our price recommendation.</h4>
+                                </div>      
+                                <p class=" mb-24pt blllu blllu-dark">
+                                    in general, we don't recommend selling your online course for less than 30 Saudi rials. Unless your goal is something other than to maximize revenue from your course sales, you should probably price your course for 200 Saudi rials.</p>
+                                
+                                    <div class="d-flex align-items-center page-num-container">
+                                        <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">3</div>
+                                        <h4 class=" mediabout mediabout-dark">Build social proof.</h4>
+                                    </div>      
+                                    <p class=" mb-24pt blllu blllu-dark">
+                                        One of your biggest assets isn’t just your videos, or your logo—or anything tangible for that matter. It’s trust—the trust your students have in you, we recommend you to keep looking after your students through the messages dashboard.</p>
+                                
+                                        <div class="d-flex align-items-center page-num-container">
+                                            <div class="page-num bgg-primary bgg-primary-dark mediabout mediabout-dark">4</div>
+                                            <h4 class=" mediabout mediabout-dark">Create coupons and market yourself.</h4>
+                                        </div>      
+                                        <p class=" mb-24pt blllu blllu-dark">
+                                            Of all the reasons why students buy a course, saving money is near the top of the list, keep creating a coupons for your students and share it in your other channels and grow your audience.</p>
+                                                                                                                             
+    
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+          
+
+            <div class=" page__container page-section">
+
+                
+
+                <div class="page-section">
+
+
+
+
+
+                   
+
+
+                </div>
+
+               
+
+            </div>
+
+{%  endblock %}

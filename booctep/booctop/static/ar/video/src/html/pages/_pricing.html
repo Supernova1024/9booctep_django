@@ -1,0 +1,154 @@
+{% import '_card-pricing.html' as pricing %}
+
+<div class="page-section bg-primary">
+  <div class="{{ containerClass or 'container' }}">
+    <!-- <div class="hero text-center pb-64pt">
+      <h1 class="text-white">Upgrade</h1>
+      <p class="text-white-50 lead measure-hero-lead mx-auto">Change your future today with over 1.000 professional courses from the top industry leading teachers and professionals.</p>
+    </div> -->
+    <div class="row card-group-row mb-16pt mb-lg-40pt">
+      <div class="col-lg-4 col-sm-6 card-group-row__col">
+        {{ pricing.component(
+          title="Student", 
+          description="Access to over 1.000 high quality courses. For individuals.",
+          price="9",
+          color="accent",
+          raised=true,
+          ribbon="Start",
+          icon="person",
+          class="border-0",
+          prefix=prefix
+          ) }}
+      </div>
+      <div class="col-lg-4 col-sm-6 card-group-row__col">
+        {{ pricing.component(
+          title="Team", 
+          description="Starts with 3 accounts with more seats available.",
+          price="19",
+          color="secondary",
+          actionColor="outline-secondary",
+          icon="group",
+          class="border-0",
+          prefix=prefix
+          ) }}
+      </div>
+      <div class="col-lg-4 col-sm-6 card-group-row__col">
+        {{ pricing.component(
+          title="Enterprise", 
+          description="Build customized learning paths with content that aligns to your internal learning goals.",
+          price="49",
+          color="secondary",
+          actionColor="outline-secondary",
+          icon="business_center",
+          class="border-0",
+          prefix=prefix
+          ) }}
+      </div>
+    </div>
+
+    <div class="page-headline page-headline--white page-headline--title text-center">
+      <h2 class="text-white">All plans include</h2>
+    </div>
+
+    <div class="col-lg-8 mx-auto">
+      <div class="row">
+        <div class="col-sm-6 mb-24pt mb-sm-0">
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">24h Access to PRO Courses</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Join 2000+ Community Members</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Access to New Courses Weekly</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Support from our Tutors</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Assets Included per Course</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">24h Access to PRO Courses</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Join 2000+ Community Members</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Access to New Courses Weekly</span>
+            </li>
+            <li class="d-flex align-items-center mb-8pt">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Support from our Tutors</span>
+            </li>
+            <li class="d-flex align-items-center">
+              <span class="text-white-20 material-icons mr-8pt">check</span>
+              <span class="text-white-70">Assets Included per Course</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-headline text-center">
+      <h2>Feedback</h2>
+      <p class="lead measure-lead mx-auto text-70">What other students turned professionals have to say about us after learning with us and reaching their goals.</p>
+    </div>
+
+    {% include 'pages/_feedback.carousel.html' %}
+  </div>
+</div>
+
+{% import '_card-faq.html' as faq %}
+<div class="border-top-1 page-section">
+  <div class="{{ containerClass or 'container' }}">
+    <div class="page-headline text-center">
+      <h2>FAQ</h2>
+      <p class="lead measure-lead mx-auto text-70">Frequently Asked Questions</p>
+    </div>
+    <div class="row card-group-row">
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='Do you offer a free trial?',
+          description='We offer everyone a 7 day free trial! You can take advantage of it by visiting our sign-up page! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, ab!',
+          class='card-group-row__card') }}
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='Can I gift a subscription to someone?',
+          description='Yes! We do offer certificates. Please email us for more information. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ad!',
+          class='card-group-row__card') }}  
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='I have a great idea for an application or website, but need help on where to begin. Can you guys help me?',
+          description='We advise posting personal requests in our Community Forum Lorem ipsum dolor sit amet.',
+          class='card-group-row__card') }}
+      </div>
+      <div class="col-md-6 card-group-row__col">
+        {{ faq.component(
+          title='I found a bug. Where can I report that?',
+          description='In the unlikely situation you stumble across a bug, go ahead and shoot us an email. Lorem ipsum dolor sit amet.',
+          class='card-group-row__card') }}
+      </div>
+    </div>
+  </div>
+</div>

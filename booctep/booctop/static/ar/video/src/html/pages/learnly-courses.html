@@ -1,0 +1,15 @@
+---
+title: Browse Courses
+slug: courses
+page: courses-2
+courses_col: col-sm-6 col-xl
+courses_cols: 3
+guest: true
+---
+{% extends 'layouts/learnly.html' %}
+{% import 'layouts/_library-drawer.html' as drawer %}
+
+{% block drawer %}
+  {{ super() }}
+  {{ drawer.component() }}
+{% endblock %}

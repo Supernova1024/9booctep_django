@@ -1,0 +1,134 @@
+{% import 'components/hljs.html' as hljs %}
+{% import 'components/next.html' as next %}
+
+<div class="{{ containerClass }} page__container">
+  <div class="row">
+    <div class="col-lg-8">
+
+      <p class="measure-paragraph-max">Create a <code>webpack.mix.js</code> file at the root of your project:</p>
+      <div class="card card-footer bg-dark measure-lead-max">
+{% call hljs.component(type="js") -%}
+let { mix } = require('theme-mix')
+
+mix.setPublicPath('.')
+
+mix.webpackConfig({
+  module: {
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules\/(core-js|@babel\b)|bower_components)/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: Config.babel()
+        }
+      ]
+    }]
+  }
+})
+{%- endcall %}
+      </div>
+
+      <p class="measure-paragraph-max">Update <code>package.json</code> with the workflow:</p>
+      <div class="card card-footer bg-dark measure-lead-max">
+{% call hljs.component(type="json") -%}
+"scripts": {
+  "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+  "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+  "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+  "serve": "lite-server -c node_modules/theme-mix/bs-config.json ./dist"
+},
+"dependencies": {
+  "ui-huma": "gitlab:FrontendMatter/ui-huma#v1.0.0"
+},
+"devDependencies": {
+  "@babel/polyfill": "^7.2.5",
+  "cross-env": "^5.2.0",
+  "lite-server": "^2.4.0",
+  "node-sass": "^4.12.0",
+  "regenerator-runtime": "^0.13.1",
+  "surge": "^0.20.1",
+  "theme-mix": "^1.2.0",
+  "vue-template-compiler": "^2.6.6"
+},
+{%- endcall %}
+      </div>
+
+      <h4>Options</h4>
+
+      <p class="measure-paragraph-max">Create a <code>theme-mix.yaml</code> file at the root of your project. These are the default configuration options, except <code>copy</code> which by default is an empty list.</p>
+
+      <div class="card card-body bg-dark measure-lead-max">
+{% call hljs.component(type="yaml") -%}
+runTasks:
+  clean: true
+  js: true
+  copy: true
+  sass: true
+  html: true
+enableCssThemes: false
+enableCssRTL: true
+copyCwd: node_modules
+copyDest: dist/assets/vendor
+copy:
+  - ion-rangeslider/js/ion.rangeSlider.min.js
+  - jquery/dist/jquery.min.js
+  - bootstrap/dist/js/bootstrap.min.*
+  - popper.js/dist/umd/popper.min.*
+  - dom-factory/dist/*
+  - fix-footer/dist/*
+  - material-design-kit/dist/material-design-kit.js
+  - bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js
+  - chart.js/dist/Chart.min.js
+  - jquery.fancytree/dist/jquery.fancytree-all.min.js
+  - moment/min/moment.min.js
+  - moment-range/dist/moment-range.min.js
+  - flatpickr/dist/flatpickr.min.{js,css}: dist/assets/vendor/flatpickr
+  - flatpickr/dist/themes/airbnb.css: dist/assets/vendor/flatpickr
+  - daterangepicker/daterangepicker.{js,css}
+  - jquery-mask-plugin/dist/jquery.mask.min.js
+  - quill/dist/quill.min.js
+  - dropzone/dist/min/dropzone.min.js
+  - nestable/jquery.nestable.js
+  - perfect-scrollbar/css/*
+  - perfect-scrollbar/dist/*.min.js
+  - sweetalert/dist/sweetalert.min.js
+  - material-design-icons-iconfont/dist/fonts/*.{eot,ttf,woff,woff2}: dist/assets/fonts/material-icons
+  - '@fortawesome/fontawesome-free/webfonts/*': dist/assets/fonts/fontawesome-free
+  - vue-icons-demo-app/dist/assets/data/material-icons: dist/assets/data/material-icons
+  - dragula/dist/dragula.min.{js,css}: dist/assets/vendor/dragula
+  - select2/dist/js/select2.min.js: dist/assets/vendor/select2
+  - select2/dist/css/select2.min.css: dist/assets/vendor/select2
+  - highlight.js/styles/vs2015.css: dist/assets/vendor/highlight.js
+  - list.js/dist/list.min.js
+  - vue/dist/vue.min.js
+  - toastr/build/toastr.min.*
+  - jqvmap/dist/jquery.vmap.min.js: dist/assets/vendor/jqvmap
+  - jqvmap/dist/jqvmap.min.css: dist/assets/vendor/jqvmap
+  - jqvmap/dist/maps/*.js: dist/assets/vendor/jqvmap/maps
+  - jqvmap/dist/maps/continents/*.js: dist/assets/vendor/jqvmap/maps/continents
+  - jvectormap/jquery.jvectormap.min.js
+  - jvectormap/jquery-jvectormap.css
+clean:
+  - dist/**/*.html
+  - dist/assets/{css,fonts,js,vendor}
+sassSrc: src/sass/**/*.scss
+cssDest: dist/assets/css
+jsSrc: src/js/**/**.{js,vue}
+jsDest: dist/assets/js
+htmlSearchPaths:
+  - ./src/html
+htmlDest: dist/[path][name].html
+htmllint: false
+laravelMixOptions:
+  processCssUrls: false
+{%- endcall %}
+      </div>
+
+    </div>
+    <div class="col-lg-4 position-sticky" style="top: 64px;">
+      <div class="mb-3">{{ next.component(title='Build Project', to='build.html') }}</div>
+      {{ next.component(title='Installation', to='installation.html', prev=true) }}
+    </div>
+  </div>
+</div>

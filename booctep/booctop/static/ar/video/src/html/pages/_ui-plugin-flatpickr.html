@@ -1,0 +1,69 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title='Flatpickr', description='A simple yet powerful datepicker powered by Flatpickr. Please read the <a target="_blank" href="https://flatpickr.js.org/">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label">Anchor</label><br>
+      <div class="flatpickr-wrapper">
+        <div
+          id="recent_orders_date"
+          data-toggle="flatpickr" 
+          data-flatpickr-wrap="true"
+          data-flatpickr-mode="range" 
+          data-flatpickr-alt-format="d/m/Y" 
+          data-flatpickr-date-format="d/m/Y">
+          <a href="javascript:void(0)" class="link-date" data-toggle>13/03/2018 to 20/03/2018</a>
+          <input class="flatpickr-hidden-input" type="hidden" value="13/03/2018 to 20/03/2018" data-input>  
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Date</label>
+      <input id="flatpickrSample01" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="today">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Range</label>
+      <input id="flatpickrSample02" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" data-flatpickr-mode="range" value="2018-10-07 to 2018-10-15">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="flatpickrSample04">Date Time</label>
+      <input 
+        id="flatpickrSample04" 
+        type="text" 
+        class="form-control" 
+        placeholder="Flatpickr date time example" 
+        data-toggle="flatpickr" 
+        data-flatpickr-enable-time="true"
+        data-flatpickr-alt-format="F j, Y at H:i" 
+        data-flatpickr-date-format="Y-m-d H:i" 
+        value="2018-10-07 15:35">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="flatpickrSample05">Time Picker</label>
+      <input 
+        id="flatpickrSample05" 
+        type="text" 
+        class="form-control" 
+        placeholder="Flatpickr time example" 
+        data-toggle="flatpickr" 
+        data-flatpickr-enable-time="true"
+        data-flatpickr-no-calendar="true"
+        data-flatpickr-alt-format="H:i" 
+        data-flatpickr-date-format="H:i" 
+        value="15:35">
+    </div>
+    <div class="card card-body mb-0">
+      <label class="form-label">Calendar</label>
+      <input type="hidden" data-toggle="flatpickr" data-flatpickr-mode="range" data-flatpickr-inline="true" value="2020-01-09 to 2020-01-17">
+    </div>
+  {% endcall %}
+</div>

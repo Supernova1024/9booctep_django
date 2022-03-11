@@ -1,0 +1,605 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+<!-- CSS only -->
+
+
+    <style>
+
+
+        .process-bar-wrap {
+            margin-top: 45px;
+        }
+
+        @media only screen and (max-width: 700px) {
+
+
+            .process-bar-wrap {
+                margin-top: 75px !important;
+            }
+
+        }
+
+
+        .become-teacher {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            margin: 0 auto !important;
+            float: none !important;
+        }
+
+        .hight {
+            height: 10% !important
+        }
+
+        .cart-summary {
+            border: 1px solid #EEEEEE;
+            padding: 30px;
+            border-radius: 3px;
+        }
+
+        .cart-summary .summary-card img {
+            width: 80px;
+            height: 80px
+        }
+
+
+        .signup-wrapper .process-bar .progress-wrap {
+    position: relative;
+    margin: 0 12px;
+    width: calc(100% - 24px);
+    height: 6px;
+    border-radius: 100px
+}
+
+
+
+/* line 65, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .track {
+    background: #eaeaea;
+}
+
+
+/* line 70, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .bar {
+    background: #4479ce;
+}
+
+
+/* line 76, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .dot {
+    background: #fff;
+    border: 1.4px solid #e8e8e8;
+}
+
+
+/* line 110, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-active {
+    border-color: #699df1;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+
+/* line 114, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-active svg {
+    stroke: #57a7e9;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+
+/* line 119, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-current {
+    border-color: #df9a97;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+}
+
+
+/* line 123, src/assets/scss/pages/_app-signup.scss */
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-current svg {
+    stroke: #df9a97
+}
+
+
+        
+.icn{
+    background-color: inherit;
+}
+
+.icn-dark{
+    background-color: #222831 !important;
+    border: 1px solid #646f80!important;
+    box-shadow: none !important;
+}
+
+.bar{
+    background-color: inherit;
+}
+        
+.bar-dark{
+    background-color: #8795a8 !important;
+}
+
+.progress-wrap.is-active i{
+    color: #222831 !important;
+}
+
+
+.mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(155, 155, 155) !important;
+}
+
+
+.account-type-dark{
+    background-color: #14161a !important;
+    border: 1px solid rgb(15, 16, 17);
+}
+
+.account-type-dark:hover{
+    border: 1px solid rgb(27, 94, 133) !important;
+}
+
+.signup-wrapper .process-bar {
+    background: none !important;
+}
+.track{
+    background: rgb(230, 230, 230) !important;
+}
+.track-dark{
+    background: rgb(88, 91, 99) !important;
+}
+
+
+.is-light{
+  border:1px solid rgb(221, 221, 221) !important;
+}
+
+.is-light-dark{
+  background-color: #222831 !important;
+  border: 1px solid #0c0d0f !important;
+  color: rgb(175, 175, 175) !important;
+}
+
+
+
+.signin-button-is-dark{
+    background-color: #0a0c0e;
+    color: #ccc !important;
+    border: 1px solid #060707;
+}
+
+.signin-button-is-dark:hover{
+    border: 1px solid #060707;
+}
+.signup-button-is-dark:hover{
+    border: 1px solid #060707 !important;
+}
+
+.hrrrr{
+    
+}
+    .soci{
+        background: #4479ce !important;
+        color: #fff;
+    }
+    .soci-dark{
+        background: rgb(169, 189, 255) !important;
+        border: 1px solid #050607;
+        color: #122b53;
+    }
+
+    .socig{
+        background: #8f0d0d !important;
+        color: rgb(255, 255, 255);
+    }
+    .socig-dark{
+        background: #e68888 !important;
+        border: 1px solid #470101;
+        color: rgb(71, 1, 1);
+    }
+
+    .soci:hover{
+        background: #4479ce !important;
+        color: #fff;
+    }
+    .soci-dark:hover{
+        background: rgb(169, 189, 255) !important;
+        border: 1px solid #050607;
+        color: #122b53;
+    }
+
+    .socig:hover{
+        background: #8f0d0d !important;
+        color: rgb(255, 255, 255);
+    }
+    .socig-dark:hover{
+        background: #e68888 !important;
+        border: 1px solid #470101;
+        color: rgb(71, 1, 1);
+    }
+
+.hrrrr-dark{
+    background-color: #202329 !important;
+}
+
+#div_error{
+    color: #df9a97;
+}
+
+.input-dark{
+    background: none !important;
+}
+
+
+.field{
+    background-color: inherit;
+}
+.field-dark{
+    background: #cbd6df !important;
+    border: 1px solid #222831 !important;
+    color: #030303 !important;
+}
+
+
+.selecttt-dark{
+    background-color: rgb(165, 172, 189) !important;
+    border: 1px solid rgb(123, 129, 145) !important;
+}
+
+.btn-primary{
+    background-color: rgb(33, 150, 243)!important;
+    color: rgb(254, 254, 255);
+    float: right !important;
+    border: 1px solid rgb(20, 71, 167) !important;
+}
+
+.btn-primary-dark{
+    background-color: #323741 !important;
+    color: rgb(199, 199, 199) !important;
+    float: right !important;
+    border: 1px solid  #21242b !important;
+    box-shadow: none !important;
+}
+
+.cart-summary-dark{
+    background-color: rgb(61, 67, 80);
+    border: 1px solid rgb(51, 55, 65);
+}
+
+
+
+    </style>
+    <div class="products-navigation" style="display: none;">
+    </div>
+    <div id="shop-page" class="shop-wrapper">
+        <div class="container">
+            <div class="signup-wrapper signup-wrapper-pad">
+                <div class="card card-dark hight">
+                    <div class="process-bar-wrap">
+                        <div class="process-bar process-bar-dark">
+                            <div class="progress-wrap">
+                                <div class="track track-dark"></div>
+                                <div class="bar bar-dark"></div>
+                                <div id="step-dot-1" class="dot is-first is-active is-current icn-dark" data-step="0">
+                                    <i data-feather="video"></i>
+                                </div>
+                                <div id="step-dot-2" class="dot is-second icn-dark" data-step="50">
+                                    <i data-feather="user-check"></i>
+                                </div>
+                                <div id="step-dot-3" class="dot is-third icn-dark" data-step="100">
+                                    <i data-feather="flag"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="outer-panel">
+                        <div class="outer-panel-inner">
+                            <div class="process-title" style="margin-top: 40px;">
+                                <h2 id="step-title-1" class="step-title mainpanel is-active mediabout mediabout-dark"
+                                    style="font-size: 25px;">{% trans 'What are you going to teach?' %}</h2>
+                                <h2 id="step-title-3" class="step-title mediabout mediabout-dark"
+                                    style="font-size: 25px;">{% trans 'What are the sub category?' %}</h2>
+                                <h2 id="step-title-5" class="step-title mediabout mediabout-dark"
+                                    style="font-size: 25px;margin-top: -120px;">{% trans 'Congrots! you have became a teacher.' %}</h2>
+                            </div>
+                            <input type="hidden" id="type" name="type"/>
+                            <input type="hidden" id="subcategory" name="subcategory"/>
+                            <input type="hidden" id="category" name="category"/>
+                            <div id="signup-panel-1" class="process-panel-wrap mainpanel is-active">
+                                
+                                <center>
+                                    <div class="combo-item">
+                                        <div class="select ">
+                                            <select class="selecttt selecttt-dark" id="category_id"
+                                                    style="border-radius:3px;">
+                                                {% for i in categories %}
+                                                    <option value="{{ i.id }}">{{ i.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="buttons" style="margin-top:25px;">
+                                        <a class="button btn-primary btn-primary-dark process-button is-next" onclick="setCategory()"
+                                           data-step="step-dot-2">{% trans 'Next' %}</a>
+                                    </div>
+                                    {% get_current_language as lang %}
+                                    {% if lang == "ar" %}
+                                    <p class="mediabout mediabout-dark" style="text-align: center !important;margin-top: 10px;font-size:20px">
+                                        نصائح سريعة قبل البدء</p><br>
+                                    <div class="columns  is-multiline">
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark"> طلب المساعدة؟</h4>
+                                                <p class="mediabout mediabout-dark">إذا كانت تواجهك أي مشكلة في التسجيل راسلنا<a class="standard-link blllu blllu-dark" href="{% url 'contact_us' %}">هنا</a> سوف نسعد بمساعدتك, نحن متواجدون دوما لمساعدتك للحصول على تجربة فريدة في بوستيب.</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark"> إرشادات المعلم</h4>
+                                                <p class="mediabout mediabout-dark">إذا أردت أخراج دورتك بأفضل صورة ممكنة لدينا في لوحة تحكم المعلم إرشادات لإخراج دورتك بأفضل صورة ألقي نظرة عليها.</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark">الإتصال بنا؟</h4>
+                                                <p class="mediabout mediabout-dark">هناك عدة طرق للوصل إلينا, عبرالإيميل: support@booctep.com أو عبر الدردشة المباشرة أو عبر مواقع التواصل الإجتماعي.</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    {% else %}
+                                    <p class="mediabout mediabout-dark" style="text-align: center !important;margin-top: 10px;font-size:20px">
+                                        Quick Tips</p><br>
+                                    <div class="columns  is-multiline">
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark"> Help center?</h4>
+                                                <p class="mediabout mediabout-dark">Having trouble? Please search our <a class="standard-link blllu blllu-dark"
+                                                                                        href="support.html">Help
+                                                    Center</a> for a quick
+                                                    answer to your .</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark"> Help center?</h4>
+                                                <p class="mediabout mediabout-dark">Having trouble? Please search our <a class="standard-link blllu blllu-dark"
+                                                                                        href="support.html">Help
+                                                    Center</a> for a quick
+                                                    answer to your .</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary cart-summary-dark">
+
+                                                <div class="summary-card" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                <h4 class="mediabout mediabout-dark"> Help center?</h4>
+                                                <p class="mediabout mediabout-dark">Having trouble? Please search our <a class="standard-link blllu blllu-dark"
+                                                                                        href="support.html">Help
+                                                    Center</a> for a quick
+                                                    answer to your .</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    {% endif %}
+                                </center>
+                            </div>
+                            <div class="text-align-center" style="text-align:center; color :  rgb(218, 1, 1);"
+                                 id="div_error"></div>
+                            <div id="signup-panel-3" class="process-panel-wrap ">
+                                <center>
+                                    <div class="combo-item">
+                                        <div class="select ">
+                                            <select class="combo-box selected-item full-width" style="width: 150%;"
+                                                    id="subcategory_id"
+                                                    style="border-radius:3px;height:40px;margin-top:2px">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="buttons" style="margin-top:25px">
+                                        <a class="button process-button" data-step="step-dot-1">{% trans 'Back' %}</a>
+
+                                        <a class="button process-button is-next" style="background: #2066B5;color: #fff"
+                                           onclick="becomeTeacher()"
+                                           data-step="step-dot-3">{% trans 'Finish' %}<span style="font-size:18px">&#128075;</span></a>
+                                    </div>
+                                    <hr>
+                                    <p style="color: grey;text-align: center !important;margin-top: 10px;font-size:20px">
+                                        Quick Tips</p><br>
+                                    <div class="columns  is-multiline">
+                                        <div class="column is-4">
+                                            <div class="cart-summary">
+                                                <div class="summary-card summary-card-dark" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                    <h4>Help center?</h4>
+                                                    <p>Having trouble? Please search our
+                                                        <a class="standard-link" href="support.html">Help Center</a> for
+                                                        a quick answer to your .
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary">
+
+                                                <div class="summary-card summary-card-dark" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                    <h4>Help center?</h4>
+                                                    <p>Having trouble? Please search our <a class="standard-link"
+                                                                                            href="support.html">Help
+                                                        Center</a> for a quick
+                                                        answer to your .</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="column is-4">
+                                            <div class="cart-summary">
+
+                                                <div class="summary-card summary-card-dark" style="">
+                                                    <img src="{% static 'assets/img/icons/questions/help.svg' %}"
+                                                         alt="">
+                                                    <h4>Help center?</h4>
+                                                    <p>Having trouble? Please search our <a class="standard-link"
+                                                                                            href="support.html">Help
+                                                        Center</a> for a quick
+                                                        answer to your .</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+
+                            <div id="signup-panel-5" class="process-panel-wrap is-narrow">
+                                <div class="form-panel">
+                                    <img class="success-image" src="{% static 'assets/img/teach.svg' %}" alt="">
+                                    <div class="success-text">
+                                        <h3> {% trans 'please login again to configure your account.' %}</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                
+                </div>
+            </div>
+        </div>
+        <!-- Signup steps -->
+    </div>
+
+{% endblock %} {% block script %}
+
+    <!-- Page and UI related js -->
+    <script>
+        var blobImg = '';
+        var uploadImg = '';
+        var category_id = '';
+        var user_id = '{{ request.user.id }}'
+
+        function setCategory() {
+            let cat_id = $("#category_id").val()
+            let action = "/getsubcategory";
+            $.ajax({
+                url: action,
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {
+                    category_id: cat_id
+                },
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    let html = ''
+                    subcategoryList = data.subcat_list
+                    subcategoryList.forEach(item => {
+                        html += `<option value="` + item.id + `">` + item.name + `</option>`
+                    })
+                    $("#subcategory_id").html(html)
+                },
+                error: function (err) {
+                    return false
+                }
+            })
+        }
+
+        function becomeTeacher() {
+            let cat_id = $("#category_id").val()
+            let subcat_id = $("#subcategory_id").val()
+            let form_data = new FormData()
+            form_data.append('cat_id', cat_id)
+            form_data.append('subcat_id', subcat_id)
+            let url = '/save_become_teacher/'
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            }).then(response => {
+                if (response.status == 1) {
+                    setTimeout(() =>{
+                       location.href = '/logoutfromhere';
+                    }, 10000)
+                } else {
+                    location.reload()
+                }
+            })
+        }
+
+    </script>
+
+<script>
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    
+{% endblock %}

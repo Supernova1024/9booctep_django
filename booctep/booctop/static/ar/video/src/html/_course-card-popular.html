@@ -1,0 +1,25 @@
+{% macro component(title, image, author_avatar, category=image, prefix, link, class='') %}
+{% if link %}
+  {% set link = prefix + link %}
+{% endif %}
+
+<div class="card card--elevated posts-card-popular overlay {{ class }}">
+  <img src="assets/images/paths/{{ image }}_430x168.png" alt="" class="card-img">
+  <div class="fullbleed bg-primary" style="opacity: .5"></div>
+  <div class="posts-card-popular__content">
+    <div class="card-body d-flex align-items-center">
+      <div class="avatar-group flex">
+        <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+          <a href=""><img src="{{ author_avatar }}" alt="Avatar" class="avatar-img rounded-circle"></a>
+        </div>
+      </div>
+      <a style="text-decoration: none;" class="d-flex align-items-center" href=""><i class="material-icons mr-1" style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
+    </div>
+    <div class="posts-card-popular__title card-body">
+      <small class="text-muted text-uppercase">{{ category }}</small>
+      <a class="card-title" href="{{ link }}">{{ title }}</a>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+{{ component() }}

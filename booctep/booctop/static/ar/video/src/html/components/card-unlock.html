@@ -1,0 +1,13 @@
+{% macro component(label, prefix) %}
+<div class="card">
+  <div class="card-body py-16pt text-center">
+    <span class="icon-holder icon-holder--outline-secondary rounded-circle d-inline-flex mb-8pt">
+      <i class="material-icons">timer</i>
+    </span>
+    <h4 class="card-title"><strong>Unlock {{ label }}</strong></h4>
+    <p class="card-subtitle text-70 mb-24pt">Get access to all videos in the library</p>
+    <a href="{{ prefix or '' }}pricing.html" class="btn btn-accent mb-8pt">Sign Up - Only $19.00/mo</a>
+    <p class="mb-0">Have an account? <a href="{{ prefix or '' }}login.html">Login</a></p>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,55 @@
+{% set notifications = [{
+  created_at: '3 minutes ago',
+  icon_class: 'text-accent',
+  icon: 'account_circle',
+  message: 'Your profile information has not been synced correctly.',
+  unread: true
+}, {
+  created_at: '5 hours ago',
+  icon_class: 'text-primary',
+  icon: 'group_add',
+  name: 'Adrian. D',
+  message: 'Wants to join your private group.'
+}, {
+  created_at: '1 day ago',
+  icon_class: 'text-warning',
+  icon: 'storage',
+  message: 'Your deploy was successful.'
+}] %}
+
+<!-- Notifications dropdown -->
+<div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full" data-toggle="tooltip" data-title="Notifications" data-placement="bottom" data-boundary="window">
+  <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false">
+    <i class="material-icons">notifications_none</i>
+    <span class="badge badge-notifications badge-accent">2</span>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <div data-perfect-scrollbar class="position-relative">
+      <div class="dropdown-header"><strong>System notifications</strong></div>
+      <div class="list-group list-group-flush mb-0">
+        {% for item in notifications %}
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action{% if item.unread %} unread{% endif %}{% if item.important %} border-left-3 border-left-danger{% endif %}">
+          <span class="d-flex align-items-center mb-1">
+            <small class="text-black-50">{{ item.created_at }}</small>
+            {% if item.unread %}
+            <span class="ml-auto unread-indicator bg-accent"></span>
+            {% endif %}
+          </span>
+          <span class="d-flex">
+            <span class="avatar avatar-xs mr-2">
+              <span class="avatar-title rounded-circle bg-light">
+                <i class="material-icons font-size-16pt {{ item.icon_class }}">{{ item.icon }}</i>
+              </span>
+            </span>
+            <span class="flex d-flex flex-column">
+              {% if item.name %}<strong class="text-black-100">{{ item.name }}</strong>{% endif %}
+              <span class="text-black-70">{{ item.message }}</span>
+            </span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // END Notifications dropdown -->

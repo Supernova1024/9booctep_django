@@ -1,0 +1,50 @@
+{% import 'pages/_results-heading.html' as results %}
+
+<div class="page-section {{ alt_bg }} border-bottom-2">
+  <div class="{{ containerClass }}">
+
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+      <div class="d-flex flex-column align-items-center align-items-lg-start flex mb-16pt mb-lg-0 text-center text-lg-left">
+        <h1 class="h2 m-0">Library</h1>
+        <div class="lead measure-lead text-70">Browse through thousands of lessons.</div>
+      </div>
+      <div class="ml-lg-16pt">
+        <a href="#" data-target="#library-drawer" data-toggle="sidebar" class="btn btn-light">
+          <i class="material-icons icon--left">tune</i> Filters
+          <span class="badge badge-notifications badge-accent icon--right">2</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass }}">
+    
+    <div class="row">
+      <div class="col-lg-8">
+
+        {{ results.component(sidebar_toggle=false) }}
+
+        {% include 'pages/_courses.html' %}
+
+      </div>
+      <div class="col-lg-4">
+
+        {% import 'components/card-unlock.html' as unlock %}
+        {{ unlock.component(label='Library', prefix=prefix) }}
+
+        {% include 'pages/_course.recommended.html' %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-section {{ alt_bg }}">
+  <div class="{{ containerClass or 'container' }}">
+    {% include 'pages/_feedback.html' %}
+  </div>
+</div>

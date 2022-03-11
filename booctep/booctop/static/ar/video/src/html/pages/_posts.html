@@ -1,0 +1,149 @@
+{% import 'components/pager.html' as pager %}
+
+{% set posts = [{
+  avatar: "assets/images/paths/invision_200x168.png",
+  title: "Design Systems Essentials",
+  views: 35,
+  tag: "inVision",
+  date: "11 Nov, 2018 07:46 AM",
+  avatarGroup: true,
+  avatarCount: 3,
+  avatars: [
+    "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+    "assets/images/256_michael-dam-258165-unsplash.jpg",
+    "assets/images/256_luke-porter-261779-unsplash.jpg"
+  ]
+}, {
+  avatar: "assets/images/paths/photoshop_200x168.png",
+  title: "Semantic Logo Design",
+  views: 78,
+  tag: "Photoshop",
+  date: "10 Nov, 2018 08:25 AM",
+  avatarGroup: true,
+  avatarCount: 2,
+  avatars: [
+    "assets/images/256_joao-silas-636453-unsplash.jpg",
+    "assets/images/256_jeremy-banks-798787-unsplash.jpg",
+    "assets/images/256_daniel-gaffey-1060698-unsplash.jpg"
+  ]
+}, {
+  avatar: "assets/images/paths/sketch_200x168.png",
+  title: "Merge Duplicates Inconsistent Symbols & Styles",
+  views: 78,
+  tag: "Sketch",
+  date: "09 Nov, 2018 07:13 PM",
+  avatarGroup: true,
+  avatarCount: 1,
+  avatars: [
+    "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg",
+    "assets/images/256_michael-dam-258165-unsplash.jpg",
+    "assets/images/256_luke-porter-261779-unsplash.jpg"
+  ]
+}] %}
+
+<div class="{{ containerClass }} page__container page-section">
+  <div class="page-separator">
+    <div class="page-separator__text">Popular</div>
+  </div>
+
+  <div class="posts-cards mb-24pt">
+    {% for item in posts %}
+    <div class="card posts-card">
+      <div class="posts-card__content d-flex align-items-center flex-wrap">
+        <div class="avatar avatar-lg mr-3">
+          <a href=""><img src="{{ item.avatar }}" alt="avatar" class="avatar-img rounded"></a>
+        </div>
+        <div class="posts-card__title flex d-flex flex-column">
+          <a href="" class="card-title mr-3">{{ item.title }}</a>
+          <small class="text-50">{{ item.views }} views last week</small>
+        </div>
+        <div class="d-flex align-items-center flex-column flex-sm-row posts-card__meta">
+          <div class="mr-3 text-50 text-uppercase posts-card__tag d-flex align-items-center">
+            <i class="material-icons text-muted-light mr-1">folder_open</i> {{ item.tag }}
+          </div>
+          <div class="mr-3 text-50 posts-card__date">
+            <small>{{ item.date }}</small>
+          </div>
+          <div class="media mr-2 ml-sm-auto align-items-center">
+            <div class="media-left mr-2{% if item.avatarGroup %} avatar-group{% endif %}">
+              {% for avatar in item.avatars %}
+              <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                <img src="{{ avatar }}" alt="Avatar" class="avatar-img rounded-circle">
+              </div>
+              {% endfor %}
+            </div>
+            <div class="media-body">
+              {% if item.avatarCount > 1 %}
+              <a href="">+{{ item.avatarCount-1 }} more</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="dropdown ml-auto">
+          <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">more_vert</i></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="javascript:void(0)" class="dropdown-item">Action</a>
+            <a href="javascript:void(0)" class="dropdown-item">Other Action</a>
+            <div class="dropdown-divider"></div>
+            <a href="javascript:void(0)" class="dropdown-item">Some Other Action</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="card p-8pt mb-0 d-inline-block">
+    {{ pager.pager() }}
+  </div>
+</div>
+
+<div class="page-section bg-alt border-top-2">
+  <div class="{{ containerClass }} page__container">
+
+    {% set popular_stories = [{
+      image: "assets/images/paths/sketch_200x168.png",
+      category: "Sketch",
+      title: "Merge Duplicates Inconsistent Symbols",
+      avatar: "assets/images/256_luke-porter-261779-unsplash.jpg"
+    }, {
+      image: "assets/images/paths/invision_200x168.png",
+      category: "inVision",
+      title: "Design Systems Essentials",
+      avatar: "assets/images/256_michael-dam-258165-unsplash.jpg"
+    }, {
+      image: "assets/images/paths/photoshop_200x168.png",
+      category: "Photoshop",
+      title: "Semantic Logo Design",
+      avatar: "assets/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+    }] %}
+
+    <div class="page-separator">
+      <div class="page-separator__text">Recent Posts</div>
+    </div>
+
+    <div class="row">
+      {% for item in popular_stories %}
+      <div class="col-sm-6 col-md-4">
+        <div class="card posts-card-popular">
+          <img src="{{ item.image }}" alt="" class="card-img">
+          <div class="posts-card-popular__content">
+            <div class="card-body d-flex align-items-center">
+              <div class="avatar-group flex">
+                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                  <a href=""><img src="{{ item.avatar }}" alt="Avatar" class="avatar-img rounded-circle"></a>
+                </div>
+              </div>
+              <a style="text-decoration: none;" class="d-flex align-items-center" href=""><i class="material-icons mr-1" style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
+            </div>
+            <div class="posts-card-popular__title card-body">
+              <small class="text-muted text-uppercase">{{ item.category }}</small>
+              <h4 class="card-title m-0"><a href="">{{ item.title }}</a></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

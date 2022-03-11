@@ -1,0 +1,208 @@
+//Change log
+
+.changelog {
+    @include e(according) {
+        margin-top: 30px;
+
+        .card {
+            border: 1px solid #E3E6EF;
+            border-radius: 6px;
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
+            .card-header {
+                border-radius: 6px;
+                background-color: #F8F9FB;
+                height: 66px;
+                display: flex;
+                align-items: center;
+                @include xs(){
+                    height: auto;
+                }
+            }
+
+            .card-body {
+                border-top: 1px solid #E3E6EF;
+            }
+        }
+    }
+
+    @include e(accordingCollapsed) {
+        height: 66px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        @include xs(){
+            height: auto;
+        }
+
+        &:not(.collapsed) {
+            .changelog__accordingArrow {
+                transform: rotate(90deg);
+                transition: transform .24s;
+            }
+        }
+
+        .changelog__accordingArrow {
+            transition: transform .24s;
+
+            svg {
+                width: 18px;
+                color: #868EAE;
+            }
+        }
+    }
+
+    @include e(accordingTitle){
+        .v-num{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+
+.version-list {
+    @include e(top) {
+        .badge {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 1.4px;
+            font-weight: 500;
+            display: inline-block;
+            padding: 5px 8px;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            color: rgb(255, 255, 255);
+            text-transform: capitalize;
+        }
+    }
+
+    @include e(single) {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        ul {
+            li {
+                position: relative;
+                padding-left: 20px;
+                font-size: 16px;
+                color: rgb(90, 95, 125);
+                @include ofs(16px, null, null);
+
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+
+                &::after {
+                    position: absolute;
+                    left: 0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    content: "";
+                }
+            }
+
+            &.version-success li {
+                &::after {
+                    @extend .bg-success;
+                }
+            }
+
+            &.version-info li {
+                &::after {
+                    @extend .bg-info;
+                }
+            }
+
+            &.version-primary li {
+                &::after {
+                    @extend .bg-primary;
+                }
+            }
+        }
+    }
+}
+
+.v-num {
+    @include ofs(18px, lh(18px, 22px), 500);
+    @extend .color-dark;
+}
+
+
+.changelog-history__title{
+    @include ofs(14px, lh(14px, 20px), 500);
+    @extend .color-dark;
+}
+
+.history-title {
+    font-size: 11px;
+    line-height: lh(11px, 15px);
+    margin-bottom: 24px;
+    color: #868EAE;
+}
+
+.v-arrow {
+    color: #5C637E;
+    margin: 0px 4px 0 14px;
+}
+
+.rl-date {
+    @include ofs(16px, lh(16px, 20px), 400);
+    color: #5A5F7D;
+    @include xs(){
+        margin: 4px 0;
+    }
+}
+
+.v-history-list li .version-name {
+    @include ofs(14px, null, 500);
+    color: rgb(39, 43, 65);
+}
+
+.v-history-list li .version-date {
+    @include ofs(14px, null, null);
+    color: rgb(134, 142, 174);
+}
+
+.v-history-list li {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.v-history-list li:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+@media (min-width: 1600px) {
+    .changelog-19 {
+        flex: 0 0 79.16666667%;
+        max-width: 79.16666667%;
+    }
+
+    .changelog-5 {
+        flex: 0 0 20.83333333%;
+        max-width: 20.83333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .changelog-19 {
+        flex: 0 0 66.66666667%;
+        max-width: 66.66666667%;
+    }
+
+    .changelog-5 {
+        flex: 0 0 33.33333333%;
+        max-width: 33.33333333%;
+    }
+}

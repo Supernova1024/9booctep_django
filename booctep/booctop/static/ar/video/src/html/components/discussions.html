@@ -1,0 +1,36 @@
+{% macro component(items=[], prefix) %}
+<div class="list-group list-group-flush">
+  {% for item in items %}
+  <div class="list-group-item p-3">
+    <div class="row align-items-start">
+      <div class="col-md-3 mb-8pt mb-md-0">
+        <div class="media align-items-center">
+          <div class="media-left mr-12pt">
+            <a href="" class="avatar avatar-sm">
+              <!-- <img src="{{ item.avatar }}" alt="avatar" class="avatar-img rounded-circle"> -->
+              <span class="avatar-title rounded-circle">{{ item.avatar }}</span>
+            </a>
+          </div>
+          <div class="d-flex flex-column media-body media-middle"> 
+            <a href="" class="card-title">{{ item.name }}</a>
+            <small class="text-muted">{{ item.date }}</small>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-8pt mb-md-0">
+        <p class="mb-{% if item.chips %}8pt{% else %}0{% endif %}"><a href="{{ prefix or '' }}discussion.html" class="text-body"><strong>{{ item.title }}</strong></a></p>
+        {% if item.chips %}
+          {% for chip in item.chips %}
+          <a href="{{ prefix or '' }}discussion.html" class="chip chip-outline-secondary">{{ chip }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="col-auto d-flex flex-column align-items-center justify-content-center">
+        <h5 class="m-0">{{ item.answers or '1' }}</h5>
+        <p class="lh-1 mb-0"><small class="text-70">answers</small></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}

@@ -1,0 +1,87 @@
+{% import 'components/hljs.html' as hljs %}
+
+{% macro tables_toggle_checkboxes() %}
+{% call hljs.component() -%}
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#table01" id="customCheckAll">
+          <label class="custom-control-label" for="customCheckAll">
+            <span class="text-hide">Toggle all</span>
+          </label>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="table01">
+    <tr class="selected">
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input id="customCheck1" type="checkbox" class="custom-control-input js-check-selected-row" checked="">
+          <label class="custom-control-label" for="customCheck1">
+            <span class="text-hide">Check</span>
+          </label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{%- endcall %}
+{% endmacro %}
+
+{% macro tables_search() %}
+{% call hljs.component() -%}
+<!-- Wrapper -->
+<div class="table-responsive" data-toggle="lists" data-lists-values='["name"]'>
+
+  <!-- Search -->
+  <div class="search-form search-form--light mb-3">
+    <input type="text" class="form-control search" placeholder="Search">
+    <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr>
+        <td class="name">John Doe</td>
+        <td>31</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{%- endcall %}
+{% endmacro %}
+
+{% macro tables_sort() %}
+{% call hljs.component() -%}
+<div class="table-responsive" data-toggle="lists" data-lists-values='["name", "age"]'>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <a href="javascript:void(0)" class="sort" data-sort="name">Name</a>
+        </th>
+        <th>
+          <a href="javascript:void(0)" class="sort" data-sort="name">Age</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr>
+        <td class="name">John Doe</td>
+        <td class="age">31</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{%- endcall %}
+{% endmacro %}

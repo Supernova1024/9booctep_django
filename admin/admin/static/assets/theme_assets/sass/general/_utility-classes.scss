@@ -1,0 +1,355 @@
+@import "../mixins/functions";
+@import "../../../vendor_assets/css/bootstrap/config.bs";
+
+//Border
+.b-light {
+    border: 1px solid $b-light;
+}
+
+.b-deep {
+    border: 1px solid $border-deep;
+}
+
+//Box Shadow
+.shadow1 {
+    box-shadow: 0px 5px 10px #9299B81A;
+}
+
+.shadow2 {
+    box-shadow: 0px 3px 5px #9299B80D;
+}
+
+//Radius
+.radius-xl {
+    border-radius: $border-radius-xl;
+}
+
+.radius-xs {
+    border-radius: $border-radius-xs;
+}
+
+.radius-md {
+    border-radius: $border-radius-md;
+}
+
+/* flex */
+.flex-1 {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+//Width Height
+
+.wh-18 {
+    width: 18px;
+    height: 18px;
+}
+
+.wh-20 {
+    width: 20px;
+    height: 20px;
+}
+
+.wh-24 {
+    width: 24px;
+    height: 24px;
+}
+
+.wh-25 {
+    width: 25px;
+    height: 25px;
+}
+
+.wh-26 {
+    width: 26px;
+    height: 26px;
+}
+
+.wh-30 {
+    width: 30px;
+    height: 30px;
+}
+
+.wh-32 {
+    width: 32px;
+    height: 32px;
+}
+
+.wh-36 {
+    width: 36px;
+    height: 36px;
+}
+
+.wh-38 {
+    width: 38px;
+    height: 38px;
+}
+
+.wh-34 {
+    width: 34px;
+    height: 34px;
+}
+
+.wh-40 {
+    width: 40px;
+    height: 40px;
+}
+
+.wh-42 {
+    width: 42px;
+    height: 42px;
+}
+
+.wh-44 {
+    width: 44px;
+    height: 44px;
+}
+
+.wh-46 {
+    width: 46px;
+    height: 46px;
+}
+
+.wh-48 {
+    width: 48px;
+    height: 48px;
+}
+
+.wh-50 {
+    width: 50px;
+    height: 50px;
+}
+
+.wh-60 {
+    width: 60px;
+    height: 60px;
+}
+
+.wh-70 {
+    width: 70px;
+    height: 70px;
+}
+
+.wh-80 {
+    width: 80px;
+    height: 80px;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-90 {
+    width: 90%;
+}
+.wh-100{
+    width: 100px;
+    height: 100px;
+}
+
+.w-100px{
+    width:100px
+}
+
+.wh-120 {
+    width: 120px;
+    height: 120px;
+}
+
+.wh-150 {
+    width: 150px;
+    height: 150px;
+}
+
+.svg-w-10 svg {
+    width: 10px;
+}
+
+.svg-w-12 svg {
+    width: 12px;
+}
+
+.svg-w-18 svg {
+    width: 18px;
+}
+
+.w-unset {
+    width: unset;
+}
+
+.h-unset {
+    height: unset;
+}
+
+//Font Size
+.fs-10 {
+    @include ofs(10px, null, null);
+}
+
+.fs-12 {
+    @include ofs(12px, null, null);
+}
+
+.fs-13 {
+    @include ofs(13px, null, null);
+}
+
+.fs-14 {
+    @include ofs(14px, null, null);
+}
+
+.fs-15 {
+    @include ofs(15px, null, null);
+}
+
+.fs-16 {
+    @include ofs(16px, null, null);
+}
+
+.fs-18 {
+    @include ofs(18px, null, null);
+}
+
+.fs-20 {
+    @include ofs(20px, null, null);
+}
+
+.fs-22 {
+    @include ofs(22px, null, null);
+}
+
+.fs-24 {
+    @include ofs(24px, null, null);
+}
+
+//Font Weight
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+//BG Color
+
+.cbg-light {
+    @extend .bg-lighter;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+//Border Radius
+.rounded-xl {
+    border-radius: 10px;
+}
+
+//Global Box Shadow
+
+.global-shadow {
+    box-shadow: 0px 5px 20px #9299B808;
+}
+
+//Global Line Height
+.lh-normal {
+    line-height: normal;
+}
+
+//Display
+.d-grid {
+    display: grid;
+}
+
+//Custom Badge
+.media-badge {
+    @extend .content-center;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    @include ofs(10px, lh(10px, 16px), 700);
+    display: inline-block;
+}
+
+//Other
+.text-normal {
+    @include ofs(15px, lh(15px, 26px), 400);
+}
+
+.text-small {
+    @include ofs(14px, lh(14px, 24px), 400);
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+.overflow-x-auto{
+    overflow-x: auto;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.mh-v-50 {
+    min-height: 50vh;
+}
+
+.gradient-color-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-control.box-shadow-none:focus,
+input.box-shadow-none {
+    box-shadow: none !important;
+}
+
+.space-nowrap {
+    white-space: nowrap;
+}
+
+.cursor-true{
+    cursor: pointer;
+}
+
+.h-100vh{
+    height: 100vh;
+}
+
+//custom button
+.btn-outline-lighten {
+    @extend .b-light;
+    @extend .color-gray;
+
+    @include e(height) {
+        height: 36px;
+    }
+}
+
+
+//default link hover
+a:hover {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @extend .color-primary;
+    }
+}
+
+//Custom column

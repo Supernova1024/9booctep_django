@@ -1,0 +1,139 @@
+// Modal Header
+.modal-header{
+    align-items: center;
+    button{
+        &.close{
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+// Modal Content
+.modal-content{
+    p{
+        font-size: 14px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .modal-footer{
+        padding: .625rem;
+        .btn{
+            &.btn-sm{
+                line-height: 2rem;
+            }
+        }
+    }
+    &.modal-colored{
+        .modal-title{
+            @extend .color-white;
+        }
+        .close{
+            svg,
+            i,
+            span{
+                @extend .color-white;
+            }
+        }
+        .modal-body{
+            p{
+                @extend .color-white;
+            }
+        }
+        .modal-footer{
+            .btn{
+                @extend .bg-white;
+                @extend .color-text;
+            }
+        }
+        .btn{
+            &:hover{
+                border-color: transparent;
+            }
+        }
+    }
+}
+// Modal Info
+.modal-info{
+    .modal-body{
+        padding-bottom: 10px;
+    }
+    .modal-footer{
+        padding: .5rem .5rem 1rem;
+        border-top: 0 none;
+    }
+}
+.modal-info-body{
+    .modal-info-icon{
+        margin: -2px 14px 0 0;
+        svg{
+            width: 22px;
+            @extend .color-info;
+        }
+        &.primary{
+            svg{
+                @extend .color-primary;
+            }
+        }
+        &.danger{
+            svg{
+                @extend .color-danger;
+            }
+        }
+        &.success{
+            svg{
+                @extend .color-success;
+            }
+        }
+        &.warning{
+            svg{
+                @extend .color-warning;
+            }
+        }
+    }
+    .modal-info-text{
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            margin-bottom: 10px;
+        }
+    }
+}
+// Modal Color
+.modal-content{
+    &.modal-bg-primary{
+        @extend .bg-primary;
+    }
+    &.modal-bg-success{
+        @extend .bg-success;
+    }
+    &.modal-bg-danger{
+        @extend .bg-danger;
+    }
+    &.modal-bg-warning{
+        @extend .bg-warning;
+    }
+}
+
+// Modal Button Group
+.modal-btn-group{
+    margin: -5px;
+    button{
+        margin: 5px;
+    }
+}
+
+/* note modal */
+#noteModal{
+    .close{
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+    textarea{
+        height: 110px;
+    }
+}

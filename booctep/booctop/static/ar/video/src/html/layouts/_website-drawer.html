@@ -1,0 +1,187 @@
+{% import 'components/avatar.html' as avatar %}
+
+<!-- drawer -->
+<div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+  <div class="mdk-drawer__content{% if layout === 'sticky' %} top-navbar{% endif %}">
+    <div class="sidebar {{ sidebar_class or 'sidebar-dark-dodger-blue' }} sidebar-left{% if layout === 'sticky' %} sidebar-p-t{% endif %}" data-perfect-scrollbar>
+
+      {% if not navbar_search and sidebar_search !== false %}
+      <div class="d-flex align-items-center navbar-height">
+        <form action="{{ prefix or ''}}index.html" class="search-form {{ drawer_search_class or 'search-form--black' }} mx-16pt pr-0 pl-16pt">
+          <input type="text" class="form-control pl-0" placeholder="Search">
+          <button class="btn" type="submit"><i class="material-icons">search</i></button>
+        </form>
+      </div>
+      {% endif %}
+
+      {% if layout !== 'sticky' %}
+      <a href="{{ prefix }}index.html" class="sidebar-brand {{ sidebar_brand_class or '' }}">
+        <!-- <img class="sidebar-brand-icon" src="{{ navbar_logo }}" alt="{{ brand }}"> -->
+        {{ avatar.component(title='<img src="' + navbar_logo + '" class="img-fluid" alt="logo" />', size='xl', class='sidebar-brand-icon h-auto', title_class='bg-primary', circle=false, element='span') }}
+        <span>{{ brand }}</span>
+      </a>
+      {% endif %}
+
+      {% if student_menu %}
+      <div class="sidebar-heading">Student</div>
+      <ul class="sidebar-menu">
+        {% include 'layouts/_student.sidebar-menu.html' %}
+      </ul>
+      <div class="sidebar-heading">Instructor</div>
+      <ul class="sidebar-menu">
+        {% include 'layouts/_instructor.sidebar-menu.html' %}
+      </ul>
+      {% endif %}
+
+      {% if instructor_menu %}
+      <div class="sidebar-heading">Instructor</div>
+      <ul class="sidebar-menu">
+        {% include 'layouts/_instructor.sidebar-menu.html' %}
+      </ul>
+      <div class="sidebar-heading">Student</div>
+      <ul class="sidebar-menu">
+        {% include 'layouts/_student.sidebar-menu.html' %}
+      </ul>
+      {% endif %}
+
+      {% if layout !== 'learnly' %}
+
+      <div class="sidebar-heading">Applications</div>
+      <ul class="sidebar-menu">
+        {% if not student_menu and not instructor_menu %}
+        <li class="sidebar-menu-item{% if student_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button js-sidebar-collapse" data-toggle="collapse" href="#student_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">school</span>
+            Student
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if student_menu %} show{% endif %} sm-indent" id="student_menu">
+            {% import 'layouts/_student.sidebar-menu.html' as student_menu_component %}
+            {{ student_menu_component.component(icons=false, prefix=prefix) }}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if instructor_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button js-sidebar-collapse" data-toggle="collapse" href="#instructor_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">format_shapes</span>
+            Instructor
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if instructor_menu %} show{% endif %} sm-indent" id="instructor_menu">
+            {% import 'layouts/_instructor.sidebar-menu.html' as instructor_menu_component %}
+            {{ instructor_menu_component.component(icons=false, prefix=prefix) }}
+          </ul>
+        </li>
+        {% endif %}
+        <li class="sidebar-menu-item{% if enterprise_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button js-sidebar-collapse" data-toggle="collapse" href="#enterprise_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">donut_large</span>
+            Enterprise
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if enterprise_menu %} show{% endif %} sm-indent" id="enterprise_menu">
+            {% include 'layouts/_enterprise.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if productivity_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#productivity_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">access_time</span>
+            Productivity
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if productivity_menu %} show{% endif %} sm-indent" id="productivity_menu">
+            {% include 'layouts/_productivity.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if ecommerce_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#ecommerce_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">shopping_cart</span>
+            eCommerce
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if ecommerce_menu %} show{% endif %} sm-indent" id="ecommerce_menu">
+            {% include 'layouts/_ecommerce.sidebar-menu.html' ignore missing %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if messaging_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#messaging_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">message</span>
+            Messaging
+            <span class="sidebar-menu-badge badge badge-accent badge-notifications ml-auto">2</span>
+            <span class="sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if messaging_menu %} show{% endif %} sm-indent" id="messaging_menu">
+            {% include 'layouts/_messaging.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if cms_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#cms_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">content_copy</span>
+            CMS
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if cms_menu %} show{% endif %} sm-indent" id="cms_menu">
+            {% include 'layouts/_cms.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if account_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#account_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+            Account
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if account_menu %} show{% endif %} sm-indent" id="account_menu">
+            {% include 'layouts/_account.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if community_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#community_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span>
+            Community
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if community_menu %} show{% endif %} sm-indent" id="community_menu">
+            {% include 'layouts/_community.sidebar-menu.html' %}
+          </ul>
+        </li>
+      </ul>
+
+      <div class="sidebar-heading">UI</div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item{% if components_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#components_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">tune</span>
+            Components
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if components_menu %} show{% endif %} sm-indent" id="components_menu">
+            {% include 'layouts/_components.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item{% if plugins_menu %} active open{% endif %}">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#plugins_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">folder</span>
+            Plugins
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse{% if plugins_menu %} show{% endif %} sm-indent" id="plugins_menu">
+            {% include 'layouts/_plugins.sidebar-menu.html' %}
+          </ul>
+        </li>
+        <li class="sidebar-menu-item">
+          <a class="sidebar-menu-button" data-toggle="collapse" href="#layouts_menu">
+            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">view_compact</span>
+            Layouts
+            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+          </a>
+          <ul class="sidebar-submenu collapse sm-indent" id="layouts_menu">
+            {% include 'layouts/_layouts.sidebar-menu.html' %}
+          </ul>
+        </li>
+      </ul>
+
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+<!-- // END drawer -->

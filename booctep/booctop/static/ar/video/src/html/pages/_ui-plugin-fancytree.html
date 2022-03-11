@@ -1,0 +1,185 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title=title, description='Fancytree is a JavaScript dynamic tree view plugin for jQuery with support for persistence, keyboard, checkboxes, tables, drag and drop, and lazy loading. Fancytree is a sequel of the popular DynaTree plugin.') %}
+    <div data-toggle="tree">
+      <ul style="display: none;">
+        <li>item1</li>
+        <li>item2</li>
+        <li class="folder">
+          Folder <em>with some</em> children
+          <ul>
+            <li>Sub-item 3.1
+              <ul>
+                <li>Sub-item 3.1.1</li>
+                <li>Sub-item 3.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 3.2
+              <ul>
+                <li>Sub-item 3.2.1</li>
+                <li>Sub-item 3.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="expanded">
+          Document with some children (expanded on init)
+          <ul>
+            <li class="active focused expanded">Sub-item 4.1 (expanded, active and focused on init)
+              <ul>
+                <li>Sub-item 4.1.1</li>
+                <li>Sub-item 4.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 4.2
+              <ul>
+                <li>Sub-item 4.2.1</li>
+                <li>Sub-item 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Multiple Selection') %}
+    <div data-toggle="tree" data-tree-checkbox data-tree-select="3">
+      <ul style="display: none;">
+        <li>item1</li>
+        <li class="selected">item2 (selected on init)</li>
+        <li class="folder">
+          Folder <em>with some</em> children
+          <ul>
+            <li>Sub-item 3.1
+              <ul>
+                <li>Sub-item 3.1.1</li>
+                <li>Sub-item 3.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 3.2
+              <ul>
+                <li>Sub-item 3.2.1</li>
+                <li>Sub-item 3.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="expanded">
+          Document with some children (expanded on init)
+          <ul>
+            <li class="expanded">
+              Sub-item 4.1 (expanded on init)
+              <ul>
+                <li class="selected">Sub-item 4.1.1 (selected on init)</li>
+                <li class="selected">Sub-item 4.1.2 (selected on init)</li>
+              </ul>
+            </li>
+            <li>Sub-item 4.2
+              <ul>
+                <li>Sub-item 4.2.1</li>
+                <li>Sub-item 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Single Selection') %}
+    <div data-toggle="tree" data-tree-checkbox data-tree-select="1">
+      <ul style="display: none;">
+        <li>item1</li>
+        <li class="selected">item2 (selected on init)</li>
+        <li class="folder">
+          Folder <em>with some</em> children
+          <ul>
+            <li>Sub-item 3.1
+              <ul>
+                <li>Sub-item 3.1.1</li>
+                <li>Sub-item 3.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 3.2
+              <ul>
+                <li>Sub-item 3.2.1</li>
+                <li>Sub-item 3.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="expanded">
+            Document with some children (expanded on init)
+            <ul>
+              <li class="expanded">Sub-item 4.1 (expanded on init)
+                <ul>
+                  <li>Sub-item 4.1.1</li>
+                  <li>Sub-item 4.1.2</li>
+                </ul>
+              </li>
+              <li>Sub-item 4.2
+                <ul>
+                  <li>Sub-item 4.2.1</li>
+                  <li>Sub-item 4.2.2</li>
+                </ul>
+              </li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  {% endcall %}
+
+  {% call panel.component(title='Drag & Drop') %}
+    <div data-toggle="tree" data-tree-dnd>
+      <ul style="display: none;">
+        <li>item1</li>
+        <li class="selected">item2 (selected on init)</li>
+        <li class="folder">
+          Folder <em>with some</em> children
+          <ul>
+            <li>Sub-item 3.1
+              <ul>
+                <li>Sub-item 3.1.1</li>
+                <li>Sub-item 3.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 3.2
+              <ul>
+                <li>Sub-item 3.2.1</li>
+                <li>Sub-item 3.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="expanded">
+          Document with some children (expanded on init)
+          <ul>
+            <li class="expanded">Sub-item 4.1 (expanded on init)
+              <ul>
+                <li>Sub-item 4.1.1</li>
+                <li>Sub-item 4.1.2</li>
+              </ul>
+            </li>
+            <li>Sub-item 4.2
+              <ul>
+                <li>Sub-item 4.2.1</li>
+                <li>Sub-item 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  {% endcall %}
+</div>

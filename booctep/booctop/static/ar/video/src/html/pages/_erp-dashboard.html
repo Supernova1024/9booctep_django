@@ -1,0 +1,287 @@
+{% import 'components/category-overview-card.html' as category_overview_card %}
+{% import 'components/events-card.html' as events_card %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="row mb-lg-8pt">
+      <div class="col-md-6">
+        
+        <div class="page-separator">
+          <div class="page-separator__text">Announcements</div>
+        </div>
+
+        {% set items = [
+          {
+            month: 'FEB',
+            day: 18,
+            title: 'Promotional Advertising Specialty',
+            description: 'Differentiate and you stand out in a crowded marketplace. Present your uniqueness and ...'
+          },
+          {
+            month: 'FEB',
+            day: 17,
+            title: 'Rebranding Strategy',
+            description: 'A good logo works in the simplest form. It is a memorable representation of your brand and ...'
+          },
+          {
+            month: 'FEB',
+            day: 11,
+            title: 'Promotional Advertising Specialty',
+            attachment: true
+          }
+        ] %}
+
+        {{ events_card.component(
+          title='Latest Announcements',
+          count=3,
+          items=items,
+          alert=true
+        ) }}
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="page-separator">
+          <div class="page-separator__text">Accounting</div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header p-0 nav">
+            <div class="row no-gutters flex" role="tablist">
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">$4.1k</div>
+                  <div class="flex">
+                    <p class="card-title">Cash</p>
+                    <p class="card-subtitle text-50">This week</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto border-left">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">$67k</div>
+                  <div class="flex">
+                    <p class="card-title">Savings</p>
+                    <p class="card-subtitle text-50">Bank account</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto ml-sm-auto">
+                <div class="p-card-header"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="legend" class="chart-legend mt-0 mb-24pt justify-content-start"></div>
+            <div class="chart" style="height: 182px;">
+              <canvas 
+                id="earningsChart"
+                class="chart-canvas js-update-chart-bar" 
+                data-chart-legend="#legend"
+                data-chart-line-background-color="primary,gray"
+                data-chart-prefix="$"
+                data-chart-suffix="k">
+                <span style="font-size: 1rem;"><strong>Views</strong> area chart goes here.</span>
+              </canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header p-0 nav border-0">
+            <div class="row no-gutters flex" role="tablist">
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">$75k</div>
+                  <div class="flex">
+                    <p class="card-title mb-4pt">Income</p>
+                    <p class="text-50 mb-0 d-flex align-items-center">
+                      <i class="indicator-line rounded bg-gray"></i>
+                      <!-- <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i> -->
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div class="p-card-header d-flex align-items-center">
+                  <div class="h2 mb-0 mr-3">$36k</div>
+                  <div class="flex">
+                    <p class="card-title mb-4pt">Expense</p>
+                    <p class="text-50 mb-0 d-flex align-items-center">
+                      <i class="indicator-line rounded bg-primary"></i>
+                      <!-- <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i> -->
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto ml-sm-auto">
+                <div class="p-card-header"><a href="#"><i class="material-icons text-50">more_horiz</i></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body position-relative o-hidden p-0">
+            <div class="chart z-0" style="height: 110px;">
+              <canvas 
+                id="viewsChart"
+                class="chart-canvas js-update-chart-line-2nd-accent"
+                data-chart-line-border-color="primary,gray"
+                data-chart-suffix=" views"
+                data-chart-hide-axes="true"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        
+        <div class="page-separator">
+          <div class="page-separator__text">HR</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Employees',
+              count=65,
+              class='mb-md-0',
+              list=[{
+                title: 'In-time',
+                count: 60,
+                percent: 91,
+                class: 'bg-accent'
+              }, {
+                title: 'Late',
+                count: 15,
+                percent: 22,
+                class: 'bg-primary'
+              }, {
+                title: 'Absents',
+                count: 4,
+                percent: 5,
+                class: 'bg-warning'
+              }, {
+                title: 'Out on Vacation',
+                count: 1,
+                percent: 1.06,
+                class: 'bg-warning'
+              }],
+              cta_label='View employees'
+            ) }}
+
+          </div>
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Departments',
+              count=12,
+              class='mb-md-0',
+              list=[{
+                title: 'Human Resources',
+                count: 2,
+                percent: 7,
+                class: 'bg-primary'
+              }, {
+                title: 'Entrepreneurship',
+                count: 8,
+                percent: 29,
+                class: 'bg-primary'
+              }, {
+                title: 'Operations',
+                count: 7,
+                percent: 25,
+                class: 'bg-primary'
+              }, {
+                title: 'Engineering',
+                count: 10,
+                percent: 37,
+                class: 'bg-primary'
+              }],
+              cta_label='View departments'
+            ) }}
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        
+        <div class="page-separator">
+          <div class="page-separator__text">CRM</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Contacts',
+              count=130,
+              class='mb-md-0',
+              list=[{
+                title: 'Customers',
+                count: 70,
+                percent: 53,
+                class: 'bg-primary'
+              }, {
+                title: 'Leads',
+                count: 21,
+                percent: 16,
+                class: 'bg-primary'
+              }, {
+                title: 'Opportunities',
+                count: 12,
+                percent: 9,
+                class: 'bg-primary'
+              }, {
+                title: 'Subscribers',
+                count: 27,
+                percent: 20,
+                class: 'bg-primary'
+              }],
+              cta_label='View contacts'
+            ) }}
+
+          </div>
+          <div class="col-md-6">
+
+            {{ category_overview_card.component(
+              title='Companies',
+              count=53,
+              class='mb-md-0',
+              list=[{
+                title: 'Customers',
+                count: 20,
+                percent: 37,
+                class: 'bg-primary'
+              }, {
+                title: 'Leads',
+                count: 12,
+                percent: 22,
+                class: 'bg-primary'
+              }, {
+                title: 'Opportunities',
+                count: 7,
+                percent: 13,
+                class: 'bg-primary'
+              }, {
+                title: 'Subscribers',
+                count: 14,
+                percent: 26,
+                class: 'bg-primary'
+              }],
+              cta_label='View companies'
+            ) }}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

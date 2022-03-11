@@ -1,0 +1,456 @@
+{% extends "teacher/base.html" %}
+
+{% block title %}
+    New course
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <!-- Quill Theme -->
+    <link type="text/css" href="{% static 'teacher/assets/css/quill.css' %}" rel="stylesheet">
+    <!-- Select2 -->
+    <link type="text/css" href="{% static 'teacher/assets/css/select2.css' %}" rel="stylesheet">
+
+    <link type="text/css" href="{% static 'teacher/assets/vendor/select2/select2.min.css' %}" rel="stylesheet">
+
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{% static 'teacher/assets/css/sweetalert.css' %}">
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Add New Course" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <div class="progress rounded-0" style="height: 4px;">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="37" aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+    <!-- // END Header -->
+    <div class="page-section border-bottom-2">
+        <div class=" page__container" style="height: 100vh !important;">
+            <div class="row">
+                <div class="col-md-8" id="group_section">
+                    <div class="page-separator">
+                        <div class="page-separator__text">Step 3</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body media" style="height: 55px !important;">
+
+                            <b style="font-size: medium;">Course Quiz</b>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <a href="#" class="btn btn-primary mr-4" onclick="addCourse()">Add course</a>
+                            {% if course.approval_status != 2 %}
+                                <a href="#" class="btn btn-accent" onclick="saveLater()">Save for later</a>
+                            {% endif %}
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex">
+                                <a class="flex" href="#"><strong>Save Draft</strong></a>
+                                <i class="material-icons text-muted">check</i>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="text-primary" style="cursor: pointer;"
+                                   onclick="$('#prevStep').submit()"><strong>Go back to Edit previous page</strong></a>
+                            </div>
+                            <form action="/teacher/add_course/?step=2" method="post" id="prevStep">
+                                {% csrf_token %}
+                                <input type="hidden" name="course" value="{{ course_id }}">
+                            </form>
+                            <div class="list-group-item">
+                                <a class="text-danger" onclick="showDelModal()"><strong>Delete Course</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#            <a href="#" class="btn btn-outline-secondary mt-3 mb-sm-0" id="add_section">Add Question</a>#}
+        </div>
+    </div>
+    <form action="/teacher/add_course/?step=4" method="post" id="nextStep">
+        {% csrf_token %}
+        <input type="hidden" name="course" value="{{ course_id }}">
+    </form>
+{% endblock %}
+
+{% block modal %}
+    <div class="modal fade overflow-hidden" id="modal-add-question" tabindex="1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 800px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="page-section" style="display: block;">
+                        <form action="" id="form-question">
+                            <h4>Add a new question</h4>
+                            <div class="card--connect pb-32pt pb-lg-64pt">
+                                <div class="card o-hidden mb-0">
+                                    <div class="card-body table--elevated">
+                                        <div class="form-group m-0" role="group" aria-labelledby="label-title">
+                                            <b style="font-size:medium;">Ask your question
+                                                <i class="fa fa-question"></i>
+                                            </b>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-md-12 mt-2">
+                                                    <input id="question_title" type="text"
+                                                           placeholder="Ask Your question ..." class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="question_no" value="">
+                            <div class="list-group" id="answerToList">
+                                {% for i in "1234" %}
+                                    <div class="list-group-item">
+                                        <div role="group" aria-labelledby="label-question" class="m-0 form-group">
+                                            <div class="form-row">
+                                                <label id="label-question" for="question"
+                                                       class="col-md-3 col-form-label form-label">Add Answer</label>
+                                                <div class="col-md-9">
+                                                    <select id="answer_{{ i }}"
+                                                            class="form-control custom-select w-auto mb-2"
+                                                            onchange="answerChange(this)">
+                                                        <option value="false">wrong</option>
+                                                        <option value="true">correct</option>
+                                                    </select>
+                                                    <textarea id="content_{{ i }}" placeholder="Add your answer here..."
+                                                              rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn-accent" onclick="addQuestion()">Add Question</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'teacher/assets/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/select2.js' %}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'teacher/assets/vendor/sweetalert.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/sweetalert.js' %}"></script>
+
+    <!-- Quill -->
+    <script src="{% static 'teacher/assets/vendor/quill.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/quill.js' %}"></script>
+    <script>
+        let question_list = [];
+        let section_list = [];
+        let key = 0;
+        let section_id = '{{ section.id }}'
+        var course_id = '{{ course_id }}';
+        $(document).ready(function () {
+
+            if (course_id != '') {
+                localStorage.setItem('course_id', course_id);
+            }
+
+            question_list1 = JSON.parse("{{ question_list|escapejs }}")
+            console.log("question_list::", question_list1)
+            addSection(1)
+
+            question_list1.forEach((item) => {
+                question_list.push({
+                    title: item.fields.title,
+                    content: item.fields.content,
+                    answer: item.fields.answer,
+                    section_id: section_id
+                })
+            })
+
+            let idx = 0
+            question_list.forEach((ele) => {
+                let element = "#standard";
+                let html = `
+            <li class="accordion__menu-link" onclick="editQuestion(` + idx + `)">
+                <span class="material-icons icon-16pt icon--left text-body">hourglass_empty</span>
+                <a class="flex">` + ele.title + `</a>
+                <span class="text-muted">Single Answer</span>
+            </li>
+            `;
+                $(element).before(html);
+                idx++;
+            })
+        });
+
+        function showDelModal() {
+            swal({
+                title: "Delete course",
+                text: "Are you sure delete course",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                inputPlaceholder: "Type here..."
+            }, (inputValue) => {
+                course_id = localStorage.getItem('course_id');
+                if (course_id == '') {
+
+                } else {
+                    url = '/deleteCourse/';
+                    $.post(url, {id: course_id}, function (data) {
+                        swal("Deleteed Successfully!", "", "success");
+                        setTimeout(() => {
+                            location.href = "/teacher/courses/";
+                        }, 1000)
+                    })
+                }
+            });
+        }
+
+        // store course
+        const saveLater = () => {
+            let url = "/store-course_3/";
+            let form_data = new FormData();
+            form_data.append("course_id", localStorage.getItem('course_id'));
+            form_data.append("section_id", section_id);
+            form_data.append("question_list", JSON.stringify(question_list));
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+                .then(response => {
+                    let message = response.msg;
+                    console.log("Stored section group successfully", message);
+                    if (message == "success") {
+                        document.location.href = '/teacher/courses/'
+                    }
+                })
+                .catch(error => console.error(error));
+        };
+
+        const addCourse = () => {
+            let url = "/store-course_3/";
+            if (question_list.length < 5) {
+                swal({
+                    title: "Warning!!",
+                    text: "You must add more than 5 Questions!!",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+            let form_data = new FormData();
+            form_data.append("course_id", localStorage.getItem('course_id'));
+            form_data.append("section_id", section_id);
+            {#form_data.append("section_list", JSON.stringify(section_list));#}
+            form_data.append("question_list", JSON.stringify(question_list));
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+                .then(response => {
+                    let message = response.msg;
+                    console.log("Stored section group successfully", message);
+                    if (message == "success") {
+                        $("#nextStep").submit()
+                    }
+                })
+                .catch(error => console.error(error));
+        };
+
+        const answerChange = (obj) => {
+            //check if there is right answer
+            let key = 0;
+            for (var i = 1; i <= 4; i++) {
+                if ($('#answer_' + i).val() == "true") {
+                    key++;
+                }
+            }
+            if (key > 1) {
+                swal({
+                    title: "Warning!!",
+                    text: "You must only one correct answer",
+                    closeOnConfirm: false,
+                });
+
+                if ($(obj).val() == "true")
+                    $(obj).val("false")
+                else
+                    $(obj).val("true")
+            }
+        };
+
+        // add question
+
+        const validateQuestion = () => {
+
+        }
+
+        const addQuestion = () => {
+            let content = '', answer = '', title = ''
+            let flag = true;
+            for (let i = 1; i <= 4; i++) {
+                content = $('#content_' + i).val()
+                if (content == undefined || content == "") {
+                    flag = false;
+                    break;
+                }
+            }
+            title = $('#question_title').val()
+            if (title == undefined || title == '')
+                flag = false;
+            if (flag == false) {
+                swal({
+                    title: "Warning!!",
+                    text: "You must fill all fields",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+            let cnt = 0;
+            for (let i = 1; i <= 4; i++) {
+                if ($('#answer_' + i).val() == "true")
+                    cnt++;
+            }
+            if (cnt != 1) {
+                swal({
+                    title: "Warning!!",
+                    text: "You must only one correct answer",
+                    closeOnConfirm: false,
+                });
+                return;
+            }
+
+            content = '', answer = '', title = '';
+            for (let i = 1; i <= 4; i++) {
+                content += $("#content_" + i).val();
+                content += ","
+                answer += $("#answer_" + i).val()
+                answer += ","
+            }
+            question_no = $('#question_no').val()
+            console.log("question_no ", question_no)
+
+            title = $("#question_title").val()
+            if (question_no == '') {
+                question_list.push({
+                    title: title,
+                    content: content,
+                    answer: answer,
+                    section_id: section_id,
+                })
+                let element = "#standard";
+                let length = question_list.length;
+                let html = `
+            <li class="accordion__menu-link" onclick="editQuestion(` + length + `)">
+                <span class="material-icons icon-16pt icon--left text-body">hourglass_empty</span>
+                <a class="flex">` + title + `</a>
+                <span class="text-muted">Single Answer</span>
+            </li>
+            `;
+                $(element).before(html);
+            } else {
+                question_list[question_no].title = title
+                question_list[question_no].content = content
+                question_list[question_no].answer = answer
+                $($('#question-list-1').children()[question_no]).find("a").html(title)
+            }
+
+            $("#modal-add-question").modal('hide');
+            for (let i = 1; i <= 4; i++) {
+                $('#content_' + i).val('')
+                $('#answer_' + i).val('false')
+            }
+            $('#question_title').val('')
+        }
+
+        const editQuestion = (idx) => {
+            $("#modal-add-question").modal('show');
+            let question = question_list[idx]
+            title = question['title']
+            content = question['content'].split(',')
+            answer = question['answer'].split(',')
+            $('#question_title').val(title)
+            $('#question_no').val(idx)
+            for (let i = 1; i <= 4; i++) {
+                $('#content_' + i).val(content[i - 1])
+                $('#answer_' + i).val(answer[i - 1])
+            }
+        }
+
+        // add section
+        const addSection = (new_id) => {
+            let html = `
+        <ul class="mt-3 accordion accordion--boxed js-accordion mb-0" style="border-radius: 0 !important;" id="toc-` + new_id + `">
+            <li class="accordion__item open">
+                <div class="accordion__toggle" data-toggle="collapse" data-parent="#toc-` + new_id + `" href="#question-list-` + new_id + `">
+
+                    <div id="swal-confirm-delete" class="d-none" data-swal-type="success" data-swal-title="Thanks You!" data-swal-text="You can change your ratings anytime"></div>
+    
+                    <div id="swal-cancel-delete" class="d-none" data-swal-type="error" data-swal-title="Cancelled" data-swal-text="Your imaginary file is safe :)"></div>
+                </div>
+                <div class="accordion__menu">
+                    <ul class="list-unstyled collapse show" id="question-list-` + new_id + `">
+                        <li class="accordion__menu-link" style="padding-left: 40% !important;padding: 25px 0;" id="standard">
+                            <a class="custom-file custom-file-naked d-flex" data-toggle="modal" data-target="#modal-add-question" onclick="onAddNewQuestion(` + new_id + `)">
+                                <b> Add new question</b>
+                                    <i class="material-icons" style="font-size: x-large !important;">add</i>
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>  
+        `;
+            $('#group_section').append(html);
+        };
+
+        // when open new question modal
+        const onAddNewQuestion = (section_id) => {
+            $('input[name="section_id"]').val(section_id);
+        };
+
+        function changeProblemType(obj) {
+            type = $(obj).val();
+            if (type == 'aw-multi' || type == 'aw-dragula') {
+                $('#addItem').css('display', 'inline');
+            } else {
+                $('#addItem').css('display', 'none');
+            }
+
+            key = 1;
+            $('#answerToList').children().each(function () {
+                if (key > 1) {
+                    $(this).remove();
+                }
+                key++;
+            })
+            $('#problem_count').val('0');
+        }
+
+
+    </script>
+{% endblock %}

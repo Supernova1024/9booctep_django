@@ -1,0 +1,239 @@
+{% import 'components/hljs.html' as hljs %}
+
+{% macro charts_line_init() %}
+{% call hljs.component() -%}            
+<div class="chart">
+  <canvas 
+    id="performanceChart" 
+    class="chart-canvas"
+    data-chart-line-border-color="primary"
+    data-chart-prefix="$"
+    data-chart-suffix="k"></canvas>
+</div>
+
+<script>
+  Charts.create('#performanceChart', 'line', options, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_area_init() %}
+{% call hljs.component() -%}            
+<div class="chart">
+  <canvas 
+    id="performanceAreaChart" 
+    class="chart-canvas"
+    data-chart-line-border-color="primary"
+    data-chart-line-background-color="primary"
+    data-chart-line-background-opacity="0.24"
+    data-chart-prefix="$"
+    data-chart-suffix="k"></canvas>
+</div>
+
+<script>
+  Charts.create('#performanceAreaChart', 'area', options, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_line_data() %}
+{% call hljs.component() -%}
+<script>
+  var data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Performance",
+      data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40]
+    }]
+  }
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_progress_init() %}
+{% call hljs.component() -%}            
+<div class="position-relative">
+  <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+    <small>23%</small>
+  </div>
+  <canvas 
+    width="48" 
+    height="48" 
+    class="chart-canvas position-relative z-1" 
+    id="lateProgressChart"
+    data-chart-line-background-color="accent;gray"
+    data-chart-disable-tooltips="true"></canvas>
+</div>
+
+<script>
+  Charts.create('#lateProgressChart', 'doughnut', {
+    cutoutPercentage: 85,
+    aspectRatio: 1,
+    responsive: false,
+    maintainAspectRatio: false
+  }, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_progress_data() %}
+{% call hljs.component() -%}
+<script>
+  var data = {
+    datasets: [{
+      data: [30, 70],
+      borderWidth: 0
+    }]
+  }
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_doughnut_init() %}
+{% call hljs.component() -%}            
+<div class="row">
+  <div class="col-7">
+    <div class="position-relative" style="height: 250px;">
+      <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+        <h3 class="mb-0">38%</h3>
+        <small class="text-uppercase">Desktop</small>
+      </div>
+      <canvas 
+        id="devicesChart" 
+        class="chart-canvas"
+        data-chart-line-background-color="primary.500;accent.300;accent.100"
+        data-chart-legend="#devicesChartLegend"
+        data-chart-suffix="%"></canvas>
+    </div>
+  </div>
+  <div class="col-5 d-flex">
+    <div id="devicesChartLegend" class="chart-legend chart-legend--vertical my-auto w-100"></div>
+  </div>
+</div>
+
+<script>
+  Charts.create('#devicesChart', 'doughnut', options, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_doughnut_data() %}
+{% call hljs.component() -%}
+<script>
+  var data = {
+    labels: ["Desktop", "Tablet", "Mobile"],
+    datasets: [{
+      data: [60, 25, 15],
+      hoverBorderColor: settings.colors.white
+    }]
+  }
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_bar_init() %}
+{% call hljs.component() -%}            
+<div class="chart">
+  <canvas 
+    id="ordersChart" 
+    class="chart-canvas"
+    data-chart-line-background-color="primary"
+    data-chart-prefix="$"
+    data-chart-suffix="k"></canvas>
+</div>
+
+<script>
+  Charts.create('#ordersChart', 'roundedBar', options, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_bar_data() %}
+{% call hljs.component() -%}
+<script>
+  var data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Sales",
+      data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
+    }]
+  }
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_custom_checkbox_toggle() %}
+{% call hljs.component() -%}
+<div class="custom-control custom-checkbox-toggle">
+  <input 
+    id="chart-switch-toggle"
+    type="checkbox"
+    class="custom-control-input"
+    role="switch"
+    data-toggle="chart" 
+    data-target="#ordersChart" 
+    data-add='{
+      "data":{
+        "datasets":[{
+          "data":[15,10,20,12,7,0,8,16,18,16,10,22],
+          "backgroundColor":"#f75c7f",
+          "label":"Affiliate",
+          "barThickness":20
+        }]
+      }
+    }'
+    checked="">
+  <label 
+    class="custom-control-label" 
+    for="chart-switch-toggle">
+    <span class="sr-only">Show affiliate</span>
+  </label>
+</div>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_radar_init() %}
+{% call hljs.component() -%}
+<div class="chart">
+  <canvas 
+    id="topicIqChart" 
+    class="chart-canvas"
+    data-chart-points="true"
+    data-chart-suffix=" points"></canvas>
+</div>
+
+<script>
+  Charts.create('#topicIqChart', 'radar', options, data)
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_radar_data() %}
+{% call hljs.component() -%}
+<script>
+  var data = {
+    labels: ["JavaScript", "HTML", "Flinto", "Vue.js", "Sketch", "Priciple", "CSS", "Angular"],
+    datasets: [{
+      label: "Experience IQ",
+      data: [30, 35, 33, 32, 31, 30, 28, 36],
+      pointHoverBorderColor: settings.colors.accent[400],
+      pointHoverBackgroundColor: settings.colors.white
+    }]
+  }
+</script>
+{%- endcall %}
+{% endmacro %}
+
+{% macro charts_scripts(rounded_bar=false) %}
+{% call hljs.component() -%}
+<!-- Global Settings -->
+<script src="assets/js/settings.js"></script>
+
+<!-- Chart.js Library -->
+<script src="assets/vendor/Chart.min.js"></script>
+
+<!-- Chart.js Wrapper -->
+{% if rounded_bar %}<script src="assets/js/chartjs-rounded-bar.js"></script>
+{% endif %}<script src="assets/js/chartjs.js"></script>
+{%- endcall %}
+{% endmacro %}

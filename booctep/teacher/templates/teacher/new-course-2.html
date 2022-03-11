@@ -1,0 +1,1024 @@
+{% extends "teacher/base.html" %}
+
+{% block title %}
+    New course
+{% endblock %}
+
+{% block head %}
+    {% load static %}
+    <!-- Quill Theme -->
+    <link type="text/css" href="{% static 'teacher/assets/css/quill.css' %}" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link type="text/css" href="{% static 'teacher/assets/css/select2.css' %}" rel="stylesheet">
+
+    <link type="text/css" href="{% static 'teacher/assets/vendor/select2/select2.min.css' %}" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="{% static 'teacher/assets/css/sweetalert.css' %}">
+{% endblock %}
+
+{% block headercontent %}
+    {% with title="Add New Course" %}
+        {% include "./layout/header.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+
+
+
+
+    <style>
+ 
+        .backgg{
+               background-color: #e8f4ff !important;
+           }
+           .backgg-dark{
+               background-color: #4c525e !important;
+           }
+       
+               .card-header{
+                      background-color: rgb(225, 235, 247) !important;
+                      border: 1px solid rgb(196, 206, 218) !important;
+                  }
+                  .card-header-dark{
+                      background-color: rgb(25, 32, 41) !important;
+                      border: 0 !important;
+                  }
+                  .carddy{
+                      background-color: rgb(247, 247, 247) !important;
+                  }
+                  .card-dark{
+                      background-color: rgb(33, 41, 51) !important;
+                      border: 0 !important;
+                  }
+              
+              .btn-primary{
+                  background-color: rgb(33, 150, 243)!important;
+                  color: rgb(254, 254, 255);
+                  border: 1px solid rgb(20, 71, 167) !important;
+              }
+              
+              .btn-primary-dark{
+                  background-color: #323741 !important;
+                  color: rgb(199, 199, 199) !important;
+                  border: 1px solid  #21242b !important;
+                  box-shadow: none !important;
+               } 
+               
+               .accordion-dark{
+                   background-color: rgb(24, 30, 41) !important;
+                   border: 1px solid rgb(15, 19, 27) !important;
+               }
+              
+              
+              .blllu{
+                      color: rgb(57, 137, 241) !important;
+                      margin-right: 8px !important; 
+                  } 
+                  .blllu-dark{
+              
+                      color: rgb(177, 200, 230) !important;
+                      margin-right: 8px !important;
+                  }
+              
+               
+              
+              
+              .bllu{
+                      color: rgb(57, 137, 241) !important;
+                  } 
+                  .bllu-dark{
+              
+                      color: rgb(177, 200, 230) !important;
+                  }
+              
+              
+              .form-control-dark{
+                  background-color: #323741 !important;
+                  border: 1px solid  #0f1013 !important;
+                  color: rgb(199, 199, 199) !important;
+              }
+              
+              .carousel-item{
+                  background-color: rgb(18, 76, 163) !important;
+              }
+              
+              .carousel-item-dark{
+                  background-color: rgb(136, 145, 168) !important;
+              }
+              
+              
+              h3.mediabout{
+                  color: rgb(214, 223, 231) !important;
+              }
+              
+              h3.mediabout-dark{
+                 color: rgb(42, 51, 65) !important;
+              }
+              
+              strong.mediabout{
+                  color: rgb(214, 223, 231) !important;
+              }
+              
+              strong.mediabout-dark{
+                 color: rgb(186, 193, 204) !important;
+              }
+              
+              p.mediabout{
+                  color: rgb(188, 216, 240) !important;
+              }
+              
+              p.mediabout-dark{
+                 color: rgb(42, 51, 65) !important;
+              }
+              
+              a.mediabout{
+                  background-color: rgb(207, 228, 245) !important;
+                  border: 1px solid #0d2150 !important;
+                  color: rgb(11, 41, 68) !important;
+              }
+              
+              a.mediabout-dark{
+                 background-color: rgb(42, 51, 65) !important;
+                 color: rgb(204, 213, 221) !important;
+              }
+              
+              
+              .mediabout{
+                  color: rgb(214, 223, 231) !important;
+              }
+              
+              .mediabout-dark{
+                 color: rgb(100, 152, 248) !important;
+              }
+              
+                
+              [dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6, [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6{
+                 color: none !important;
+              }
+              
+              
+                      
+              .btn-primary{
+                  background-color: rgb(37, 148, 192) !important;
+                  color: rgb(254, 254, 255);
+                  border: 1px solid rgb(23, 104, 136) !important;
+              }
+                      
+              .btn-primary-dark{
+                  background-color: #323741 !important;
+                  color: rgb(199, 199, 199) !important;
+                  border: 1px solid  #21242b !important;
+                  box-shadow: none !important;
+              }
+                      
+              th,td {
+                  text-align: center !important;
+                  border-top: 1px solid rgb(25, 25, 29)
+              }
+              
+              .table thead{
+                  height: 65px !important;
+              }
+              
+              .tehead{
+                  background-color: rgb(197, 223, 235) !important;
+                  border-top: 0!important;
+                  border-bottom: 0 !important;
+              }
+              
+              .table .tehead {
+                      
+              }
+                  
+              .tehead-dark{
+                  background-color: rgb(33, 41, 51) !important;
+                  border-top: 1px solid rgb(24, 31, 36) !important;
+                  border-bottom: 1px solid rgb(24, 31, 36) !important;
+              }
+              
+              
+              .flllot{
+                  float: left !important;
+              }
+              
+              
+              .card-footer-dark{
+                  background-color: rgb(26, 28, 34) !important;
+                  border: 1px solid rgb(9, 10, 12) !important;
+              }
+                  
+              
+              .bgk{
+                  background-color: #fff !important;
+              }
+              .bgk-dark{
+                  background-color: rgb(185, 197, 206) !important;
+              }
+              
+              [dir="ltr"] .table td, [dir="ltr"] .table th{
+                  border: 0 !important;
+              
+              }
+              
+              a.disabled{
+                  cursor: not-allowed !important;
+              }
+              
+              .card-header:first-child{
+                  border-radius: 0 !important;
+              }
+              
+              
+              .card-footer-dark{
+                  background-color: rgb(33, 41, 51) !important;
+                  border: 1px solid rgb(9, 10, 12) !important;
+              }
+                  
+              .progress .bg-primary{
+                  background-color: rgb(45, 95, 189) !important;
+                  border-radius: 0 !important;
+              }
+              
+              .progress .bg-primary-dark{
+                  background-color: rgb(189, 209, 245) !important;
+                  border-radius: 0 !important;
+              }
+              
+              .card .bg-primary{
+                  background-color: rgb(45, 95, 189) !important;
+                  border-radius: 0 !important;
+                  font-size: 11px !important;
+              }
+              
+              .card .bg-primary-dark{
+                  background-color: rgb(13, 16, 22) !important;
+                  border-radius: 0 !important;
+              }
+              
+              .progress{
+                  border-radius: 0 !important;
+              }
+              
+       
+       .selecttt-dark{
+           background-color: rgb(165, 172, 189) !important;
+           border: 1px solid rgb(123, 129, 145) !important;
+           color: #22293f !important;
+       }
+
+       .accordion{
+           border: 0 !important;
+           border-radius: 5px !important;
+       }
+       .accordion__item{
+           border-radius: 5px !important;
+       }
+       [dir="ltr"] .accordion--boxed .accordion__item{
+           background-color: transparent !important;
+           border: 0 !important;
+           border-radius: 5px !important;
+       }
+       .accordion__menu-dark{
+           background-color: rgb(58, 98, 117);
+       }
+              </style>    
+              
+
+    <div class="progress rounded-0" style="height: 4px;">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%;" aria-valuenow="37" aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+    <!-- // END Header -->
+    
+    <div class=" page__container " style="margin-top: 0px;height: 100% !important;">
+        <div class="row">
+                <div class="col-md-8" id="group_section">
+
+                    <div class="page-separator">
+                        <div class="page-separator__text mediabout mediabout-dark backgg backgg-dark">Step 2</div>
+                    </div>
+
+                    <div class="card divider">
+                        <div class="card-body media" style="height: 55px !important;">
+                            <b style="font-size: medium;" class="mediabout mediabout-dark">Course curriulum</b>
+                        </div>
+                    </div>
+
+                    <div id="group_section1">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header card-header-dark text-center" style="border-radius: 5px !important;">
+                            <a href="#" class="btn btn-primary mr-4" onclick="addCourse()">Add course</a>
+                            {% if course.approval_status != 2 %}
+                                <a href="#" class="btn " style="background: rgb(224, 127, 127);" onclick="saveLater()">Save for later</a>
+                            {% endif %}
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex" style="border-bottom: 1px solid rgb(19, 27, 41);">
+                                <a class="flex" href="#"><b class="blllu blllu-dark flllot">Save Draft</b></a>
+                                <i class="material-icons text-muted">check</i>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="" style="cursor: pointer;color: rgb(147, 173, 223); border-bottom: 1px solid rgb(19, 27, 41);"
+                                   onclick="$('#prevStep').submit()"><strong>Go back to Edit previous page</strong></a>
+                            </div>
+                            <form action="/teacher/add_course/?step=1" method="post" id="prevStep">
+                                {% csrf_token %}
+                                <input type="hidden" name="course" value="{{ course_id }}">
+                            </form>
+                            <div class="list-group-item" style="border-top: 0 !important;">
+                                <a class="text-danger" onclick="showDelModal()"><strong>Delete Course</strong></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        </div>
+        <a class="btn btn-primary btn-primary-dark" style="margin-bottom: 330px !important;margin-top: 40px !important;" id="add_section">Add Section</a>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true" style="padding-top: 12%;">
+        <input type="hidden" id="commentDeleteId" value="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background: white; padding: 30px;border: 1px solid #ccc;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="formModal" style="text-align:center;">Do you really want to delete?</h4>
+                    <button style=" float: right; margin-top: -30px; margin-bottom: 10px;outline: none; background: no-repeat;border: none;font-size: 20px;"
+                            type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <button style="color:#fff; background: red !important; border:0px !important; margin-left:230px; margin-top:25px !important; margin-right:10px; "
+                                type="button" onclick="deleteCourse()" class="button buy-button is-raised">Delete
+                        </button>
+                        <button style="color:#fff; border:0px !important; margin-top:25px !important; background:blue !important;"
+                                type="button" onclick="hideDelModal()" class="button buy-button is-raised">Cancel
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="/teacher/add_course/?step=3" method="post" id="nextStep">
+        {% csrf_token %}
+        <input type="hidden" name="course" value="{{ course_id }}">
+    </form>
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script src="{% static 'teacher/assets/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/select2.js' %}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'teacher/assets/vendor/sweetalert.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/sweetalert.js' %}"></script>
+
+    <!-- Quill -->
+    <script src="{% static 'teacher/assets/vendor/quill.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/quill.js' %}"></script>
+
+    <script>
+        let videoList = [];
+        let section_list = [];
+        let key = 0;
+        var sections = [];
+        var paid = '{{ course.type }}'
+
+
+
+        $(document).ready(function () {
+            var course_id = '{{ course_id }}';
+            if (course_id != '') {
+                localStorage.setItem('course_id', course_id);
+            }
+
+            window.onbeforeunload = (event) => {
+
+            }
+
+            var _videos = JSON.parse("{{ videos|escapejs }}")
+            var _sections = JSON.parse("{{ sections|escapejs }}")
+            console.log("videos ==>", _sections)
+
+            var key = 1;
+            var video_key = 0;
+            _sections.forEach((item) => {
+                _videoList = []
+                _videos.forEach((ele) => {
+                    if (item.pk * 1 == ele.fields.section_id * 1) {
+                        _videoList.push({
+                            sectionId: key,
+                            key: "video-" + video_key,
+                            isPromo: ele.fields.promo,
+                            duration: ele.fields.duration,
+                            name: ele.fields.name,
+                            id: ele.pk
+                        })
+                        videoList.push({
+                            sectionId: key,
+                            key: "video-" + video_key,
+                            isPromo: ele.fields.promo,
+                            duration: ele.fields.duration,
+                            name: ele.fields.name,
+                            id: ele.pk
+                        })
+                        video_key++;
+                    }
+                })
+                sections.push({
+                    id: key,
+                    name: item.fields.name,
+                    section_id: item.pk,
+                    videoList: _videoList
+                })
+                key++;
+            })
+
+            if (sections.length > 0)
+                render()
+
+            console.log("documentready:::", sections)
+
+            // add section
+            $('#add_section').on('click', () => {
+                let element = document.getElementById('group_section1');
+                let last_id = getLastChildrenID(element).replace('toc-', '');
+                let new_id = 0;
+                if (last_id == '') {
+                    last_id = '0';
+                }
+                console.log("last id" + last_id)
+                new_id = parseInt(last_id) + 1;
+                console.log("add section", new_id);
+                addSection(new_id)
+            });
+        });
+
+        function showDelModal() {
+            //$('#deleteModal').addClass("in show")
+            //$('#deleteModal').css('display', 'block')
+            swal({
+                    title: "Delete course",
+                    text: "Are you sure delete course",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    inputPlaceholder: "Type here..."
+                }, (inputValue) => {
+                    course_id = localStorage.getItem('course_id');
+                    if (course_id == '') {
+
+                    } else {
+                        url = '/deleteCourse/';
+                        $.post(url, {id: course_id}, function (data) {
+                            swal("Deleted Successfully!", "", "success");
+                            setTimeout(() => {
+                                location.href = "/teacher/courses/";
+                            }, 1000)
+                        })
+                    }
+                }
+            );
+        }
+
+        /**
+         *  delete section
+         *  @author: Happy
+         * **/
+
+        const deleteSection = (sectionId) => {
+            console.log("clicked here")
+            let idx = 0;
+            console.log("before delete", videoList)
+            videoList.forEach((ele) => {
+                if (ele.sectionId == sectionId) {
+                    videoList.splice(idx, idx + 1);
+                }
+                idx++;
+            })
+            idx = 0;
+            sections.forEach((item) => {
+                if (item.id * 1 == sectionId * 1) {
+                    sections.splice(idx, idx + 1);
+                }
+                idx++;
+            })
+            console.log("after delete", videoList)
+            $('#toc-' + sectionId).remove()
+        }
+
+        // edit section name
+        const editSectionName = (sectionId) => {
+            console.log("section id", sectionId);
+            swal({
+                title: "Edit Section Name",
+                text: "Write Section Name:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                inputPlaceholder: "Type here..."
+            }, (inputValue) => {
+                if (inputValue === false) return false;
+                if (inputValue === "") {
+                    swal.showInputError("You need to write something!");
+                    return false
+                }
+                let element = "#section_name_" + sectionId;
+                console.log(element, $(element).text());
+                $(element).text(inputValue);
+                sections.forEach((item) => {
+                    if (item.id * 1 == sectionId * 1)
+                        item.name = inputValue
+                })
+                swal("Successed!", "Section Name: " + inputValue, "success");
+            });
+        };
+
+        const deleteVideo = (obj) => {
+            let idx = $(obj).prev().attr('id').split('-')[1] * 1;
+            $(obj).parent().remove();
+            console.log("videoList", videoList)
+            console.log("idx", idx)
+            let video = videoList[idx];
+            console.log("video", video)
+            let sectionId = video.sectionId;
+            let ii = 0, key;
+            sections.forEach((item) => {
+                if (item.id * 1 == sectionId * 1) {
+                    item.videoList.forEach((ele) => {
+                        console.log("compare:a", ele.key)
+                        console.log("compare:b", video.key)
+                        if (ele.key == video.key) {
+                            key = ii;
+                        }
+                        ii++;
+                    })
+                    item.videoList.splice(key, key + 1);
+                }
+            })
+            videoList.splice(idx, idx + 1)
+        }
+
+        const setPromoChange = (obj) => {
+            let flag = true;
+            let value = $(obj).val()
+            videoList.forEach((ele) => {
+                if (ele.isPromo == 1 && value * 1 == 1) {
+                    swal({
+                        title: "You must select One Promo video",
+                        closeOnConfirm: false,
+                    });
+                    flag = false;
+                }
+            })
+            if (flag == false) {
+                $(obj).val(0);
+                return;
+            }
+            let key = $(obj).attr('id').split('-')[1] * 1
+            if (flag == true) {
+                videoList[key].isPromo = $(obj).val() * 1;
+            }
+        }
+
+        // get last children's id
+        const getLastChildrenID = (element) => {
+            let array = element.children;
+            let last_id;
+            if (array.length > 0)
+                last_id = array[array.length - 1].id;
+            else
+                last_id = '';
+            return last_id;
+        };
+
+        function dragoverUL(e) {
+            {#console.log("dragoverul");#}
+            e.preventDefault();
+        }
+
+        function dropUL(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("dragedId", e.dataTransfer.getData("dragEl"));
+            var el = e.target;
+            var parentEl = el;
+            while (true) {
+                if (parentEl.tagName.toLowerCase() == "ul" && parentEl.classList.contains("sect"))
+                    break;
+                parentEl = parentEl.parentElement;
+            }
+            console.log(parentEl.id);
+            var toId = parentEl.id;
+            var fromId = e.dataTransfer.getData("dragEl");
+
+            swapSection(fromId.split("-")[1], toId.split("-")[1]);
+            console.log("dropel", parentEl.id)
+        }
+
+        function dragStartUL(e) {
+            e.dataTransfer.setData("dragEl", e.target.id);
+            console.log("dragEl started::", e.target.id)
+        }
+
+        function dragoverLI(e) {
+            {#console.log("dragoverli");#}
+            e.preventDefault();
+        }
+
+        function dropLI(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var el = e.target;
+            var parentEl = el;
+            while (true) {
+                if (parentEl.tagName.toLowerCase() == "li")
+                    break;
+                parentEl = parentEl.parentElement;
+            }
+            console.log(parentEl.id);
+            var toId = parentEl.id;
+            var fromId = e.dataTransfer.getData("dragLi");
+            swapVideo(fromId, toId);
+        }
+
+        const swapVideo = (fromId, toId) => {
+            console.log("before swap", sections)
+            let fromIdx = 0, toIdx = 0, fromSecIdx = 0, toSecIdx = 0;
+            let idx1 = 0;
+            sections.forEach((item) => {
+                myvideoList = item.videoList;
+                let idx = 0;
+                myvideoList.forEach((ele) => {
+                    if (ele.key == fromId) {
+                        fromIdx = idx;
+                        fromSecIdx = idx1;
+                    }
+                    idx++;
+                })
+                idx1++;
+            })
+            let idx2 = 0;
+            sections.forEach((item) => {
+                myvideoList = item.videoList;
+                let idx = 0;
+                myvideoList.forEach((ele) => {
+                    if (ele.key == toId) {
+                        toIdx = idx;
+                        toSecIdx = idx2;
+                    }
+                    idx++;
+                })
+                idx2++;
+            })
+            var tmp = sections[fromSecIdx].videoList[fromIdx];
+            tmp.key = toId;
+            tmp.sectionId = sections[toSecIdx].id;
+            var tmp1 = sections[toSecIdx].videoList[toIdx];
+            tmp1.key = fromId;
+            tmp1.sectionId = sections[fromSecIdx].id;
+            sections[fromSecIdx].videoList[fromIdx] = tmp1;
+            sections[toSecIdx].videoList[toIdx] = tmp;
+
+            let idx = 0
+            let fromVideoIdx = 0, toVideoIdx = 0;
+            videoList.forEach((item) => {
+                if (item.key == fromId) {
+                    fromVideoIdx = idx;
+                }
+                idx++;
+            })
+            idx = 0
+            videoList.forEach((item) => {
+                if (item.key == toId) {
+                    toVideoIdx = idx;
+                }
+                idx++;
+            })
+            videoList[fromVideoIdx] = tmp1
+            videoList[toVideoIdx] = tmp
+            render()
+            console.log("after swap", sections)
+        }
+
+        function dragStartLI(e) {
+            e.dataTransfer.setData("dragLi", e.target.id);
+            console.log("dragLi started::", e.target.id)
+        }
+
+        function videoLoad(event) {
+            console.log("videoLoad", event.target.duration);
+        }
+
+        const addVideo = (ele, sectionId) => {
+            console.log(sectionId, ele);
+            let video = ele.files[0];
+            var videoTag = document.createElement('video')
+
+            nameArr = video.name.split(".");
+            ext = nameArr[nameArr.length - 1];
+
+            if (ext != 'mp4' && ext != 'mov') {
+                swal({
+                    title: "Wrong file Type",
+                    text: "You must upload video",
+                    closeOnConfirm: false,
+                });
+            }
+
+            videoTag.preload = 'metadata'
+
+            videoTag.onloadedmetadata = function () {
+                window.URL.revokeObjectURL(videoTag.src)
+                var duration = videoTag.duration
+                if (duration > 3600) {
+                    swal({
+                        title: "Wrong file Type",
+                        text: "Cant upload over 1 hour video",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                } else {
+                    video.sectionId = sectionId;
+                    video.key = "video-" + key.toString();
+                    videoList.push(video);
+                    console.log(video);
+                    key++;
+                    video.isPromo = 0;
+                    video.duration = Math.floor(duration / 60);
+                    video.id = ''
+                    sectVideoList = []
+                    videoList.forEach((item) => {
+                        console.log("item's sectionid:", item.sectionId, "sectionId", sectionId)
+                        if (item.sectionId * 1 == sectionId * 1) {
+                            sectVideoList.push(item)
+                        }
+                    })
+                    sections.forEach((item) => {
+                        console.log("item::", item)
+                        console.log("item::", sectionId)
+                        if (item.id * 1 == sectionId * 1) {
+                            item.videoList = sectVideoList;
+                        }
+                    })
+                    console.log("sections test:", sections)
+                    render();
+                }
+            }
+            videoTag.src = URL.createObjectURL(video)
+        }
+
+        const render = () => {
+            let html = "";
+            var new_id;
+            for (var i = 0; i < sections.length; i++) {
+                new_id = sections[i].id;
+                section_name = sections[i].name;
+                html += `
+            <ul class="mt-3 accordion accordion-dark accordion--boxed js-accordion mb-0 sect" style="border-radius: 0 !important;" id="toc-` + new_id + `"
+                ondragover="dragoverUL(event)" draggable="true" ondragstart="dragStartUL(event)" ondrop="dropUL(event)">
+                <li class="accordion__item open">
+                    <div class="accordion__toggle" data-toggle="collapse" data-parent="#toc-` + new_id + `" href="#video-list-` + new_id + `">
+                        <span class="flex" >
+                            <span class="mediabout mediabout-dark flllot mr-2" id="section_name_` + new_id + `" name="section_name_` + new_id + `">` + section_name + `</span>
+                            <a style="margin-left: 10px !important;" onclick="editSectionName('` + new_id + `')"><b class="blllu blllu-dark flllot">Edit section name</b></a>
+
+                        </span>
+                        <div id="swal-confirm-delete" class="d-none" data-swal-type="success" data-swal-title="Thanks You!" data-swal-text="You can change your ratings anytime"></div>
+
+                        <div id="swal-cancel-delete" class="d-none" data-swal-type="error" data-swal-title="Cancelled" data-swal-text="Your imaginary file is safe :)"></div>
+                        <a style="margin-right: 20px !important;color:rgb(241, 101, 101);" onclick="deleteSection('` + new_id + `')">Delete section</a>
+                        <span class="accordion__toggle-icon material-icons mediabout mediabout-dark">keyboard_arrow_down</span>
+                    </div>
+                    <div class="accordion__menu accordion__menu-dark">
+                        <ul class="list-unstyled collapse show video" id="video-list-` + new_id + `" >
+                            <li class="accordion__menu-link" style="padding-left: 40% !important;padding: 25px 0;">
+                                <a  class="custom-file custom-file-naked d-flex"  >
+                                    <input type="file" class="custom-file-input" id="customFile" onchange="addVideo(this,'` + new_id + `')">
+                                    <label class="custom-file-label" style="color: inherit;margin-top: 0px;margin-left: 10%;" for="customFile">
+                                    <b class="blllu blllu-dark flllot mt-1"> Add new video</b>
+                                        <i class="material-icons blllu blllu-dark flllot" style="font-size: x-large !important;">add</i>
+                                    </label>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            `;
+
+            }
+            $('#group_section1').html(html);
+
+            for (var i = 0; i < sections.length; i++) {
+                new_id = sections[i].id;
+                let element = "#video-list-" + new_id;
+                console.log("videoList teset:", sections[i])
+                for (var j = 0; j < sections[i].videoList.length; j++) {
+                    let video = sections[i].videoList[j]
+                    let videoname_length = video.name.length;
+                    let duration = video.duration;
+                    let videoname = video.name.substr(0, videoname_length - 4)
+                    let html1 = `
+                <li class="accordion__menu-link" id="` + video.key.toString() + `" ondragover="dragoverLI(event)" draggable="true" ondragstart="dragStartLI(event)" ondrop="dropLI(event)" xmlns="http://www.w3.org/1999/html">
+                    <span class="material-icons icon-16pt icon--left text-body">play_circle_outline</span>
+                    <a class="flex">` + videoname + `</a>
+                    <span>` + duration + ` mins</span>
+                    <select class="form-control" onchange="setPromoChange(this)" id="` + video.key.toString() + `" style="width: 100px; margin-left: 10px;">
+                        <option value="0">None</option>
+                        <option value="1">Promo</option>
+                    </select>
+                    <span style="margin-left:10px; cursor: pointer;" class="material-icons sidebar-menu-icon sidebar-menu-icon--left" onclick="deleteVideo(this)">delete</span>
+                </li>
+                `;
+                    $(element).prepend(html1)
+                }
+            }
+
+        }
+
+        // add section
+        const addSection = (new_id) => {
+            sections.push({id: new_id, name: 'New Section', section_id:'', videoList: []});
+            render();
+        };
+
+        const swapSection = (fromId, toId) => {
+            console.log("before swap", sections)
+            var fromSecName = $('#section_name_' + fromId).html()
+            var toSecName = $('#section_name_' + toId).html()
+            var indexFrom=0, indexTo=0;
+            var key = 0;
+            sections.forEach((item) => {
+                if (item.id * 1 == fromId * 1)
+                    indexFrom = key;
+                key++;
+            })
+
+            key = 0;
+            sections.forEach((item) => {
+                if (item.id * 1 == toId * 1)
+                    indexTo = key;
+                key++;
+            })
+            var fromSecId = sections[indexFrom].section_id
+            var toSecId = sections[indexTo].section_id
+            var fromTagId = sections[indexFrom].id
+            var toTagId = sections[indexTo].id
+            var tmp = sections[indexFrom];
+            sections[indexFrom] = sections[indexTo];
+            sections[indexTo] = tmp;
+            sections[indexFrom].section_id = fromSecId
+            sections[indexTo].section_id = toSecId
+            sections[indexFrom].id = fromTagId
+            sections[indexTo].id = toTagId
+            console.log("=====>", fromTagId, "=====", toTagId)
+            sections[indexFrom].videoList.forEach((ele) =>{
+                ele.sectionId = fromSecId
+                //ele.id = fromTagId
+            })
+            sections[indexTo].videoList.forEach((ele) =>{
+                ele.sectionId = toSecId
+                //ele.tag_id = toTagId
+            })
+            render();
+            console.log("after swap", sections)
+        }
+
+        // store course
+        const saveLater = () => {
+            let url = "/save_later_2/";
+            sections.forEach((item) => {
+                section_list.push({
+                    tag_id: item.id,
+                    name: item.name
+                })
+            })
+            var form_data = new FormData;
+            videoList.forEach((video, key) => {
+                video.promo = $('#' + video.key).val();
+                form_data.append(video.key, video);
+                console.log("here here", form_data)
+                console.log("here here", video.key)
+                console.log("here here", video)
+            });
+            course_id = localStorage.getItem('course_id')
+            form_data.append("course_id", course_id);
+            form_data.append("video_list", JSON.stringify(videoList));
+            form_data.append("section_list", JSON.stringify(section_list));
+            form_data.append("pending", 2);
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+                .then(response => {
+                    let message = response.msg;
+                    console.log("Stored section group successfully", message);
+                    if (message == "success") {
+                        document.location.href = "/teacher/courses/";
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+
+        function addCourse() {
+            let url = "/store_course_2/";
+            sections.forEach((item) => {
+                section_list.push({
+                    tag_id: item.id,
+                    name: item.name,
+                    id: item.section_id
+                })
+            })
+            var form_data = new FormData;
+            videoList.forEach((video, key) => {
+                video.promo = $('#' + video.key).val();
+                form_data.append(video.key, video);
+            });
+            course_id = localStorage.getItem('course_id')
+
+            totalTime = 0;
+            videoList.forEach((item) => {
+                totalTime += item.duration * 1
+            })
+
+            console.log("video LIst::::", videoList)
+            if (paid * 1 == 0) {
+                if (section_list.length < 3) {
+                    swal({
+                        title: "You must add over 3 sections",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+                if (totalTime < 60) {
+                    swal({
+                        title: "You must add over 1 hours videos",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+            } else {
+                if (section_list.length < 15) {
+                    swal({
+                        title: "You must add over 15 sections",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+                if (totalTime < 600) {
+                    swal({
+                        title: "You must add over 1 hours videos",
+                        closeOnConfirm: false,
+                    });
+                    return;
+                }
+            }
+            
+
+            form_data.append("course_id", course_id);
+            form_data.append("video_list", JSON.stringify(videoList));
+            form_data.append("section_list", JSON.stringify(section_list));
+            form_data.append("pending", 2);
+
+            console.log("sssss", JSON.stringify(videoList))
+            console.log("fffff", JSON.stringify(section_list))
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+            })
+            .then(response => {
+                let message = response.msg;
+                console.log("Stored section group successfully", message);
+                if (message == "success") {
+                    $("#nextStep").submit();
+                }
+            })
+            .catch(error => console.error(error));
+        };
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,30 @@
+// Tooltip Css
+.tooltip {
+  .arrow {
+    position: relative;
+    width: 12px;
+    height: 8px;
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid $border-normal;
+    &:before {
+      display: block;
+      box-sizing: border-box;
+      border-right: 3px solid transparent;
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-left: 1px solid $border-normal;
+      border-top: 1px solid $border-normal;
+      border-bottom: 3px solid transparent;
+      transform: rotate(45deg) skew(10deg, 10deg);
+      left: 0px;
+      bottom: -6px;
+      @extend .bg-white;
+    }
+  }
+  .tooltip-inner {
+    border: 1px solid $border-normal;
+    box-shadow: 0 8px 15px rgba($light, 0.15);
+  }
+}

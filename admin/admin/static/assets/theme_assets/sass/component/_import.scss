@@ -1,0 +1,78 @@
+.media-import{
+    margin: 10px auto 30px;
+    position: relative;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 280px;
+    border: 2px dashed #C6D0DC;
+    background-color: #ffffff;
+    border-radius: 10px;
+    svg{
+        color: #ADB4D2;
+        width: 80px;
+        height: auto;
+    }
+    p{
+        @include ofs(null, lh(20px, 25px), 500);
+        margin-top: 27px;
+        margin-bottom: 0;
+    }
+}
+
+.exportDatatable{
+    .order-button-group button{
+        height: 44px;
+        @include ofs(15px, lh(15px,20px), 600);
+    }
+    .order-search__form{
+        background-color: transparent;
+        border: 1px solid #E3E6EF;
+        padding: 12px 13px;
+        width:250px ;
+        @include xxl{
+            width: 100%;
+        }
+    }
+    &.orderDatatable .table tbody tr td {
+        padding: 20px 20px;
+    }
+    &.orderDatatable .table-hover tbody tr:hover{
+        box-shadow:0 15px 50px rgba(#9299B8, .20);
+        background: transparent;
+        border-radius: 10px;
+    }
+    .export-table {
+        .custom-checkbox input[type="checkbox"] + label{
+            padding-left:60px;
+        }
+    }
+    .modal-dialog{
+        max-width: 390px;
+    }
+    .fileM-Modal-overlay .modal-body {
+        input{
+            border:1px solid #E3E6EF;
+        }
+        .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple{
+            height:36px;
+            border:1px solid #E3E6EF;
+        }
+        .select2-container .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-selection--single .select2-selection__placeholder{
+            color:#9299B8;
+        }
+    }
+}
+
+.select2-dropdown{
+    z-index: 9999;
+}
+
+.dropzone-lg-s{
+    min-height: 180px;
+}
+.dropzone-md-s{
+min-height: 100px;
+}

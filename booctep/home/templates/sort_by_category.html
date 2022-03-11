@@ -1,0 +1,239 @@
+{% load static %}
+{% include "layout/scripts/scripts.html" %}
+
+
+<div class="columns  is-multiline">
+                    <!-- /partials/commerce/products/products-list.html -->
+
+                    {% for course in course_list %}
+                    <!--Product-->
+
+                    <div class="column is-one-fifth-fullhd is-one-quarter-widescreen is-one-third-desktop is-half-tablet is-full-mobile">
+                        <div class="product-card  product-card-dark" data-name="Spring Red Dress" data-price="44.00" data-colors="true" data-variants="true" data-path="{% static 'assets/img/products/1' %}">
+
+                            <a href="/single_course/" class="product-image">
+
+                                <div class="image-grid-wrap">
+                                    <div class="image-grid">
+
+                                        <!--Grid Row-->
+                                        <div class="image-row">
+                                            <!--Photo-->
+
+                                            <div class="flex-1 has-background-image loading skeleton" style="background-color:rgb(233, 232, 232);">
+                                                <div class="image-owner">
+                                                    <div class="name">
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 255, 255);"></span>
+                                                        <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4.7</span>
+                                                    </div>
+                                                </div>
+                                                <div id="invite-pop" class="photo-like pop-button has-tooltip" data-title="Relationship">
+                                                    <a href="#" class="inner">
+                                                        <i class="inactive-icon" data-feather="heart"></i>
+                                                    </a>
+                                                </div>
+                                                <a id="follow-pop" class="photo-time pop-button has-tooltip" data-title="Relationship">
+
+												   <a href="/single_course/" ><i class="fa fa-shopping-cart" style="font-size: 22px;color: #fff;"></i></a>
+
+											   </a>
+
+                                            </div>
+
+                                            <!-- <div class="flex-1 has-background-image show-image" data-background="{%static 'assets/img/courses/pc.jpg' %}" data-demo-background="{%static 'assets/img/courses/pc.jpg' %}" style="display: none;"> -->
+                                            <div class="flex-1 has-background-image show-image" data-background="{%static 'assets/img/courses/pc.jpg' %}" data-demo-background="{%static 'assets/img/courses/pc.jpg' %}"   style="background-image: url(/static/assets/img/courses/pc.jpg);">
+                                                <a href = "/single_course/{{course.id}}"><div class="overlay"></div></a>
+                                                <div class="image-owner">
+                                                    <div class="name">
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 238, 80);"></span>
+                                                        <span class="fa fa-star" style="color: rgb(255, 255, 255);"></span>
+                                                        <span style="font-size: medium; color: rgb(255, 238, 80);font-weight: 700;margin-left: 5px;">4.7</span>
+                                                    </div>
+                                                </div>
+                                                <div id="invite-pop" class="photo-like pop-button has-tooltip" data-title="Relationship">
+                                                <a class="inner" onclick = "add_fav({{course.id}})" >
+
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g></svg>
+                                                </a>
+
+											   </div>
+
+
+												<div id="follow-pop" class="photo-time pop-button has-tooltip" data-title="Relationship">
+
+												<i class="fa fa-shopping-cart" onclick = "add_cart({{course.id}})" style="font-size: 22px;color: #fff;"></i>
+
+
+												</div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </a>
+
+                            <div class="product-skeleton">
+                                <div class="pd_title loading"></div>
+                                <div class="pd_description">
+                                    <div class="pd_description1 loading"></div>
+                                    <div class="pd_description2 loading"></div>
+                                </div>
+                                <div class="pd_review" style="display: flex;">
+                                    <div class="pd_users loading"></div>
+                                    <div class="pd_videos loading"></div>
+                                </div>
+                                <div class="pd_footer" style="display: flex;">
+                                    <div class="pd_price loading"></div>
+                                    <div class="pd_button loading"></div>
+                                </div>
+                            </div>
+
+                            <div class="product-info" >
+
+                                <h3>
+                                    <a href="# " style="display: block; width: 230px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; ">{{ course.name }}</a>
+                                </h3>
+                                <p>Best course ever to see how does java script works with browser..</p>
+
+
+                                <i class="fa fa-users "></i>
+                                <span style="font-size: small; ">147,001 &nbsp;</span>
+                                <i class="fa fa-video "></i>
+                                <span style="font-size: small; ">133 Videos</span>
+                                <div class="product-actions ">
+                                    <div class="left ">
+                                        {% if course.price > 0 %}
+                                        <b style="color:red ">${{course.price}}</b>
+                                        {% else %}
+                                        <b style="color:green "> Free! </b>
+                                        {% endif %}
+                                    </div>
+                                    <div class="right ">
+                                        <a class="button primary-button is-solid raised story modal-trigger " data-modal="videos-modal ">
+                                            <i class="fa fa-play "></i> Promo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+
+
+                <center>
+                    <nav class="pagination is-centered " role="navigation " aria-label="pagination " style="margin-bottom: 20px; ">
+
+                        <ul class="pagination-list ">
+                            <li>
+                                <a class="pagination-previous " style="background-color: white; border-radius: 50% "><span class="fa fa-arrow-left "></span>
+
+                                        </a>
+                            </li>
+                            <!-- <li><a class="pagination-link is-current " aria-label="page 1 " style="background-color: white; ">1</a></li> -->
+                            <!-- <li><span class="pagination-ellipsis ">&hellip;</span></li> -->
+                            <!-- <li><a class="pagination-link " aria-label="Goto page 45 " style="background-color: white; ">45</a></li> -->
+                            <li><a class="pagination-link is-current " style=" border-radius: 50% !important;width:43px;height:43px" aria-label="Page 1 " aria-current="page ">10</a></li>
+                            <!-- <li><a class="pagination-link " aria-label="Goto page 47 " style="background-color: white; ">47</a></li>
+                                      <li><span class="pagination-ellipsis ">&hellip;</span></li>
+                                      <li><a class="pagination-link " aria-label="Goto page 86 " style="background-color: white; ">86</a></li> -->
+                            <li>
+                                <a class="pagination-next " style="background-color: white; border-radius: 50%">
+                                    <span class="fa fa-arrow-right "></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </center>
+
+
+<script>
+
+function add_cart(id){
+student_id = '{{user_id}}'
+
+<!-- if(student_id == ""){ -->
+
+<!-- swal("Please Login As a student!", { -->
+<!-- icon: "info", -->
+<!-- button: "Ok", -->
+<!-- closeOnClickOutside: false, -->
+<!-- }).then(function() { -->
+
+<!-- }); -->
+
+<!-- } -->
+
+$.ajax({
+	method : "POST",
+	url : "/student_Cart_courses/",
+	data : {
+		'course':id,
+		'student':student_id
+		},
+		success : function(response){
+		if (response == "success"){
+			swal("Course Added in Cart!", {
+			icon: "success",
+			button: "Ok",
+			closeOnClickOutside: false,
+			}).then(function() {
+				location.reload()
+			});
+		}
+	}
+});
+
+}
+
+
+function add_fav(id){
+student_id = '{{user_id}}'
+
+<!-- if(student_id == ""){ -->
+
+<!-- swal("Please Login As a student!", { -->
+<!-- icon: "info", -->
+<!-- button: "Ok", -->
+<!-- closeOnClickOutside: false, -->
+<!-- }).then(function() { -->
+
+<!-- }); -->
+
+<!-- } -->
+
+
+$.ajax({
+	method : "POST",
+	url : "/student_favourite_courses/",
+	data : {
+		'course':id,
+		'student':student_id
+		},
+		success : function(response){
+		if (response == "success"){
+			swal("Course Mark As favourite!", {
+			icon: "success",
+			button: "Ok",
+			closeOnClickOutside: false,
+			}).then(function() {
+				//location.reload()
+			});
+		}
+	}
+});
+
+}
+
+</script>

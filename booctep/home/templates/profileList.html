@@ -1,0 +1,121 @@
+{% extends "student/base.html" %}
+
+{% block headercontent %}
+{#{% include "./layout/header.html" %} #}
+{%  endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class=" page__container page-section">
+
+    <div class="page-separator">
+        <div class="page-separator__text">Teachers</div>
+    </div>
+    <form id="teacherProfileSubmit" style="display:none" action="/teacherProfile/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" id="teacherId" value="">
+    </form>
+    <div class="card mb-32pt">
+        <div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-date" data-lists-sort-desc="true" data-lists-values='["js-lists-values-name", "js-lists-values-department", "js-lists-values-status", "js-lists-values-type", "js-lists-values-phone", "js-lists-values-date"]'>
+            <table class="table mb-0 thead-border-top-0 table-nowrap">
+                <thead>
+                    <tr>
+                        <th style="width: 18px;" class="pr-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#employees" id="customCheckAllemployees">
+                                <label class="custom-control-label" for="customCheckAllemployees"><span class="text-hide">Toggle all</span></label>
+                            </div>
+                        </th>
+                        <th>
+                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Name</a>
+                        </th>
+{#                        <th style="width: 150px;">#}
+{#                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-department">Correct Answer</a>#}
+{#                        </th>#}
+{##}
+{#                        <th style="width: 48px;">#}
+{#                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-status">Percentage</a>#}
+{#                        </th>#}
+                        <th style="width: 24px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody class="list" id="employees">
+                {% for teacher in teachers %}
+                    <tr onclick="showTeacherProfile({{ teacher.id }})" >
+                        <td class="pr-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input js-check-selected-row" id="customCheck1_employees1">
+                                <label class="custom-control-label" for="customCheck1_employees1"><span class="text-hide">Check</span></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                <div class="avatar avatar-sm mr-8pt">
+{#                                    <span class="avatar-title rounded-circle">BN</span>#}
+                                    <img src="{%static teacher.image %}" style="border: 2px solid grey; height:48px;" alt="people" width="56" class="rounded-circle" />
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex d-flex flex-column">
+                                            <p class="mb-0"><strong class="js-lists-values-name">{{ teacher.first_name }}  {{ teacher.last_name }}</strong></p>
+                                            <small class="js-lists-values-email text-50">{{ teacher.email }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                <div class="avatar avatar-sm mr-8pt">
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex flex-column">
+                                        <small class="js-lists-values-department"><strong style="color: green;"></strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="media flex-nowrap align-items-center" style="white-space: nowrap;">
+                                <div class="avatar avatar-sm mr-8pt">
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex flex-column">
+                                        <small class="js-lists-values-department"><strong style="color: green;"></strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-footer p-8pt">
+            <ul class="pagination-list " style="font-size:small;margin-top: 15px !important;">
+                <li><a class="pagination-previous">Previous</a></li>
+                 <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                 <li><span class="pagination-ellipsis">&hellip;</span></li>
+                 <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                 <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page" style="color:white">46</a></li>
+                 <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                 <li><span class="pagination-ellipsis">&hellip;</span></li>
+                 <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                 <li><a class="pagination-next">Next</a></li>
+               </ul>
+        </div>
+
+    </div>
+             
+</div>
+    <script>
+    function showTeacherProfile(id){
+        $('#teacherId').val(id);
+        $('#teacherProfileSubmit').submit();
+    }
+    </script>
+
+{%  endblock %}

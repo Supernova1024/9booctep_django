@@ -1,0 +1,82 @@
+{% import 'components/panel.html' as panel %}
+
+<div class="{{ containerClass }} page-section pb-0">
+  <h1 class="h2 mb-0">{{ title }}</h1>
+  <ol class="breadcrumb m-0 p-0">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Plugins</li>
+    <li class="breadcrumb-item active">{{ title }}</li>
+  </ol>
+</div>
+
+<div class="{{ containerClass }} page-section">
+  {% call panel.component(title=title, description='Customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options powered by Select2. Please read the <a href="https://select2.org/" target="_blank">official plugin documentation</a> for a full list of options.') %}
+    <div class="form-group">
+      <label class="form-label" for="select01">Basic</label>
+      <select 
+        id="select01" 
+        data-toggle="select"
+        class="form-control">
+        <option selected="">My first option</option>
+        <option>Another option</option>
+        <option>Third option is here</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select02">Avatars</label>
+      <select 
+        id="select02" 
+        data-toggle="select" 
+        data-minimum-results-for-search="-1"
+        class="form-control">
+        <option 
+          data-avatar-src="assets/images/256_rsz_1andy-lee-642320-unsplash.jpg">
+          Adelle Sherley
+        </option>
+        <option 
+          data-avatar-src="assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg">
+          Adrian Demian
+        </option>
+        <option 
+          data-avatar-src="assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg">
+          Green Doe
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select03">Multiple</label>
+      <select 
+        id="select03" 
+        data-toggle="select" 
+        multiple
+        class="form-control">
+        <option selected="">CSS</option>
+        <option selected="">HTML</option>
+        <option>JavaScript</option>
+        <option>Bootstrap</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="select04">Large</label>
+      <select 
+        id="select04" 
+        data-toggle="select" 
+        multiple
+        class="form-control form-control-lg">
+        <option>CSS</option>
+        <option>HTML</option>
+        <option selected="">JavaScript</option>
+        <option>Bootstrap</option>
+      </select>
+    </div>
+    <label class="form-label" for="select05">Small</label>
+    <select 
+      id="select05" 
+      data-toggle="select"
+      class="form-control form-control-sm">
+      <option>My first option</option>
+      <option>Another option</option>
+      <option>Third option is here</option>
+    </select>
+  {% endcall %}
+</div>

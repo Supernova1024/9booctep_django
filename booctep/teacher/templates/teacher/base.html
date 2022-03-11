@@ -1,0 +1,1231 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+{% if lang == "ar/" %}
+    <html lang="en" dir="rtl">
+{% else %}
+    <html lang="en" dir="ltr">
+{% endif %}
+
+<style>
+    .backgg{
+        background-color: #e8f4ff !important;
+    }
+    .backgg-dark{
+        background-color: #4c525e !important;
+    }
+</style>
+
+<style>
+    #loadings {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.9;
+        background-color: #000;
+        z-index: 99;
+        text-align: center;
+    }
+
+    #loading-image {
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        z-index: 100;
+    }
+
+    .loading::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        /* Adding animation */
+        animation: loading 1s infinite;
+    }
+
+    /* Loading Animation */
+
+    @keyframes loading {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+
+    .dancin-bc {
+        background: white !important;
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .dancing-lao {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .dancing-lao:after {
+        display: block;
+        width: 150px;
+        height: 2px;
+        margin-top: 10px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        background: rgb(43, 148, 209);
+        content: "";
+        -webkit-animation: 1s border infinite;
+        animation: 1s border infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+    }
+
+    .dancing-lao .left-dots {
+        position: absolute;
+        bottom: 20%;
+        left: 20%;
+    }
+
+    .dancing-lao .right-dots {
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    .dancing-lao .dot {
+        display: inline-block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgb(43, 148, 209);
+        opacity: 0;
+    }
+
+    .dancing-lao .dot-1 {
+        -webkit-animation: 1s dot infinite;
+        animation: 1s dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .dot-2 {
+        -webkit-animation: 1s dot-2 infinite;
+        animation: 1s dot-2 infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+    }
+
+    .dancing-lao .circle-dot {
+        display: inline-block;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid rgb(43, 148, 209);
+        -webkit-animation: 1s cirle-dot infinite;
+        animation: 1s cirle-dot infinite;
+        -webkit-animation-delay: .5s;
+        animation-delay: .5s;
+        opacity: 0;
+    }
+
+    .dancing-lao img {
+        display: block;
+        margin: auto;
+        width: 90px;
+        height: 80px;
+        margin-bottom: 20px;
+        -webkit-animation: 1s dance infinite;
+        animation: 1s dance infinite;
+        -webkit-animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        animation-timing-function: cubic-bezier(0.92, 0.18, 0.04, 0.92);
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+    }
+
+    @-webkit-keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @keyframes dance {
+        0% {
+            -webkit-transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+            transform: translate3d(-10px, -100px, 0) rotate(-15deg) scaleY(1.1);
+        }
+        50% {
+            -webkit-transform: translate3d(0, 8px, 0) scaleY(0.85);
+            transform: translate3d(0, 8px, 0) scaleY(0.85);
+        }
+        100% {
+            -webkit-transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+            transform: translate3d(10px, -100px, 0) rotate(15deg) scaleY(1.1);
+        }
+    }
+
+    @-webkit-keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes border {
+        0% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+        50% {
+            -webkit-transform: scaleX(0.6);
+            transform: scaleX(0.6);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            opacity: 0.5;
+        }
+    }
+
+    @-webkit-keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        50% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-50px, -70px, 0);
+            transform: scale(1) translate3d(-50px, -70px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes dot-2 {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        70% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(0.7) translate3d(-50px, -50px, 0);
+            transform: scale(0.7) translate3d(-50px, -50px, 0);
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes cirle-dot {
+        0% {
+            opacity: 0;
+        }
+        1% {
+            -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+        }
+        80% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: .8;
+        }
+        100% {
+            -webkit-transform: scale(1) translate3d(-80px, -40px, 0);
+            transform: scale(1) translate3d(-80px, -40px, 0);
+            opacity: 0;
+        }
+    }
+
+    .nav-drop-header-dark{
+        background-color: rgb(206, 215, 219) !important;
+    }
+    #loading-image {
+        position: absolute;
+        top: 27%;
+        left: 40%;
+        z-index: 100;
+    }
+
+    .pagination li {
+        width: 45px;
+        height: 45px;
+        border-radius: 50% !important;
+        border: 1px solid #E7E7E7;
+        padding-top: 5px;
+        font-size: 22px;
+        border-radius: 0%;
+        margin-left: 5px;
+        background: #fff;
+    }
+
+    .pagination li a {
+        margin-top: 50px
+    }
+
+    .accordion__item {
+        background-color: rgba(79, 34, 34, 0) !important;
+        font-size: 13px;
+    }
+
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Teacher -
+        {% block title %}
+        {% endblock %}
+    </title>
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+
+    <!-- Perfect Scrollbar -->
+
+    <link type="text/css" href="{% static 'teacher/assets/vendor/perfect-scrollbar.css' %}" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="{% static 'teacher/assets/vendor/fix-footer.css' %}" rel="stylesheet">
+
+    {% if lang == "ar/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/material-icons.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/material-icons.css' %}" rel="stylesheet">
+    {% endif %}
+
+    <!-- Font Awesome Icons -->
+    {% if lang == "en/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/fontawesome.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/fontawesome.css' %}" rel="stylesheet">
+    {% endif %}
+
+    {% if lang == "en/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/preloader.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/preloader.rtl.css' %}" rel="stylesheet">
+    {% endif %}
+
+    <!-- Preloader -->
+
+
+    {% if lang == "ar/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/app.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/app.css' %}" rel="stylesheet">
+    {% endif %}
+
+    {% if lang == "ar/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/flatpickr.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/flatpickr.css' %}" rel="stylesheet">
+    {% endif %}
+
+    {% if lang == "ar/" %}
+        <link type="text/css" href="{% static 'teacher/assets/css/flatpickr-airbnb.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link type="text/css" href="{% static 'teacher/assets/css/flatpickr-airbnb.css' %}" rel="stylesheet">
+    {% endif %}
+
+    <link rel="stylesheet" href="{% static 'teacher/assets/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/toastr.min.css' %}" rel="stylesheet">
+
+
+    {% if lang == '/ar' %}
+        <link rel="stylesheet" href="{% static 'teacher/assets/css/toastr.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'teacher/assets/css/toastr.css' %}" rel="stylesheet">
+    {% endif %}
+
+    {% if lang == '/ar' %}
+        <link rel="stylesheet" href="{% static 'teacher/assets/css/sweetalert.rtl.css' %}" rel="stylesheet">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'teacher/assets/css/sweetalert.css' %}" rel="stylesheet">
+    {% endif %}
+
+    <script src="{% static 'teacher/assets/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/vendor/sweetalert.min.js' %}"></script>
+    <script src="{% static 'teacher/assets/js/sweetalert.js' %}"></script>
+    <script src="{% static 'assets/js/axios.min.js' %}"></script>
+
+    {% block head %} {% endblock %}
+</head>
+
+<body class="layout-mini backgg backgg-dark" style="height: 100%;">
+
+<input type="hidden" id="hd_csrf" value="{{ csrf_token }}">
+
+<div class="screen hidden">
+    <div id="loadings">
+        <div class="dancin-bc">
+            <div class="dancing-lao">
+                <div class="left-dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="circle-dot"></div>
+                </div>
+                <div class="right-dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="circle-dot"></div>
+                </div>
+
+                <img src="{% static 'assets/img/favicon.png' %}" class="cls-1" alt="">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<button type="button" class="btn btn-primary" style="display: none;" data-toggle="toastr"
+        data-toastr-type="primary" id="test1" data-toastr-title="Heads up!"
+        data-toastr-message="This alert needs your attention, but it is not super important.">
+    Primary
+</button>
+
+<div class="sweet-overlay" tabindex="-1" style="opacity: 1.09; display: none;" id="rating_modal_back"></div>
+<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false"
+     id="result_modal"
+     data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+     data-animation="pop" data-timer="null" style="margin-top: -169px; display: none;">
+    <div class="sa-icon sa-warning pulseWarning" style="display: none;">
+        <span class="sa-body pulseWarningIns"></span>
+        <span class="sa-dot pulseWarningIns"></span>
+    </div>
+    <div class="sa-icon sa-success animate" style="display: block;">
+        <span class="sa-line sa-tip animateSuccessTip"></span>
+        <span class="sa-line sa-long animateSuccessLong"></span>
+        <div class="sa-placeholder"></div>
+        <div class="sa-fix"></div>
+    </div>
+    <div class="sa-icon sa-custom" style="display: none;"></div>
+    <h2 id="result_title">Success!</h2>
+    <p style="display: block;" id="result_content">Thanks!</p>
+    <fieldset>
+        <input type="text" tabindex="3" placeholder="">
+        <div class="sa-input-error"></div>
+    </fieldset>
+    <div class="sa-error-container">
+        <div class="icon">!</div>
+        <p>Not valid!</p>
+    </div>
+    <div class="sa-button-container">
+        <button class="cancel" tabindex="2" style="display: none; box-shadow: none;">Cancel</button>
+        <div class="sa-confirm-button-container">
+            <button class="confirm" tabindex="1" onclick="hideResultModal()"
+                    style="display: inline-block; background-color: rgb(33, 150, 243); box-shadow: rgba(33, 150, 243, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                OK
+            </button>
+            <div class="la-ball-fall">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
+    <div class="mdk-drawer-layout__content page-content">
+
+        {% block headercontent %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    <!-- // END drawer-layout__content -->
+
+    {% block modal %}
+    {% endblock %}
+
+    {% include './layout/left-sidebar.html' %}
+
+</div>
+<!-- // END drawer-layout -->
+
+<!-- Bootstrap -->
+<script src="{% static 'teacher/assets/vendor/popper.min.js' %}"></script>
+<script src="{% static 'teacher/assets/vendor/bootstrap.min.js' %}"></script>
+
+<!-- Perfect Scrollbar -->
+<script src="{% static 'teacher/assets/vendor/perfect-scrollbar.min.js' %}"></script>
+
+<!-- DOM Factory -->
+<script src="{% static 'teacher/assets/vendor/dom-factory.js' %}"></script>
+
+<!-- MDK -->
+<script src="{% static 'teacher/assets/vendor/material-design-kit.js' %}"></script>
+
+<!-- Fix Footer -->
+<script src="{% static 'teacher/assets/vendor/fix-footer.js' %}"></script>
+
+<!-- App JS -->
+<script src="{% static 'teacher/assets/js/app.js' %}"></script>
+
+
+<!-- Global Settings -->
+<script src="{% static 'teacher/assets/js/settings.js' %}"></script>
+
+<!-- Moment.js -->
+<script src="{% static 'teacher/assets/vendor/moment.min.js' %}"></script>
+<script src="{% static 'teacher/assets/vendor/moment-range.min.js' %}"></script>
+
+<!-- Flatpickr -->
+<script src="{% static 'teacher/assets/vendor/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'teacher/assets/js/flatpickr.js' %}"></script>
+
+
+<!-- List.js -->
+<script src="{% static 'teacher/assets/vendor/list.min.js' %}"></script>
+<script src="{% static 'teacher/assets/js/list.js' %}"></script>
+
+<!-- Tables -->
+<script src="{% static 'teacher/assets/js/toggle-check-all.js' %}"></script>
+<script src="{% static 'teacher/assets/js/check-selected-row.js' %}"></script>
+
+<!-- Sidebar Mini JS -->
+<script src="{% static 'teacher/assets/js/sidebar-mini.js' %}"></script>
+<script src="{% static 'assets/js/toastr.min.js' %}"></script>
+<script src="{% static 'assets/js/toastr.js' %}"></script>
+
+</body>
+
+</html>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script>
+    
+
+    function showAlert(type, msg) {
+        if (type * 1 == 0) { //error
+            $(".sa-success").css({
+                'display': 'none'
+            })
+            $(".sa-warning").css({
+                'display': 'block'
+            })
+            $("#result_title").html('Warning!')
+        } else {
+            $(".sa-success").css({
+                'display': 'block'
+            })
+            $(".sa-warning").css({
+                'display': 'none'
+            })
+            $("#result_title").html('Success!')
+        }
+
+        $("#result_content").html(msg)
+        $("#result_modal").css({
+            'display': 'block'
+        })
+        $("#rating_modal_back").css({
+            'display': 'block'
+        })
+    }
+
+    function hideResultModal() {
+        $("#result_modal").css({
+            'display': 'none'
+        })
+        $("#rating_modal_back").css({
+            'display': 'none'
+        })
+    }
+
+    var socket = io.connect("http://localhost:3000")
+    var user_id = '{{ request.user.id }}';
+    var user_role = '{{ request.user.group_id }}';
+    socket.on('course_noti_from_admin', (data) => {
+        if (user_id * 1 == data.user_id) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+    socket.on('video_noti_from_admin', (data) => {
+        if (user_id * 1 == data.user_id) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+    socket.on('set_course_approve_to_user', (data) => {
+        if (user_id * 1 == data.user_id) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+    socket.on('set_course_cancel_to_user', (data) => {
+        if (user_id * 1 == data.user_id) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+    socket.on('send_noti_to_teacher_all_reply', (data) => {
+        console.log("send_noti_to_teacher_all_reply", data)
+        if (user_role * 1 == 2) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+    socket.on('send_noti_to_teacher_reply', (data) => {
+        console.log("send_noti_to_teacher_reply", data)
+        if (user_id * 1 == data.receiver_id * 1) {
+            $("#test1").attr("data-toastr-title", data.title)
+            $("#test1").attr("data-toastr-message", data.content)
+            $("#test1").click()
+            $(".toast-title").html(data.title)
+            $(".toast-message").html(data.content)
+        }
+    })
+
+</script>
+
+
+
+{% block script %}{% endblock %}
+
+
+<script>
+    $(document).ready(function () {
+        var color = localStorage.getItem('mode');
+        if (color == "light") {
+            $(".getmodename").append("dark");
+        } else {
+            $(".getmodename").append("light");
+        }
+        console.log(color);
+        color_mode();
+        console.log("{{lang}}");
+    });
+
+    let head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    let link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+
+    link.type = 'text/css';
+
+    link.href = "/static/{{lang}}student/assets/css/dark.css";
+
+    $('.toggler').on('click', function () {
+        if (localStorage.getItem('mode') == 'light') {
+            localStorage.setItem('mode', 'dark');
+            $(".getmodename").empty();
+            $(".getmodename").append("light");
+
+        } else {
+            localStorage.setItem('mode', 'light');
+            $(".getmodename").empty();
+            $(".getmodename").append("dark");
+
+        }
+        color_mode();
+    });
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            head.appendChild(link);
+
+        } else {
+            head.removeChild(link);
+        }
+    }
+
+
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            $("body").addClass('body-dark');
+            $(".active").addClass('active-dark'); 
+            $(".nextt").addClass('nextt-dark'); 
+            $(".material-icons").addClass('material-icons-dark'); 
+            $(".btncheck").addClass('btncheck-dark'); 
+            $(".activve").addClass('activve-dark'); 
+            $(".icn").addClass('icn-dark'); 
+            $(".btn-light").addClass('btn-light-dark'); 
+            $(".navbar").addClass('navbar-dark'); 
+            $(".sidebar").addClass('sidebar-dark'); 
+            $(".border-left-2").addClass('border-left-2-dark'); 
+            $(".accordion").addClass('accordion-dark'); 
+            $(".backgg").addClass('backgg-dark'); 
+            $(".sidebar-secondary").addClass('sidebar-secondary-dark'); 
+            $(".btn-primary").addClass('btn-primary-dark');
+            $(".top").addClass('top-dark');
+            $(".top").addClass('top-dark');
+            $(".carousel-item").addClass('carousel-item-dark'); 
+            $(".message").addClass('message-dark');
+            $(".card").addClass('card-dark');
+            $(".active-a").addClass('active-a-dark'); 
+            $(".menu-icon").addClass('menu-icon-dark'); 
+            $(".nav-drop-header").addClass('nav-drop-header-dark');  
+            $(".disabled").addClass('disabled-dark'); 
+            $(".alert-soft-primary ").addClass('alert-soft-primary-dark'); 
+            $(".cnti").addClass('cnti-dark'); 
+            $(".sidebar-light-dodger-blue").addClass('sidebar-light-dodger-blue-dark'); 
+            $(".blllu").addClass('blllu-dark'); 
+            $(".bllu").addClass('bllu-dark'); 
+            $(".addbg").addClass('addbg-dark');
+            $(".prcg").addClass('prcg-dark'); 
+            $(".progress").addClass('progress-dark'); 
+            $(".accordion__toggle").addClass('accordion__toggle-dark'); 
+            $(".carddy").addClass('card-dark'); 
+            $(".brd").addClass('brd-dark');
+            $(".card-footer").addClass('card-footer-dark');
+            $(".custom-file").addClass('custom-file-dark');
+            $(".accordion__menu").addClass('accordion__menu-dark'); 
+            $(".lineeeet").addClass('lineeeet-dark');
+            $(".app-messages__container").addClass('app-messages__container-dark'); 
+            $(".hrrrr").addClass('hrrrr-dark');
+            $(".sweet-alert").addClass('sweet-alert-dark'); 
+            $(".is-light").addClass('is-light-dark'); 
+            $(".page-num").addClass('page-num-dark'); 
+            $(".form-control").addClass('form-control-dark'); 
+            $(".bgg-primary").addClass('bgg-primary-dark'); 
+            $(".accorddd").addClass('accorddd-dark'); 
+            $(".dropdown-menu-right").addClass('dropdown-menu-right-dark'); 
+            $(".track").addClass('track-dark'); 
+            $(".selecttt").addClass('selecttt-dark'); 
+            $(".tehead").addClass('tehead-dark'); 
+            $(".bgk").addClass('bgk-dark'); 
+            $(".bg-primary").addClass('bg-primary-dark'); 
+            $(".socig").addClass('socig-dark'); 
+            $(".couponbg").addClass('couponbg-dark'); 
+            $(".soci").addClass('soci-dark'); 
+            $(".card-support").addClass('card-support-dark'); 
+            $(".cennnter").addClass('cennnter-dark'); 
+            $(".mediabout").addClass('mediabout-dark'); 
+            head.removeChild(link);
+
+        } else {
+            $("body").removeClass('body-dark');
+            $(".active").removeClass('active-dark'); 
+            $(".form-control").removeClass('form-control-dark'); 
+            $(".sweet-alert").removeClass('sweet-alert-dark'); 
+            $(".nextt").removeClass('nextt-dark'); 
+            $(".couponbg").removeClass('couponbg-dark'); 
+            $(".bgk").removeClass('bgk-dark'); 
+            $(".tehead").removeClass('tehead-dark'); 
+            $(".selecttt").removeClass('selecttt-dark'); 
+            $(".accordion__menu").removeClass('accordion__menu-dark'); 
+            $(".btncheck").removeClass('btncheck-dark'); 
+            $(".custom-file").removeClass('custom-file-dark');
+            $(".activve").removeClass('activve-dark'); 
+            $(".page-num").removeClass('page-num-dark'); 
+            $(".prcg").removeClass('prcg-dark'); 
+            $(".border-left-2").removeClass('border-left-2-dark'); 
+            $(".app-messages__container").removeClass('app-messages__container-dark'); 
+            $(".material-icons").removeClass('material-icons-dark'); 
+            $(".icn").removeClass('icn-dark'); 
+            $(".accordion").removeClass('accordion-dark'); 
+            $(".carddy").removeClass('card-dark'); 
+            $(".addbg").removeClass('addbg-dark'); 
+            $(".accordion__toggle").removeClass('accordion__toggle-dark'); 
+            $(".bgg-primary").removeClass('bgg-primary-dark'); 
+            $(".carousel-item").removeClass('carousel-item-dark'); 
+            $(".sidebar").removeClass('sidebar-dark'); 
+            $(".alert-soft-primary ").removeClass('alert-soft-primary-dark'); 
+            $(".navbar").removeClass('navbar-dark');  
+            $(".btn-light").removeClass('btn-light-dark'); 
+            $(".btn-primary").removeClass('btn-primary-dark');
+            $(".sidebar-secondary").removeClass('sidebar-secondary-dark'); 
+            $(".top").removeClass('top-dark');
+            $(".card-footer").removeClass('card-footer-dark');
+            $(".backgg").removeClass('backgg-dark'); 
+            $(".message").removeClass('message-dark');
+            $(".dropdown-menu-right").removeClass('dropdown-menu-right-dark'); 
+            $(".menu-icon").removeClass('menu-icon-dark'); 
+            $(".nav-drop-header").removeClass('nav-drop-header-dark');  
+            $(".disabled").removeClass('disabled-dark'); 
+            $(".sidebar-light-dodger-blue").removeClass('sidebar-light-dodger-blue-dark'); 
+            $(".cnti").removeClass('cnti-dark'); 
+            $(".card").removeClass('card-dark');
+            $(".progress").removeClass('progress-dark'); 
+            $(".blllu").removeClass('blllu-dark'); 
+            $(".bllu").removeClass('bllu-dark'); 
+            $(".active-a").removeClass('active-a-dark'); 
+            $(".card-header").removeClass('card-header-dark');
+            $(".brd").removeClass('brd-dark');
+            $(".lineeeet").removeClass('lineeeet-dark');
+            $(".hrrrr").removeClass('hrrrr-dark');
+            $(".is-light").removeClass('is-light-dark'); 
+            $(".accorddd").removeClass('accorddd-dark'); 
+            $(".track").removeClass('track-dark'); 
+            $(".socig").removeClass('socig-dark'); 
+            $(".bg-primary").removeClass('bg-primary-dark'); 
+            $(".soci").removeClass('soci-dark'); 
+            $(".card-support").removeClass('card-support-dark'); 
+            $(".cennnter").removeClass('cennnter-dark'); 
+            $(".mediabout").removeClass('mediabout-dark'); 
+            head.removeChild(link);
+        }
+    }
+
+
+    function check_video(id) {
+        $.ajax({
+            method: "POST",
+            url: "/video_check/",
+            data: {
+                'id': id,
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['msg'] == "success") {
+                    if(response['continous'] == 1){
+                        course_name = response['course_name']
+                        quiz_id = response['quiz_id']
+                        question_no = response['question_no']
+                        window.location = `/quiz/${course_name}/${quiz_id}/?question=${question_no}`
+                    } else{
+                        window.location = "/video/playground/" + response['id'];
+                    }
+
+                } else if (response['msg'] == "error") {
+                    swal("Course Video Not Found!", {
+                        icon: "info",
+                        button: "Ok",
+                        closeOnClickOutside: false,
+                    }).then(function () {
+                    });
+                }
+            }
+        });
+    }
+</script>
+<script>
+
+    $(function () {
+        'use strict';
+
+        // ENABLE sidebar menu tabs
+        $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        $('.js-sidebar-mini-tabs').on('show.bs.tab', function (e) {
+            $('.js-sidebar-mini-tabs > .active').removeClass('active')
+            $(e.target).parent().addClass('active')
+        })
+    });
+    //})()
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRFToken': $("#hd_csrf").val(),
+        }
+    });
+    let config = {
+        headers: {'X-CSRFToken': $("#hd_csrf").val()},
+    };
+</script>
+<script>
+
+    var Botkit = require('botkit');
+
+    var controller = new Botkit({});
+
+
+    controller.hears('hello', 'message', async (bot, message) => {
+
+        await bot.reply(message, 'Howdy!');
+
+    })
+    // Tell the bot to listen for users saying "hello," and use `bot.reply` to send an immediate response.
+
+
+    const tacos = new BotkitConversation('tacos', controller);
+    tacos.say('Oh boy, taco time!');
+    tacos.ask('What type of taco do you want?', async (answer, convo, bot) => {
+
+        // do something with the answer!
+
+    }, 'type_of_taco');
+    tacos.say('Yum!!');
+    controller.addDialog(tacos);
+
+    controller.hears('tacos', 'message', async (bot, message) => {
+        await bot.beginDialog('tacos');
+    });
+</script>
+<script>
+    const accessToken = "2af13bcd195349aba75a1c003d0dd75b";
+    const baseUrl = "https://api.api.ai/api/query?v=20150910";
+    const sessionId = "1234567890";
+    const loadingMarkups = "<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>";
+    const errorMessage = "Stay around while we repling..";
+    const urlPattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    const loadingDelay = 700;
+    const aiReplyDelay = 1800;
+    const $document = document;
+    const $chatbot = $document.querySelector(".chatbot");
+    const $chatbotMessageWindow = $document.querySelector(".chatbot__message-window");
+    const $chatbotHeader = $document.querySelector(".chatbot__header");
+    const $chatbotMessages = $document.querySelector(".chatbot__messages");
+    const $chatbotInput = $document.querySelector(".chatbot__input");
+    const $chatbotSubmit = $document.querySelector(".chatbot__submit");
+
+    /*$chatbotHeader.addEventListener("click", () => {
+        toggle($chatbot, "chatbot--closed");
+        $chatbotInput.focus();
+    }, false);*/
+
+    document.addEventListener("keypress", event => {
+        if (event.which === 13) {
+            validateMessage();
+        }
+    }, false);
+
+    /*$chatbotSubmit.addEventListener("click", () => {
+        validateMessage();
+    }, false);*/
+
+    let toggle = (element, klass) => {
+        let classes = element.className.match(/\S+/g) || [],
+            index = classes.indexOf(klass);
+        if (index >= 0) {
+            classes.splice(index, 1);
+        } else {
+            classes.push(klass);
+        }
+        element.className = classes.join(" ");
+    };
+
+    let userMessage = content => {
+        $chatbotMessages.innerHTML += `
+          <li class='is-user animation'>
+
+        <p class='chatbot__message'>
+          ${content}
+        </p>
+        <span class='chatbot__arrow chatbot__arrow--right'></span>
+        <img src="./../static{{user.image}}" style="border:2px solid grey;margin-left:5px;width:40px;float:right;height:40px;border-radius:50%" />
+
+      </li>`;
+    };
+
+    let aiMessage = (content, isLoading = false, delay = 0) => {
+        setTimeout(() => {
+            removeLoader();
+            $chatbotMessages.innerHTML += `<li
+            class='is-ai animation'
+            id='${isLoading ? "is-loading" : ""}'>
+              <div class="is-ai__profile-picture">
+                 <img src="../../assets/img/favicon.png" alt="">
+              </div>
+              <span class='chatbot__arrow chatbot__arrow--left'></span>
+              <div class='chatbot__message'>
+                ${content}
+                <small style="position:absolute;right:40px;bottom:5px;color: grey;"><b>now</b></small>
+
+              </div>
+            </li>
+
+            `;
+            scrollDown();
+        }, delay);
+    };
+
+    let removeLoader = () => {
+        let loadingElem = document.getElementById("is-loading");
+        if (loadingElem) {
+            $chatbotMessages.removeChild(loadingElem);
+        }
+    };
+
+    let escapeScript = unsafe => {
+        let safeString = unsafe.replace(/</g, " ")
+            .replace(/>/g, " ")
+            .replace(/&/g, " ")
+            .replace(/"/g, " ")
+            .replace(/\\/, " ")
+            .replace(/\s+/g, " ");
+        return safeString.trim();
+    };
+
+    let linkify = inputText => {
+        return inputText.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+    };
+
+    let validateMessage = () => {
+        let text = $chatbotInput.value;
+        let safeText = text ? escapeScript(text) : "";
+        if (safeText.length && safeText !== " ") {
+            resetInputField();
+            userMessage(safeText);
+            send(safeText);
+        }
+        scrollDown();
+        return;
+    };
+
+    let multiChoiceAnswer = text => {
+        let decodedText = text.replace(/zzz/g, "'");
+        userMessage(decodedText);
+        send(decodedText);
+        scrollDown();
+        return;
+    };
+
+    let processResponse = val => {
+        removeLoader();
+        if (val.fulfillment) {
+            let output = "";
+            let messagesLength = val.fulfillment.messages.length;
+            for (let i = 0; i < messagesLength; i++) {
+                let message = val.fulfillment.messages[i];
+                let type = message.type;
+                switch (type) {
+                    // 0 fulfillment is text
+                    case 0:
+                        let parsedText = linkify(message.speech);
+                        output += `<p>${parsedText}</p>`;
+                        break;
+                    // 1 fulfillment is card
+                    case 1:
+                        // let imageUrl = message.imageUrl
+                        // let imageTitle = message.title
+                        // let imageSubtitle = message.subtitle
+                        // output += `<img src="${imageUrl}" alt="${imageTitle}${imageSubtitle}" />`
+                        break;
+                    // 2 fulfillment is button list
+                    case 2:
+                        let title = message.title;
+                        let replies = message.replies;
+                        let repliesLength = replies.length;
+                        output += `<p>${title}</p>`;
+                        for (let i = 0; i < repliesLength; i++) {
+                            let reply = replies[i];
+                            let encodedText = reply.replace(/'/g, "zzz");
+                            output += `<button onclick='multiChoiceAnswer("${encodedText}")'>${reply}</button>`;
+                        }
+                        break;
+                    // 3 fulfillment is image
+                    case 3:
+                        // console.log("Fulfillment is image - TODO")
+                        break;
+                }
+            }
+            return output;
+        } else {
+            return val;
+        }
+    };
+
+    let setResponse = (val, delay = 0) => {
+        setTimeout(() => {
+            aiMessage(processResponse(val));
+        }, delay);
+    };
+
+    let resetInputField = () => {
+        $chatbotInput.value = "";
+    };
+
+    let scrollDown = () => {
+        let distanceToScroll = $chatbotMessageWindow.scrollHeight - ($chatbotMessages.lastChild.offsetHeight + 60);
+        $chatbotMessageWindow.scrollTop = distanceToScroll;
+        return false;
+    };
+
+    let send = (text) => {
+        fetch(`${baseUrl}&query=${text}&lang=en&sessionId=${sessionId}`, {
+            method: "GET",
+            dataType: "json",
+            headers: {
+                Authorization: "Bearer " + accessToken,
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        })
+            .then(response => response.json())
+            .then(res => {
+                if (res.status < 200 || res.status >= 300) {
+                    let error = new Error(res.statusText);
+                    throw error;
+                }
+                return res;
+            }).then(res => {
+            // console.log(JSON.stringify(response.result, undefined, 2))
+            setResponse(res.result, loadingDelay + aiReplyDelay);
+        }).catch(error => {
+            setResponse(errorMessage, loadingDelay + aiReplyDelay);
+            resetInputField();
+            //console.log( error );
+        });
+        aiMessage(loadingMarkups, true, loadingDelay);
+    };
+</script>
+<script>
+    $(document).ready(function () {
+        var color = localStorage.getItem('mode');
+        console.log(color);
+        color_mode();
+    });
+
+    let head = document.getElementsByTagName('HEAD')[0];
+
+    // Create new link Element
+    let link = document.createElement('link');
+
+    // set the attributes for link element
+    link.rel = 'stylesheet';
+
+    link.type = 'text/css';
+
+    link.href = "/static/{{lang}}teacher/assets/css/dark.css";
+
+    function color_mode() {
+        if (localStorage.getItem('mode') == 'dark') {
+            head.appendChild(link);
+
+        } else {
+            head.removeChild(link);
+        }
+    }
+</script>
+<script>
+
+    $(document).ready(function () {
+        $('#text_message').attr('disabled', true);
+        $('#loadings').fadeOut(3000);
+    });
+
+</script>

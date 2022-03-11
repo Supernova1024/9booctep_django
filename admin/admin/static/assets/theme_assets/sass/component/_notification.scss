@@ -1,0 +1,139 @@
+.notification-modal-box {
+    @include e(btn) {
+        font-size: 14px;
+        padding: 0px 15px;
+        line-height: 34px;
+        font-weight: 400;
+        border-radius: 5px;
+    }
+}
+
+// Notification Css
+.notification-wrapper {
+    position: fixed;
+    z-index: 9999;
+
+    &.top-left {
+        top: 20px;
+        left: 20px;
+
+        @include xs {
+            left: 10px;
+        }
+    }
+
+    &.top-right {
+        top: 20px;
+        right: 20px;
+
+        @include xs {
+            right: 10px;
+        }
+    }
+
+    &.bottom-left {
+        bottom: 20px;
+        left: 20px;
+
+        @include xs {
+            left: 10px;
+        }
+    }
+
+    &.bottom-right {
+        bottom: 20px;
+        right: 20px;
+
+        @include xs {
+            right: 10px;
+        }
+    }
+}
+
+.atbd-notification-box {
+    position: relative;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+    padding: 15px;
+    background-color: #fff;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &.notification-info {
+        .atbd-notification-box__icon {
+            svg {
+                @extend .color-info;
+            }
+        }
+    }
+
+    &.notification-success {
+        .atbd-notification-box__icon {
+            svg {
+                @extend .color-success;
+            }
+        }
+    }
+
+    &.notification-danger {
+        .atbd-notification-box__icon {
+            svg {
+                @extend .color-danger;
+            }
+        }
+    }
+
+    &.notification-warning {
+        .atbd-notification-box__icon {
+            svg {
+                @extend .color-warning;
+            }
+        }
+    }
+
+    @include e("icon") {
+        margin-right: 15px;
+    }
+
+    @include e("text") {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 15px;
+        }
+    }
+
+    @include e("close") {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+
+        svg,
+        img {
+            max-width: 20px;
+            @extend .color-dark;
+        }
+    }
+}
+
+// Notification Placement
+.notification-placement-wrap {
+    margin: -10px;
+
+    @include xs {
+        flex-flow: column;
+    }
+
+    .atbd-select {
+        min-width: 140px;
+        margin: 10px;
+    }
+}

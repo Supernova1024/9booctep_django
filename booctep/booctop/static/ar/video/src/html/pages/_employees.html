@@ -1,0 +1,316 @@
+{% import 'components/avatar.html' as avatar %}
+{% import 'components/shifts-table.html' as shifts_table %}
+{% import 'components/employees-table.html' as employees_table %}
+
+<div class="{{ containerClass or 'container' }}">
+  <div class="page-section">
+
+    <div class="page-separator">
+      <div class="page-separator__text">Overview</div>
+    </div>
+
+    <div class="row mb-lg-8pt">
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="position-relative mr-16pt">
+                <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                  <small>92%</small>
+                </div>
+                <canvas 
+                  width="48" 
+                  height="48" 
+                  class="chart-canvas position-relative z-1 js-update-chart-progress" 
+                  id="inTimeProgressChart"
+                  data-chart-line-background-color="primary;gray"
+                  data-chart-disable-tooltips="true"></canvas>
+              </div>
+              <div class="flex">
+                <strong>In Time</strong>
+              </div>
+              <div class="text-50">60</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="position-relative mr-16pt">
+                <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                  <small>23%</small>
+                </div>
+                <canvas 
+                  width="48" 
+                  height="48" 
+                  class="chart-canvas position-relative z-1 js-update-chart-progress-accent" 
+                  id="lateProgressChart"
+                  data-chart-line-background-color="accent;gray"
+                  data-chart-disable-tooltips="true"></canvas>
+              </div>
+              <div class="flex">
+                <strong>In Time</strong>
+              </div>
+              <div class="text-50">15</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="position-relative mr-16pt">
+                <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                  <small>6%</small>
+                </div>
+                <canvas 
+                  width="48" 
+                  height="48" 
+                  class="chart-canvas position-relative z-1" 
+                  id="absentsProgressChart"
+                  data-chart-line-background-color="yellow;gray"
+                  data-chart-disable-tooltips="true"></canvas>
+              </div>
+              <div class="flex">
+                <strong>Absents</strong>
+              </div>
+              <div class="text-50">4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="position-relative mr-16pt">
+                <div class="text-center fullbleed d-flex align-items-center justify-content-center flex-column z-0">
+                  <small>1%</small>
+                </div>
+                <canvas 
+                  width="48" 
+                  height="48" 
+                  class="chart-canvas position-relative z-1" 
+                  id="vacationProgressChart"
+                  data-chart-line-background-color="yellow;gray"
+                  data-chart-disable-tooltips="true"></canvas>
+              </div>
+              <div class="flex">
+                <strong>Vacation</strong>
+              </div>
+              <div class="text-50">1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Recently added</div>
+    </div>
+
+    <div class="card mb-32pt">
+      {{ employees_table.component(items=[{
+        avatar: { title: 'BN' },
+        name: 'Billy Nunez',
+        email: 'annabell.kris@yahoo.com',
+        phone: '239-721-3649',
+        meta: {
+          icon: 'link',
+          count: 2
+        },
+        department: 'Design',
+        department_initials: 'Ds',
+        department_bg: 'bg-light text-black-100',
+        role: 'UX Designer',
+        status: {
+          title: 'Probation',
+          indicator_bg: 'bg-warning'
+        },
+        type: 'Temporary',
+        date: '19/02/2019'
+      }, {
+        avatar: { title: 'TP' },
+        name: 'Tony Parks',
+        email: 'vida_glover@gmail.com',
+        phone: '169-769-4821',
+        meta: {
+          icon: 'comment',
+          count: 1
+        },
+        department: 'Development',
+        department_initials: 'Dv',
+        department_bg: 'bg-light text-black-100',
+        role: 'Senior Frontend Developer',
+        status: {
+          title: 'Active',
+          indicator_bg: 'bg-primary'
+        },
+        type: 'On Contract',
+        date: '18/02/2019'
+      }, {
+        selected: false,
+        avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+        name: 'Gilbert Barrett',
+        email: 'paolo.zieme@gmail.com',
+        phone: '462-060-7408',
+        meta: {
+          icon: 'comment',
+          count: 1
+        },
+        department: 'Customer Relationship',
+        department_initials: 'CR',
+        department_bg: 'bg-light text-black-100',
+        role: 'CRM Manager',
+        status: {
+          title: 'Active',
+          indicator_bg: 'bg-primary'
+        },
+        type: 'On Contract',
+        date: '17/02/2019'
+      }, {
+        selected: false,
+        avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+        name: 'Ollie Wallace',
+        phone: '285-626-6050',
+        email: 'lorna_kirlin@nora.biz',
+        department: 'HR',
+        department_initials: 'HR',
+        department_bg: 'bg-light text-black-100',
+        role: 'HR Manager',
+        status: {
+          title: 'Active',
+          indicator_bg: 'bg-primary'
+        },
+        type: 'Full Time',
+        date: '16/02/2019'
+      }, {
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-3.jpg' },
+        name: 'Ricardo Bell',
+        phone: '285-626-6050',
+        email: 'smith_winfield@douglas.io',
+        department: 'Design',
+        department_initials: 'Ds',
+        department_bg: 'bg-light text-black-100',
+        role: 'UX Designer',
+        status: {
+          title: 'Terminated',
+          indicator_bg: 'bg-danger'
+        },
+        type: 'Temporary',
+        date: '01/12/2018'
+      }]) }}
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Shift distribution</div>
+    </div>
+
+    <div class="d-flex align-items-center mb-24pt mb-lg-32pt">
+      <div class="position-relative">
+        <a class="d-flex flex-column border-1 rounded bg-alt px-16pt py-8pt lh-1" href="">
+          <small><strong>Day</strong></small>
+          <small class="text-50">07:30 - 20:00</small>
+        </a>
+        <a href="" class="position-close-4pt">
+          <i class="material-icons text-50 icon-16pt">close</i>
+        </a>
+      </div>
+      <div class="position-relative ml-8pt">
+        <a class="d-flex flex-column border-1 rounded bg-alt px-16pt py-8pt lh-1" href="">
+          <small><strong>Night</strong></small>
+          <small class="text-50">20:00 - 08:00</small>
+        </a>
+        <a href="" class="position-close-4pt">
+          <i class="material-icons text-50 icon-16pt">close</i>
+        </a>
+      </div>
+      <a class="d-flex flex-column border-1 rounded bg-alt px-16pt py-8pt lh-1 text-center ml-8pt" href="">
+        <i class="material-icons text-50 icon-16pt">add</i>
+        <small><strong>New Shift</strong></small>
+      </a>
+    </div>
+
+    <div class="page-separator">
+      <div class="page-separator__text">Shift distribution</div>
+    </div>
+
+    <div class="card mb-0">
+      {{ shifts_table.component(items=[{
+        avatar: { title: 'BN' },
+        name: 'Billy Nunez',
+        monday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        },
+        tuesday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        },
+        friday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        },
+        saturday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        },
+        sunday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        }
+      }, {
+        avatar: { title: 'TP' },
+        name: 'Tony Parks',
+        wednesday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        },
+        thursday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        }
+      }, {
+        selected: true,
+        avatar: { image: 'assets/images/people/110/guy-1.jpg' },
+        name: 'Gilbert Barrett',
+        monday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        },
+        tuesday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        },
+        friday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        },
+        saturday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        },
+        sunday: {
+          title: 'Night', 
+          time: '20:00 - 08:00'
+        }
+      }, {
+        avatar: { image: 'assets/images/people/110/guy-2.jpg' },
+        name: 'Ollie Wallace',
+        wednesday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        },
+        thursday: {
+          title: 'Day', 
+          time: '07:30 - 20:00'
+        }
+      }]) }}
+    </div>
+
+  </div>
+</div>

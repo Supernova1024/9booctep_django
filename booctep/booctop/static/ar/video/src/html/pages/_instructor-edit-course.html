@@ -1,0 +1,24 @@
+<div class="page-section border-bottom-2">
+  <div class="{{ containerClass or 'container' }}">
+
+    <div class="row">
+      <div class="col-md-8">
+        
+        {% include 'pages/_instructor-edit-course.basic.html' %}
+        
+        {% include 'pages/_instructor-edit-course.sections.html' %}
+
+      </div>
+      <div class="col-md-4">
+    
+        {% include 'pages/_instructor-edit-course.save.html' %}
+
+        {% include 'pages/_instructor-edit-course.video.html' %}
+
+        {% include 'pages/_instructor-edit-course.options.html' %}
+
+      </div>
+    </div>
+
+  </div>
+</div>

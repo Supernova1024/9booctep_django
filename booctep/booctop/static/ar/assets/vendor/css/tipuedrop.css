@@ -1,0 +1,118 @@
+
+/*
+Tipue drop 5.0.2
+Copyright (c) 2015 Tipue
+Tipue drop is released under the MIT License
+http://www.tipue.com/drop
+*/
+
+
+/*#tipue_drop_input
+{
+font: 13px/1.6 'Helvetica Neue', Helvetica, Arial, sans-serif;
+color: #333;
+padding: 13px 13px 13px 40px;
+width: 170px;
+border: 1px solid #e2e2e2;
+border-radius: 0;
+-moz-appearance: none;
+-webkit-appearance: none;
+box-shadow: none; 
+outline: 0;
+margin: 0;
+background: #fff url('img/search.png') no-repeat 15px 15px;
+}*/
+
+#tipue_drop_content
+{
+    display: none;
+    position: absolute;
+    margin: 20px 0;
+    line-height: 0;
+    width: 300px;
+    z-index: 1000;
+}
+
+.tipue_drop_box 
+{
+    position: relative;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 2px;
+    box-shadow: 0px 5px 43px rgba(0, 0, 0, 0.18) !important;
+}
+.tipue_drop_box:after, .tipue_drop_box:before
+{
+    position: absolute;
+    pointer-events: none;
+    border: solid transparent;
+    bottom: 100%;
+    content: "";
+    height: 0;
+    width: 0;
+}
+.tipue_drop_box:after
+{
+    border-bottom-color: #fff;
+    border-width: 8px;
+    left: 42px;
+    margin-left: -8px;
+}
+.tipue_drop_box:before 
+{
+    border-bottom-color: #dcdcdc;
+    border-width: 9px;
+    left: 42px;
+    margin-left: -9px;
+}
+
+#tipue_drop_wrapper
+{
+    margin: 6px;
+}
+#tipue_drop_wrapper a
+{
+    text-decoration: none;
+}
+.tipue_drop_item
+{
+    background-color: #fff;
+}
+.tipue_drop_item:hover
+{
+    background-color: #f7f7f7;
+}
+.tipue_drop_left
+{
+    display: table-cell;
+    padding: 7px;
+}
+.tipue_drop_image
+{
+    position: relative;
+    left: 1px;
+    margin: 0;
+    width: 50px !important;
+    height: 50px !important;
+    min-height: 50px;
+    border-radius: 50%;
+    display: block;
+    padding: 4px;
+    border: 1px solid #cecece;
+}
+.tipue_drop_right
+{
+    display: table-cell;
+    vertical-align: middle;
+    font: 300 14px/1.6 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /*color: #333;*/
+    color: #515365;
+    font-weight: 500;
+    width: 170px;
+    padding: 0 7px;
+}
+
+.tipue_drop_right small {
+    font-weight: 400;
+    color: #999;
+}

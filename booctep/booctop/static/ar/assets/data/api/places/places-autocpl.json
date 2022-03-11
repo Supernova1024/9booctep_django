@@ -1,0 +1,114 @@
+[
+    {
+        "id": "0",
+        "name": "The Bingo",
+        "address": "Melbourne, Australia",
+        "visitors": "20K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/australia.svg"
+    },
+    {
+        "id": "1",
+        "name": "Geslin Park",
+        "address": "Columbus, OH",
+        "visitors": "5000K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "2",
+        "name": "Fred's Arcade",
+        "address": "London, UK",
+        "visitors": "30K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-kingdom.svg"
+    },
+    {
+        "id": "3",
+        "name": "Hazelcream",
+        "address": "Berlin, Germany",
+        "visitors": "6K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/germany.svg"
+    },
+    {
+        "id": "4",
+        "name": "Bunny Candy",
+        "address": "Paris, France",
+        "visitors": "15K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/france.svg"
+    },
+    {
+        "id": "5",
+        "name": "O'Reilly Surf school",
+        "address": "Melbourne, Australia",
+        "visitors": "1254",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/australia.svg"
+    },
+    {
+        "id": "6",
+        "name": "Royal Mall",
+        "address": "New York, NY",
+        "visitors": "1500K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "7",
+        "name": "Esper Coworking",
+        "address": "New York, NY",
+        "visitors": "800",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "8",
+        "name": "Koffee",
+        "address": "Madrid, Spain",
+        "visitors": "1500",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/spain.svg"
+    },
+    {
+        "id": "9",
+        "name": "Al Andalous",
+        "address": "Marrakech, Morocco",
+        "visitors": "2K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/morocco.svg"
+    },
+    {
+        "id": "10",
+        "name": "El Pacha",
+        "address": "Mexico, Mexico",
+        "visitors": "18K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/mexico.svg"
+    },
+    {
+        "id": "11",
+        "name": "Andy's Retail",
+        "address": "New York, NY",
+        "visitors": "400",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "12",
+        "name": "La Concha",
+        "address": "New York, NY",
+        "visitors": "2K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    },
+    {
+        "id": "13",
+        "name": "Brooklyn skatepark",
+        "address": "New York, NY",
+        "visitors": "90K",
+        "pic": "https://via.placeholder.com/150x150",
+        "country": "assets/img/icons/flags/united-states-of-america.svg"
+    }
+]

@@ -1,0 +1,272 @@
+// Application
+
+.application-task {
+  .application-task-icon {
+    border-radius: 12px;
+    margin-right: 20px;
+  }
+  .application-task-content {
+    flex: 1;
+  }
+}
+
+// About Project
+.about-projects {
+  @include e(details) {
+    p {
+      @include ofs(15px, lh(15px, 25px), 400);
+      @extend .color-gray;
+    }
+  }
+
+  ul {
+    margin-top: 35px;
+    margin-bottom: -10px;
+    flex-wrap: wrap;
+    @include md {
+      flex-flow: column;
+    }
+    li {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      &:not(:last-child) {
+        margin-right: 80px;
+      }
+    }
+  }
+}
+
+.acButton {
+  text-transform: capitalize;
+  padding: 3px 15px;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+  @include ssm {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+
+  svg {
+    width: 14px;
+    margin-right: 7px;
+  }
+}
+
+//Project Task
+
+.project-task-list__right {
+  ul li {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    .time-completed {
+      width: 70px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    button {
+      height: unset;
+
+      svg {
+        width: 22px;
+        @extend .color-extra-light;
+      }
+    }
+
+    a svg {
+      color: #d8dceb;
+      width: 14px;
+    }
+  }
+}
+
+.project-task .ptl--hover,
+.todo-task .ptl--hover {
+  padding: 0 0;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  td {
+    padding: 9px 0;
+    vertical-align: middle;
+    &:first-child {
+      padding-left: 25px;
+    }
+    &:last-child {
+      padding-right: 25px;
+      float: right;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 15px 50px #9299b833;
+  }
+
+  .custom-checkbox input[type="checkbox"]:checked + label:after {
+    @extend .bg-success;
+    @extend .border-success;
+  }
+}
+input[type="checkbox"]:checked + label.strikethrough {
+  text-decoration: line-through;
+}
+
+.task-list-btn button {
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border: none;
+  width: 100%;
+  padding: 13px 20px;
+  background-color: rgba($primary, 0.08);
+
+  svg {
+    margin-right: 5px;
+    width: 18px;
+  }
+}
+
+.task-activities__left {
+  @include ssm {
+    flex-flow: column;
+    width: 100%;
+    .task-activities__month {
+      padding: 30px 0;
+      display: flex;
+    }
+  }
+}
+.task-activities__right {
+  @include ssm {
+    padding-top: 17px;
+  }
+}
+
+//Application Ui
+
+
+  .files-area__img{
+    margin-right: 20px;
+  }
+
+
+.files-area__right {
+  p {
+    text-transform: capitalize;
+  }
+  .dropdown svg {
+    width: 22px;
+    @extend .color-extra-light;
+  }
+}
+
+// Application Top Bar
+.breadcrumb-edit,
+.breadcrumb-remove {
+  text-transform: capitalize;
+  padding: 5px 15px;
+
+  svg {
+    width: 14px;
+    margin-right: 8px;
+  }
+}
+
+.application-ui .action-btn a {
+  height: 35px;
+  padding: 0 15px;
+}
+
+.application-ui .btn-group-toggle .btn {
+  height: 35px;
+  padding: 0 15px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #c6d0dc;
+  @extend .color-light;
+  background: white;
+  box-shadow: none;
+}
+
+.media-ui__title{
+  margin-right: 10px;
+}
+.media-ui__start{
+  margin-right: 30px;
+}
+
+//Modal New Member
+
+.new-member {
+  .modal-header .close {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    background: #f4f5f7;
+    border-radius: 50%;
+    @extend .color-light;
+    text-shadow: none;
+    opacity: 1;
+    transition: $transition-base;
+    font-size: 18px;
+
+    &:hover {
+      color: #fff;
+      @extend .bg-primary;
+    }
+    svg {
+      width: 18px;
+    }
+  }
+  .modal-body {
+    padding: 25px 30px 30px;
+  }
+  .textarea-group {
+    margin-bottom: 28px;
+  }
+}
+
+.new-member .modal-header {
+  padding: 12px 30px;
+}
+
+//tab
+.app-ui-tab.ap-tab-main .nav-link:after {
+  bottom: -1px;
+  height: 1px;
+}
+
+.project-top-progress {
+  .project-top-right {
+    @include sm {
+      justify-content: space-between;
+    }
+  }
+  .project-tap {
+    @include sm {
+      padding: 0 10px;
+    }
+  }
+}
+.projects-tab-content--progress {
+  .col-xl-4 {
+    @include xxl {
+      max-width: 50%;
+      flex: 0 0 50%;
+    }
+    @include ssm {
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+}

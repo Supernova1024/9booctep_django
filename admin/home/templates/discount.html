@@ -1,0 +1,379 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+<div class="contents">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="breadcrumb-main">
+                    <h4 class="text-capitalize breadcrumb-title">Coupons & Discount Dashboard</h4>
+                </div>
+
+            </div>
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-search order-search  global-shadow mt-10">
+                                <form id="search_form" action="" method="post" class="order-search__form">
+                                    {% csrf_token %}
+                                    <span data-feather="search"></span>
+                                    <input class="form-control mr-sm-2 border-0 box-shadow-none" type="search"
+                                           placeholder="Filter by keyword" id="search" name="search"
+                                           aria-label="Search" value="{{ search }}">
+                                    <input type="hidden" name="type" id="type" value="{{ type }}">
+                                    <input type="hidden" name="page" id="page" value="{{ page }}">
+                                </form>
+                            </div>
+                            <div class="project-category d-flex align-items-center mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10 ml-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" id="ap-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 0 %} active {% endif %}" id="ap-overview-tab" data-toggle="pill"
+                                               href="#ap-overview" role="tab" aria-controls="ap-overview" onclick="setType(0)"
+                                               aria-selected="true">All</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 1 %} active {% endif %}" id="timeline-tab" data-toggle="pill"
+                                               href="#timeline" onclick="setType(1)"
+                                               role="tab" aria-controls="timeline" aria-selected="false">Booctep's
+                                                Discount</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link {% if type == 2 %} active {% endif %}" id="draft-tab" data-toggle="pill"
+                                               href="#draft" onclick="setType(2)"
+                                               role="tab" aria-controls="draft" aria-selected="false">without Booctep's
+                                                discount</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+
+                            <button class="btn btn-primary btn-create-event ml-10" style="" data-toggle="modal"
+                                    data-target="#c-event-modal" {% if exist == 1 %} disabled {% endif %}>
+                                <span data-feather="plus"></span>Create Discount
+                            </button>
+
+                            <button class="btn btn-danger btn-create-event ml-10" style="" data-toggle="modal"
+                                    data-target="#modal-info-delete" {% if exist == 0 %} disabled {% endif %}>
+                                <span data-feather="minus"></span>Delete current discount
+                            </button>
+                        </div>
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content" id="ap-tabContent">
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                             aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                    <tr class="userDatatable-header">
+                                        <th>
+                                            <span class="userDatatable-title">Course name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Teacher name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Status</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Price</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">discount percent</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Price after discount</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title float-right">Running</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if exist  == 1 %}
+                                    {% for course in course_list %}
+                                    <tr>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.user.first_name }} {{ course.user.last_name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-status d-inline-block">
+                                                <span class="order-bg-opacity-success  text-success rounded-pill active">Booctep coupon</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                ${{ course.price }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                {{ course.discount }}%
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-title">
+                                                ${{ course.discount_price }}
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                <li>
+                                                    <div class="custom-control custom-switch switch-primary switch-md ">
+                                                        {% if exist != 0 %}
+                                                        <input type="checkbox" class="custom-control-input"
+                                                               id="switch-s{{course.id}}" {% if course.discount_not_allow == 0 %}checked{% endif %} onchange="switch_change('{{course.id}}',this)">
+                                                        <label class="custom-control-label" for="switch-s{{course.id}}"></label>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                        <td>There is no discount to show</td>
+                                    </tr>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Table Responsive End -->
+                        </div>
+                    </div>
+                    {% if course_list.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if course_list.has_previous %}
+                                    <a href="#" onclick="page_prev()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in course_list.paginator.page_range %}
+                                    {% if course_list.number == i %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set('{{ i }}')" class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if course_list.has_next %}
+                                    <a href="#" onclick="page_next()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-info-delete modal fade show" id="modal-info-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to delete this Discount?</h6>
+                        <p>This is serious act please make sure what you doing!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success btn-outlined btn-sm" data-dismiss="modal" onclick="deleteDiscount()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="c-event-modal modal fade" id="c-event-modal" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-md c-event-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create Discount</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span data-feather="x"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="c-event-form">
+                    <form action="#">
+                        <div class="e-form-row d-flex">
+                            <div class="e-form-row__left">
+                                <label>Description</label>
+                            </div>
+                            <div class="form-group mb-20">
+                                <textarea class="form-control"
+                                          id="description" rows="8"
+                                          placeholder="Discount description"
+                                          style="width:320px"></textarea>
+                            </div>
+                        </div>
+                        <div class="e-form-row d-flex">
+                            <div class="e-form-row__left">
+                                <label>Discount</label>
+                            </div>
+                            <div class="form-group mb-20">
+                                <input type="text" class="form-control" id="discount" placeholder="50%">
+                            </div>
+                        </div>
+                        <div class="e-form-row d-flex">
+                            <div class="e-form-row__left">
+                                <label>Valid days</label>
+                            </div>
+                            <div class="form-group mb-20">
+                                <input type="text" class="form-control" id="expire"
+                                       placeholder="Expired at?">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white btn-sm" data-dismiss="modal" onclick="closeModal()">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="saveDiscount()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+    let cur_page = '{{ page }}'
+
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function closeModal() {
+        $("#c-event-modal").modal('hide')
+    }
+
+    function saveDiscount() {
+        closeModal()
+        let description = $("#description").val()
+        let discount = $("#discount").val()
+        let expire = $("#expire").val()
+        let url = '/create_discount/'
+        let form_data = new FormData()
+        form_data.append('discount', discount)
+        form_data.append('description', description)
+        form_data.append('expire', expire)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+            setTimeout(()=>{
+                location.reload()
+            }, 2000)
+            $("#yaro_message_button").click()
+        })
+    }
+
+    function deleteDiscount() {
+        let url = '/delete_discount/'
+        let form_data = new FormData()
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+            setTimeout(()=>{
+                location.reload()
+            }, 2000)
+            $("#yaro_message_button").click()
+        })
+    }
+
+    function switch_change(id,obj) {
+        let value = $(obj).is(":checked")
+        value = value == true ? 1 : 0
+        console.log("value:::", value)
+        let url = '/disable_discount_by_course/'
+        let form_data = new FormData()
+        form_data.append('id', id)
+        form_data.append('type', value)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+        }).then((response) => {
+            setTimeout(()=>{
+                location.reload()
+            }, 2000)
+            $("#yaro_message_button").click()
+        })
+    }
+
+    function setType(type) {
+        $("#type").val(type)
+        $("#search_form").submit()
+    }
+
+</script>
+{% endblock %}

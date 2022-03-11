@@ -1,0 +1,11 @@
+{% macro component(sidebarOptions='bg-white', drawerOptions='', prefix='', slug='') %}
+<div class="mdk-drawer js-mdk-drawer" data-align="end" id="messages-drawer">
+  <div class="mdk-drawer__content {{ drawerOptions }}">
+    <div class="sidebar sidebar-right sidebar-light {{ sidebarOptions }} o-hidden">
+      <div class="d-flex flex-column h-100">
+        {% include 'layouts/_sidebar.messages.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

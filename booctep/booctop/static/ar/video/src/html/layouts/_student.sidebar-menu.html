@@ -1,0 +1,112 @@
+{% macro component(icons=true, prefix) %}
+<li class="sidebar-menu-item{% if slug === 'index' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}index.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">home</span>{% endif %}
+    <span class="sidebar-menu-text">Home</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'courses' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}courses.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>{% endif %}
+    <span class="sidebar-menu-text">Browse Courses</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'paths' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}paths.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">style</span>{% endif %}
+    <span class="sidebar-menu-text">Browse Paths</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-dashboard' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-dashboard.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>{% endif %}
+    <span class="sidebar-menu-text">Student Dashboard</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-my-courses' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-my-courses.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">search</span>{% endif %}
+    <span class="sidebar-menu-text">My Courses</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-paths' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-paths.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">timeline</span>{% endif %}
+    <span class="sidebar-menu-text">My Paths</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-path' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-path.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">change_history</span>{% endif %}
+    <span class="sidebar-menu-text">Path Details</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-course' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-course.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">face</span>{% endif %}
+    <span class="sidebar-menu-text">Course Preview</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-lesson' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-lesson.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">panorama_fish_eye</span>{% endif %}
+    <span class="sidebar-menu-text">Lesson Preview</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-take-course' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-take-course.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">class</span>{% endif %}
+    <span class="sidebar-menu-text">Take Course</span>
+    <span class="sidebar-menu-badge badge badge-accent badge-notifications ml-auto">PRO</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-take-lesson' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-take-lesson.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">import_contacts</span>{% endif %}
+    <span class="sidebar-menu-text">Take Lesson</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-take-quiz' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-take-quiz.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">dvr</span>{% endif %}
+    <span class="sidebar-menu-text">Take Quiz</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-quiz-results' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-quiz-results.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>{% endif %}
+    <span class="sidebar-menu-text">My Quizzes</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-quiz-result-details' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-quiz-result-details.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">live_help</span>{% endif %}
+    <span class="sidebar-menu-text">Quiz Result</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-path-assessment' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-path-assessment.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">layers</span>{% endif %}
+    <span class="sidebar-menu-text">Skill Assessment</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-path-assessment-result' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-path-assessment-result.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">assignment_turned_in</span>{% endif %}
+    <span class="sidebar-menu-text">Skill Result</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-profile' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-profile.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>{% endif %}
+    <span class="sidebar-menu-text">Student Profile</span>
+  </a>
+</li>
+<li class="sidebar-menu-item{% if slug === 'student-help-center' %} active{% endif %}">
+  <a class="sidebar-menu-button" href="{{ prefix }}student-help-center.html">
+    {% if icons %}<span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">help_outline</span>{% endif %}
+    <span class="sidebar-menu-text">Help Center</span>
+  </a>
+</li>
+{% endmacro %}
+{{ component(prefix=prefix) }}

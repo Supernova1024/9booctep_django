@@ -1,0 +1,51 @@
+{% set navbar_class = 'navbar-dark-dodger-blue bg-transparent will-fade-background' %}
+{% set guest = true %}
+{% extends 'layouts/' + layout + '.html' %}
+
+{% block header %}
+  <div id="header" class="mdk-header mdk-header--bg-{{ header_variant or 'dark' }} bg-dark js-mdk-header {{ headerClass or 'mb-0' }}" 
+    data-effects="parallax-background waterfall"
+    data-fixed
+    data-condenses>
+    <div class="mdk-header__bg">
+      <div class="mdk-header__bg-front" style="background-image: url({{ header_image or 'assets/images/photodune-4161018-group-of-students-m.jpg' }});"></div>
+    </div>
+    <div class="mdk-header__content justify-content-center">
+      {% block navbar %}
+        {% include 'layouts/_navbar.pricing.html' %}
+      {% endblock %}
+      <div class="hero {{ containerClass }} text-center text-md-left py-112pt">
+        <h1 class="text-white text-shadow">{{ header_title or 'Learn to Code' }}</h1>
+        <p class="lead measure-hero-lead mx-auto mx-md-0 text-white text-shadow{% if header_cta !== false or header_link !== false %} mb-48pt{% else %} mb-0{% endif %}">{{ header_subtitle or 'Business, Technology and Creative Skills taught by industry experts. Explore a wide range of skills with our professional tutorials.' }}</p>
+        
+        {% if header_cta !== false %}
+          <a href="{{ prefix or '' }}courses.html" class="btn btn-lg btn-white btn--raised mb-16pt">Browse Courses</a>
+        {% endif %}
+        {% if header_link !== false %}
+          <p class="mb-0"><a href="" class="text-white text-shadow"><strong>Are you a teacher?</strong></a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+
+  <script>
+  (function(){
+    'use strict';
+    var headerNode = document.querySelector('.mdk-header')
+    var layoutNode = document.querySelector('.mdk-header-layout')
+    var componentNode = layoutNode ? layoutNode : headerNode
+    
+    componentNode.addEventListener('domfactory-component-upgraded', function() {
+      headerNode.mdkHeader.eventTarget.addEventListener('scroll', function () {
+        var progress = headerNode.mdkHeader.getScrollState().progress
+        var navbarNode = headerNode.querySelector('#default-navbar')
+        navbarNode.classList.toggle('bg-transparent', progress <= 0.2)
+      })
+    })
+  })()
+  </script>
+{% endblock %}

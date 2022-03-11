@@ -1,0 +1,156 @@
+.breadcrumb-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+  margin-top: 23px;
+  @include ssm {
+    margin-top: 20px;
+    margin-bottom: 23px;
+  }
+  @include sm {
+    flex-flow: column;
+    justify-content: center;
+  }
+  .breadcrumb-action {
+    display: flex;
+    margin: 0 -4px;
+    @include sm {
+      margin: 10px 4px 0 -4px;
+    }
+    @include ssm {
+      margin: 5px 4px 0 -4px;
+    }
+    .action-btn {
+      margin: 7.5px 4px;
+      .btn {
+        border-radius: 3px;
+        font-weight: 500;
+        height: 34px;
+        padding: 0 7.5px;
+        i,
+        svg {
+          @extend .color-primary;
+        }
+        &:focus,
+        &:active {
+          background: #fff;
+          box-shadow: 0 3px 5px rgba(146, 153, 184, 0.05) !important;
+          border-color: transparent;
+        }
+      }
+      .btn-add {
+        padding: 0 9.125px;
+        &:focus,
+        &:active {
+          background: $primary;
+        }
+        i,
+        svg {
+          @extend .color-white;
+        }
+      }
+    }
+    .input-container {
+      &.icon-left {
+        input {
+          padding-left: 32px;
+          &::placeholder {
+            @include ofs(12px, lh(12px, 15px), 500);
+            color: $gray;
+          }
+        }
+      }
+      .icon-left {
+        left: 12px;
+        @include xxs {
+          left: 8px;
+        }
+        svg,
+        i {
+          @extend .color-primary;
+        }
+      }
+      .icon-right {
+        right: 8px;
+        @include xxs {
+          right: 4px;
+        }
+      }
+      input {
+        padding: 0.375rem 1rem;
+        font-weight: 500;
+        font-size: 12px;
+        @extend .color-gray;
+      }
+    }
+    .form-control {
+      border: 0 none;
+      height: 34px;
+    }
+  }
+  .user-member__form {
+    @include media-breakpoint-up(xl) {
+      width: 350px;
+    }
+  }
+}
+
+// Breadcrumb Css
+
+.atbd-breadcrumb {
+  @include e("item") {
+    a,
+    span {
+      font-size: 14px;
+      @extend .color-gray;
+      &:hover {
+        @extend .color-info;
+      }
+    }
+    &:first-child {
+      a {
+        @extend .color-primary;
+        span {
+          @extend .color-primary;
+        }
+
+        &:hover span {
+          @extend .color-info;
+        }
+      }
+    }
+    &:last-child {
+      span {
+        @extend .color-light;
+      }
+    }
+    span {
+      &.la {
+        font-size: 14px;
+      }
+      &.la-slash {
+        /*rtl:ignore*/
+        transform: rotate(-20deg);
+      }
+    }
+  }
+}
+
+// Breadcrumb Dropdown Item
+
+.atbd-breadcrumb {
+  @include e("item") {
+    .dropdown {
+      > a {
+        &:after {
+          font-size: 10px;
+          font-family: "Line Awesome Free";
+          font-weight: 700;
+          content: "\f107";
+        }
+      }
+    }
+  }
+}

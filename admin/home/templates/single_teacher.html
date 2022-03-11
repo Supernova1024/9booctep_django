@@ -1,0 +1,345 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="contents">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop-breadcrumb">
+                    <div class="breadcrumb-main">
+                        <b><a href="/teachers/">Go Back</a></b>
+                    </div>
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Teacher details</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="cos-lg-12 col-md-12 ">
+                <aside class="profile-sider">
+                    <div class="card mb-25">
+                        <div class="card-body text-center pt-sm-30 pb-sm-0  px-25 pb-0">
+                            <div class="account-profile">
+                                <div class="ap-img w-100 d-flex justify-content-center">
+                                    <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary"
+                                         src="http://localhost:8001/static{{ teacher.image }}" alt="profile">
+                                </div>
+                                <div class="ap-nameAddress pb-3 pt-1">
+                                    <h5 class="ap-nameAddress__title">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                                    <p class="ap-nameAddress__subTitle fs-14 m-0">{{ teacher.job }}</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer mt-20 pt-20 pb-20 px-0">
+                                <div class="profile-overview d-flex justify-content-between flex-wrap">
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ teacher.date_joined | date:'D d-m-Y' }}</h6>
+                                        <span class="po-details__sTitle">Joined date</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">{{ teacher.email }}</h6>
+                                        <span class="po-details__sTitle">Email</span>
+                                    </div>
+                                    <div class="po-details">
+                                        <h6 class="po-details__title pb-1">00:40:01</h6>
+                                        <span class="po-details__sTitle">Session duration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="userDatatable orderDatatable global-shadow border py-30 px-sm-30 px-20 bg-white radius-xl w-100 mb-30">
+                    <div class="project-top-wrapper d-flex justify-content-between flex-wrap mb-25 mt-n10">
+                        <div class="d-flex align-items-center flex-wrap justify-content-center">
+                            <div class="project-search order-search  global-shadow mt-10">
+                                <form action="" method="post" class="order-search__form" id="search_form">
+                                    {% csrf_token %}
+                                    <span data-feather="search"></span>
+                                    <input class="form-control mr-sm-2 border-0 box-shadow-none" type="search" id="search" name="search"
+                                           placeholder="Filter by keyword" aria-label="Search" value="{{ search }}">
+                                    <input type="hidden" name="page" id="page" value="{{ page }}">
+                                    <input type="hidden" name="type" id="type" value="{{ type }}">
+                                </form>
+                            </div><!-- End: .project-search -->
+                            <div class="project-category d-flex align-items-center ml-md-30 mt-xl-10 mt-15">
+                                <p class="fs-14 color-gray text-capitalize mb-10 mb-md-0  mr-10">Status :</p>
+                                <div class="project-tap order-project-tap global-shadow">
+                                    <ul class="nav px-1" id="ap-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="ap-overview-tab" data-toggle="pill"
+                                               href="#ap-overview" role="tab" aria-controls="ap-overview"
+                                               aria-selected="true">All</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="timeline-tab" data-toggle="pill" href="#timeline"
+                                               role="tab" aria-controls="timeline" aria-selected="false">Free
+                                                courses</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="activity-tab" data-toggle="pill" href="#activity"
+                                               role="tab" aria-controls="activity" aria-selected="false">Paid
+                                                courses</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- End: .project-category -->
+                        </div><!-- End: .d-flex -->
+                    </div><!-- End: .project-top-wrapper -->
+                    <div class="tab-content" id="ap-tabContent">
+                        <div class="tab-pane fade show active" id="ap-overview" role="tabpanel"
+                             aria-labelledby="ap-overview-tab">
+                            <!-- Start Table Responsive -->
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-hover table-borderless border-0">
+                                    <thead>
+                                    <tr class="userDatatable-header">
+                                        <th>
+                                            <span class="userDatatable-title">Course name</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Course id</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Status</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Total students</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Report spam</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Gain from teacher</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Revenue</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title">Created date</span>
+                                        </th>
+                                        <th>
+                                            <span class="userDatatable-title float-right">Actions</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for course in courses %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        {{ course.name }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        {{ course.id }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="orderDatatable-status d-inline-block">
+                                                <span class="order-bg-opacity-success  text-success rounded-pill active">
+                                                    {% if course.type == 0 %}
+                                                    Free
+                                                    {% else %}
+                                                    Paid
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        {{ course.total_student }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        {{ course.spam }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        200 SR
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        200 SR
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="orderDatatable-title">
+                                                    <p class="d-block mb-0">
+                                                        {{ course.created_at | date:'D d-m-Y' }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <ul class="orderDatatable_actions mb-0 d-flex flex-wrap float-right">
+                                                <li>
+                                                    <a href="#" class="remove" data-toggle="modal" onclick="showDeleteModal('{{ course.id }}')"
+                                                       data-target="#modal-info-delete">
+                                                        <span data-feather="trash-2"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {% if courses.has_other_pages %}
+                    <div class="d-flex justify-content-sm-end justify-content-start mt-15 pt-25 border-top">
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    {% if courses.has_previous %}
+                                    <a href="#" onclick="page_prev()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-left"></span></a>
+                                    {% endif %}
+                                    {% for i in courses.paginator.page_range %}
+                                    {% if courses.number == i %}
+                                    <a href="#" onclick="page_set('{{ i }}')"
+                                       class="atbd-pagination__link active"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% else %}
+                                    <a href="#" onclick="page_set('{{ i }}')"
+                                       class="atbd-pagination__link"><span
+                                            class="page-number">{{ i }}</span></a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if courses.has_next %}
+                                    <a href="#" onclick="page_next()"
+                                       class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% else %}
+                                    <a href="#" class="atbd-pagination__link pagination-control"
+                                       style="cursor: not-allowed; background: white;"><span
+                                            class="la la-angle-right"></span></a>
+                                    {% endif %}
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div><!-- End: .userDatatable -->
+            </div><!-- End: .col -->
+        </div>
+    </div>
+</div>
+<div class="modal-info-delete modal fade show" id="modal-info-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-info-body d-flex">
+                    <div class="modal-info-icon warning">
+                        <span data-feather="info"></span>
+                    </div>
+                    <div class="modal-info-text">
+                        <h6>Are you sure you want to delete this Course?</h6>
+                        <p>This is serious act please make sure what you doing!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-outlined btn-sm" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success btn-outlined btn-sm" data-dismiss="modal" onclick="deleteCourse()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    let cur_page = '{{ page }}'
+    let course_id = ''
+    function page_prev() {
+        let page = cur_page * 1 - 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function page_set(num) {
+        $('#page').val(num)
+        cur_page = num;
+        $('#search_form').submit()
+    }
+
+    function page_next() {
+        let page = cur_page * 1 + 1
+        $('#page').val(page)
+        $('#search_form').submit()
+    }
+
+    function showDeleteModal(id) {
+        course_id = id
+    }
+
+    function deleteCourse() {
+        let url = '/delete_course/';
+        let form_data = new FormData()
+        form_data.append('id', cur_course_id)
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            async: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                setTimeout(()=>{
+                    location.reload()
+                }, 2000)
+                $("#yaro_message_button").click()
+            },
+        })
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,67 @@
+<div class="page-section {{ containerClass or 'container' }}">
+  <div class="col-lg-10 p-0 mx-auto">
+    <div class="row">
+      <div class="col-md-6 mb-24pt mb-md-0">
+        <form action="{{ prefix or '' }}signup-payment.html">
+          <div class="form-group">
+            <label class="form-label" for="name">Your first and last name:</label>
+            <input id="name" type="text" class="form-control" placeholder="Your first and last name ...">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Your email:</label>
+            <input id="email" type="email" class="form-control" placeholder="Your email address ...">
+          </div>
+          <div class="form-group mb-24pt">
+            <label class="form-label" for="password">Password:</label>
+            <input id="password" type="password" class="form-control" placeholder="Your password ...">
+          </div>
+          <button class="btn btn-primary">Create account</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-0">
+          <div class="card-body">
+            <h5>Purchase summary</h5>
+            <div class="d-flex mb-8pt">
+              <div class="flex"><strong class="text-70">Subscription</strong></div>
+              <strong>Student</strong>
+            </div>
+
+            <div class="alert alert-soft-warning">
+              <div class="d-flex flex-wrap align-items-start">
+                <div class="mr-8pt">
+                  <i class="material-icons">check</i>
+                </div>
+                <div class="flex" style="min-width: 180px">
+                  <small class="text-black-100">
+                    Access to over 1.000 high quality courses. <strong>For individuals.</strong>
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex mb-16pt pb-16pt border-bottom">
+              <div class="flex"><strong class="text-70">Price</strong></div>
+              <strong>US &dollar;9 per month</strong>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" checked id="topic-all">
+              <label class="custom-control-label">Terms and conditions</label>
+              <small class="form-text text-muted">By checking here and continuing, I agree to the {{ brand }} Terms of Use</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-separator justify-content-center m-0">
+  <div class="page-separator__text">or sign-in with</div>
+</div>
+<div class="page-section text-center">
+  <div class="{{ containerClass or 'container' }}">
+    <a href="{{ prefix or '' }}signup-payment.html" class="btn btn-secondary btn-block-xs">Facebook</a>
+    <a href="{{ prefix or '' }}signup-payment.html" class="btn btn-secondary btn-block-xs">Twitter</a>
+    <a href="{{ prefix or '' }}signup-payment.html" class="btn btn-secondary btn-block-xs">Google+</a>
+  </div>
+</div>

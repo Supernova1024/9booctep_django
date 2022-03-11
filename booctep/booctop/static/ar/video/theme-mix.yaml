@@ -1,0 +1,65 @@
+runTasks:
+  clean: true
+  js: true
+  copy: true
+  sass: true
+  html: true
+enableCssThemes: false
+enableCssRTL: true
+copyCwd: node_modules
+copyDest: dist/assets/vendor
+copy:
+  - ion-rangeslider/js/ion.rangeSlider.min.js
+  - jquery/dist/jquery.min.js
+  - bootstrap/dist/js/bootstrap.min.*
+  - popper.js/dist/umd/popper.min.*
+  - dom-factory/dist/*
+  - fix-footer/dist/*
+  - material-design-kit/dist/material-design-kit.js
+  - bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js
+  - chart.js/dist/Chart.min.js
+  - jquery.fancytree/dist/jquery.fancytree-all.min.js
+  - moment/min/moment.min.js
+  - moment-range/dist/moment-range.min.js
+  - flatpickr/dist/flatpickr.min.{js,css}: dist/assets/vendor/flatpickr
+  - flatpickr/dist/themes/airbnb.css: dist/assets/vendor/flatpickr
+  - daterangepicker/daterangepicker.{js,css}
+  - jquery-mask-plugin/dist/jquery.mask.min.js
+  - quill/dist/quill.min.js
+  - dropzone/dist/min/dropzone.min.js
+  - nestable/jquery.nestable.js
+  - perfect-scrollbar/css/*
+  - perfect-scrollbar/dist/*.min.js
+  - sweetalert/dist/sweetalert.min.js
+  - material-design-icons-iconfont/dist/fonts/*.{eot,ttf,woff,woff2}: dist/assets/fonts/material-icons
+  - '@fortawesome/fontawesome-free/webfonts/*': dist/assets/fonts/fontawesome-free
+  - vue-icons-demo-app/dist/assets/data/material-icons: dist/assets/data/material-icons
+  - dragula/dist/dragula.min.{js,css}: dist/assets/vendor/dragula
+  - select2/dist/js/select2.min.js: dist/assets/vendor/select2
+  - select2/dist/css/select2.min.css: dist/assets/vendor/select2
+  - highlight.js/styles/vs2015.css: dist/assets/vendor/highlight.js
+  - list.js/dist/list.min.js
+  - vue/dist/vue.min.js
+  - toastr/build/toastr.min.*
+  - jqvmap/dist/jquery.vmap.min.js: dist/assets/vendor/jqvmap
+  - jqvmap/dist/jqvmap.min.css: dist/assets/vendor/jqvmap
+  - jqvmap/dist/maps/*.js: dist/assets/vendor/jqvmap/maps
+  - jqvmap/dist/maps/continents/*.js: dist/assets/vendor/jqvmap/maps/continents
+  - jvectormap/jquery.jvectormap.min.js
+  - jvectormap/jquery-jvectormap.css
+clean:
+  - dist/**/*.html
+  - dist/assets/{css,fonts,js,vendor}
+sassSrc: src/sass/**/*.scss
+cssDest: dist/assets/css
+jsSrc: src/js/**/**.{js,vue}
+jsDest: dist/assets/js
+htmlSearchPaths:
+  - ./src/html
+htmlDest: dist/[path][name].html
+htmllint: false
+laravelMixOptions:
+  processCssUrls: false
+# browserSync:
+#   server:
+#     index: choose.html

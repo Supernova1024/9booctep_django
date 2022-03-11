@@ -1,0 +1,293 @@
+{% block content %} {% load static %}
+{% load i18n %}
+
+
+
+
+<style>
+
+
+.btn-primary{
+            background-color: rgb(37, 148, 192) !important;
+            border: 1px solid rgb(23, 104, 136) !important;
+        }
+        
+        .btn-primary-dark{
+            background-color: rgb(37, 148, 192) !important;
+            border: 1px solid rgb(23, 104, 136) !important;
+        }
+        
+        .btn-primary-dark{
+            background-color: #323741 !important;
+            color: rgb(199, 199, 199) !important;
+            border: 1px solid  #21242b !important;
+            box-shadow: none !important;
+        }
+
+.blllu{
+        color: rgb(11, 111, 241) !important;
+        margin-right: 8px !important; 
+        float: right;
+    } 
+    .blllu-dark{
+
+        color: rgb(177, 200, 230) !important;
+        margin-right: 8px !important;
+        float: right;
+    }
+    .mediabout{
+        color: rgb(9, 23, 41) !important;
+    }
+      
+    .mediabout-dark{
+       color: rgb(219, 219, 219) !important;
+    }
+    
+    
+    .navbar{
+        background-color: #d2e9ff !important;
+        border-bottom: 1px solid #abcae7 !important;
+    }
+     
+     
+    .navbar-dark{
+        background-color: #323741 !important;
+        border-bottom: 1px solid #1b1d22!important;
+    }
+    
+    .dropdown-menu-right{
+        top: 50px !important;
+        background-color: #c4d8f0 !important;
+        border: 1px solid #96b0cf !important;
+    }
+    .dropdown-menu-right-dark{
+        background-color: #323741 !important;
+        border: 1px solid #202329 !important;
+    }
+    
+    .dropdown-menu-right-dark a{
+        color: #b5bbc7 !important;
+        direction: ltr !important;
+    }
+    
+    .dropdown-menu-right-dark:after,
+    .dropdown-menu-right-dark:before
+    {
+        border: none !important;
+    }
+    
+    .dropdown-menu-right:after,
+    .dropdown-menu-right:before {
+        border: none !important;
+    }
+     
+     .dropdown-menu-right {
+         right: 0 !important;
+         left: auto !important;
+         float: right;
+     }
+    
+    .material-icons-dark{
+        color: rgb(208, 223, 226) !important;
+    }
+    
+    .dropdown-menu-right-dark{
+        background-color: #323741 !important;
+        border: 1px solid #202329 !important;
+    }
+    
+    
+     
+    
+    
+    .navbar{
+        background-color: #d2e9ff !important;
+        border-bottom: 1px solid #abcae7 !important;
+    }
+     
+    .navbar-dark{
+        background-color: #323741 !important;
+        border-bottom: 1px solid #0e1013 !important;
+    }
+    
+    .brd{
+        border: 1px solid rgb(45, 116, 163) !important;
+        color: rgb(45, 116, 163) !important;
+    }
+    
+    .brd-dark{
+        border: 1px solid rgb(14, 13, 13) !important;
+        color: rgb(202, 202, 202) !important;
+    }
+    
+    
+    </style>
+    
+    
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    
+    <style>
+     
+     .riiight{
+        position: absolute !important;
+        left: 70px !important;
+        top: 25px !important;
+    }
+    
+
+    .dropdown-menu-right{
+        top: 50px !important;
+        background-color: #c4d8f0 !important;
+        border: 1px solid #96b0cf !important;
+    }
+    
+    .dropdown-menu-right-dark a{
+        color: #b5bbc7 !important;
+        direction: rtl !important;
+    }
+    
+    
+    .dropdown-menu-right {
+        left: 0 !important;
+        right: auto !important;
+        float: left;
+    }
+    
+    
+    .dropdown-menu-right-dark{
+        background-color: #323741 !important;
+        border: 1px solid #202329 !important;
+    }
+    
+    .dropdown-menu-right-dark a{
+        color: #b5bbc7 !important;
+        direction: ltr !important;
+    }
+    
+    .dropdown-menu-right-dark:after,
+    .dropdown-menu-right-dark:before
+    {
+        border: none !important;
+    }
+    
+    .dropdown-menu-right:after,
+    .dropdown-menu-right:before {
+        border: none !important;
+    }
+    
+    .lifffft{
+        margin-right: 30px !important;
+    }
+
+    .brd{
+        border: 1px solid rgb(45, 116, 163) !important;
+        color: rgb(45, 116, 163) !important;
+    }
+    
+    .brd-dark{
+        border: 1px solid rgb(14, 13, 13) !important;
+        color: rgb(202, 202, 202) !important;
+    }
+
+    .liiift{
+        position: absolute;
+        left: 25px !important;
+        top: 15px !important;
+    }
+    
+    
+    </style>
+    
+    {% else %}
+    <style>
+
+     .riiight{
+        position: absolute !important;
+        right: 70px !important;
+        top: 25px !important;
+    }
+    
+    </style>
+    {% endif %}
+
+<div class="navbar navbar-dark navbar-expand pr-0 navbar-light" id="default-navbar" data-primary>
+    <button class="navbar-toggler w-auto mr-16pt d-block d-lg-none rounded-0" type="button" data-toggle="sidebar">
+        <span class="material-icons">short_text</span>
+    </button>
+    <a href="mini-index.html" class="navbar-brand mr-16pt d-lg-none">
+        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+            <span class="avatar-title rounded bg-primary"><img src="{% static 'teacher/assets/images/illustration/teacher/128/white.svg' %}" alt="logo" class="img-fluid" /></span>
+        </span>
+        <span class="d-none d-lg-block">Luma</span>
+    </a>
+    {% get_current_language as lang %}
+    {% if lang == "ar" %}
+    
+    <h4 class="mediabout mediabout-dark lifffft" style="margin-top: 15px;">{{ title }}</h4>
+
+    <a href="#"><b style="" class="blllu blllu-dark riiight">تبديل للوحة تحكم الطالب
+        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons blllu blllu-dark" style="font-size: 18px">swap_horiz</i>
+
+    {% else  %}
+
+    <h4 class="mediabout mediabout-dark lifffft" style="margin-top: 15px;">{{ title }}</h4>
+    <a href="#"><b style="" class="blllu blllu-dark riiight">Student Dashboard
+        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons blllu blllu-dark " style="font-size: 18px">swap_horiz</i>
+
+    {%  endif %}
+</b></a>
+    <div class="flex"></div>
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown" data-caret="false">
+            
+            <span class="avatar avatar-sm mr-8pt2" style="border: 0 !important;">
+
+                <span class="avatar-title   " style="border: 0 !important;background: none !important;">
+                    <img src="/static{{user.image}}" alt="" style="border-radius: 50%;width: 50px !important;height: 40px !important;" class="brd brd-dark">
+                </span>
+
+            </span>
+        </a>
+        {% get_current_language as lang %}
+        {% if lang == "ar" %}
+        <div class="dropdown-menu dropdown-menu-right" style="margin-left: 20px !important;">
+            <div class="dropdown-header"><strong class="blllu blllu-dark" style="font-size: 15px;float: left;margin-bottom: 10px;">{{user.first_name}} {{user.last_name}}</strong></div>
+            <a class="dropdown-item" href="{% url 'home' %}">العودة لبوستيب</a>
+            <a class="dropdown-item" href="{% url 'teacher dashboard' %}">لوحة التحكم</a>
+            <a class="dropdown-item" href="{% url 'teacher courses' %}">دوراتي</a>
+            <a class="dropdown-item" href="{% url 'teacher messages' %}">الرسائل</a>
+            <a class="dropdown-item" href="{% url 'teacher notifications' %}">التنبيهات</a>
+            <a class="dropdown-item" style="color: rgb(235, 150, 150) !important;" href="/logoutfromhere">تسجيل خروج</a>
+        </div>
+        {% else %}
+        <div class="dropdown-menu dropdown-menu-right" style="margin-right: 20px !important;">
+            <div class="dropdown-header"><strong class="blllu blllu-dark" style="font-size: 15px;float: left;margin-bottom: 10px;">{{user.first_name}} {{user.last_name}}</strong></div>
+            <a class="dropdown-item" href="{% url 'home' %}">Back to Booctep</a>
+            <a class="dropdown-item" href="{% url 'teacher dashboard' %}">dashboard</a>
+            <a class="dropdown-item" href="{% url 'teacher courses' %}">My courses</a>
+            <a class="dropdown-item" href="{% url 'teacher messages' %}">Messages</a>
+            <a class="dropdown-item" href="{% url 'teacher notifications' %}">Notifications</a>
+            <a class="dropdown-item" style="color: rgb(235, 150, 150) !important;" href="/logoutfromhere">Logout</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '6b722eb5f4eb4970707cac5bf4d217dec23526fe';
+    window.smartsupp || (function (d) {
+        var s, c, o = smartsupp = function () {
+            o._.push(arguments)
+        };
+        o._ = [];
+        s = d.getElementsByTagName('script')[0];
+        c = d.createElement('script');
+        c.type = 'text/javascript';
+        c.charset = 'utf-8';
+        c.async = true;
+        c.src = '//www.smartsuppchat.com/loader.js?';
+        s.parentNode.insertBefore(c, s);
+    })(document);
+</script>
+{% endblock %}

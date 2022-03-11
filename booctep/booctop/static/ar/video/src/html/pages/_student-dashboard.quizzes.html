@@ -1,0 +1,30 @@
+{% import 'components/quiz-card.html' as quiz %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Quizzes</div>
+</div>
+
+{% set items = [{
+  course: "Introduction to TypeScript",
+  image: "assets/images/paths/typescript_200x168.png",
+  date: '3 days ago',
+  score: '2.8',
+  progress: 37
+}, {
+  course: "Angular Fundamentals",
+  image: "assets/images/paths/angular_200x168.png",
+  date: '3 days ago',
+  score: '3.3'
+}] %}
+
+<div class="row card-group-row">
+  {% for item in items %}
+  <div class="card-group-row__col col-md-6">
+    {{ quiz.card(item=item, prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {% include 'layouts/_pagination.html' %}
+</div>

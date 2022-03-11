@@ -1,0 +1,24 @@
+//Dashboard base
+.dashboard-base{
+    margin-top:95px;
+    margin-bottom: 90px;
+    @include ssm{
+        margin-bottom: 9px;
+        margin-top:40px;
+    }
+    .table th, .table td{
+        vertical-align: middle;
+        padding:0 15px;
+        white-space: nowrap;
+        @include ssm{
+            padding:0 10px;
+        }
+    }
+    .table tbody tr th{
+        padding-left: 0;
+    }
+    .type-info{
+        @include ofs(15px, lh(15px, 48px), 400);
+        padding: 0;
+    }
+}

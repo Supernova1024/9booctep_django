@@ -1,0 +1,73 @@
+{% import '_instructor-course-card.html' as course %}
+
+<div class="page-separator">
+  <div class="page-separator__text">Development Courses</div>
+</div>
+
+{% set items=[{
+  title: 'Learn Angular fundamentals',
+  image: 'angular',
+  open: true
+}, {
+  title: 'Build an iOS Application in Swift',
+  image: 'swift'
+}, {
+  title: 'Build a WordPress Website',
+  image: 'wordpress'
+}, {
+  title: 'Become a React Native Developer',
+  image: 'react',
+  position: 'left'
+}] %}
+
+<div class="row">
+  {% for item in items %}
+  <div class="{{ col or 'col-sm-6 col-md-4 col-xl-3' }}">
+    {{ course.component(
+      title=item.title, 
+      image=item.image, 
+      avatar=(item.avatar or item.image),
+      position=item.position,
+      open=item.open,
+      prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="mb-32pt">
+  {% include 'layouts/_pagination.html' %}
+</div>
+
+<div class="page-separator">
+  <div class="page-separator__text">Design Courses</div>
+</div>
+
+{% set items = [{
+  title: 'Learn Sketch',
+  image: 'sketch'
+}, {
+  title: 'Learn Flinto',
+  image: 'flinto'
+}, {
+  title: 'Learn Photoshop',
+  image: 'photoshop'
+}, {
+  title: 'Newsletter Design',
+  image: 'mailchimp'
+}] %}
+
+<div class="row">
+  {% for item in items %}
+  <div class="{{ col or 'col-sm-6 col-md-4 col-xl-3' }}">
+    {{ course.component(
+      title=item.title, 
+      image=item.image, 
+      avatar=(item.avatar or item.image),
+      position=item.position,
+      open=item.open,
+      prefix=prefix) }}
+  </div>
+  {% endfor %}
+</div>
+
+{% include 'layouts/_pagination.html' %}

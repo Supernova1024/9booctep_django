@@ -1,0 +1,29 @@
+{% import 'components/hljs.html' as hljs %}
+{% import 'components/next.html' as next %}
+
+<div class="{{ containerClass }} page__container">
+  <div class="row">
+    <div class="col-lg-8">
+
+      <div class="card card-body">
+        <h4>Prerequisites</h4>
+        <p class="mb-0">You'll need a <a href="https://gitlab.com" target="_blank">GitLab.com</a> account before running npm install. Once you signed up, <a href="{{ buy_url }}/comments" class="text-accent" target="_blank">let us know the username</a> so we can give you access.</p>
+      </div>
+      
+      <p class="lead measure-lead-max">{{ brand }} includes a modern development workflow based on Webpack and laravel-mix which compiles Sass, ES6 JavaScript, handles production builds, watchers, multiple CSS themes and more. This entire workflow is contained into an installable package named <code>theme-mix</code>.</p>
+
+      <p class="measure-paragraph-max">The download package does not include any vendor libraries. To install all the dependencies, run:</p>
+
+      <div class="card card-body bg-dark measure-lead-max">
+        {% call hljs.component(type="shell") -%}
+          npm run install
+        {%- endcall %}
+      </div>
+
+    </div>
+    <div class="col-lg-4 position-sticky" style="top: 64px;">
+      <div class="mb-3">{{ next.component(title='Configuration', to='configuration.html') }}</div>
+      {{ next.component(title='Getting Started', to='documentation.html', prev=true) }}
+    </div>
+  </div>
+</div>

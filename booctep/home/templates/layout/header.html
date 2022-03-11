@@ -1,0 +1,1260 @@
+{% load static %}
+{% load i18n %}
+
+<script>
+    var userid = '{{request.user.id}}';
+</script>
+
+
+
+
+
+{% get_current_language as lang %}
+{% if lang == "ar" %}
+<style>
+
+    .immgnoti{
+        margin-left: 5px !important;
+    }
+    .navbar-burger {
+        margin-right: auto;
+        margin-left: 0 !important;
+    }
+    .navbar-menu{
+        direction: rtl !important;
+        margin-left: auto;
+        margin-right: 0 !important;
+    }
+    .navbar-item .control{
+        margin-right: auto;
+        margin-left: 0 !important;
+        float: right;
+
+    }
+    .navbar-item .control .input-2{
+        margin-left: auto;
+        margin-right:  0 !important;
+        padding-right: 10px !important;
+    }
+    .navbar-item .control .input{
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 33px !important;
+    }
+    .navbar-dropdown {
+        margin-top: 40px !important;
+        height: 280px !important;
+    }
+    
+</style>
+{% endif %}
+
+<style>
+    
+
+
+    element.style {
+        margin-right: 0px;
+    }
+    .banner {
+        background: linear-gradient(90deg, rgba(69, 181, 151, 1) 0%, rgba(73, 148, 238, 1) 42%, rgba(32, 136, 221, 1) 65%, rgba(0, 212, 255, 1) 100%);
+        position: fixed;
+        width: 100%;
+        z-index: 99999999999999;
+    }
+
+    .banner__content {
+        max-width: 100%;
+        padding: 10px 0px 10px 0;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .banner__text {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-family: "Quicksand", sans-serif;
+    }
+
+    .banner__close {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .banner__text,
+    .banner__close > span {
+        color: #ffffff;
+    }
+
+    .d-none {
+        display: none !important;
+    }
+
+    .search_list {
+        position: absolute;
+        width: 320px;
+        height: auto;
+        top: 50px;
+        background: white;
+        border-radius: 5px;
+        transition: .5s;
+    }
+
+    .search_ul {
+        padding: 10px;
+    }
+
+    .search_li {
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .search_li:hover {
+        background: lightgrey;
+    }
+
+    .signup-button{
+    background-color: rgb(231, 231, 231);
+    border: 1px solid rgb(214, 214, 214);;
+}
+
+.signup-button-is-dark{
+    background-color: #31363d;
+    color: #ccc !important;
+    border: 1px solid #101316;
+}
+.signup-button-is-dark:hover{
+    border: 1px solid #060707;
+}
+
+.signin-button{
+    background-color: rgb(31, 120, 192);
+    color: #fff;
+    border: 1px solid rgb(16, 81, 134);
+}
+.signin-button:hover{
+    color: #fff;
+    border: 1px solid rgb(16, 81, 134);
+}
+.navbar .navbar-item.is-cart .cart-button-dark svg{
+    color: rgb(176, 206, 218) !important;
+}
+
+.cart-count-dark {
+    background-color: rgb(50, 108, 131) !important;
+}
+.cart-count-dark span{
+    color: rgb(231, 231, 231) !important;
+}
+
+.signin-button-is-dark{
+    background-color: #2e445a;
+    color: #ccc !important;
+    border: 1px solid #060707;
+}
+.signin-button-is-dark:hover{
+    border: 1px solid #060707 !important;
+}
+
+.button-become-a-teacher{
+  background-color: rgb(243, 243, 243) !important;
+  border: 1px solid rgb(238, 238, 238);
+}
+.button-become-a-teacher-dark{
+  background-color: rgb(165, 184, 197) !important;
+  border: 1px solid rgb(61, 70, 77) !important;
+}
+
+.brd{
+    border: 1px solid rgb(224, 224, 224) !important;
+}
+
+.brd-dark{
+    border: 1px solid rgb(14, 13, 13);
+}
+
+.shopping-cart-total{
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.shopping-cart-total-dark{
+    border-bottom: 1px solid #2d3b42;
+}
+
+
+.navbar .navbar-item.is-dark-cart .cart-button svg {
+    color: #e2e2e4
+}
+  
+  
+.navbar .navbar-item.is-dark-cart .cart-button .cart-count {
+    background: #e2e2e4;
+    border: 2px solid #222831;
+  } 
+
+
+  .navbar .navbar-item.is-dark-cart .cart-button .cart-count span {
+    color: #222831;
+  }
+
+
+
+
+
+  .navbar .navbar-item.is-dark-cart .shopping-cart {
+    background: #3c4350;
+    border: 1px solid #282c35;
+  }
+
+
+.navmobile{
+    display: flex;
+    flex-direction: row;
+    height: 50px !important;
+    padding-right: 30px !important;
+}
+
+.navmobile img{
+    border-radius: 50% !important;
+    width: 30px !important;
+    height: 60px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+
+  .prcg{
+    color: rgb(204, 29, 29) !important;
+}
+
+.prcg-dark{
+    color: rgb(214, 169, 169) !important;
+}
+
+
+.prcgr{
+    color: rgb(25, 139, 82) !important;
+}
+
+.prcgr-dark{
+    color: rgb(177, 241, 209) !important;
+}
+
+  .navbar .navbar-item.is-dark-cart .shopping-cart:after {
+    border-bottom-color: #3c4350;
+  }
+  
+  
+  
+  .navbar .navbar-item.is-dark-cart .shopping-cart:before {
+    border-bottom-color: #3c4350;
+  }
+  
+  
+  
+  .navbar .navbar-item.is-dark-cart .shopping-cart .cart-inner .navbar-cart-loader {
+    background: #3c4350;
+  }  
+  
+
+  .navbar .navbar-item.is-dark-cart .shopping-cart .button {
+    background: #222831;
+    border-color: #1a1e24;
+    color: #dcdddf;
+  }
+ 
+
+.blllu{
+        color: rgb(11, 111, 241) !important;
+        margin-right: 8px !important; 
+    } 
+    .blllu-dark{
+
+        color: rgb(115, 147, 189) !important;
+        margin-right: 8px !important;
+    }
+
+    .shopping-cart-header{
+        border-bottom: none !important;
+        margin-bottom: 10px !important;
+    }
+
+.cart-row-dark{
+    border-bottom: 1px solid #2d3b42 !important;
+}
+  .mediabout{
+    color: rgb(9, 23, 41) !important;
+}
+  
+.mediabout-dark{
+   color: rgb(219, 219, 219) !important;
+}
+
+
+.navbar .navbar-item.is-dark-cart .shopping-cart .shopping-cart-header {
+    border-bottom: 1px solid #c3c3c4;
+  }
+  
+  
+
+  .navbar .navbar-item.is-dark-cart .shopping-cart .shopping-cart-items .item-price {
+    color: #173f1e;
+  }
+
+
+  .navbar .navbar-item.is-dark-cart .shopping-cart .shopping-cart-items li {
+    border-bottom: 1px solid #c3c3c4
+  }
+  
+  .navbar .navbar-item .nav-drop-dark{
+    background: #3c4350 !important;
+    border: 1px solid #282c33 !important; 
+  }
+
+  .navbar .navbar-item .nav-drop-dark .inner .nav-drop-body a{
+      border-bottom: 1px solid #2f333a;
+    }
+
+    .nav-drop-header-dark{
+        background: #16191f !important;
+        color: rgb(214, 214, 214);
+      border-bottom: 1px solid #2f333a !important;
+
+    }
+
+    .navbar .navbar-item .nav-drop-dark:before {
+        background-color: none !important;
+        border: none !important;
+    }
+    
+
+    .navbar .navbar-item .nav-drop .inner .nav-drop-body svg {
+  height: 20px;
+  width: 20px;
+  stroke: #838694 !important
+}
+
+.navbar .navbar-item .nav-drop-dark .inner .nav-drop-body svg {
+  height: 20px;
+  width: 20px;
+  stroke: #bebebe !important
+}
+
+
+.account-item-dark:hover{ 
+    background-color: #16191f !important;
+}
+
+.account-item-dark .media h3{ 
+    color: rgb(220, 223, 224) !important;
+}
+  
+  
+.mobile-navbar .navbar-menu-dark{
+    background-color: rgb(44, 73, 100) !important;
+}
+
+.cnti{
+    background-color: rgb(139, 189, 189);
+    color:rgb(28, 59, 59);
+}
+
+.cnti-dark{
+    background-color: rgb(139, 189, 189);
+    color: rgb(13, 22, 22);
+}
+/* 
+.dancin-bc{
+  background-color: rgb(255, 255, 255) !important;
+
+}
+.dancin-bc-dark{
+  background-color: rgb(28, 32, 41) !important;
+
+}
+
+.screen{
+  background: rgb(255, 255, 255) !important;
+}
+
+.screen-dark{
+  background: rgb(28, 32, 41) !important;
+} */
+
+
+
+</style>
+{#<div class="banner">#}
+{#    <div class="container ">#}
+{#        <div class="banner__content">#}
+{#            <div class="banner__text">#}
+{#                <b>Get any course by 20 SR now in 3 days 19 Hours 12 Minutes.</b>#}
+{#            </div>#}
+{#            <button class="banner__close" type="button">#}
+{#                <span class="material-icons">#}
+{#                  close#}
+{#                </span>#}
+{#            </button>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+<div id="main-navbar" class="navbar navbar-dark is-inline-flex no-shadow is-hidden-mobile">
+    <!-- style="margin-top:49px" -->
+    <div class="container ">
+        <div class="navbar-brand">
+            <a href="/{{ lang }}" class="navbar-item logo">
+                <img class="mode_images" src="/static/{{ lang }}assets/img/logo/booctep-tran.png" alt=""/>
+            </a>
+        </div>
+        
+        
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item">
+                    <div id="global-search" class="control control-is-dark">
+                        <form action="/search" method="GET" id="searchform">
+                            <input id="tipue_drop_input" autocomplete="off" name="searchkeyword" class="input"
+                                   type="text"
+                                   placeholder="{% trans 'Search course' %}" required>
+                        </form>
+                        <span id="clear-search" class="reset-search d-none">
+                            <i data-feather="x"></i>
+                        </span>
+                        <span class="search-icon" style="right:0 !important;">
+                            <i data-feather="search"></i>
+                        </span>
+                    </div>
+                    <label id="toggler" class="animated-toggle" style="margin-right:30px !important">
+                        <input type="checkbox" id="toggle_check">
+                        <input type="hidden" id="mode_text" value="light">
+                        <span class="toggler">
+                            <span class="dark">
+                                <i data-feather="moon heree"></i>
+                            </span>
+                            <span class="light">
+                                <i data-feather="sun"></i>
+                            </span>
+                        </span>
+                    </label>
+                    <div class="search_list">
+                        {#                        <ul class="search_ul">#}
+                        {#                            <li class="search_li">123123123</li>#}
+                        {#                            <li class="search_li">234234234</li>#}
+                        {#                        </ul>#}
+                    </div>
+                </div>
+                <div id="mobile-explorer-trigger" class="navbar-item is-icon is-dark-icon">
+                    <a class="icon-link is-primary">
+                        <i class="mdi mdi-apps"></i>
+                    </a>
+                </div>
+
+                {% if request.session.user_type == 'student' %}
+                    {% if course_list|length %}
+                    {% get_current_language as lang %}
+                    {% if lang == "ar" %}
+                        <div class="navbar-item" style="width: 70px;">
+                            <a href="{% url 'student courses' %}"
+                               class="button-become-a-teacher button-become-a-teacher-dark button "
+                               data-lang="about">
+                                <b>دوراتي</b>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="navbar-item">
+                            <a href="{% url 'student courses' %}"
+                               class="button-become-a-teacher button-become-a-teacher-dark button "
+                               data-lang="about">
+                                {% trans 'My Learning' %}
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+                {% if request.session.user_type == 'student' %}
+                {% get_current_language as lang %}
+                {% if lang == "ar" %}
+                    <div class="navbar-item">
+                        <a href="/{{ lang }}/become"
+                           class="button-become-a-teacher button-become-a-teacher-dark button "
+                           data-lang="about">
+                            أصبح معلم
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="navbar-item">
+                        <a href="/{{ lang }}/become"
+                           class="button-become-a-teacher button-become-a-teacher-dark button "
+                           data-lang="about">
+                           Become a teacher
+                        </a>
+                    </div>
+
+                    {% endif %}
+                {% elif request.session.user_type == 'teacher' %}
+                  {% get_current_language as lang %}
+                  {% if lang == "ar" %}
+                    <div class="navbar-item">
+                        <a href="/{{ lang }}teacher/dashboard/"
+                           class="button-become-a-teacher button-become-a-teacher-dark button is-light"
+                           data-lang="about">
+                            {% trans 'إضافة دورة' %}
+                        </a>
+                    </div>
+                  {% else %} 
+                  <div class="navbar-item">
+                      <a href="/{{ lang }}teacher/dashboard/"
+                         class="button-become-a-teacher button-become-a-teacher-dark button is-light"
+                         data-lang="about">
+                          {% trans 'Add course' %}
+                      </a>
+                  </div>
+                  {% endif %} 
+                {% endif %}
+
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="navbar-end">
+                <div class="navbar-item is-cart is-dark-cart" style="margin-left: -20px;">
+                    {#                    {% if noti_cnt > 0 %}#}
+                    <div class="cart-button cart-button-dark">
+                        <i class="fa fa-bell"></i>
+                        <div class="cart-count cart-count-dark">
+                            <span>{{ noti_cnt }}</span>
+                        </div>
+                    </div>
+                    {#                    {% else %}#}
+                    {#                        <div class="cart-button">#}
+                    {#                            <i class="fa fa-bell"></i>#}
+                    {#                        </div>#}
+                    {#                    {% endif %}#}
+
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart dropdownnotdisplay">
+                        <div class="cart-inner">
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+                            {% if noti_cnt > 0 %}
+                                <div class="shopping-cart-header ">
+                                    <div class="shopping-cart-total shopping-cart-total-dark" style="color: rgb(241, 127, 162);cursor:not-allowed;">
+                                        <span class="lighter-text mediabout mediabout-dark">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text blllu blllu-dark">{{ noti_cnt }} Notifications</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items">
+                                    {% for noti in noti_list %}
+                                        <li class="cart-row cart-row-dark" style="position: relative;">
+                                            <img style="border-radius: 50% !important;width: 5px !important;" class="brd brd-dark immgnoti" src="{% static noti.sender.image %}" alt=""/>
+                                            <span class="item-meta">
+                                                <span class="item-name  "><a class="mediabout mediabout-dark">{{ noti.sender.first_name }} {{ noti.sender.first_name }}</a></span>
+                                                <span class="meta-info">
+                                                    <span class="item-price " style=""><a
+                                                            href="/{{ lang }}student/notifications" class="blllu blllu-dark">{{ noti.title }}</a></span>
+                                                 </span>
+                                            </span>
+                                            <span class="item-meta" style="margin-right:25px !important">
+                                                <span class="meta-info">
+                                                    <a href="#">
+                                                    <i class="fa fa-trash traaash prcg prcg-dark" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="shopping-cart-header " style="border-top: 0 !important;">
+                                    <div class="shopping-cart-total " style="border-top: 0 !important;">
+                                        <span class="lighter-text"
+                                              style="cursor:not-allowed;">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text"
+                                              style="color: #c0c0c0;cursor:not-allowed;">{% trans '0 Notifications' %}</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items-2">
+                                    <li class="cart-row-2">
+                                        <img src="{% static 'assets/img/illstrators/no-not.png' %}" alt=""/>
+                                        <span class="item-name"
+                                              style="color: grey;">There are no notifications yet.</span>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                            {% if user.group_id == 2 %}
+                                <a href="/{{ lang }}teacher/notifications"
+                                   class="button primary-button is-raised">{% trans 'View all Notifications' %}</a>
+                            {% elif user.group_id == 1 %}
+                                <a href="/{{ lang }}student/notifications"
+                                   class="button primary-button is-raised">{% trans 'View all Notifications' %}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-item is-cart is-dark-cart" style="margin-left: -20px;">
+                    {#                    {% if noti_cnt > 0 %}#}
+                    <div class="cart-button cart-button-dark">
+                        <i class="fa fa-comment-alt"></i>
+                        <div class="cart-count cart-count-dark">
+                            <span>{{ msg_cnt }}</span>
+                        </div>
+                    </div>
+                    {#                    {% else %}#}
+                    {#                        <div class="cart-button">#}
+                    {#                            <i class="fa fa-comment-alt"></i>#}
+                    {#                        </div>#}
+                    {#                    {% endif %}#}
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner">
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+                            {% if msg_cnt > 0 %}
+                                <div class="shopping-cart-header">
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text mediabout mediabout-dark">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text blllu blllu-dark">{{ msg_cnt }}{% trans ' Messages' %}</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items">
+                                    {% for msg in msg_list %}
+                                        <li class="cart-row">
+                                            <img src="{% static msg.sender.image %}" alt=""/>
+                                            <span class="item-meta">
+                                                <span class="item-name"><a>{{ msg.sender.first_name }} {{ msg.sender.last_name }}</a></span>
+                                                <span class="meta-info">
+                                                    <span class="item-price" style="color:black"><a
+                                                            href="/{{ lang }}student/notifications">{{ msg.text }}</a></span>
+                                                 </span>
+                                            </span>
+                                            <span class="item-meta" style="margin-left:auto !important">
+                                                <span class="meta-info">
+                                                    <a href="#">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="shopping-cart-header">
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text"
+                                              style="color: #c0c0c0;cursor:not-allowed;">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text blllu blllu-dark"
+                                              style="cursor:not-allowed;" >{% trans '0 Messages' %}</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items-2">
+                                    <li class="cart-row-2 cart-row cart-row-dark">
+                                        <img src="{% static 'assets/img/illstrators/no-msg.png' %}" alt=""/>
+                                        <span class="item-name mediabout mediabout-dark" style="">There are no Messages yet.</span>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                            {% if user.group_id == 2 %}
+                                <a href="/{{ lang }}teacher/messages" class="button primary-button is-raised"
+                                   onclick="set_count_zero()">{% trans 'View all Messages' %}</a>
+                            {% else %}
+                                <a href="/{{ lang }}student/messages" class="button primary-button is-raised"
+                                   onclick="set_count_zero()">{% trans 'View all Messages' %}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-item is-cart is-dark-cart" style="margin-left: -20px;">
+                    {#                    {% if favCnt > 0 %}#}
+                    <div class="cart-button cart-button-dark">
+                        <i class="fa fa-heart"></i>
+                        <div class="cart-count cart-count-dark">
+                            <span class="favtotalcourses" id="favtotalcoursesid">{{ favCnt }}</span>
+                        </div>
+                    </div>
+                    {#                    {% elif favCnt == 0 %}#}
+                    {#                        <div class="cart-button">#}
+                    {#                            <i class="fa fa-heart"></i>#}
+                    {#                            <div class="cart-count">#}
+                    {#                                <p class="favtotalcourses" id="favtotalcoursesid" style="display: none; color: white; font-size: 11px;">{{ favCnt }}</p>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    {% endif %}#}
+                    <!-- Cart dropdown -->
+                    <div class="shopping-cart">
+                        <div class="cart-inner" id="fav-parent">
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+
+                            {% if favCnt > 0 %}
+                                <div class="shopping-cart-header favzerovanish">
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text mediabout mediabout-dark">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text blllu blllu-dark"><b class="favtotalcourses">{{ favCnt }}</b>{% trans ' Favorite courses' %}</span>
+                                        
+                                    </div>
+                                </div>
+
+                                <ul class="shopping-cart-items favitemparent">
+                                    {% for favourite in favList %}
+                                        <li class="cart-row favitem" data-id="{{ favourite.course_id.id }}">
+                                            <img src="{% static favourite.course_id.cover_img %}" alt=""/>
+                                            <span class="item-meta">
+                                            <span class="item-name"><a
+                                                    href="#">{{ favourite.course_id.name }}</a></span>
+                                            <span class="meta-info">
+                                            <span class="item-price">${{ favourite.course_id.price }}</span>
+                                            </span>
+                                            </span>
+                                            <span class="item-meta" style="margin-left:auto !important">
+                                            <span class="meta-info">
+                                            <p style="cursor: pointer;" data-id="{{ favourite.course_id.id }}"
+                                               onclick="deleteFromFavDropDown(this)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </p>
+                                            </span>
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="/showfavlist" class="button primary-button is-raised favzerovanish">Show
+                                    FavList</a>
+                            {% else %}
+                                <div class="shopping-cart-header">
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text mediabout mediabout-dark">{% trans 'Total:' %}</span>
+                                        <span class="main-color-text blllu blllu-dark"><b class="favtotalcourses">{{ favCnt }}</b>{% trans ' Favorite courses' %}</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items-2">
+                                    <li class="cart-row-2 cart-row cart-row-dark">
+                                        <img src="{% static 'assets/img/illstrators/no-fave.png' %}" alt=""/>
+                                        <span class="item-name mediabout mediabout-dark" style="">There are no courses yet.</span>
+
+                                    </li>
+                                </ul>
+                                {% if user.group_id == 2 %}
+                                    <a class="button primary-button is-raised"
+                                       style=""
+                                       onclick="set_count_zero()">{% trans 'View favorite page' %}</a>
+                                {% else %}
+                                    <a class="button primary-button is-raised"
+                                       style=""
+                                       onclick="set_count_zero()">{% trans 'View favorite page' %}</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-item is-cart is-dark-cart nvabar-last-item">
+                    <div class="cart-button">
+                        <i class="fa fa-shopping-cart"></i>
+                        <div class="cart-count cart-count-available">
+                            <span class="carttotalcourses" id="cartcounterfirst">{{ cartCnt }}</span>
+                        </div>
+                    </div>
+                    <div class="shopping-cart">
+                        <div class="cart-inner" id="cart-parent">
+                            <!--Loader-->
+                            <div class="navbar-cart-loader is-active">
+                                <div class="loader is-loading"></div>
+                            </div>
+                            {% if cartCnt > 0 %}
+                                <div class="shopping-cart-header cartzerovanish">
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text">Total:</span>
+                                        <span class="main-color-text"><b class="carttotalcourses">{{ cartCnt }}</b> courses</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items-2 cartzeroopen" style="display: none;">
+                                    <li class="cart-row-2">
+                                        <img src="{% static 'assets/img/no-cart.svg' %}" alt=""/>
+                                        <span class="item-name" style="color: grey;">Sorry there are no courses yet in your cart.</span>
+                                    </li>
+                                </ul>
+                                <!--end shopping-cart-header -->
+                                <ul class="shopping-cart-items cartitemparent">
+                                    {% for cart in cartList %}
+                                        <li class="cart-row cartitem" data-id="{{ cart.course_id.id }}">
+                                            <img src="{% static cart.course_id.cover_img %}" alt=""/>
+                                            <span class="item-meta">
+                                                <span class="item-name"><a>{{ cart.course_id.name }}</a></span>
+                                                <span class="meta-info">
+                                                    <span class="item-price">${{ cart.course_id.price }}</span>
+                                                 </span>
+                                            </span>
+                                            <span class="item-meta" style="margin-left:auto !important">
+                                        <span class="meta-info">
+                                            <p style="cursor: pointer;" data-id="{{ cart.course_id.id }}" onclick="deleteFromCartDropDown(this)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </p>
+                                        </span>
+                                    </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                                <a href="/showcartlist" class="button primary-button is-raised cartzerovanish">Show
+                                    CartList</a>
+                            {% else %}
+                                <div class="shopping-cart-header">
+                                    <div class="shopping-cart-total">
+                                              <span class="lighter-text mediabout mediabout-dark">{% trans 'Total:' %}</span>
+                                              <span class="main-color-text blllu blllu-dark">{% trans '0 Courses' %}</span>
+                                    </div>
+                                </div>
+
+                                <ul class="shopping-cart-items-2">
+                                    <li class="cart-row-2 cart-row cart-row-dark">
+                                        <img src="{% static 'assets/img/illstrators/ez.png' %}" alt=""/>
+                                        <span class="item-name mediabout mediabout-dark" style="">There are no courses yet.</span>
+
+                                    </li>
+                                </ul>
+                                {% if user.group_id == 2 %}
+                                    <a class="button primary-button is-raised"
+                                       
+                                       onclick="set_count_zero()">{% trans 'View cart page' %}</a>
+                                {% else %}
+                                    <a class="button primary-button is-raised"
+                                      
+                                       onclick="set_count_zero()">{% trans 'View cart page' %}</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="account-dropdown" class="navbar-item is-account drop-trigger has-caret" style="
+                margin-left: -10px !important;">
+                    <div class="small-avatar1">
+                        <img class="avatar brd brd-dark" src="/static{{ user.image }}" style=""
+                             data-demo-src="{% static 'assets/img/avatars/jenna.png' %}">
+                    </div>
+                    <div class="nav-drop nav-drop-dark is-account-dropdown dropdownnotdisplay">
+                        <div class="inner">
+                            <div class="nav-drop-header nav-drop-header-dark" style="height: 100%;display:flex;flex-direction:column;">
+                                <b class=""
+                                   style="font-size: 15px;text-align:left;justify-content: flex-start;margin-bottom:5px">{{ user.first_name }} {{ user.last_name }}</b>
+                                <p class="" style="font-size: 12px;">{{ user.email }}</p>
+                            </div>
+                            <div class="nav-drop-body account-items" style="">
+                                {% if user.group_id == 1 %}
+                                    <a href="{% url 'student account' %}" class="account-item account-item-dark">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="settings"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'Settings' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% elif user.group_id != 1 %}
+                                    <a href="{% url 'teacher account' %}" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="settings"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'Settings' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'teacher payout' %}" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="settings"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                {% get_current_language as lang %}
+                                                {% if lang == "ar" %}
+                                                <h3> دفع الإيرادات</h3>
+                                                {% else %}
+                                                <h3>{% trans 'Payout' %}</h3>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                                {% if user.group_id != 1 %}
+                                    <a href="{% url 'teacher courses' %}" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="life-buoy"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'My courses' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'student courses' %}" class="account-item">
+
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="life-buoy"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'My courses' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'help' %}" class="account-item">
+                                    <div class="media">
+                                        <div class="icon-wrap">
+                                            <i data-feather="life-buoy"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3>{% trans 'Help' %}</h3>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                {% if user.group_id != 1 %}
+                                    <a href="{% url 'teacher messages' %}" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="life-buoy"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'messages' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'faqs' %}" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <i data-feather="life-buoy" style="color: tomato !important;"></i>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>{% trans 'FAQs' %}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                                <a class="account-item" href="{% url 'logout' %}">
+                                    <div class="media media1">
+                                        <div class="icon-wrap">
+                                            <i data-feather="power" style="color:rgb(236, 11, 11) !important;"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h3 style="color: rgb(236, 11, 11);">{% trans 'Log out' %}</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons ">
+                        <a href="/{{ lang }}/signup" class="button signup-button signup-button-is-dark "
+                           style="margin-left: 15px;margin-right: 15px;">
+                            <p>{% trans 'Sign up' %}</p>
+                        </a>
+                        <a id="login_btn" style="margin-right: -10px;margin-left: -10px;"
+                           class="button primary-button login-button-is-dark raised quickview-trigger process-button signin-button signin-button-is-dark">
+                            <p>{% trans 'Log in' %}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<!-- Main Navbar -->
+{% if user.is_active == True %}
+    <!-- Mobile Navbar -->
+    <nav class="navbar mobile-navbar navbar-dark is-hidden-desktop" style="" aria-label="main navigation">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item2" href="/{{ lang }}">
+                <img class="mobile-logo" src="{% static 'assets/img/favicon.png' %}" alt="">
+            </a>
+            <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+                <a class="icon-link is-primary">
+                    <i class="mdi mdi-apps"></i>
+                </a>
+            </div>
+            <!-- Mobile menu toggler icon -->
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Navbar mobile menu -->
+        <div class="navbar-menu navbar-menu-dark">
+            <!-- Account -->
+            <div class="navbar-item has-dropdown ">
+                <div class="navmobile">
+                  <img src="/static{{ user.image }}" data-demo-src="{% static 'assets/img/avatars/jenna.png' %}"
+                       alt="">
+                  <span class="is-heading mediabout mediabout-dark">{{ user.first_name }} {{ user.last_name }}</span>
+                </div>
+
+              
+                <!-- Mobile Dropdown -->
+                <div class="navbar-dropdown">
+                    {% if user.group_id == 1 %}
+                    <a href="{% url 'student account' %}" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="user"></i>Profile</span>
+                    </a>
+                    {% elif user.group_id != 1 %}
+                    <a href="{% url 'teacher account' %}" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="user"></i>Profile</span>
+                    </a>
+                    {% endif %}
+                    <a href="/showcartlist" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="shopping-cart"></i>Cart</span>
+                        <span class="menu-badge">{{ cartCnt }}</span>
+                    </a>
+                    <a href="/showfavlist" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="heart"></i>Favorites</span>
+                        <span class="menu-badge">{{ favCnt }}</span>
+                    </a>
+                    
+                    <a href="/logoutfromhere" class="navbar-item is-flex is-mobile-icon">
+                        <span style="color:rgb(202, 86, 86) !important"><i data-feather="hexagon"></i>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Navbar -->
+{% else %}
+    <!-- Mobile Navbar -->
+    <nav class="navbar mobile-navbar navbar-dark is-hidden-desktop" aria-label="main navigation">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item2" href="/{{ lang }}">
+                <img class="mobile-logo" src="{% static 'assets/img/favicon.png' %}" alt="">
+            </a>
+            <div id="mobile-explorer-trigger" class="navbar-item is-icon">
+                <a class="icon-link is-primary">
+                    <i class="mdi mdi-apps"></i>
+                </a>
+            </div>
+            <!-- Mobile menu toggler icon -->
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Navbar mobile menu -->
+        <div class="navbar-menu">
+            <div class="navbar-item has-dropdown ">
+                <div class="navbar-item " id="">
+                    <div id="global-search" class="control control-is-dark">
+                        <form action="/search" method="GET" id="searchform">
+                            <input id="tipue_drop_input" autocomplete="off" name="searchkeyword" class="input"
+                                   type="text"
+                                   placeholder="{% trans 'Search course' %}" required>
+                        </form>
+                        <span id="clear-search" class="reset-search d-none">
+                            <i data-feather="x"></i>
+                        </span>
+                    </div>
+                </div>
+                <!-- Mobile Dropdown -->
+                <div class="navbar-dropdown">
+                    {% get_current_language as lang %}
+                    {% if lang == "ar" %}
+                    <a href="/{{ lang }}/about" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="home" style="margin-left: 5px;"></i>عن بوستيب</span>
+                    </a>
+                    <a href="/{{ lang }}/faqs" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="help-circle" style="margin-left: 5px;"></i>الأسئلة الشائعة</span>
+                    </a>
+                    <a href="/{{ lang }}/help" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="message-circle" style="margin-left: 5px;"></i>مساعدة</span>
+                    </a>
+                    <a href="/{{ lang }}/terms" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="command" style="margin-left: 5px;"></i>شروط الإستخدام</span>
+                    </a>
+                    {% else %}
+                    <a href="/{{ lang }}/about" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="home"></i>{% trans 'About us' %}</span>
+                    </a>
+                    <a href="/{{ lang }}/faqs" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="help-circle"></i>{% trans 'FAQs' %}</span>
+                    </a>
+                    <a href="/{{ lang }}/help" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="message-circle"></i>{% trans 'Help center' %}</span>
+                    </a>
+                    <a href="/{{ lang }}/terms" class="navbar-item is-flex is-mobile-icon">
+                        <span><i data-feather="command"></i>{% trans 'Terms of use' %}</span>
+                    </a>
+
+                    {% endif %}
+
+                    
+                    <div class="buttons ">
+                        <a href="/{{ lang }}/signup" class="button signup-button signup-button-is-dark "
+                           style="margin-left: 15px;margin-right: 15px;">
+                            <p>{% trans 'Sign up' %}</p>
+                        </a>
+                        <a id="login_btn" style="margin-right: -10px;margin-left: -10px;"
+                           class="button primary-button login-button-is-dark raised quickview-trigger process-button signin-button signin-button-is-dark">
+                            <p>{% trans 'Log in' %}</p>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Navbar -->
+{% endif %}
+
+<script>
+    function deleteFromFavDropDown(obj) {
+        let course_id = $(obj).data('id')
+        var url = '/student_favourite_courses/';
+        let user_id = '{{ request.user.id }}'
+        $.post(url, {student: user_id, course: course_id}, function (res) {
+            if (res == "success") {
+                count = parseInt($("#favtotalcoursesid").html())
+                $(".favtotalcourses").empty();
+                $(".favtotalcourses").append(""+(count-  1));
+                iziToast.show({
+                    maxWidth: '280px',
+                    class: 'success-toast',
+                    icon: 'mdi mdi-heart-broken',
+                    title: '',
+                    message: 'You have successfully removed this course from your favorite page',
+                    titleColor: '#fff',
+                    messageColor: '#fff',
+                    iconColor: "#fff",
+                    backgroundColor: 'red',
+                    progressBarColor: '#940019',
+                    position: 'bottomRight',
+                    transitionIn: 'fadeInUp',
+                    close: false,
+                    timeout: 4000,
+                    zindex: 99999
+                });
+                $("#invite-pop[data-id='"+course_id+"']").find("g").attr("fill","white");
+                $("#invite-pop[data-id='"+course_id+"']").find("g").attr("stroke","#AE7F8");
+                $(".favitem[data-id='"+course_id+"']").remove();
+
+                if($(".favitem").length==0) {
+                    $("#fav-parent").empty()
+                    var html = `<div class="shopping-cart-header">
+                                    <u style="color: #c0c0c0;;cursor:not-allowed;">Delete all courses</u>
+                                    <div class="shopping-cart-total">
+                                        <span class="lighter-text"
+                                              style="color: #c0c0c0;cursor:not-allowed;">Total:</span>
+                                        <span class="main-color-text"
+                                              style="color: #c0c0c0;cursor:not-allowed;">0 Courses</span>
+                                    </div>
+                                </div>
+                                <ul class="shopping-cart-items-2">
+                                    <li class="cart-row-2">
+                                        <img src="/static/assets/img/illstrators/no-fave.png" alt=""/>
+                                        <span class="item-name" style="color: grey;">There are no courses yet.</span>
+                                    </li>
+                                </ul>
+                                <a class="button primary-button is-raised"
+                                   style="background:#DCDCDC !important;border:1px solid #D2D2D2 ;color: #7F7F7F;;cursor:not-allowed;">View favorite page
+                               </a>`;
+                    $("#fav-parent").html(html);
+                }
+                $(`[data-mark="cart-fav-${course_id}"]`).css({
+                    'color': '#ecacac',
+                })
+            }
+        })
+    }
+
+    function deleteFromCartDropDown(obj) {
+        let course_id = $(obj).data('id')
+        var url = '/student_Cart_courses/';
+        let user_id = '{{ request.user.id }}'
+        $.post(url, {student: user_id, course: course_id}, function (res) {
+            if (res == "success") {
+                count = parseInt($("#cartcounterfirst").html())
+                $(".carttotalcourses").empty();
+                $(".carttotalcourses").append("" + (count - 1));
+                iziToast.show({
+                    maxWidth: '280px',
+                    class: 'success-toast',
+                    icon: 'mdi mdi-cart',
+                    title: '',
+                    message: 'You have successfuly removed this course from your cart',
+                    titleColor: '#fff',
+                    messageColor: '#fff',
+                    iconColor: "#fff",
+                    backgroundColor: 'red',
+                    progressBarColor: '#940019',
+                    position: 'bottomRight',
+                    transitionIn: 'fadeInUp',
+                    close: false,
+                    timeout: 4000,
+                    zindex: 99999
+                });
+                $("#follow-pop[data-id='" + course_id + "']").find("svg").css({'color': 'white'})
+                $(".cartitem[data-id='" + course_id + "']").remove();
+                if ($(".cartitem").length == 0) {
+                    $("#cart-parent").empty()
+                    var html = `<div class="shopping-cart-header">
+                                <u style="color: #c0c0c0;;cursor:not-allowed;">Delete all courses</u>
+                                <div class="shopping-cart-total">
+                                    <span class="lighter-text"
+                                          style="color: #c0c0c0;cursor:not-allowed;">Total:</span>
+                                    <span class="main-color-text"
+                                          style="color: #c0c0c0;cursor:not-allowed;">0 Courses</span>
+                                </div>
+                            </div>
+                            <ul class="shopping-cart-items-2">
+                                <li class="cart-row-2">
+                                    <img src="/static/assets/img/illstrators/ez.png" alt=""/>
+                                    <span class="item-name" style="color: grey;">There are no courses yet.</span>
+                                </li>
+                            </ul>
+                            <a class="button primary-button is-raised"
+                               style="background:#DCDCDC !important;border:1px solid #D2D2D2 ;color: #7F7F7F;;cursor:not-allowed;">View cart page
+                           </a>`;
+                    $("#cart-parent").html(html);
+                }
+            }
+        })
+    }
+
+    function deleteFromMsgDropDown(obj) {
+        //let course_id = $(obj).data('id')
+
+    }
+
+    function deleteFromNotiDropDown(obj) {
+        //let course_id = $(obj).data('id')
+
+    }
+
+    var h = document.getElementById("tipue_drop_input");
+    h.oninvalid = function(e) {
+        e.target.setCustomValidity('{% trans "Write a course name please!" %}');
+    };
+
+   
+
+</script>
